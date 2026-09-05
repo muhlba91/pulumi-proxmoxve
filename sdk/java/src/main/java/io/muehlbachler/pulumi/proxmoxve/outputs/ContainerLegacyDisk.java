@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ContainerLegacyDisk {
     /**
-     * @return Explicitly enable or disable ACL support
+     * @return Explicitly enable or disable ACL support.
      * 
      */
     private @Nullable Boolean acl;
@@ -37,12 +37,12 @@ public final class ContainerLegacyDisk {
      */
     private @Nullable String pathInDatastore;
     /**
-     * @return Enable user quotas for the container rootfs
+     * @return Enable user quotas for the container rootfs.
      * 
      */
     private @Nullable Boolean quota;
     /**
-     * @return Will include this volume to a storage replica job
+     * @return Whether to include this volume in a storage replication job (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     private @Nullable Boolean replicate;
@@ -56,7 +56,7 @@ public final class ContainerLegacyDisk {
 
     private ContainerLegacyDisk() {}
     /**
-     * @return Explicitly enable or disable ACL support
+     * @return Explicitly enable or disable ACL support.
      * 
      */
     public Optional<Boolean> acl() {
@@ -86,14 +86,14 @@ public final class ContainerLegacyDisk {
         return Optional.ofNullable(this.pathInDatastore);
     }
     /**
-     * @return Enable user quotas for the container rootfs
+     * @return Enable user quotas for the container rootfs.
      * 
      */
     public Optional<Boolean> quota() {
         return Optional.ofNullable(this.quota);
     }
     /**
-     * @return Will include this volume to a storage replica job
+     * @return Whether to include this volume in a storage replication job (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     public Optional<Boolean> replicate() {

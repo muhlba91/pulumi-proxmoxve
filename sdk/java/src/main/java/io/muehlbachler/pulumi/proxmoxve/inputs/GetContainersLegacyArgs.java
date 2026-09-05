@@ -33,14 +33,14 @@ public final class GetContainersLegacyArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * The node name. All cluster nodes will be queried in case this is omitted
+     * The node name. If omitted, all cluster nodes are queried.
      * 
      */
     @Import(name="nodeName")
     private @Nullable Output<String> nodeName;
 
     /**
-     * @return The node name. All cluster nodes will be queried in case this is omitted
+     * @return The node name. If omitted, all cluster nodes are queried.
      * 
      */
     public Optional<Output<String>> nodeName() {
@@ -122,7 +122,7 @@ public final class GetContainersLegacyArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param nodeName The node name. All cluster nodes will be queried in case this is omitted
+         * @param nodeName The node name. If omitted, all cluster nodes are queried.
          * 
          * @return builder
          * 
@@ -133,7 +133,7 @@ public final class GetContainersLegacyArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param nodeName The node name. All cluster nodes will be queried in case this is omitted
+         * @param nodeName The node name. If omitted, all cluster nodes are queried.
          * 
          * @return builder
          * 

@@ -35,7 +35,7 @@ namespace Pulumi.ProxmoxVE.Outputs
         public readonly string? Interface;
         /// <summary>
         /// The IP configuration (one block per network
-        /// device).
+        /// device, up to 32 blocks).
         /// </summary>
         public readonly ImmutableArray<Outputs.VmLegacyInitializationIpConfig> IpConfigs;
         /// <summary>

@@ -69,7 +69,7 @@ namespace Pulumi.ProxmoxVE
         public Output<string> NodeName { get; private set; } = null!;
 
         /// <summary>
-        /// The DNS servers.
+        /// The DNS servers (maximum of 3).
         /// </summary>
         [Output("servers")]
         public Output<ImmutableArray<string>> Servers { get; private set; } = null!;
@@ -137,7 +137,7 @@ namespace Pulumi.ProxmoxVE
         private InputList<string>? _servers;
 
         /// <summary>
-        /// The DNS servers.
+        /// The DNS servers (maximum of 3).
         /// </summary>
         public InputList<string> Servers
         {
@@ -169,7 +169,7 @@ namespace Pulumi.ProxmoxVE
         private InputList<string>? _servers;
 
         /// <summary>
-        /// The DNS servers.
+        /// The DNS servers (maximum of 3).
         /// </summary>
         public InputList<string> Servers
         {

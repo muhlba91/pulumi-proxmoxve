@@ -75,6 +75,12 @@ namespace Pulumi.ProxmoxVE.Backup
         public Output<ImmutableArray<string>> ExcludePaths { get; private set; } = null!;
 
         /// <summary>
+        /// A list of guest VM/CT IDs to exclude from the backup.
+        /// </summary>
+        [Output("excludes")]
+        public Output<ImmutableArray<string>> Excludes { get; private set; } = null!;
+
+        /// <summary>
         /// Fleecing configuration for the backup job.
         /// </summary>
         [Output("fleecing")]
@@ -319,6 +325,18 @@ namespace Pulumi.ProxmoxVE.Backup
             set => _excludePaths = value;
         }
 
+        [Input("excludes")]
+        private InputList<string>? _excludes;
+
+        /// <summary>
+        /// A list of guest VM/CT IDs to exclude from the backup.
+        /// </summary>
+        public InputList<string> Excludes
+        {
+            get => _excludes ?? (_excludes = new InputList<string>());
+            set => _excludes = value;
+        }
+
         /// <summary>
         /// Fleecing configuration for the backup job.
         /// </summary>
@@ -541,6 +559,18 @@ namespace Pulumi.ProxmoxVE.Backup
         {
             get => _excludePaths ?? (_excludePaths = new InputList<string>());
             set => _excludePaths = value;
+        }
+
+        [Input("excludes")]
+        private InputList<string>? _excludes;
+
+        /// <summary>
+        /// A list of guest VM/CT IDs to exclude from the backup.
+        /// </summary>
+        public InputList<string> Excludes
+        {
+            get => _excludes ?? (_excludes = new InputList<string>());
+            set => _excludes = value;
         }
 
         /// <summary>

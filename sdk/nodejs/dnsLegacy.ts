@@ -75,7 +75,7 @@ export class DnsLegacy extends pulumi.CustomResource {
      */
     declare public readonly nodeName: pulumi.Output<string>;
     /**
-     * The DNS servers.
+     * The DNS servers (maximum of 3).
      */
     declare public readonly servers: pulumi.Output<string[] | undefined>;
 
@@ -125,7 +125,7 @@ export interface DnsLegacyState {
      */
     nodeName?: pulumi.Input<string | undefined>;
     /**
-     * The DNS servers.
+     * The DNS servers (maximum of 3).
      */
     servers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
@@ -143,7 +143,7 @@ export interface DnsLegacyArgs {
      */
     nodeName: pulumi.Input<string>;
     /**
-     * The DNS servers.
+     * The DNS servers (maximum of 3).
      */
     servers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

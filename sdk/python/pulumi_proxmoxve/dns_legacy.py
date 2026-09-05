@@ -27,7 +27,7 @@ class DnsLegacyArgs:
 
         :param pulumi.Input[_builtins.str] domain: The DNS search domain.
         :param pulumi.Input[_builtins.str] node_name: A node name.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] servers: The DNS servers.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] servers: The DNS servers (maximum of 3).
         """
         pulumi.set(__self__, "domain", domain)
         pulumi.set(__self__, "node_name", node_name)
@@ -62,7 +62,7 @@ class DnsLegacyArgs:
     @pulumi.getter
     def servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The DNS servers.
+        The DNS servers (maximum of 3).
         """
         return pulumi.get(self, "servers")
 
@@ -82,7 +82,7 @@ class _DnsLegacyState:
 
         :param pulumi.Input[_builtins.str] domain: The DNS search domain.
         :param pulumi.Input[_builtins.str] node_name: A node name.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] servers: The DNS servers.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] servers: The DNS servers (maximum of 3).
         """
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
@@ -119,7 +119,7 @@ class _DnsLegacyState:
     @pulumi.getter
     def servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The DNS servers.
+        The DNS servers (maximum of 3).
         """
         return pulumi.get(self, "servers")
 
@@ -174,7 +174,7 @@ class DnsLegacy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] domain: The DNS search domain.
         :param pulumi.Input[_builtins.str] node_name: A node name.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] servers: The DNS servers.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] servers: The DNS servers (maximum of 3).
         """
         ...
     @overload
@@ -270,7 +270,7 @@ class DnsLegacy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] domain: The DNS search domain.
         :param pulumi.Input[_builtins.str] node_name: A node name.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] servers: The DNS servers.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] servers: The DNS servers (maximum of 3).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -301,7 +301,7 @@ class DnsLegacy(pulumi.CustomResource):
     @pulumi.getter
     def servers(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        The DNS servers.
+        The DNS servers (maximum of 3).
         """
         return pulumi.get(self, "servers")
 

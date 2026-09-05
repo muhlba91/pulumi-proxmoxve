@@ -31,7 +31,8 @@ import * as utilities from "../utilities";
  *
  * ## Important Notes
  *
- * Be careful not to use this resource multiple times for the same node.
+ * This resource manages cluster-wide firewall options, so it should be used only
+ * once per cluster. Declaring it multiple times results in conflicting updates.
  *
  * ## Import
  *
@@ -78,11 +79,11 @@ export class FirewallLegacy extends pulumi.CustomResource {
      */
     declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
-     * The default forward policy (`ACCEPT`, `DROP`).
+     * The default forward policy (`ACCEPT`, `DROP`). Defaults to `ACCEPT`.
      */
     declare public readonly forwardPolicy: pulumi.Output<string | undefined>;
     /**
-     * The default input policy (`ACCEPT`, `DROP`, `REJECT`).
+     * The default input policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `DROP`.
      */
     declare public readonly inputPolicy: pulumi.Output<string | undefined>;
     /**
@@ -90,7 +91,7 @@ export class FirewallLegacy extends pulumi.CustomResource {
      */
     declare public readonly logRatelimit: pulumi.Output<outputs.cluster.FirewallLegacyLogRatelimit | undefined>;
     /**
-     * The default output policy (`ACCEPT`, `DROP`, `REJECT`).
+     * The default output policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `ACCEPT`.
      */
     declare public readonly outputPolicy: pulumi.Output<string | undefined>;
 
@@ -140,11 +141,11 @@ export interface FirewallLegacyState {
      */
     enabled?: pulumi.Input<boolean | undefined>;
     /**
-     * The default forward policy (`ACCEPT`, `DROP`).
+     * The default forward policy (`ACCEPT`, `DROP`). Defaults to `ACCEPT`.
      */
     forwardPolicy?: pulumi.Input<string | undefined>;
     /**
-     * The default input policy (`ACCEPT`, `DROP`, `REJECT`).
+     * The default input policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `DROP`.
      */
     inputPolicy?: pulumi.Input<string | undefined>;
     /**
@@ -152,7 +153,7 @@ export interface FirewallLegacyState {
      */
     logRatelimit?: pulumi.Input<inputs.cluster.FirewallLegacyLogRatelimit | undefined>;
     /**
-     * The default output policy (`ACCEPT`, `DROP`, `REJECT`).
+     * The default output policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `ACCEPT`.
      */
     outputPolicy?: pulumi.Input<string | undefined>;
 }
@@ -170,11 +171,11 @@ export interface FirewallLegacyArgs {
      */
     enabled?: pulumi.Input<boolean | undefined>;
     /**
-     * The default forward policy (`ACCEPT`, `DROP`).
+     * The default forward policy (`ACCEPT`, `DROP`). Defaults to `ACCEPT`.
      */
     forwardPolicy?: pulumi.Input<string | undefined>;
     /**
-     * The default input policy (`ACCEPT`, `DROP`, `REJECT`).
+     * The default input policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `DROP`.
      */
     inputPolicy?: pulumi.Input<string | undefined>;
     /**
@@ -182,7 +183,7 @@ export interface FirewallLegacyArgs {
      */
     logRatelimit?: pulumi.Input<inputs.cluster.FirewallLegacyLogRatelimit | undefined>;
     /**
-     * The default output policy (`ACCEPT`, `DROP`, `REJECT`).
+     * The default output policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `ACCEPT`.
      */
     outputPolicy?: pulumi.Input<string | undefined>;
 }

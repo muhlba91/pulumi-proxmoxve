@@ -19,14 +19,14 @@ public final class ContainerLegacyDiskArgs extends com.pulumi.resources.Resource
     public static final ContainerLegacyDiskArgs Empty = new ContainerLegacyDiskArgs();
 
     /**
-     * Explicitly enable or disable ACL support
+     * Explicitly enable or disable ACL support.
      * 
      */
     @Import(name="acl")
     private @Nullable Output<Boolean> acl;
 
     /**
-     * @return Explicitly enable or disable ACL support
+     * @return Explicitly enable or disable ACL support.
      * 
      */
     public Optional<Output<Boolean>> acl() {
@@ -83,14 +83,14 @@ public final class ContainerLegacyDiskArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Enable user quotas for the container rootfs
+     * Enable user quotas for the container rootfs.
      * 
      */
     @Import(name="quota")
     private @Nullable Output<Boolean> quota;
 
     /**
-     * @return Enable user quotas for the container rootfs
+     * @return Enable user quotas for the container rootfs.
      * 
      */
     public Optional<Output<Boolean>> quota() {
@@ -98,14 +98,14 @@ public final class ContainerLegacyDiskArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Will include this volume to a storage replica job
+     * Whether to include this volume in a storage replication job (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     @Import(name="replicate")
     private @Nullable Output<Boolean> replicate;
 
     /**
-     * @return Will include this volume to a storage replica job
+     * @return Whether to include this volume in a storage replication job (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Boolean>> replicate() {
@@ -162,7 +162,7 @@ public final class ContainerLegacyDiskArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param acl Explicitly enable or disable ACL support
+         * @param acl Explicitly enable or disable ACL support.
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class ContainerLegacyDiskArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param acl Explicitly enable or disable ACL support
+         * @param acl Explicitly enable or disable ACL support.
          * 
          * @return builder
          * 
@@ -260,7 +260,7 @@ public final class ContainerLegacyDiskArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param quota Enable user quotas for the container rootfs
+         * @param quota Enable user quotas for the container rootfs.
          * 
          * @return builder
          * 
@@ -271,7 +271,7 @@ public final class ContainerLegacyDiskArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param quota Enable user quotas for the container rootfs
+         * @param quota Enable user quotas for the container rootfs.
          * 
          * @return builder
          * 
@@ -281,7 +281,7 @@ public final class ContainerLegacyDiskArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param replicate Will include this volume to a storage replica job
+         * @param replicate Whether to include this volume in a storage replication job (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -292,7 +292,7 @@ public final class ContainerLegacyDiskArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param replicate Will include this volume to a storage replica job
+         * @param replicate Whether to include this volume in a storage replication job (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
          * 
          * @return builder
          * 

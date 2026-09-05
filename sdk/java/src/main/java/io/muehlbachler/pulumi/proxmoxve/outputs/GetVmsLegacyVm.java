@@ -21,7 +21,7 @@ public final class GetVmsLegacyVm {
      */
     private String name;
     /**
-     * @return The node name. All cluster nodes will be queried in case this is omitted
+     * @return The node name. If omitted, all cluster nodes are queried.
      * 
      */
     private String nodeName;
@@ -56,7 +56,7 @@ public final class GetVmsLegacyVm {
         return this.name;
     }
     /**
-     * @return The node name. All cluster nodes will be queried in case this is omitted
+     * @return The node name. If omitted, all cluster nodes are queried.
      * 
      */
     public String nodeName() {

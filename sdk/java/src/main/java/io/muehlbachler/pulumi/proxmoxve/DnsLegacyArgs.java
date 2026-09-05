@@ -48,14 +48,14 @@ public final class DnsLegacyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The DNS servers.
+     * The DNS servers (maximum of 3).
      * 
      */
     @Import(name="servers")
     private @Nullable Output<List<String>> servers;
 
     /**
-     * @return The DNS servers.
+     * @return The DNS servers (maximum of 3).
      * 
      */
     public Optional<Output<List<String>>> servers() {
@@ -131,7 +131,7 @@ public final class DnsLegacyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param servers The DNS servers.
+         * @param servers The DNS servers (maximum of 3).
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class DnsLegacyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param servers The DNS servers.
+         * @param servers The DNS servers (maximum of 3).
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class DnsLegacyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param servers The DNS servers.
+         * @param servers The DNS servers (maximum of 3).
          * 
          * @return builder
          * 

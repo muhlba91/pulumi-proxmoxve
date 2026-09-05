@@ -332,6 +332,8 @@ type GetJobsJob struct {
 	Compress string `pulumi:"compress"`
 	// Indicates whether the backup job is enabled.
 	Enabled bool `pulumi:"enabled"`
+	// List of guest VM/CT IDs excluded from the backup.
+	Excludes []string `pulumi:"excludes"`
 	// Unique identifier of the backup job.
 	Id string `pulumi:"id"`
 	// When to send email notifications (always or failure).
@@ -376,6 +378,8 @@ type GetJobsJobArgs struct {
 	Compress pulumi.StringInput `pulumi:"compress"`
 	// Indicates whether the backup job is enabled.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// List of guest VM/CT IDs excluded from the backup.
+	Excludes pulumi.StringArrayInput `pulumi:"excludes"`
 	// Unique identifier of the backup job.
 	Id pulumi.StringInput `pulumi:"id"`
 	// When to send email notifications (always or failure).
@@ -466,6 +470,11 @@ func (o GetJobsJobOutput) Compress() pulumi.StringOutput {
 // Indicates whether the backup job is enabled.
 func (o GetJobsJobOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetJobsJob) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// List of guest VM/CT IDs excluded from the backup.
+func (o GetJobsJobOutput) Excludes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetJobsJob) []string { return v.Excludes }).(pulumi.StringArrayOutput)
 }
 
 // Unique identifier of the backup job.

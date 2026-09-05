@@ -264,7 +264,8 @@ class ContainerLegacyCpu(dict):
         :param _builtins.str architecture: The CPU architecture (defaults to `amd64`).
         :param _builtins.int cores: The number of CPU cores (defaults to `1`).
         :param _builtins.float limit: Limit of CPU usage. Value `0` indicates no limit (defaults to `0`).
-        :param _builtins.int units: The CPU units (defaults to `1024`).
+        :param _builtins.int units: The CPU units (between `1` and `500000`). When unset,
+               Proxmox applies its own default.
         """
         if architecture is not None:
             pulumi.set(__self__, "architecture", architecture)
@@ -303,7 +304,8 @@ class ContainerLegacyCpu(dict):
     @pulumi.getter
     def units(self) -> Optional[_builtins.int]:
         """
-        The CPU units (defaults to `1024`).
+        The CPU units (between `1` and `500000`). When unset,
+        Proxmox applies its own default.
         """
         return pulumi.get(self, "units")
 
@@ -425,14 +427,14 @@ class ContainerLegacyDisk(dict):
                  replicate: Optional[_builtins.bool] = None,
                  size: Optional[_builtins.int] = None):
         """
-        :param _builtins.bool acl: Explicitly enable or disable ACL support
+        :param _builtins.bool acl: Explicitly enable or disable ACL support.
         :param _builtins.str datastore_id: The Proxmox storage ID where the rootfs
                volume is created (defaults to `local`).
         :param Sequence[_builtins.str] mount_options: List of extra mount options.
         :param _builtins.str path_in_datastore: The in-datastore path to the disk image.
                Use this attribute for cross-resource references.
-        :param _builtins.bool quota: Enable user quotas for the container rootfs
-        :param _builtins.bool replicate: Will include this volume to a storage replica job
+        :param _builtins.bool quota: Enable user quotas for the container rootfs.
+        :param _builtins.bool replicate: Whether to include this volume in a storage replication job (defaults to `true`).
         :param _builtins.int size: The size of the root filesystem in gigabytes (defaults
                to `4`). When set to 0 a directory or zfs/btrfs subvolume will be created.
                Requires `datastore_id` to be set.
@@ -456,7 +458,7 @@ class ContainerLegacyDisk(dict):
     @pulumi.getter
     def acl(self) -> Optional[_builtins.bool]:
         """
-        Explicitly enable or disable ACL support
+        Explicitly enable or disable ACL support.
         """
         return pulumi.get(self, "acl")
 
@@ -490,7 +492,7 @@ class ContainerLegacyDisk(dict):
     @pulumi.getter
     def quota(self) -> Optional[_builtins.bool]:
         """
-        Enable user quotas for the container rootfs
+        Enable user quotas for the container rootfs.
         """
         return pulumi.get(self, "quota")
 
@@ -498,7 +500,7 @@ class ContainerLegacyDisk(dict):
     @pulumi.getter
     def replicate(self) -> Optional[_builtins.bool]:
         """
-        Will include this volume to a storage replica job
+        Whether to include this volume in a storage replication job (defaults to `true`).
         """
         return pulumi.get(self, "replicate")
 
@@ -1007,7 +1009,7 @@ class ContainerLegacyMountPoint(dict):
         :param _builtins.bool quota: Enable user quotas inside the container (not supported
                with ZFS subvolumes).
         :param _builtins.bool read_only: Read-only mount point.
-        :param _builtins.bool replicate: Will include this volume to a storage replica job.
+        :param _builtins.bool replicate: Will include this volume to a storage replica job (defaults to `true`).
         :param _builtins.bool shared: Mark this non-volume mount point as available on all
                nodes.
         :param _builtins.str size: Volume size (only for volume mount points).
@@ -1110,7 +1112,7 @@ class ContainerLegacyMountPoint(dict):
     @pulumi.getter
     def replicate(self) -> Optional[_builtins.bool]:
         """
-        Will include this volume to a storage replica job.
+        Will include this volume to a storage replica job (defaults to `true`).
         """
         return pulumi.get(self, "replicate")
 
@@ -1362,7 +1364,7 @@ class ContainerLegacyStartup(dict):
         :param _builtins.int down_delay: A non-negative number defining the delay in
                seconds before the next container is shut down.
         :param _builtins.int order: A non-negative number defining the general startup
-               order.
+               order (defaults to `-1`, meaning no specific order).
         :param _builtins.int up_delay: A non-negative number defining the delay in
                seconds before the next container is started.
         """
@@ -1387,7 +1389,7 @@ class ContainerLegacyStartup(dict):
     def order(self) -> Optional[_builtins.int]:
         """
         A non-negative number defining the general startup
-        order.
+        order (defaults to `-1`, meaning no specific order).
         """
         return pulumi.get(self, "order")
 
@@ -2632,8 +2634,8 @@ class VmLegacyCdrom(dict):
         :param _builtins.str file_id: A file ID for an ISO file (defaults to `cdrom` as
                in the physical drive). Use `none` to leave the CD-ROM drive empty.
         :param _builtins.str interface: A hardware interface to connect CD-ROM drive to (defaults to `ide3`).
-               "Must be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. " +
-               "Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+               Must be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface.
+               Note that the `q35` machine type only supports `ide0` and `ide2` of the IDE interfaces.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -2667,8 +2669,8 @@ class VmLegacyCdrom(dict):
     def interface(self) -> Optional[_builtins.str]:
         """
         A hardware interface to connect CD-ROM drive to (defaults to `ide3`).
-        "Must be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. " +
-        "Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+        Must be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface.
+        Note that the `q35` machine type only supports `ide0` and `ide2` of the IDE interfaces.
         """
         return pulumi.get(self, "interface")
 
@@ -2813,7 +2815,7 @@ class VmLegacyCpu(dict):
                to `0`).
         :param _builtins.float limit: Limit of CPU usage, `0...128` (supports
                fractional values, e.g. `63.5`). (defaults to `0` -- no limit).
-        :param _builtins.bool numa: Enable/disable NUMA. (default to `false`)
+        :param _builtins.bool numa: Enable/disable NUMA (defaults to `false`).
         :param _builtins.int sockets: The number of CPU sockets (defaults to `1`).
         :param _builtins.str type: The emulated CPU type, it's recommended to
                use `x86-64-v2-AES` (defaults to `qemu64`).
@@ -2919,7 +2921,7 @@ class VmLegacyCpu(dict):
     @pulumi.getter
     def numa(self) -> Optional[_builtins.bool]:
         """
-        Enable/disable NUMA. (default to `false`)
+        Enable/disable NUMA (defaults to `false`).
         """
         return pulumi.get(self, "numa")
 
@@ -3021,7 +3023,7 @@ class VmLegacyDisk(dict):
         :param _builtins.bool iothread: Whether to use iothreads for this disk (defaults
                to `false`).
         :param _builtins.str path_in_datastore: The in-datastore path to the disk image.
-               ***Experimental.***Use to attach another VM's disks,
+               ***Experimental.*** Use to attach another VM's disks,
                or (as root only) host's filesystem paths (`datastore_id` empty string).
                See "*Example: Attached disks*".
         :param _builtins.int queues: The number of I/O queues for this disk, `2` or
@@ -3170,7 +3172,7 @@ class VmLegacyDisk(dict):
     def path_in_datastore(self) -> Optional[_builtins.str]:
         """
         The in-datastore path to the disk image.
-        ***Experimental.***Use to attach another VM's disks,
+        ***Experimental.*** Use to attach another VM's disks,
         or (as root only) host's filesystem paths (`datastore_id` empty string).
         See "*Example: Attached disks*".
         """
@@ -3647,7 +3649,7 @@ class VmLegacyInitialization(dict):
                detected if the setting is missing but a cloud-init image is present,
                otherwise defaults to `ide2`.
         :param Sequence['VmLegacyInitializationIpConfigArgs'] ip_configs: The IP configuration (one block per network
-               device).
+               device, up to 32 blocks).
         :param _builtins.str meta_data_file_id: The identifier for a file containing
                all meta data passed to the VM via cloud-init.
         :param _builtins.str network_data_file_id: The identifier for a file containing
@@ -3730,7 +3732,7 @@ class VmLegacyInitialization(dict):
     def ip_configs(self) -> Optional[Sequence['outputs.VmLegacyInitializationIpConfig']]:
         """
         The IP configuration (one block per network
-        device).
+        device, up to 32 blocks).
         """
         return pulumi.get(self, "ip_configs")
 
@@ -4522,7 +4524,7 @@ class VmLegacyStartup(dict):
         :param _builtins.int down_delay: A non-negative number defining the delay in
                seconds before the next VM is shut down.
         :param _builtins.int order: A non-negative number defining the general startup
-               order.
+               order (defaults to `-1`, meaning no specific order).
         :param _builtins.int up_delay: A non-negative number defining the delay in
                seconds before the next VM is started.
         """
@@ -4547,7 +4549,7 @@ class VmLegacyStartup(dict):
     def order(self) -> Optional[_builtins.int]:
         """
         A non-negative number defining the general startup
-        order.
+        order (defaults to `-1`, meaning no specific order).
         """
         return pulumi.get(self, "order")
 
@@ -5000,7 +5002,7 @@ class GetContainersLegacyContainerResult(dict):
                  template: Optional[_builtins.bool] = None):
         """
         :param _builtins.str name: The container name.
-        :param _builtins.str node_name: The node name. All cluster nodes will be queried in case this is omitted
+        :param _builtins.str node_name: The node name. If omitted, all cluster nodes are queried.
         :param Sequence[_builtins.str] tags: A list of tags to filter the containers. The container must have all
                the tags to be included in the result.
         :param _builtins.int vm_id: The container identifier.
@@ -5028,7 +5030,7 @@ class GetContainersLegacyContainerResult(dict):
     @pulumi.getter(name="nodeName")
     def node_name(self) -> _builtins.str:
         """
-        The node name. All cluster nodes will be queried in case this is omitted
+        The node name. If omitted, all cluster nodes are queried.
         """
         return pulumi.get(self, "node_name")
 
@@ -5075,7 +5077,7 @@ class GetContainersLegacyFilterResult(dict):
         """
         :param _builtins.str name: Name of the container attribute to filter on. One of [`name`, `template`, `status`, `node_name`]
         :param Sequence[_builtins.str] values: List of values to pass the filter. Container's attribute should match at least one value in the list.
-        :param _builtins.bool regex: Treat values as regex patterns
+        :param _builtins.bool regex: Whether to treat the `values` as regex patterns (defaults to `false`).
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
@@ -5102,7 +5104,7 @@ class GetContainersLegacyFilterResult(dict):
     @pulumi.getter
     def regex(self) -> Optional[_builtins.bool]:
         """
-        Treat values as regex patterns
+        Whether to treat the `values` as regex patterns (defaults to `false`).
         """
         return pulumi.get(self, "regex")
 
@@ -6348,7 +6350,7 @@ class GetVmsLegacyFilterResult(dict):
         """
         :param _builtins.str name: Name of the VM attribute to filter on. One of [`name`, `template`, `status`, `node_name`]
         :param Sequence[_builtins.str] values: List of values to pass the filter. VM's attribute should match at least one value in the list.
-        :param _builtins.bool regex: Treat values as regex patterns
+        :param _builtins.bool regex: Whether to treat the `values` as regex patterns (defaults to `false`).
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
@@ -6375,7 +6377,7 @@ class GetVmsLegacyFilterResult(dict):
     @pulumi.getter
     def regex(self) -> Optional[_builtins.bool]:
         """
-        Treat values as regex patterns
+        Whether to treat the `values` as regex patterns (defaults to `false`).
         """
         return pulumi.get(self, "regex")
 
@@ -6391,7 +6393,7 @@ class GetVmsLegacyVmResult(dict):
                  template: Optional[_builtins.bool] = None):
         """
         :param _builtins.str name: The virtual machine name.
-        :param _builtins.str node_name: The node name. All cluster nodes will be queried in case this is omitted
+        :param _builtins.str node_name: The node name. If omitted, all cluster nodes are queried.
         :param Sequence[_builtins.str] tags: A list of tags to filter the VMs. The VM must have all
                the tags to be included in the result.
         :param _builtins.int vm_id: The VM identifier.
@@ -6419,7 +6421,7 @@ class GetVmsLegacyVmResult(dict):
     @pulumi.getter(name="nodeName")
     def node_name(self) -> _builtins.str:
         """
-        The node name. All cluster nodes will be queried in case this is omitted
+        The node name. If omitted, all cluster nodes are queried.
         """
         return pulumi.get(self, "node_name")
 

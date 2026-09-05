@@ -175,7 +175,12 @@ import (
 // file.
 //
 // This provider requires `agent.enabled = true` to populate `ipv4Addresses`,
-// `ipv6Addresses` and `networkInterfaceNames` output attributes.
+// `ipv6Addresses` and `networkInterfaceNames` output attributes. Note that the
+// provider honors the agent flag from the VM's *actual* Proxmox configuration,
+// not only from the Terraform configuration: a cloned VM inherits the `agent`
+// setting from the template, so omitting the `agent` block on the clone does not
+// disable the agent wait (up to 15 minutes by default). Set
+// `agent { enabled = false }` explicitly on the clone to override the template.
 //
 // Setting `agent.enabled = true` without running `qemu-guest-agent` in the VM will
 // also result in long timeouts when using the provider, both when creating VMs,
@@ -392,7 +397,7 @@ type VmLegacy struct {
 	// successfully but still need a later manual reboot emit a warning instead
 	// (defaults to `true`).
 	RebootAfterUpdate pulumi.BoolPtrOutput `pulumi:"rebootAfterUpdate"`
-	// The random number generator configuration. Can only be set by `root@pam.`
+	// The random number generator configuration. Can only be set by `root@pam`.
 	Rngs VmLegacyRngArrayOutput `pulumi:"rngs"`
 	// The SCSI hardware type (defaults to
 	// `virtio-scsi-pci`).
@@ -590,7 +595,7 @@ type vmLegacyState struct {
 	// successfully but still need a later manual reboot emit a warning instead
 	// (defaults to `true`).
 	RebootAfterUpdate *bool `pulumi:"rebootAfterUpdate"`
-	// The random number generator configuration. Can only be set by `root@pam.`
+	// The random number generator configuration. Can only be set by `root@pam`.
 	Rngs []VmLegacyRng `pulumi:"rngs"`
 	// The SCSI hardware type (defaults to
 	// `virtio-scsi-pci`).
@@ -756,7 +761,7 @@ type VmLegacyState struct {
 	// successfully but still need a later manual reboot emit a warning instead
 	// (defaults to `true`).
 	RebootAfterUpdate pulumi.BoolPtrInput
-	// The random number generator configuration. Can only be set by `root@pam.`
+	// The random number generator configuration. Can only be set by `root@pam`.
 	Rngs VmLegacyRngArrayInput
 	// The SCSI hardware type (defaults to
 	// `virtio-scsi-pci`).
@@ -917,7 +922,7 @@ type vmLegacyArgs struct {
 	// successfully but still need a later manual reboot emit a warning instead
 	// (defaults to `true`).
 	RebootAfterUpdate *bool `pulumi:"rebootAfterUpdate"`
-	// The random number generator configuration. Can only be set by `root@pam.`
+	// The random number generator configuration. Can only be set by `root@pam`.
 	Rngs []VmLegacyRng `pulumi:"rngs"`
 	// The SCSI hardware type (defaults to
 	// `virtio-scsi-pci`).
@@ -1075,7 +1080,7 @@ type VmLegacyArgs struct {
 	// successfully but still need a later manual reboot emit a warning instead
 	// (defaults to `true`).
 	RebootAfterUpdate pulumi.BoolPtrInput
-	// The random number generator configuration. Can only be set by `root@pam.`
+	// The random number generator configuration. Can only be set by `root@pam`.
 	Rngs VmLegacyRngArrayInput
 	// The SCSI hardware type (defaults to
 	// `virtio-scsi-pci`).
@@ -1438,7 +1443,7 @@ func (o VmLegacyOutput) RebootAfterUpdate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VmLegacy) pulumi.BoolPtrOutput { return v.RebootAfterUpdate }).(pulumi.BoolPtrOutput)
 }
 
-// The random number generator configuration. Can only be set by `root@pam.`
+// The random number generator configuration. Can only be set by `root@pam`.
 func (o VmLegacyOutput) Rngs() VmLegacyRngArrayOutput {
 	return o.ApplyT(func(v *VmLegacy) VmLegacyRngArrayOutput { return v.Rngs }).(VmLegacyRngArrayOutput)
 }

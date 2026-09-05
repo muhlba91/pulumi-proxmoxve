@@ -354,7 +354,8 @@ class ContainerLegacyCpuArgsDict(TypedDict):
     """
     units: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    The CPU units (defaults to `1024`).
+    The CPU units (between `1` and `500000`). When unset,
+    Proxmox applies its own default.
     """
 
 @pulumi.input_type
@@ -368,7 +369,8 @@ class ContainerLegacyCpuArgs:
         :param pulumi.Input[_builtins.str] architecture: The CPU architecture (defaults to `amd64`).
         :param pulumi.Input[_builtins.int] cores: The number of CPU cores (defaults to `1`).
         :param pulumi.Input[_builtins.float] limit: Limit of CPU usage. Value `0` indicates no limit (defaults to `0`).
-        :param pulumi.Input[_builtins.int] units: The CPU units (defaults to `1024`).
+        :param pulumi.Input[_builtins.int] units: The CPU units (between `1` and `500000`). When unset,
+               Proxmox applies its own default.
         """
         if architecture is not None:
             pulumi.set(__self__, "architecture", architecture)
@@ -419,7 +421,8 @@ class ContainerLegacyCpuArgs:
     @pulumi.getter
     def units(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The CPU units (defaults to `1024`).
+        The CPU units (between `1` and `500000`). When unset,
+        Proxmox applies its own default.
         """
         return pulumi.get(self, "units")
 
@@ -542,7 +545,7 @@ class ContainerLegacyDevicePassthroughArgs:
 class ContainerLegacyDiskArgsDict(TypedDict):
     acl: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    Explicitly enable or disable ACL support
+    Explicitly enable or disable ACL support.
     """
     datastore_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -560,11 +563,11 @@ class ContainerLegacyDiskArgsDict(TypedDict):
     """
     quota: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    Enable user quotas for the container rootfs
+    Enable user quotas for the container rootfs.
     """
     replicate: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    Will include this volume to a storage replica job
+    Whether to include this volume in a storage replication job (defaults to `true`).
     """
     size: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -584,14 +587,14 @@ class ContainerLegacyDiskArgs:
                  replicate: pulumi.Input[Optional[_builtins.bool]] = None,
                  size: pulumi.Input[Optional[_builtins.int]] = None):
         """
-        :param pulumi.Input[_builtins.bool] acl: Explicitly enable or disable ACL support
+        :param pulumi.Input[_builtins.bool] acl: Explicitly enable or disable ACL support.
         :param pulumi.Input[_builtins.str] datastore_id: The Proxmox storage ID where the rootfs
                volume is created (defaults to `local`).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mount_options: List of extra mount options.
         :param pulumi.Input[_builtins.str] path_in_datastore: The in-datastore path to the disk image.
                Use this attribute for cross-resource references.
-        :param pulumi.Input[_builtins.bool] quota: Enable user quotas for the container rootfs
-        :param pulumi.Input[_builtins.bool] replicate: Will include this volume to a storage replica job
+        :param pulumi.Input[_builtins.bool] quota: Enable user quotas for the container rootfs.
+        :param pulumi.Input[_builtins.bool] replicate: Whether to include this volume in a storage replication job (defaults to `true`).
         :param pulumi.Input[_builtins.int] size: The size of the root filesystem in gigabytes (defaults
                to `4`). When set to 0 a directory or zfs/btrfs subvolume will be created.
                Requires `datastore_id` to be set.
@@ -615,7 +618,7 @@ class ContainerLegacyDiskArgs:
     @pulumi.getter
     def acl(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Explicitly enable or disable ACL support
+        Explicitly enable or disable ACL support.
         """
         return pulumi.get(self, "acl")
 
@@ -665,7 +668,7 @@ class ContainerLegacyDiskArgs:
     @pulumi.getter
     def quota(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Enable user quotas for the container rootfs
+        Enable user quotas for the container rootfs.
         """
         return pulumi.get(self, "quota")
 
@@ -677,7 +680,7 @@ class ContainerLegacyDiskArgs:
     @pulumi.getter
     def replicate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Will include this volume to a storage replica job
+        Whether to include this volume in a storage replication job (defaults to `true`).
         """
         return pulumi.get(self, "replicate")
 
@@ -1394,7 +1397,7 @@ class ContainerLegacyMountPointArgsDict(TypedDict):
     """
     replicate: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    Will include this volume to a storage replica job.
+    Will include this volume to a storage replica job (defaults to `true`).
     """
     shared: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
@@ -1438,7 +1441,7 @@ class ContainerLegacyMountPointArgs:
         :param pulumi.Input[_builtins.bool] quota: Enable user quotas inside the container (not supported
                with ZFS subvolumes).
         :param pulumi.Input[_builtins.bool] read_only: Read-only mount point.
-        :param pulumi.Input[_builtins.bool] replicate: Will include this volume to a storage replica job.
+        :param pulumi.Input[_builtins.bool] replicate: Will include this volume to a storage replica job (defaults to `true`).
         :param pulumi.Input[_builtins.bool] shared: Mark this non-volume mount point as available on all
                nodes.
         :param pulumi.Input[_builtins.str] size: Volume size (only for volume mount points).
@@ -1573,7 +1576,7 @@ class ContainerLegacyMountPointArgs:
     @pulumi.getter
     def replicate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Will include this volume to a storage replica job.
+        Will include this volume to a storage replica job (defaults to `true`).
         """
         return pulumi.get(self, "replicate")
 
@@ -1877,7 +1880,7 @@ class ContainerLegacyStartupArgsDict(TypedDict):
     order: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     A non-negative number defining the general startup
-    order.
+    order (defaults to `-1`, meaning no specific order).
     """
     up_delay: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -1895,7 +1898,7 @@ class ContainerLegacyStartupArgs:
         :param pulumi.Input[_builtins.int] down_delay: A non-negative number defining the delay in
                seconds before the next container is shut down.
         :param pulumi.Input[_builtins.int] order: A non-negative number defining the general startup
-               order.
+               order (defaults to `-1`, meaning no specific order).
         :param pulumi.Input[_builtins.int] up_delay: A non-negative number defining the delay in
                seconds before the next container is started.
         """
@@ -1924,7 +1927,7 @@ class ContainerLegacyStartupArgs:
     def order(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         A non-negative number defining the general startup
-        order.
+        order (defaults to `-1`, meaning no specific order).
         """
         return pulumi.get(self, "order")
 
@@ -3907,8 +3910,8 @@ class VmLegacyCdromArgsDict(TypedDict):
     interface: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A hardware interface to connect CD-ROM drive to (defaults to `ide3`).
-    "Must be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. " +
-    "Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+    Must be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface.
+    Note that the `q35` machine type only supports `ide0` and `ide2` of the IDE interfaces.
     """
 
 @pulumi.input_type
@@ -3924,8 +3927,8 @@ class VmLegacyCdromArgs:
         :param pulumi.Input[_builtins.str] file_id: A file ID for an ISO file (defaults to `cdrom` as
                in the physical drive). Use `none` to leave the CD-ROM drive empty.
         :param pulumi.Input[_builtins.str] interface: A hardware interface to connect CD-ROM drive to (defaults to `ide3`).
-               "Must be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. " +
-               "Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+               Must be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface.
+               Note that the `q35` machine type only supports `ide0` and `ide2` of the IDE interfaces.
         """
         if enabled is not None:
             warnings.warn("""Remove this attribute's configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `file_id` to `none` to leave the CDROM drive empty.""", DeprecationWarning)
@@ -3970,8 +3973,8 @@ class VmLegacyCdromArgs:
     def interface(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A hardware interface to connect CD-ROM drive to (defaults to `ide3`).
-        "Must be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. " +
-        "Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+        Must be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface.
+        Note that the `q35` machine type only supports `ide0` and `ide2` of the IDE interfaces.
         """
         return pulumi.get(self, "interface")
 
@@ -4151,7 +4154,7 @@ class VmLegacyCpuArgsDict(TypedDict):
     """
     numa: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    Enable/disable NUMA. (default to `false`)
+    Enable/disable NUMA (defaults to `false`).
     """
     sockets: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -4214,7 +4217,7 @@ class VmLegacyCpuArgs:
                to `0`).
         :param pulumi.Input[_builtins.float] limit: Limit of CPU usage, `0...128` (supports
                fractional values, e.g. `63.5`). (defaults to `0` -- no limit).
-        :param pulumi.Input[_builtins.bool] numa: Enable/disable NUMA. (default to `false`)
+        :param pulumi.Input[_builtins.bool] numa: Enable/disable NUMA (defaults to `false`).
         :param pulumi.Input[_builtins.int] sockets: The number of CPU sockets (defaults to `1`).
         :param pulumi.Input[_builtins.str] type: The emulated CPU type, it's recommended to
                use `x86-64-v2-AES` (defaults to `qemu64`).
@@ -4344,7 +4347,7 @@ class VmLegacyCpuArgs:
     @pulumi.getter
     def numa(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Enable/disable NUMA. (default to `false`)
+        Enable/disable NUMA (defaults to `false`).
         """
         return pulumi.get(self, "numa")
 
@@ -4449,7 +4452,7 @@ class VmLegacyDiskArgsDict(TypedDict):
     path_in_datastore: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The in-datastore path to the disk image.
-    ***Experimental.***Use to attach another VM's disks,
+    ***Experimental.*** Use to attach another VM's disks,
     or (as root only) host's filesystem paths (`datastore_id` empty string).
     See "*Example: Attached disks*".
     """
@@ -4530,7 +4533,7 @@ class VmLegacyDiskArgs:
         :param pulumi.Input[_builtins.bool] iothread: Whether to use iothreads for this disk (defaults
                to `false`).
         :param pulumi.Input[_builtins.str] path_in_datastore: The in-datastore path to the disk image.
-               ***Experimental.***Use to attach another VM's disks,
+               ***Experimental.*** Use to attach another VM's disks,
                or (as root only) host's filesystem paths (`datastore_id` empty string).
                See "*Example: Attached disks*".
         :param pulumi.Input[_builtins.int] queues: The number of I/O queues for this disk, `2` or
@@ -4719,7 +4722,7 @@ class VmLegacyDiskArgs:
     def path_in_datastore(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The in-datastore path to the disk image.
-        ***Experimental.***Use to attach another VM's disks,
+        ***Experimental.*** Use to attach another VM's disks,
         or (as root only) host's filesystem paths (`datastore_id` empty string).
         See "*Example: Attached disks*".
         """
@@ -5311,7 +5314,7 @@ class VmLegacyInitializationArgsDict(TypedDict):
     ip_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VmLegacyInitializationIpConfigArgsDict']]]]]
     """
     The IP configuration (one block per network
-    device).
+    device, up to 32 blocks).
     """
     meta_data_file_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -5375,7 +5378,7 @@ class VmLegacyInitializationArgs:
                detected if the setting is missing but a cloud-init image is present,
                otherwise defaults to `ide2`.
         :param pulumi.Input[Sequence[pulumi.Input['VmLegacyInitializationIpConfigArgs']]] ip_configs: The IP configuration (one block per network
-               device).
+               device, up to 32 blocks).
         :param pulumi.Input[_builtins.str] meta_data_file_id: The identifier for a file containing
                all meta data passed to the VM via cloud-init.
         :param pulumi.Input[_builtins.str] network_data_file_id: The identifier for a file containing
@@ -5474,7 +5477,7 @@ class VmLegacyInitializationArgs:
     def ip_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VmLegacyInitializationIpConfigArgs']]]]:
         """
         The IP configuration (one block per network
-        device).
+        device, up to 32 blocks).
         """
         return pulumi.get(self, "ip_configs")
 
@@ -6617,7 +6620,7 @@ class VmLegacyStartupArgsDict(TypedDict):
     order: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     A non-negative number defining the general startup
-    order.
+    order (defaults to `-1`, meaning no specific order).
     """
     up_delay: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -6635,7 +6638,7 @@ class VmLegacyStartupArgs:
         :param pulumi.Input[_builtins.int] down_delay: A non-negative number defining the delay in
                seconds before the next VM is shut down.
         :param pulumi.Input[_builtins.int] order: A non-negative number defining the general startup
-               order.
+               order (defaults to `-1`, meaning no specific order).
         :param pulumi.Input[_builtins.int] up_delay: A non-negative number defining the delay in
                seconds before the next VM is started.
         """
@@ -6664,7 +6667,7 @@ class VmLegacyStartupArgs:
     def order(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         A non-negative number defining the general startup
-        order.
+        order (defaults to `-1`, meaning no specific order).
         """
         return pulumi.get(self, "order")
 
@@ -7297,7 +7300,7 @@ class GetContainersLegacyFilterArgsDict(TypedDict):
     """
     regex: NotRequired[_builtins.bool]
     """
-    Treat values as regex patterns
+    Whether to treat the `values` as regex patterns (defaults to `false`).
     """
 
 @pulumi.input_type
@@ -7309,7 +7312,7 @@ class GetContainersLegacyFilterArgs:
         """
         :param _builtins.str name: Name of the container attribute to filter on. One of [`name`, `template`, `status`, `node_name`]
         :param Sequence[_builtins.str] values: List of values to pass the filter. Container's attribute should match at least one value in the list.
-        :param _builtins.bool regex: Treat values as regex patterns
+        :param _builtins.bool regex: Whether to treat the `values` as regex patterns (defaults to `false`).
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
@@ -7344,7 +7347,7 @@ class GetContainersLegacyFilterArgs:
     @pulumi.getter
     def regex(self) -> Optional[_builtins.bool]:
         """
-        Treat values as regex patterns
+        Whether to treat the `values` as regex patterns (defaults to `false`).
         """
         return pulumi.get(self, "regex")
 
@@ -8010,7 +8013,7 @@ class GetVmsLegacyFilterArgsDict(TypedDict):
     """
     regex: NotRequired[_builtins.bool]
     """
-    Treat values as regex patterns
+    Whether to treat the `values` as regex patterns (defaults to `false`).
     """
 
 @pulumi.input_type
@@ -8022,7 +8025,7 @@ class GetVmsLegacyFilterArgs:
         """
         :param _builtins.str name: Name of the VM attribute to filter on. One of [`name`, `template`, `status`, `node_name`]
         :param Sequence[_builtins.str] values: List of values to pass the filter. VM's attribute should match at least one value in the list.
-        :param _builtins.bool regex: Treat values as regex patterns
+        :param _builtins.bool regex: Whether to treat the `values` as regex patterns (defaults to `false`).
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "values", values)
@@ -8057,7 +8060,7 @@ class GetVmsLegacyFilterArgs:
     @pulumi.getter
     def regex(self) -> Optional[_builtins.bool]:
         """
-        Treat values as regex patterns
+        Whether to treat the `values` as regex patterns (defaults to `false`).
         """
         return pulumi.get(self, "regex")
 

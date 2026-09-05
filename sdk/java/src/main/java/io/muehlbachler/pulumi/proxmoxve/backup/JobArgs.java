@@ -98,6 +98,21 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * A list of guest VM/CT IDs to exclude from the backup.
+     * 
+     */
+    @Import(name="excludes")
+    private @Nullable Output<List<String>> excludes;
+
+    /**
+     * @return A list of guest VM/CT IDs to exclude from the backup.
+     * 
+     */
+    public Optional<Output<List<String>>> excludes() {
+        return Optional.ofNullable(this.excludes);
+    }
+
+    /**
      * Fleecing configuration for the backup job.
      * 
      */
@@ -510,6 +525,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         this.compress = $.compress;
         this.enabled = $.enabled;
         this.excludePaths = $.excludePaths;
+        this.excludes = $.excludes;
         this.fleecing = $.fleecing;
         this.ionice = $.ionice;
         this.lockwait = $.lockwait;
@@ -670,6 +686,37 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder excludePaths(String... excludePaths) {
             return excludePaths(List.of(excludePaths));
+        }
+
+        /**
+         * @param excludes A list of guest VM/CT IDs to exclude from the backup.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludes(@Nullable Output<List<String>> excludes) {
+            $.excludes = excludes;
+            return this;
+        }
+
+        /**
+         * @param excludes A list of guest VM/CT IDs to exclude from the backup.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludes(List<String> excludes) {
+            return excludes(Output.of(excludes));
+        }
+
+        /**
+         * @param excludes A list of guest VM/CT IDs to exclude from the backup.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludes(String... excludes) {
+            return excludes(List.of(excludes));
         }
 
         /**

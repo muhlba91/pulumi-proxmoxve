@@ -34,7 +34,7 @@ public final class VmLegacyStartupArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * A non-negative number defining the general startup
-     * order.
+     * order (defaults to `-1`, meaning no specific order).
      * 
      */
     @Import(name="order")
@@ -42,7 +42,7 @@ public final class VmLegacyStartupArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return A non-negative number defining the general startup
-     * order.
+     * order (defaults to `-1`, meaning no specific order).
      * 
      */
     public Optional<Output<Integer>> order() {
@@ -117,7 +117,7 @@ public final class VmLegacyStartupArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param order A non-negative number defining the general startup
-         * order.
+         * order (defaults to `-1`, meaning no specific order).
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class VmLegacyStartupArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param order A non-negative number defining the general startup
-         * order.
+         * order (defaults to `-1`, meaning no specific order).
          * 
          * @return builder
          * 

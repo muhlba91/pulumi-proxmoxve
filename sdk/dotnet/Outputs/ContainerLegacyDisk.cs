@@ -14,7 +14,7 @@ namespace Pulumi.ProxmoxVE.Outputs
     public sealed class ContainerLegacyDisk
     {
         /// <summary>
-        /// Explicitly enable or disable ACL support
+        /// Explicitly enable or disable ACL support.
         /// </summary>
         public readonly bool? Acl;
         /// <summary>
@@ -32,11 +32,11 @@ namespace Pulumi.ProxmoxVE.Outputs
         /// </summary>
         public readonly string? PathInDatastore;
         /// <summary>
-        /// Enable user quotas for the container rootfs
+        /// Enable user quotas for the container rootfs.
         /// </summary>
         public readonly bool? Quota;
         /// <summary>
-        /// Will include this volume to a storage replica job
+        /// Whether to include this volume in a storage replication job (defaults to `True`).
         /// </summary>
         public readonly bool? Replicate;
         /// <summary>

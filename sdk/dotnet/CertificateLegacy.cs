@@ -31,7 +31,6 @@ namespace Pulumi.ProxmoxVE
     /// 
     ///     var proxmoxVirtualEnvironmentCertificateSelfSignedCert = new Tls.SelfSignedCert("proxmox_virtual_environment_certificate", new()
     ///     {
-    ///         KeyAlgorithm = proxmoxVirtualEnvironmentCertificate.Algorithm,
     ///         PrivateKeyPem = proxmoxVirtualEnvironmentCertificate.PrivateKeyPem,
     ///         Subject = new Tls.Inputs.SelfSignedCertSubjectArgs
     ///         {
@@ -97,7 +96,7 @@ namespace Pulumi.ProxmoxVE
         public Output<string> NodeName { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to overwrite an existing certificate
+        /// Whether to overwrite an existing certificate (defaults to `False`).
         /// </summary>
         [Output("overwrite")]
         public Output<bool?> Overwrite { get; private set; } = null!;
@@ -214,7 +213,7 @@ namespace Pulumi.ProxmoxVE
         public Input<string> NodeName { get; set; } = null!;
 
         /// <summary>
-        /// Whether to overwrite an existing certificate
+        /// Whether to overwrite an existing certificate (defaults to `False`).
         /// </summary>
         [Input("overwrite")]
         public Input<bool>? Overwrite { get; set; }
@@ -280,7 +279,7 @@ namespace Pulumi.ProxmoxVE
         public Input<string>? NodeName { get; set; }
 
         /// <summary>
-        /// Whether to overwrite an existing certificate
+        /// Whether to overwrite an existing certificate (defaults to `False`).
         /// </summary>
         [Input("overwrite")]
         public Input<bool>? Overwrite { get; set; }

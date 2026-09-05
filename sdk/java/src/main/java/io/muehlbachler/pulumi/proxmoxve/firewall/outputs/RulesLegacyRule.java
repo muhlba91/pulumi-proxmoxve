@@ -73,7 +73,7 @@ public final class RulesLegacyRule {
     private @Nullable Integer pos;
     /**
      * @return Restrict packet protocol. You can use protocol
-     * names as defined in &#39;/etc/protocols&#39;.
+     * names or simple numbers (0-255), as defined in &#39;/etc/protocols&#39;.
      * 
      */
     private @Nullable String proto;
@@ -187,7 +187,7 @@ public final class RulesLegacyRule {
     }
     /**
      * @return Restrict packet protocol. You can use protocol
-     * names as defined in &#39;/etc/protocols&#39;.
+     * names or simple numbers (0-255), as defined in &#39;/etc/protocols&#39;.
      * 
      */
     public Optional<String> proto() {

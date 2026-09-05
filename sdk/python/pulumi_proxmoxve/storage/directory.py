@@ -360,7 +360,7 @@ class Directory(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backups: pulumi.Input[Optional[Union['DirectoryBackupsArgs', 'DirectoryBackupsArgsDict']]] = None,
+                 backups: pulumi.Input[Optional[Union['DirectoryBackupsArgs', 'DirectoryBackupsArgsDict', 'outputs.DirectoryBackups']]] = None,
                  contents: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  create_base_path: pulumi.Input[Optional[_builtins.bool]] = None,
                  create_subdirs: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -405,7 +405,7 @@ class Directory(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['DirectoryBackupsArgs', 'DirectoryBackupsArgsDict']] backups: Configure backup retention settings for the storage type.
+        :param pulumi.Input[Union['DirectoryBackupsArgs', 'DirectoryBackupsArgsDict', 'outputs.DirectoryBackups']] backups: Configure backup retention settings for the storage type.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] contents: The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
         :param pulumi.Input[_builtins.bool] create_base_path: Create the base directory if it doesn't exist.
         :param pulumi.Input[_builtins.bool] create_subdirs: Populate the directory with the default structure.
@@ -469,7 +469,7 @@ class Directory(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backups: pulumi.Input[Optional[Union['DirectoryBackupsArgs', 'DirectoryBackupsArgsDict']]] = None,
+                 backups: pulumi.Input[Optional[Union['DirectoryBackupsArgs', 'DirectoryBackupsArgsDict', 'outputs.DirectoryBackups']]] = None,
                  contents: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  create_base_path: pulumi.Input[Optional[_builtins.bool]] = None,
                  create_subdirs: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -514,7 +514,7 @@ class Directory(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backups: pulumi.Input[Optional[Union['DirectoryBackupsArgs', 'DirectoryBackupsArgsDict']]] = None,
+            backups: pulumi.Input[Optional[Union['DirectoryBackupsArgs', 'DirectoryBackupsArgsDict', 'outputs.DirectoryBackups']]] = None,
             contents: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             create_base_path: pulumi.Input[Optional[_builtins.bool]] = None,
             create_subdirs: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -531,7 +531,7 @@ class Directory(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['DirectoryBackupsArgs', 'DirectoryBackupsArgsDict']] backups: Configure backup retention settings for the storage type.
+        :param pulumi.Input[Union['DirectoryBackupsArgs', 'DirectoryBackupsArgsDict', 'outputs.DirectoryBackups']] backups: Configure backup retention settings for the storage type.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] contents: The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
         :param pulumi.Input[_builtins.bool] create_base_path: Create the base directory if it doesn't exist.
         :param pulumi.Input[_builtins.bool] create_subdirs: Populate the directory with the default structure.

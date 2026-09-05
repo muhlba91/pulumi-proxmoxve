@@ -42,7 +42,7 @@ public final class VmLegacyInitialization {
     private @Nullable String interface_;
     /**
      * @return The IP configuration (one block per network
-     * device).
+     * device, up to 32 blocks).
      * 
      */
     private @Nullable List<VmLegacyInitializationIpConfig> ipConfigs;
@@ -125,7 +125,7 @@ public final class VmLegacyInitialization {
     }
     /**
      * @return The IP configuration (one block per network
-     * device).
+     * device, up to 32 blocks).
      * 
      */
     public List<VmLegacyInitializationIpConfig> ipConfigs() {

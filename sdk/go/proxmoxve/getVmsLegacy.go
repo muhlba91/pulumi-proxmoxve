@@ -92,7 +92,7 @@ func GetVmsLegacy(ctx *pulumi.Context, args *GetVmsLegacyArgs, opts ...pulumi.In
 type GetVmsLegacyArgs struct {
 	// Filter blocks. The VM must satisfy all filter blocks to be included in the result.
 	Filters []GetVmsLegacyFilter `pulumi:"filters"`
-	// The node name. All cluster nodes will be queried in case this is omitted
+	// The node name. If omitted, all cluster nodes are queried.
 	NodeName *string `pulumi:"nodeName"`
 	// A list of tags to filter the VMs. The VM must have all
 	// the tags to be included in the result.
@@ -121,7 +121,7 @@ func GetVmsLegacyOutput(ctx *pulumi.Context, args GetVmsLegacyOutputArgs, opts .
 type GetVmsLegacyOutputArgs struct {
 	// Filter blocks. The VM must satisfy all filter blocks to be included in the result.
 	Filters GetVmsLegacyFilterArrayInput `pulumi:"filters"`
-	// The node name. All cluster nodes will be queried in case this is omitted
+	// The node name. If omitted, all cluster nodes are queried.
 	NodeName pulumi.StringPtrInput `pulumi:"nodeName"`
 	// A list of tags to filter the VMs. The VM must have all
 	// the tags to be included in the result.

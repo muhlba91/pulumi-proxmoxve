@@ -84,16 +84,16 @@ export class OptionsLegacy extends pulumi.CustomResource {
      */
     declare public readonly containerId: pulumi.Output<number | undefined>;
     /**
-     * Enable DHCP.
+     * Enable DHCP. Defaults to `false`.
      */
     declare public readonly dhcp: pulumi.Output<boolean | undefined>;
     /**
-     * Enable or disable the firewall.
+     * Enable or disable the firewall. Defaults to `false`.
      */
     declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * The default input
-     * policy (`ACCEPT`, `DROP`, `REJECT`).
+     * policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `DROP`.
      */
     declare public readonly inputPolicy: pulumi.Output<string | undefined>;
     /**
@@ -107,21 +107,21 @@ export class OptionsLegacy extends pulumi.CustomResource {
     /**
      * Log level for incoming
      * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
-     * `debug`, `nolog`).
+     * `debug`, `nolog`). Defaults to `nolog`.
      */
     declare public readonly logLevelIn: pulumi.Output<string | undefined>;
     /**
      * Log level for outgoing
      * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
-     * `debug`, `nolog`).
+     * `debug`, `nolog`). Defaults to `nolog`.
      */
     declare public readonly logLevelOut: pulumi.Output<string | undefined>;
     /**
-     * Enable/disable MAC address filter.
+     * Enable/disable MAC address filter. Defaults to `true`.
      */
     declare public readonly macfilter: pulumi.Output<boolean | undefined>;
     /**
-     * Enable NDP (Neighbor Discovery Protocol).
+     * Enable NDP (Neighbor Discovery Protocol). Defaults to `false`.
      */
     declare public readonly ndp: pulumi.Output<boolean | undefined>;
     /**
@@ -130,11 +130,11 @@ export class OptionsLegacy extends pulumi.CustomResource {
     declare public readonly nodeName: pulumi.Output<string>;
     /**
      * The default output
-     * policy (`ACCEPT`, `DROP`, `REJECT`).
+     * policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `ACCEPT`.
      */
     declare public readonly outputPolicy: pulumi.Output<string | undefined>;
     /**
-     * Enable Router Advertisement.
+     * Enable Router Advertisement. Defaults to `true`.
      */
     declare public readonly radv: pulumi.Output<boolean | undefined>;
     /**
@@ -201,16 +201,16 @@ export interface OptionsLegacyState {
      */
     containerId?: pulumi.Input<number | undefined>;
     /**
-     * Enable DHCP.
+     * Enable DHCP. Defaults to `false`.
      */
     dhcp?: pulumi.Input<boolean | undefined>;
     /**
-     * Enable or disable the firewall.
+     * Enable or disable the firewall. Defaults to `false`.
      */
     enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The default input
-     * policy (`ACCEPT`, `DROP`, `REJECT`).
+     * policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `DROP`.
      */
     inputPolicy?: pulumi.Input<string | undefined>;
     /**
@@ -224,21 +224,21 @@ export interface OptionsLegacyState {
     /**
      * Log level for incoming
      * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
-     * `debug`, `nolog`).
+     * `debug`, `nolog`). Defaults to `nolog`.
      */
     logLevelIn?: pulumi.Input<string | undefined>;
     /**
      * Log level for outgoing
      * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
-     * `debug`, `nolog`).
+     * `debug`, `nolog`). Defaults to `nolog`.
      */
     logLevelOut?: pulumi.Input<string | undefined>;
     /**
-     * Enable/disable MAC address filter.
+     * Enable/disable MAC address filter. Defaults to `true`.
      */
     macfilter?: pulumi.Input<boolean | undefined>;
     /**
-     * Enable NDP (Neighbor Discovery Protocol).
+     * Enable NDP (Neighbor Discovery Protocol). Defaults to `false`.
      */
     ndp?: pulumi.Input<boolean | undefined>;
     /**
@@ -247,11 +247,11 @@ export interface OptionsLegacyState {
     nodeName?: pulumi.Input<string | undefined>;
     /**
      * The default output
-     * policy (`ACCEPT`, `DROP`, `REJECT`).
+     * policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `ACCEPT`.
      */
     outputPolicy?: pulumi.Input<string | undefined>;
     /**
-     * Enable Router Advertisement.
+     * Enable Router Advertisement. Defaults to `true`.
      */
     radv?: pulumi.Input<boolean | undefined>;
     /**
@@ -269,16 +269,16 @@ export interface OptionsLegacyArgs {
      */
     containerId?: pulumi.Input<number | undefined>;
     /**
-     * Enable DHCP.
+     * Enable DHCP. Defaults to `false`.
      */
     dhcp?: pulumi.Input<boolean | undefined>;
     /**
-     * Enable or disable the firewall.
+     * Enable or disable the firewall. Defaults to `false`.
      */
     enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The default input
-     * policy (`ACCEPT`, `DROP`, `REJECT`).
+     * policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `DROP`.
      */
     inputPolicy?: pulumi.Input<string | undefined>;
     /**
@@ -292,21 +292,21 @@ export interface OptionsLegacyArgs {
     /**
      * Log level for incoming
      * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
-     * `debug`, `nolog`).
+     * `debug`, `nolog`). Defaults to `nolog`.
      */
     logLevelIn?: pulumi.Input<string | undefined>;
     /**
      * Log level for outgoing
      * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
-     * `debug`, `nolog`).
+     * `debug`, `nolog`). Defaults to `nolog`.
      */
     logLevelOut?: pulumi.Input<string | undefined>;
     /**
-     * Enable/disable MAC address filter.
+     * Enable/disable MAC address filter. Defaults to `true`.
      */
     macfilter?: pulumi.Input<boolean | undefined>;
     /**
-     * Enable NDP (Neighbor Discovery Protocol).
+     * Enable NDP (Neighbor Discovery Protocol). Defaults to `false`.
      */
     ndp?: pulumi.Input<boolean | undefined>;
     /**
@@ -315,11 +315,11 @@ export interface OptionsLegacyArgs {
     nodeName: pulumi.Input<string>;
     /**
      * The default output
-     * policy (`ACCEPT`, `DROP`, `REJECT`).
+     * policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `ACCEPT`.
      */
     outputPolicy?: pulumi.Input<string | undefined>;
     /**
-     * Enable Router Advertisement.
+     * Enable Router Advertisement. Defaults to `true`.
      */
     radv?: pulumi.Input<boolean | undefined>;
     /**

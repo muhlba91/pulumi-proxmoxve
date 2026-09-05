@@ -280,7 +280,7 @@ class Certificate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account: pulumi.Input[Optional[_builtins.str]] = None,
-                 domains: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CertificateDomainArgs', 'CertificateDomainArgsDict']]]]] = None,
+                 domains: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CertificateDomainArgs', 'CertificateDomainArgsDict', 'outputs.CertificateDomain']]]]] = None,
                  force: pulumi.Input[Optional[_builtins.bool]] = None,
                  node_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -358,7 +358,7 @@ class Certificate(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account: The ACME account name to use for ordering the certificate.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CertificateDomainArgs', 'CertificateDomainArgsDict']]]] domains: The list of domains to include in the certificate. At least one domain is required.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CertificateDomainArgs', 'CertificateDomainArgsDict', 'outputs.CertificateDomain']]]] domains: The list of domains to include in the certificate. At least one domain is required.
         :param pulumi.Input[_builtins.bool] force: Force certificate renewal even if the certificate is not due for renewal yet. Setting this to true will trigger a new certificate order on every apply.
         :param pulumi.Input[_builtins.str] node_name: The name of the Proxmox VE node for which to order/manage the ACME certificate.
         """
@@ -455,7 +455,7 @@ class Certificate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account: pulumi.Input[Optional[_builtins.str]] = None,
-                 domains: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CertificateDomainArgs', 'CertificateDomainArgsDict']]]]] = None,
+                 domains: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CertificateDomainArgs', 'CertificateDomainArgsDict', 'outputs.CertificateDomain']]]]] = None,
                  force: pulumi.Input[Optional[_builtins.bool]] = None,
                  node_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -496,7 +496,7 @@ class Certificate(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account: pulumi.Input[Optional[_builtins.str]] = None,
             certificate: pulumi.Input[Optional[_builtins.str]] = None,
-            domains: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CertificateDomainArgs', 'CertificateDomainArgsDict']]]]] = None,
+            domains: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CertificateDomainArgs', 'CertificateDomainArgsDict', 'outputs.CertificateDomain']]]]] = None,
             fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
             force: pulumi.Input[Optional[_builtins.bool]] = None,
             issuer: pulumi.Input[Optional[_builtins.str]] = None,
@@ -514,7 +514,7 @@ class Certificate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account: The ACME account name to use for ordering the certificate.
         :param pulumi.Input[_builtins.str] certificate: The PEM-encoded certificate data.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CertificateDomainArgs', 'CertificateDomainArgsDict']]]] domains: The list of domains to include in the certificate. At least one domain is required.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CertificateDomainArgs', 'CertificateDomainArgsDict', 'outputs.CertificateDomain']]]] domains: The list of domains to include in the certificate. At least one domain is required.
         :param pulumi.Input[_builtins.str] fingerprint: The certificate fingerprint.
         :param pulumi.Input[_builtins.bool] force: Force certificate renewal even if the certificate is not due for renewal yet. Setting this to true will trigger a new certificate order on every apply.
         :param pulumi.Input[_builtins.str] issuer: The certificate issuer.

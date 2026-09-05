@@ -266,7 +266,7 @@ class SubnetLegacy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cidr: pulumi.Input[Optional[_builtins.str]] = None,
                  dhcp_dns_server: pulumi.Input[Optional[_builtins.str]] = None,
-                 dhcp_range: pulumi.Input[Optional[Union['SubnetLegacyDhcpRangeArgs', 'SubnetLegacyDhcpRangeArgsDict']]] = None,
+                 dhcp_range: pulumi.Input[Optional[Union['SubnetLegacyDhcpRangeArgs', 'SubnetLegacyDhcpRangeArgsDict', 'outputs.SubnetLegacyDhcpRange']]] = None,
                  dns_zone_prefix: pulumi.Input[Optional[_builtins.str]] = None,
                  gateway: pulumi.Input[Optional[_builtins.str]] = None,
                  snat: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -359,7 +359,7 @@ class SubnetLegacy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cidr: A CIDR network address, for example 10.0.0.0/8
         :param pulumi.Input[_builtins.str] dhcp_dns_server: The DNS server used for DHCP.
-        :param pulumi.Input[Union['SubnetLegacyDhcpRangeArgs', 'SubnetLegacyDhcpRangeArgsDict']] dhcp_range: DHCP range (start and end IPs).
+        :param pulumi.Input[Union['SubnetLegacyDhcpRangeArgs', 'SubnetLegacyDhcpRangeArgsDict', 'outputs.SubnetLegacyDhcpRange']] dhcp_range: DHCP range (start and end IPs).
         :param pulumi.Input[_builtins.str] dns_zone_prefix: Prefix used for DNS zone delegation.
         :param pulumi.Input[_builtins.str] gateway: The gateway address for the subnet.
         :param pulumi.Input[_builtins.bool] snat: Whether SNAT is enabled for the subnet.
@@ -471,7 +471,7 @@ class SubnetLegacy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cidr: pulumi.Input[Optional[_builtins.str]] = None,
                  dhcp_dns_server: pulumi.Input[Optional[_builtins.str]] = None,
-                 dhcp_range: pulumi.Input[Optional[Union['SubnetLegacyDhcpRangeArgs', 'SubnetLegacyDhcpRangeArgsDict']]] = None,
+                 dhcp_range: pulumi.Input[Optional[Union['SubnetLegacyDhcpRangeArgs', 'SubnetLegacyDhcpRangeArgsDict', 'outputs.SubnetLegacyDhcpRange']]] = None,
                  dns_zone_prefix: pulumi.Input[Optional[_builtins.str]] = None,
                  gateway: pulumi.Input[Optional[_builtins.str]] = None,
                  snat: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -508,7 +508,7 @@ class SubnetLegacy(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             cidr: pulumi.Input[Optional[_builtins.str]] = None,
             dhcp_dns_server: pulumi.Input[Optional[_builtins.str]] = None,
-            dhcp_range: pulumi.Input[Optional[Union['SubnetLegacyDhcpRangeArgs', 'SubnetLegacyDhcpRangeArgsDict']]] = None,
+            dhcp_range: pulumi.Input[Optional[Union['SubnetLegacyDhcpRangeArgs', 'SubnetLegacyDhcpRangeArgsDict', 'outputs.SubnetLegacyDhcpRange']]] = None,
             dns_zone_prefix: pulumi.Input[Optional[_builtins.str]] = None,
             gateway: pulumi.Input[Optional[_builtins.str]] = None,
             snat: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -522,7 +522,7 @@ class SubnetLegacy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cidr: A CIDR network address, for example 10.0.0.0/8
         :param pulumi.Input[_builtins.str] dhcp_dns_server: The DNS server used for DHCP.
-        :param pulumi.Input[Union['SubnetLegacyDhcpRangeArgs', 'SubnetLegacyDhcpRangeArgsDict']] dhcp_range: DHCP range (start and end IPs).
+        :param pulumi.Input[Union['SubnetLegacyDhcpRangeArgs', 'SubnetLegacyDhcpRangeArgsDict', 'outputs.SubnetLegacyDhcpRange']] dhcp_range: DHCP range (start and end IPs).
         :param pulumi.Input[_builtins.str] dns_zone_prefix: Prefix used for DNS zone delegation.
         :param pulumi.Input[_builtins.str] gateway: The gateway address for the subnet.
         :param pulumi.Input[_builtins.bool] snat: Whether SNAT is enabled for the subnet.

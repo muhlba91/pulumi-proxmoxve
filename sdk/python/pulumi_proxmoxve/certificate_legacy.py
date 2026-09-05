@@ -31,7 +31,7 @@ class CertificateLegacyArgs:
         :param pulumi.Input[_builtins.str] node_name: A node name.
         :param pulumi.Input[_builtins.str] private_key: The PEM encoded private key.
         :param pulumi.Input[_builtins.str] certificate_chain: The PEM encoded certificate chain.
-        :param pulumi.Input[_builtins.bool] overwrite: Whether to overwrite an existing certificate
+        :param pulumi.Input[_builtins.bool] overwrite: Whether to overwrite an existing certificate (defaults to `false`).
         """
         pulumi.set(__self__, "certificate", certificate)
         pulumi.set(__self__, "node_name", node_name)
@@ -93,7 +93,7 @@ class CertificateLegacyArgs:
     @pulumi.getter
     def overwrite(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether to overwrite an existing certificate
+        Whether to overwrite an existing certificate (defaults to `false`).
         """
         return pulumi.get(self, "overwrite")
 
@@ -128,7 +128,7 @@ class _CertificateLegacyState:
         :param pulumi.Input[_builtins.str] file_name: The file name.
         :param pulumi.Input[_builtins.str] issuer: The issuer.
         :param pulumi.Input[_builtins.str] node_name: A node name.
-        :param pulumi.Input[_builtins.bool] overwrite: Whether to overwrite an existing certificate
+        :param pulumi.Input[_builtins.bool] overwrite: Whether to overwrite an existing certificate (defaults to `false`).
         :param pulumi.Input[_builtins.str] private_key: The PEM encoded private key.
         :param pulumi.Input[_builtins.int] public_key_size: The public key size.
         :param pulumi.Input[_builtins.str] public_key_type: The public key type.
@@ -242,7 +242,7 @@ class _CertificateLegacyState:
     @pulumi.getter
     def overwrite(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether to overwrite an existing certificate
+        Whether to overwrite an existing certificate (defaults to `false`).
         """
         return pulumi.get(self, "overwrite")
 
@@ -361,7 +361,6 @@ class CertificateLegacy(pulumi.CustomResource):
             algorithm="RSA",
             rsa_bits=2048)
         proxmox_virtual_environment_certificate_self_signed_cert = tls.SelfSignedCert("proxmox_virtual_environment_certificate",
-            key_algorithm=proxmox_virtual_environment_certificate.algorithm,
             private_key_pem=proxmox_virtual_environment_certificate.private_key_pem,
             subject={
                 "common_name": "example.com",
@@ -385,7 +384,7 @@ class CertificateLegacy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] certificate: The PEM encoded certificate.
         :param pulumi.Input[_builtins.str] certificate_chain: The PEM encoded certificate chain.
         :param pulumi.Input[_builtins.str] node_name: A node name.
-        :param pulumi.Input[_builtins.bool] overwrite: Whether to overwrite an existing certificate
+        :param pulumi.Input[_builtins.bool] overwrite: Whether to overwrite an existing certificate (defaults to `false`).
         :param pulumi.Input[_builtins.str] private_key: The PEM encoded private key.
         """
         ...
@@ -408,7 +407,6 @@ class CertificateLegacy(pulumi.CustomResource):
             algorithm="RSA",
             rsa_bits=2048)
         proxmox_virtual_environment_certificate_self_signed_cert = tls.SelfSignedCert("proxmox_virtual_environment_certificate",
-            key_algorithm=proxmox_virtual_environment_certificate.algorithm,
             private_key_pem=proxmox_virtual_environment_certificate.private_key_pem,
             subject={
                 "common_name": "example.com",
@@ -515,7 +513,7 @@ class CertificateLegacy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] file_name: The file name.
         :param pulumi.Input[_builtins.str] issuer: The issuer.
         :param pulumi.Input[_builtins.str] node_name: A node name.
-        :param pulumi.Input[_builtins.bool] overwrite: Whether to overwrite an existing certificate
+        :param pulumi.Input[_builtins.bool] overwrite: Whether to overwrite an existing certificate (defaults to `false`).
         :param pulumi.Input[_builtins.str] private_key: The PEM encoded private key.
         :param pulumi.Input[_builtins.int] public_key_size: The public key size.
         :param pulumi.Input[_builtins.str] public_key_type: The public key type.
@@ -596,7 +594,7 @@ class CertificateLegacy(pulumi.CustomResource):
     @pulumi.getter
     def overwrite(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Whether to overwrite an existing certificate
+        Whether to overwrite an existing certificate (defaults to `false`).
         """
         return pulumi.get(self, "overwrite")
 

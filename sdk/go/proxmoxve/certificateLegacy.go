@@ -37,7 +37,6 @@ import (
 //				return err
 //			}
 //			proxmoxVirtualEnvironmentCertificateSelfSignedCert, err := tls.NewSelfSignedCert(ctx, "proxmox_virtual_environment_certificate", &tls.SelfSignedCertArgs{
-//				KeyAlgorithm:  proxmoxVirtualEnvironmentCertificate.Algorithm,
 //				PrivateKeyPem: proxmoxVirtualEnvironmentCertificate.PrivateKeyPem,
 //				Subject: &tls.SelfSignedCertSubjectArgs{
 //					CommonName:   pulumi.String("example.com"),
@@ -81,7 +80,7 @@ type CertificateLegacy struct {
 	Issuer pulumi.StringOutput `pulumi:"issuer"`
 	// A node name.
 	NodeName pulumi.StringOutput `pulumi:"nodeName"`
-	// Whether to overwrite an existing certificate
+	// Whether to overwrite an existing certificate (defaults to `false`).
 	Overwrite pulumi.BoolPtrOutput `pulumi:"overwrite"`
 	// The PEM encoded private key.
 	PrivateKey pulumi.StringOutput `pulumi:"privateKey"`
@@ -157,7 +156,7 @@ type certificateLegacyState struct {
 	Issuer *string `pulumi:"issuer"`
 	// A node name.
 	NodeName *string `pulumi:"nodeName"`
-	// Whether to overwrite an existing certificate
+	// Whether to overwrite an existing certificate (defaults to `false`).
 	Overwrite *bool `pulumi:"overwrite"`
 	// The PEM encoded private key.
 	PrivateKey *string `pulumi:"privateKey"`
@@ -188,7 +187,7 @@ type CertificateLegacyState struct {
 	Issuer pulumi.StringPtrInput
 	// A node name.
 	NodeName pulumi.StringPtrInput
-	// Whether to overwrite an existing certificate
+	// Whether to overwrite an existing certificate (defaults to `false`).
 	Overwrite pulumi.BoolPtrInput
 	// The PEM encoded private key.
 	PrivateKey pulumi.StringPtrInput
@@ -217,7 +216,7 @@ type certificateLegacyArgs struct {
 	CertificateChain *string `pulumi:"certificateChain"`
 	// A node name.
 	NodeName string `pulumi:"nodeName"`
-	// Whether to overwrite an existing certificate
+	// Whether to overwrite an existing certificate (defaults to `false`).
 	Overwrite *bool `pulumi:"overwrite"`
 	// The PEM encoded private key.
 	PrivateKey string `pulumi:"privateKey"`
@@ -231,7 +230,7 @@ type CertificateLegacyArgs struct {
 	CertificateChain pulumi.StringPtrInput
 	// A node name.
 	NodeName pulumi.StringInput
-	// Whether to overwrite an existing certificate
+	// Whether to overwrite an existing certificate (defaults to `false`).
 	Overwrite pulumi.BoolPtrInput
 	// The PEM encoded private key.
 	PrivateKey pulumi.StringInput
@@ -354,7 +353,7 @@ func (o CertificateLegacyOutput) NodeName() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificateLegacy) pulumi.StringOutput { return v.NodeName }).(pulumi.StringOutput)
 }
 
-// Whether to overwrite an existing certificate
+// Whether to overwrite an existing certificate (defaults to `false`).
 func (o CertificateLegacyOutput) Overwrite() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CertificateLegacy) pulumi.BoolPtrOutput { return v.Overwrite }).(pulumi.BoolPtrOutput)
 }

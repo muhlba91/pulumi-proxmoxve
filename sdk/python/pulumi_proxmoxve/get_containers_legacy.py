@@ -96,7 +96,7 @@ class AwaitableGetContainersLegacyResult(GetContainersLegacyResult):
             tags=self.tags)
 
 
-def get_containers_legacy(filters: Optional[Sequence[Union['GetContainersLegacyFilterArgs', 'GetContainersLegacyFilterArgsDict']]] = None,
+def get_containers_legacy(filters: Optional[Sequence[Union['GetContainersLegacyFilterArgs', 'GetContainersLegacyFilterArgsDict', 'outputs.GetContainersLegacyFilterResult']]] = None,
                           node_name: Optional[_builtins.str] = None,
                           tags: Optional[Sequence[_builtins.str]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetContainersLegacyResult:
@@ -140,8 +140,8 @@ def get_containers_legacy(filters: Optional[Sequence[Union['GetContainersLegacyF
     ```
 
 
-    :param Sequence[Union['GetContainersLegacyFilterArgs', 'GetContainersLegacyFilterArgsDict']] filters: Filter blocks. The container must satisfy all filter blocks to be included in the result.
-    :param _builtins.str node_name: The node name. All cluster nodes will be queried in case this is omitted
+    :param Sequence[Union['GetContainersLegacyFilterArgs', 'GetContainersLegacyFilterArgsDict', 'outputs.GetContainersLegacyFilterResult']] filters: Filter blocks. The container must satisfy all filter blocks to be included in the result.
+    :param _builtins.str node_name: The node name. If omitted, all cluster nodes are queried.
     :param Sequence[_builtins.str] tags: A list of tags to filter the containers. The container must have all
            the tags to be included in the result.
     """
@@ -158,7 +158,7 @@ def get_containers_legacy(filters: Optional[Sequence[Union['GetContainersLegacyF
         id=pulumi.get(__ret__, 'id'),
         node_name=pulumi.get(__ret__, 'node_name'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_containers_legacy_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetContainersLegacyFilterArgs', 'GetContainersLegacyFilterArgsDict']]]]] = None,
+def get_containers_legacy_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetContainersLegacyFilterArgs', 'GetContainersLegacyFilterArgsDict', 'outputs.GetContainersLegacyFilterResult']]]]] = None,
                                  node_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  tags: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetContainersLegacyResult]:
@@ -202,8 +202,8 @@ def get_containers_legacy_output(filters: pulumi.Input[Optional[Optional[Sequenc
     ```
 
 
-    :param Sequence[Union['GetContainersLegacyFilterArgs', 'GetContainersLegacyFilterArgsDict']] filters: Filter blocks. The container must satisfy all filter blocks to be included in the result.
-    :param _builtins.str node_name: The node name. All cluster nodes will be queried in case this is omitted
+    :param Sequence[Union['GetContainersLegacyFilterArgs', 'GetContainersLegacyFilterArgsDict', 'outputs.GetContainersLegacyFilterResult']] filters: Filter blocks. The container must satisfy all filter blocks to be included in the result.
+    :param _builtins.str node_name: The node name. If omitted, all cluster nodes are queried.
     :param Sequence[_builtins.str] tags: A list of tags to filter the containers. The container must have all
            the tags to be included in the result.
     """

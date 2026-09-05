@@ -585,14 +585,14 @@ public final class VmLegacyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The random number generator configuration. Can only be set by `root{@literal @}pam.`
+     * The random number generator configuration. Can only be set by `root{@literal @}pam`.
      * 
      */
     @Import(name="rngs")
     private @Nullable Output<List<VmLegacyRngArgs>> rngs;
 
     /**
-     * @return The random number generator configuration. Can only be set by `root{@literal @}pam.`
+     * @return The random number generator configuration. Can only be set by `root{@literal @}pam`.
      * 
      */
     public Optional<Output<List<VmLegacyRngArgs>>> rngs() {
@@ -1881,7 +1881,7 @@ public final class VmLegacyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rngs The random number generator configuration. Can only be set by `root{@literal @}pam.`
+         * @param rngs The random number generator configuration. Can only be set by `root{@literal @}pam`.
          * 
          * @return builder
          * 
@@ -1892,7 +1892,7 @@ public final class VmLegacyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rngs The random number generator configuration. Can only be set by `root{@literal @}pam.`
+         * @param rngs The random number generator configuration. Can only be set by `root{@literal @}pam`.
          * 
          * @return builder
          * 
@@ -1902,7 +1902,7 @@ public final class VmLegacyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rngs The random number generator configuration. Can only be set by `root{@literal @}pam.`
+         * @param rngs The random number generator configuration. Can only be set by `root{@literal @}pam`.
          * 
          * @return builder
          * 

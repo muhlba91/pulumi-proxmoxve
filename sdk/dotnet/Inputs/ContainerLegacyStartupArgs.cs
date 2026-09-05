@@ -21,7 +21,7 @@ namespace Pulumi.ProxmoxVE.Inputs
 
         /// <summary>
         /// A non-negative number defining the general startup
-        /// order.
+        /// order (defaults to `-1`, meaning no specific order).
         /// </summary>
         [Input("order")]
         public Input<int>? Order { get; set; }

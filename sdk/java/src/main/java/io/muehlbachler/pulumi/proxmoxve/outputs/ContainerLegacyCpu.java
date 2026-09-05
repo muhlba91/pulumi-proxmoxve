@@ -29,7 +29,8 @@ public final class ContainerLegacyCpu {
      */
     private @Nullable Double limit;
     /**
-     * @return The CPU units (defaults to &lt;span pulumi-lang-nodejs=&#34;`1024`&#34; pulumi-lang-dotnet=&#34;`1024`&#34; pulumi-lang-go=&#34;`1024`&#34; pulumi-lang-python=&#34;`1024`&#34; pulumi-lang-yaml=&#34;`1024`&#34; pulumi-lang-java=&#34;`1024`&#34; pulumi-lang-hcl=&#34;`1024`&#34;&gt;`1024`&lt;/span&gt;).
+     * @return The CPU units (between &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34; pulumi-lang-hcl=&#34;`1`&#34;&gt;`1`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`500000`&#34; pulumi-lang-dotnet=&#34;`500000`&#34; pulumi-lang-go=&#34;`500000`&#34; pulumi-lang-python=&#34;`500000`&#34; pulumi-lang-yaml=&#34;`500000`&#34; pulumi-lang-java=&#34;`500000`&#34; pulumi-lang-hcl=&#34;`500000`&#34;&gt;`500000`&lt;/span&gt;). When unset,
+     * Proxmox applies its own default.
      * 
      */
     private @Nullable Integer units;
@@ -57,7 +58,8 @@ public final class ContainerLegacyCpu {
         return Optional.ofNullable(this.limit);
     }
     /**
-     * @return The CPU units (defaults to &lt;span pulumi-lang-nodejs=&#34;`1024`&#34; pulumi-lang-dotnet=&#34;`1024`&#34; pulumi-lang-go=&#34;`1024`&#34; pulumi-lang-python=&#34;`1024`&#34; pulumi-lang-yaml=&#34;`1024`&#34; pulumi-lang-java=&#34;`1024`&#34; pulumi-lang-hcl=&#34;`1024`&#34;&gt;`1024`&lt;/span&gt;).
+     * @return The CPU units (between &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34; pulumi-lang-hcl=&#34;`1`&#34;&gt;`1`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`500000`&#34; pulumi-lang-dotnet=&#34;`500000`&#34; pulumi-lang-go=&#34;`500000`&#34; pulumi-lang-python=&#34;`500000`&#34; pulumi-lang-yaml=&#34;`500000`&#34; pulumi-lang-java=&#34;`500000`&#34; pulumi-lang-hcl=&#34;`500000`&#34;&gt;`500000`&lt;/span&gt;). When unset,
+     * Proxmox applies its own default.
      * 
      */
     public Optional<Integer> units() {

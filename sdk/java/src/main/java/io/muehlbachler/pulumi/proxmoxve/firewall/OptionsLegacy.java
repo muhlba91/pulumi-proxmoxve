@@ -106,28 +106,28 @@ public class OptionsLegacy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.containerId);
     }
     /**
-     * Enable DHCP.
+     * Enable DHCP. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
      * 
      */
     @Export(name="dhcp", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dhcp;
 
     /**
-     * @return Enable DHCP.
+     * @return Enable DHCP. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
      * 
      */
     public Output<Optional<Boolean>> dhcp() {
         return Codegen.optional(this.dhcp);
     }
     /**
-     * Enable or disable the firewall.
+     * Enable or disable the firewall. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
-     * @return Enable or disable the firewall.
+     * @return Enable or disable the firewall. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
      * 
      */
     public Output<Optional<Boolean>> enabled() {
@@ -135,7 +135,7 @@ public class OptionsLegacy extends com.pulumi.resources.CustomResource {
     }
     /**
      * The default input
-     * policy (`ACCEPT`, `DROP`, `REJECT`).
+     * policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `DROP`.
      * 
      */
     @Export(name="inputPolicy", refs={String.class}, tree="[0]")
@@ -143,7 +143,7 @@ public class OptionsLegacy extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The default input
-     * policy (`ACCEPT`, `DROP`, `REJECT`).
+     * policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `DROP`.
      * 
      */
     public Output<Optional<String>> inputPolicy() {
@@ -174,7 +174,7 @@ public class OptionsLegacy extends com.pulumi.resources.CustomResource {
     /**
      * Log level for incoming
      * packets (&lt;span pulumi-lang-nodejs=&#34;`emerg`&#34; pulumi-lang-dotnet=&#34;`Emerg`&#34; pulumi-lang-go=&#34;`emerg`&#34; pulumi-lang-python=&#34;`emerg`&#34; pulumi-lang-yaml=&#34;`emerg`&#34; pulumi-lang-java=&#34;`emerg`&#34; pulumi-lang-hcl=&#34;`emerg`&#34;&gt;`emerg`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`alert`&#34; pulumi-lang-dotnet=&#34;`Alert`&#34; pulumi-lang-go=&#34;`alert`&#34; pulumi-lang-python=&#34;`alert`&#34; pulumi-lang-yaml=&#34;`alert`&#34; pulumi-lang-java=&#34;`alert`&#34; pulumi-lang-hcl=&#34;`alert`&#34;&gt;`alert`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`crit`&#34; pulumi-lang-dotnet=&#34;`Crit`&#34; pulumi-lang-go=&#34;`crit`&#34; pulumi-lang-python=&#34;`crit`&#34; pulumi-lang-yaml=&#34;`crit`&#34; pulumi-lang-java=&#34;`crit`&#34; pulumi-lang-hcl=&#34;`crit`&#34;&gt;`crit`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`err`&#34; pulumi-lang-dotnet=&#34;`Err`&#34; pulumi-lang-go=&#34;`err`&#34; pulumi-lang-python=&#34;`err`&#34; pulumi-lang-yaml=&#34;`err`&#34; pulumi-lang-java=&#34;`err`&#34; pulumi-lang-hcl=&#34;`err`&#34;&gt;`err`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`warning`&#34; pulumi-lang-dotnet=&#34;`Warning`&#34; pulumi-lang-go=&#34;`warning`&#34; pulumi-lang-python=&#34;`warning`&#34; pulumi-lang-yaml=&#34;`warning`&#34; pulumi-lang-java=&#34;`warning`&#34; pulumi-lang-hcl=&#34;`warning`&#34;&gt;`warning`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`notice`&#34; pulumi-lang-dotnet=&#34;`Notice`&#34; pulumi-lang-go=&#34;`notice`&#34; pulumi-lang-python=&#34;`notice`&#34; pulumi-lang-yaml=&#34;`notice`&#34; pulumi-lang-java=&#34;`notice`&#34; pulumi-lang-hcl=&#34;`notice`&#34;&gt;`notice`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`info`&#34; pulumi-lang-dotnet=&#34;`Info`&#34; pulumi-lang-go=&#34;`info`&#34; pulumi-lang-python=&#34;`info`&#34; pulumi-lang-yaml=&#34;`info`&#34; pulumi-lang-java=&#34;`info`&#34; pulumi-lang-hcl=&#34;`info`&#34;&gt;`info`&lt;/span&gt;,
-     * &lt;span pulumi-lang-nodejs=&#34;`debug`&#34; pulumi-lang-dotnet=&#34;`Debug`&#34; pulumi-lang-go=&#34;`debug`&#34; pulumi-lang-python=&#34;`debug`&#34; pulumi-lang-yaml=&#34;`debug`&#34; pulumi-lang-java=&#34;`debug`&#34; pulumi-lang-hcl=&#34;`debug`&#34;&gt;`debug`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`nolog`&#34; pulumi-lang-dotnet=&#34;`Nolog`&#34; pulumi-lang-go=&#34;`nolog`&#34; pulumi-lang-python=&#34;`nolog`&#34; pulumi-lang-yaml=&#34;`nolog`&#34; pulumi-lang-java=&#34;`nolog`&#34; pulumi-lang-hcl=&#34;`nolog`&#34;&gt;`nolog`&lt;/span&gt;).
+     * &lt;span pulumi-lang-nodejs=&#34;`debug`&#34; pulumi-lang-dotnet=&#34;`Debug`&#34; pulumi-lang-go=&#34;`debug`&#34; pulumi-lang-python=&#34;`debug`&#34; pulumi-lang-yaml=&#34;`debug`&#34; pulumi-lang-java=&#34;`debug`&#34; pulumi-lang-hcl=&#34;`debug`&#34;&gt;`debug`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`nolog`&#34; pulumi-lang-dotnet=&#34;`Nolog`&#34; pulumi-lang-go=&#34;`nolog`&#34; pulumi-lang-python=&#34;`nolog`&#34; pulumi-lang-yaml=&#34;`nolog`&#34; pulumi-lang-java=&#34;`nolog`&#34; pulumi-lang-hcl=&#34;`nolog`&#34;&gt;`nolog`&lt;/span&gt;). Defaults to &lt;span pulumi-lang-nodejs=&#34;`nolog`&#34; pulumi-lang-dotnet=&#34;`Nolog`&#34; pulumi-lang-go=&#34;`nolog`&#34; pulumi-lang-python=&#34;`nolog`&#34; pulumi-lang-yaml=&#34;`nolog`&#34; pulumi-lang-java=&#34;`nolog`&#34; pulumi-lang-hcl=&#34;`nolog`&#34;&gt;`nolog`&lt;/span&gt;.
      * 
      */
     @Export(name="logLevelIn", refs={String.class}, tree="[0]")
@@ -183,7 +183,7 @@ public class OptionsLegacy extends com.pulumi.resources.CustomResource {
     /**
      * @return Log level for incoming
      * packets (&lt;span pulumi-lang-nodejs=&#34;`emerg`&#34; pulumi-lang-dotnet=&#34;`Emerg`&#34; pulumi-lang-go=&#34;`emerg`&#34; pulumi-lang-python=&#34;`emerg`&#34; pulumi-lang-yaml=&#34;`emerg`&#34; pulumi-lang-java=&#34;`emerg`&#34; pulumi-lang-hcl=&#34;`emerg`&#34;&gt;`emerg`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`alert`&#34; pulumi-lang-dotnet=&#34;`Alert`&#34; pulumi-lang-go=&#34;`alert`&#34; pulumi-lang-python=&#34;`alert`&#34; pulumi-lang-yaml=&#34;`alert`&#34; pulumi-lang-java=&#34;`alert`&#34; pulumi-lang-hcl=&#34;`alert`&#34;&gt;`alert`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`crit`&#34; pulumi-lang-dotnet=&#34;`Crit`&#34; pulumi-lang-go=&#34;`crit`&#34; pulumi-lang-python=&#34;`crit`&#34; pulumi-lang-yaml=&#34;`crit`&#34; pulumi-lang-java=&#34;`crit`&#34; pulumi-lang-hcl=&#34;`crit`&#34;&gt;`crit`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`err`&#34; pulumi-lang-dotnet=&#34;`Err`&#34; pulumi-lang-go=&#34;`err`&#34; pulumi-lang-python=&#34;`err`&#34; pulumi-lang-yaml=&#34;`err`&#34; pulumi-lang-java=&#34;`err`&#34; pulumi-lang-hcl=&#34;`err`&#34;&gt;`err`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`warning`&#34; pulumi-lang-dotnet=&#34;`Warning`&#34; pulumi-lang-go=&#34;`warning`&#34; pulumi-lang-python=&#34;`warning`&#34; pulumi-lang-yaml=&#34;`warning`&#34; pulumi-lang-java=&#34;`warning`&#34; pulumi-lang-hcl=&#34;`warning`&#34;&gt;`warning`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`notice`&#34; pulumi-lang-dotnet=&#34;`Notice`&#34; pulumi-lang-go=&#34;`notice`&#34; pulumi-lang-python=&#34;`notice`&#34; pulumi-lang-yaml=&#34;`notice`&#34; pulumi-lang-java=&#34;`notice`&#34; pulumi-lang-hcl=&#34;`notice`&#34;&gt;`notice`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`info`&#34; pulumi-lang-dotnet=&#34;`Info`&#34; pulumi-lang-go=&#34;`info`&#34; pulumi-lang-python=&#34;`info`&#34; pulumi-lang-yaml=&#34;`info`&#34; pulumi-lang-java=&#34;`info`&#34; pulumi-lang-hcl=&#34;`info`&#34;&gt;`info`&lt;/span&gt;,
-     * &lt;span pulumi-lang-nodejs=&#34;`debug`&#34; pulumi-lang-dotnet=&#34;`Debug`&#34; pulumi-lang-go=&#34;`debug`&#34; pulumi-lang-python=&#34;`debug`&#34; pulumi-lang-yaml=&#34;`debug`&#34; pulumi-lang-java=&#34;`debug`&#34; pulumi-lang-hcl=&#34;`debug`&#34;&gt;`debug`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`nolog`&#34; pulumi-lang-dotnet=&#34;`Nolog`&#34; pulumi-lang-go=&#34;`nolog`&#34; pulumi-lang-python=&#34;`nolog`&#34; pulumi-lang-yaml=&#34;`nolog`&#34; pulumi-lang-java=&#34;`nolog`&#34; pulumi-lang-hcl=&#34;`nolog`&#34;&gt;`nolog`&lt;/span&gt;).
+     * &lt;span pulumi-lang-nodejs=&#34;`debug`&#34; pulumi-lang-dotnet=&#34;`Debug`&#34; pulumi-lang-go=&#34;`debug`&#34; pulumi-lang-python=&#34;`debug`&#34; pulumi-lang-yaml=&#34;`debug`&#34; pulumi-lang-java=&#34;`debug`&#34; pulumi-lang-hcl=&#34;`debug`&#34;&gt;`debug`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`nolog`&#34; pulumi-lang-dotnet=&#34;`Nolog`&#34; pulumi-lang-go=&#34;`nolog`&#34; pulumi-lang-python=&#34;`nolog`&#34; pulumi-lang-yaml=&#34;`nolog`&#34; pulumi-lang-java=&#34;`nolog`&#34; pulumi-lang-hcl=&#34;`nolog`&#34;&gt;`nolog`&lt;/span&gt;). Defaults to &lt;span pulumi-lang-nodejs=&#34;`nolog`&#34; pulumi-lang-dotnet=&#34;`Nolog`&#34; pulumi-lang-go=&#34;`nolog`&#34; pulumi-lang-python=&#34;`nolog`&#34; pulumi-lang-yaml=&#34;`nolog`&#34; pulumi-lang-java=&#34;`nolog`&#34; pulumi-lang-hcl=&#34;`nolog`&#34;&gt;`nolog`&lt;/span&gt;.
      * 
      */
     public Output<Optional<String>> logLevelIn() {
@@ -192,7 +192,7 @@ public class OptionsLegacy extends com.pulumi.resources.CustomResource {
     /**
      * Log level for outgoing
      * packets (&lt;span pulumi-lang-nodejs=&#34;`emerg`&#34; pulumi-lang-dotnet=&#34;`Emerg`&#34; pulumi-lang-go=&#34;`emerg`&#34; pulumi-lang-python=&#34;`emerg`&#34; pulumi-lang-yaml=&#34;`emerg`&#34; pulumi-lang-java=&#34;`emerg`&#34; pulumi-lang-hcl=&#34;`emerg`&#34;&gt;`emerg`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`alert`&#34; pulumi-lang-dotnet=&#34;`Alert`&#34; pulumi-lang-go=&#34;`alert`&#34; pulumi-lang-python=&#34;`alert`&#34; pulumi-lang-yaml=&#34;`alert`&#34; pulumi-lang-java=&#34;`alert`&#34; pulumi-lang-hcl=&#34;`alert`&#34;&gt;`alert`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`crit`&#34; pulumi-lang-dotnet=&#34;`Crit`&#34; pulumi-lang-go=&#34;`crit`&#34; pulumi-lang-python=&#34;`crit`&#34; pulumi-lang-yaml=&#34;`crit`&#34; pulumi-lang-java=&#34;`crit`&#34; pulumi-lang-hcl=&#34;`crit`&#34;&gt;`crit`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`err`&#34; pulumi-lang-dotnet=&#34;`Err`&#34; pulumi-lang-go=&#34;`err`&#34; pulumi-lang-python=&#34;`err`&#34; pulumi-lang-yaml=&#34;`err`&#34; pulumi-lang-java=&#34;`err`&#34; pulumi-lang-hcl=&#34;`err`&#34;&gt;`err`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`warning`&#34; pulumi-lang-dotnet=&#34;`Warning`&#34; pulumi-lang-go=&#34;`warning`&#34; pulumi-lang-python=&#34;`warning`&#34; pulumi-lang-yaml=&#34;`warning`&#34; pulumi-lang-java=&#34;`warning`&#34; pulumi-lang-hcl=&#34;`warning`&#34;&gt;`warning`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`notice`&#34; pulumi-lang-dotnet=&#34;`Notice`&#34; pulumi-lang-go=&#34;`notice`&#34; pulumi-lang-python=&#34;`notice`&#34; pulumi-lang-yaml=&#34;`notice`&#34; pulumi-lang-java=&#34;`notice`&#34; pulumi-lang-hcl=&#34;`notice`&#34;&gt;`notice`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`info`&#34; pulumi-lang-dotnet=&#34;`Info`&#34; pulumi-lang-go=&#34;`info`&#34; pulumi-lang-python=&#34;`info`&#34; pulumi-lang-yaml=&#34;`info`&#34; pulumi-lang-java=&#34;`info`&#34; pulumi-lang-hcl=&#34;`info`&#34;&gt;`info`&lt;/span&gt;,
-     * &lt;span pulumi-lang-nodejs=&#34;`debug`&#34; pulumi-lang-dotnet=&#34;`Debug`&#34; pulumi-lang-go=&#34;`debug`&#34; pulumi-lang-python=&#34;`debug`&#34; pulumi-lang-yaml=&#34;`debug`&#34; pulumi-lang-java=&#34;`debug`&#34; pulumi-lang-hcl=&#34;`debug`&#34;&gt;`debug`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`nolog`&#34; pulumi-lang-dotnet=&#34;`Nolog`&#34; pulumi-lang-go=&#34;`nolog`&#34; pulumi-lang-python=&#34;`nolog`&#34; pulumi-lang-yaml=&#34;`nolog`&#34; pulumi-lang-java=&#34;`nolog`&#34; pulumi-lang-hcl=&#34;`nolog`&#34;&gt;`nolog`&lt;/span&gt;).
+     * &lt;span pulumi-lang-nodejs=&#34;`debug`&#34; pulumi-lang-dotnet=&#34;`Debug`&#34; pulumi-lang-go=&#34;`debug`&#34; pulumi-lang-python=&#34;`debug`&#34; pulumi-lang-yaml=&#34;`debug`&#34; pulumi-lang-java=&#34;`debug`&#34; pulumi-lang-hcl=&#34;`debug`&#34;&gt;`debug`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`nolog`&#34; pulumi-lang-dotnet=&#34;`Nolog`&#34; pulumi-lang-go=&#34;`nolog`&#34; pulumi-lang-python=&#34;`nolog`&#34; pulumi-lang-yaml=&#34;`nolog`&#34; pulumi-lang-java=&#34;`nolog`&#34; pulumi-lang-hcl=&#34;`nolog`&#34;&gt;`nolog`&lt;/span&gt;). Defaults to &lt;span pulumi-lang-nodejs=&#34;`nolog`&#34; pulumi-lang-dotnet=&#34;`Nolog`&#34; pulumi-lang-go=&#34;`nolog`&#34; pulumi-lang-python=&#34;`nolog`&#34; pulumi-lang-yaml=&#34;`nolog`&#34; pulumi-lang-java=&#34;`nolog`&#34; pulumi-lang-hcl=&#34;`nolog`&#34;&gt;`nolog`&lt;/span&gt;.
      * 
      */
     @Export(name="logLevelOut", refs={String.class}, tree="[0]")
@@ -201,35 +201,35 @@ public class OptionsLegacy extends com.pulumi.resources.CustomResource {
     /**
      * @return Log level for outgoing
      * packets (&lt;span pulumi-lang-nodejs=&#34;`emerg`&#34; pulumi-lang-dotnet=&#34;`Emerg`&#34; pulumi-lang-go=&#34;`emerg`&#34; pulumi-lang-python=&#34;`emerg`&#34; pulumi-lang-yaml=&#34;`emerg`&#34; pulumi-lang-java=&#34;`emerg`&#34; pulumi-lang-hcl=&#34;`emerg`&#34;&gt;`emerg`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`alert`&#34; pulumi-lang-dotnet=&#34;`Alert`&#34; pulumi-lang-go=&#34;`alert`&#34; pulumi-lang-python=&#34;`alert`&#34; pulumi-lang-yaml=&#34;`alert`&#34; pulumi-lang-java=&#34;`alert`&#34; pulumi-lang-hcl=&#34;`alert`&#34;&gt;`alert`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`crit`&#34; pulumi-lang-dotnet=&#34;`Crit`&#34; pulumi-lang-go=&#34;`crit`&#34; pulumi-lang-python=&#34;`crit`&#34; pulumi-lang-yaml=&#34;`crit`&#34; pulumi-lang-java=&#34;`crit`&#34; pulumi-lang-hcl=&#34;`crit`&#34;&gt;`crit`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`err`&#34; pulumi-lang-dotnet=&#34;`Err`&#34; pulumi-lang-go=&#34;`err`&#34; pulumi-lang-python=&#34;`err`&#34; pulumi-lang-yaml=&#34;`err`&#34; pulumi-lang-java=&#34;`err`&#34; pulumi-lang-hcl=&#34;`err`&#34;&gt;`err`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`warning`&#34; pulumi-lang-dotnet=&#34;`Warning`&#34; pulumi-lang-go=&#34;`warning`&#34; pulumi-lang-python=&#34;`warning`&#34; pulumi-lang-yaml=&#34;`warning`&#34; pulumi-lang-java=&#34;`warning`&#34; pulumi-lang-hcl=&#34;`warning`&#34;&gt;`warning`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`notice`&#34; pulumi-lang-dotnet=&#34;`Notice`&#34; pulumi-lang-go=&#34;`notice`&#34; pulumi-lang-python=&#34;`notice`&#34; pulumi-lang-yaml=&#34;`notice`&#34; pulumi-lang-java=&#34;`notice`&#34; pulumi-lang-hcl=&#34;`notice`&#34;&gt;`notice`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`info`&#34; pulumi-lang-dotnet=&#34;`Info`&#34; pulumi-lang-go=&#34;`info`&#34; pulumi-lang-python=&#34;`info`&#34; pulumi-lang-yaml=&#34;`info`&#34; pulumi-lang-java=&#34;`info`&#34; pulumi-lang-hcl=&#34;`info`&#34;&gt;`info`&lt;/span&gt;,
-     * &lt;span pulumi-lang-nodejs=&#34;`debug`&#34; pulumi-lang-dotnet=&#34;`Debug`&#34; pulumi-lang-go=&#34;`debug`&#34; pulumi-lang-python=&#34;`debug`&#34; pulumi-lang-yaml=&#34;`debug`&#34; pulumi-lang-java=&#34;`debug`&#34; pulumi-lang-hcl=&#34;`debug`&#34;&gt;`debug`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`nolog`&#34; pulumi-lang-dotnet=&#34;`Nolog`&#34; pulumi-lang-go=&#34;`nolog`&#34; pulumi-lang-python=&#34;`nolog`&#34; pulumi-lang-yaml=&#34;`nolog`&#34; pulumi-lang-java=&#34;`nolog`&#34; pulumi-lang-hcl=&#34;`nolog`&#34;&gt;`nolog`&lt;/span&gt;).
+     * &lt;span pulumi-lang-nodejs=&#34;`debug`&#34; pulumi-lang-dotnet=&#34;`Debug`&#34; pulumi-lang-go=&#34;`debug`&#34; pulumi-lang-python=&#34;`debug`&#34; pulumi-lang-yaml=&#34;`debug`&#34; pulumi-lang-java=&#34;`debug`&#34; pulumi-lang-hcl=&#34;`debug`&#34;&gt;`debug`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`nolog`&#34; pulumi-lang-dotnet=&#34;`Nolog`&#34; pulumi-lang-go=&#34;`nolog`&#34; pulumi-lang-python=&#34;`nolog`&#34; pulumi-lang-yaml=&#34;`nolog`&#34; pulumi-lang-java=&#34;`nolog`&#34; pulumi-lang-hcl=&#34;`nolog`&#34;&gt;`nolog`&lt;/span&gt;). Defaults to &lt;span pulumi-lang-nodejs=&#34;`nolog`&#34; pulumi-lang-dotnet=&#34;`Nolog`&#34; pulumi-lang-go=&#34;`nolog`&#34; pulumi-lang-python=&#34;`nolog`&#34; pulumi-lang-yaml=&#34;`nolog`&#34; pulumi-lang-java=&#34;`nolog`&#34; pulumi-lang-hcl=&#34;`nolog`&#34;&gt;`nolog`&lt;/span&gt;.
      * 
      */
     public Output<Optional<String>> logLevelOut() {
         return Codegen.optional(this.logLevelOut);
     }
     /**
-     * Enable/disable MAC address filter.
+     * Enable/disable MAC address filter. Defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;.
      * 
      */
     @Export(name="macfilter", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> macfilter;
 
     /**
-     * @return Enable/disable MAC address filter.
+     * @return Enable/disable MAC address filter. Defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;.
      * 
      */
     public Output<Optional<Boolean>> macfilter() {
         return Codegen.optional(this.macfilter);
     }
     /**
-     * Enable NDP (Neighbor Discovery Protocol).
+     * Enable NDP (Neighbor Discovery Protocol). Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
      * 
      */
     @Export(name="ndp", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> ndp;
 
     /**
-     * @return Enable NDP (Neighbor Discovery Protocol).
+     * @return Enable NDP (Neighbor Discovery Protocol). Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
      * 
      */
     public Output<Optional<Boolean>> ndp() {
@@ -251,7 +251,7 @@ public class OptionsLegacy extends com.pulumi.resources.CustomResource {
     }
     /**
      * The default output
-     * policy (`ACCEPT`, `DROP`, `REJECT`).
+     * policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `ACCEPT`.
      * 
      */
     @Export(name="outputPolicy", refs={String.class}, tree="[0]")
@@ -259,21 +259,21 @@ public class OptionsLegacy extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The default output
-     * policy (`ACCEPT`, `DROP`, `REJECT`).
+     * policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `ACCEPT`.
      * 
      */
     public Output<Optional<String>> outputPolicy() {
         return Codegen.optional(this.outputPolicy);
     }
     /**
-     * Enable Router Advertisement.
+     * Enable Router Advertisement. Defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;.
      * 
      */
     @Export(name="radv", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> radv;
 
     /**
-     * @return Enable Router Advertisement.
+     * @return Enable Router Advertisement. Defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;.
      * 
      */
     public Output<Optional<Boolean>> radv() {

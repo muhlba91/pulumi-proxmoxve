@@ -136,7 +136,7 @@ class AwaitableGetSubnetLegacyResult(GetSubnetLegacyResult):
 
 
 def get_subnet_legacy(cidr: Optional[_builtins.str] = None,
-                      dhcp_range: Optional[Union['GetSubnetLegacyDhcpRangeArgs', 'GetSubnetLegacyDhcpRangeArgsDict']] = None,
+                      dhcp_range: Optional[Union['GetSubnetLegacyDhcpRangeArgs', 'GetSubnetLegacyDhcpRangeArgsDict', 'outputs.GetSubnetLegacyDhcpRangeResult']] = None,
                       vnet: Optional[_builtins.str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSubnetLegacyResult:
     """
@@ -146,7 +146,7 @@ def get_subnet_legacy(cidr: Optional[_builtins.str] = None,
 
 
     :param _builtins.str cidr: A CIDR network address, for example 10.0.0.0/8
-    :param Union['GetSubnetLegacyDhcpRangeArgs', 'GetSubnetLegacyDhcpRangeArgsDict'] dhcp_range: DHCP range (start and end IPs).
+    :param Union['GetSubnetLegacyDhcpRangeArgs', 'GetSubnetLegacyDhcpRangeArgsDict', 'outputs.GetSubnetLegacyDhcpRangeResult'] dhcp_range: DHCP range (start and end IPs).
     :param _builtins.str vnet: The VNet this subnet belongs to.
     """
     __args__ = dict()
@@ -166,7 +166,7 @@ def get_subnet_legacy(cidr: Optional[_builtins.str] = None,
         snat=pulumi.get(__ret__, 'snat'),
         vnet=pulumi.get(__ret__, 'vnet'))
 def get_subnet_legacy_output(cidr: pulumi.Input[Optional[_builtins.str]] = None,
-                             dhcp_range: pulumi.Input[Optional[Optional[Union['GetSubnetLegacyDhcpRangeArgs', 'GetSubnetLegacyDhcpRangeArgsDict']]]] = None,
+                             dhcp_range: pulumi.Input[Optional[Optional[Union['GetSubnetLegacyDhcpRangeArgs', 'GetSubnetLegacyDhcpRangeArgsDict', 'outputs.GetSubnetLegacyDhcpRangeResult']]]] = None,
                              vnet: pulumi.Input[Optional[_builtins.str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSubnetLegacyResult]:
     """
@@ -176,7 +176,7 @@ def get_subnet_legacy_output(cidr: pulumi.Input[Optional[_builtins.str]] = None,
 
 
     :param _builtins.str cidr: A CIDR network address, for example 10.0.0.0/8
-    :param Union['GetSubnetLegacyDhcpRangeArgs', 'GetSubnetLegacyDhcpRangeArgsDict'] dhcp_range: DHCP range (start and end IPs).
+    :param Union['GetSubnetLegacyDhcpRangeArgs', 'GetSubnetLegacyDhcpRangeArgsDict', 'outputs.GetSubnetLegacyDhcpRangeResult'] dhcp_range: DHCP range (start and end IPs).
     :param _builtins.str vnet: The VNet this subnet belongs to.
     """
     __args__ = dict()

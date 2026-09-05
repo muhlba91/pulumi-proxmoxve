@@ -165,7 +165,7 @@ class GroupLegacy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupLegacyAclArgs', 'GroupLegacyAclArgsDict']]]]] = None,
+                 acls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupLegacyAclArgs', 'GroupLegacyAclArgsDict', 'outputs.GroupLegacyAcl']]]]] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -199,7 +199,7 @@ class GroupLegacy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupLegacyAclArgs', 'GroupLegacyAclArgsDict']]]] acls: The access control list (multiple blocks supported). Use
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupLegacyAclArgs', 'GroupLegacyAclArgsDict', 'outputs.GroupLegacyAcl']]]] acls: The access control list (multiple blocks supported). Use
                `Acl` instead.
         :param pulumi.Input[_builtins.str] comment: The group comment.
         :param pulumi.Input[_builtins.str] group_id: The group identifier.
@@ -253,7 +253,7 @@ class GroupLegacy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupLegacyAclArgs', 'GroupLegacyAclArgsDict']]]]] = None,
+                 acls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupLegacyAclArgs', 'GroupLegacyAclArgsDict', 'outputs.GroupLegacyAcl']]]]] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -281,7 +281,7 @@ class GroupLegacy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            acls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupLegacyAclArgs', 'GroupLegacyAclArgsDict']]]]] = None,
+            acls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupLegacyAclArgs', 'GroupLegacyAclArgsDict', 'outputs.GroupLegacyAcl']]]]] = None,
             comment: pulumi.Input[Optional[_builtins.str]] = None,
             group_id: pulumi.Input[Optional[_builtins.str]] = None,
             members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'GroupLegacy':
@@ -292,7 +292,7 @@ class GroupLegacy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupLegacyAclArgs', 'GroupLegacyAclArgsDict']]]] acls: The access control list (multiple blocks supported). Use
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupLegacyAclArgs', 'GroupLegacyAclArgsDict', 'outputs.GroupLegacyAcl']]]] acls: The access control list (multiple blocks supported). Use
                `Acl` instead.
         :param pulumi.Input[_builtins.str] comment: The group comment.
         :param pulumi.Input[_builtins.str] group_id: The group identifier.

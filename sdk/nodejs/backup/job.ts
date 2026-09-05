@@ -80,6 +80,10 @@ export class Job extends pulumi.CustomResource {
      */
     declare public readonly excludePaths: pulumi.Output<string[] | undefined>;
     /**
+     * A list of guest VM/CT IDs to exclude from the backup.
+     */
+    declare public readonly excludes: pulumi.Output<string[] | undefined>;
+    /**
      * Fleecing configuration for the backup job.
      */
     declare public readonly fleecing: pulumi.Output<outputs.backup.JobFleecing | undefined>;
@@ -206,6 +210,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["compress"] = state?.compress;
             resourceInputs["enabled"] = state?.enabled;
             resourceInputs["excludePaths"] = state?.excludePaths;
+            resourceInputs["excludes"] = state?.excludes;
             resourceInputs["fleecing"] = state?.fleecing;
             resourceInputs["ionice"] = state?.ionice;
             resourceInputs["lockwait"] = state?.lockwait;
@@ -249,6 +254,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["compress"] = args?.compress;
             resourceInputs["enabled"] = args?.enabled;
             resourceInputs["excludePaths"] = args?.excludePaths;
+            resourceInputs["excludes"] = args?.excludes;
             resourceInputs["fleecing"] = args?.fleecing;
             resourceInputs["ionice"] = args?.ionice;
             resourceInputs["lockwait"] = args?.lockwait;
@@ -306,6 +312,10 @@ export interface JobState {
      * A list of paths to exclude from the backup.
      */
     excludePaths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * A list of guest VM/CT IDs to exclude from the backup.
+     */
+    excludes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Fleecing configuration for the backup job.
      */
@@ -440,6 +450,10 @@ export interface JobArgs {
      * A list of paths to exclude from the backup.
      */
     excludePaths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * A list of guest VM/CT IDs to exclude from the backup.
+     */
+    excludes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Fleecing configuration for the backup job.
      */

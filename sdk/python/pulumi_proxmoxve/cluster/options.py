@@ -865,8 +865,8 @@ class Options(pulumi.CustomResource):
                  max_workers: pulumi.Input[Optional[_builtins.int]] = None,
                  migration_cidr: pulumi.Input[Optional[_builtins.str]] = None,
                  migration_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 next_id: pulumi.Input[Optional[Union['OptionsNextIdArgs', 'OptionsNextIdArgsDict']]] = None,
-                 notify: pulumi.Input[Optional[Union['OptionsNotifyArgs', 'OptionsNotifyArgsDict']]] = None,
+                 next_id: pulumi.Input[Optional[Union['OptionsNextIdArgs', 'OptionsNextIdArgsDict', 'outputs.OptionsNextId']]] = None,
+                 notify: pulumi.Input[Optional[Union['OptionsNotifyArgs', 'OptionsNotifyArgsDict', 'outputs.OptionsNotify']]] = None,
                  __props__=None):
         """
         Manages Proxmox VE Cluster Datacenter options.
@@ -935,8 +935,8 @@ class Options(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] max_workers: Defines how many workers (per node) are maximal started on actions like 'stopall VMs' or task from the ha-manager.
         :param pulumi.Input[_builtins.str] migration_cidr: Cluster wide migration network CIDR.
         :param pulumi.Input[_builtins.str] migration_type: Cluster wide migration type. Must be `secure` | `insecure` (default is `secure`).
-        :param pulumi.Input[Union['OptionsNextIdArgs', 'OptionsNextIdArgsDict']] next_id: The ranges for the next free VM ID auto-selection pool.
-        :param pulumi.Input[Union['OptionsNotifyArgs', 'OptionsNotifyArgsDict']] notify: Cluster-wide notification settings.
+        :param pulumi.Input[Union['OptionsNextIdArgs', 'OptionsNextIdArgsDict', 'outputs.OptionsNextId']] next_id: The ranges for the next free VM ID auto-selection pool.
+        :param pulumi.Input[Union['OptionsNotifyArgs', 'OptionsNotifyArgsDict', 'outputs.OptionsNotify']] notify: Cluster-wide notification settings.
         """
         ...
     @overload
@@ -1024,8 +1024,8 @@ class Options(pulumi.CustomResource):
                  max_workers: pulumi.Input[Optional[_builtins.int]] = None,
                  migration_cidr: pulumi.Input[Optional[_builtins.str]] = None,
                  migration_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 next_id: pulumi.Input[Optional[Union['OptionsNextIdArgs', 'OptionsNextIdArgsDict']]] = None,
-                 notify: pulumi.Input[Optional[Union['OptionsNotifyArgs', 'OptionsNotifyArgsDict']]] = None,
+                 next_id: pulumi.Input[Optional[Union['OptionsNextIdArgs', 'OptionsNextIdArgsDict', 'outputs.OptionsNextId']]] = None,
+                 notify: pulumi.Input[Optional[Union['OptionsNotifyArgs', 'OptionsNotifyArgsDict', 'outputs.OptionsNotify']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1093,8 +1093,8 @@ class Options(pulumi.CustomResource):
             max_workers: pulumi.Input[Optional[_builtins.int]] = None,
             migration_cidr: pulumi.Input[Optional[_builtins.str]] = None,
             migration_type: pulumi.Input[Optional[_builtins.str]] = None,
-            next_id: pulumi.Input[Optional[Union['OptionsNextIdArgs', 'OptionsNextIdArgsDict']]] = None,
-            notify: pulumi.Input[Optional[Union['OptionsNotifyArgs', 'OptionsNotifyArgsDict']]] = None) -> 'Options':
+            next_id: pulumi.Input[Optional[Union['OptionsNextIdArgs', 'OptionsNextIdArgsDict', 'outputs.OptionsNextId']]] = None,
+            notify: pulumi.Input[Optional[Union['OptionsNotifyArgs', 'OptionsNotifyArgsDict', 'outputs.OptionsNotify']]] = None) -> 'Options':
         """
         Get an existing Options resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1125,8 +1125,8 @@ class Options(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] max_workers: Defines how many workers (per node) are maximal started on actions like 'stopall VMs' or task from the ha-manager.
         :param pulumi.Input[_builtins.str] migration_cidr: Cluster wide migration network CIDR.
         :param pulumi.Input[_builtins.str] migration_type: Cluster wide migration type. Must be `secure` | `insecure` (default is `secure`).
-        :param pulumi.Input[Union['OptionsNextIdArgs', 'OptionsNextIdArgsDict']] next_id: The ranges for the next free VM ID auto-selection pool.
-        :param pulumi.Input[Union['OptionsNotifyArgs', 'OptionsNotifyArgsDict']] notify: Cluster-wide notification settings.
+        :param pulumi.Input[Union['OptionsNextIdArgs', 'OptionsNextIdArgsDict', 'outputs.OptionsNextId']] next_id: The ranges for the next free VM ID auto-selection pool.
+        :param pulumi.Input[Union['OptionsNotifyArgs', 'OptionsNotifyArgsDict', 'outputs.OptionsNotify']] notify: Cluster-wide notification settings.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

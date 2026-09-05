@@ -48,14 +48,14 @@ public final class FirewallLegacyArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The default forward policy (`ACCEPT`, `DROP`).
+     * The default forward policy (`ACCEPT`, `DROP`). Defaults to `ACCEPT`.
      * 
      */
     @Import(name="forwardPolicy")
     private @Nullable Output<String> forwardPolicy;
 
     /**
-     * @return The default forward policy (`ACCEPT`, `DROP`).
+     * @return The default forward policy (`ACCEPT`, `DROP`). Defaults to `ACCEPT`.
      * 
      */
     public Optional<Output<String>> forwardPolicy() {
@@ -63,14 +63,14 @@ public final class FirewallLegacyArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The default input policy (`ACCEPT`, `DROP`, `REJECT`).
+     * The default input policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `DROP`.
      * 
      */
     @Import(name="inputPolicy")
     private @Nullable Output<String> inputPolicy;
 
     /**
-     * @return The default input policy (`ACCEPT`, `DROP`, `REJECT`).
+     * @return The default input policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `DROP`.
      * 
      */
     public Optional<Output<String>> inputPolicy() {
@@ -93,14 +93,14 @@ public final class FirewallLegacyArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The default output policy (`ACCEPT`, `DROP`, `REJECT`).
+     * The default output policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `ACCEPT`.
      * 
      */
     @Import(name="outputPolicy")
     private @Nullable Output<String> outputPolicy;
 
     /**
-     * @return The default output policy (`ACCEPT`, `DROP`, `REJECT`).
+     * @return The default output policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `ACCEPT`.
      * 
      */
     public Optional<Output<String>> outputPolicy() {
@@ -179,7 +179,7 @@ public final class FirewallLegacyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param forwardPolicy The default forward policy (`ACCEPT`, `DROP`).
+         * @param forwardPolicy The default forward policy (`ACCEPT`, `DROP`). Defaults to `ACCEPT`.
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class FirewallLegacyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param forwardPolicy The default forward policy (`ACCEPT`, `DROP`).
+         * @param forwardPolicy The default forward policy (`ACCEPT`, `DROP`). Defaults to `ACCEPT`.
          * 
          * @return builder
          * 
@@ -200,7 +200,7 @@ public final class FirewallLegacyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param inputPolicy The default input policy (`ACCEPT`, `DROP`, `REJECT`).
+         * @param inputPolicy The default input policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `DROP`.
          * 
          * @return builder
          * 
@@ -211,7 +211,7 @@ public final class FirewallLegacyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param inputPolicy The default input policy (`ACCEPT`, `DROP`, `REJECT`).
+         * @param inputPolicy The default input policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `DROP`.
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class FirewallLegacyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param outputPolicy The default output policy (`ACCEPT`, `DROP`, `REJECT`).
+         * @param outputPolicy The default output policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `ACCEPT`.
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class FirewallLegacyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param outputPolicy The default output policy (`ACCEPT`, `DROP`, `REJECT`).
+         * @param outputPolicy The default output policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `ACCEPT`.
          * 
          * @return builder
          * 

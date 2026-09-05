@@ -82,7 +82,7 @@ public final class VmLegacyDisk {
     private @Nullable Boolean iothread;
     /**
      * @return The in-datastore path to the disk image.
-     * ***Experimental.***Use to attach another VM&#39;s disks,
+     * ***Experimental.*** Use to attach another VM&#39;s disks,
      * or (as root only) host&#39;s filesystem paths (&lt;span pulumi-lang-nodejs=&#34;`datastoreId`&#34; pulumi-lang-dotnet=&#34;`DatastoreId`&#34; pulumi-lang-go=&#34;`datastoreId`&#34; pulumi-lang-python=&#34;`datastore_id`&#34; pulumi-lang-yaml=&#34;`datastoreId`&#34; pulumi-lang-java=&#34;`datastoreId`&#34; pulumi-lang-hcl=&#34;`datastore_id`&#34;&gt;`datastoreId`&lt;/span&gt; empty string).
      * See &#34;*Example: Attached disks*&#34;.
      * 
@@ -212,7 +212,7 @@ public final class VmLegacyDisk {
     }
     /**
      * @return The in-datastore path to the disk image.
-     * ***Experimental.***Use to attach another VM&#39;s disks,
+     * ***Experimental.*** Use to attach another VM&#39;s disks,
      * or (as root only) host&#39;s filesystem paths (&lt;span pulumi-lang-nodejs=&#34;`datastoreId`&#34; pulumi-lang-dotnet=&#34;`DatastoreId`&#34; pulumi-lang-go=&#34;`datastoreId`&#34; pulumi-lang-python=&#34;`datastore_id`&#34; pulumi-lang-yaml=&#34;`datastoreId`&#34; pulumi-lang-java=&#34;`datastoreId`&#34; pulumi-lang-hcl=&#34;`datastore_id`&#34;&gt;`datastoreId`&lt;/span&gt; empty string).
      * See &#34;*Example: Attached disks*&#34;.
      * 

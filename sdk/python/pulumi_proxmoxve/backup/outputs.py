@@ -107,6 +107,7 @@ class GetJobsJobResult(dict):
                  all: _builtins.bool,
                  compress: _builtins.str,
                  enabled: _builtins.bool,
+                 excludes: Sequence[_builtins.str],
                  id: _builtins.str,
                  mailnotification: _builtins.str,
                  mailtos: Sequence[_builtins.str],
@@ -123,6 +124,7 @@ class GetJobsJobResult(dict):
         :param _builtins.bool all: Indicates whether all VMs and CTs are backed up.
         :param _builtins.str compress: Compression algorithm used for the backup.
         :param _builtins.bool enabled: Indicates whether the backup job is enabled.
+        :param Sequence[_builtins.str] excludes: List of guest VM/CT IDs excluded from the backup.
         :param _builtins.str id: Unique identifier of the backup job.
         :param _builtins.str mailnotification: When to send email notifications (always or failure).
         :param Sequence[_builtins.str] mailtos: List of email addresses for notifications.
@@ -139,6 +141,7 @@ class GetJobsJobResult(dict):
         pulumi.set(__self__, "all", all)
         pulumi.set(__self__, "compress", compress)
         pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "excludes", excludes)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "mailnotification", mailnotification)
         pulumi.set(__self__, "mailtos", mailtos)
@@ -175,6 +178,14 @@ class GetJobsJobResult(dict):
         Indicates whether the backup job is enabled.
         """
         return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def excludes(self) -> Sequence[_builtins.str]:
+        """
+        List of guest VM/CT IDs excluded from the backup.
+        """
+        return pulumi.get(self, "excludes")
 
     @_builtins.property
     @pulumi.getter

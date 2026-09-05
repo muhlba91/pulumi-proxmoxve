@@ -238,13 +238,17 @@ class GroupLegacy(pulumi.CustomResource):
                  container_id: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  node_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupLegacyRuleArgs', 'GroupLegacyRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupLegacyRuleArgs', 'GroupLegacyRuleArgsDict', 'outputs.GroupLegacyRule']]]]] = None,
                  vm_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         A security group is a collection of rules, defined at cluster level, which can
         be used in all VMs' rules. For example, you can define a group named “webserver”
         with rules to open the http and https ports.
+
+        > Security groups are always cluster-scoped. Any node- or guest-scoping
+        attributes (`node_name`, `vm_id`, `container_id`) have no effect on this
+        resource and are silently ignored.
 
         ## Example Usage
 
@@ -292,7 +296,7 @@ class GroupLegacy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] container_id: The ID of the container to manage the firewall for.
         :param pulumi.Input[_builtins.str] name: Security group name.
         :param pulumi.Input[_builtins.str] node_name: The name of the node.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupLegacyRuleArgs', 'GroupLegacyRuleArgsDict']]]] rules: Firewall rule block (multiple blocks supported).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupLegacyRuleArgs', 'GroupLegacyRuleArgsDict', 'outputs.GroupLegacyRule']]]] rules: Firewall rule block (multiple blocks supported).
         :param pulumi.Input[_builtins.int] vm_id: The ID of the VM to manage the firewall for.
         """
         ...
@@ -305,6 +309,10 @@ class GroupLegacy(pulumi.CustomResource):
         A security group is a collection of rules, defined at cluster level, which can
         be used in all VMs' rules. For example, you can define a group named “webserver”
         with rules to open the http and https ports.
+
+        > Security groups are always cluster-scoped. Any node- or guest-scoping
+        attributes (`node_name`, `vm_id`, `container_id`) have no effect on this
+        resource and are silently ignored.
 
         ## Example Usage
 
@@ -365,7 +373,7 @@ class GroupLegacy(pulumi.CustomResource):
                  container_id: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  node_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupLegacyRuleArgs', 'GroupLegacyRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupLegacyRuleArgs', 'GroupLegacyRuleArgsDict', 'outputs.GroupLegacyRule']]]]] = None,
                  vm_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -396,7 +404,7 @@ class GroupLegacy(pulumi.CustomResource):
             container_id: pulumi.Input[Optional[_builtins.int]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             node_name: pulumi.Input[Optional[_builtins.str]] = None,
-            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupLegacyRuleArgs', 'GroupLegacyRuleArgsDict']]]]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupLegacyRuleArgs', 'GroupLegacyRuleArgsDict', 'outputs.GroupLegacyRule']]]]] = None,
             vm_id: pulumi.Input[Optional[_builtins.int]] = None) -> 'GroupLegacy':
         """
         Get an existing GroupLegacy resource's state with the given name, id, and optional extra
@@ -409,7 +417,7 @@ class GroupLegacy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] container_id: The ID of the container to manage the firewall for.
         :param pulumi.Input[_builtins.str] name: Security group name.
         :param pulumi.Input[_builtins.str] node_name: The name of the node.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupLegacyRuleArgs', 'GroupLegacyRuleArgsDict']]]] rules: Firewall rule block (multiple blocks supported).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupLegacyRuleArgs', 'GroupLegacyRuleArgsDict', 'outputs.GroupLegacyRule']]]] rules: Firewall rule block (multiple blocks supported).
         :param pulumi.Input[_builtins.int] vm_id: The ID of the VM to manage the firewall for.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

@@ -90,7 +90,7 @@ public final class VmLegacyInitializationArgs extends com.pulumi.resources.Resou
 
     /**
      * The IP configuration (one block per network
-     * device).
+     * device, up to 32 blocks).
      * 
      */
     @Import(name="ipConfigs")
@@ -98,7 +98,7 @@ public final class VmLegacyInitializationArgs extends com.pulumi.resources.Resou
 
     /**
      * @return The IP configuration (one block per network
-     * device).
+     * device, up to 32 blocks).
      * 
      */
     public Optional<Output<List<VmLegacyInitializationIpConfigArgs>>> ipConfigs() {
@@ -355,7 +355,7 @@ public final class VmLegacyInitializationArgs extends com.pulumi.resources.Resou
 
         /**
          * @param ipConfigs The IP configuration (one block per network
-         * device).
+         * device, up to 32 blocks).
          * 
          * @return builder
          * 
@@ -367,7 +367,7 @@ public final class VmLegacyInitializationArgs extends com.pulumi.resources.Resou
 
         /**
          * @param ipConfigs The IP configuration (one block per network
-         * device).
+         * device, up to 32 blocks).
          * 
          * @return builder
          * 
@@ -378,7 +378,7 @@ public final class VmLegacyInitializationArgs extends com.pulumi.resources.Resou
 
         /**
          * @param ipConfigs The IP configuration (one block per network
-         * device).
+         * device, up to 32 blocks).
          * 
          * @return builder
          * 

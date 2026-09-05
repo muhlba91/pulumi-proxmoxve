@@ -180,7 +180,7 @@ class RulesLegacy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  container_id: pulumi.Input[Optional[_builtins.int]] = None,
                  node_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RulesLegacyRuleArgs', 'RulesLegacyRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RulesLegacyRuleArgs', 'RulesLegacyRuleArgsDict', 'outputs.RulesLegacyRule']]]]] = None,
                  vm_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
@@ -270,7 +270,7 @@ class RulesLegacy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] container_id: Container ID. Leave empty for node/cluster level rules.
         :param pulumi.Input[_builtins.str] node_name: Node name. Leave empty for cluster level rules.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RulesLegacyRuleArgs', 'RulesLegacyRuleArgsDict']]]] rules: Firewall rule block (multiple blocks supported).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RulesLegacyRuleArgs', 'RulesLegacyRuleArgsDict', 'outputs.RulesLegacyRule']]]] rules: Firewall rule block (multiple blocks supported).
                The provider supports two types of the `rule` blocks:
                - A rule definition block, which includes the following arguments:
         :param pulumi.Input[_builtins.int] vm_id: VM ID. Leave empty for node/cluster level rules.
@@ -381,7 +381,7 @@ class RulesLegacy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  container_id: pulumi.Input[Optional[_builtins.int]] = None,
                  node_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RulesLegacyRuleArgs', 'RulesLegacyRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RulesLegacyRuleArgs', 'RulesLegacyRuleArgsDict', 'outputs.RulesLegacyRule']]]]] = None,
                  vm_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -408,7 +408,7 @@ class RulesLegacy(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             container_id: pulumi.Input[Optional[_builtins.int]] = None,
             node_name: pulumi.Input[Optional[_builtins.str]] = None,
-            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RulesLegacyRuleArgs', 'RulesLegacyRuleArgsDict']]]]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RulesLegacyRuleArgs', 'RulesLegacyRuleArgsDict', 'outputs.RulesLegacyRule']]]]] = None,
             vm_id: pulumi.Input[Optional[_builtins.int]] = None) -> 'RulesLegacy':
         """
         Get an existing RulesLegacy resource's state with the given name, id, and optional extra
@@ -419,7 +419,7 @@ class RulesLegacy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] container_id: Container ID. Leave empty for node/cluster level rules.
         :param pulumi.Input[_builtins.str] node_name: Node name. Leave empty for cluster level rules.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RulesLegacyRuleArgs', 'RulesLegacyRuleArgsDict']]]] rules: Firewall rule block (multiple blocks supported).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RulesLegacyRuleArgs', 'RulesLegacyRuleArgsDict', 'outputs.RulesLegacyRule']]]] rules: Firewall rule block (multiple blocks supported).
                The provider supports two types of the `rule` blocks:
                - A rule definition block, which includes the following arguments:
         :param pulumi.Input[_builtins.int] vm_id: VM ID. Leave empty for node/cluster level rules.

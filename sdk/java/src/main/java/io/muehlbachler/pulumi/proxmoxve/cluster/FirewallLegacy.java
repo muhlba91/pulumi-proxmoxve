@@ -66,7 +66,8 @@ import javax.annotation.Nullable;
  * 
  * ## Important Notes
  * 
- * Be careful not to use this resource multiple times for the same node.
+ * This resource manages cluster-wide firewall options, so it should be used only
+ * once per cluster. Declaring it multiple times results in conflicting updates.
  * 
  * ## Import
  * 
@@ -108,28 +109,28 @@ public class FirewallLegacy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enabled);
     }
     /**
-     * The default forward policy (`ACCEPT`, `DROP`).
+     * The default forward policy (`ACCEPT`, `DROP`). Defaults to `ACCEPT`.
      * 
      */
     @Export(name="forwardPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> forwardPolicy;
 
     /**
-     * @return The default forward policy (`ACCEPT`, `DROP`).
+     * @return The default forward policy (`ACCEPT`, `DROP`). Defaults to `ACCEPT`.
      * 
      */
     public Output<Optional<String>> forwardPolicy() {
         return Codegen.optional(this.forwardPolicy);
     }
     /**
-     * The default input policy (`ACCEPT`, `DROP`, `REJECT`).
+     * The default input policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `DROP`.
      * 
      */
     @Export(name="inputPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> inputPolicy;
 
     /**
-     * @return The default input policy (`ACCEPT`, `DROP`, `REJECT`).
+     * @return The default input policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `DROP`.
      * 
      */
     public Output<Optional<String>> inputPolicy() {
@@ -150,14 +151,14 @@ public class FirewallLegacy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.logRatelimit);
     }
     /**
-     * The default output policy (`ACCEPT`, `DROP`, `REJECT`).
+     * The default output policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `ACCEPT`.
      * 
      */
     @Export(name="outputPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> outputPolicy;
 
     /**
-     * @return The default output policy (`ACCEPT`, `DROP`, `REJECT`).
+     * @return The default output policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `ACCEPT`.
      * 
      */
     public Output<Optional<String>> outputPolicy() {

@@ -77,20 +77,20 @@ namespace Pulumi.ProxmoxVE.Firewall
         public Output<int?> ContainerId { get; private set; } = null!;
 
         /// <summary>
-        /// Enable DHCP.
+        /// Enable DHCP. Defaults to `False`.
         /// </summary>
         [Output("dhcp")]
         public Output<bool?> Dhcp { get; private set; } = null!;
 
         /// <summary>
-        /// Enable or disable the firewall.
+        /// Enable or disable the firewall. Defaults to `False`.
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
         /// The default input
-        /// policy (`ACCEPT`, `DROP`, `REJECT`).
+        /// policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `DROP`.
         /// </summary>
         [Output("inputPolicy")]
         public Output<string?> InputPolicy { get; private set; } = null!;
@@ -108,7 +108,7 @@ namespace Pulumi.ProxmoxVE.Firewall
         /// <summary>
         /// Log level for incoming
         /// packets (`Emerg`, `Alert`, `Crit`, `Err`, `Warning`, `Notice`, `Info`,
-        /// `Debug`, `Nolog`).
+        /// `Debug`, `Nolog`). Defaults to `Nolog`.
         /// </summary>
         [Output("logLevelIn")]
         public Output<string?> LogLevelIn { get; private set; } = null!;
@@ -116,19 +116,19 @@ namespace Pulumi.ProxmoxVE.Firewall
         /// <summary>
         /// Log level for outgoing
         /// packets (`Emerg`, `Alert`, `Crit`, `Err`, `Warning`, `Notice`, `Info`,
-        /// `Debug`, `Nolog`).
+        /// `Debug`, `Nolog`). Defaults to `Nolog`.
         /// </summary>
         [Output("logLevelOut")]
         public Output<string?> LogLevelOut { get; private set; } = null!;
 
         /// <summary>
-        /// Enable/disable MAC address filter.
+        /// Enable/disable MAC address filter. Defaults to `True`.
         /// </summary>
         [Output("macfilter")]
         public Output<bool?> Macfilter { get; private set; } = null!;
 
         /// <summary>
-        /// Enable NDP (Neighbor Discovery Protocol).
+        /// Enable NDP (Neighbor Discovery Protocol). Defaults to `False`.
         /// </summary>
         [Output("ndp")]
         public Output<bool?> Ndp { get; private set; } = null!;
@@ -141,13 +141,13 @@ namespace Pulumi.ProxmoxVE.Firewall
 
         /// <summary>
         /// The default output
-        /// policy (`ACCEPT`, `DROP`, `REJECT`).
+        /// policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `ACCEPT`.
         /// </summary>
         [Output("outputPolicy")]
         public Output<string?> OutputPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// Enable Router Advertisement.
+        /// Enable Router Advertisement. Defaults to `True`.
         /// </summary>
         [Output("radv")]
         public Output<bool?> Radv { get; private set; } = null!;
@@ -212,20 +212,20 @@ namespace Pulumi.ProxmoxVE.Firewall
         public Input<int>? ContainerId { get; set; }
 
         /// <summary>
-        /// Enable DHCP.
+        /// Enable DHCP. Defaults to `False`.
         /// </summary>
         [Input("dhcp")]
         public Input<bool>? Dhcp { get; set; }
 
         /// <summary>
-        /// Enable or disable the firewall.
+        /// Enable or disable the firewall. Defaults to `False`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
         /// The default input
-        /// policy (`ACCEPT`, `DROP`, `REJECT`).
+        /// policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `DROP`.
         /// </summary>
         [Input("inputPolicy")]
         public Input<string>? InputPolicy { get; set; }
@@ -243,7 +243,7 @@ namespace Pulumi.ProxmoxVE.Firewall
         /// <summary>
         /// Log level for incoming
         /// packets (`Emerg`, `Alert`, `Crit`, `Err`, `Warning`, `Notice`, `Info`,
-        /// `Debug`, `Nolog`).
+        /// `Debug`, `Nolog`). Defaults to `Nolog`.
         /// </summary>
         [Input("logLevelIn")]
         public Input<string>? LogLevelIn { get; set; }
@@ -251,19 +251,19 @@ namespace Pulumi.ProxmoxVE.Firewall
         /// <summary>
         /// Log level for outgoing
         /// packets (`Emerg`, `Alert`, `Crit`, `Err`, `Warning`, `Notice`, `Info`,
-        /// `Debug`, `Nolog`).
+        /// `Debug`, `Nolog`). Defaults to `Nolog`.
         /// </summary>
         [Input("logLevelOut")]
         public Input<string>? LogLevelOut { get; set; }
 
         /// <summary>
-        /// Enable/disable MAC address filter.
+        /// Enable/disable MAC address filter. Defaults to `True`.
         /// </summary>
         [Input("macfilter")]
         public Input<bool>? Macfilter { get; set; }
 
         /// <summary>
-        /// Enable NDP (Neighbor Discovery Protocol).
+        /// Enable NDP (Neighbor Discovery Protocol). Defaults to `False`.
         /// </summary>
         [Input("ndp")]
         public Input<bool>? Ndp { get; set; }
@@ -276,13 +276,13 @@ namespace Pulumi.ProxmoxVE.Firewall
 
         /// <summary>
         /// The default output
-        /// policy (`ACCEPT`, `DROP`, `REJECT`).
+        /// policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `ACCEPT`.
         /// </summary>
         [Input("outputPolicy")]
         public Input<string>? OutputPolicy { get; set; }
 
         /// <summary>
-        /// Enable Router Advertisement.
+        /// Enable Router Advertisement. Defaults to `True`.
         /// </summary>
         [Input("radv")]
         public Input<bool>? Radv { get; set; }
@@ -308,20 +308,20 @@ namespace Pulumi.ProxmoxVE.Firewall
         public Input<int>? ContainerId { get; set; }
 
         /// <summary>
-        /// Enable DHCP.
+        /// Enable DHCP. Defaults to `False`.
         /// </summary>
         [Input("dhcp")]
         public Input<bool>? Dhcp { get; set; }
 
         /// <summary>
-        /// Enable or disable the firewall.
+        /// Enable or disable the firewall. Defaults to `False`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
         /// The default input
-        /// policy (`ACCEPT`, `DROP`, `REJECT`).
+        /// policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `DROP`.
         /// </summary>
         [Input("inputPolicy")]
         public Input<string>? InputPolicy { get; set; }
@@ -339,7 +339,7 @@ namespace Pulumi.ProxmoxVE.Firewall
         /// <summary>
         /// Log level for incoming
         /// packets (`Emerg`, `Alert`, `Crit`, `Err`, `Warning`, `Notice`, `Info`,
-        /// `Debug`, `Nolog`).
+        /// `Debug`, `Nolog`). Defaults to `Nolog`.
         /// </summary>
         [Input("logLevelIn")]
         public Input<string>? LogLevelIn { get; set; }
@@ -347,19 +347,19 @@ namespace Pulumi.ProxmoxVE.Firewall
         /// <summary>
         /// Log level for outgoing
         /// packets (`Emerg`, `Alert`, `Crit`, `Err`, `Warning`, `Notice`, `Info`,
-        /// `Debug`, `Nolog`).
+        /// `Debug`, `Nolog`). Defaults to `Nolog`.
         /// </summary>
         [Input("logLevelOut")]
         public Input<string>? LogLevelOut { get; set; }
 
         /// <summary>
-        /// Enable/disable MAC address filter.
+        /// Enable/disable MAC address filter. Defaults to `True`.
         /// </summary>
         [Input("macfilter")]
         public Input<bool>? Macfilter { get; set; }
 
         /// <summary>
-        /// Enable NDP (Neighbor Discovery Protocol).
+        /// Enable NDP (Neighbor Discovery Protocol). Defaults to `False`.
         /// </summary>
         [Input("ndp")]
         public Input<bool>? Ndp { get; set; }
@@ -372,13 +372,13 @@ namespace Pulumi.ProxmoxVE.Firewall
 
         /// <summary>
         /// The default output
-        /// policy (`ACCEPT`, `DROP`, `REJECT`).
+        /// policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `ACCEPT`.
         /// </summary>
         [Input("outputPolicy")]
         public Input<string>? OutputPolicy { get; set; }
 
         /// <summary>
-        /// Enable Router Advertisement.
+        /// Enable Router Advertisement. Defaults to `True`.
         /// </summary>
         [Input("radv")]
         public Input<bool>? Radv { get; set; }

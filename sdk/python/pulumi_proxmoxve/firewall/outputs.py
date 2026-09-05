@@ -121,7 +121,7 @@ class RulesLegacyRule(dict):
                from <https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions>
         :param _builtins.int pos: Position of the rule in the list.
         :param _builtins.str proto: Restrict packet protocol. You can use protocol
-               names as defined in '/etc/protocols'.
+               names or simple numbers (0-255), as defined in '/etc/protocols'.
         :param _builtins.str security_group: Security group name.
         :param _builtins.str source: Restrict packet source address. This can refer
                to a single IP address, an IP set ('+ipsetname') or an IP alias
@@ -256,7 +256,7 @@ class RulesLegacyRule(dict):
     def proto(self) -> Optional[_builtins.str]:
         """
         Restrict packet protocol. You can use protocol
-        names as defined in '/etc/protocols'.
+        names or simple numbers (0-255), as defined in '/etc/protocols'.
         """
         return pulumi.get(self, "proto")
 

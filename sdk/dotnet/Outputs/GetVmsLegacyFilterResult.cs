@@ -18,7 +18,7 @@ namespace Pulumi.ProxmoxVE.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Treat values as regex patterns
+        /// Whether to treat the `Values` as regex patterns (defaults to `False`).
         /// </summary>
         public readonly bool? Regex;
         /// <summary>

@@ -65,7 +65,7 @@ namespace Pulumi.ProxmoxVE.Outputs
         /// </summary>
         public readonly double? Limit;
         /// <summary>
-        /// Enable/disable NUMA. (default to `False`)
+        /// Enable/disable NUMA (defaults to `False`).
         /// </summary>
         public readonly bool? Numa;
         /// <summary>

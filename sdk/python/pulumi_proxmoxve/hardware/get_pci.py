@@ -87,7 +87,7 @@ class AwaitableGetPciResult(GetPciResult):
             pci_class_blacklists=self.pci_class_blacklists)
 
 
-def get_pci(filters: Optional[Union['GetPciFiltersArgs', 'GetPciFiltersArgsDict']] = None,
+def get_pci(filters: Optional[Union['GetPciFiltersArgs', 'GetPciFiltersArgsDict', 'outputs.GetPciFiltersResult']] = None,
             node_name: Optional[_builtins.str] = None,
             pci_class_blacklists: Optional[Sequence[_builtins.str]] = None,
             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPciResult:
@@ -115,7 +115,7 @@ def get_pci(filters: Optional[Union['GetPciFiltersArgs', 'GetPciFiltersArgsDict'
     ```
 
 
-    :param Union['GetPciFiltersArgs', 'GetPciFiltersArgsDict'] filters: Client-side filters for narrowing down results. All filters use prefix matching.
+    :param Union['GetPciFiltersArgs', 'GetPciFiltersArgsDict', 'outputs.GetPciFiltersResult'] filters: Client-side filters for narrowing down results. All filters use prefix matching.
     :param _builtins.str node_name: The name of the node to list PCI devices from.
     :param Sequence[_builtins.str] pci_class_blacklists: A list of PCI class IDs (hex prefixes) to exclude from the results. If not set, the Proxmox default blacklist is used which filters out memory controllers (05), bridges (06), and processors (0b). Set to an empty list to return all devices.
     """
@@ -131,7 +131,7 @@ def get_pci(filters: Optional[Union['GetPciFiltersArgs', 'GetPciFiltersArgsDict'
         filters=pulumi.get(__ret__, 'filters'),
         node_name=pulumi.get(__ret__, 'node_name'),
         pci_class_blacklists=pulumi.get(__ret__, 'pci_class_blacklists'))
-def get_pci_output(filters: pulumi.Input[Optional[Optional[Union['GetPciFiltersArgs', 'GetPciFiltersArgsDict']]]] = None,
+def get_pci_output(filters: pulumi.Input[Optional[Optional[Union['GetPciFiltersArgs', 'GetPciFiltersArgsDict', 'outputs.GetPciFiltersResult']]]] = None,
                    node_name: pulumi.Input[Optional[_builtins.str]] = None,
                    pci_class_blacklists: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPciResult]:
@@ -159,7 +159,7 @@ def get_pci_output(filters: pulumi.Input[Optional[Optional[Union['GetPciFiltersA
     ```
 
 
-    :param Union['GetPciFiltersArgs', 'GetPciFiltersArgsDict'] filters: Client-side filters for narrowing down results. All filters use prefix matching.
+    :param Union['GetPciFiltersArgs', 'GetPciFiltersArgsDict', 'outputs.GetPciFiltersResult'] filters: Client-side filters for narrowing down results. All filters use prefix matching.
     :param _builtins.str node_name: The name of the node to list PCI devices from.
     :param Sequence[_builtins.str] pci_class_blacklists: A list of PCI class IDs (hex prefixes) to exclude from the results. If not set, the Proxmox default blacklist is used which filters out memory controllers (05), bridges (06), and processors (0b). Set to an empty list to return all devices.
     """

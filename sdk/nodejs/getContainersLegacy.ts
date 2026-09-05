@@ -68,7 +68,7 @@ export interface GetContainersLegacyArgs {
      */
     filters?: inputs.GetContainersLegacyFilter[];
     /**
-     * The node name. All cluster nodes will be queried in case this is omitted
+     * The node name. If omitted, all cluster nodes are queried.
      */
     nodeName?: string;
     /**
@@ -162,7 +162,7 @@ export interface GetContainersLegacyOutputArgs {
      */
     filters?: pulumi.Input<pulumi.Input<inputs.GetContainersLegacyFilterArgs>[] | undefined>;
     /**
-     * The node name. All cluster nodes will be queried in case this is omitted
+     * The node name. If omitted, all cluster nodes are queried.
      */
     nodeName?: pulumi.Input<string | undefined>;
     /**

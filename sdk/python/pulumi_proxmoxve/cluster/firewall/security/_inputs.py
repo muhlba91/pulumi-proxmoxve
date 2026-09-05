@@ -72,7 +72,7 @@ class GroupLegacyRuleArgsDict(TypedDict):
     proto: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Restrict packet protocol. You can use protocol names
-    as defined in '/etc/protocols'.
+    or simple numbers (0-255), as defined in '/etc/protocols'.
     """
     security_group: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -141,7 +141,7 @@ class GroupLegacyRuleArgs:
                from <https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions>
         :param pulumi.Input[_builtins.int] pos: Position of the rule in the list.
         :param pulumi.Input[_builtins.str] proto: Restrict packet protocol. You can use protocol names
-               as defined in '/etc/protocols'.
+               or simple numbers (0-255), as defined in '/etc/protocols'.
         :param pulumi.Input[_builtins.str] security_group: Security group name
         :param pulumi.Input[_builtins.str] source: Restrict packet source address. This can refer
                to a single IP address, an IP set ('+ipsetname') or an IP alias
@@ -311,7 +311,7 @@ class GroupLegacyRuleArgs:
     def proto(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Restrict packet protocol. You can use protocol names
-        as defined in '/etc/protocols'.
+        or simple numbers (0-255), as defined in '/etc/protocols'.
         """
         return pulumi.get(self, "proto")
 

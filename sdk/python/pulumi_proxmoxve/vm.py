@@ -481,23 +481,24 @@ class Vm(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cdrom: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['VmCdromArgs', 'VmCdromArgsDict']]]]] = None,
-                 cpu: pulumi.Input[Optional[Union['VmCpuArgs', 'VmCpuArgsDict']]] = None,
+                 cdrom: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['VmCdromArgs', 'VmCdromArgsDict', 'outputs.VmCdrom']]]]] = None,
+                 cpu: pulumi.Input[Optional[Union['VmCpuArgs', 'VmCpuArgsDict', 'outputs.VmCpu']]] = None,
                  delete_unreferenced_disks_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  node_name: pulumi.Input[Optional[_builtins.str]] = None,
                  purge_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  resource_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 rng: pulumi.Input[Optional[Union['VmRngArgs', 'VmRngArgsDict']]] = None,
+                 rng: pulumi.Input[Optional[Union['VmRngArgs', 'VmRngArgsDict', 'outputs.VmRng']]] = None,
                  stop_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  template: pulumi.Input[Optional[_builtins.bool]] = None,
-                 timeouts: pulumi.Input[Optional[Union['VmTimeoutsArgs', 'VmTimeoutsArgsDict']]] = None,
-                 vga: pulumi.Input[Optional[Union['VmVgaArgs', 'VmVgaArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['VmTimeoutsArgs', 'VmTimeoutsArgsDict', 'outputs.VmTimeouts']]] = None,
+                 vga: pulumi.Input[Optional[Union['VmVgaArgs', 'VmVgaArgsDict', 'outputs.VmVga']]] = None,
                  __props__=None):
         """
         > **DO NOT USE**
+
         This is an experimental implementation of a Proxmox VM resource using Plugin Framework.<br><br>It is a Proof of Concept, highly experimental and **will** change in future. It does not support all features of the Proxmox API for VMs and **MUST NOT** be used in production.
 
         > Many attributes are marked as **optional** _and_ **computed** in the schema,
@@ -510,19 +511,19 @@ class Vm(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['VmCdromArgs', 'VmCdromArgsDict']]]] cdrom: The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
-        :param pulumi.Input[Union['VmCpuArgs', 'VmCpuArgsDict']] cpu: The CPU configuration.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['VmCdromArgs', 'VmCdromArgsDict', 'outputs.VmCdrom']]]] cdrom: The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+        :param pulumi.Input[Union['VmCpuArgs', 'VmCpuArgsDict', 'outputs.VmCpu']] cpu: The CPU configuration.
         :param pulumi.Input[_builtins.bool] delete_unreferenced_disks_on_destroy: Set to true to delete unreferenced disks on destroy (defaults to `true`).
         :param pulumi.Input[_builtins.str] description: The description of the VM.
         :param pulumi.Input[_builtins.str] name: The name of the VM. Doesn't have to be unique.
         :param pulumi.Input[_builtins.str] node_name: The name of the node where the VM is provisioned.
         :param pulumi.Input[_builtins.bool] purge_on_destroy: Set to true to purge the VM from backup configurations on destroy (defaults to `true`).
         :param pulumi.Input[_builtins.str] resource_id: The unique identifier of the VM in the Proxmox cluster.
-        :param pulumi.Input[Union['VmRngArgs', 'VmRngArgsDict']] rng: Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.` See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
+        :param pulumi.Input[Union['VmRngArgs', 'VmRngArgsDict', 'outputs.VmRng']] rng: Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.` See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
         :param pulumi.Input[_builtins.bool] stop_on_destroy: Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The tags assigned to the VM.
         :param pulumi.Input[_builtins.bool] template: Set to true to create a VM template.
-        :param pulumi.Input[Union['VmVgaArgs', 'VmVgaArgsDict']] vga: Configure the VGA Hardware. If you want to use high resolution modes (>= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
+        :param pulumi.Input[Union['VmVgaArgs', 'VmVgaArgsDict', 'outputs.VmVga']] vga: Configure the VGA Hardware. If you want to use high resolution modes (>= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
         """
         ...
     @overload
@@ -532,6 +533,7 @@ class Vm(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         > **DO NOT USE**
+
         This is an experimental implementation of a Proxmox VM resource using Plugin Framework.<br><br>It is a Proof of Concept, highly experimental and **will** change in future. It does not support all features of the Proxmox API for VMs and **MUST NOT** be used in production.
 
         > Many attributes are marked as **optional** _and_ **computed** in the schema,
@@ -557,20 +559,20 @@ class Vm(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cdrom: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['VmCdromArgs', 'VmCdromArgsDict']]]]] = None,
-                 cpu: pulumi.Input[Optional[Union['VmCpuArgs', 'VmCpuArgsDict']]] = None,
+                 cdrom: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['VmCdromArgs', 'VmCdromArgsDict', 'outputs.VmCdrom']]]]] = None,
+                 cpu: pulumi.Input[Optional[Union['VmCpuArgs', 'VmCpuArgsDict', 'outputs.VmCpu']]] = None,
                  delete_unreferenced_disks_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  node_name: pulumi.Input[Optional[_builtins.str]] = None,
                  purge_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  resource_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 rng: pulumi.Input[Optional[Union['VmRngArgs', 'VmRngArgsDict']]] = None,
+                 rng: pulumi.Input[Optional[Union['VmRngArgs', 'VmRngArgsDict', 'outputs.VmRng']]] = None,
                  stop_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  template: pulumi.Input[Optional[_builtins.bool]] = None,
-                 timeouts: pulumi.Input[Optional[Union['VmTimeoutsArgs', 'VmTimeoutsArgsDict']]] = None,
-                 vga: pulumi.Input[Optional[Union['VmVgaArgs', 'VmVgaArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['VmTimeoutsArgs', 'VmTimeoutsArgsDict', 'outputs.VmTimeouts']]] = None,
+                 vga: pulumi.Input[Optional[Union['VmVgaArgs', 'VmVgaArgsDict', 'outputs.VmVga']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -608,20 +610,20 @@ class Vm(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cdrom: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['VmCdromArgs', 'VmCdromArgsDict']]]]] = None,
-            cpu: pulumi.Input[Optional[Union['VmCpuArgs', 'VmCpuArgsDict']]] = None,
+            cdrom: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['VmCdromArgs', 'VmCdromArgsDict', 'outputs.VmCdrom']]]]] = None,
+            cpu: pulumi.Input[Optional[Union['VmCpuArgs', 'VmCpuArgsDict', 'outputs.VmCpu']]] = None,
             delete_unreferenced_disks_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             node_name: pulumi.Input[Optional[_builtins.str]] = None,
             purge_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
             resource_id: pulumi.Input[Optional[_builtins.str]] = None,
-            rng: pulumi.Input[Optional[Union['VmRngArgs', 'VmRngArgsDict']]] = None,
+            rng: pulumi.Input[Optional[Union['VmRngArgs', 'VmRngArgsDict', 'outputs.VmRng']]] = None,
             stop_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             template: pulumi.Input[Optional[_builtins.bool]] = None,
-            timeouts: pulumi.Input[Optional[Union['VmTimeoutsArgs', 'VmTimeoutsArgsDict']]] = None,
-            vga: pulumi.Input[Optional[Union['VmVgaArgs', 'VmVgaArgsDict']]] = None) -> 'Vm':
+            timeouts: pulumi.Input[Optional[Union['VmTimeoutsArgs', 'VmTimeoutsArgsDict', 'outputs.VmTimeouts']]] = None,
+            vga: pulumi.Input[Optional[Union['VmVgaArgs', 'VmVgaArgsDict', 'outputs.VmVga']]] = None) -> 'Vm':
         """
         Get an existing Vm resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -629,19 +631,19 @@ class Vm(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['VmCdromArgs', 'VmCdromArgsDict']]]] cdrom: The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
-        :param pulumi.Input[Union['VmCpuArgs', 'VmCpuArgsDict']] cpu: The CPU configuration.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['VmCdromArgs', 'VmCdromArgsDict', 'outputs.VmCdrom']]]] cdrom: The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+        :param pulumi.Input[Union['VmCpuArgs', 'VmCpuArgsDict', 'outputs.VmCpu']] cpu: The CPU configuration.
         :param pulumi.Input[_builtins.bool] delete_unreferenced_disks_on_destroy: Set to true to delete unreferenced disks on destroy (defaults to `true`).
         :param pulumi.Input[_builtins.str] description: The description of the VM.
         :param pulumi.Input[_builtins.str] name: The name of the VM. Doesn't have to be unique.
         :param pulumi.Input[_builtins.str] node_name: The name of the node where the VM is provisioned.
         :param pulumi.Input[_builtins.bool] purge_on_destroy: Set to true to purge the VM from backup configurations on destroy (defaults to `true`).
         :param pulumi.Input[_builtins.str] resource_id: The unique identifier of the VM in the Proxmox cluster.
-        :param pulumi.Input[Union['VmRngArgs', 'VmRngArgsDict']] rng: Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.` See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
+        :param pulumi.Input[Union['VmRngArgs', 'VmRngArgsDict', 'outputs.VmRng']] rng: Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.` See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
         :param pulumi.Input[_builtins.bool] stop_on_destroy: Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The tags assigned to the VM.
         :param pulumi.Input[_builtins.bool] template: Set to true to create a VM template.
-        :param pulumi.Input[Union['VmVgaArgs', 'VmVgaArgsDict']] vga: Configure the VGA Hardware. If you want to use high resolution modes (>= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
+        :param pulumi.Input[Union['VmVgaArgs', 'VmVgaArgsDict', 'outputs.VmVga']] vga: Configure the VGA Hardware. If you want to use high resolution modes (>= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

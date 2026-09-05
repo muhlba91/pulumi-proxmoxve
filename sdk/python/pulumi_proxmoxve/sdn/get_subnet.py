@@ -136,7 +136,7 @@ class AwaitableGetSubnetResult(GetSubnetResult):
 
 
 def get_subnet(cidr: Optional[_builtins.str] = None,
-               dhcp_range: Optional[Union['GetSubnetDhcpRangeArgs', 'GetSubnetDhcpRangeArgsDict']] = None,
+               dhcp_range: Optional[Union['GetSubnetDhcpRangeArgs', 'GetSubnetDhcpRangeArgsDict', 'outputs.GetSubnetDhcpRangeResult']] = None,
                vnet: Optional[_builtins.str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSubnetResult:
     """
@@ -144,7 +144,7 @@ def get_subnet(cidr: Optional[_builtins.str] = None,
 
 
     :param _builtins.str cidr: A CIDR network address, for example 10.0.0.0/8
-    :param Union['GetSubnetDhcpRangeArgs', 'GetSubnetDhcpRangeArgsDict'] dhcp_range: DHCP range (start and end IPs).
+    :param Union['GetSubnetDhcpRangeArgs', 'GetSubnetDhcpRangeArgsDict', 'outputs.GetSubnetDhcpRangeResult'] dhcp_range: DHCP range (start and end IPs).
     :param _builtins.str vnet: The VNet this subnet belongs to.
     """
     __args__ = dict()
@@ -164,7 +164,7 @@ def get_subnet(cidr: Optional[_builtins.str] = None,
         snat=pulumi.get(__ret__, 'snat'),
         vnet=pulumi.get(__ret__, 'vnet'))
 def get_subnet_output(cidr: pulumi.Input[Optional[_builtins.str]] = None,
-                      dhcp_range: pulumi.Input[Optional[Optional[Union['GetSubnetDhcpRangeArgs', 'GetSubnetDhcpRangeArgsDict']]]] = None,
+                      dhcp_range: pulumi.Input[Optional[Optional[Union['GetSubnetDhcpRangeArgs', 'GetSubnetDhcpRangeArgsDict', 'outputs.GetSubnetDhcpRangeResult']]]] = None,
                       vnet: pulumi.Input[Optional[_builtins.str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSubnetResult]:
     """
@@ -172,7 +172,7 @@ def get_subnet_output(cidr: pulumi.Input[Optional[_builtins.str]] = None,
 
 
     :param _builtins.str cidr: A CIDR network address, for example 10.0.0.0/8
-    :param Union['GetSubnetDhcpRangeArgs', 'GetSubnetDhcpRangeArgsDict'] dhcp_range: DHCP range (start and end IPs).
+    :param Union['GetSubnetDhcpRangeArgs', 'GetSubnetDhcpRangeArgsDict', 'outputs.GetSubnetDhcpRangeResult'] dhcp_range: DHCP range (start and end IPs).
     :param _builtins.str vnet: The VNet this subnet belongs to.
     """
     __args__ = dict()

@@ -73,7 +73,7 @@ public final class GroupLegacyRule {
     private @Nullable Integer pos;
     /**
      * @return Restrict packet protocol. You can use protocol names
-     * as defined in &#39;/etc/protocols&#39;.
+     * or simple numbers (0-255), as defined in &#39;/etc/protocols&#39;.
      * 
      */
     private @Nullable String proto;
@@ -186,7 +186,7 @@ public final class GroupLegacyRule {
     }
     /**
      * @return Restrict packet protocol. You can use protocol names
-     * as defined in &#39;/etc/protocols&#39;.
+     * or simple numbers (0-255), as defined in &#39;/etc/protocols&#39;.
      * 
      */
     public Optional<String> proto() {

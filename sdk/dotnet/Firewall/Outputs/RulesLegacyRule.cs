@@ -64,7 +64,7 @@ namespace Pulumi.ProxmoxVE.Firewall.Outputs
         public readonly int? Pos;
         /// <summary>
         /// Restrict packet protocol. You can use protocol
-        /// names as defined in '/etc/protocols'.
+        /// names or simple numbers (0-255), as defined in '/etc/protocols'.
         /// </summary>
         public readonly string? Proto;
         /// <summary>

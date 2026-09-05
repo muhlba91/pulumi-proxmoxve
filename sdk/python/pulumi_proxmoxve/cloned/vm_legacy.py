@@ -640,25 +640,25 @@ class VmLegacy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cdrom: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['VmLegacyCdromArgs', 'VmLegacyCdromArgsDict']]]]] = None,
-                 clone: pulumi.Input[Optional[Union['VmLegacyCloneArgs', 'VmLegacyCloneArgsDict']]] = None,
-                 cpu: pulumi.Input[Optional[Union['VmLegacyCpuArgs', 'VmLegacyCpuArgsDict']]] = None,
-                 delete: pulumi.Input[Optional[Union['VmLegacyDeleteArgs', 'VmLegacyDeleteArgsDict']]] = None,
+                 cdrom: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['VmLegacyCdromArgs', 'VmLegacyCdromArgsDict', 'outputs.VmLegacyCdrom']]]]] = None,
+                 clone: pulumi.Input[Optional[Union['VmLegacyCloneArgs', 'VmLegacyCloneArgsDict', 'outputs.VmLegacyClone']]] = None,
+                 cpu: pulumi.Input[Optional[Union['VmLegacyCpuArgs', 'VmLegacyCpuArgsDict', 'outputs.VmLegacyCpu']]] = None,
+                 delete: pulumi.Input[Optional[Union['VmLegacyDeleteArgs', 'VmLegacyDeleteArgsDict', 'outputs.VmLegacyDelete']]] = None,
                  delete_unreferenced_disks_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 disk: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['VmLegacyDiskArgs', 'VmLegacyDiskArgsDict']]]]] = None,
-                 memory: pulumi.Input[Optional[Union['VmLegacyMemoryArgs', 'VmLegacyMemoryArgsDict']]] = None,
+                 disk: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['VmLegacyDiskArgs', 'VmLegacyDiskArgsDict', 'outputs.VmLegacyDisk']]]]] = None,
+                 memory: pulumi.Input[Optional[Union['VmLegacyMemoryArgs', 'VmLegacyMemoryArgsDict', 'outputs.VmLegacyMemory']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 network: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['VmLegacyNetworkArgs', 'VmLegacyNetworkArgsDict']]]]] = None,
+                 network: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['VmLegacyNetworkArgs', 'VmLegacyNetworkArgsDict', 'outputs.VmLegacyNetwork']]]]] = None,
                  node_name: pulumi.Input[Optional[_builtins.str]] = None,
                  purge_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  resource_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 rng: pulumi.Input[Optional[Union['VmLegacyRngArgs', 'VmLegacyRngArgsDict']]] = None,
+                 rng: pulumi.Input[Optional[Union['VmLegacyRngArgs', 'VmLegacyRngArgsDict', 'outputs.VmLegacyRng']]] = None,
                  started: pulumi.Input[Optional[_builtins.bool]] = None,
                  stop_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 timeouts: pulumi.Input[Optional[Union['VmLegacyTimeoutsArgs', 'VmLegacyTimeoutsArgsDict']]] = None,
-                 vga: pulumi.Input[Optional[Union['VmLegacyVgaArgs', 'VmLegacyVgaArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['VmLegacyTimeoutsArgs', 'VmLegacyTimeoutsArgsDict', 'outputs.VmLegacyTimeouts']]] = None,
+                 vga: pulumi.Input[Optional[Union['VmLegacyVgaArgs', 'VmLegacyVgaArgsDict', 'outputs.VmLegacyVga']]] = None,
                  __props__=None):
         """
         > **Deprecated:** Use `cloned.Vm` instead. This resource will be removed in v1.0.
@@ -862,24 +862,24 @@ class VmLegacy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['VmLegacyCdromArgs', 'VmLegacyCdromArgsDict']]]] cdrom: The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
-        :param pulumi.Input[Union['VmLegacyCloneArgs', 'VmLegacyCloneArgsDict']] clone: Clone settings. Changes require recreation.
-        :param pulumi.Input[Union['VmLegacyCpuArgs', 'VmLegacyCpuArgsDict']] cpu: The CPU configuration.
-        :param pulumi.Input[Union['VmLegacyDeleteArgs', 'VmLegacyDeleteArgsDict']] delete: Explicit deletions to perform after cloning/updating. Entries persist across applies.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['VmLegacyCdromArgs', 'VmLegacyCdromArgsDict', 'outputs.VmLegacyCdrom']]]] cdrom: The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+        :param pulumi.Input[Union['VmLegacyCloneArgs', 'VmLegacyCloneArgsDict', 'outputs.VmLegacyClone']] clone: Clone settings. Changes require recreation.
+        :param pulumi.Input[Union['VmLegacyCpuArgs', 'VmLegacyCpuArgsDict', 'outputs.VmLegacyCpu']] cpu: The CPU configuration.
+        :param pulumi.Input[Union['VmLegacyDeleteArgs', 'VmLegacyDeleteArgsDict', 'outputs.VmLegacyDelete']] delete: Explicit deletions to perform after cloning/updating. Entries persist across applies.
         :param pulumi.Input[_builtins.bool] delete_unreferenced_disks_on_destroy: Delete unreferenced disks on destroy. WARNING: When set to true, any disks not explicitly managed by Terraform will be deleted on destroy, potentially causing data loss. Defaults to false for safety.
         :param pulumi.Input[_builtins.str] description: Optional VM description applied after cloning.
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['VmLegacyDiskArgs', 'VmLegacyDiskArgsDict']]]] disk: Disks keyed by slot (scsi0, virtio0, sata0, ide0, ...). Only listed keys are managed.
-        :param pulumi.Input[Union['VmLegacyMemoryArgs', 'VmLegacyMemoryArgsDict']] memory: Memory configuration for the VM. Uses Proxmox memory ballooning to allow dynamic memory allocation. The `size` sets the total available RAM, while `balloon` sets the guaranteed floor. The host can reclaim memory between these values when needed.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['VmLegacyDiskArgs', 'VmLegacyDiskArgsDict', 'outputs.VmLegacyDisk']]]] disk: Disks keyed by slot (scsi0, virtio0, sata0, ide0, ...). Only listed keys are managed.
+        :param pulumi.Input[Union['VmLegacyMemoryArgs', 'VmLegacyMemoryArgsDict', 'outputs.VmLegacyMemory']] memory: Memory configuration for the VM. Uses Proxmox memory ballooning to allow dynamic memory allocation. The `size` sets the total available RAM, while `balloon` sets the guaranteed floor. The host can reclaim memory between these values when needed.
         :param pulumi.Input[_builtins.str] name: Optional VM name override applied after cloning.
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['VmLegacyNetworkArgs', 'VmLegacyNetworkArgsDict']]]] network: Network devices keyed by slot (net0, net1, ...). Only listed keys are managed.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['VmLegacyNetworkArgs', 'VmLegacyNetworkArgsDict', 'outputs.VmLegacyNetwork']]]] network: Network devices keyed by slot (net0, net1, ...). Only listed keys are managed.
         :param pulumi.Input[_builtins.str] node_name: Target node for the cloned VM.
         :param pulumi.Input[_builtins.bool] purge_on_destroy: Purge backup configuration on destroy.
         :param pulumi.Input[_builtins.str] resource_id: The VM identifier in the Proxmox cluster.
-        :param pulumi.Input[Union['VmLegacyRngArgs', 'VmLegacyRngArgsDict']] rng: Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.` See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
+        :param pulumi.Input[Union['VmLegacyRngArgs', 'VmLegacyRngArgsDict', 'outputs.VmLegacyRng']] rng: Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.` See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
         :param pulumi.Input[_builtins.bool] started: Whether the VM should be started after cloning. Defaults to true.
         :param pulumi.Input[_builtins.bool] stop_on_destroy: Stop the VM on destroy (instead of shutdown).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags applied after cloning.
-        :param pulumi.Input[Union['VmLegacyVgaArgs', 'VmLegacyVgaArgsDict']] vga: Configure the VGA Hardware. If you want to use high resolution modes (>= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
+        :param pulumi.Input[Union['VmLegacyVgaArgs', 'VmLegacyVgaArgsDict', 'outputs.VmLegacyVga']] vga: Configure the VGA Hardware. If you want to use high resolution modes (>= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
         """
         ...
     @overload
@@ -1102,25 +1102,25 @@ class VmLegacy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cdrom: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['VmLegacyCdromArgs', 'VmLegacyCdromArgsDict']]]]] = None,
-                 clone: pulumi.Input[Optional[Union['VmLegacyCloneArgs', 'VmLegacyCloneArgsDict']]] = None,
-                 cpu: pulumi.Input[Optional[Union['VmLegacyCpuArgs', 'VmLegacyCpuArgsDict']]] = None,
-                 delete: pulumi.Input[Optional[Union['VmLegacyDeleteArgs', 'VmLegacyDeleteArgsDict']]] = None,
+                 cdrom: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['VmLegacyCdromArgs', 'VmLegacyCdromArgsDict', 'outputs.VmLegacyCdrom']]]]] = None,
+                 clone: pulumi.Input[Optional[Union['VmLegacyCloneArgs', 'VmLegacyCloneArgsDict', 'outputs.VmLegacyClone']]] = None,
+                 cpu: pulumi.Input[Optional[Union['VmLegacyCpuArgs', 'VmLegacyCpuArgsDict', 'outputs.VmLegacyCpu']]] = None,
+                 delete: pulumi.Input[Optional[Union['VmLegacyDeleteArgs', 'VmLegacyDeleteArgsDict', 'outputs.VmLegacyDelete']]] = None,
                  delete_unreferenced_disks_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 disk: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['VmLegacyDiskArgs', 'VmLegacyDiskArgsDict']]]]] = None,
-                 memory: pulumi.Input[Optional[Union['VmLegacyMemoryArgs', 'VmLegacyMemoryArgsDict']]] = None,
+                 disk: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['VmLegacyDiskArgs', 'VmLegacyDiskArgsDict', 'outputs.VmLegacyDisk']]]]] = None,
+                 memory: pulumi.Input[Optional[Union['VmLegacyMemoryArgs', 'VmLegacyMemoryArgsDict', 'outputs.VmLegacyMemory']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 network: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['VmLegacyNetworkArgs', 'VmLegacyNetworkArgsDict']]]]] = None,
+                 network: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['VmLegacyNetworkArgs', 'VmLegacyNetworkArgsDict', 'outputs.VmLegacyNetwork']]]]] = None,
                  node_name: pulumi.Input[Optional[_builtins.str]] = None,
                  purge_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  resource_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 rng: pulumi.Input[Optional[Union['VmLegacyRngArgs', 'VmLegacyRngArgsDict']]] = None,
+                 rng: pulumi.Input[Optional[Union['VmLegacyRngArgs', 'VmLegacyRngArgsDict', 'outputs.VmLegacyRng']]] = None,
                  started: pulumi.Input[Optional[_builtins.bool]] = None,
                  stop_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 timeouts: pulumi.Input[Optional[Union['VmLegacyTimeoutsArgs', 'VmLegacyTimeoutsArgsDict']]] = None,
-                 vga: pulumi.Input[Optional[Union['VmLegacyVgaArgs', 'VmLegacyVgaArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['VmLegacyTimeoutsArgs', 'VmLegacyTimeoutsArgsDict', 'outputs.VmLegacyTimeouts']]] = None,
+                 vga: pulumi.Input[Optional[Union['VmLegacyVgaArgs', 'VmLegacyVgaArgsDict', 'outputs.VmLegacyVga']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1163,25 +1163,25 @@ class VmLegacy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cdrom: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['VmLegacyCdromArgs', 'VmLegacyCdromArgsDict']]]]] = None,
-            clone: pulumi.Input[Optional[Union['VmLegacyCloneArgs', 'VmLegacyCloneArgsDict']]] = None,
-            cpu: pulumi.Input[Optional[Union['VmLegacyCpuArgs', 'VmLegacyCpuArgsDict']]] = None,
-            delete: pulumi.Input[Optional[Union['VmLegacyDeleteArgs', 'VmLegacyDeleteArgsDict']]] = None,
+            cdrom: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['VmLegacyCdromArgs', 'VmLegacyCdromArgsDict', 'outputs.VmLegacyCdrom']]]]] = None,
+            clone: pulumi.Input[Optional[Union['VmLegacyCloneArgs', 'VmLegacyCloneArgsDict', 'outputs.VmLegacyClone']]] = None,
+            cpu: pulumi.Input[Optional[Union['VmLegacyCpuArgs', 'VmLegacyCpuArgsDict', 'outputs.VmLegacyCpu']]] = None,
+            delete: pulumi.Input[Optional[Union['VmLegacyDeleteArgs', 'VmLegacyDeleteArgsDict', 'outputs.VmLegacyDelete']]] = None,
             delete_unreferenced_disks_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            disk: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['VmLegacyDiskArgs', 'VmLegacyDiskArgsDict']]]]] = None,
-            memory: pulumi.Input[Optional[Union['VmLegacyMemoryArgs', 'VmLegacyMemoryArgsDict']]] = None,
+            disk: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['VmLegacyDiskArgs', 'VmLegacyDiskArgsDict', 'outputs.VmLegacyDisk']]]]] = None,
+            memory: pulumi.Input[Optional[Union['VmLegacyMemoryArgs', 'VmLegacyMemoryArgsDict', 'outputs.VmLegacyMemory']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            network: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['VmLegacyNetworkArgs', 'VmLegacyNetworkArgsDict']]]]] = None,
+            network: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['VmLegacyNetworkArgs', 'VmLegacyNetworkArgsDict', 'outputs.VmLegacyNetwork']]]]] = None,
             node_name: pulumi.Input[Optional[_builtins.str]] = None,
             purge_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
             resource_id: pulumi.Input[Optional[_builtins.str]] = None,
-            rng: pulumi.Input[Optional[Union['VmLegacyRngArgs', 'VmLegacyRngArgsDict']]] = None,
+            rng: pulumi.Input[Optional[Union['VmLegacyRngArgs', 'VmLegacyRngArgsDict', 'outputs.VmLegacyRng']]] = None,
             started: pulumi.Input[Optional[_builtins.bool]] = None,
             stop_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            timeouts: pulumi.Input[Optional[Union['VmLegacyTimeoutsArgs', 'VmLegacyTimeoutsArgsDict']]] = None,
-            vga: pulumi.Input[Optional[Union['VmLegacyVgaArgs', 'VmLegacyVgaArgsDict']]] = None) -> 'VmLegacy':
+            timeouts: pulumi.Input[Optional[Union['VmLegacyTimeoutsArgs', 'VmLegacyTimeoutsArgsDict', 'outputs.VmLegacyTimeouts']]] = None,
+            vga: pulumi.Input[Optional[Union['VmLegacyVgaArgs', 'VmLegacyVgaArgsDict', 'outputs.VmLegacyVga']]] = None) -> 'VmLegacy':
         """
         Get an existing VmLegacy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1189,24 +1189,24 @@ class VmLegacy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['VmLegacyCdromArgs', 'VmLegacyCdromArgsDict']]]] cdrom: The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
-        :param pulumi.Input[Union['VmLegacyCloneArgs', 'VmLegacyCloneArgsDict']] clone: Clone settings. Changes require recreation.
-        :param pulumi.Input[Union['VmLegacyCpuArgs', 'VmLegacyCpuArgsDict']] cpu: The CPU configuration.
-        :param pulumi.Input[Union['VmLegacyDeleteArgs', 'VmLegacyDeleteArgsDict']] delete: Explicit deletions to perform after cloning/updating. Entries persist across applies.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['VmLegacyCdromArgs', 'VmLegacyCdromArgsDict', 'outputs.VmLegacyCdrom']]]] cdrom: The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+        :param pulumi.Input[Union['VmLegacyCloneArgs', 'VmLegacyCloneArgsDict', 'outputs.VmLegacyClone']] clone: Clone settings. Changes require recreation.
+        :param pulumi.Input[Union['VmLegacyCpuArgs', 'VmLegacyCpuArgsDict', 'outputs.VmLegacyCpu']] cpu: The CPU configuration.
+        :param pulumi.Input[Union['VmLegacyDeleteArgs', 'VmLegacyDeleteArgsDict', 'outputs.VmLegacyDelete']] delete: Explicit deletions to perform after cloning/updating. Entries persist across applies.
         :param pulumi.Input[_builtins.bool] delete_unreferenced_disks_on_destroy: Delete unreferenced disks on destroy. WARNING: When set to true, any disks not explicitly managed by Terraform will be deleted on destroy, potentially causing data loss. Defaults to false for safety.
         :param pulumi.Input[_builtins.str] description: Optional VM description applied after cloning.
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['VmLegacyDiskArgs', 'VmLegacyDiskArgsDict']]]] disk: Disks keyed by slot (scsi0, virtio0, sata0, ide0, ...). Only listed keys are managed.
-        :param pulumi.Input[Union['VmLegacyMemoryArgs', 'VmLegacyMemoryArgsDict']] memory: Memory configuration for the VM. Uses Proxmox memory ballooning to allow dynamic memory allocation. The `size` sets the total available RAM, while `balloon` sets the guaranteed floor. The host can reclaim memory between these values when needed.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['VmLegacyDiskArgs', 'VmLegacyDiskArgsDict', 'outputs.VmLegacyDisk']]]] disk: Disks keyed by slot (scsi0, virtio0, sata0, ide0, ...). Only listed keys are managed.
+        :param pulumi.Input[Union['VmLegacyMemoryArgs', 'VmLegacyMemoryArgsDict', 'outputs.VmLegacyMemory']] memory: Memory configuration for the VM. Uses Proxmox memory ballooning to allow dynamic memory allocation. The `size` sets the total available RAM, while `balloon` sets the guaranteed floor. The host can reclaim memory between these values when needed.
         :param pulumi.Input[_builtins.str] name: Optional VM name override applied after cloning.
-        :param pulumi.Input[Mapping[str, pulumi.Input[Union['VmLegacyNetworkArgs', 'VmLegacyNetworkArgsDict']]]] network: Network devices keyed by slot (net0, net1, ...). Only listed keys are managed.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['VmLegacyNetworkArgs', 'VmLegacyNetworkArgsDict', 'outputs.VmLegacyNetwork']]]] network: Network devices keyed by slot (net0, net1, ...). Only listed keys are managed.
         :param pulumi.Input[_builtins.str] node_name: Target node for the cloned VM.
         :param pulumi.Input[_builtins.bool] purge_on_destroy: Purge backup configuration on destroy.
         :param pulumi.Input[_builtins.str] resource_id: The VM identifier in the Proxmox cluster.
-        :param pulumi.Input[Union['VmLegacyRngArgs', 'VmLegacyRngArgsDict']] rng: Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.` See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
+        :param pulumi.Input[Union['VmLegacyRngArgs', 'VmLegacyRngArgsDict', 'outputs.VmLegacyRng']] rng: Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.` See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
         :param pulumi.Input[_builtins.bool] started: Whether the VM should be started after cloning. Defaults to true.
         :param pulumi.Input[_builtins.bool] stop_on_destroy: Stop the VM on destroy (instead of shutdown).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags applied after cloning.
-        :param pulumi.Input[Union['VmLegacyVgaArgs', 'VmLegacyVgaArgsDict']] vga: Configure the VGA Hardware. If you want to use high resolution modes (>= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
+        :param pulumi.Input[Union['VmLegacyVgaArgs', 'VmLegacyVgaArgsDict', 'outputs.VmLegacyVga']] vga: Configure the VGA Hardware. If you want to use high resolution modes (>= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

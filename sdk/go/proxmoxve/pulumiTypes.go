@@ -409,7 +409,8 @@ type ContainerLegacyCpu struct {
 	Cores *int `pulumi:"cores"`
 	// Limit of CPU usage. Value `0` indicates no limit (defaults to `0`).
 	Limit *float64 `pulumi:"limit"`
-	// The CPU units (defaults to `1024`).
+	// The CPU units (between `1` and `500000`). When unset,
+	// Proxmox applies its own default.
 	Units *int `pulumi:"units"`
 }
 
@@ -431,7 +432,8 @@ type ContainerLegacyCpuArgs struct {
 	Cores pulumi.IntPtrInput `pulumi:"cores"`
 	// Limit of CPU usage. Value `0` indicates no limit (defaults to `0`).
 	Limit pulumi.Float64PtrInput `pulumi:"limit"`
-	// The CPU units (defaults to `1024`).
+	// The CPU units (between `1` and `500000`). When unset,
+	// Proxmox applies its own default.
 	Units pulumi.IntPtrInput `pulumi:"units"`
 }
 
@@ -527,7 +529,8 @@ func (o ContainerLegacyCpuOutput) Limit() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v ContainerLegacyCpu) *float64 { return v.Limit }).(pulumi.Float64PtrOutput)
 }
 
-// The CPU units (defaults to `1024`).
+// The CPU units (between `1` and `500000`). When unset,
+// Proxmox applies its own default.
 func (o ContainerLegacyCpuOutput) Units() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ContainerLegacyCpu) *int { return v.Units }).(pulumi.IntPtrOutput)
 }
@@ -586,7 +589,8 @@ func (o ContainerLegacyCpuPtrOutput) Limit() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
-// The CPU units (defaults to `1024`).
+// The CPU units (between `1` and `500000`). When unset,
+// Proxmox applies its own default.
 func (o ContainerLegacyCpuPtrOutput) Units() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ContainerLegacyCpu) *int {
 		if v == nil {
@@ -733,7 +737,7 @@ func (o ContainerLegacyDevicePassthroughArrayOutput) Index(i pulumi.IntInput) Co
 }
 
 type ContainerLegacyDisk struct {
-	// Explicitly enable or disable ACL support
+	// Explicitly enable or disable ACL support.
 	Acl *bool `pulumi:"acl"`
 	// The Proxmox storage ID where the rootfs
 	// volume is created (defaults to `local`).
@@ -743,9 +747,9 @@ type ContainerLegacyDisk struct {
 	// The in-datastore path to the disk image.
 	// Use this attribute for cross-resource references.
 	PathInDatastore *string `pulumi:"pathInDatastore"`
-	// Enable user quotas for the container rootfs
+	// Enable user quotas for the container rootfs.
 	Quota *bool `pulumi:"quota"`
-	// Will include this volume to a storage replica job
+	// Whether to include this volume in a storage replication job (defaults to `true`).
 	Replicate *bool `pulumi:"replicate"`
 	// The size of the root filesystem in gigabytes (defaults
 	// to `4`). When set to 0 a directory or zfs/btrfs subvolume will be created.
@@ -765,7 +769,7 @@ type ContainerLegacyDiskInput interface {
 }
 
 type ContainerLegacyDiskArgs struct {
-	// Explicitly enable or disable ACL support
+	// Explicitly enable or disable ACL support.
 	Acl pulumi.BoolPtrInput `pulumi:"acl"`
 	// The Proxmox storage ID where the rootfs
 	// volume is created (defaults to `local`).
@@ -775,9 +779,9 @@ type ContainerLegacyDiskArgs struct {
 	// The in-datastore path to the disk image.
 	// Use this attribute for cross-resource references.
 	PathInDatastore pulumi.StringPtrInput `pulumi:"pathInDatastore"`
-	// Enable user quotas for the container rootfs
+	// Enable user quotas for the container rootfs.
 	Quota pulumi.BoolPtrInput `pulumi:"quota"`
-	// Will include this volume to a storage replica job
+	// Whether to include this volume in a storage replication job (defaults to `true`).
 	Replicate pulumi.BoolPtrInput `pulumi:"replicate"`
 	// The size of the root filesystem in gigabytes (defaults
 	// to `4`). When set to 0 a directory or zfs/btrfs subvolume will be created.
@@ -862,7 +866,7 @@ func (o ContainerLegacyDiskOutput) ToContainerLegacyDiskPtrOutputWithContext(ctx
 	}).(ContainerLegacyDiskPtrOutput)
 }
 
-// Explicitly enable or disable ACL support
+// Explicitly enable or disable ACL support.
 func (o ContainerLegacyDiskOutput) Acl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ContainerLegacyDisk) *bool { return v.Acl }).(pulumi.BoolPtrOutput)
 }
@@ -884,12 +888,12 @@ func (o ContainerLegacyDiskOutput) PathInDatastore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerLegacyDisk) *string { return v.PathInDatastore }).(pulumi.StringPtrOutput)
 }
 
-// Enable user quotas for the container rootfs
+// Enable user quotas for the container rootfs.
 func (o ContainerLegacyDiskOutput) Quota() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ContainerLegacyDisk) *bool { return v.Quota }).(pulumi.BoolPtrOutput)
 }
 
-// Will include this volume to a storage replica job
+// Whether to include this volume in a storage replication job (defaults to `true`).
 func (o ContainerLegacyDiskOutput) Replicate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ContainerLegacyDisk) *bool { return v.Replicate }).(pulumi.BoolPtrOutput)
 }
@@ -925,7 +929,7 @@ func (o ContainerLegacyDiskPtrOutput) Elem() ContainerLegacyDiskOutput {
 	}).(ContainerLegacyDiskOutput)
 }
 
-// Explicitly enable or disable ACL support
+// Explicitly enable or disable ACL support.
 func (o ContainerLegacyDiskPtrOutput) Acl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ContainerLegacyDisk) *bool {
 		if v == nil {
@@ -967,7 +971,7 @@ func (o ContainerLegacyDiskPtrOutput) PathInDatastore() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Enable user quotas for the container rootfs
+// Enable user quotas for the container rootfs.
 func (o ContainerLegacyDiskPtrOutput) Quota() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ContainerLegacyDisk) *bool {
 		if v == nil {
@@ -977,7 +981,7 @@ func (o ContainerLegacyDiskPtrOutput) Quota() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Will include this volume to a storage replica job
+// Whether to include this volume in a storage replication job (defaults to `true`).
 func (o ContainerLegacyDiskPtrOutput) Replicate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ContainerLegacyDisk) *bool {
 		if v == nil {
@@ -2525,7 +2529,7 @@ type ContainerLegacyMountPoint struct {
 	Quota *bool `pulumi:"quota"`
 	// Read-only mount point.
 	ReadOnly *bool `pulumi:"readOnly"`
-	// Will include this volume to a storage replica job.
+	// Will include this volume to a storage replica job (defaults to `true`).
 	Replicate *bool `pulumi:"replicate"`
 	// Mark this non-volume mount point as available on all
 	// nodes.
@@ -2571,7 +2575,7 @@ type ContainerLegacyMountPointArgs struct {
 	Quota pulumi.BoolPtrInput `pulumi:"quota"`
 	// Read-only mount point.
 	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
-	// Will include this volume to a storage replica job.
+	// Will include this volume to a storage replica job (defaults to `true`).
 	Replicate pulumi.BoolPtrInput `pulumi:"replicate"`
 	// Mark this non-volume mount point as available on all
 	// nodes.
@@ -2677,7 +2681,7 @@ func (o ContainerLegacyMountPointOutput) ReadOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ContainerLegacyMountPoint) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
 }
 
-// Will include this volume to a storage replica job.
+// Will include this volume to a storage replica job (defaults to `true`).
 func (o ContainerLegacyMountPointOutput) Replicate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ContainerLegacyMountPoint) *bool { return v.Replicate }).(pulumi.BoolPtrOutput)
 }
@@ -3079,7 +3083,7 @@ type ContainerLegacyStartup struct {
 	// seconds before the next container is shut down.
 	DownDelay *int `pulumi:"downDelay"`
 	// A non-negative number defining the general startup
-	// order.
+	// order (defaults to `-1`, meaning no specific order).
 	Order *int `pulumi:"order"`
 	// A non-negative number defining the delay in
 	// seconds before the next container is started.
@@ -3102,7 +3106,7 @@ type ContainerLegacyStartupArgs struct {
 	// seconds before the next container is shut down.
 	DownDelay pulumi.IntPtrInput `pulumi:"downDelay"`
 	// A non-negative number defining the general startup
-	// order.
+	// order (defaults to `-1`, meaning no specific order).
 	Order pulumi.IntPtrInput `pulumi:"order"`
 	// A non-negative number defining the delay in
 	// seconds before the next container is started.
@@ -3193,7 +3197,7 @@ func (o ContainerLegacyStartupOutput) DownDelay() pulumi.IntPtrOutput {
 }
 
 // A non-negative number defining the general startup
-// order.
+// order (defaults to `-1`, meaning no specific order).
 func (o ContainerLegacyStartupOutput) Order() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ContainerLegacyStartup) *int { return v.Order }).(pulumi.IntPtrOutput)
 }
@@ -3240,7 +3244,7 @@ func (o ContainerLegacyStartupPtrOutput) DownDelay() pulumi.IntPtrOutput {
 }
 
 // A non-negative number defining the general startup
-// order.
+// order (defaults to `-1`, meaning no specific order).
 func (o ContainerLegacyStartupPtrOutput) Order() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ContainerLegacyStartup) *int {
 		if v == nil {
@@ -6952,8 +6956,8 @@ type VmLegacyCdrom struct {
 	// in the physical drive). Use `none` to leave the CD-ROM drive empty.
 	FileId *string `pulumi:"fileId"`
 	// A hardware interface to connect CD-ROM drive to (defaults to `ide3`).
-	// "Must be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. " +
-	// "Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+	// Must be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface.
+	// Note that the `q35` machine type only supports `ide0` and `ide2` of the IDE interfaces.
 	Interface *string `pulumi:"interface"`
 }
 
@@ -6979,8 +6983,8 @@ type VmLegacyCdromArgs struct {
 	// in the physical drive). Use `none` to leave the CD-ROM drive empty.
 	FileId pulumi.StringPtrInput `pulumi:"fileId"`
 	// A hardware interface to connect CD-ROM drive to (defaults to `ide3`).
-	// "Must be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. " +
-	// "Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+	// Must be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface.
+	// Note that the `q35` machine type only supports `ide0` and `ide2` of the IDE interfaces.
 	Interface pulumi.StringPtrInput `pulumi:"interface"`
 }
 
@@ -7077,8 +7081,8 @@ func (o VmLegacyCdromOutput) FileId() pulumi.StringPtrOutput {
 }
 
 // A hardware interface to connect CD-ROM drive to (defaults to `ide3`).
-// "Must be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. " +
-// "Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+// Must be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface.
+// Note that the `q35` machine type only supports `ide0` and `ide2` of the IDE interfaces.
 func (o VmLegacyCdromOutput) Interface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmLegacyCdrom) *string { return v.Interface }).(pulumi.StringPtrOutput)
 }
@@ -7133,8 +7137,8 @@ func (o VmLegacyCdromPtrOutput) FileId() pulumi.StringPtrOutput {
 }
 
 // A hardware interface to connect CD-ROM drive to (defaults to `ide3`).
-// "Must be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. " +
-// "Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+// Must be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface.
+// Note that the `q35` machine type only supports `ide0` and `ide2` of the IDE interfaces.
 func (o VmLegacyCdromPtrOutput) Interface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VmLegacyCdrom) *string {
 		if v == nil {
@@ -7409,7 +7413,7 @@ type VmLegacyCpu struct {
 	// Limit of CPU usage, `0...128` (supports
 	// fractional values, e.g. `63.5`). (defaults to `0` -- no limit).
 	Limit *float64 `pulumi:"limit"`
-	// Enable/disable NUMA. (default to `false`)
+	// Enable/disable NUMA (defaults to `false`).
 	Numa *bool `pulumi:"numa"`
 	// The number of CPU sockets (defaults to `1`).
 	Sockets *int `pulumi:"sockets"`
@@ -7471,7 +7475,7 @@ type VmLegacyCpuArgs struct {
 	// Limit of CPU usage, `0...128` (supports
 	// fractional values, e.g. `63.5`). (defaults to `0` -- no limit).
 	Limit pulumi.Float64PtrInput `pulumi:"limit"`
-	// Enable/disable NUMA. (default to `false`)
+	// Enable/disable NUMA (defaults to `false`).
 	Numa pulumi.BoolPtrInput `pulumi:"numa"`
 	// The number of CPU sockets (defaults to `1`).
 	Sockets pulumi.IntPtrInput `pulumi:"sockets"`
@@ -7616,7 +7620,7 @@ func (o VmLegacyCpuOutput) Limit() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v VmLegacyCpu) *float64 { return v.Limit }).(pulumi.Float64PtrOutput)
 }
 
-// Enable/disable NUMA. (default to `false`)
+// Enable/disable NUMA (defaults to `false`).
 func (o VmLegacyCpuOutput) Numa() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VmLegacyCpu) *bool { return v.Numa }).(pulumi.BoolPtrOutput)
 }
@@ -7748,7 +7752,7 @@ func (o VmLegacyCpuPtrOutput) Limit() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Enable/disable NUMA. (default to `false`)
+// Enable/disable NUMA (defaults to `false`).
 func (o VmLegacyCpuPtrOutput) Numa() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VmLegacyCpu) *bool {
 		if v == nil {
@@ -7826,7 +7830,7 @@ type VmLegacyDisk struct {
 	// to `false`).
 	Iothread *bool `pulumi:"iothread"`
 	// The in-datastore path to the disk image.
-	// ***Experimental.***Use to attach another VM's disks,
+	// ***Experimental.*** Use to attach another VM's disks,
 	// or (as root only) host's filesystem paths (`datastoreId` empty string).
 	// See "*Example: Attached disks*".
 	PathInDatastore *string `pulumi:"pathInDatastore"`
@@ -7897,7 +7901,7 @@ type VmLegacyDiskArgs struct {
 	// to `false`).
 	Iothread pulumi.BoolPtrInput `pulumi:"iothread"`
 	// The in-datastore path to the disk image.
-	// ***Experimental.***Use to attach another VM's disks,
+	// ***Experimental.*** Use to attach another VM's disks,
 	// or (as root only) host's filesystem paths (`datastoreId` empty string).
 	// See "*Example: Attached disks*".
 	PathInDatastore pulumi.StringPtrInput `pulumi:"pathInDatastore"`
@@ -8037,7 +8041,7 @@ func (o VmLegacyDiskOutput) Iothread() pulumi.BoolPtrOutput {
 }
 
 // The in-datastore path to the disk image.
-// ***Experimental.***Use to attach another VM's disks,
+// ***Experimental.*** Use to attach another VM's disks,
 // or (as root only) host's filesystem paths (`datastoreId` empty string).
 // See "*Example: Attached disks*".
 func (o VmLegacyDiskOutput) PathInDatastore() pulumi.StringPtrOutput {
@@ -8800,7 +8804,7 @@ type VmLegacyInitialization struct {
 	// otherwise defaults to `ide2`.
 	Interface *string `pulumi:"interface"`
 	// The IP configuration (one block per network
-	// device).
+	// device, up to 32 blocks).
 	IpConfigs []VmLegacyInitializationIpConfig `pulumi:"ipConfigs"`
 	// The identifier for a file containing
 	// all meta data passed to the VM via cloud-init.
@@ -8851,7 +8855,7 @@ type VmLegacyInitializationArgs struct {
 	// otherwise defaults to `ide2`.
 	Interface pulumi.StringPtrInput `pulumi:"interface"`
 	// The IP configuration (one block per network
-	// device).
+	// device, up to 32 blocks).
 	IpConfigs VmLegacyInitializationIpConfigArrayInput `pulumi:"ipConfigs"`
 	// The identifier for a file containing
 	// all meta data passed to the VM via cloud-init.
@@ -8979,7 +8983,7 @@ func (o VmLegacyInitializationOutput) Interface() pulumi.StringPtrOutput {
 }
 
 // The IP configuration (one block per network
-// device).
+// device, up to 32 blocks).
 func (o VmLegacyInitializationOutput) IpConfigs() VmLegacyInitializationIpConfigArrayOutput {
 	return o.ApplyT(func(v VmLegacyInitialization) []VmLegacyInitializationIpConfig { return v.IpConfigs }).(VmLegacyInitializationIpConfigArrayOutput)
 }
@@ -9096,7 +9100,7 @@ func (o VmLegacyInitializationPtrOutput) Interface() pulumi.StringPtrOutput {
 }
 
 // The IP configuration (one block per network
-// device).
+// device, up to 32 blocks).
 func (o VmLegacyInitializationPtrOutput) IpConfigs() VmLegacyInitializationIpConfigArrayOutput {
 	return o.ApplyT(func(v *VmLegacyInitialization) []VmLegacyInitializationIpConfig {
 		if v == nil {
@@ -11133,7 +11137,7 @@ type VmLegacyStartup struct {
 	// seconds before the next VM is shut down.
 	DownDelay *int `pulumi:"downDelay"`
 	// A non-negative number defining the general startup
-	// order.
+	// order (defaults to `-1`, meaning no specific order).
 	Order *int `pulumi:"order"`
 	// A non-negative number defining the delay in
 	// seconds before the next VM is started.
@@ -11156,7 +11160,7 @@ type VmLegacyStartupArgs struct {
 	// seconds before the next VM is shut down.
 	DownDelay pulumi.IntPtrInput `pulumi:"downDelay"`
 	// A non-negative number defining the general startup
-	// order.
+	// order (defaults to `-1`, meaning no specific order).
 	Order pulumi.IntPtrInput `pulumi:"order"`
 	// A non-negative number defining the delay in
 	// seconds before the next VM is started.
@@ -11247,7 +11251,7 @@ func (o VmLegacyStartupOutput) DownDelay() pulumi.IntPtrOutput {
 }
 
 // A non-negative number defining the general startup
-// order.
+// order (defaults to `-1`, meaning no specific order).
 func (o VmLegacyStartupOutput) Order() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VmLegacyStartup) *int { return v.Order }).(pulumi.IntPtrOutput)
 }
@@ -11294,7 +11298,7 @@ func (o VmLegacyStartupPtrOutput) DownDelay() pulumi.IntPtrOutput {
 }
 
 // A non-negative number defining the general startup
-// order.
+// order (defaults to `-1`, meaning no specific order).
 func (o VmLegacyStartupPtrOutput) Order() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VmLegacyStartup) *int {
 		if v == nil {
@@ -12627,7 +12631,7 @@ func (o VmVgaPtrOutput) Type() pulumi.StringPtrOutput {
 type GetContainersLegacyContainer struct {
 	// The container name.
 	Name string `pulumi:"name"`
-	// The node name. All cluster nodes will be queried in case this is omitted
+	// The node name. If omitted, all cluster nodes are queried.
 	NodeName string `pulumi:"nodeName"`
 	// The status of the container.
 	Status *string `pulumi:"status"`
@@ -12654,7 +12658,7 @@ type GetContainersLegacyContainerInput interface {
 type GetContainersLegacyContainerArgs struct {
 	// The container name.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The node name. All cluster nodes will be queried in case this is omitted
+	// The node name. If omitted, all cluster nodes are queried.
 	NodeName pulumi.StringInput `pulumi:"nodeName"`
 	// The status of the container.
 	Status pulumi.StringPtrInput `pulumi:"status"`
@@ -12723,7 +12727,7 @@ func (o GetContainersLegacyContainerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContainersLegacyContainer) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The node name. All cluster nodes will be queried in case this is omitted
+// The node name. If omitted, all cluster nodes are queried.
 func (o GetContainersLegacyContainerOutput) NodeName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContainersLegacyContainer) string { return v.NodeName }).(pulumi.StringOutput)
 }
@@ -12772,7 +12776,7 @@ func (o GetContainersLegacyContainerArrayOutput) Index(i pulumi.IntInput) GetCon
 type GetContainersLegacyFilter struct {
 	// Name of the container attribute to filter on. One of [`name`, `template`, `status`, `nodeName`]
 	Name string `pulumi:"name"`
-	// Treat values as regex patterns
+	// Whether to treat the `values` as regex patterns (defaults to `false`).
 	Regex *bool `pulumi:"regex"`
 	// List of values to pass the filter. Container's attribute should match at least one value in the list.
 	Values []string `pulumi:"values"`
@@ -12792,7 +12796,7 @@ type GetContainersLegacyFilterInput interface {
 type GetContainersLegacyFilterArgs struct {
 	// Name of the container attribute to filter on. One of [`name`, `template`, `status`, `nodeName`]
 	Name pulumi.StringInput `pulumi:"name"`
-	// Treat values as regex patterns
+	// Whether to treat the `values` as regex patterns (defaults to `false`).
 	Regex pulumi.BoolPtrInput `pulumi:"regex"`
 	// List of values to pass the filter. Container's attribute should match at least one value in the list.
 	Values pulumi.StringArrayInput `pulumi:"values"`
@@ -12854,7 +12858,7 @@ func (o GetContainersLegacyFilterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContainersLegacyFilter) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Treat values as regex patterns
+// Whether to treat the `values` as regex patterns (defaults to `false`).
 func (o GetContainersLegacyFilterOutput) Regex() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetContainersLegacyFilter) *bool { return v.Regex }).(pulumi.BoolPtrOutput)
 }
@@ -15544,7 +15548,7 @@ func (o GetVmVgaOutput) Type() pulumi.StringOutput {
 type GetVmsLegacyFilter struct {
 	// Name of the VM attribute to filter on. One of [`name`, `template`, `status`, `nodeName`]
 	Name string `pulumi:"name"`
-	// Treat values as regex patterns
+	// Whether to treat the `values` as regex patterns (defaults to `false`).
 	Regex *bool `pulumi:"regex"`
 	// List of values to pass the filter. VM's attribute should match at least one value in the list.
 	Values []string `pulumi:"values"`
@@ -15564,7 +15568,7 @@ type GetVmsLegacyFilterInput interface {
 type GetVmsLegacyFilterArgs struct {
 	// Name of the VM attribute to filter on. One of [`name`, `template`, `status`, `nodeName`]
 	Name pulumi.StringInput `pulumi:"name"`
-	// Treat values as regex patterns
+	// Whether to treat the `values` as regex patterns (defaults to `false`).
 	Regex pulumi.BoolPtrInput `pulumi:"regex"`
 	// List of values to pass the filter. VM's attribute should match at least one value in the list.
 	Values pulumi.StringArrayInput `pulumi:"values"`
@@ -15626,7 +15630,7 @@ func (o GetVmsLegacyFilterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVmsLegacyFilter) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Treat values as regex patterns
+// Whether to treat the `values` as regex patterns (defaults to `false`).
 func (o GetVmsLegacyFilterOutput) Regex() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetVmsLegacyFilter) *bool { return v.Regex }).(pulumi.BoolPtrOutput)
 }
@@ -15659,7 +15663,7 @@ func (o GetVmsLegacyFilterArrayOutput) Index(i pulumi.IntInput) GetVmsLegacyFilt
 type GetVmsLegacyVm struct {
 	// The virtual machine name.
 	Name string `pulumi:"name"`
-	// The node name. All cluster nodes will be queried in case this is omitted
+	// The node name. If omitted, all cluster nodes are queried.
 	NodeName string `pulumi:"nodeName"`
 	// The status of the VM.
 	Status *string `pulumi:"status"`
@@ -15686,7 +15690,7 @@ type GetVmsLegacyVmInput interface {
 type GetVmsLegacyVmArgs struct {
 	// The virtual machine name.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The node name. All cluster nodes will be queried in case this is omitted
+	// The node name. If omitted, all cluster nodes are queried.
 	NodeName pulumi.StringInput `pulumi:"nodeName"`
 	// The status of the VM.
 	Status pulumi.StringPtrInput `pulumi:"status"`
@@ -15755,7 +15759,7 @@ func (o GetVmsLegacyVmOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVmsLegacyVm) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The node name. All cluster nodes will be queried in case this is omitted
+// The node name. If omitted, all cluster nodes are queried.
 func (o GetVmsLegacyVmOutput) NodeName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVmsLegacyVm) string { return v.NodeName }).(pulumi.StringOutput)
 }

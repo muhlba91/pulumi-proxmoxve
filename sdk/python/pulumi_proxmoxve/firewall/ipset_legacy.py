@@ -234,7 +234,7 @@ class IpsetLegacy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IpsetLegacyCidrArgs', 'IpsetLegacyCidrArgsDict']]]]] = None,
+                 cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IpsetLegacyCidrArgs', 'IpsetLegacyCidrArgsDict', 'outputs.IpsetLegacyCidr']]]]] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  container_id: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -306,7 +306,7 @@ class IpsetLegacy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['IpsetLegacyCidrArgs', 'IpsetLegacyCidrArgsDict']]]] cidrs: IP/CIDR block (multiple blocks supported).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IpsetLegacyCidrArgs', 'IpsetLegacyCidrArgsDict', 'outputs.IpsetLegacyCidr']]]] cidrs: IP/CIDR block (multiple blocks supported).
         :param pulumi.Input[_builtins.str] comment: IPSet comment.
         :param pulumi.Input[_builtins.int] container_id: Container ID. Leave empty for cluster level ipsets.
         :param pulumi.Input[_builtins.str] name: IPSet name.
@@ -397,7 +397,7 @@ class IpsetLegacy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IpsetLegacyCidrArgs', 'IpsetLegacyCidrArgsDict']]]]] = None,
+                 cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IpsetLegacyCidrArgs', 'IpsetLegacyCidrArgsDict', 'outputs.IpsetLegacyCidr']]]]] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  container_id: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -428,7 +428,7 @@ class IpsetLegacy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IpsetLegacyCidrArgs', 'IpsetLegacyCidrArgsDict']]]]] = None,
+            cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IpsetLegacyCidrArgs', 'IpsetLegacyCidrArgsDict', 'outputs.IpsetLegacyCidr']]]]] = None,
             comment: pulumi.Input[Optional[_builtins.str]] = None,
             container_id: pulumi.Input[Optional[_builtins.int]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -441,7 +441,7 @@ class IpsetLegacy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['IpsetLegacyCidrArgs', 'IpsetLegacyCidrArgsDict']]]] cidrs: IP/CIDR block (multiple blocks supported).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IpsetLegacyCidrArgs', 'IpsetLegacyCidrArgsDict', 'outputs.IpsetLegacyCidr']]]] cidrs: IP/CIDR block (multiple blocks supported).
         :param pulumi.Input[_builtins.str] comment: IPSet comment.
         :param pulumi.Input[_builtins.int] container_id: Container ID. Leave empty for cluster level ipsets.
         :param pulumi.Input[_builtins.str] name: IPSet name.

@@ -82,7 +82,7 @@ namespace Pulumi.ProxmoxVE.Inputs
         public Input<double>? Limit { get; set; }
 
         /// <summary>
-        /// Enable/disable NUMA. (default to `False`)
+        /// Enable/disable NUMA (defaults to `False`).
         /// </summary>
         [Input("numa")]
         public Input<bool>? Numa { get; set; }

@@ -138,7 +138,7 @@ class UsbLegacy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
-                 maps: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UsbLegacyMapArgs', 'UsbLegacyMapArgsDict']]]]] = None,
+                 maps: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UsbLegacyMapArgs', 'UsbLegacyMapArgsDict', 'outputs.UsbLegacyMap']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -176,7 +176,7 @@ class UsbLegacy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] comment: The comment of this USB hardware mapping.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UsbLegacyMapArgs', 'UsbLegacyMapArgsDict']]]] maps: The actual map of devices for the hardware mapping.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UsbLegacyMapArgs', 'UsbLegacyMapArgsDict', 'outputs.UsbLegacyMap']]]] maps: The actual map of devices for the hardware mapping.
         :param pulumi.Input[_builtins.str] name: The name of this hardware mapping.
         """
         ...
@@ -233,7 +233,7 @@ class UsbLegacy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
-                 maps: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UsbLegacyMapArgs', 'UsbLegacyMapArgsDict']]]]] = None,
+                 maps: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UsbLegacyMapArgs', 'UsbLegacyMapArgsDict', 'outputs.UsbLegacyMap']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -260,7 +260,7 @@ class UsbLegacy(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             comment: pulumi.Input[Optional[_builtins.str]] = None,
-            maps: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UsbLegacyMapArgs', 'UsbLegacyMapArgsDict']]]]] = None,
+            maps: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UsbLegacyMapArgs', 'UsbLegacyMapArgsDict', 'outputs.UsbLegacyMap']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None) -> 'UsbLegacy':
         """
         Get an existing UsbLegacy resource's state with the given name, id, and optional extra
@@ -270,7 +270,7 @@ class UsbLegacy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] comment: The comment of this USB hardware mapping.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UsbLegacyMapArgs', 'UsbLegacyMapArgsDict']]]] maps: The actual map of devices for the hardware mapping.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UsbLegacyMapArgs', 'UsbLegacyMapArgsDict', 'outputs.UsbLegacyMap']]]] maps: The actual map of devices for the hardware mapping.
         :param pulumi.Input[_builtins.str] name: The name of this hardware mapping.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

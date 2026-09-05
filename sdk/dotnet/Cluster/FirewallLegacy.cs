@@ -42,7 +42,8 @@ namespace Pulumi.ProxmoxVE.Cluster
     /// 
     /// ## Important Notes
     /// 
-    /// Be careful not to use this resource multiple times for the same node.
+    /// This resource manages cluster-wide firewall options, so it should be used only
+    /// once per cluster. Declaring it multiple times results in conflicting updates.
     /// 
     /// ## Import
     /// 
@@ -68,13 +69,13 @@ namespace Pulumi.ProxmoxVE.Cluster
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// The default forward policy (`ACCEPT`, `DROP`).
+        /// The default forward policy (`ACCEPT`, `DROP`). Defaults to `ACCEPT`.
         /// </summary>
         [Output("forwardPolicy")]
         public Output<string?> ForwardPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// The default input policy (`ACCEPT`, `DROP`, `REJECT`).
+        /// The default input policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `DROP`.
         /// </summary>
         [Output("inputPolicy")]
         public Output<string?> InputPolicy { get; private set; } = null!;
@@ -86,7 +87,7 @@ namespace Pulumi.ProxmoxVE.Cluster
         public Output<Outputs.FirewallLegacyLogRatelimit?> LogRatelimit { get; private set; } = null!;
 
         /// <summary>
-        /// The default output policy (`ACCEPT`, `DROP`, `REJECT`).
+        /// The default output policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `ACCEPT`.
         /// </summary>
         [Output("outputPolicy")]
         public Output<string?> OutputPolicy { get; private set; } = null!;
@@ -151,13 +152,13 @@ namespace Pulumi.ProxmoxVE.Cluster
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// The default forward policy (`ACCEPT`, `DROP`).
+        /// The default forward policy (`ACCEPT`, `DROP`). Defaults to `ACCEPT`.
         /// </summary>
         [Input("forwardPolicy")]
         public Input<string>? ForwardPolicy { get; set; }
 
         /// <summary>
-        /// The default input policy (`ACCEPT`, `DROP`, `REJECT`).
+        /// The default input policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `DROP`.
         /// </summary>
         [Input("inputPolicy")]
         public Input<string>? InputPolicy { get; set; }
@@ -169,7 +170,7 @@ namespace Pulumi.ProxmoxVE.Cluster
         public Input<Inputs.FirewallLegacyLogRatelimitArgs>? LogRatelimit { get; set; }
 
         /// <summary>
-        /// The default output policy (`ACCEPT`, `DROP`, `REJECT`).
+        /// The default output policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `ACCEPT`.
         /// </summary>
         [Input("outputPolicy")]
         public Input<string>? OutputPolicy { get; set; }
@@ -195,13 +196,13 @@ namespace Pulumi.ProxmoxVE.Cluster
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// The default forward policy (`ACCEPT`, `DROP`).
+        /// The default forward policy (`ACCEPT`, `DROP`). Defaults to `ACCEPT`.
         /// </summary>
         [Input("forwardPolicy")]
         public Input<string>? ForwardPolicy { get; set; }
 
         /// <summary>
-        /// The default input policy (`ACCEPT`, `DROP`, `REJECT`).
+        /// The default input policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `DROP`.
         /// </summary>
         [Input("inputPolicy")]
         public Input<string>? InputPolicy { get; set; }
@@ -213,7 +214,7 @@ namespace Pulumi.ProxmoxVE.Cluster
         public Input<Inputs.FirewallLegacyLogRatelimitGetArgs>? LogRatelimit { get; set; }
 
         /// <summary>
-        /// The default output policy (`ACCEPT`, `DROP`, `REJECT`).
+        /// The default output policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `ACCEPT`.
         /// </summary>
         [Input("outputPolicy")]
         public Input<string>? OutputPolicy { get; set; }

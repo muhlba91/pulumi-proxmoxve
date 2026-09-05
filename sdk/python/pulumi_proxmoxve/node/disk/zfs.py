@@ -397,7 +397,7 @@ class Zfs(pulumi.CustomResource):
                  cleanup_disks: pulumi.Input[Optional[_builtins.bool]] = None,
                  compression: pulumi.Input[Optional[_builtins.str]] = None,
                  devices: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 draid_config: pulumi.Input[Optional[Union['ZfsDraidConfigArgs', 'ZfsDraidConfigArgsDict']]] = None,
+                 draid_config: pulumi.Input[Optional[Union['ZfsDraidConfigArgs', 'ZfsDraidConfigArgsDict', 'outputs.ZfsDraidConfig']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  node_name: pulumi.Input[Optional[_builtins.str]] = None,
                  raidlevel: pulumi.Input[Optional[_builtins.str]] = None,
@@ -462,7 +462,7 @@ class Zfs(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] cleanup_disks: On destroy, wipe the ZFS member partitions so they can be reused. Defaults to `false`. Note: Proxmox wipes the partition contents but leaves the parent disk's GPT partition table intact. If you plan to reuse the same device immediately, run `wipefs -a <disk>` and `partprobe <disk>` on the node after destroy.
         :param pulumi.Input[_builtins.str] compression: The compression algorithm for the pool. One of `on`, `off`, `gzip`, `lz4`, `lzjb`, `zle`, `zstd`. Defaults to `on` server-side.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] devices: The block devices to use for the ZFS pool (e.g. `["/dev/sdb", "/dev/sdc"]`).
-        :param pulumi.Input[Union['ZfsDraidConfigArgs', 'ZfsDraidConfigArgsDict']] draid_config: dRAID configuration. Required when `raidlevel` is `draid`, `draid2`, or `draid3`.
+        :param pulumi.Input[Union['ZfsDraidConfigArgs', 'ZfsDraidConfigArgsDict', 'outputs.ZfsDraidConfig']] draid_config: dRAID configuration. Required when `raidlevel` is `draid`, `draid2`, or `draid3`.
         :param pulumi.Input[_builtins.str] name: The name of the ZFS pool (storage identifier).
         :param pulumi.Input[_builtins.str] node_name: The name of the Proxmox node on which to create the ZFS pool.
         :param pulumi.Input[_builtins.str] raidlevel: The RAID level for the ZFS pool. One of `single`, `mirror`, `raid10`, `raidz`, `raidz2`, `raidz3`, `draid`, `draid2`, `draid3`.
@@ -546,7 +546,7 @@ class Zfs(pulumi.CustomResource):
                  cleanup_disks: pulumi.Input[Optional[_builtins.bool]] = None,
                  compression: pulumi.Input[Optional[_builtins.str]] = None,
                  devices: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 draid_config: pulumi.Input[Optional[Union['ZfsDraidConfigArgs', 'ZfsDraidConfigArgsDict']]] = None,
+                 draid_config: pulumi.Input[Optional[Union['ZfsDraidConfigArgs', 'ZfsDraidConfigArgsDict', 'outputs.ZfsDraidConfig']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  node_name: pulumi.Input[Optional[_builtins.str]] = None,
                  raidlevel: pulumi.Input[Optional[_builtins.str]] = None,
@@ -593,7 +593,7 @@ class Zfs(pulumi.CustomResource):
             cleanup_disks: pulumi.Input[Optional[_builtins.bool]] = None,
             compression: pulumi.Input[Optional[_builtins.str]] = None,
             devices: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            draid_config: pulumi.Input[Optional[Union['ZfsDraidConfigArgs', 'ZfsDraidConfigArgsDict']]] = None,
+            draid_config: pulumi.Input[Optional[Union['ZfsDraidConfigArgs', 'ZfsDraidConfigArgsDict', 'outputs.ZfsDraidConfig']]] = None,
             errors: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             node_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -612,7 +612,7 @@ class Zfs(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] cleanup_disks: On destroy, wipe the ZFS member partitions so they can be reused. Defaults to `false`. Note: Proxmox wipes the partition contents but leaves the parent disk's GPT partition table intact. If you plan to reuse the same device immediately, run `wipefs -a <disk>` and `partprobe <disk>` on the node after destroy.
         :param pulumi.Input[_builtins.str] compression: The compression algorithm for the pool. One of `on`, `off`, `gzip`, `lz4`, `lzjb`, `zle`, `zstd`. Defaults to `on` server-side.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] devices: The block devices to use for the ZFS pool (e.g. `["/dev/sdb", "/dev/sdc"]`).
-        :param pulumi.Input[Union['ZfsDraidConfigArgs', 'ZfsDraidConfigArgsDict']] draid_config: dRAID configuration. Required when `raidlevel` is `draid`, `draid2`, or `draid3`.
+        :param pulumi.Input[Union['ZfsDraidConfigArgs', 'ZfsDraidConfigArgsDict', 'outputs.ZfsDraidConfig']] draid_config: dRAID configuration. Required when `raidlevel` is `draid`, `draid2`, or `draid3`.
         :param pulumi.Input[_builtins.str] errors: Error information reported by the ZFS pool.
         :param pulumi.Input[_builtins.str] name: The name of the ZFS pool (storage identifier).
         :param pulumi.Input[_builtins.str] node_name: The name of the Proxmox node on which to create the ZFS pool.

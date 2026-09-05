@@ -26,7 +26,8 @@ namespace Pulumi.ProxmoxVE.Outputs
         /// </summary>
         public readonly double? Limit;
         /// <summary>
-        /// The CPU units (defaults to `1024`).
+        /// The CPU units (between `1` and `500000`). When unset,
+        /// Proxmox applies its own default.
         /// </summary>
         public readonly int? Units;
 

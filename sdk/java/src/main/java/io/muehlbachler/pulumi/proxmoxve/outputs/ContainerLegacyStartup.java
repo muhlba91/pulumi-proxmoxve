@@ -19,7 +19,7 @@ public final class ContainerLegacyStartup {
     private @Nullable Integer downDelay;
     /**
      * @return A non-negative number defining the general startup
-     * order.
+     * order (defaults to `-1`, meaning no specific order).
      * 
      */
     private @Nullable Integer order;
@@ -41,7 +41,7 @@ public final class ContainerLegacyStartup {
     }
     /**
      * @return A non-negative number defining the general startup
-     * order.
+     * order (defaults to `-1`, meaning no specific order).
      * 
      */
     public Optional<Integer> order() {

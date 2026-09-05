@@ -223,7 +223,7 @@ class PoolLegacy(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             comment: pulumi.Input[Optional[_builtins.str]] = None,
-            members: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PoolLegacyMemberArgs', 'PoolLegacyMemberArgsDict']]]]] = None,
+            members: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PoolLegacyMemberArgs', 'PoolLegacyMemberArgsDict', 'outputs.PoolLegacyMember']]]]] = None,
             pool_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'PoolLegacy':
         """
         Get an existing PoolLegacy resource's state with the given name, id, and optional extra
@@ -233,7 +233,7 @@ class PoolLegacy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] comment: The pool comment.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PoolLegacyMemberArgs', 'PoolLegacyMemberArgsDict']]]] members: The pool members.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PoolLegacyMemberArgs', 'PoolLegacyMemberArgsDict', 'outputs.PoolLegacyMember']]]] members: The pool members.
         :param pulumi.Input[_builtins.str] pool_id: The pool identifier.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

@@ -29,6 +29,7 @@ class JobArgs:
                  compress: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  exclude_paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 excludes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  fleecing: pulumi.Input[Optional['JobFleecingArgs']] = None,
                  ionice: pulumi.Input[Optional[_builtins.int]] = None,
                  lockwait: pulumi.Input[Optional[_builtins.int]] = None,
@@ -64,6 +65,7 @@ class JobArgs:
         :param pulumi.Input[_builtins.str] compress: The compression algorithm (0, 1, gzip, lzo, or zstd).
         :param pulumi.Input[_builtins.bool] enabled: Whether the backup job is enabled.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] exclude_paths: A list of paths to exclude from the backup.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excludes: A list of guest VM/CT IDs to exclude from the backup.
         :param pulumi.Input['JobFleecingArgs'] fleecing: Fleecing configuration for the backup job.
         :param pulumi.Input[_builtins.int] ionice: I/O priority (0-8).
         :param pulumi.Input[_builtins.int] lockwait: Maximum wait time in minutes for the global lock.
@@ -102,6 +104,8 @@ class JobArgs:
             pulumi.set(__self__, "enabled", enabled)
         if exclude_paths is not None:
             pulumi.set(__self__, "exclude_paths", exclude_paths)
+        if excludes is not None:
+            pulumi.set(__self__, "excludes", excludes)
         if fleecing is not None:
             pulumi.set(__self__, "fleecing", fleecing)
         if ionice is not None:
@@ -246,6 +250,18 @@ class JobArgs:
     @exclude_paths.setter
     def exclude_paths(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "exclude_paths", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def excludes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of guest VM/CT IDs to exclude from the backup.
+        """
+        return pulumi.get(self, "excludes")
+
+    @excludes.setter
+    def excludes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "excludes", value)
 
     @_builtins.property
     @pulumi.getter
@@ -544,6 +560,7 @@ class _JobState:
                  compress: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  exclude_paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 excludes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  fleecing: pulumi.Input[Optional['JobFleecingArgs']] = None,
                  ionice: pulumi.Input[Optional[_builtins.int]] = None,
                  lockwait: pulumi.Input[Optional[_builtins.int]] = None,
@@ -579,6 +596,7 @@ class _JobState:
         :param pulumi.Input[_builtins.str] compress: The compression algorithm (0, 1, gzip, lzo, or zstd).
         :param pulumi.Input[_builtins.bool] enabled: Whether the backup job is enabled.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] exclude_paths: A list of paths to exclude from the backup.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excludes: A list of guest VM/CT IDs to exclude from the backup.
         :param pulumi.Input['JobFleecingArgs'] fleecing: Fleecing configuration for the backup job.
         :param pulumi.Input[_builtins.int] ionice: I/O priority (0-8).
         :param pulumi.Input[_builtins.int] lockwait: Maximum wait time in minutes for the global lock.
@@ -617,6 +635,8 @@ class _JobState:
             pulumi.set(__self__, "enabled", enabled)
         if exclude_paths is not None:
             pulumi.set(__self__, "exclude_paths", exclude_paths)
+        if excludes is not None:
+            pulumi.set(__self__, "excludes", excludes)
         if fleecing is not None:
             pulumi.set(__self__, "fleecing", fleecing)
         if ionice is not None:
@@ -731,6 +751,18 @@ class _JobState:
     @exclude_paths.setter
     def exclude_paths(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "exclude_paths", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def excludes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of guest VM/CT IDs to exclude from the backup.
+        """
+        return pulumi.get(self, "excludes")
+
+    @excludes.setter
+    def excludes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "excludes", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1068,7 +1100,8 @@ class Job(pulumi.CustomResource):
                  compress: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  exclude_paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 fleecing: pulumi.Input[Optional[Union['JobFleecingArgs', 'JobFleecingArgsDict']]] = None,
+                 excludes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 fleecing: pulumi.Input[Optional[Union['JobFleecingArgs', 'JobFleecingArgsDict', 'outputs.JobFleecing']]] = None,
                  ionice: pulumi.Input[Optional[_builtins.int]] = None,
                  lockwait: pulumi.Input[Optional[_builtins.int]] = None,
                  mailnotification: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1078,7 +1111,7 @@ class Job(pulumi.CustomResource):
                  node: pulumi.Input[Optional[_builtins.str]] = None,
                  notes_template: pulumi.Input[Optional[_builtins.str]] = None,
                  pbs_change_detection_mode: pulumi.Input[Optional[_builtins.str]] = None,
-                 performance: pulumi.Input[Optional[Union['JobPerformanceArgs', 'JobPerformanceArgsDict']]] = None,
+                 performance: pulumi.Input[Optional[Union['JobPerformanceArgs', 'JobPerformanceArgsDict', 'outputs.JobPerformance']]] = None,
                  pigz: pulumi.Input[Optional[_builtins.int]] = None,
                  pool: pulumi.Input[Optional[_builtins.str]] = None,
                  protected: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1128,7 +1161,8 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] compress: The compression algorithm (0, 1, gzip, lzo, or zstd).
         :param pulumi.Input[_builtins.bool] enabled: Whether the backup job is enabled.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] exclude_paths: A list of paths to exclude from the backup.
-        :param pulumi.Input[Union['JobFleecingArgs', 'JobFleecingArgsDict']] fleecing: Fleecing configuration for the backup job.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excludes: A list of guest VM/CT IDs to exclude from the backup.
+        :param pulumi.Input[Union['JobFleecingArgs', 'JobFleecingArgsDict', 'outputs.JobFleecing']] fleecing: Fleecing configuration for the backup job.
         :param pulumi.Input[_builtins.int] ionice: I/O priority (0-8).
         :param pulumi.Input[_builtins.int] lockwait: Maximum wait time in minutes for the global lock.
         :param pulumi.Input[_builtins.str] mailnotification: Email notification setting (always or failure).
@@ -1138,7 +1172,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] node: The cluster node name to limit the backup job to.
         :param pulumi.Input[_builtins.str] notes_template: Template for notes attached to the backup.
         :param pulumi.Input[_builtins.str] pbs_change_detection_mode: PBS change detection mode (legacy, data, or metadata).
-        :param pulumi.Input[Union['JobPerformanceArgs', 'JobPerformanceArgsDict']] performance: Performance-related settings for the backup job.
+        :param pulumi.Input[Union['JobPerformanceArgs', 'JobPerformanceArgsDict', 'outputs.JobPerformance']] performance: Performance-related settings for the backup job.
         :param pulumi.Input[_builtins.int] pigz: Number of pigz threads (0 disables, 1 uses single-threaded gzip).
         :param pulumi.Input[_builtins.str] pool: Limit backup to guests in the specified pool.
         :param pulumi.Input[_builtins.bool] protected: Whether the backup should be marked as protected.
@@ -1207,7 +1241,8 @@ class Job(pulumi.CustomResource):
                  compress: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  exclude_paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 fleecing: pulumi.Input[Optional[Union['JobFleecingArgs', 'JobFleecingArgsDict']]] = None,
+                 excludes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 fleecing: pulumi.Input[Optional[Union['JobFleecingArgs', 'JobFleecingArgsDict', 'outputs.JobFleecing']]] = None,
                  ionice: pulumi.Input[Optional[_builtins.int]] = None,
                  lockwait: pulumi.Input[Optional[_builtins.int]] = None,
                  mailnotification: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1217,7 +1252,7 @@ class Job(pulumi.CustomResource):
                  node: pulumi.Input[Optional[_builtins.str]] = None,
                  notes_template: pulumi.Input[Optional[_builtins.str]] = None,
                  pbs_change_detection_mode: pulumi.Input[Optional[_builtins.str]] = None,
-                 performance: pulumi.Input[Optional[Union['JobPerformanceArgs', 'JobPerformanceArgsDict']]] = None,
+                 performance: pulumi.Input[Optional[Union['JobPerformanceArgs', 'JobPerformanceArgsDict', 'outputs.JobPerformance']]] = None,
                  pigz: pulumi.Input[Optional[_builtins.int]] = None,
                  pool: pulumi.Input[Optional[_builtins.str]] = None,
                  protected: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1248,6 +1283,7 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["compress"] = compress
             __props__.__dict__["enabled"] = enabled
             __props__.__dict__["exclude_paths"] = exclude_paths
+            __props__.__dict__["excludes"] = excludes
             __props__.__dict__["fleecing"] = fleecing
             __props__.__dict__["ionice"] = ionice
             __props__.__dict__["lockwait"] = lockwait
@@ -1296,7 +1332,8 @@ class Job(pulumi.CustomResource):
             compress: pulumi.Input[Optional[_builtins.str]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             exclude_paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            fleecing: pulumi.Input[Optional[Union['JobFleecingArgs', 'JobFleecingArgsDict']]] = None,
+            excludes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            fleecing: pulumi.Input[Optional[Union['JobFleecingArgs', 'JobFleecingArgsDict', 'outputs.JobFleecing']]] = None,
             ionice: pulumi.Input[Optional[_builtins.int]] = None,
             lockwait: pulumi.Input[Optional[_builtins.int]] = None,
             mailnotification: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1306,7 +1343,7 @@ class Job(pulumi.CustomResource):
             node: pulumi.Input[Optional[_builtins.str]] = None,
             notes_template: pulumi.Input[Optional[_builtins.str]] = None,
             pbs_change_detection_mode: pulumi.Input[Optional[_builtins.str]] = None,
-            performance: pulumi.Input[Optional[Union['JobPerformanceArgs', 'JobPerformanceArgsDict']]] = None,
+            performance: pulumi.Input[Optional[Union['JobPerformanceArgs', 'JobPerformanceArgsDict', 'outputs.JobPerformance']]] = None,
             pigz: pulumi.Input[Optional[_builtins.int]] = None,
             pool: pulumi.Input[Optional[_builtins.str]] = None,
             protected: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1335,7 +1372,8 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] compress: The compression algorithm (0, 1, gzip, lzo, or zstd).
         :param pulumi.Input[_builtins.bool] enabled: Whether the backup job is enabled.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] exclude_paths: A list of paths to exclude from the backup.
-        :param pulumi.Input[Union['JobFleecingArgs', 'JobFleecingArgsDict']] fleecing: Fleecing configuration for the backup job.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excludes: A list of guest VM/CT IDs to exclude from the backup.
+        :param pulumi.Input[Union['JobFleecingArgs', 'JobFleecingArgsDict', 'outputs.JobFleecing']] fleecing: Fleecing configuration for the backup job.
         :param pulumi.Input[_builtins.int] ionice: I/O priority (0-8).
         :param pulumi.Input[_builtins.int] lockwait: Maximum wait time in minutes for the global lock.
         :param pulumi.Input[_builtins.str] mailnotification: Email notification setting (always or failure).
@@ -1345,7 +1383,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] node: The cluster node name to limit the backup job to.
         :param pulumi.Input[_builtins.str] notes_template: Template for notes attached to the backup.
         :param pulumi.Input[_builtins.str] pbs_change_detection_mode: PBS change detection mode (legacy, data, or metadata).
-        :param pulumi.Input[Union['JobPerformanceArgs', 'JobPerformanceArgsDict']] performance: Performance-related settings for the backup job.
+        :param pulumi.Input[Union['JobPerformanceArgs', 'JobPerformanceArgsDict', 'outputs.JobPerformance']] performance: Performance-related settings for the backup job.
         :param pulumi.Input[_builtins.int] pigz: Number of pigz threads (0 disables, 1 uses single-threaded gzip).
         :param pulumi.Input[_builtins.str] pool: Limit backup to guests in the specified pool.
         :param pulumi.Input[_builtins.bool] protected: Whether the backup should be marked as protected.
@@ -1372,6 +1410,7 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["compress"] = compress
         __props__.__dict__["enabled"] = enabled
         __props__.__dict__["exclude_paths"] = exclude_paths
+        __props__.__dict__["excludes"] = excludes
         __props__.__dict__["fleecing"] = fleecing
         __props__.__dict__["ionice"] = ionice
         __props__.__dict__["lockwait"] = lockwait
@@ -1440,6 +1479,14 @@ class Job(pulumi.CustomResource):
         A list of paths to exclude from the backup.
         """
         return pulumi.get(self, "exclude_paths")
+
+    @_builtins.property
+    @pulumi.getter
+    def excludes(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        A list of guest VM/CT IDs to exclude from the backup.
+        """
+        return pulumi.get(self, "excludes")
 
     @_builtins.property
     @pulumi.getter

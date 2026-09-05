@@ -19,7 +19,7 @@ namespace Pulumi.ProxmoxVE.Inputs
         public string Name { get; set; } = null!;
 
         /// <summary>
-        /// Treat values as regex patterns
+        /// Whether to treat the `Values` as regex patterns (defaults to `False`).
         /// </summary>
         [Input("regex")]
         public bool? Regex { get; set; }

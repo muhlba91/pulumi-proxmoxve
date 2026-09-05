@@ -45,7 +45,7 @@ namespace Pulumi.ProxmoxVE.Inputs
 
         /// <summary>
         /// The IP configuration (one block per network
-        /// device).
+        /// device, up to 32 blocks).
         /// </summary>
         public InputList<Inputs.VmLegacyInitializationIpConfigGetArgs> IpConfigs
         {

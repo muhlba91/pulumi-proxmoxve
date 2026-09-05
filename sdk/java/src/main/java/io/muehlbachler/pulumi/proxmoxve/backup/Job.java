@@ -143,6 +143,20 @@ public class Job extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.excludePaths);
     }
     /**
+     * A list of guest VM/CT IDs to exclude from the backup.
+     * 
+     */
+    @Export(name="excludes", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> excludes;
+
+    /**
+     * @return A list of guest VM/CT IDs to exclude from the backup.
+     * 
+     */
+    public Output<Optional<List<String>>> excludes() {
+        return Codegen.optional(this.excludes);
+    }
+    /**
      * Fleecing configuration for the backup job.
      * 
      */

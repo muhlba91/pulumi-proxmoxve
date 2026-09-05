@@ -182,7 +182,7 @@ class AwaitableGetVmResult(GetVmResult):
 
 def get_vm(id: Optional[_builtins.int] = None,
            node_name: Optional[_builtins.str] = None,
-           timeouts: Optional[Union['GetVmTimeoutsArgs', 'GetVmTimeoutsArgsDict']] = None,
+           timeouts: Optional[Union['GetVmTimeoutsArgs', 'GetVmTimeoutsArgsDict', 'outputs.GetVmTimeoutsResult']] = None,
            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVmResult:
     """
     Retrieves information about a specific VM.
@@ -213,7 +213,7 @@ def get_vm(id: Optional[_builtins.int] = None,
         vga=pulumi.get(__ret__, 'vga'))
 def get_vm_output(id: pulumi.Input[Optional[_builtins.int]] = None,
                   node_name: pulumi.Input[Optional[_builtins.str]] = None,
-                  timeouts: pulumi.Input[Optional[Optional[Union['GetVmTimeoutsArgs', 'GetVmTimeoutsArgsDict']]]] = None,
+                  timeouts: pulumi.Input[Optional[Optional[Union['GetVmTimeoutsArgs', 'GetVmTimeoutsArgsDict', 'outputs.GetVmTimeoutsResult']]]] = None,
                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVmResult]:
     """
     Retrieves information about a specific VM.

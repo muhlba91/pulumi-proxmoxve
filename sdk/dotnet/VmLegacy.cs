@@ -185,7 +185,12 @@ namespace Pulumi.ProxmoxVE
     /// file.
     /// 
     /// This provider requires `agent.enabled = true` to populate `Ipv4Addresses`,
-    /// `Ipv6Addresses` and `NetworkInterfaceNames` output attributes.
+    /// `Ipv6Addresses` and `NetworkInterfaceNames` output attributes. Note that the
+    /// provider honors the agent flag from the VM's *actual* Proxmox configuration,
+    /// not only from the Terraform configuration: a cloned VM inherits the `Agent`
+    /// setting from the template, so omitting the `Agent` block on the clone does not
+    /// disable the agent wait (up to 15 minutes by default). Set
+    /// `agent { enabled = false }` explicitly on the clone to override the template.
     /// 
     /// Setting `agent.enabled = true` without running `qemu-guest-agent` in the VM will
     /// also result in long timeouts when using the provider, both when creating VMs,
@@ -539,7 +544,7 @@ namespace Pulumi.ProxmoxVE
         public Output<bool?> RebootAfterUpdate { get; private set; } = null!;
 
         /// <summary>
-        /// The random number generator configuration. Can only be set by `root@pam.`
+        /// The random number generator configuration. Can only be set by `root@pam`.
         /// </summary>
         [Output("rngs")]
         public Output<ImmutableArray<Outputs.VmLegacyRng>> Rngs { get; private set; } = null!;
@@ -1009,7 +1014,7 @@ namespace Pulumi.ProxmoxVE
         private InputList<Inputs.VmLegacyRngArgs>? _rngs;
 
         /// <summary>
-        /// The random number generator configuration. Can only be set by `root@pam.`
+        /// The random number generator configuration. Can only be set by `root@pam`.
         /// </summary>
         public InputList<Inputs.VmLegacyRngArgs> Rngs
         {
@@ -1506,7 +1511,7 @@ namespace Pulumi.ProxmoxVE
         private InputList<Inputs.VmLegacyRngGetArgs>? _rngs;
 
         /// <summary>
-        /// The random number generator configuration. Can only be set by `root@pam.`
+        /// The random number generator configuration. Can only be set by `root@pam`.
         /// </summary>
         public InputList<Inputs.VmLegacyRngGetArgs> Rngs
         {

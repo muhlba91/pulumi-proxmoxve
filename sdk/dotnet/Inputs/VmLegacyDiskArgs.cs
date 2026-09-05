@@ -89,7 +89,7 @@ namespace Pulumi.ProxmoxVE.Inputs
 
         /// <summary>
         /// The in-datastore path to the disk image.
-        /// ***Experimental.***Use to attach another VM's disks,
+        /// ***Experimental.*** Use to attach another VM's disks,
         /// or (as root only) host's filesystem paths (`DatastoreId` empty string).
         /// See "*Example: Attached disks*".
         /// </summary>

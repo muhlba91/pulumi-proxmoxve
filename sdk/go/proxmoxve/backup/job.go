@@ -63,6 +63,8 @@ type Job struct {
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// A list of paths to exclude from the backup.
 	ExcludePaths pulumi.StringArrayOutput `pulumi:"excludePaths"`
+	// A list of guest VM/CT IDs to exclude from the backup.
+	Excludes pulumi.StringArrayOutput `pulumi:"excludes"`
 	// Fleecing configuration for the backup job.
 	Fleecing JobFleecingPtrOutput `pulumi:"fleecing"`
 	// I/O priority (0-8).
@@ -168,6 +170,8 @@ type jobState struct {
 	Enabled *bool `pulumi:"enabled"`
 	// A list of paths to exclude from the backup.
 	ExcludePaths []string `pulumi:"excludePaths"`
+	// A list of guest VM/CT IDs to exclude from the backup.
+	Excludes []string `pulumi:"excludes"`
 	// Fleecing configuration for the backup job.
 	Fleecing *JobFleecing `pulumi:"fleecing"`
 	// I/O priority (0-8).
@@ -235,6 +239,8 @@ type JobState struct {
 	Enabled pulumi.BoolPtrInput
 	// A list of paths to exclude from the backup.
 	ExcludePaths pulumi.StringArrayInput
+	// A list of guest VM/CT IDs to exclude from the backup.
+	Excludes pulumi.StringArrayInput
 	// Fleecing configuration for the backup job.
 	Fleecing JobFleecingPtrInput
 	// I/O priority (0-8).
@@ -306,6 +312,8 @@ type jobArgs struct {
 	Enabled *bool `pulumi:"enabled"`
 	// A list of paths to exclude from the backup.
 	ExcludePaths []string `pulumi:"excludePaths"`
+	// A list of guest VM/CT IDs to exclude from the backup.
+	Excludes []string `pulumi:"excludes"`
 	// Fleecing configuration for the backup job.
 	Fleecing *JobFleecing `pulumi:"fleecing"`
 	// I/O priority (0-8).
@@ -374,6 +382,8 @@ type JobArgs struct {
 	Enabled pulumi.BoolPtrInput
 	// A list of paths to exclude from the backup.
 	ExcludePaths pulumi.StringArrayInput
+	// A list of guest VM/CT IDs to exclude from the backup.
+	Excludes pulumi.StringArrayInput
 	// Fleecing configuration for the backup job.
 	Fleecing JobFleecingPtrInput
 	// I/O priority (0-8).
@@ -540,6 +550,11 @@ func (o JobOutput) Enabled() pulumi.BoolOutput {
 // A list of paths to exclude from the backup.
 func (o JobOutput) ExcludePaths() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringArrayOutput { return v.ExcludePaths }).(pulumi.StringArrayOutput)
+}
+
+// A list of guest VM/CT IDs to exclude from the backup.
+func (o JobOutput) Excludes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringArrayOutput { return v.Excludes }).(pulumi.StringArrayOutput)
 }
 
 // Fleecing configuration for the backup job.

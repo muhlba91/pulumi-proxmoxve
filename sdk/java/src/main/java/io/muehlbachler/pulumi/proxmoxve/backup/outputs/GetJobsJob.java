@@ -29,6 +29,11 @@ public final class GetJobsJob {
      */
     private Boolean enabled;
     /**
+     * @return List of guest VM/CT IDs excluded from the backup.
+     * 
+     */
+    private List<String> excludes;
+    /**
      * @return Unique identifier of the backup job.
      * 
      */
@@ -110,6 +115,13 @@ public final class GetJobsJob {
      */
     public Boolean enabled() {
         return this.enabled;
+    }
+    /**
+     * @return List of guest VM/CT IDs excluded from the backup.
+     * 
+     */
+    public List<String> excludes() {
+        return this.excludes;
     }
     /**
      * @return Unique identifier of the backup job.
@@ -208,6 +220,7 @@ public final class GetJobsJob {
         private Boolean all;
         private String compress;
         private Boolean enabled;
+        private List<String> excludes;
         private String id;
         private String mailnotification;
         private List<String> mailtos;
@@ -226,6 +239,7 @@ public final class GetJobsJob {
     	      this.all = defaults.all;
     	      this.compress = defaults.compress;
     	      this.enabled = defaults.enabled;
+    	      this.excludes = defaults.excludes;
     	      this.id = defaults.id;
     	      this.mailnotification = defaults.mailnotification;
     	      this.mailtos = defaults.mailtos;
@@ -263,6 +277,17 @@ public final class GetJobsJob {
             }
             this.enabled = enabled;
             return this;
+        }
+        @CustomType.Setter
+        public Builder excludes(List<String> excludes) {
+            if (excludes == null) {
+              throw new MissingRequiredPropertyException("GetJobsJob", "excludes");
+            }
+            this.excludes = excludes;
+            return this;
+        }
+        public Builder excludes(String... excludes) {
+            return excludes(List.of(excludes));
         }
         @CustomType.Setter
         public Builder id(String id) {
@@ -371,6 +396,7 @@ public final class GetJobsJob {
             _resultValue.all = all;
             _resultValue.compress = compress;
             _resultValue.enabled = enabled;
+            _resultValue.excludes = excludes;
             _resultValue.id = id;
             _resultValue.mailnotification = mailnotification;
             _resultValue.mailtos = mailtos;

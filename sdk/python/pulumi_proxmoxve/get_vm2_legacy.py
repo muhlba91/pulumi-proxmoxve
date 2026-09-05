@@ -182,7 +182,7 @@ class AwaitableGetVm2LegacyResult(GetVm2LegacyResult):
 
 def get_vm2_legacy(id: Optional[_builtins.int] = None,
                    node_name: Optional[_builtins.str] = None,
-                   timeouts: Optional[Union['GetVm2LegacyTimeoutsArgs', 'GetVm2LegacyTimeoutsArgsDict']] = None,
+                   timeouts: Optional[Union['GetVm2LegacyTimeoutsArgs', 'GetVm2LegacyTimeoutsArgsDict', 'outputs.GetVm2LegacyTimeoutsResult']] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVm2LegacyResult:
     """
     > **Deprecated:** Use `Vm` instead. This data source will be removed in v1.0.
@@ -215,7 +215,7 @@ def get_vm2_legacy(id: Optional[_builtins.int] = None,
         vga=pulumi.get(__ret__, 'vga'))
 def get_vm2_legacy_output(id: pulumi.Input[Optional[_builtins.int]] = None,
                           node_name: pulumi.Input[Optional[_builtins.str]] = None,
-                          timeouts: pulumi.Input[Optional[Optional[Union['GetVm2LegacyTimeoutsArgs', 'GetVm2LegacyTimeoutsArgsDict']]]] = None,
+                          timeouts: pulumi.Input[Optional[Optional[Union['GetVm2LegacyTimeoutsArgs', 'GetVm2LegacyTimeoutsArgsDict', 'outputs.GetVm2LegacyTimeoutsResult']]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVm2LegacyResult]:
     """
     > **Deprecated:** Use `Vm` instead. This data source will be removed in v1.0.

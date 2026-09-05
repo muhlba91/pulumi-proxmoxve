@@ -13,7 +13,7 @@ namespace Pulumi.ProxmoxVE.Inputs
     public sealed class ContainerLegacyDiskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Explicitly enable or disable ACL support
+        /// Explicitly enable or disable ACL support.
         /// </summary>
         [Input("acl")]
         public Input<bool>? Acl { get; set; }
@@ -45,13 +45,13 @@ namespace Pulumi.ProxmoxVE.Inputs
         public Input<string>? PathInDatastore { get; set; }
 
         /// <summary>
-        /// Enable user quotas for the container rootfs
+        /// Enable user quotas for the container rootfs.
         /// </summary>
         [Input("quota")]
         public Input<bool>? Quota { get; set; }
 
         /// <summary>
-        /// Will include this volume to a storage replica job
+        /// Whether to include this volume in a storage replication job (defaults to `True`).
         /// </summary>
         [Input("replicate")]
         public Input<bool>? Replicate { get; set; }

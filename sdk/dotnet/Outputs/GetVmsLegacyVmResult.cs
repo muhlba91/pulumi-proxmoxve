@@ -18,7 +18,7 @@ namespace Pulumi.ProxmoxVE.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The node name. All cluster nodes will be queried in case this is omitted
+        /// The node name. If omitted, all cluster nodes are queried.
         /// </summary>
         public readonly string NodeName;
         /// <summary>

@@ -75,16 +75,16 @@ class AwaitableGetDatastoresResult(GetDatastoresResult):
             node_name=self.node_name)
 
 
-def get_datastores(datastores: Optional[Sequence[Union['GetDatastoresDatastoreArgs', 'GetDatastoresDatastoreArgsDict']]] = None,
-                   filters: Optional[Union['GetDatastoresFiltersArgs', 'GetDatastoresFiltersArgsDict']] = None,
+def get_datastores(datastores: Optional[Sequence[Union['GetDatastoresDatastoreArgs', 'GetDatastoresDatastoreArgsDict', 'outputs.GetDatastoresDatastoreResult']]] = None,
+                   filters: Optional[Union['GetDatastoresFiltersArgs', 'GetDatastoresFiltersArgsDict', 'outputs.GetDatastoresFiltersResult']] = None,
                    node_name: Optional[_builtins.str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatastoresResult:
     """
     Retrieves information about all the datastores available to a specific node.
 
 
-    :param Sequence[Union['GetDatastoresDatastoreArgs', 'GetDatastoresDatastoreArgsDict']] datastores: The list of datastores.
-    :param Union['GetDatastoresFiltersArgs', 'GetDatastoresFiltersArgsDict'] filters: The filters to apply to the stores.
+    :param Sequence[Union['GetDatastoresDatastoreArgs', 'GetDatastoresDatastoreArgsDict', 'outputs.GetDatastoresDatastoreResult']] datastores: The list of datastores.
+    :param Union['GetDatastoresFiltersArgs', 'GetDatastoresFiltersArgsDict', 'outputs.GetDatastoresFiltersResult'] filters: The filters to apply to the stores.
     :param _builtins.str node_name: The name of the node to retrieve the stores from.
     """
     __args__ = dict()
@@ -98,16 +98,16 @@ def get_datastores(datastores: Optional[Sequence[Union['GetDatastoresDatastoreAr
         datastores=pulumi.get(__ret__, 'datastores'),
         filters=pulumi.get(__ret__, 'filters'),
         node_name=pulumi.get(__ret__, 'node_name'))
-def get_datastores_output(datastores: pulumi.Input[Optional[Optional[Sequence[Union['GetDatastoresDatastoreArgs', 'GetDatastoresDatastoreArgsDict']]]]] = None,
-                          filters: pulumi.Input[Optional[Optional[Union['GetDatastoresFiltersArgs', 'GetDatastoresFiltersArgsDict']]]] = None,
+def get_datastores_output(datastores: pulumi.Input[Optional[Optional[Sequence[Union['GetDatastoresDatastoreArgs', 'GetDatastoresDatastoreArgsDict', 'outputs.GetDatastoresDatastoreResult']]]]] = None,
+                          filters: pulumi.Input[Optional[Optional[Union['GetDatastoresFiltersArgs', 'GetDatastoresFiltersArgsDict', 'outputs.GetDatastoresFiltersResult']]]] = None,
                           node_name: pulumi.Input[Optional[_builtins.str]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatastoresResult]:
     """
     Retrieves information about all the datastores available to a specific node.
 
 
-    :param Sequence[Union['GetDatastoresDatastoreArgs', 'GetDatastoresDatastoreArgsDict']] datastores: The list of datastores.
-    :param Union['GetDatastoresFiltersArgs', 'GetDatastoresFiltersArgsDict'] filters: The filters to apply to the stores.
+    :param Sequence[Union['GetDatastoresDatastoreArgs', 'GetDatastoresDatastoreArgsDict', 'outputs.GetDatastoresDatastoreResult']] datastores: The list of datastores.
+    :param Union['GetDatastoresFiltersArgs', 'GetDatastoresFiltersArgsDict', 'outputs.GetDatastoresFiltersResult'] filters: The filters to apply to the stores.
     :param _builtins.str node_name: The name of the node to retrieve the stores from.
     """
     __args__ = dict()

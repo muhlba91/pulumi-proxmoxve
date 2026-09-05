@@ -107,14 +107,14 @@ public class DnsLegacy extends com.pulumi.resources.CustomResource {
         return this.nodeName;
     }
     /**
-     * The DNS servers.
+     * The DNS servers (maximum of 3).
      * 
      */
     @Export(name="servers", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> servers;
 
     /**
-     * @return The DNS servers.
+     * @return The DNS servers (maximum of 3).
      * 
      */
     public Output<Optional<List<String>>> servers() {

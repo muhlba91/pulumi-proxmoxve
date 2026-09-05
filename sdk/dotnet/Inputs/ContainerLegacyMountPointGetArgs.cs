@@ -65,7 +65,7 @@ namespace Pulumi.ProxmoxVE.Inputs
         public Input<bool>? ReadOnly { get; set; }
 
         /// <summary>
-        /// Will include this volume to a storage replica job.
+        /// Will include this volume to a storage replica job (defaults to `True`).
         /// </summary>
         [Input("replicate")]
         public Input<bool>? Replicate { get; set; }

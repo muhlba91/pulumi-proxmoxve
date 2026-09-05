@@ -213,7 +213,12 @@ import javax.annotation.Nullable;
  * file.
  * 
  * This provider requires `agent.enabled = true` to populate &lt;span pulumi-lang-nodejs=&#34;`ipv4Addresses`&#34; pulumi-lang-dotnet=&#34;`Ipv4Addresses`&#34; pulumi-lang-go=&#34;`ipv4Addresses`&#34; pulumi-lang-python=&#34;`ipv4_addresses`&#34; pulumi-lang-yaml=&#34;`ipv4Addresses`&#34; pulumi-lang-java=&#34;`ipv4Addresses`&#34; pulumi-lang-hcl=&#34;`ipv4_addresses`&#34;&gt;`ipv4Addresses`&lt;/span&gt;,
- * &lt;span pulumi-lang-nodejs=&#34;`ipv6Addresses`&#34; pulumi-lang-dotnet=&#34;`Ipv6Addresses`&#34; pulumi-lang-go=&#34;`ipv6Addresses`&#34; pulumi-lang-python=&#34;`ipv6_addresses`&#34; pulumi-lang-yaml=&#34;`ipv6Addresses`&#34; pulumi-lang-java=&#34;`ipv6Addresses`&#34; pulumi-lang-hcl=&#34;`ipv6_addresses`&#34;&gt;`ipv6Addresses`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`networkInterfaceNames`&#34; pulumi-lang-dotnet=&#34;`NetworkInterfaceNames`&#34; pulumi-lang-go=&#34;`networkInterfaceNames`&#34; pulumi-lang-python=&#34;`network_interface_names`&#34; pulumi-lang-yaml=&#34;`networkInterfaceNames`&#34; pulumi-lang-java=&#34;`networkInterfaceNames`&#34; pulumi-lang-hcl=&#34;`network_interface_names`&#34;&gt;`networkInterfaceNames`&lt;/span&gt; output attributes.
+ * &lt;span pulumi-lang-nodejs=&#34;`ipv6Addresses`&#34; pulumi-lang-dotnet=&#34;`Ipv6Addresses`&#34; pulumi-lang-go=&#34;`ipv6Addresses`&#34; pulumi-lang-python=&#34;`ipv6_addresses`&#34; pulumi-lang-yaml=&#34;`ipv6Addresses`&#34; pulumi-lang-java=&#34;`ipv6Addresses`&#34; pulumi-lang-hcl=&#34;`ipv6_addresses`&#34;&gt;`ipv6Addresses`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`networkInterfaceNames`&#34; pulumi-lang-dotnet=&#34;`NetworkInterfaceNames`&#34; pulumi-lang-go=&#34;`networkInterfaceNames`&#34; pulumi-lang-python=&#34;`network_interface_names`&#34; pulumi-lang-yaml=&#34;`networkInterfaceNames`&#34; pulumi-lang-java=&#34;`networkInterfaceNames`&#34; pulumi-lang-hcl=&#34;`network_interface_names`&#34;&gt;`networkInterfaceNames`&lt;/span&gt; output attributes. Note that the
+ * provider honors the agent flag from the VM&#39;s *actual* Proxmox configuration,
+ * not only from the Terraform configuration: a cloned VM inherits the &lt;span pulumi-lang-nodejs=&#34;`agent`&#34; pulumi-lang-dotnet=&#34;`Agent`&#34; pulumi-lang-go=&#34;`agent`&#34; pulumi-lang-python=&#34;`agent`&#34; pulumi-lang-yaml=&#34;`agent`&#34; pulumi-lang-java=&#34;`agent`&#34; pulumi-lang-hcl=&#34;`agent`&#34;&gt;`agent`&lt;/span&gt;
+ * setting from the template, so omitting the &lt;span pulumi-lang-nodejs=&#34;`agent`&#34; pulumi-lang-dotnet=&#34;`Agent`&#34; pulumi-lang-go=&#34;`agent`&#34; pulumi-lang-python=&#34;`agent`&#34; pulumi-lang-yaml=&#34;`agent`&#34; pulumi-lang-java=&#34;`agent`&#34; pulumi-lang-hcl=&#34;`agent`&#34;&gt;`agent`&lt;/span&gt; block on the clone does not
+ * disable the agent wait (up to 15 minutes by default). Set
+ * `agent { enabled = false }` explicitly on the clone to override the template.
  * 
  * Setting `agent.enabled = true` without running `qemu-guest-agent` in the VM will
  * also result in long timeouts when using the provider, both when creating VMs,
@@ -900,14 +905,14 @@ public class VmLegacy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.rebootAfterUpdate);
     }
     /**
-     * The random number generator configuration. Can only be set by `root{@literal @}pam.`
+     * The random number generator configuration. Can only be set by `root{@literal @}pam`.
      * 
      */
     @Export(name="rngs", refs={List.class,VmLegacyRng.class}, tree="[0,1]")
     private Output</* @Nullable */ List<VmLegacyRng>> rngs;
 
     /**
-     * @return The random number generator configuration. Can only be set by `root{@literal @}pam.`
+     * @return The random number generator configuration. Can only be set by `root{@literal @}pam`.
      * 
      */
     public Output<Optional<List<VmLegacyRng>>> rngs() {

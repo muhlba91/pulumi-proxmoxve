@@ -132,7 +132,7 @@ class VmLegacyArgs:
                instead of being applied automatically. Changes that are applied
                successfully but still need a later manual reboot emit a warning instead
                (defaults to `true`).
-        :param pulumi.Input[Sequence[pulumi.Input['VmLegacyRngArgs']]] rngs: The random number generator configuration. Can only be set by `root@pam.`
+        :param pulumi.Input[Sequence[pulumi.Input['VmLegacyRngArgs']]] rngs: The random number generator configuration. Can only be set by `root@pam`.
         :param pulumi.Input[_builtins.str] scsi_hardware: The SCSI hardware type (defaults to
                `virtio-scsi-pci`).
         :param pulumi.Input[Sequence[pulumi.Input['VmLegacySerialDeviceArgs']]] serial_devices: A serial device (multiple blocks supported).
@@ -724,7 +724,7 @@ class VmLegacyArgs:
     @pulumi.getter
     def rngs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VmLegacyRngArgs']]]]:
         """
-        The random number generator configuration. Can only be set by `root@pam.`
+        The random number generator configuration. Can only be set by `root@pam`.
         """
         return pulumi.get(self, "rngs")
 
@@ -1153,7 +1153,7 @@ class _VmLegacyState:
                instead of being applied automatically. Changes that are applied
                successfully but still need a later manual reboot emit a warning instead
                (defaults to `true`).
-        :param pulumi.Input[Sequence[pulumi.Input['VmLegacyRngArgs']]] rngs: The random number generator configuration. Can only be set by `root@pam.`
+        :param pulumi.Input[Sequence[pulumi.Input['VmLegacyRngArgs']]] rngs: The random number generator configuration. Can only be set by `root@pam`.
         :param pulumi.Input[_builtins.str] scsi_hardware: The SCSI hardware type (defaults to
                `virtio-scsi-pci`).
         :param pulumi.Input[Sequence[pulumi.Input['VmLegacySerialDeviceArgs']]] serial_devices: A serial device (multiple blocks supported).
@@ -1791,7 +1791,7 @@ class _VmLegacyState:
     @pulumi.getter
     def rngs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VmLegacyRngArgs']]]]:
         """
-        The random number generator configuration. Can only be set by `root@pam.`
+        The random number generator configuration. Can only be set by `root@pam`.
         """
         return pulumi.get(self, "rngs")
 
@@ -2104,45 +2104,45 @@ class VmLegacy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acpi: pulumi.Input[Optional[_builtins.bool]] = None,
-                 agent: pulumi.Input[Optional[Union['VmLegacyAgentArgs', 'VmLegacyAgentArgsDict']]] = None,
-                 amd_sev: pulumi.Input[Optional[Union['VmLegacyAmdSevArgs', 'VmLegacyAmdSevArgsDict']]] = None,
-                 audio_device: pulumi.Input[Optional[Union['VmLegacyAudioDeviceArgs', 'VmLegacyAudioDeviceArgsDict']]] = None,
+                 agent: pulumi.Input[Optional[Union['VmLegacyAgentArgs', 'VmLegacyAgentArgsDict', 'outputs.VmLegacyAgent']]] = None,
+                 amd_sev: pulumi.Input[Optional[Union['VmLegacyAmdSevArgs', 'VmLegacyAmdSevArgsDict', 'outputs.VmLegacyAmdSev']]] = None,
+                 audio_device: pulumi.Input[Optional[Union['VmLegacyAudioDeviceArgs', 'VmLegacyAudioDeviceArgsDict', 'outputs.VmLegacyAudioDevice']]] = None,
                  bios: pulumi.Input[Optional[_builtins.str]] = None,
                  boot_orders: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cdrom: pulumi.Input[Optional[Union['VmLegacyCdromArgs', 'VmLegacyCdromArgsDict']]] = None,
-                 clone: pulumi.Input[Optional[Union['VmLegacyCloneArgs', 'VmLegacyCloneArgsDict']]] = None,
-                 cpu: pulumi.Input[Optional[Union['VmLegacyCpuArgs', 'VmLegacyCpuArgsDict']]] = None,
+                 cdrom: pulumi.Input[Optional[Union['VmLegacyCdromArgs', 'VmLegacyCdromArgsDict', 'outputs.VmLegacyCdrom']]] = None,
+                 clone: pulumi.Input[Optional[Union['VmLegacyCloneArgs', 'VmLegacyCloneArgsDict', 'outputs.VmLegacyClone']]] = None,
+                 cpu: pulumi.Input[Optional[Union['VmLegacyCpuArgs', 'VmLegacyCpuArgsDict', 'outputs.VmLegacyCpu']]] = None,
                  delete_unreferenced_disks_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacyDiskArgs', 'VmLegacyDiskArgsDict']]]]] = None,
-                 efi_disk: pulumi.Input[Optional[Union['VmLegacyEfiDiskArgs', 'VmLegacyEfiDiskArgsDict']]] = None,
+                 disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacyDiskArgs', 'VmLegacyDiskArgsDict', 'outputs.VmLegacyDisk']]]]] = None,
+                 efi_disk: pulumi.Input[Optional[Union['VmLegacyEfiDiskArgs', 'VmLegacyEfiDiskArgsDict', 'outputs.VmLegacyEfiDisk']]] = None,
                  hook_script_file_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 hostpcis: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacyHostpciArgs', 'VmLegacyHostpciArgsDict']]]]] = None,
+                 hostpcis: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacyHostpciArgs', 'VmLegacyHostpciArgsDict', 'outputs.VmLegacyHostpci']]]]] = None,
                  hotplug: pulumi.Input[Optional[_builtins.str]] = None,
-                 initialization: pulumi.Input[Optional[Union['VmLegacyInitializationArgs', 'VmLegacyInitializationArgsDict']]] = None,
+                 initialization: pulumi.Input[Optional[Union['VmLegacyInitializationArgs', 'VmLegacyInitializationArgsDict', 'outputs.VmLegacyInitialization']]] = None,
                  keyboard_layout: pulumi.Input[Optional[_builtins.str]] = None,
                  kvm_arguments: pulumi.Input[Optional[_builtins.str]] = None,
                  mac_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  machine: pulumi.Input[Optional[_builtins.str]] = None,
-                 memory: pulumi.Input[Optional[Union['VmLegacyMemoryArgs', 'VmLegacyMemoryArgsDict']]] = None,
+                 memory: pulumi.Input[Optional[Union['VmLegacyMemoryArgs', 'VmLegacyMemoryArgsDict', 'outputs.VmLegacyMemory']]] = None,
                  migrate: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 network_devices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacyNetworkDeviceArgs', 'VmLegacyNetworkDeviceArgsDict']]]]] = None,
+                 network_devices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacyNetworkDeviceArgs', 'VmLegacyNetworkDeviceArgsDict', 'outputs.VmLegacyNetworkDevice']]]]] = None,
                  node_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 numas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacyNumaArgs', 'VmLegacyNumaArgsDict']]]]] = None,
+                 numas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacyNumaArgs', 'VmLegacyNumaArgsDict', 'outputs.VmLegacyNuma']]]]] = None,
                  on_boot: pulumi.Input[Optional[_builtins.bool]] = None,
-                 operating_system: pulumi.Input[Optional[Union['VmLegacyOperatingSystemArgs', 'VmLegacyOperatingSystemArgsDict']]] = None,
+                 operating_system: pulumi.Input[Optional[Union['VmLegacyOperatingSystemArgs', 'VmLegacyOperatingSystemArgsDict', 'outputs.VmLegacyOperatingSystem']]] = None,
                  pool_id: pulumi.Input[Optional[_builtins.str]] = None,
                  protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  purge_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  reboot: pulumi.Input[Optional[_builtins.bool]] = None,
                  reboot_after_update: pulumi.Input[Optional[_builtins.bool]] = None,
-                 rngs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacyRngArgs', 'VmLegacyRngArgsDict']]]]] = None,
+                 rngs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacyRngArgs', 'VmLegacyRngArgsDict', 'outputs.VmLegacyRng']]]]] = None,
                  scsi_hardware: pulumi.Input[Optional[_builtins.str]] = None,
-                 serial_devices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacySerialDeviceArgs', 'VmLegacySerialDeviceArgsDict']]]]] = None,
-                 smbios: pulumi.Input[Optional[Union['VmLegacySmbiosArgs', 'VmLegacySmbiosArgsDict']]] = None,
+                 serial_devices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacySerialDeviceArgs', 'VmLegacySerialDeviceArgsDict', 'outputs.VmLegacySerialDevice']]]]] = None,
+                 smbios: pulumi.Input[Optional[Union['VmLegacySmbiosArgs', 'VmLegacySmbiosArgsDict', 'outputs.VmLegacySmbios']]] = None,
                  started: pulumi.Input[Optional[_builtins.bool]] = None,
-                 startup: pulumi.Input[Optional[Union['VmLegacyStartupArgs', 'VmLegacyStartupArgsDict']]] = None,
+                 startup: pulumi.Input[Optional[Union['VmLegacyStartupArgs', 'VmLegacyStartupArgsDict', 'outputs.VmLegacyStartup']]] = None,
                  stop_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  tablet_device: pulumi.Input[Optional[_builtins.bool]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -2155,12 +2155,12 @@ class VmLegacy(pulumi.CustomResource):
                  timeout_shutdown_vm: pulumi.Input[Optional[_builtins.int]] = None,
                  timeout_start_vm: pulumi.Input[Optional[_builtins.int]] = None,
                  timeout_stop_vm: pulumi.Input[Optional[_builtins.int]] = None,
-                 tpm_state: pulumi.Input[Optional[Union['VmLegacyTpmStateArgs', 'VmLegacyTpmStateArgsDict']]] = None,
-                 usbs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacyUsbArgs', 'VmLegacyUsbArgsDict']]]]] = None,
-                 vga: pulumi.Input[Optional[Union['VmLegacyVgaArgs', 'VmLegacyVgaArgsDict']]] = None,
-                 virtiofs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacyVirtiofArgs', 'VmLegacyVirtiofArgsDict']]]]] = None,
+                 tpm_state: pulumi.Input[Optional[Union['VmLegacyTpmStateArgs', 'VmLegacyTpmStateArgsDict', 'outputs.VmLegacyTpmState']]] = None,
+                 usbs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacyUsbArgs', 'VmLegacyUsbArgsDict', 'outputs.VmLegacyUsb']]]]] = None,
+                 vga: pulumi.Input[Optional[Union['VmLegacyVgaArgs', 'VmLegacyVgaArgsDict', 'outputs.VmLegacyVga']]] = None,
+                 virtiofs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacyVirtiofArgs', 'VmLegacyVirtiofArgsDict', 'outputs.VmLegacyVirtiof']]]]] = None,
                  vm_id: pulumi.Input[Optional[_builtins.int]] = None,
-                 watchdog: pulumi.Input[Optional[Union['VmLegacyWatchdogArgs', 'VmLegacyWatchdogArgsDict']]] = None,
+                 watchdog: pulumi.Input[Optional[Union['VmLegacyWatchdogArgs', 'VmLegacyWatchdogArgsDict', 'outputs.VmLegacyWatchdog']]] = None,
                  __props__=None):
         """
         Manages a virtual machine.
@@ -2283,7 +2283,12 @@ class VmLegacy(pulumi.CustomResource):
         file.
 
         This provider requires `agent.enabled = true` to populate `ipv4_addresses`,
-        `ipv6_addresses` and `network_interface_names` output attributes.
+        `ipv6_addresses` and `network_interface_names` output attributes. Note that the
+        provider honors the agent flag from the VM's *actual* Proxmox configuration,
+        not only from the Terraform configuration: a cloned VM inherits the `agent`
+        setting from the template, so omitting the `agent` block on the clone does not
+        disable the agent wait (up to 15 minutes by default). Set
+        `agent { enabled = false }` explicitly on the clone to override the template.
 
         Setting `agent.enabled = true` without running `qemu-guest-agent` in the VM will
         also result in long timeouts when using the provider, both when creating VMs,
@@ -2385,21 +2390,21 @@ class VmLegacy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] acpi: Whether to enable ACPI (defaults to `true`).
-        :param pulumi.Input[Union['VmLegacyAgentArgs', 'VmLegacyAgentArgsDict']] agent: The QEMU agent configuration.
-        :param pulumi.Input[Union['VmLegacyAmdSevArgs', 'VmLegacyAmdSevArgsDict']] amd_sev: Secure Encrypted Virtualization (SEV) features by AMD CPUs.
-        :param pulumi.Input[Union['VmLegacyAudioDeviceArgs', 'VmLegacyAudioDeviceArgsDict']] audio_device: An audio device.
+        :param pulumi.Input[Union['VmLegacyAgentArgs', 'VmLegacyAgentArgsDict', 'outputs.VmLegacyAgent']] agent: The QEMU agent configuration.
+        :param pulumi.Input[Union['VmLegacyAmdSevArgs', 'VmLegacyAmdSevArgsDict', 'outputs.VmLegacyAmdSev']] amd_sev: Secure Encrypted Virtualization (SEV) features by AMD CPUs.
+        :param pulumi.Input[Union['VmLegacyAudioDeviceArgs', 'VmLegacyAudioDeviceArgsDict', 'outputs.VmLegacyAudioDevice']] audio_device: An audio device.
         :param pulumi.Input[_builtins.str] bios: The BIOS implementation (defaults to `seabios`).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] boot_orders: Specify a list of devices to boot from in the order they appear in the list.
-        :param pulumi.Input[Union['VmLegacyCdromArgs', 'VmLegacyCdromArgsDict']] cdrom: The CD-ROM configuration.
-        :param pulumi.Input[Union['VmLegacyCloneArgs', 'VmLegacyCloneArgsDict']] clone: The cloning configuration.
-        :param pulumi.Input[Union['VmLegacyCpuArgs', 'VmLegacyCpuArgsDict']] cpu: The CPU configuration.
+        :param pulumi.Input[Union['VmLegacyCdromArgs', 'VmLegacyCdromArgsDict', 'outputs.VmLegacyCdrom']] cdrom: The CD-ROM configuration.
+        :param pulumi.Input[Union['VmLegacyCloneArgs', 'VmLegacyCloneArgsDict', 'outputs.VmLegacyClone']] clone: The cloning configuration.
+        :param pulumi.Input[Union['VmLegacyCpuArgs', 'VmLegacyCpuArgsDict', 'outputs.VmLegacyCpu']] cpu: The CPU configuration.
         :param pulumi.Input[_builtins.bool] delete_unreferenced_disks_on_destroy: Whether to delete unreferenced disks on destroy (defaults to `true`)
         :param pulumi.Input[_builtins.str] description: The description.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VmLegacyDiskArgs', 'VmLegacyDiskArgsDict']]]] disks: A disk (multiple blocks supported).
-        :param pulumi.Input[Union['VmLegacyEfiDiskArgs', 'VmLegacyEfiDiskArgsDict']] efi_disk: The efi disk device (required if `bios` is set
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VmLegacyDiskArgs', 'VmLegacyDiskArgsDict', 'outputs.VmLegacyDisk']]]] disks: A disk (multiple blocks supported).
+        :param pulumi.Input[Union['VmLegacyEfiDiskArgs', 'VmLegacyEfiDiskArgsDict', 'outputs.VmLegacyEfiDisk']] efi_disk: The efi disk device (required if `bios` is set
                to `ovmf`)
         :param pulumi.Input[_builtins.str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VmLegacyHostpciArgs', 'VmLegacyHostpciArgsDict']]]] hostpcis: A host PCI device mapping (multiple blocks supported).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VmLegacyHostpciArgs', 'VmLegacyHostpciArgsDict', 'outputs.VmLegacyHostpci']]]] hostpcis: A host PCI device mapping (multiple blocks supported).
         :param pulumi.Input[_builtins.str] hotplug: Selectively enable hotplug features. Use `0` to
                disable, `1` to enable all. Valid features: `disk`, `network`, `usb`,
                `memory`, `cpu`. Memory hotplug requires NUMA to be enabled. If not set,
@@ -2407,23 +2412,23 @@ class VmLegacy(pulumi.CustomResource):
                hotplug list, disk resizes on a running VM are applied live without a
                reboot. When `disk` is excluded, the provider will reboot the VM after
                resize (controlled by `reboot_after_update`).
-        :param pulumi.Input[Union['VmLegacyInitializationArgs', 'VmLegacyInitializationArgsDict']] initialization: The cloud-init configuration.
+        :param pulumi.Input[Union['VmLegacyInitializationArgs', 'VmLegacyInitializationArgsDict', 'outputs.VmLegacyInitialization']] initialization: The cloud-init configuration.
         :param pulumi.Input[_builtins.str] keyboard_layout: The keyboard layout (defaults to `en-us`).
         :param pulumi.Input[_builtins.str] kvm_arguments: Arbitrary arguments passed to kvm.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mac_addresses: The MAC addresses published by the QEMU agent with fallback
                to the network device configuration, if the agent is disabled
         :param pulumi.Input[_builtins.str] machine: The VM machine type (defaults to `pc`).
-        :param pulumi.Input[Union['VmLegacyMemoryArgs', 'VmLegacyMemoryArgsDict']] memory: The memory configuration.
+        :param pulumi.Input[Union['VmLegacyMemoryArgs', 'VmLegacyMemoryArgsDict', 'outputs.VmLegacyMemory']] memory: The memory configuration.
         :param pulumi.Input[_builtins.bool] migrate: Migrate the VM on node change instead of re-creating
                it (defaults to `false`).
         :param pulumi.Input[_builtins.str] name: The virtual machine name. Must be a valid DNS name.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VmLegacyNetworkDeviceArgs', 'VmLegacyNetworkDeviceArgsDict']]]] network_devices: A network device (multiple blocks supported).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VmLegacyNetworkDeviceArgs', 'VmLegacyNetworkDeviceArgsDict', 'outputs.VmLegacyNetworkDevice']]]] network_devices: A network device (multiple blocks supported).
         :param pulumi.Input[_builtins.str] node_name: The name of the node to assign the virtual machine
                to.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VmLegacyNumaArgs', 'VmLegacyNumaArgsDict']]]] numas: The NUMA configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VmLegacyNumaArgs', 'VmLegacyNumaArgsDict', 'outputs.VmLegacyNuma']]]] numas: The NUMA configuration.
         :param pulumi.Input[_builtins.bool] on_boot: Specifies whether a VM will be started during system
                boot. (defaults to `true`)
-        :param pulumi.Input[Union['VmLegacyOperatingSystemArgs', 'VmLegacyOperatingSystemArgsDict']] operating_system: The Operating System configuration.
+        :param pulumi.Input[Union['VmLegacyOperatingSystemArgs', 'VmLegacyOperatingSystemArgsDict', 'outputs.VmLegacyOperatingSystem']] operating_system: The Operating System configuration.
         :param pulumi.Input[_builtins.str] pool_id: The identifier for a pool to assign the virtual machine to.
         :param pulumi.Input[_builtins.bool] protection: Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
         :param pulumi.Input[_builtins.bool] purge_on_destroy: Whether to purge the VM from backup configurations on destroy (defaults to `true`)
@@ -2434,14 +2439,14 @@ class VmLegacy(pulumi.CustomResource):
                instead of being applied automatically. Changes that are applied
                successfully but still need a later manual reboot emit a warning instead
                (defaults to `true`).
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VmLegacyRngArgs', 'VmLegacyRngArgsDict']]]] rngs: The random number generator configuration. Can only be set by `root@pam.`
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VmLegacyRngArgs', 'VmLegacyRngArgsDict', 'outputs.VmLegacyRng']]]] rngs: The random number generator configuration. Can only be set by `root@pam`.
         :param pulumi.Input[_builtins.str] scsi_hardware: The SCSI hardware type (defaults to
                `virtio-scsi-pci`).
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VmLegacySerialDeviceArgs', 'VmLegacySerialDeviceArgsDict']]]] serial_devices: A serial device (multiple blocks supported).
-        :param pulumi.Input[Union['VmLegacySmbiosArgs', 'VmLegacySmbiosArgsDict']] smbios: The SMBIOS (type1) settings for the VM.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VmLegacySerialDeviceArgs', 'VmLegacySerialDeviceArgsDict', 'outputs.VmLegacySerialDevice']]]] serial_devices: A serial device (multiple blocks supported).
+        :param pulumi.Input[Union['VmLegacySmbiosArgs', 'VmLegacySmbiosArgsDict', 'outputs.VmLegacySmbios']] smbios: The SMBIOS (type1) settings for the VM.
         :param pulumi.Input[_builtins.bool] started: Whether to start the virtual machine (defaults
                to `true`).
-        :param pulumi.Input[Union['VmLegacyStartupArgs', 'VmLegacyStartupArgsDict']] startup: Defines startup and shutdown behavior of the VM.
+        :param pulumi.Input[Union['VmLegacyStartupArgs', 'VmLegacyStartupArgsDict', 'outputs.VmLegacyStartup']] startup: Defines startup and shutdown behavior of the VM.
         :param pulumi.Input[_builtins.bool] stop_on_destroy: Whether to stop rather than shutdown on VM destroy (defaults to `false`)
         :param pulumi.Input[_builtins.bool] tablet_device: Whether to enable the USB tablet device (defaults
                to `true`).
@@ -2469,15 +2474,15 @@ class VmLegacy(pulumi.CustomResource):
                to 1800).
         :param pulumi.Input[_builtins.int] timeout_stop_vm: Timeout for stopping a VM in seconds (defaults
                to 300).
-        :param pulumi.Input[Union['VmLegacyTpmStateArgs', 'VmLegacyTpmStateArgsDict']] tpm_state: The TPM state device. The VM must be stopped before
+        :param pulumi.Input[Union['VmLegacyTpmStateArgs', 'VmLegacyTpmStateArgsDict', 'outputs.VmLegacyTpmState']] tpm_state: The TPM state device. The VM must be stopped before
                adding, removing, or moving a TPM state device; the provider automatically
                handles the shutdown/start cycle. Changing `version` requires recreating the
                VM because Proxmox only supports setting the TPM version at creation time.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VmLegacyUsbArgs', 'VmLegacyUsbArgsDict']]]] usbs: A host USB device mapping (multiple blocks supported).
-        :param pulumi.Input[Union['VmLegacyVgaArgs', 'VmLegacyVgaArgsDict']] vga: The VGA configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VmLegacyVirtiofArgs', 'VmLegacyVirtiofArgsDict']]]] virtiofs: Virtiofs share
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VmLegacyUsbArgs', 'VmLegacyUsbArgsDict', 'outputs.VmLegacyUsb']]]] usbs: A host USB device mapping (multiple blocks supported).
+        :param pulumi.Input[Union['VmLegacyVgaArgs', 'VmLegacyVgaArgsDict', 'outputs.VmLegacyVga']] vga: The VGA configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VmLegacyVirtiofArgs', 'VmLegacyVirtiofArgsDict', 'outputs.VmLegacyVirtiof']]]] virtiofs: Virtiofs share
         :param pulumi.Input[_builtins.int] vm_id: The VM identifier.
-        :param pulumi.Input[Union['VmLegacyWatchdogArgs', 'VmLegacyWatchdogArgsDict']] watchdog: The watchdog configuration. Once enabled (by a guest action), the watchdog must be periodically polled by an agent inside the guest or else the watchdog will reset the guest (or execute the respective action specified).
+        :param pulumi.Input[Union['VmLegacyWatchdogArgs', 'VmLegacyWatchdogArgsDict', 'outputs.VmLegacyWatchdog']] watchdog: The watchdog configuration. Once enabled (by a guest action), the watchdog must be periodically polled by an agent inside the guest or else the watchdog will reset the guest (or execute the respective action specified).
         """
         ...
     @overload
@@ -2606,7 +2611,12 @@ class VmLegacy(pulumi.CustomResource):
         file.
 
         This provider requires `agent.enabled = true` to populate `ipv4_addresses`,
-        `ipv6_addresses` and `network_interface_names` output attributes.
+        `ipv6_addresses` and `network_interface_names` output attributes. Note that the
+        provider honors the agent flag from the VM's *actual* Proxmox configuration,
+        not only from the Terraform configuration: a cloned VM inherits the `agent`
+        setting from the template, so omitting the `agent` block on the clone does not
+        disable the agent wait (up to 15 minutes by default). Set
+        `agent { enabled = false }` explicitly on the clone to override the template.
 
         Setting `agent.enabled = true` without running `qemu-guest-agent` in the VM will
         also result in long timeouts when using the provider, both when creating VMs,
@@ -2721,45 +2731,45 @@ class VmLegacy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acpi: pulumi.Input[Optional[_builtins.bool]] = None,
-                 agent: pulumi.Input[Optional[Union['VmLegacyAgentArgs', 'VmLegacyAgentArgsDict']]] = None,
-                 amd_sev: pulumi.Input[Optional[Union['VmLegacyAmdSevArgs', 'VmLegacyAmdSevArgsDict']]] = None,
-                 audio_device: pulumi.Input[Optional[Union['VmLegacyAudioDeviceArgs', 'VmLegacyAudioDeviceArgsDict']]] = None,
+                 agent: pulumi.Input[Optional[Union['VmLegacyAgentArgs', 'VmLegacyAgentArgsDict', 'outputs.VmLegacyAgent']]] = None,
+                 amd_sev: pulumi.Input[Optional[Union['VmLegacyAmdSevArgs', 'VmLegacyAmdSevArgsDict', 'outputs.VmLegacyAmdSev']]] = None,
+                 audio_device: pulumi.Input[Optional[Union['VmLegacyAudioDeviceArgs', 'VmLegacyAudioDeviceArgsDict', 'outputs.VmLegacyAudioDevice']]] = None,
                  bios: pulumi.Input[Optional[_builtins.str]] = None,
                  boot_orders: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cdrom: pulumi.Input[Optional[Union['VmLegacyCdromArgs', 'VmLegacyCdromArgsDict']]] = None,
-                 clone: pulumi.Input[Optional[Union['VmLegacyCloneArgs', 'VmLegacyCloneArgsDict']]] = None,
-                 cpu: pulumi.Input[Optional[Union['VmLegacyCpuArgs', 'VmLegacyCpuArgsDict']]] = None,
+                 cdrom: pulumi.Input[Optional[Union['VmLegacyCdromArgs', 'VmLegacyCdromArgsDict', 'outputs.VmLegacyCdrom']]] = None,
+                 clone: pulumi.Input[Optional[Union['VmLegacyCloneArgs', 'VmLegacyCloneArgsDict', 'outputs.VmLegacyClone']]] = None,
+                 cpu: pulumi.Input[Optional[Union['VmLegacyCpuArgs', 'VmLegacyCpuArgsDict', 'outputs.VmLegacyCpu']]] = None,
                  delete_unreferenced_disks_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacyDiskArgs', 'VmLegacyDiskArgsDict']]]]] = None,
-                 efi_disk: pulumi.Input[Optional[Union['VmLegacyEfiDiskArgs', 'VmLegacyEfiDiskArgsDict']]] = None,
+                 disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacyDiskArgs', 'VmLegacyDiskArgsDict', 'outputs.VmLegacyDisk']]]]] = None,
+                 efi_disk: pulumi.Input[Optional[Union['VmLegacyEfiDiskArgs', 'VmLegacyEfiDiskArgsDict', 'outputs.VmLegacyEfiDisk']]] = None,
                  hook_script_file_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 hostpcis: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacyHostpciArgs', 'VmLegacyHostpciArgsDict']]]]] = None,
+                 hostpcis: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacyHostpciArgs', 'VmLegacyHostpciArgsDict', 'outputs.VmLegacyHostpci']]]]] = None,
                  hotplug: pulumi.Input[Optional[_builtins.str]] = None,
-                 initialization: pulumi.Input[Optional[Union['VmLegacyInitializationArgs', 'VmLegacyInitializationArgsDict']]] = None,
+                 initialization: pulumi.Input[Optional[Union['VmLegacyInitializationArgs', 'VmLegacyInitializationArgsDict', 'outputs.VmLegacyInitialization']]] = None,
                  keyboard_layout: pulumi.Input[Optional[_builtins.str]] = None,
                  kvm_arguments: pulumi.Input[Optional[_builtins.str]] = None,
                  mac_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  machine: pulumi.Input[Optional[_builtins.str]] = None,
-                 memory: pulumi.Input[Optional[Union['VmLegacyMemoryArgs', 'VmLegacyMemoryArgsDict']]] = None,
+                 memory: pulumi.Input[Optional[Union['VmLegacyMemoryArgs', 'VmLegacyMemoryArgsDict', 'outputs.VmLegacyMemory']]] = None,
                  migrate: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 network_devices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacyNetworkDeviceArgs', 'VmLegacyNetworkDeviceArgsDict']]]]] = None,
+                 network_devices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacyNetworkDeviceArgs', 'VmLegacyNetworkDeviceArgsDict', 'outputs.VmLegacyNetworkDevice']]]]] = None,
                  node_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 numas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacyNumaArgs', 'VmLegacyNumaArgsDict']]]]] = None,
+                 numas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacyNumaArgs', 'VmLegacyNumaArgsDict', 'outputs.VmLegacyNuma']]]]] = None,
                  on_boot: pulumi.Input[Optional[_builtins.bool]] = None,
-                 operating_system: pulumi.Input[Optional[Union['VmLegacyOperatingSystemArgs', 'VmLegacyOperatingSystemArgsDict']]] = None,
+                 operating_system: pulumi.Input[Optional[Union['VmLegacyOperatingSystemArgs', 'VmLegacyOperatingSystemArgsDict', 'outputs.VmLegacyOperatingSystem']]] = None,
                  pool_id: pulumi.Input[Optional[_builtins.str]] = None,
                  protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  purge_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  reboot: pulumi.Input[Optional[_builtins.bool]] = None,
                  reboot_after_update: pulumi.Input[Optional[_builtins.bool]] = None,
-                 rngs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacyRngArgs', 'VmLegacyRngArgsDict']]]]] = None,
+                 rngs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacyRngArgs', 'VmLegacyRngArgsDict', 'outputs.VmLegacyRng']]]]] = None,
                  scsi_hardware: pulumi.Input[Optional[_builtins.str]] = None,
-                 serial_devices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacySerialDeviceArgs', 'VmLegacySerialDeviceArgsDict']]]]] = None,
-                 smbios: pulumi.Input[Optional[Union['VmLegacySmbiosArgs', 'VmLegacySmbiosArgsDict']]] = None,
+                 serial_devices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacySerialDeviceArgs', 'VmLegacySerialDeviceArgsDict', 'outputs.VmLegacySerialDevice']]]]] = None,
+                 smbios: pulumi.Input[Optional[Union['VmLegacySmbiosArgs', 'VmLegacySmbiosArgsDict', 'outputs.VmLegacySmbios']]] = None,
                  started: pulumi.Input[Optional[_builtins.bool]] = None,
-                 startup: pulumi.Input[Optional[Union['VmLegacyStartupArgs', 'VmLegacyStartupArgsDict']]] = None,
+                 startup: pulumi.Input[Optional[Union['VmLegacyStartupArgs', 'VmLegacyStartupArgsDict', 'outputs.VmLegacyStartup']]] = None,
                  stop_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  tablet_device: pulumi.Input[Optional[_builtins.bool]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -2772,12 +2782,12 @@ class VmLegacy(pulumi.CustomResource):
                  timeout_shutdown_vm: pulumi.Input[Optional[_builtins.int]] = None,
                  timeout_start_vm: pulumi.Input[Optional[_builtins.int]] = None,
                  timeout_stop_vm: pulumi.Input[Optional[_builtins.int]] = None,
-                 tpm_state: pulumi.Input[Optional[Union['VmLegacyTpmStateArgs', 'VmLegacyTpmStateArgsDict']]] = None,
-                 usbs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacyUsbArgs', 'VmLegacyUsbArgsDict']]]]] = None,
-                 vga: pulumi.Input[Optional[Union['VmLegacyVgaArgs', 'VmLegacyVgaArgsDict']]] = None,
-                 virtiofs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacyVirtiofArgs', 'VmLegacyVirtiofArgsDict']]]]] = None,
+                 tpm_state: pulumi.Input[Optional[Union['VmLegacyTpmStateArgs', 'VmLegacyTpmStateArgsDict', 'outputs.VmLegacyTpmState']]] = None,
+                 usbs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacyUsbArgs', 'VmLegacyUsbArgsDict', 'outputs.VmLegacyUsb']]]]] = None,
+                 vga: pulumi.Input[Optional[Union['VmLegacyVgaArgs', 'VmLegacyVgaArgsDict', 'outputs.VmLegacyVga']]] = None,
+                 virtiofs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacyVirtiofArgs', 'VmLegacyVirtiofArgsDict', 'outputs.VmLegacyVirtiof']]]]] = None,
                  vm_id: pulumi.Input[Optional[_builtins.int]] = None,
-                 watchdog: pulumi.Input[Optional[Union['VmLegacyWatchdogArgs', 'VmLegacyWatchdogArgsDict']]] = None,
+                 watchdog: pulumi.Input[Optional[Union['VmLegacyWatchdogArgs', 'VmLegacyWatchdogArgsDict', 'outputs.VmLegacyWatchdog']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -2861,48 +2871,48 @@ class VmLegacy(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             acpi: pulumi.Input[Optional[_builtins.bool]] = None,
-            agent: pulumi.Input[Optional[Union['VmLegacyAgentArgs', 'VmLegacyAgentArgsDict']]] = None,
-            amd_sev: pulumi.Input[Optional[Union['VmLegacyAmdSevArgs', 'VmLegacyAmdSevArgsDict']]] = None,
-            audio_device: pulumi.Input[Optional[Union['VmLegacyAudioDeviceArgs', 'VmLegacyAudioDeviceArgsDict']]] = None,
+            agent: pulumi.Input[Optional[Union['VmLegacyAgentArgs', 'VmLegacyAgentArgsDict', 'outputs.VmLegacyAgent']]] = None,
+            amd_sev: pulumi.Input[Optional[Union['VmLegacyAmdSevArgs', 'VmLegacyAmdSevArgsDict', 'outputs.VmLegacyAmdSev']]] = None,
+            audio_device: pulumi.Input[Optional[Union['VmLegacyAudioDeviceArgs', 'VmLegacyAudioDeviceArgsDict', 'outputs.VmLegacyAudioDevice']]] = None,
             bios: pulumi.Input[Optional[_builtins.str]] = None,
             boot_orders: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            cdrom: pulumi.Input[Optional[Union['VmLegacyCdromArgs', 'VmLegacyCdromArgsDict']]] = None,
-            clone: pulumi.Input[Optional[Union['VmLegacyCloneArgs', 'VmLegacyCloneArgsDict']]] = None,
-            cpu: pulumi.Input[Optional[Union['VmLegacyCpuArgs', 'VmLegacyCpuArgsDict']]] = None,
+            cdrom: pulumi.Input[Optional[Union['VmLegacyCdromArgs', 'VmLegacyCdromArgsDict', 'outputs.VmLegacyCdrom']]] = None,
+            clone: pulumi.Input[Optional[Union['VmLegacyCloneArgs', 'VmLegacyCloneArgsDict', 'outputs.VmLegacyClone']]] = None,
+            cpu: pulumi.Input[Optional[Union['VmLegacyCpuArgs', 'VmLegacyCpuArgsDict', 'outputs.VmLegacyCpu']]] = None,
             delete_unreferenced_disks_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacyDiskArgs', 'VmLegacyDiskArgsDict']]]]] = None,
-            efi_disk: pulumi.Input[Optional[Union['VmLegacyEfiDiskArgs', 'VmLegacyEfiDiskArgsDict']]] = None,
+            disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacyDiskArgs', 'VmLegacyDiskArgsDict', 'outputs.VmLegacyDisk']]]]] = None,
+            efi_disk: pulumi.Input[Optional[Union['VmLegacyEfiDiskArgs', 'VmLegacyEfiDiskArgsDict', 'outputs.VmLegacyEfiDisk']]] = None,
             hook_script_file_id: pulumi.Input[Optional[_builtins.str]] = None,
-            hostpcis: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacyHostpciArgs', 'VmLegacyHostpciArgsDict']]]]] = None,
+            hostpcis: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacyHostpciArgs', 'VmLegacyHostpciArgsDict', 'outputs.VmLegacyHostpci']]]]] = None,
             hotplug: pulumi.Input[Optional[_builtins.str]] = None,
-            initialization: pulumi.Input[Optional[Union['VmLegacyInitializationArgs', 'VmLegacyInitializationArgsDict']]] = None,
+            initialization: pulumi.Input[Optional[Union['VmLegacyInitializationArgs', 'VmLegacyInitializationArgsDict', 'outputs.VmLegacyInitialization']]] = None,
             ipv4_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
             ipv6_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
             keyboard_layout: pulumi.Input[Optional[_builtins.str]] = None,
             kvm_arguments: pulumi.Input[Optional[_builtins.str]] = None,
             mac_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             machine: pulumi.Input[Optional[_builtins.str]] = None,
-            memory: pulumi.Input[Optional[Union['VmLegacyMemoryArgs', 'VmLegacyMemoryArgsDict']]] = None,
+            memory: pulumi.Input[Optional[Union['VmLegacyMemoryArgs', 'VmLegacyMemoryArgsDict', 'outputs.VmLegacyMemory']]] = None,
             migrate: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            network_devices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacyNetworkDeviceArgs', 'VmLegacyNetworkDeviceArgsDict']]]]] = None,
+            network_devices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacyNetworkDeviceArgs', 'VmLegacyNetworkDeviceArgsDict', 'outputs.VmLegacyNetworkDevice']]]]] = None,
             network_interface_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             node_name: pulumi.Input[Optional[_builtins.str]] = None,
-            numas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacyNumaArgs', 'VmLegacyNumaArgsDict']]]]] = None,
+            numas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacyNumaArgs', 'VmLegacyNumaArgsDict', 'outputs.VmLegacyNuma']]]]] = None,
             on_boot: pulumi.Input[Optional[_builtins.bool]] = None,
-            operating_system: pulumi.Input[Optional[Union['VmLegacyOperatingSystemArgs', 'VmLegacyOperatingSystemArgsDict']]] = None,
+            operating_system: pulumi.Input[Optional[Union['VmLegacyOperatingSystemArgs', 'VmLegacyOperatingSystemArgsDict', 'outputs.VmLegacyOperatingSystem']]] = None,
             pool_id: pulumi.Input[Optional[_builtins.str]] = None,
             protection: pulumi.Input[Optional[_builtins.bool]] = None,
             purge_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
             reboot: pulumi.Input[Optional[_builtins.bool]] = None,
             reboot_after_update: pulumi.Input[Optional[_builtins.bool]] = None,
-            rngs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacyRngArgs', 'VmLegacyRngArgsDict']]]]] = None,
+            rngs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacyRngArgs', 'VmLegacyRngArgsDict', 'outputs.VmLegacyRng']]]]] = None,
             scsi_hardware: pulumi.Input[Optional[_builtins.str]] = None,
-            serial_devices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacySerialDeviceArgs', 'VmLegacySerialDeviceArgsDict']]]]] = None,
-            smbios: pulumi.Input[Optional[Union['VmLegacySmbiosArgs', 'VmLegacySmbiosArgsDict']]] = None,
+            serial_devices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacySerialDeviceArgs', 'VmLegacySerialDeviceArgsDict', 'outputs.VmLegacySerialDevice']]]]] = None,
+            smbios: pulumi.Input[Optional[Union['VmLegacySmbiosArgs', 'VmLegacySmbiosArgsDict', 'outputs.VmLegacySmbios']]] = None,
             started: pulumi.Input[Optional[_builtins.bool]] = None,
-            startup: pulumi.Input[Optional[Union['VmLegacyStartupArgs', 'VmLegacyStartupArgsDict']]] = None,
+            startup: pulumi.Input[Optional[Union['VmLegacyStartupArgs', 'VmLegacyStartupArgsDict', 'outputs.VmLegacyStartup']]] = None,
             stop_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
             tablet_device: pulumi.Input[Optional[_builtins.bool]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -2915,12 +2925,12 @@ class VmLegacy(pulumi.CustomResource):
             timeout_shutdown_vm: pulumi.Input[Optional[_builtins.int]] = None,
             timeout_start_vm: pulumi.Input[Optional[_builtins.int]] = None,
             timeout_stop_vm: pulumi.Input[Optional[_builtins.int]] = None,
-            tpm_state: pulumi.Input[Optional[Union['VmLegacyTpmStateArgs', 'VmLegacyTpmStateArgsDict']]] = None,
-            usbs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacyUsbArgs', 'VmLegacyUsbArgsDict']]]]] = None,
-            vga: pulumi.Input[Optional[Union['VmLegacyVgaArgs', 'VmLegacyVgaArgsDict']]] = None,
-            virtiofs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacyVirtiofArgs', 'VmLegacyVirtiofArgsDict']]]]] = None,
+            tpm_state: pulumi.Input[Optional[Union['VmLegacyTpmStateArgs', 'VmLegacyTpmStateArgsDict', 'outputs.VmLegacyTpmState']]] = None,
+            usbs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacyUsbArgs', 'VmLegacyUsbArgsDict', 'outputs.VmLegacyUsb']]]]] = None,
+            vga: pulumi.Input[Optional[Union['VmLegacyVgaArgs', 'VmLegacyVgaArgsDict', 'outputs.VmLegacyVga']]] = None,
+            virtiofs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacyVirtiofArgs', 'VmLegacyVirtiofArgsDict', 'outputs.VmLegacyVirtiof']]]]] = None,
             vm_id: pulumi.Input[Optional[_builtins.int]] = None,
-            watchdog: pulumi.Input[Optional[Union['VmLegacyWatchdogArgs', 'VmLegacyWatchdogArgsDict']]] = None) -> 'VmLegacy':
+            watchdog: pulumi.Input[Optional[Union['VmLegacyWatchdogArgs', 'VmLegacyWatchdogArgsDict', 'outputs.VmLegacyWatchdog']]] = None) -> 'VmLegacy':
         """
         Get an existing VmLegacy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -2929,21 +2939,21 @@ class VmLegacy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] acpi: Whether to enable ACPI (defaults to `true`).
-        :param pulumi.Input[Union['VmLegacyAgentArgs', 'VmLegacyAgentArgsDict']] agent: The QEMU agent configuration.
-        :param pulumi.Input[Union['VmLegacyAmdSevArgs', 'VmLegacyAmdSevArgsDict']] amd_sev: Secure Encrypted Virtualization (SEV) features by AMD CPUs.
-        :param pulumi.Input[Union['VmLegacyAudioDeviceArgs', 'VmLegacyAudioDeviceArgsDict']] audio_device: An audio device.
+        :param pulumi.Input[Union['VmLegacyAgentArgs', 'VmLegacyAgentArgsDict', 'outputs.VmLegacyAgent']] agent: The QEMU agent configuration.
+        :param pulumi.Input[Union['VmLegacyAmdSevArgs', 'VmLegacyAmdSevArgsDict', 'outputs.VmLegacyAmdSev']] amd_sev: Secure Encrypted Virtualization (SEV) features by AMD CPUs.
+        :param pulumi.Input[Union['VmLegacyAudioDeviceArgs', 'VmLegacyAudioDeviceArgsDict', 'outputs.VmLegacyAudioDevice']] audio_device: An audio device.
         :param pulumi.Input[_builtins.str] bios: The BIOS implementation (defaults to `seabios`).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] boot_orders: Specify a list of devices to boot from in the order they appear in the list.
-        :param pulumi.Input[Union['VmLegacyCdromArgs', 'VmLegacyCdromArgsDict']] cdrom: The CD-ROM configuration.
-        :param pulumi.Input[Union['VmLegacyCloneArgs', 'VmLegacyCloneArgsDict']] clone: The cloning configuration.
-        :param pulumi.Input[Union['VmLegacyCpuArgs', 'VmLegacyCpuArgsDict']] cpu: The CPU configuration.
+        :param pulumi.Input[Union['VmLegacyCdromArgs', 'VmLegacyCdromArgsDict', 'outputs.VmLegacyCdrom']] cdrom: The CD-ROM configuration.
+        :param pulumi.Input[Union['VmLegacyCloneArgs', 'VmLegacyCloneArgsDict', 'outputs.VmLegacyClone']] clone: The cloning configuration.
+        :param pulumi.Input[Union['VmLegacyCpuArgs', 'VmLegacyCpuArgsDict', 'outputs.VmLegacyCpu']] cpu: The CPU configuration.
         :param pulumi.Input[_builtins.bool] delete_unreferenced_disks_on_destroy: Whether to delete unreferenced disks on destroy (defaults to `true`)
         :param pulumi.Input[_builtins.str] description: The description.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VmLegacyDiskArgs', 'VmLegacyDiskArgsDict']]]] disks: A disk (multiple blocks supported).
-        :param pulumi.Input[Union['VmLegacyEfiDiskArgs', 'VmLegacyEfiDiskArgsDict']] efi_disk: The efi disk device (required if `bios` is set
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VmLegacyDiskArgs', 'VmLegacyDiskArgsDict', 'outputs.VmLegacyDisk']]]] disks: A disk (multiple blocks supported).
+        :param pulumi.Input[Union['VmLegacyEfiDiskArgs', 'VmLegacyEfiDiskArgsDict', 'outputs.VmLegacyEfiDisk']] efi_disk: The efi disk device (required if `bios` is set
                to `ovmf`)
         :param pulumi.Input[_builtins.str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VmLegacyHostpciArgs', 'VmLegacyHostpciArgsDict']]]] hostpcis: A host PCI device mapping (multiple blocks supported).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VmLegacyHostpciArgs', 'VmLegacyHostpciArgsDict', 'outputs.VmLegacyHostpci']]]] hostpcis: A host PCI device mapping (multiple blocks supported).
         :param pulumi.Input[_builtins.str] hotplug: Selectively enable hotplug features. Use `0` to
                disable, `1` to enable all. Valid features: `disk`, `network`, `usb`,
                `memory`, `cpu`. Memory hotplug requires NUMA to be enabled. If not set,
@@ -2951,7 +2961,7 @@ class VmLegacy(pulumi.CustomResource):
                hotplug list, disk resizes on a running VM are applied live without a
                reboot. When `disk` is excluded, the provider will reboot the VM after
                resize (controlled by `reboot_after_update`).
-        :param pulumi.Input[Union['VmLegacyInitializationArgs', 'VmLegacyInitializationArgsDict']] initialization: The cloud-init configuration.
+        :param pulumi.Input[Union['VmLegacyInitializationArgs', 'VmLegacyInitializationArgsDict', 'outputs.VmLegacyInitialization']] initialization: The cloud-init configuration.
         :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]] ipv4_addresses: The IPv4 addresses per network interface published by the
                QEMU agent (empty list when `agent.enabled` is `false`)
         :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]] ipv6_addresses: The IPv6 addresses per network interface published by the
@@ -2961,19 +2971,19 @@ class VmLegacy(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mac_addresses: The MAC addresses published by the QEMU agent with fallback
                to the network device configuration, if the agent is disabled
         :param pulumi.Input[_builtins.str] machine: The VM machine type (defaults to `pc`).
-        :param pulumi.Input[Union['VmLegacyMemoryArgs', 'VmLegacyMemoryArgsDict']] memory: The memory configuration.
+        :param pulumi.Input[Union['VmLegacyMemoryArgs', 'VmLegacyMemoryArgsDict', 'outputs.VmLegacyMemory']] memory: The memory configuration.
         :param pulumi.Input[_builtins.bool] migrate: Migrate the VM on node change instead of re-creating
                it (defaults to `false`).
         :param pulumi.Input[_builtins.str] name: The virtual machine name. Must be a valid DNS name.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VmLegacyNetworkDeviceArgs', 'VmLegacyNetworkDeviceArgsDict']]]] network_devices: A network device (multiple blocks supported).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VmLegacyNetworkDeviceArgs', 'VmLegacyNetworkDeviceArgsDict', 'outputs.VmLegacyNetworkDevice']]]] network_devices: A network device (multiple blocks supported).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] network_interface_names: The network interface names published by the QEMU
                agent (empty list when `agent.enabled` is `false`)
         :param pulumi.Input[_builtins.str] node_name: The name of the node to assign the virtual machine
                to.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VmLegacyNumaArgs', 'VmLegacyNumaArgsDict']]]] numas: The NUMA configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VmLegacyNumaArgs', 'VmLegacyNumaArgsDict', 'outputs.VmLegacyNuma']]]] numas: The NUMA configuration.
         :param pulumi.Input[_builtins.bool] on_boot: Specifies whether a VM will be started during system
                boot. (defaults to `true`)
-        :param pulumi.Input[Union['VmLegacyOperatingSystemArgs', 'VmLegacyOperatingSystemArgsDict']] operating_system: The Operating System configuration.
+        :param pulumi.Input[Union['VmLegacyOperatingSystemArgs', 'VmLegacyOperatingSystemArgsDict', 'outputs.VmLegacyOperatingSystem']] operating_system: The Operating System configuration.
         :param pulumi.Input[_builtins.str] pool_id: The identifier for a pool to assign the virtual machine to.
         :param pulumi.Input[_builtins.bool] protection: Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
         :param pulumi.Input[_builtins.bool] purge_on_destroy: Whether to purge the VM from backup configurations on destroy (defaults to `true`)
@@ -2984,14 +2994,14 @@ class VmLegacy(pulumi.CustomResource):
                instead of being applied automatically. Changes that are applied
                successfully but still need a later manual reboot emit a warning instead
                (defaults to `true`).
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VmLegacyRngArgs', 'VmLegacyRngArgsDict']]]] rngs: The random number generator configuration. Can only be set by `root@pam.`
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VmLegacyRngArgs', 'VmLegacyRngArgsDict', 'outputs.VmLegacyRng']]]] rngs: The random number generator configuration. Can only be set by `root@pam`.
         :param pulumi.Input[_builtins.str] scsi_hardware: The SCSI hardware type (defaults to
                `virtio-scsi-pci`).
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VmLegacySerialDeviceArgs', 'VmLegacySerialDeviceArgsDict']]]] serial_devices: A serial device (multiple blocks supported).
-        :param pulumi.Input[Union['VmLegacySmbiosArgs', 'VmLegacySmbiosArgsDict']] smbios: The SMBIOS (type1) settings for the VM.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VmLegacySerialDeviceArgs', 'VmLegacySerialDeviceArgsDict', 'outputs.VmLegacySerialDevice']]]] serial_devices: A serial device (multiple blocks supported).
+        :param pulumi.Input[Union['VmLegacySmbiosArgs', 'VmLegacySmbiosArgsDict', 'outputs.VmLegacySmbios']] smbios: The SMBIOS (type1) settings for the VM.
         :param pulumi.Input[_builtins.bool] started: Whether to start the virtual machine (defaults
                to `true`).
-        :param pulumi.Input[Union['VmLegacyStartupArgs', 'VmLegacyStartupArgsDict']] startup: Defines startup and shutdown behavior of the VM.
+        :param pulumi.Input[Union['VmLegacyStartupArgs', 'VmLegacyStartupArgsDict', 'outputs.VmLegacyStartup']] startup: Defines startup and shutdown behavior of the VM.
         :param pulumi.Input[_builtins.bool] stop_on_destroy: Whether to stop rather than shutdown on VM destroy (defaults to `false`)
         :param pulumi.Input[_builtins.bool] tablet_device: Whether to enable the USB tablet device (defaults
                to `true`).
@@ -3019,15 +3029,15 @@ class VmLegacy(pulumi.CustomResource):
                to 1800).
         :param pulumi.Input[_builtins.int] timeout_stop_vm: Timeout for stopping a VM in seconds (defaults
                to 300).
-        :param pulumi.Input[Union['VmLegacyTpmStateArgs', 'VmLegacyTpmStateArgsDict']] tpm_state: The TPM state device. The VM must be stopped before
+        :param pulumi.Input[Union['VmLegacyTpmStateArgs', 'VmLegacyTpmStateArgsDict', 'outputs.VmLegacyTpmState']] tpm_state: The TPM state device. The VM must be stopped before
                adding, removing, or moving a TPM state device; the provider automatically
                handles the shutdown/start cycle. Changing `version` requires recreating the
                VM because Proxmox only supports setting the TPM version at creation time.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VmLegacyUsbArgs', 'VmLegacyUsbArgsDict']]]] usbs: A host USB device mapping (multiple blocks supported).
-        :param pulumi.Input[Union['VmLegacyVgaArgs', 'VmLegacyVgaArgsDict']] vga: The VGA configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VmLegacyVirtiofArgs', 'VmLegacyVirtiofArgsDict']]]] virtiofs: Virtiofs share
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VmLegacyUsbArgs', 'VmLegacyUsbArgsDict', 'outputs.VmLegacyUsb']]]] usbs: A host USB device mapping (multiple blocks supported).
+        :param pulumi.Input[Union['VmLegacyVgaArgs', 'VmLegacyVgaArgsDict', 'outputs.VmLegacyVga']] vga: The VGA configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VmLegacyVirtiofArgs', 'VmLegacyVirtiofArgsDict', 'outputs.VmLegacyVirtiof']]]] virtiofs: Virtiofs share
         :param pulumi.Input[_builtins.int] vm_id: The VM identifier.
-        :param pulumi.Input[Union['VmLegacyWatchdogArgs', 'VmLegacyWatchdogArgsDict']] watchdog: The watchdog configuration. Once enabled (by a guest action), the watchdog must be periodically polled by an agent inside the guest or else the watchdog will reset the guest (or execute the respective action specified).
+        :param pulumi.Input[Union['VmLegacyWatchdogArgs', 'VmLegacyWatchdogArgsDict', 'outputs.VmLegacyWatchdog']] watchdog: The watchdog configuration. Once enabled (by a guest action), the watchdog must be periodically polled by an agent inside the guest or else the watchdog will reset the guest (or execute the respective action specified).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -3415,7 +3425,7 @@ class VmLegacy(pulumi.CustomResource):
     @pulumi.getter
     def rngs(self) -> pulumi.Output[Optional[Sequence['outputs.VmLegacyRng']]]:
         """
-        The random number generator configuration. Can only be set by `root@pam.`
+        The random number generator configuration. Can only be set by `root@pam`.
         """
         return pulumi.get(self, "rngs")
 

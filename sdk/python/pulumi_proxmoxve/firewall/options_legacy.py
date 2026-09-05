@@ -37,10 +37,10 @@ class OptionsLegacyArgs:
 
         :param pulumi.Input[_builtins.str] node_name: Node name.
         :param pulumi.Input[_builtins.int] container_id: Container ID. **Exactly one of `vm_id` or `container_id` must be specified.**
-        :param pulumi.Input[_builtins.bool] dhcp: Enable DHCP.
-        :param pulumi.Input[_builtins.bool] enabled: Enable or disable the firewall.
+        :param pulumi.Input[_builtins.bool] dhcp: Enable DHCP. Defaults to `false`.
+        :param pulumi.Input[_builtins.bool] enabled: Enable or disable the firewall. Defaults to `false`.
         :param pulumi.Input[_builtins.str] input_policy: The default input
-               policy (`ACCEPT`, `DROP`, `REJECT`).
+               policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `DROP`.
         :param pulumi.Input[_builtins.bool] ipfilter: Enable default IP filters. This is equivalent to
                adding an empty `ipfilter-net<id>` ipset for every interface. Such ipsets
                implicitly contain sane default restrictions such as restricting IPv6 link
@@ -48,15 +48,15 @@ class OptionsLegacyArgs:
                containers the configured IP addresses will be implicitly added.
         :param pulumi.Input[_builtins.str] log_level_in: Log level for incoming
                packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
-               `debug`, `nolog`).
+               `debug`, `nolog`). Defaults to `nolog`.
         :param pulumi.Input[_builtins.str] log_level_out: Log level for outgoing
                packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
-               `debug`, `nolog`).
-        :param pulumi.Input[_builtins.bool] macfilter: Enable/disable MAC address filter.
-        :param pulumi.Input[_builtins.bool] ndp: Enable NDP (Neighbor Discovery Protocol).
+               `debug`, `nolog`). Defaults to `nolog`.
+        :param pulumi.Input[_builtins.bool] macfilter: Enable/disable MAC address filter. Defaults to `true`.
+        :param pulumi.Input[_builtins.bool] ndp: Enable NDP (Neighbor Discovery Protocol). Defaults to `false`.
         :param pulumi.Input[_builtins.str] output_policy: The default output
-               policy (`ACCEPT`, `DROP`, `REJECT`).
-        :param pulumi.Input[_builtins.bool] radv: Enable Router Advertisement.
+               policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `ACCEPT`.
+        :param pulumi.Input[_builtins.bool] radv: Enable Router Advertisement. Defaults to `true`.
         :param pulumi.Input[_builtins.int] vm_id: VM ID. **Exactly one of `vm_id` or `container_id` must be specified.**
         """
         pulumi.set(__self__, "node_name", node_name)
@@ -113,7 +113,7 @@ class OptionsLegacyArgs:
     @pulumi.getter
     def dhcp(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Enable DHCP.
+        Enable DHCP. Defaults to `false`.
         """
         return pulumi.get(self, "dhcp")
 
@@ -125,7 +125,7 @@ class OptionsLegacyArgs:
     @pulumi.getter
     def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Enable or disable the firewall.
+        Enable or disable the firewall. Defaults to `false`.
         """
         return pulumi.get(self, "enabled")
 
@@ -138,7 +138,7 @@ class OptionsLegacyArgs:
     def input_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default input
-        policy (`ACCEPT`, `DROP`, `REJECT`).
+        policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `DROP`.
         """
         return pulumi.get(self, "input_policy")
 
@@ -168,7 +168,7 @@ class OptionsLegacyArgs:
         """
         Log level for incoming
         packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
-        `debug`, `nolog`).
+        `debug`, `nolog`). Defaults to `nolog`.
         """
         return pulumi.get(self, "log_level_in")
 
@@ -182,7 +182,7 @@ class OptionsLegacyArgs:
         """
         Log level for outgoing
         packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
-        `debug`, `nolog`).
+        `debug`, `nolog`). Defaults to `nolog`.
         """
         return pulumi.get(self, "log_level_out")
 
@@ -194,7 +194,7 @@ class OptionsLegacyArgs:
     @pulumi.getter
     def macfilter(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Enable/disable MAC address filter.
+        Enable/disable MAC address filter. Defaults to `true`.
         """
         return pulumi.get(self, "macfilter")
 
@@ -206,7 +206,7 @@ class OptionsLegacyArgs:
     @pulumi.getter
     def ndp(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Enable NDP (Neighbor Discovery Protocol).
+        Enable NDP (Neighbor Discovery Protocol). Defaults to `false`.
         """
         return pulumi.get(self, "ndp")
 
@@ -219,7 +219,7 @@ class OptionsLegacyArgs:
     def output_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default output
-        policy (`ACCEPT`, `DROP`, `REJECT`).
+        policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `ACCEPT`.
         """
         return pulumi.get(self, "output_policy")
 
@@ -231,7 +231,7 @@ class OptionsLegacyArgs:
     @pulumi.getter
     def radv(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Enable Router Advertisement.
+        Enable Router Advertisement. Defaults to `true`.
         """
         return pulumi.get(self, "radv")
 
@@ -272,10 +272,10 @@ class _OptionsLegacyState:
         Input properties used for looking up and filtering OptionsLegacy resources.
 
         :param pulumi.Input[_builtins.int] container_id: Container ID. **Exactly one of `vm_id` or `container_id` must be specified.**
-        :param pulumi.Input[_builtins.bool] dhcp: Enable DHCP.
-        :param pulumi.Input[_builtins.bool] enabled: Enable or disable the firewall.
+        :param pulumi.Input[_builtins.bool] dhcp: Enable DHCP. Defaults to `false`.
+        :param pulumi.Input[_builtins.bool] enabled: Enable or disable the firewall. Defaults to `false`.
         :param pulumi.Input[_builtins.str] input_policy: The default input
-               policy (`ACCEPT`, `DROP`, `REJECT`).
+               policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `DROP`.
         :param pulumi.Input[_builtins.bool] ipfilter: Enable default IP filters. This is equivalent to
                adding an empty `ipfilter-net<id>` ipset for every interface. Such ipsets
                implicitly contain sane default restrictions such as restricting IPv6 link
@@ -283,16 +283,16 @@ class _OptionsLegacyState:
                containers the configured IP addresses will be implicitly added.
         :param pulumi.Input[_builtins.str] log_level_in: Log level for incoming
                packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
-               `debug`, `nolog`).
+               `debug`, `nolog`). Defaults to `nolog`.
         :param pulumi.Input[_builtins.str] log_level_out: Log level for outgoing
                packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
-               `debug`, `nolog`).
-        :param pulumi.Input[_builtins.bool] macfilter: Enable/disable MAC address filter.
-        :param pulumi.Input[_builtins.bool] ndp: Enable NDP (Neighbor Discovery Protocol).
+               `debug`, `nolog`). Defaults to `nolog`.
+        :param pulumi.Input[_builtins.bool] macfilter: Enable/disable MAC address filter. Defaults to `true`.
+        :param pulumi.Input[_builtins.bool] ndp: Enable NDP (Neighbor Discovery Protocol). Defaults to `false`.
         :param pulumi.Input[_builtins.str] node_name: Node name.
         :param pulumi.Input[_builtins.str] output_policy: The default output
-               policy (`ACCEPT`, `DROP`, `REJECT`).
-        :param pulumi.Input[_builtins.bool] radv: Enable Router Advertisement.
+               policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `ACCEPT`.
+        :param pulumi.Input[_builtins.bool] radv: Enable Router Advertisement. Defaults to `true`.
         :param pulumi.Input[_builtins.int] vm_id: VM ID. **Exactly one of `vm_id` or `container_id` must be specified.**
         """
         if container_id is not None:
@@ -338,7 +338,7 @@ class _OptionsLegacyState:
     @pulumi.getter
     def dhcp(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Enable DHCP.
+        Enable DHCP. Defaults to `false`.
         """
         return pulumi.get(self, "dhcp")
 
@@ -350,7 +350,7 @@ class _OptionsLegacyState:
     @pulumi.getter
     def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Enable or disable the firewall.
+        Enable or disable the firewall. Defaults to `false`.
         """
         return pulumi.get(self, "enabled")
 
@@ -363,7 +363,7 @@ class _OptionsLegacyState:
     def input_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default input
-        policy (`ACCEPT`, `DROP`, `REJECT`).
+        policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `DROP`.
         """
         return pulumi.get(self, "input_policy")
 
@@ -393,7 +393,7 @@ class _OptionsLegacyState:
         """
         Log level for incoming
         packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
-        `debug`, `nolog`).
+        `debug`, `nolog`). Defaults to `nolog`.
         """
         return pulumi.get(self, "log_level_in")
 
@@ -407,7 +407,7 @@ class _OptionsLegacyState:
         """
         Log level for outgoing
         packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
-        `debug`, `nolog`).
+        `debug`, `nolog`). Defaults to `nolog`.
         """
         return pulumi.get(self, "log_level_out")
 
@@ -419,7 +419,7 @@ class _OptionsLegacyState:
     @pulumi.getter
     def macfilter(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Enable/disable MAC address filter.
+        Enable/disable MAC address filter. Defaults to `true`.
         """
         return pulumi.get(self, "macfilter")
 
@@ -431,7 +431,7 @@ class _OptionsLegacyState:
     @pulumi.getter
     def ndp(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Enable NDP (Neighbor Discovery Protocol).
+        Enable NDP (Neighbor Discovery Protocol). Defaults to `false`.
         """
         return pulumi.get(self, "ndp")
 
@@ -456,7 +456,7 @@ class _OptionsLegacyState:
     def output_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default output
-        policy (`ACCEPT`, `DROP`, `REJECT`).
+        policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `ACCEPT`.
         """
         return pulumi.get(self, "output_policy")
 
@@ -468,7 +468,7 @@ class _OptionsLegacyState:
     @pulumi.getter
     def radv(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Enable Router Advertisement.
+        Enable Router Advertisement. Defaults to `true`.
         """
         return pulumi.get(self, "radv")
 
@@ -558,10 +558,10 @@ class OptionsLegacy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] container_id: Container ID. **Exactly one of `vm_id` or `container_id` must be specified.**
-        :param pulumi.Input[_builtins.bool] dhcp: Enable DHCP.
-        :param pulumi.Input[_builtins.bool] enabled: Enable or disable the firewall.
+        :param pulumi.Input[_builtins.bool] dhcp: Enable DHCP. Defaults to `false`.
+        :param pulumi.Input[_builtins.bool] enabled: Enable or disable the firewall. Defaults to `false`.
         :param pulumi.Input[_builtins.str] input_policy: The default input
-               policy (`ACCEPT`, `DROP`, `REJECT`).
+               policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `DROP`.
         :param pulumi.Input[_builtins.bool] ipfilter: Enable default IP filters. This is equivalent to
                adding an empty `ipfilter-net<id>` ipset for every interface. Such ipsets
                implicitly contain sane default restrictions such as restricting IPv6 link
@@ -569,16 +569,16 @@ class OptionsLegacy(pulumi.CustomResource):
                containers the configured IP addresses will be implicitly added.
         :param pulumi.Input[_builtins.str] log_level_in: Log level for incoming
                packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
-               `debug`, `nolog`).
+               `debug`, `nolog`). Defaults to `nolog`.
         :param pulumi.Input[_builtins.str] log_level_out: Log level for outgoing
                packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
-               `debug`, `nolog`).
-        :param pulumi.Input[_builtins.bool] macfilter: Enable/disable MAC address filter.
-        :param pulumi.Input[_builtins.bool] ndp: Enable NDP (Neighbor Discovery Protocol).
+               `debug`, `nolog`). Defaults to `nolog`.
+        :param pulumi.Input[_builtins.bool] macfilter: Enable/disable MAC address filter. Defaults to `true`.
+        :param pulumi.Input[_builtins.bool] ndp: Enable NDP (Neighbor Discovery Protocol). Defaults to `false`.
         :param pulumi.Input[_builtins.str] node_name: Node name.
         :param pulumi.Input[_builtins.str] output_policy: The default output
-               policy (`ACCEPT`, `DROP`, `REJECT`).
-        :param pulumi.Input[_builtins.bool] radv: Enable Router Advertisement.
+               policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `ACCEPT`.
+        :param pulumi.Input[_builtins.bool] radv: Enable Router Advertisement. Defaults to `true`.
         :param pulumi.Input[_builtins.int] vm_id: VM ID. **Exactly one of `vm_id` or `container_id` must be specified.**
         """
         ...
@@ -716,10 +716,10 @@ class OptionsLegacy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] container_id: Container ID. **Exactly one of `vm_id` or `container_id` must be specified.**
-        :param pulumi.Input[_builtins.bool] dhcp: Enable DHCP.
-        :param pulumi.Input[_builtins.bool] enabled: Enable or disable the firewall.
+        :param pulumi.Input[_builtins.bool] dhcp: Enable DHCP. Defaults to `false`.
+        :param pulumi.Input[_builtins.bool] enabled: Enable or disable the firewall. Defaults to `false`.
         :param pulumi.Input[_builtins.str] input_policy: The default input
-               policy (`ACCEPT`, `DROP`, `REJECT`).
+               policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `DROP`.
         :param pulumi.Input[_builtins.bool] ipfilter: Enable default IP filters. This is equivalent to
                adding an empty `ipfilter-net<id>` ipset for every interface. Such ipsets
                implicitly contain sane default restrictions such as restricting IPv6 link
@@ -727,16 +727,16 @@ class OptionsLegacy(pulumi.CustomResource):
                containers the configured IP addresses will be implicitly added.
         :param pulumi.Input[_builtins.str] log_level_in: Log level for incoming
                packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
-               `debug`, `nolog`).
+               `debug`, `nolog`). Defaults to `nolog`.
         :param pulumi.Input[_builtins.str] log_level_out: Log level for outgoing
                packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
-               `debug`, `nolog`).
-        :param pulumi.Input[_builtins.bool] macfilter: Enable/disable MAC address filter.
-        :param pulumi.Input[_builtins.bool] ndp: Enable NDP (Neighbor Discovery Protocol).
+               `debug`, `nolog`). Defaults to `nolog`.
+        :param pulumi.Input[_builtins.bool] macfilter: Enable/disable MAC address filter. Defaults to `true`.
+        :param pulumi.Input[_builtins.bool] ndp: Enable NDP (Neighbor Discovery Protocol). Defaults to `false`.
         :param pulumi.Input[_builtins.str] node_name: Node name.
         :param pulumi.Input[_builtins.str] output_policy: The default output
-               policy (`ACCEPT`, `DROP`, `REJECT`).
-        :param pulumi.Input[_builtins.bool] radv: Enable Router Advertisement.
+               policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `ACCEPT`.
+        :param pulumi.Input[_builtins.bool] radv: Enable Router Advertisement. Defaults to `true`.
         :param pulumi.Input[_builtins.int] vm_id: VM ID. **Exactly one of `vm_id` or `container_id` must be specified.**
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -770,7 +770,7 @@ class OptionsLegacy(pulumi.CustomResource):
     @pulumi.getter
     def dhcp(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Enable DHCP.
+        Enable DHCP. Defaults to `false`.
         """
         return pulumi.get(self, "dhcp")
 
@@ -778,7 +778,7 @@ class OptionsLegacy(pulumi.CustomResource):
     @pulumi.getter
     def enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Enable or disable the firewall.
+        Enable or disable the firewall. Defaults to `false`.
         """
         return pulumi.get(self, "enabled")
 
@@ -787,7 +787,7 @@ class OptionsLegacy(pulumi.CustomResource):
     def input_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The default input
-        policy (`ACCEPT`, `DROP`, `REJECT`).
+        policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `DROP`.
         """
         return pulumi.get(self, "input_policy")
 
@@ -809,7 +809,7 @@ class OptionsLegacy(pulumi.CustomResource):
         """
         Log level for incoming
         packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
-        `debug`, `nolog`).
+        `debug`, `nolog`). Defaults to `nolog`.
         """
         return pulumi.get(self, "log_level_in")
 
@@ -819,7 +819,7 @@ class OptionsLegacy(pulumi.CustomResource):
         """
         Log level for outgoing
         packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
-        `debug`, `nolog`).
+        `debug`, `nolog`). Defaults to `nolog`.
         """
         return pulumi.get(self, "log_level_out")
 
@@ -827,7 +827,7 @@ class OptionsLegacy(pulumi.CustomResource):
     @pulumi.getter
     def macfilter(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Enable/disable MAC address filter.
+        Enable/disable MAC address filter. Defaults to `true`.
         """
         return pulumi.get(self, "macfilter")
 
@@ -835,7 +835,7 @@ class OptionsLegacy(pulumi.CustomResource):
     @pulumi.getter
     def ndp(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Enable NDP (Neighbor Discovery Protocol).
+        Enable NDP (Neighbor Discovery Protocol). Defaults to `false`.
         """
         return pulumi.get(self, "ndp")
 
@@ -852,7 +852,7 @@ class OptionsLegacy(pulumi.CustomResource):
     def output_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The default output
-        policy (`ACCEPT`, `DROP`, `REJECT`).
+        policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `ACCEPT`.
         """
         return pulumi.get(self, "output_policy")
 
@@ -860,7 +860,7 @@ class OptionsLegacy(pulumi.CustomResource):
     @pulumi.getter
     def radv(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Enable Router Advertisement.
+        Enable Router Advertisement. Defaults to `true`.
         """
         return pulumi.get(self, "radv")
 

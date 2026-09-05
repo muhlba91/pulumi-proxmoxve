@@ -445,8 +445,8 @@ class FileLegacy(pulumi.CustomResource):
                  file_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  node_name: pulumi.Input[Optional[_builtins.str]] = None,
                  overwrite: pulumi.Input[Optional[_builtins.bool]] = None,
-                 source_file: pulumi.Input[Optional[Union['FileLegacySourceFileArgs', 'FileLegacySourceFileArgsDict']]] = None,
-                 source_raw: pulumi.Input[Optional[Union['FileLegacySourceRawArgs', 'FileLegacySourceRawArgsDict']]] = None,
+                 source_file: pulumi.Input[Optional[Union['FileLegacySourceFileArgs', 'FileLegacySourceFileArgsDict', 'outputs.FileLegacySourceFile']]] = None,
+                 source_raw: pulumi.Input[Optional[Union['FileLegacySourceRawArgs', 'FileLegacySourceRawArgsDict', 'outputs.FileLegacySourceRaw']]] = None,
                  timeout_upload: pulumi.Input[Optional[_builtins.int]] = None,
                  upload_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -616,10 +616,10 @@ class FileLegacy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] node_name: The node name.
         :param pulumi.Input[_builtins.bool] overwrite: Whether to overwrite an existing file (defaults to
                `true`).
-        :param pulumi.Input[Union['FileLegacySourceFileArgs', 'FileLegacySourceFileArgsDict']] source_file: The source file (conflicts with `source_raw`),
+        :param pulumi.Input[Union['FileLegacySourceFileArgs', 'FileLegacySourceFileArgsDict', 'outputs.FileLegacySourceFile']] source_file: The source file (conflicts with `source_raw`),
                could be a local file or a URL. If the source file is a URL, the file will
                be downloaded and stored locally before uploading it to Proxmox VE.
-        :param pulumi.Input[Union['FileLegacySourceRawArgs', 'FileLegacySourceRawArgsDict']] source_raw: The raw source (conflicts with `source_file`).
+        :param pulumi.Input[Union['FileLegacySourceRawArgs', 'FileLegacySourceRawArgsDict', 'outputs.FileLegacySourceRaw']] source_raw: The raw source (conflicts with `source_file`).
         :param pulumi.Input[_builtins.int] timeout_upload: Timeout for uploading ISO/VSTMPL files in
                seconds (defaults to 1800).
         :param pulumi.Input[_builtins.str] upload_mode: The SSH upload mode for non-API content types
@@ -814,8 +814,8 @@ class FileLegacy(pulumi.CustomResource):
                  file_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  node_name: pulumi.Input[Optional[_builtins.str]] = None,
                  overwrite: pulumi.Input[Optional[_builtins.bool]] = None,
-                 source_file: pulumi.Input[Optional[Union['FileLegacySourceFileArgs', 'FileLegacySourceFileArgsDict']]] = None,
-                 source_raw: pulumi.Input[Optional[Union['FileLegacySourceRawArgs', 'FileLegacySourceRawArgsDict']]] = None,
+                 source_file: pulumi.Input[Optional[Union['FileLegacySourceFileArgs', 'FileLegacySourceFileArgsDict', 'outputs.FileLegacySourceFile']]] = None,
+                 source_raw: pulumi.Input[Optional[Union['FileLegacySourceRawArgs', 'FileLegacySourceRawArgsDict', 'outputs.FileLegacySourceRaw']]] = None,
                  timeout_upload: pulumi.Input[Optional[_builtins.int]] = None,
                  upload_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -863,8 +863,8 @@ class FileLegacy(pulumi.CustomResource):
             file_tag: pulumi.Input[Optional[_builtins.str]] = None,
             node_name: pulumi.Input[Optional[_builtins.str]] = None,
             overwrite: pulumi.Input[Optional[_builtins.bool]] = None,
-            source_file: pulumi.Input[Optional[Union['FileLegacySourceFileArgs', 'FileLegacySourceFileArgsDict']]] = None,
-            source_raw: pulumi.Input[Optional[Union['FileLegacySourceRawArgs', 'FileLegacySourceRawArgsDict']]] = None,
+            source_file: pulumi.Input[Optional[Union['FileLegacySourceFileArgs', 'FileLegacySourceFileArgsDict', 'outputs.FileLegacySourceFile']]] = None,
+            source_raw: pulumi.Input[Optional[Union['FileLegacySourceRawArgs', 'FileLegacySourceRawArgsDict', 'outputs.FileLegacySourceRaw']]] = None,
             timeout_upload: pulumi.Input[Optional[_builtins.int]] = None,
             upload_mode: pulumi.Input[Optional[_builtins.str]] = None) -> 'FileLegacy':
         """
@@ -885,10 +885,10 @@ class FileLegacy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] node_name: The node name.
         :param pulumi.Input[_builtins.bool] overwrite: Whether to overwrite an existing file (defaults to
                `true`).
-        :param pulumi.Input[Union['FileLegacySourceFileArgs', 'FileLegacySourceFileArgsDict']] source_file: The source file (conflicts with `source_raw`),
+        :param pulumi.Input[Union['FileLegacySourceFileArgs', 'FileLegacySourceFileArgsDict', 'outputs.FileLegacySourceFile']] source_file: The source file (conflicts with `source_raw`),
                could be a local file or a URL. If the source file is a URL, the file will
                be downloaded and stored locally before uploading it to Proxmox VE.
-        :param pulumi.Input[Union['FileLegacySourceRawArgs', 'FileLegacySourceRawArgsDict']] source_raw: The raw source (conflicts with `source_file`).
+        :param pulumi.Input[Union['FileLegacySourceRawArgs', 'FileLegacySourceRawArgsDict', 'outputs.FileLegacySourceRaw']] source_raw: The raw source (conflicts with `source_file`).
         :param pulumi.Input[_builtins.int] timeout_upload: Timeout for uploading ISO/VSTMPL files in
                seconds (defaults to 1800).
         :param pulumi.Input[_builtins.str] upload_mode: The SSH upload mode for non-API content types

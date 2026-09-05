@@ -32,10 +32,10 @@ class FirewallLegacyArgs:
 
         :param pulumi.Input[_builtins.bool] ebtables: Enable ebtables rules cluster wide.
         :param pulumi.Input[_builtins.bool] enabled: Enable or disable the firewall cluster wide.
-        :param pulumi.Input[_builtins.str] forward_policy: The default forward policy (`ACCEPT`, `DROP`).
-        :param pulumi.Input[_builtins.str] input_policy: The default input policy (`ACCEPT`, `DROP`, `REJECT`).
+        :param pulumi.Input[_builtins.str] forward_policy: The default forward policy (`ACCEPT`, `DROP`). Defaults to `ACCEPT`.
+        :param pulumi.Input[_builtins.str] input_policy: The default input policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `DROP`.
         :param pulumi.Input['FirewallLegacyLogRatelimitArgs'] log_ratelimit: The log rate limit.
-        :param pulumi.Input[_builtins.str] output_policy: The default output policy (`ACCEPT`, `DROP`, `REJECT`).
+        :param pulumi.Input[_builtins.str] output_policy: The default output policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `ACCEPT`.
         """
         if ebtables is not None:
             pulumi.set(__self__, "ebtables", ebtables)
@@ -78,7 +78,7 @@ class FirewallLegacyArgs:
     @pulumi.getter(name="forwardPolicy")
     def forward_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The default forward policy (`ACCEPT`, `DROP`).
+        The default forward policy (`ACCEPT`, `DROP`). Defaults to `ACCEPT`.
         """
         return pulumi.get(self, "forward_policy")
 
@@ -90,7 +90,7 @@ class FirewallLegacyArgs:
     @pulumi.getter(name="inputPolicy")
     def input_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The default input policy (`ACCEPT`, `DROP`, `REJECT`).
+        The default input policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `DROP`.
         """
         return pulumi.get(self, "input_policy")
 
@@ -114,7 +114,7 @@ class FirewallLegacyArgs:
     @pulumi.getter(name="outputPolicy")
     def output_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The default output policy (`ACCEPT`, `DROP`, `REJECT`).
+        The default output policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `ACCEPT`.
         """
         return pulumi.get(self, "output_policy")
 
@@ -137,10 +137,10 @@ class _FirewallLegacyState:
 
         :param pulumi.Input[_builtins.bool] ebtables: Enable ebtables rules cluster wide.
         :param pulumi.Input[_builtins.bool] enabled: Enable or disable the firewall cluster wide.
-        :param pulumi.Input[_builtins.str] forward_policy: The default forward policy (`ACCEPT`, `DROP`).
-        :param pulumi.Input[_builtins.str] input_policy: The default input policy (`ACCEPT`, `DROP`, `REJECT`).
+        :param pulumi.Input[_builtins.str] forward_policy: The default forward policy (`ACCEPT`, `DROP`). Defaults to `ACCEPT`.
+        :param pulumi.Input[_builtins.str] input_policy: The default input policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `DROP`.
         :param pulumi.Input['FirewallLegacyLogRatelimitArgs'] log_ratelimit: The log rate limit.
-        :param pulumi.Input[_builtins.str] output_policy: The default output policy (`ACCEPT`, `DROP`, `REJECT`).
+        :param pulumi.Input[_builtins.str] output_policy: The default output policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `ACCEPT`.
         """
         if ebtables is not None:
             pulumi.set(__self__, "ebtables", ebtables)
@@ -183,7 +183,7 @@ class _FirewallLegacyState:
     @pulumi.getter(name="forwardPolicy")
     def forward_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The default forward policy (`ACCEPT`, `DROP`).
+        The default forward policy (`ACCEPT`, `DROP`). Defaults to `ACCEPT`.
         """
         return pulumi.get(self, "forward_policy")
 
@@ -195,7 +195,7 @@ class _FirewallLegacyState:
     @pulumi.getter(name="inputPolicy")
     def input_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The default input policy (`ACCEPT`, `DROP`, `REJECT`).
+        The default input policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `DROP`.
         """
         return pulumi.get(self, "input_policy")
 
@@ -219,7 +219,7 @@ class _FirewallLegacyState:
     @pulumi.getter(name="outputPolicy")
     def output_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The default output policy (`ACCEPT`, `DROP`, `REJECT`).
+        The default output policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `ACCEPT`.
         """
         return pulumi.get(self, "output_policy")
 
@@ -238,7 +238,7 @@ class FirewallLegacy(pulumi.CustomResource):
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  forward_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  input_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 log_ratelimit: pulumi.Input[Optional[Union['FirewallLegacyLogRatelimitArgs', 'FirewallLegacyLogRatelimitArgsDict']]] = None,
+                 log_ratelimit: pulumi.Input[Optional[Union['FirewallLegacyLogRatelimitArgs', 'FirewallLegacyLogRatelimitArgsDict', 'outputs.FirewallLegacyLogRatelimit']]] = None,
                  output_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -265,7 +265,8 @@ class FirewallLegacy(pulumi.CustomResource):
 
         ## Important Notes
 
-        Be careful not to use this resource multiple times for the same node.
+        This resource manages cluster-wide firewall options, so it should be used only
+        once per cluster. Declaring it multiple times results in conflicting updates.
 
         ## Import
 
@@ -280,10 +281,10 @@ class FirewallLegacy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] ebtables: Enable ebtables rules cluster wide.
         :param pulumi.Input[_builtins.bool] enabled: Enable or disable the firewall cluster wide.
-        :param pulumi.Input[_builtins.str] forward_policy: The default forward policy (`ACCEPT`, `DROP`).
-        :param pulumi.Input[_builtins.str] input_policy: The default input policy (`ACCEPT`, `DROP`, `REJECT`).
-        :param pulumi.Input[Union['FirewallLegacyLogRatelimitArgs', 'FirewallLegacyLogRatelimitArgsDict']] log_ratelimit: The log rate limit.
-        :param pulumi.Input[_builtins.str] output_policy: The default output policy (`ACCEPT`, `DROP`, `REJECT`).
+        :param pulumi.Input[_builtins.str] forward_policy: The default forward policy (`ACCEPT`, `DROP`). Defaults to `ACCEPT`.
+        :param pulumi.Input[_builtins.str] input_policy: The default input policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `DROP`.
+        :param pulumi.Input[Union['FirewallLegacyLogRatelimitArgs', 'FirewallLegacyLogRatelimitArgsDict', 'outputs.FirewallLegacyLogRatelimit']] log_ratelimit: The log rate limit.
+        :param pulumi.Input[_builtins.str] output_policy: The default output policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `ACCEPT`.
         """
         ...
     @overload
@@ -315,7 +316,8 @@ class FirewallLegacy(pulumi.CustomResource):
 
         ## Important Notes
 
-        Be careful not to use this resource multiple times for the same node.
+        This resource manages cluster-wide firewall options, so it should be used only
+        once per cluster. Declaring it multiple times results in conflicting updates.
 
         ## Import
 
@@ -345,7 +347,7 @@ class FirewallLegacy(pulumi.CustomResource):
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  forward_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  input_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 log_ratelimit: pulumi.Input[Optional[Union['FirewallLegacyLogRatelimitArgs', 'FirewallLegacyLogRatelimitArgsDict']]] = None,
+                 log_ratelimit: pulumi.Input[Optional[Union['FirewallLegacyLogRatelimitArgs', 'FirewallLegacyLogRatelimitArgsDict', 'outputs.FirewallLegacyLogRatelimit']]] = None,
                  output_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -376,7 +378,7 @@ class FirewallLegacy(pulumi.CustomResource):
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             forward_policy: pulumi.Input[Optional[_builtins.str]] = None,
             input_policy: pulumi.Input[Optional[_builtins.str]] = None,
-            log_ratelimit: pulumi.Input[Optional[Union['FirewallLegacyLogRatelimitArgs', 'FirewallLegacyLogRatelimitArgsDict']]] = None,
+            log_ratelimit: pulumi.Input[Optional[Union['FirewallLegacyLogRatelimitArgs', 'FirewallLegacyLogRatelimitArgsDict', 'outputs.FirewallLegacyLogRatelimit']]] = None,
             output_policy: pulumi.Input[Optional[_builtins.str]] = None) -> 'FirewallLegacy':
         """
         Get an existing FirewallLegacy resource's state with the given name, id, and optional extra
@@ -387,10 +389,10 @@ class FirewallLegacy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] ebtables: Enable ebtables rules cluster wide.
         :param pulumi.Input[_builtins.bool] enabled: Enable or disable the firewall cluster wide.
-        :param pulumi.Input[_builtins.str] forward_policy: The default forward policy (`ACCEPT`, `DROP`).
-        :param pulumi.Input[_builtins.str] input_policy: The default input policy (`ACCEPT`, `DROP`, `REJECT`).
-        :param pulumi.Input[Union['FirewallLegacyLogRatelimitArgs', 'FirewallLegacyLogRatelimitArgsDict']] log_ratelimit: The log rate limit.
-        :param pulumi.Input[_builtins.str] output_policy: The default output policy (`ACCEPT`, `DROP`, `REJECT`).
+        :param pulumi.Input[_builtins.str] forward_policy: The default forward policy (`ACCEPT`, `DROP`). Defaults to `ACCEPT`.
+        :param pulumi.Input[_builtins.str] input_policy: The default input policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `DROP`.
+        :param pulumi.Input[Union['FirewallLegacyLogRatelimitArgs', 'FirewallLegacyLogRatelimitArgsDict', 'outputs.FirewallLegacyLogRatelimit']] log_ratelimit: The log rate limit.
+        :param pulumi.Input[_builtins.str] output_policy: The default output policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `ACCEPT`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -424,7 +426,7 @@ class FirewallLegacy(pulumi.CustomResource):
     @pulumi.getter(name="forwardPolicy")
     def forward_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The default forward policy (`ACCEPT`, `DROP`).
+        The default forward policy (`ACCEPT`, `DROP`). Defaults to `ACCEPT`.
         """
         return pulumi.get(self, "forward_policy")
 
@@ -432,7 +434,7 @@ class FirewallLegacy(pulumi.CustomResource):
     @pulumi.getter(name="inputPolicy")
     def input_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The default input policy (`ACCEPT`, `DROP`, `REJECT`).
+        The default input policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `DROP`.
         """
         return pulumi.get(self, "input_policy")
 
@@ -448,7 +450,7 @@ class FirewallLegacy(pulumi.CustomResource):
     @pulumi.getter(name="outputPolicy")
     def output_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The default output policy (`ACCEPT`, `DROP`, `REJECT`).
+        The default output policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `ACCEPT`.
         """
         return pulumi.get(self, "output_policy")
 

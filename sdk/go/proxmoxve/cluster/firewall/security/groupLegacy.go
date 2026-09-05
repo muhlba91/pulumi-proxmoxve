@@ -15,6 +15,10 @@ import (
 // be used in all VMs' rules. For example, you can define a group named “webserver”
 // with rules to open the http and https ports.
 //
+// > Security groups are always cluster-scoped. Any node- or guest-scoping
+// attributes (`nodeName`, `vmId`, `containerId`) have no effect on this
+// resource and are silently ignored.
+//
 // ## Example Usage
 //
 // ```go

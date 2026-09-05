@@ -58,7 +58,8 @@ export interface ContainerLegacyCpu {
      */
     limit?: number;
     /**
-     * The CPU units (defaults to `1024`).
+     * The CPU units (between `1` and `500000`). When unset,
+     * Proxmox applies its own default.
      */
     units: number;
 }
@@ -89,7 +90,7 @@ export interface ContainerLegacyDevicePassthrough {
 
 export interface ContainerLegacyDisk {
     /**
-     * Explicitly enable or disable ACL support
+     * Explicitly enable or disable ACL support.
      */
     acl?: boolean;
     /**
@@ -107,11 +108,11 @@ export interface ContainerLegacyDisk {
      */
     pathInDatastore: string;
     /**
-     * Enable user quotas for the container rootfs
+     * Enable user quotas for the container rootfs.
      */
     quota?: boolean;
     /**
-     * Will include this volume to a storage replica job
+     * Whether to include this volume in a storage replication job (defaults to `true`).
      */
     replicate?: boolean;
     /**
@@ -303,7 +304,7 @@ export interface ContainerLegacyMountPoint {
      */
     readOnly?: boolean;
     /**
-     * Will include this volume to a storage replica job.
+     * Will include this volume to a storage replica job (defaults to `true`).
      */
     replicate?: boolean;
     /**
@@ -392,7 +393,7 @@ export interface ContainerLegacyStartup {
     downDelay?: number;
     /**
      * A non-negative number defining the general startup
-     * order.
+     * order (defaults to `-1`, meaning no specific order).
      */
     order?: number;
     /**
@@ -467,7 +468,7 @@ export interface GetContainersLegacyContainer {
      */
     name: string;
     /**
-     * The node name. All cluster nodes will be queried in case this is omitted
+     * The node name. If omitted, all cluster nodes are queried.
      */
     nodeName: string;
     /**
@@ -495,7 +496,7 @@ export interface GetContainersLegacyFilter {
      */
     name: string;
     /**
-     * Treat values as regex patterns
+     * Whether to treat the `values` as regex patterns (defaults to `false`).
      */
     regex?: boolean;
     /**
@@ -927,7 +928,7 @@ export interface GetVmsLegacyFilter {
      */
     name: string;
     /**
-     * Treat values as regex patterns
+     * Whether to treat the `values` as regex patterns (defaults to `false`).
      */
     regex?: boolean;
     /**
@@ -942,7 +943,7 @@ export interface GetVmsLegacyVm {
      */
     name: string;
     /**
-     * The node name. All cluster nodes will be queried in case this is omitted
+     * The node name. If omitted, all cluster nodes are queried.
      */
     nodeName: string;
     /**
@@ -1282,8 +1283,8 @@ export interface VmLegacyCdrom {
     fileId?: string;
     /**
      * A hardware interface to connect CD-ROM drive to (defaults to `ide3`).
-     * "Must be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. " +
-     * "Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+     * Must be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface.
+     * Note that the `q35` machine type only supports `ide0` and `ide2` of the IDE interfaces.
      */
     interface?: string;
 }
@@ -1367,7 +1368,7 @@ export interface VmLegacyCpu {
      */
     limit?: number;
     /**
-     * Enable/disable NUMA. (default to `false`)
+     * Enable/disable NUMA (defaults to `false`).
      */
     numa?: boolean;
     /**
@@ -1443,7 +1444,7 @@ export interface VmLegacyDisk {
     iothread?: boolean;
     /**
      * The in-datastore path to the disk image.
-     * ***Experimental.***Use to attach another VM's disks,
+     * ***Experimental.*** Use to attach another VM's disks,
      * or (as root only) host's filesystem paths (`datastoreId` empty string).
      * See "*Example: Attached disks*".
      */
@@ -1609,7 +1610,7 @@ export interface VmLegacyInitialization {
     interface?: string;
     /**
      * The IP configuration (one block per network
-     * device).
+     * device, up to 32 blocks).
      */
     ipConfigs?: outputs.VmLegacyInitializationIpConfig[];
     /**
@@ -1887,7 +1888,7 @@ export interface VmLegacyStartup {
     downDelay?: number;
     /**
      * A non-negative number defining the general startup
-     * order.
+     * order (defaults to `-1`, meaning no specific order).
      */
     order?: number;
     /**
@@ -2159,6 +2160,10 @@ export namespace backup {
          * Indicates whether the backup job is enabled.
          */
         enabled: boolean;
+        /**
+         * List of guest VM/CT IDs excluded from the backup.
+         */
+        excludes: string[];
         /**
          * Unique identifier of the backup job.
          */
@@ -2942,7 +2947,7 @@ export namespace cluster {
                 pos: number;
                 /**
                  * Restrict packet protocol. You can use protocol names
-                 * as defined in '/etc/protocols'.
+                 * or simple numbers (0-255), as defined in '/etc/protocols'.
                  */
                 proto?: string;
                 /**
@@ -3110,7 +3115,7 @@ export namespace firewall {
         pos: number;
         /**
          * Restrict packet protocol. You can use protocol
-         * names as defined in '/etc/protocols'.
+         * names or simple numbers (0-255), as defined in '/etc/protocols'.
          */
         proto?: string;
         /**

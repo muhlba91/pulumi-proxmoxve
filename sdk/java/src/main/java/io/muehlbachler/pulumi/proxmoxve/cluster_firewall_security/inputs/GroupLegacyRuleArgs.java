@@ -180,7 +180,7 @@ public final class GroupLegacyRuleArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * Restrict packet protocol. You can use protocol names
-     * as defined in &#39;/etc/protocols&#39;.
+     * or simple numbers (0-255), as defined in &#39;/etc/protocols&#39;.
      * 
      */
     @Import(name="proto")
@@ -188,7 +188,7 @@ public final class GroupLegacyRuleArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return Restrict packet protocol. You can use protocol names
-     * as defined in &#39;/etc/protocols&#39;.
+     * or simple numbers (0-255), as defined in &#39;/etc/protocols&#39;.
      * 
      */
     public Optional<Output<String>> proto() {
@@ -527,7 +527,7 @@ public final class GroupLegacyRuleArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param proto Restrict packet protocol. You can use protocol names
-         * as defined in &#39;/etc/protocols&#39;.
+         * or simple numbers (0-255), as defined in &#39;/etc/protocols&#39;.
          * 
          * @return builder
          * 
@@ -539,7 +539,7 @@ public final class GroupLegacyRuleArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param proto Restrict packet protocol. You can use protocol names
-         * as defined in &#39;/etc/protocols&#39;.
+         * or simple numbers (0-255), as defined in &#39;/etc/protocols&#39;.
          * 
          * @return builder
          * 

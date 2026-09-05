@@ -77,12 +77,12 @@ type OptionsLegacy struct {
 
 	// Container ID. **Exactly one of `vmId` or `containerId` must be specified.**
 	ContainerId pulumi.IntPtrOutput `pulumi:"containerId"`
-	// Enable DHCP.
+	// Enable DHCP. Defaults to `false`.
 	Dhcp pulumi.BoolPtrOutput `pulumi:"dhcp"`
-	// Enable or disable the firewall.
+	// Enable or disable the firewall. Defaults to `false`.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
 	// The default input
-	// policy (`ACCEPT`, `DROP`, `REJECT`).
+	// policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `DROP`.
 	InputPolicy pulumi.StringPtrOutput `pulumi:"inputPolicy"`
 	// Enable default IP filters. This is equivalent to
 	// adding an empty `ipfilter-net<id>` ipset for every interface. Such ipsets
@@ -92,22 +92,22 @@ type OptionsLegacy struct {
 	Ipfilter pulumi.BoolPtrOutput `pulumi:"ipfilter"`
 	// Log level for incoming
 	// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
-	// `debug`, `nolog`).
+	// `debug`, `nolog`). Defaults to `nolog`.
 	LogLevelIn pulumi.StringPtrOutput `pulumi:"logLevelIn"`
 	// Log level for outgoing
 	// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
-	// `debug`, `nolog`).
+	// `debug`, `nolog`). Defaults to `nolog`.
 	LogLevelOut pulumi.StringPtrOutput `pulumi:"logLevelOut"`
-	// Enable/disable MAC address filter.
+	// Enable/disable MAC address filter. Defaults to `true`.
 	Macfilter pulumi.BoolPtrOutput `pulumi:"macfilter"`
-	// Enable NDP (Neighbor Discovery Protocol).
+	// Enable NDP (Neighbor Discovery Protocol). Defaults to `false`.
 	Ndp pulumi.BoolPtrOutput `pulumi:"ndp"`
 	// Node name.
 	NodeName pulumi.StringOutput `pulumi:"nodeName"`
 	// The default output
-	// policy (`ACCEPT`, `DROP`, `REJECT`).
+	// policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `ACCEPT`.
 	OutputPolicy pulumi.StringPtrOutput `pulumi:"outputPolicy"`
-	// Enable Router Advertisement.
+	// Enable Router Advertisement. Defaults to `true`.
 	Radv pulumi.BoolPtrOutput `pulumi:"radv"`
 	// VM ID. **Exactly one of `vmId` or `containerId` must be specified.**
 	VmId pulumi.IntPtrOutput `pulumi:"vmId"`
@@ -148,12 +148,12 @@ func GetOptionsLegacy(ctx *pulumi.Context,
 type optionsLegacyState struct {
 	// Container ID. **Exactly one of `vmId` or `containerId` must be specified.**
 	ContainerId *int `pulumi:"containerId"`
-	// Enable DHCP.
+	// Enable DHCP. Defaults to `false`.
 	Dhcp *bool `pulumi:"dhcp"`
-	// Enable or disable the firewall.
+	// Enable or disable the firewall. Defaults to `false`.
 	Enabled *bool `pulumi:"enabled"`
 	// The default input
-	// policy (`ACCEPT`, `DROP`, `REJECT`).
+	// policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `DROP`.
 	InputPolicy *string `pulumi:"inputPolicy"`
 	// Enable default IP filters. This is equivalent to
 	// adding an empty `ipfilter-net<id>` ipset for every interface. Such ipsets
@@ -163,22 +163,22 @@ type optionsLegacyState struct {
 	Ipfilter *bool `pulumi:"ipfilter"`
 	// Log level for incoming
 	// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
-	// `debug`, `nolog`).
+	// `debug`, `nolog`). Defaults to `nolog`.
 	LogLevelIn *string `pulumi:"logLevelIn"`
 	// Log level for outgoing
 	// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
-	// `debug`, `nolog`).
+	// `debug`, `nolog`). Defaults to `nolog`.
 	LogLevelOut *string `pulumi:"logLevelOut"`
-	// Enable/disable MAC address filter.
+	// Enable/disable MAC address filter. Defaults to `true`.
 	Macfilter *bool `pulumi:"macfilter"`
-	// Enable NDP (Neighbor Discovery Protocol).
+	// Enable NDP (Neighbor Discovery Protocol). Defaults to `false`.
 	Ndp *bool `pulumi:"ndp"`
 	// Node name.
 	NodeName *string `pulumi:"nodeName"`
 	// The default output
-	// policy (`ACCEPT`, `DROP`, `REJECT`).
+	// policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `ACCEPT`.
 	OutputPolicy *string `pulumi:"outputPolicy"`
-	// Enable Router Advertisement.
+	// Enable Router Advertisement. Defaults to `true`.
 	Radv *bool `pulumi:"radv"`
 	// VM ID. **Exactly one of `vmId` or `containerId` must be specified.**
 	VmId *int `pulumi:"vmId"`
@@ -187,12 +187,12 @@ type optionsLegacyState struct {
 type OptionsLegacyState struct {
 	// Container ID. **Exactly one of `vmId` or `containerId` must be specified.**
 	ContainerId pulumi.IntPtrInput
-	// Enable DHCP.
+	// Enable DHCP. Defaults to `false`.
 	Dhcp pulumi.BoolPtrInput
-	// Enable or disable the firewall.
+	// Enable or disable the firewall. Defaults to `false`.
 	Enabled pulumi.BoolPtrInput
 	// The default input
-	// policy (`ACCEPT`, `DROP`, `REJECT`).
+	// policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `DROP`.
 	InputPolicy pulumi.StringPtrInput
 	// Enable default IP filters. This is equivalent to
 	// adding an empty `ipfilter-net<id>` ipset for every interface. Such ipsets
@@ -202,22 +202,22 @@ type OptionsLegacyState struct {
 	Ipfilter pulumi.BoolPtrInput
 	// Log level for incoming
 	// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
-	// `debug`, `nolog`).
+	// `debug`, `nolog`). Defaults to `nolog`.
 	LogLevelIn pulumi.StringPtrInput
 	// Log level for outgoing
 	// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
-	// `debug`, `nolog`).
+	// `debug`, `nolog`). Defaults to `nolog`.
 	LogLevelOut pulumi.StringPtrInput
-	// Enable/disable MAC address filter.
+	// Enable/disable MAC address filter. Defaults to `true`.
 	Macfilter pulumi.BoolPtrInput
-	// Enable NDP (Neighbor Discovery Protocol).
+	// Enable NDP (Neighbor Discovery Protocol). Defaults to `false`.
 	Ndp pulumi.BoolPtrInput
 	// Node name.
 	NodeName pulumi.StringPtrInput
 	// The default output
-	// policy (`ACCEPT`, `DROP`, `REJECT`).
+	// policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `ACCEPT`.
 	OutputPolicy pulumi.StringPtrInput
-	// Enable Router Advertisement.
+	// Enable Router Advertisement. Defaults to `true`.
 	Radv pulumi.BoolPtrInput
 	// VM ID. **Exactly one of `vmId` or `containerId` must be specified.**
 	VmId pulumi.IntPtrInput
@@ -230,12 +230,12 @@ func (OptionsLegacyState) ElementType() reflect.Type {
 type optionsLegacyArgs struct {
 	// Container ID. **Exactly one of `vmId` or `containerId` must be specified.**
 	ContainerId *int `pulumi:"containerId"`
-	// Enable DHCP.
+	// Enable DHCP. Defaults to `false`.
 	Dhcp *bool `pulumi:"dhcp"`
-	// Enable or disable the firewall.
+	// Enable or disable the firewall. Defaults to `false`.
 	Enabled *bool `pulumi:"enabled"`
 	// The default input
-	// policy (`ACCEPT`, `DROP`, `REJECT`).
+	// policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `DROP`.
 	InputPolicy *string `pulumi:"inputPolicy"`
 	// Enable default IP filters. This is equivalent to
 	// adding an empty `ipfilter-net<id>` ipset for every interface. Such ipsets
@@ -245,22 +245,22 @@ type optionsLegacyArgs struct {
 	Ipfilter *bool `pulumi:"ipfilter"`
 	// Log level for incoming
 	// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
-	// `debug`, `nolog`).
+	// `debug`, `nolog`). Defaults to `nolog`.
 	LogLevelIn *string `pulumi:"logLevelIn"`
 	// Log level for outgoing
 	// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
-	// `debug`, `nolog`).
+	// `debug`, `nolog`). Defaults to `nolog`.
 	LogLevelOut *string `pulumi:"logLevelOut"`
-	// Enable/disable MAC address filter.
+	// Enable/disable MAC address filter. Defaults to `true`.
 	Macfilter *bool `pulumi:"macfilter"`
-	// Enable NDP (Neighbor Discovery Protocol).
+	// Enable NDP (Neighbor Discovery Protocol). Defaults to `false`.
 	Ndp *bool `pulumi:"ndp"`
 	// Node name.
 	NodeName string `pulumi:"nodeName"`
 	// The default output
-	// policy (`ACCEPT`, `DROP`, `REJECT`).
+	// policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `ACCEPT`.
 	OutputPolicy *string `pulumi:"outputPolicy"`
-	// Enable Router Advertisement.
+	// Enable Router Advertisement. Defaults to `true`.
 	Radv *bool `pulumi:"radv"`
 	// VM ID. **Exactly one of `vmId` or `containerId` must be specified.**
 	VmId *int `pulumi:"vmId"`
@@ -270,12 +270,12 @@ type optionsLegacyArgs struct {
 type OptionsLegacyArgs struct {
 	// Container ID. **Exactly one of `vmId` or `containerId` must be specified.**
 	ContainerId pulumi.IntPtrInput
-	// Enable DHCP.
+	// Enable DHCP. Defaults to `false`.
 	Dhcp pulumi.BoolPtrInput
-	// Enable or disable the firewall.
+	// Enable or disable the firewall. Defaults to `false`.
 	Enabled pulumi.BoolPtrInput
 	// The default input
-	// policy (`ACCEPT`, `DROP`, `REJECT`).
+	// policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `DROP`.
 	InputPolicy pulumi.StringPtrInput
 	// Enable default IP filters. This is equivalent to
 	// adding an empty `ipfilter-net<id>` ipset for every interface. Such ipsets
@@ -285,22 +285,22 @@ type OptionsLegacyArgs struct {
 	Ipfilter pulumi.BoolPtrInput
 	// Log level for incoming
 	// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
-	// `debug`, `nolog`).
+	// `debug`, `nolog`). Defaults to `nolog`.
 	LogLevelIn pulumi.StringPtrInput
 	// Log level for outgoing
 	// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
-	// `debug`, `nolog`).
+	// `debug`, `nolog`). Defaults to `nolog`.
 	LogLevelOut pulumi.StringPtrInput
-	// Enable/disable MAC address filter.
+	// Enable/disable MAC address filter. Defaults to `true`.
 	Macfilter pulumi.BoolPtrInput
-	// Enable NDP (Neighbor Discovery Protocol).
+	// Enable NDP (Neighbor Discovery Protocol). Defaults to `false`.
 	Ndp pulumi.BoolPtrInput
 	// Node name.
 	NodeName pulumi.StringInput
 	// The default output
-	// policy (`ACCEPT`, `DROP`, `REJECT`).
+	// policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `ACCEPT`.
 	OutputPolicy pulumi.StringPtrInput
-	// Enable Router Advertisement.
+	// Enable Router Advertisement. Defaults to `true`.
 	Radv pulumi.BoolPtrInput
 	// VM ID. **Exactly one of `vmId` or `containerId` must be specified.**
 	VmId pulumi.IntPtrInput
@@ -398,18 +398,18 @@ func (o OptionsLegacyOutput) ContainerId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OptionsLegacy) pulumi.IntPtrOutput { return v.ContainerId }).(pulumi.IntPtrOutput)
 }
 
-// Enable DHCP.
+// Enable DHCP. Defaults to `false`.
 func (o OptionsLegacyOutput) Dhcp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OptionsLegacy) pulumi.BoolPtrOutput { return v.Dhcp }).(pulumi.BoolPtrOutput)
 }
 
-// Enable or disable the firewall.
+// Enable or disable the firewall. Defaults to `false`.
 func (o OptionsLegacyOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OptionsLegacy) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
 // The default input
-// policy (`ACCEPT`, `DROP`, `REJECT`).
+// policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `DROP`.
 func (o OptionsLegacyOutput) InputPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OptionsLegacy) pulumi.StringPtrOutput { return v.InputPolicy }).(pulumi.StringPtrOutput)
 }
@@ -425,24 +425,24 @@ func (o OptionsLegacyOutput) Ipfilter() pulumi.BoolPtrOutput {
 
 // Log level for incoming
 // packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
-// `debug`, `nolog`).
+// `debug`, `nolog`). Defaults to `nolog`.
 func (o OptionsLegacyOutput) LogLevelIn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OptionsLegacy) pulumi.StringPtrOutput { return v.LogLevelIn }).(pulumi.StringPtrOutput)
 }
 
 // Log level for outgoing
 // packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
-// `debug`, `nolog`).
+// `debug`, `nolog`). Defaults to `nolog`.
 func (o OptionsLegacyOutput) LogLevelOut() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OptionsLegacy) pulumi.StringPtrOutput { return v.LogLevelOut }).(pulumi.StringPtrOutput)
 }
 
-// Enable/disable MAC address filter.
+// Enable/disable MAC address filter. Defaults to `true`.
 func (o OptionsLegacyOutput) Macfilter() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OptionsLegacy) pulumi.BoolPtrOutput { return v.Macfilter }).(pulumi.BoolPtrOutput)
 }
 
-// Enable NDP (Neighbor Discovery Protocol).
+// Enable NDP (Neighbor Discovery Protocol). Defaults to `false`.
 func (o OptionsLegacyOutput) Ndp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OptionsLegacy) pulumi.BoolPtrOutput { return v.Ndp }).(pulumi.BoolPtrOutput)
 }
@@ -453,12 +453,12 @@ func (o OptionsLegacyOutput) NodeName() pulumi.StringOutput {
 }
 
 // The default output
-// policy (`ACCEPT`, `DROP`, `REJECT`).
+// policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `ACCEPT`.
 func (o OptionsLegacyOutput) OutputPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OptionsLegacy) pulumi.StringPtrOutput { return v.OutputPolicy }).(pulumi.StringPtrOutput)
 }
 
-// Enable Router Advertisement.
+// Enable Router Advertisement. Defaults to `true`.
 func (o OptionsLegacyOutput) Radv() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OptionsLegacy) pulumi.BoolPtrOutput { return v.Radv }).(pulumi.BoolPtrOutput)
 }

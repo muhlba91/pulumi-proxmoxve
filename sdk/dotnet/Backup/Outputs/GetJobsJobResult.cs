@@ -26,6 +26,10 @@ namespace Pulumi.ProxmoxVE.Backup.Outputs
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
+        /// List of guest VM/CT IDs excluded from the backup.
+        /// </summary>
+        public readonly ImmutableArray<string> Excludes;
+        /// <summary>
         /// Unique identifier of the backup job.
         /// </summary>
         public readonly string Id;
@@ -82,6 +86,8 @@ namespace Pulumi.ProxmoxVE.Backup.Outputs
 
             bool enabled,
 
+            ImmutableArray<string> excludes,
+
             string id,
 
             string mailnotification,
@@ -109,6 +115,7 @@ namespace Pulumi.ProxmoxVE.Backup.Outputs
             All = all;
             Compress = compress;
             Enabled = enabled;
+            Excludes = excludes;
             Id = id;
             Mailnotification = mailnotification;
             Mailtos = mailtos;

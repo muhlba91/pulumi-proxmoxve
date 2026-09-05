@@ -19,7 +19,6 @@ import * as utilities from "./utilities";
  *     rsaBits: 2048,
  * });
  * const proxmoxVirtualEnvironmentCertificateSelfSignedCert = new tls.SelfSignedCert("proxmox_virtual_environment_certificate", {
- *     keyAlgorithm: proxmoxVirtualEnvironmentCertificate.algorithm,
  *     privateKeyPem: proxmoxVirtualEnvironmentCertificate.privateKeyPem,
  *     subject: {
  *         commonName: "example.com",
@@ -92,7 +91,7 @@ export class CertificateLegacy extends pulumi.CustomResource {
      */
     declare public readonly nodeName: pulumi.Output<string>;
     /**
-     * Whether to overwrite an existing certificate
+     * Whether to overwrite an existing certificate (defaults to `false`).
      */
     declare public readonly overwrite: pulumi.Output<boolean | undefined>;
     /**
@@ -213,7 +212,7 @@ export interface CertificateLegacyState {
      */
     nodeName?: pulumi.Input<string | undefined>;
     /**
-     * Whether to overwrite an existing certificate
+     * Whether to overwrite an existing certificate (defaults to `false`).
      */
     overwrite?: pulumi.Input<boolean | undefined>;
     /**
@@ -263,7 +262,7 @@ export interface CertificateLegacyArgs {
      */
     nodeName: pulumi.Input<string>;
     /**
-     * Whether to overwrite an existing certificate
+     * Whether to overwrite an existing certificate (defaults to `false`).
      */
     overwrite?: pulumi.Input<boolean | undefined>;
     /**

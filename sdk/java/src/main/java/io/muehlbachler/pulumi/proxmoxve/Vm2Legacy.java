@@ -26,6 +26,7 @@ import javax.annotation.Nullable;
  * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Vm`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Vm`&#34; pulumi-lang-go=&#34;`Vm`&#34; pulumi-lang-python=&#34;`Vm`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Vm`&#34; pulumi-lang-java=&#34;`proxmoxve.Vm`&#34; pulumi-lang-hcl=&#34;`proxmox_vm`&#34;&gt;`proxmoxve.Vm`&lt;/span&gt; instead. This resource will be removed in v1.0.
  * 
  * &gt; **DO NOT USE**
+ * 
  * This is an experimental implementation of a Proxmox VM resource using Plugin Framework.&lt;br&gt;&lt;br&gt;It is a Proof of Concept, highly experimental and **will** change in future. It does not support all features of the Proxmox API for VMs and **MUST NOT** be used in production.
  * 
  * &gt; Many attributes are marked as **optional** _and_ **computed** in the schema,

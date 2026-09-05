@@ -865,8 +865,8 @@ class OptionsLegacy(pulumi.CustomResource):
                  max_workers: pulumi.Input[Optional[_builtins.int]] = None,
                  migration_cidr: pulumi.Input[Optional[_builtins.str]] = None,
                  migration_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 next_id: pulumi.Input[Optional[Union['OptionsLegacyNextIdArgs', 'OptionsLegacyNextIdArgsDict']]] = None,
-                 notify: pulumi.Input[Optional[Union['OptionsLegacyNotifyArgs', 'OptionsLegacyNotifyArgsDict']]] = None,
+                 next_id: pulumi.Input[Optional[Union['OptionsLegacyNextIdArgs', 'OptionsLegacyNextIdArgsDict', 'outputs.OptionsLegacyNextId']]] = None,
+                 notify: pulumi.Input[Optional[Union['OptionsLegacyNotifyArgs', 'OptionsLegacyNotifyArgsDict', 'outputs.OptionsLegacyNotify']]] = None,
                  __props__=None):
         """
         > **Deprecated:** Use `cluster.Options` instead. This resource will be removed in v1.0.
@@ -937,8 +937,8 @@ class OptionsLegacy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] max_workers: Defines how many workers (per node) are maximal started on actions like 'stopall VMs' or task from the ha-manager.
         :param pulumi.Input[_builtins.str] migration_cidr: Cluster wide migration network CIDR.
         :param pulumi.Input[_builtins.str] migration_type: Cluster wide migration type. Must be `secure` | `insecure` (default is `secure`).
-        :param pulumi.Input[Union['OptionsLegacyNextIdArgs', 'OptionsLegacyNextIdArgsDict']] next_id: The ranges for the next free VM ID auto-selection pool.
-        :param pulumi.Input[Union['OptionsLegacyNotifyArgs', 'OptionsLegacyNotifyArgsDict']] notify: Cluster-wide notification settings.
+        :param pulumi.Input[Union['OptionsLegacyNextIdArgs', 'OptionsLegacyNextIdArgsDict', 'outputs.OptionsLegacyNextId']] next_id: The ranges for the next free VM ID auto-selection pool.
+        :param pulumi.Input[Union['OptionsLegacyNotifyArgs', 'OptionsLegacyNotifyArgsDict', 'outputs.OptionsLegacyNotify']] notify: Cluster-wide notification settings.
         """
         ...
     @overload
@@ -1028,8 +1028,8 @@ class OptionsLegacy(pulumi.CustomResource):
                  max_workers: pulumi.Input[Optional[_builtins.int]] = None,
                  migration_cidr: pulumi.Input[Optional[_builtins.str]] = None,
                  migration_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 next_id: pulumi.Input[Optional[Union['OptionsLegacyNextIdArgs', 'OptionsLegacyNextIdArgsDict']]] = None,
-                 notify: pulumi.Input[Optional[Union['OptionsLegacyNotifyArgs', 'OptionsLegacyNotifyArgsDict']]] = None,
+                 next_id: pulumi.Input[Optional[Union['OptionsLegacyNextIdArgs', 'OptionsLegacyNextIdArgsDict', 'outputs.OptionsLegacyNextId']]] = None,
+                 notify: pulumi.Input[Optional[Union['OptionsLegacyNotifyArgs', 'OptionsLegacyNotifyArgsDict', 'outputs.OptionsLegacyNotify']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1097,8 +1097,8 @@ class OptionsLegacy(pulumi.CustomResource):
             max_workers: pulumi.Input[Optional[_builtins.int]] = None,
             migration_cidr: pulumi.Input[Optional[_builtins.str]] = None,
             migration_type: pulumi.Input[Optional[_builtins.str]] = None,
-            next_id: pulumi.Input[Optional[Union['OptionsLegacyNextIdArgs', 'OptionsLegacyNextIdArgsDict']]] = None,
-            notify: pulumi.Input[Optional[Union['OptionsLegacyNotifyArgs', 'OptionsLegacyNotifyArgsDict']]] = None) -> 'OptionsLegacy':
+            next_id: pulumi.Input[Optional[Union['OptionsLegacyNextIdArgs', 'OptionsLegacyNextIdArgsDict', 'outputs.OptionsLegacyNextId']]] = None,
+            notify: pulumi.Input[Optional[Union['OptionsLegacyNotifyArgs', 'OptionsLegacyNotifyArgsDict', 'outputs.OptionsLegacyNotify']]] = None) -> 'OptionsLegacy':
         """
         Get an existing OptionsLegacy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1129,8 +1129,8 @@ class OptionsLegacy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] max_workers: Defines how many workers (per node) are maximal started on actions like 'stopall VMs' or task from the ha-manager.
         :param pulumi.Input[_builtins.str] migration_cidr: Cluster wide migration network CIDR.
         :param pulumi.Input[_builtins.str] migration_type: Cluster wide migration type. Must be `secure` | `insecure` (default is `secure`).
-        :param pulumi.Input[Union['OptionsLegacyNextIdArgs', 'OptionsLegacyNextIdArgsDict']] next_id: The ranges for the next free VM ID auto-selection pool.
-        :param pulumi.Input[Union['OptionsLegacyNotifyArgs', 'OptionsLegacyNotifyArgsDict']] notify: Cluster-wide notification settings.
+        :param pulumi.Input[Union['OptionsLegacyNextIdArgs', 'OptionsLegacyNextIdArgsDict', 'outputs.OptionsLegacyNextId']] next_id: The ranges for the next free VM ID auto-selection pool.
+        :param pulumi.Input[Union['OptionsLegacyNotifyArgs', 'OptionsLegacyNotifyArgsDict', 'outputs.OptionsLegacyNotify']] notify: Cluster-wide notification settings.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

@@ -46,7 +46,7 @@ namespace Pulumi.ProxmoxVE.Outputs
         /// </summary>
         public readonly bool? ReadOnly;
         /// <summary>
-        /// Will include this volume to a storage replica job.
+        /// Will include this volume to a storage replica job (defaults to `True`).
         /// </summary>
         public readonly bool? Replicate;
         /// <summary>

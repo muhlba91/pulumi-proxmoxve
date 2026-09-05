@@ -31,7 +31,8 @@ namespace Pulumi.ProxmoxVE.Inputs
         public Input<double>? Limit { get; set; }
 
         /// <summary>
-        /// The CPU units (defaults to `1024`).
+        /// The CPU units (between `1` and `500000`). When unset,
+        /// Proxmox applies its own default.
         /// </summary>
         [Input("units")]
         public Input<int>? Units { get; set; }

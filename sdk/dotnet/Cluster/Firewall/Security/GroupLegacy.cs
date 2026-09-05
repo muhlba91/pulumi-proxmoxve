@@ -14,6 +14,10 @@ namespace Pulumi.ProxmoxVE.Cluster.Firewall.Security
     /// be used in all VMs' rules. For example, you can define a group named “webserver”
     /// with rules to open the http and https ports.
     /// 
+    /// &gt; Security groups are always cluster-scoped. Any node- or guest-scoping
+    /// attributes (`NodeName`, `VmId`, `ContainerId`) have no effect on this
+    /// resource and are silently ignored.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

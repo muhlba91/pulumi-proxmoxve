@@ -20,7 +20,7 @@ namespace Pulumi.ProxmoxVE.Outputs
         public readonly int? DownDelay;
         /// <summary>
         /// A non-negative number defining the general startup
-        /// order.
+        /// order (defaults to `-1`, meaning no specific order).
         /// </summary>
         public readonly int? Order;
         /// <summary>

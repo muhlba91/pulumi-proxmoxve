@@ -81,7 +81,7 @@ namespace Pulumi.ProxmoxVE.Cluster.Firewall.Security.Inputs
 
         /// <summary>
         /// Restrict packet protocol. You can use protocol names
-        /// as defined in '/etc/protocols'.
+        /// or simple numbers (0-255), as defined in '/etc/protocols'.
         /// </summary>
         [Input("proto")]
         public Input<string>? Proto { get; set; }

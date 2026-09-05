@@ -250,7 +250,7 @@ namespace Pulumi.ProxmoxVE
         }
 
         /// <summary>
-        /// The node name. All cluster nodes will be queried in case this is omitted
+        /// The node name. If omitted, all cluster nodes are queried.
         /// </summary>
         [Input("nodeName")]
         public string? NodeName { get; set; }
@@ -289,7 +289,7 @@ namespace Pulumi.ProxmoxVE
         }
 
         /// <summary>
-        /// The node name. All cluster nodes will be queried in case this is omitted
+        /// The node name. If omitted, all cluster nodes are queried.
         /// </summary>
         [Input("nodeName")]
         public Input<string>? NodeName { get; set; }

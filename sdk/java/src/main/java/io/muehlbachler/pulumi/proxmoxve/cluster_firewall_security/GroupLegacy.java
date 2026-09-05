@@ -22,6 +22,10 @@ import javax.annotation.Nullable;
  * be used in all VMs&#39; rules. For example, you can define a group named “webserver”
  * with rules to open the http and https ports.
  * 
+ * &gt; Security groups are always cluster-scoped. Any node- or guest-scoping
+ * attributes (&lt;span pulumi-lang-nodejs=&#34;`nodeName`&#34; pulumi-lang-dotnet=&#34;`NodeName`&#34; pulumi-lang-go=&#34;`nodeName`&#34; pulumi-lang-python=&#34;`node_name`&#34; pulumi-lang-yaml=&#34;`nodeName`&#34; pulumi-lang-java=&#34;`nodeName`&#34; pulumi-lang-hcl=&#34;`node_name`&#34;&gt;`nodeName`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`vmId`&#34; pulumi-lang-dotnet=&#34;`VmId`&#34; pulumi-lang-go=&#34;`vmId`&#34; pulumi-lang-python=&#34;`vm_id`&#34; pulumi-lang-yaml=&#34;`vmId`&#34; pulumi-lang-java=&#34;`vmId`&#34; pulumi-lang-hcl=&#34;`vm_id`&#34;&gt;`vmId`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`containerId`&#34; pulumi-lang-dotnet=&#34;`ContainerId`&#34; pulumi-lang-go=&#34;`containerId`&#34; pulumi-lang-python=&#34;`container_id`&#34; pulumi-lang-yaml=&#34;`containerId`&#34; pulumi-lang-java=&#34;`containerId`&#34; pulumi-lang-hcl=&#34;`container_id`&#34;&gt;`containerId`&lt;/span&gt;) have no effect on this
+ * resource and are silently ignored.
+ * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

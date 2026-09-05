@@ -58,7 +58,8 @@ export interface ContainerLegacyCpu {
      */
     limit?: pulumi.Input<number | undefined>;
     /**
-     * The CPU units (defaults to `1024`).
+     * The CPU units (between `1` and `500000`). When unset,
+     * Proxmox applies its own default.
      */
     units?: pulumi.Input<number | undefined>;
 }
@@ -89,7 +90,7 @@ export interface ContainerLegacyDevicePassthrough {
 
 export interface ContainerLegacyDisk {
     /**
-     * Explicitly enable or disable ACL support
+     * Explicitly enable or disable ACL support.
      */
     acl?: pulumi.Input<boolean | undefined>;
     /**
@@ -107,11 +108,11 @@ export interface ContainerLegacyDisk {
      */
     pathInDatastore?: pulumi.Input<string | undefined>;
     /**
-     * Enable user quotas for the container rootfs
+     * Enable user quotas for the container rootfs.
      */
     quota?: pulumi.Input<boolean | undefined>;
     /**
-     * Will include this volume to a storage replica job
+     * Whether to include this volume in a storage replication job (defaults to `true`).
      */
     replicate?: pulumi.Input<boolean | undefined>;
     /**
@@ -303,7 +304,7 @@ export interface ContainerLegacyMountPoint {
      */
     readOnly?: pulumi.Input<boolean | undefined>;
     /**
-     * Will include this volume to a storage replica job.
+     * Will include this volume to a storage replica job (defaults to `true`).
      */
     replicate?: pulumi.Input<boolean | undefined>;
     /**
@@ -392,7 +393,7 @@ export interface ContainerLegacyStartup {
     downDelay?: pulumi.Input<number | undefined>;
     /**
      * A non-negative number defining the general startup
-     * order.
+     * order (defaults to `-1`, meaning no specific order).
      */
     order?: pulumi.Input<number | undefined>;
     /**
@@ -467,7 +468,7 @@ export interface GetContainersLegacyFilter {
      */
     name: string;
     /**
-     * Treat values as regex patterns
+     * Whether to treat the `values` as regex patterns (defaults to `false`).
      */
     regex?: boolean;
     /**
@@ -482,7 +483,7 @@ export interface GetContainersLegacyFilterArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * Treat values as regex patterns
+     * Whether to treat the `values` as regex patterns (defaults to `false`).
      */
     regex?: pulumi.Input<boolean | undefined>;
     /**
@@ -773,7 +774,7 @@ export interface GetVmsLegacyFilter {
      */
     name: string;
     /**
-     * Treat values as regex patterns
+     * Whether to treat the `values` as regex patterns (defaults to `false`).
      */
     regex?: boolean;
     /**
@@ -788,7 +789,7 @@ export interface GetVmsLegacyFilterArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * Treat values as regex patterns
+     * Whether to treat the `values` as regex patterns (defaults to `false`).
      */
     regex?: pulumi.Input<boolean | undefined>;
     /**
@@ -1177,8 +1178,8 @@ export interface VmLegacyCdrom {
     fileId?: pulumi.Input<string | undefined>;
     /**
      * A hardware interface to connect CD-ROM drive to (defaults to `ide3`).
-     * "Must be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. " +
-     * "Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+     * Must be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface.
+     * Note that the `q35` machine type only supports `ide0` and `ide2` of the IDE interfaces.
      */
     interface?: pulumi.Input<string | undefined>;
 }
@@ -1262,7 +1263,7 @@ export interface VmLegacyCpu {
      */
     limit?: pulumi.Input<number | undefined>;
     /**
-     * Enable/disable NUMA. (default to `false`)
+     * Enable/disable NUMA (defaults to `false`).
      */
     numa?: pulumi.Input<boolean | undefined>;
     /**
@@ -1338,7 +1339,7 @@ export interface VmLegacyDisk {
     iothread?: pulumi.Input<boolean | undefined>;
     /**
      * The in-datastore path to the disk image.
-     * ***Experimental.***Use to attach another VM's disks,
+     * ***Experimental.*** Use to attach another VM's disks,
      * or (as root only) host's filesystem paths (`datastoreId` empty string).
      * See "*Example: Attached disks*".
      */
@@ -1504,7 +1505,7 @@ export interface VmLegacyInitialization {
     interface?: pulumi.Input<string | undefined>;
     /**
      * The IP configuration (one block per network
-     * device).
+     * device, up to 32 blocks).
      */
     ipConfigs?: pulumi.Input<pulumi.Input<inputs.VmLegacyInitializationIpConfig>[] | undefined>;
     /**
@@ -1782,7 +1783,7 @@ export interface VmLegacyStartup {
     downDelay?: pulumi.Input<number | undefined>;
     /**
      * A non-negative number defining the general startup
-     * order.
+     * order (defaults to `-1`, meaning no specific order).
      */
     order?: pulumi.Input<number | undefined>;
     /**
@@ -2686,7 +2687,7 @@ export namespace cluster {
                 pos?: pulumi.Input<number | undefined>;
                 /**
                  * Restrict packet protocol. You can use protocol names
-                 * as defined in '/etc/protocols'.
+                 * or simple numbers (0-255), as defined in '/etc/protocols'.
                  */
                 proto?: pulumi.Input<string | undefined>;
                 /**
@@ -2791,7 +2792,7 @@ export namespace firewall {
         pos?: pulumi.Input<number | undefined>;
         /**
          * Restrict packet protocol. You can use protocol
-         * names as defined in '/etc/protocols'.
+         * names or simple numbers (0-255), as defined in '/etc/protocols'.
          */
         proto?: pulumi.Input<string | undefined>;
         /**

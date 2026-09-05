@@ -164,7 +164,7 @@ type RulesLegacyRule struct {
 	// Position of the rule in the list.
 	Pos *int `pulumi:"pos"`
 	// Restrict packet protocol. You can use protocol
-	// names as defined in '/etc/protocols'.
+	// names or simple numbers (0-255), as defined in '/etc/protocols'.
 	Proto *string `pulumi:"proto"`
 	// Security group name.
 	SecurityGroup *string `pulumi:"securityGroup"`
@@ -230,7 +230,7 @@ type RulesLegacyRuleArgs struct {
 	// Position of the rule in the list.
 	Pos pulumi.IntPtrInput `pulumi:"pos"`
 	// Restrict packet protocol. You can use protocol
-	// names as defined in '/etc/protocols'.
+	// names or simple numbers (0-255), as defined in '/etc/protocols'.
 	Proto pulumi.StringPtrInput `pulumi:"proto"`
 	// Security group name.
 	SecurityGroup pulumi.StringPtrInput `pulumi:"securityGroup"`
@@ -362,7 +362,7 @@ func (o RulesLegacyRuleOutput) Pos() pulumi.IntPtrOutput {
 }
 
 // Restrict packet protocol. You can use protocol
-// names as defined in '/etc/protocols'.
+// names or simple numbers (0-255), as defined in '/etc/protocols'.
 func (o RulesLegacyRuleOutput) Proto() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RulesLegacyRule) *string { return v.Proto }).(pulumi.StringPtrOutput)
 }

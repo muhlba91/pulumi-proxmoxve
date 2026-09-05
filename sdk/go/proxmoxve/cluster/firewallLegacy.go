@@ -50,7 +50,8 @@ import (
 //
 // ## Important Notes
 //
-// Be careful not to use this resource multiple times for the same node.
+// This resource manages cluster-wide firewall options, so it should be used only
+// once per cluster. Declaring it multiple times results in conflicting updates.
 //
 // ## Import
 //
@@ -66,13 +67,13 @@ type FirewallLegacy struct {
 	Ebtables pulumi.BoolPtrOutput `pulumi:"ebtables"`
 	// Enable or disable the firewall cluster wide.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
-	// The default forward policy (`ACCEPT`, `DROP`).
+	// The default forward policy (`ACCEPT`, `DROP`). Defaults to `ACCEPT`.
 	ForwardPolicy pulumi.StringPtrOutput `pulumi:"forwardPolicy"`
-	// The default input policy (`ACCEPT`, `DROP`, `REJECT`).
+	// The default input policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `DROP`.
 	InputPolicy pulumi.StringPtrOutput `pulumi:"inputPolicy"`
 	// The log rate limit.
 	LogRatelimit FirewallLegacyLogRatelimitPtrOutput `pulumi:"logRatelimit"`
-	// The default output policy (`ACCEPT`, `DROP`, `REJECT`).
+	// The default output policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `ACCEPT`.
 	OutputPolicy pulumi.StringPtrOutput `pulumi:"outputPolicy"`
 }
 
@@ -110,13 +111,13 @@ type firewallLegacyState struct {
 	Ebtables *bool `pulumi:"ebtables"`
 	// Enable or disable the firewall cluster wide.
 	Enabled *bool `pulumi:"enabled"`
-	// The default forward policy (`ACCEPT`, `DROP`).
+	// The default forward policy (`ACCEPT`, `DROP`). Defaults to `ACCEPT`.
 	ForwardPolicy *string `pulumi:"forwardPolicy"`
-	// The default input policy (`ACCEPT`, `DROP`, `REJECT`).
+	// The default input policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `DROP`.
 	InputPolicy *string `pulumi:"inputPolicy"`
 	// The log rate limit.
 	LogRatelimit *FirewallLegacyLogRatelimit `pulumi:"logRatelimit"`
-	// The default output policy (`ACCEPT`, `DROP`, `REJECT`).
+	// The default output policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `ACCEPT`.
 	OutputPolicy *string `pulumi:"outputPolicy"`
 }
 
@@ -125,13 +126,13 @@ type FirewallLegacyState struct {
 	Ebtables pulumi.BoolPtrInput
 	// Enable or disable the firewall cluster wide.
 	Enabled pulumi.BoolPtrInput
-	// The default forward policy (`ACCEPT`, `DROP`).
+	// The default forward policy (`ACCEPT`, `DROP`). Defaults to `ACCEPT`.
 	ForwardPolicy pulumi.StringPtrInput
-	// The default input policy (`ACCEPT`, `DROP`, `REJECT`).
+	// The default input policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `DROP`.
 	InputPolicy pulumi.StringPtrInput
 	// The log rate limit.
 	LogRatelimit FirewallLegacyLogRatelimitPtrInput
-	// The default output policy (`ACCEPT`, `DROP`, `REJECT`).
+	// The default output policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `ACCEPT`.
 	OutputPolicy pulumi.StringPtrInput
 }
 
@@ -144,13 +145,13 @@ type firewallLegacyArgs struct {
 	Ebtables *bool `pulumi:"ebtables"`
 	// Enable or disable the firewall cluster wide.
 	Enabled *bool `pulumi:"enabled"`
-	// The default forward policy (`ACCEPT`, `DROP`).
+	// The default forward policy (`ACCEPT`, `DROP`). Defaults to `ACCEPT`.
 	ForwardPolicy *string `pulumi:"forwardPolicy"`
-	// The default input policy (`ACCEPT`, `DROP`, `REJECT`).
+	// The default input policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `DROP`.
 	InputPolicy *string `pulumi:"inputPolicy"`
 	// The log rate limit.
 	LogRatelimit *FirewallLegacyLogRatelimit `pulumi:"logRatelimit"`
-	// The default output policy (`ACCEPT`, `DROP`, `REJECT`).
+	// The default output policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `ACCEPT`.
 	OutputPolicy *string `pulumi:"outputPolicy"`
 }
 
@@ -160,13 +161,13 @@ type FirewallLegacyArgs struct {
 	Ebtables pulumi.BoolPtrInput
 	// Enable or disable the firewall cluster wide.
 	Enabled pulumi.BoolPtrInput
-	// The default forward policy (`ACCEPT`, `DROP`).
+	// The default forward policy (`ACCEPT`, `DROP`). Defaults to `ACCEPT`.
 	ForwardPolicy pulumi.StringPtrInput
-	// The default input policy (`ACCEPT`, `DROP`, `REJECT`).
+	// The default input policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `DROP`.
 	InputPolicy pulumi.StringPtrInput
 	// The log rate limit.
 	LogRatelimit FirewallLegacyLogRatelimitPtrInput
-	// The default output policy (`ACCEPT`, `DROP`, `REJECT`).
+	// The default output policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `ACCEPT`.
 	OutputPolicy pulumi.StringPtrInput
 }
 
@@ -267,12 +268,12 @@ func (o FirewallLegacyOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *FirewallLegacy) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// The default forward policy (`ACCEPT`, `DROP`).
+// The default forward policy (`ACCEPT`, `DROP`). Defaults to `ACCEPT`.
 func (o FirewallLegacyOutput) ForwardPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FirewallLegacy) pulumi.StringPtrOutput { return v.ForwardPolicy }).(pulumi.StringPtrOutput)
 }
 
-// The default input policy (`ACCEPT`, `DROP`, `REJECT`).
+// The default input policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `DROP`.
 func (o FirewallLegacyOutput) InputPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FirewallLegacy) pulumi.StringPtrOutput { return v.InputPolicy }).(pulumi.StringPtrOutput)
 }
@@ -282,7 +283,7 @@ func (o FirewallLegacyOutput) LogRatelimit() FirewallLegacyLogRatelimitPtrOutput
 	return o.ApplyT(func(v *FirewallLegacy) FirewallLegacyLogRatelimitPtrOutput { return v.LogRatelimit }).(FirewallLegacyLogRatelimitPtrOutput)
 }
 
-// The default output policy (`ACCEPT`, `DROP`, `REJECT`).
+// The default output policy (`ACCEPT`, `DROP`, `REJECT`). Defaults to `ACCEPT`.
 func (o FirewallLegacyOutput) OutputPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FirewallLegacy) pulumi.StringPtrOutput { return v.OutputPolicy }).(pulumi.StringPtrOutput)
 }

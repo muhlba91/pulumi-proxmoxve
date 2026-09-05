@@ -20,7 +20,7 @@ public final class GetVmsLegacyFilter {
      */
     private String name;
     /**
-     * @return Treat values as regex patterns
+     * @return Whether to treat the &lt;span pulumi-lang-nodejs=&#34;`values`&#34; pulumi-lang-dotnet=&#34;`Values`&#34; pulumi-lang-go=&#34;`values`&#34; pulumi-lang-python=&#34;`values`&#34; pulumi-lang-yaml=&#34;`values`&#34; pulumi-lang-java=&#34;`values`&#34; pulumi-lang-hcl=&#34;`values`&#34;&gt;`values`&lt;/span&gt; as regex patterns (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     private @Nullable Boolean regex;
@@ -39,7 +39,7 @@ public final class GetVmsLegacyFilter {
         return this.name;
     }
     /**
-     * @return Treat values as regex patterns
+     * @return Whether to treat the &lt;span pulumi-lang-nodejs=&#34;`values`&#34; pulumi-lang-dotnet=&#34;`Values`&#34; pulumi-lang-go=&#34;`values`&#34; pulumi-lang-python=&#34;`values`&#34; pulumi-lang-yaml=&#34;`values`&#34; pulumi-lang-java=&#34;`values`&#34; pulumi-lang-hcl=&#34;`values`&#34;&gt;`values`&lt;/span&gt; as regex patterns (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     public Optional<Boolean> regex() {

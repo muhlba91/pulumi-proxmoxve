@@ -132,14 +132,14 @@ public final class ContainerLegacyMountPointArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Will include this volume to a storage replica job.
+     * Will include this volume to a storage replica job (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     @Import(name="replicate")
     private @Nullable Output<Boolean> replicate;
 
     /**
-     * @return Will include this volume to a storage replica job.
+     * @return Will include this volume to a storage replica job (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Boolean>> replicate() {
@@ -403,7 +403,7 @@ public final class ContainerLegacyMountPointArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param replicate Will include this volume to a storage replica job.
+         * @param replicate Will include this volume to a storage replica job (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -414,7 +414,7 @@ public final class ContainerLegacyMountPointArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param replicate Will include this volume to a storage replica job.
+         * @param replicate Will include this volume to a storage replica job (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
          * 
          * @return builder
          * 

@@ -92,7 +92,7 @@ func GetContainersLegacy(ctx *pulumi.Context, args *GetContainersLegacyArgs, opt
 type GetContainersLegacyArgs struct {
 	// Filter blocks. The container must satisfy all filter blocks to be included in the result.
 	Filters []GetContainersLegacyFilter `pulumi:"filters"`
-	// The node name. All cluster nodes will be queried in case this is omitted
+	// The node name. If omitted, all cluster nodes are queried.
 	NodeName *string `pulumi:"nodeName"`
 	// A list of tags to filter the containers. The container must have all
 	// the tags to be included in the result.
@@ -121,7 +121,7 @@ func GetContainersLegacyOutput(ctx *pulumi.Context, args GetContainersLegacyOutp
 type GetContainersLegacyOutputArgs struct {
 	// Filter blocks. The container must satisfy all filter blocks to be included in the result.
 	Filters GetContainersLegacyFilterArrayInput `pulumi:"filters"`
-	// The node name. All cluster nodes will be queried in case this is omitted
+	// The node name. If omitted, all cluster nodes are queried.
 	NodeName pulumi.StringPtrInput `pulumi:"nodeName"`
 	// A list of tags to filter the containers. The container must have all
 	// the tags to be included in the result.

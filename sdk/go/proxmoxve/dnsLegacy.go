@@ -69,7 +69,7 @@ type DnsLegacy struct {
 	Domain pulumi.StringOutput `pulumi:"domain"`
 	// A node name.
 	NodeName pulumi.StringOutput `pulumi:"nodeName"`
-	// The DNS servers.
+	// The DNS servers (maximum of 3).
 	Servers pulumi.StringArrayOutput `pulumi:"servers"`
 }
 
@@ -113,7 +113,7 @@ type dnsLegacyState struct {
 	Domain *string `pulumi:"domain"`
 	// A node name.
 	NodeName *string `pulumi:"nodeName"`
-	// The DNS servers.
+	// The DNS servers (maximum of 3).
 	Servers []string `pulumi:"servers"`
 }
 
@@ -122,7 +122,7 @@ type DnsLegacyState struct {
 	Domain pulumi.StringPtrInput
 	// A node name.
 	NodeName pulumi.StringPtrInput
-	// The DNS servers.
+	// The DNS servers (maximum of 3).
 	Servers pulumi.StringArrayInput
 }
 
@@ -135,7 +135,7 @@ type dnsLegacyArgs struct {
 	Domain string `pulumi:"domain"`
 	// A node name.
 	NodeName string `pulumi:"nodeName"`
-	// The DNS servers.
+	// The DNS servers (maximum of 3).
 	Servers []string `pulumi:"servers"`
 }
 
@@ -145,7 +145,7 @@ type DnsLegacyArgs struct {
 	Domain pulumi.StringInput
 	// A node name.
 	NodeName pulumi.StringInput
-	// The DNS servers.
+	// The DNS servers (maximum of 3).
 	Servers pulumi.StringArrayInput
 }
 
@@ -246,7 +246,7 @@ func (o DnsLegacyOutput) NodeName() pulumi.StringOutput {
 	return o.ApplyT(func(v *DnsLegacy) pulumi.StringOutput { return v.NodeName }).(pulumi.StringOutput)
 }
 
-// The DNS servers.
+// The DNS servers (maximum of 3).
 func (o DnsLegacyOutput) Servers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DnsLegacy) pulumi.StringArrayOutput { return v.Servers }).(pulumi.StringArrayOutput)
 }
