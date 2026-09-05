@@ -21,6 +21,7 @@ builds:
       - linux
     ldflags:
       - -X github.com/muhlba91/pulumi-proxmoxve/provider/pkg/version.Version={{ .Tag }}
+      - -s -w
     main: ./cmd/pulumi-resource-proxmoxve/
 source:
   enabled: true

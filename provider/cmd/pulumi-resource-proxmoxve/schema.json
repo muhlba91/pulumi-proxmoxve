@@ -37,7 +37,7 @@
         "java": {
             "basePackage": "io.muehlbachler.pulumi",
             "buildFiles": "gradle",
-            "gradleNexusPublishPluginVersion": "",
+            "gradleNexusPublishPluginVersion": "2.0.0",
             "gradleTest": ""
         },
         "nodejs": {

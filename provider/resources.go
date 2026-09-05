@@ -300,8 +300,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 		Java: &tfbridge.JavaInfo{
-			BasePackage: "io.muehlbachler.pulumi",
-			BuildFiles:  "gradle",
+			BasePackage:                     "io.muehlbachler.pulumi",
+			BuildFiles:                      "gradle",
+			GradleNexusPublishPluginVersion: "2.0.0",
 		},
 		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 	}
