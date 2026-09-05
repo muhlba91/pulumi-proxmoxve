@@ -27,7 +27,7 @@ namespace Pulumi.ProxmoxVE.Firewall
     ///     var inbound = new ProxmoxVE.Firewall.RulesLegacy("inbound", new()
     ///     {
     ///         NodeName = example.NodeName,
-    ///         VmId = example.VmId,
+    ///         VmId = int.Parse(example.VmId, System.Globalization.CultureInfo.InvariantCulture),
     ///         Rules = new[]
     ///         {
     ///             new ProxmoxVE.Firewall.Inputs.RulesLegacyRuleArgs

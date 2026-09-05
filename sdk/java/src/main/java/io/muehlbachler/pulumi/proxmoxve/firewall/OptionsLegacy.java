@@ -45,8 +45,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new OptionsLegacy("example", OptionsLegacyArgs.builder()
- *             .nodeName(exampleProxmoxVirtualEnvironmentVm.nodeName())
- *             .vmId(exampleProxmoxVirtualEnvironmentVm.vmId())
+ *             .nodeName(exampleProxmoxVirtualEnvironmentVm.get("nodeName"))
+ *             .vmId(((Number) exampleProxmoxVirtualEnvironmentVm.get("vmId")).intValue())
  *             .dhcp(true)
  *             .enabled(false)
  *             .ipfilter(true)

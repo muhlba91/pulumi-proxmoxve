@@ -177,7 +177,7 @@ namespace Pulumi.ProxmoxVE.Cloned
     ///                 Model = "virtio",
     ///                 Tag = 100,
     ///                 Firewall = true,
-    ///                 RateLimit = 100,
+    ///                 RateLimit = 100.0,
     ///             } },
     ///         },
     ///         Disk = 

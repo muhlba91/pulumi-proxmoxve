@@ -46,8 +46,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var localNetwork = new AliasLegacy("localNetwork", AliasLegacyArgs.builder()
- *             .nodeName(example.nodeName())
- *             .vmId(example.vmId())
+ *             .nodeName(example.get("nodeName"))
+ *             .vmId(((Number) example.get("vmId")).intValue())
  *             .name("local_network")
  *             .cidr("192.168.0.0/23")
  *             .comment("Managed by Pulumi")

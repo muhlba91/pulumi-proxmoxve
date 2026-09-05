@@ -153,7 +153,7 @@ import javax.annotation.Nullable;
  *                     .password(ubuntuVmPassword.result())
  *                     .username("ubuntu")
  *                     .build())
- *                 .userDataFileId(cloudConfig.id())
+ *                 .userDataFileId(cloudConfig.get("id"))
  *                 .build())
  *             .networkDevices(VmLegacyNetworkDeviceArgs.builder()
  *                 .bridge("vmbr0")

@@ -49,8 +49,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var inbound = new RulesLegacy("inbound", RulesLegacyArgs.builder()
- *             .nodeName(example.nodeName())
- *             .vmId(example.vmId())
+ *             .nodeName(example.get("nodeName"))
+ *             .vmId(((Number) example.get("vmId")).intValue())
  *             .rules(            
  *                 RulesLegacyRuleArgs.builder()
  *                     .type("in")
@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  *                     .log("info")
  *                     .build(),
  *                 RulesLegacyRuleArgs.builder()
- *                     .securityGroup(exampleProxmoxVirtualEnvironmentClusterFirewallSecurityGroup.name())
+ *                     .securityGroup(exampleProxmoxVirtualEnvironmentClusterFirewallSecurityGroup.get("name"))
  *                     .comment("From security group")
  *                     .iface("net0")
  *                     .build())

@@ -41,7 +41,7 @@ namespace Pulumi.ProxmoxVE.Pool
     ///     var vmMembership = new ProxmoxVE.Pool.MembershipLegacy("vm_membership", new()
     ///     {
     ///         PoolId = testPool.Id,
-    ///         VmId = testVm1.Id,
+    ///         VmId = testVm1.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///     });
     /// 
     ///     var storageMembership = new ProxmoxVE.Pool.MembershipLegacy("storage_membership", new()

@@ -200,7 +200,7 @@ import javax.annotation.Nullable;
  *       - %s
  *     sudo: ALL=(ALL) NOPASSWD:ALL
  * ", StdFunctions.trimspace(TrimspaceArgs.builder()
- *                     .input(example.publicKeyOpenssh())
+ *                     .input(example.get("publicKeyOpenssh"))
  *                     .build()).result()))
  *                 .fileName("example.cloud-config.yaml")
  *                 .build())

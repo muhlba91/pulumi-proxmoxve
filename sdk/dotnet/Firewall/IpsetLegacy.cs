@@ -26,7 +26,7 @@ namespace Pulumi.ProxmoxVE.Firewall
     ///     var ipset = new ProxmoxVE.Firewall.IpsetLegacy("ipset", new()
     ///     {
     ///         NodeName = example.NodeName,
-    ///         VmId = example.VmId,
+    ///         VmId = int.Parse(example.VmId, System.Globalization.CultureInfo.InvariantCulture),
     ///         Name = "local_network",
     ///         Comment = "Managed by Pulumi",
     ///         Cidrs = new[]

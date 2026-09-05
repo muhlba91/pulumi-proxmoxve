@@ -27,7 +27,7 @@ namespace Pulumi.ProxmoxVE.Firewall
     ///     var localNetwork = new ProxmoxVE.Firewall.AliasLegacy("local_network", new()
     ///     {
     ///         NodeName = example.NodeName,
-    ///         VmId = example.VmId,
+    ///         VmId = int.Parse(example.VmId, System.Globalization.CultureInfo.InvariantCulture),
     ///         Name = "local_network",
     ///         Cidr = "192.168.0.0/23",
     ///         Comment = "Managed by Pulumi",
