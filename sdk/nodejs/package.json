@@ -1,6 +1,6 @@
 {
     "name": "@muhlba91/pulumi-proxmoxve",
-    "version": "8.5.0-alpha.1788617690+b7d9d561.dirty",
+    "version": "8.5.0-alpha.1788618280+8e407c0a.dirty",
     "description": "A Pulumi package for creating and managing Proxmox Virtual Environment cloud resources.",
     "keywords": [
         "proxmox",
@@ -23,7 +23,7 @@
     "pulumi": {
         "resource": true,
         "name": "proxmoxve",
-        "version": "8.5.0-alpha.1788617690+b7d9d561.dirty",
+        "version": "8.5.0-alpha.1788618280+8e407c0a.dirty",
         "server": "github://api.github.com/muhlba91/pulumi-proxmoxve"
     }
 }
