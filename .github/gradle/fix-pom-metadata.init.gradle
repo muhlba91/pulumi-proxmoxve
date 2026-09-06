@@ -1,0 +1,36 @@
+// Works around https://github.com/pulumi/pulumi-java/issues/1406: the generated
+// sdk/java/build.gradle leaves pom.name, pom.inceptionYear, and the developer's
+// id/name/email blank for third-party (non-Pulumi) providers, which Sonatype's
+// Central validation rejects when closing the staging repository.
+//
+// sdk/java/build.gradle is regenerated on every `make build_java`, so the fix
+// can't live there — this init script patches the already-evaluated
+// `publishing` extension instead, only filling in fields that are still blank.
+
+allprojects {
+    plugins.withId("maven-publish") {
+        afterEvaluate {
+            extensions.getByType(PublishingExtension).publications.withType(MavenPublication).configureEach { publication ->
+                publication.pom { pom ->
+                    if (pom.name.getOrElse("").trim().isEmpty()) {
+                        pom.name.set("Proxmox Virtual Environment (Proxmox VE) Provider for Pulumi")
+                    }
+                    if (pom.inceptionYear.getOrElse("").trim().isEmpty()) {
+                        pom.inceptionYear.set("2022")
+                    }
+                    pom.developers.each { developer ->
+                        if (developer.id.getOrElse("").trim().isEmpty()) {
+                            developer.id.set("muhlba91")
+                        }
+                        if (developer.name.getOrElse("").trim().isEmpty()) {
+                            developer.name.set("Daniel Muehlbachler-Pietrzykowski")
+                        }
+                        if (developer.email.getOrElse("").trim().isEmpty()) {
+                            developer.email.set("daniel@muehlbachler.io")
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
