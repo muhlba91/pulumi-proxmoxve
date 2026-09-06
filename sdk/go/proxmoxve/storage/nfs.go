@@ -29,6 +29,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := storage.NewNfs(ctx, "example", &storage.NfsArgs{
+//				Backups: &storage.NfsBackupsArgs{
+//					MaxProtectedBackups: pulumi.Int(5),
+//					KeepDaily:           pulumi.Int(7),
+//				},
 //				ResourceId: pulumi.String("example-nfs"),
 //				Nodes: pulumi.StringArray{
 //					pulumi.String("pve"),
@@ -43,10 +47,6 @@ import (
 //				Options:               pulumi.String("vers=4.2"),
 //				Preallocation:         pulumi.String("metadata"),
 //				SnapshotAsVolumeChain: pulumi.Bool(true),
-//				Backups: &storage.NfsBackupsArgs{
-//					MaxProtectedBackups: pulumi.Int(5),
-//					KeepDaily:           pulumi.Int(7),
-//				},
 //			})
 //			if err != nil {
 //				return err

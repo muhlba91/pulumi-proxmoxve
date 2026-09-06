@@ -29,7 +29,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := proxmoxve.NewHostsLegacy(ctx, "first_node_host_entries", &proxmoxve.HostsLegacyArgs{
-//				NodeName: pulumi.String("first-node"),
 //				Entries: []map[string]interface{}{
 //					map[string]interface{}{
 //						"address": "127.0.0.1",
@@ -39,6 +38,7 @@ import (
 //						},
 //					},
 //				},
+//				NodeName: pulumi.String("first-node"),
 //			})
 //			if err != nil {
 //				return err

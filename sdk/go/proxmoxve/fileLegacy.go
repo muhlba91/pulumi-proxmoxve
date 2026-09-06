@@ -35,12 +35,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := proxmoxve.NewFileLegacy(ctx, "backup", &proxmoxve.FileLegacyArgs{
-//				ContentType: pulumi.String("backup"),
-//				DatastoreId: pulumi.String("local"),
-//				NodeName:    pulumi.String("pve"),
 //				SourceFile: &proxmoxve.FileLegacySourceFileArgs{
 //					Path: pulumi.String("vzdump-lxc-100-2023_11_08-23_10_05.tar.zst"),
 //				},
+//				ContentType: pulumi.String("backup"),
+//				DatastoreId: pulumi.String("local"),
+//				NodeName:    pulumi.String("pve"),
 //			})
 //			if err != nil {
 //				return err
@@ -70,12 +70,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := proxmoxve.NewFileLegacy(ctx, "ubuntu_container_template", &proxmoxve.FileLegacyArgs{
-//				ContentType: pulumi.String("iso"),
-//				DatastoreId: pulumi.String("local"),
-//				NodeName:    pulumi.String("pve"),
 //				SourceFile: &proxmoxve.FileLegacySourceFileArgs{
 //					Path: pulumi.String("https://cloud-images.ubuntu.com/jammy/20230929/jammy-server-cloudimg-amd64-disk-kvm.img"),
 //				},
+//				ContentType: pulumi.String("iso"),
+//				DatastoreId: pulumi.String("local"),
+//				NodeName:    pulumi.String("pve"),
 //			})
 //			if err != nil {
 //				return err
@@ -99,12 +99,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := proxmoxve.NewFileLegacy(ctx, "ubuntu_container_template", &proxmoxve.FileLegacyArgs{
-//				ContentType: pulumi.String("import"),
-//				DatastoreId: pulumi.String("local"),
-//				NodeName:    pulumi.String("pve"),
 //				SourceFile: &proxmoxve.FileLegacySourceFileArgs{
 //					Path: pulumi.String("https://cloud-images.ubuntu.com/jammy/20230929/jammy-server-cloudimg-amd64-disk-kvm.img"),
 //				},
+//				ContentType: pulumi.String("import"),
+//				DatastoreId: pulumi.String("local"),
+//				NodeName:    pulumi.String("pve"),
 //			})
 //			if err != nil {
 //				return err
@@ -141,9 +141,6 @@ import (
 //				return err
 //			}
 //			_, err = proxmoxve.NewFileLegacy(ctx, "cloud_config", &proxmoxve.FileLegacyArgs{
-//				ContentType: pulumi.String("snippets"),
-//				DatastoreId: pulumi.String("local"),
-//				NodeName:    pulumi.String("pve"),
 //				SourceRaw: &proxmoxve.FileLegacySourceRawArgs{
 //					Data: pulumi.Sprintf(`#cloud-config
 //
@@ -170,6 +167,9 @@ import (
 //
 //					FileName: pulumi.String("example.cloud-config.yaml"),
 //				},
+//				ContentType: pulumi.String("snippets"),
+//				DatastoreId: pulumi.String("local"),
+//				NodeName:    pulumi.String("pve"),
 //			})
 //			if err != nil {
 //				return err
@@ -195,14 +195,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := proxmoxve.NewFileLegacy(ctx, "hook_script", &proxmoxve.FileLegacyArgs{
-//				ContentType: pulumi.String("snippets"),
-//				DatastoreId: pulumi.String("local"),
-//				NodeName:    pulumi.String("pve"),
-//				FileMode:    pulumi.String("0700"),
 //				SourceRaw: &proxmoxve.FileLegacySourceRawArgs{
 //					Data:     pulumi.String("#!/usr/bin/env bash\n\necho \\\"Running hook script\\\"\n"),
 //					FileName: pulumi.String("prepare-hook.sh"),
 //				},
+//				ContentType: pulumi.String("snippets"),
+//				DatastoreId: pulumi.String("local"),
+//				NodeName:    pulumi.String("pve"),
+//				FileMode:    pulumi.String("0700"),
 //			})
 //			if err != nil {
 //				return err
@@ -230,12 +230,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := proxmoxve.NewFileLegacy(ctx, "ubuntu_container_template", &proxmoxve.FileLegacyArgs{
-//				ContentType: pulumi.String("vztmpl"),
-//				DatastoreId: pulumi.String("local"),
-//				NodeName:    pulumi.String("first-node"),
 //				SourceFile: &proxmoxve.FileLegacySourceFileArgs{
 //					Path: pulumi.String("http://download.proxmox.com/images/system/ubuntu-20.04-standard_20.04-1_amd64.tar.gz"),
 //				},
+//				ContentType: pulumi.String("vztmpl"),
+//				DatastoreId: pulumi.String("local"),
+//				NodeName:    pulumi.String("first-node"),
 //			})
 //			if err != nil {
 //				return err

@@ -35,8 +35,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := firewall.NewGroupLegacy(ctx, "webserver", &firewall.GroupLegacyArgs{
-//				Name:    pulumi.String("webserver"),
-//				Comment: pulumi.String("Managed by Pulumi"),
 //				Rules: firewall / security.GroupLegacyRuleArray{
 //					&firewall / security.GroupLegacyRuleArgs{
 //						Type:    pulumi.String("in"),
@@ -57,6 +55,8 @@ import (
 //						Log:     pulumi.String("info"),
 //					},
 //				},
+//				Name:    pulumi.String("webserver"),
+//				Comment: pulumi.String("Managed by Pulumi"),
 //			})
 //			if err != nil {
 //				return err

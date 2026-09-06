@@ -36,10 +36,6 @@ import (
 //				return err
 //			}
 //			_, err = proxmoxve.GetContainersLegacy(ctx, &proxmoxve.GetContainersLegacyArgs{
-//				Tags: []string{
-//					"template",
-//					"latest",
-//				},
 //				Filters: []proxmoxve.GetContainersLegacyFilter{
 //					{
 //						Name: "template",
@@ -68,6 +64,10 @@ import (
 //							"node_eu_[1-3]",
 //						},
 //					},
+//				},
+//				Tags: []string{
+//					"template",
+//					"latest",
 //				},
 //			}, nil)
 //			if err != nil {

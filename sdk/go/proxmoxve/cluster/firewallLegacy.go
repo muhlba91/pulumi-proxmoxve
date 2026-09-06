@@ -28,16 +28,16 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cluster.NewFirewallLegacy(ctx, "example", &cluster.FirewallLegacyArgs{
-//				Enabled:       pulumi.Bool(false),
-//				Ebtables:      pulumi.Bool(false),
-//				InputPolicy:   pulumi.String("DROP"),
-//				OutputPolicy:  pulumi.String("ACCEPT"),
-//				ForwardPolicy: pulumi.String("ACCEPT"),
 //				LogRatelimit: &cluster.FirewallLegacyLogRatelimitArgs{
 //					Enabled: pulumi.Bool(false),
 //					Burst:   pulumi.Int(10),
 //					Rate:    pulumi.String("5/second"),
 //				},
+//				Enabled:       pulumi.Bool(false),
+//				Ebtables:      pulumi.Bool(false),
+//				InputPolicy:   pulumi.String("DROP"),
+//				OutputPolicy:  pulumi.String("ACCEPT"),
+//				ForwardPolicy: pulumi.String("ACCEPT"),
 //			})
 //			if err != nil {
 //				return err

@@ -29,10 +29,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := firewall.NewIpsetLegacy(ctx, "ipset", &firewall.IpsetLegacyArgs{
-//				NodeName: pulumi.Any(example.NodeName),
-//				VmId:     pulumi.Any(example.VmId),
-//				Name:     pulumi.String("local_network"),
-//				Comment:  pulumi.String("Managed by Pulumi"),
 //				Cidrs: firewall.IpsetLegacyCidrArray{
 //					&firewall.IpsetLegacyCidrArgs{
 //						Name:    pulumi.String("192.168.0.0/23"),
@@ -48,6 +44,10 @@ import (
 //						Comment: pulumi.String("Server 1"),
 //					},
 //				},
+//				NodeName: pulumi.Any(example.NodeName),
+//				VmId:     pulumi.Any(example.VmId),
+//				Name:     pulumi.String("local_network"),
+//				Comment:  pulumi.String("Managed by Pulumi"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				example,
 //			}))

@@ -69,8 +69,6 @@ import (
 //			ctx.Export("ubuntuIsoSize", ubuntuIso.FileSize)
 //			ctx.Export("containerTemplateFormat", ubuntuContainerTemplate.FileFormat)
 //			_, err = proxmoxve.NewVmLegacy(ctx, "example", &proxmoxve.VmLegacyArgs{
-//				NodeName: pulumi.String("pve"),
-//				VmId:     pulumi.Int(100),
 //				Cdrom: &proxmoxve.VmLegacyCdromArgs{
 //					FileId: pulumi.String(ubuntuIso.Id),
 //				},
@@ -92,6 +90,8 @@ import (
 //						Bridge: pulumi.String("vmbr0"),
 //					},
 //				},
+//				NodeName: pulumi.String("pve"),
+//				VmId:     pulumi.Int(100),
 //			})
 //			if err != nil {
 //				return err

@@ -36,10 +36,6 @@ import (
 //				return err
 //			}
 //			_, err = proxmoxve.GetVmsLegacy(ctx, &proxmoxve.GetVmsLegacyArgs{
-//				Tags: []string{
-//					"template",
-//					"latest",
-//				},
 //				Filters: []proxmoxve.GetVmsLegacyFilter{
 //					{
 //						Name: "template",
@@ -68,6 +64,10 @@ import (
 //							"node_eu_[1-3]",
 //						},
 //					},
+//				},
+//				Tags: []string{
+//					"template",
+//					"latest",
 //				},
 //			}, nil)
 //			if err != nil {
