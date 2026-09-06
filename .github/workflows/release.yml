@@ -197,21 +197,13 @@ jobs:
           npm publish --access public --provenance
         if: matrix.language == 'nodejs'
 
-      # Java SDK publishing is in alpha stage, so we will continue on error until it is supported (https://github.com/muhlba91/pulumi-proxmoxve/issues/66)
       - run: |
           echo "PACKAGE_VERSION=${{ env.VERSION_NAME }}" >> $GITHUB_ENV
         if: matrix.language == 'java'
-        continue-on-error: true
       - working-directory: sdk/java
         run: gradle --init-script "${{ github.workspace }}/.github/gradle/fix-pom-metadata.init.gradle" publishToSonatype closeAndReleaseSonatypeStagingRepository
         if: matrix.language == 'java'
-        continue-on-error: true
-      - uses: softprops/action-gh-release@efb35369e0ad2afab669f228072c1b0d510eae64 # v3.0.3
-        with:
-          tag_name: ${{ needs.release.outputs.tag_name }}
-          files: "${{ github.workspace }}/sdk/java/build/libs/io.muehlbachler.pulumi.proxmoxve.jar"
-        if: matrix.language == 'java'
-        continue-on-error: true
+        continue-on-error: true # Java SDK publishing is in alpha stage, so we will continue on error until it is supported (https://github.com/muhlba91/pulumi-proxmoxve/issues/66)
 
       - uses: pulumi/publish-go-sdk-action@0a153fa3c54227a3c0f7c97a57033ecfe94ab3c2
         if: matrix.language == 'go'
