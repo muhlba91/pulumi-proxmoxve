@@ -1,6 +1,18 @@
 # Changelog
 
 
+## [8.6.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v8.5.0...v8.6.0) (2026-09-06)
+
+
+### Features
+
+* **ci:** use gradle init script to facilitate java publishing ([7ca6ef4](https://github.com/muhlba91/pulumi-proxmoxve/commit/7ca6ef48673bcca0b733a6d83173bb65f669b5f3))
+
+
+### Bug Fixes
+
+* **ci:** remove uploading jar to github release ([05a764a](https://github.com/muhlba91/pulumi-proxmoxve/commit/05a764aa0c528933b3603a006e9ffc6ceac26890))
+
 ## [8.5.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v8.4.1...v8.5.0) (2026-09-05)
 
 
