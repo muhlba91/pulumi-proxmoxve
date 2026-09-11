@@ -1,6 +1,17 @@
 # Changelog
 
 
+## [8.6.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v8.6.0...v8.6.1) (2026-09-11)
+
+
+### Miscellaneous Chores
+
+* **deps:** update actions/setup-java action to v6.0.1 ([24a31fe](https://github.com/muhlba91/pulumi-proxmoxve/commit/24a31feacece9599e4b28248f641cb09fb43bfe3))
+* **deps:** update github/codeql-action action to v4.38.0 ([367ef3f](https://github.com/muhlba91/pulumi-proxmoxve/commit/367ef3f4c83c57facaa257802b8985c437cc54d7))
+* **deps:** update module github.com/bpg/terraform-provider-proxmox to v0.113.0 ([bd04224](https://github.com/muhlba91/pulumi-proxmoxve/commit/bd04224f4e3ad5a5601cca0f1c3b283611765175))
+* **deps:** update module github.com/bpg/terraform-provider-proxmox to v0.113.1 ([3c51be7](https://github.com/muhlba91/pulumi-proxmoxve/commit/3c51be7d9ae4a38268b3be37020747a2b5af98f8))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.262.0 ([88cd8f1](https://github.com/muhlba91/pulumi-proxmoxve/commit/88cd8f1f1f0569dab0ac7ae66582ce32a11bbfc5))
+
 ## [8.6.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v8.5.0...v8.6.0) (2026-09-06)
 
 
