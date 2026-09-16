@@ -28,11 +28,11 @@ namespace Pulumi.ProxmoxVE
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxVersion"] = 
+        ///         ["dataProxmoxVersion"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "release", example.Apply(getVersionResult =&gt; getVersionResult.Release) },
-        ///             { "repositoryId", example.Apply(getVersionResult =&gt; getVersionResult.RepositoryId) },
-        ///             { "version", example.Apply(getVersionResult =&gt; getVersionResult.Version) },
+        ///             ["release"] = example.Apply(getVersionResult =&gt; getVersionResult.Release),
+        ///             ["repositoryId"] = example.Apply(getVersionResult =&gt; getVersionResult.RepositoryId),
+        ///             ["version"] = example.Apply(getVersionResult =&gt; getVersionResult.Version),
         ///         },
         ///     };
         /// });
@@ -58,11 +58,11 @@ namespace Pulumi.ProxmoxVE
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxVersion"] = 
+        ///         ["dataProxmoxVersion"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "release", example.Apply(getVersionResult =&gt; getVersionResult.Release) },
-        ///             { "repositoryId", example.Apply(getVersionResult =&gt; getVersionResult.RepositoryId) },
-        ///             { "version", example.Apply(getVersionResult =&gt; getVersionResult.Version) },
+        ///             ["release"] = example.Apply(getVersionResult =&gt; getVersionResult.Release),
+        ///             ["repositoryId"] = example.Apply(getVersionResult =&gt; getVersionResult.RepositoryId),
+        ///             ["version"] = example.Apply(getVersionResult =&gt; getVersionResult.Version),
         ///         },
         ///     };
         /// });
@@ -88,11 +88,11 @@ namespace Pulumi.ProxmoxVE
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxVersion"] = 
+        ///         ["dataProxmoxVersion"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "release", example.Apply(getVersionResult =&gt; getVersionResult.Release) },
-        ///             { "repositoryId", example.Apply(getVersionResult =&gt; getVersionResult.RepositoryId) },
-        ///             { "version", example.Apply(getVersionResult =&gt; getVersionResult.Version) },
+        ///             ["release"] = example.Apply(getVersionResult =&gt; getVersionResult.Release),
+        ///             ["repositoryId"] = example.Apply(getVersionResult =&gt; getVersionResult.RepositoryId),
+        ///             ["version"] = example.Apply(getVersionResult =&gt; getVersionResult.Version),
         ///         },
         ///     };
         /// });

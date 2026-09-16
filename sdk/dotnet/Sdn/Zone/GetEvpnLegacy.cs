@@ -33,23 +33,23 @@ namespace Pulumi.ProxmoxVE.Sdn.Zone
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxVirtualEnvironmentSdnZoneEvpn"] = 
+        ///         ["dataProxmoxVirtualEnvironmentSdnZoneEvpn"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "id", example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.Id) },
-        ///             { "nodes", example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.Nodes) },
-        ///             { "controller", example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.Controller) },
-        ///             { "vrfVxlan", example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.VrfVxlan) },
-        ///             { "advertiseSubnets", example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.AdvertiseSubnets) },
-        ///             { "disableArpNdSuppression", example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.DisableArpNdSuppression) },
-        ///             { "exitNodes", example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.ExitNodes) },
-        ///             { "exitNodesLocalRouting", example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.ExitNodesLocalRouting) },
-        ///             { "primaryExitNode", example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.PrimaryExitNode) },
-        ///             { "rtImport", example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.RtImport) },
-        ///             { "mtu", example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.Mtu) },
-        ///             { "dns", example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.Dns) },
-        ///             { "dnsZone", example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.DnsZone) },
-        ///             { "ipam", example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.Ipam) },
-        ///             { "reverseDns", example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.ReverseDns) },
+        ///             ["id"] = example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.Id),
+        ///             ["nodes"] = example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.Nodes),
+        ///             ["controller"] = example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.Controller),
+        ///             ["vrfVxlan"] = example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.VrfVxlan),
+        ///             ["advertiseSubnets"] = example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.AdvertiseSubnets),
+        ///             ["disableArpNdSuppression"] = example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.DisableArpNdSuppression),
+        ///             ["exitNodes"] = example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.ExitNodes),
+        ///             ["exitNodesLocalRouting"] = example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.ExitNodesLocalRouting),
+        ///             ["primaryExitNode"] = example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.PrimaryExitNode),
+        ///             ["rtImport"] = example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.RtImport),
+        ///             ["mtu"] = example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.Mtu),
+        ///             ["dns"] = example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.Dns),
+        ///             ["dnsZone"] = example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.DnsZone),
+        ///             ["ipam"] = example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.Ipam),
+        ///             ["reverseDns"] = example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.ReverseDns),
         ///         },
         ///     };
         /// });
@@ -80,23 +80,23 @@ namespace Pulumi.ProxmoxVE.Sdn.Zone
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxVirtualEnvironmentSdnZoneEvpn"] = 
+        ///         ["dataProxmoxVirtualEnvironmentSdnZoneEvpn"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "id", example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.Id) },
-        ///             { "nodes", example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.Nodes) },
-        ///             { "controller", example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.Controller) },
-        ///             { "vrfVxlan", example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.VrfVxlan) },
-        ///             { "advertiseSubnets", example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.AdvertiseSubnets) },
-        ///             { "disableArpNdSuppression", example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.DisableArpNdSuppression) },
-        ///             { "exitNodes", example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.ExitNodes) },
-        ///             { "exitNodesLocalRouting", example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.ExitNodesLocalRouting) },
-        ///             { "primaryExitNode", example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.PrimaryExitNode) },
-        ///             { "rtImport", example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.RtImport) },
-        ///             { "mtu", example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.Mtu) },
-        ///             { "dns", example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.Dns) },
-        ///             { "dnsZone", example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.DnsZone) },
-        ///             { "ipam", example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.Ipam) },
-        ///             { "reverseDns", example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.ReverseDns) },
+        ///             ["id"] = example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.Id),
+        ///             ["nodes"] = example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.Nodes),
+        ///             ["controller"] = example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.Controller),
+        ///             ["vrfVxlan"] = example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.VrfVxlan),
+        ///             ["advertiseSubnets"] = example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.AdvertiseSubnets),
+        ///             ["disableArpNdSuppression"] = example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.DisableArpNdSuppression),
+        ///             ["exitNodes"] = example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.ExitNodes),
+        ///             ["exitNodesLocalRouting"] = example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.ExitNodesLocalRouting),
+        ///             ["primaryExitNode"] = example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.PrimaryExitNode),
+        ///             ["rtImport"] = example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.RtImport),
+        ///             ["mtu"] = example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.Mtu),
+        ///             ["dns"] = example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.Dns),
+        ///             ["dnsZone"] = example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.DnsZone),
+        ///             ["ipam"] = example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.Ipam),
+        ///             ["reverseDns"] = example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.ReverseDns),
         ///         },
         ///     };
         /// });
@@ -127,23 +127,23 @@ namespace Pulumi.ProxmoxVE.Sdn.Zone
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxVirtualEnvironmentSdnZoneEvpn"] = 
+        ///         ["dataProxmoxVirtualEnvironmentSdnZoneEvpn"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "id", example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.Id) },
-        ///             { "nodes", example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.Nodes) },
-        ///             { "controller", example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.Controller) },
-        ///             { "vrfVxlan", example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.VrfVxlan) },
-        ///             { "advertiseSubnets", example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.AdvertiseSubnets) },
-        ///             { "disableArpNdSuppression", example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.DisableArpNdSuppression) },
-        ///             { "exitNodes", example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.ExitNodes) },
-        ///             { "exitNodesLocalRouting", example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.ExitNodesLocalRouting) },
-        ///             { "primaryExitNode", example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.PrimaryExitNode) },
-        ///             { "rtImport", example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.RtImport) },
-        ///             { "mtu", example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.Mtu) },
-        ///             { "dns", example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.Dns) },
-        ///             { "dnsZone", example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.DnsZone) },
-        ///             { "ipam", example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.Ipam) },
-        ///             { "reverseDns", example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.ReverseDns) },
+        ///             ["id"] = example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.Id),
+        ///             ["nodes"] = example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.Nodes),
+        ///             ["controller"] = example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.Controller),
+        ///             ["vrfVxlan"] = example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.VrfVxlan),
+        ///             ["advertiseSubnets"] = example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.AdvertiseSubnets),
+        ///             ["disableArpNdSuppression"] = example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.DisableArpNdSuppression),
+        ///             ["exitNodes"] = example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.ExitNodes),
+        ///             ["exitNodesLocalRouting"] = example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.ExitNodesLocalRouting),
+        ///             ["primaryExitNode"] = example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.PrimaryExitNode),
+        ///             ["rtImport"] = example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.RtImport),
+        ///             ["mtu"] = example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.Mtu),
+        ///             ["dns"] = example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.Dns),
+        ///             ["dnsZone"] = example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.DnsZone),
+        ///             ["ipam"] = example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.Ipam),
+        ///             ["reverseDns"] = example.Apply(getEvpnLegacyResult =&gt; getEvpnLegacyResult.ReverseDns),
         ///         },
         ///     };
         /// });

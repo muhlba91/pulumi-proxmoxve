@@ -31,14 +31,14 @@ namespace Pulumi.ProxmoxVE
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxVirtualEnvironmentNode"] = 
+        ///         ["dataProxmoxVirtualEnvironmentNode"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "cpuCores", example.Apply(getNodeLegacyResult =&gt; getNodeLegacyResult.CpuCores) },
-        ///             { "cpuCount", example.Apply(getNodeLegacyResult =&gt; getNodeLegacyResult.CpuCount) },
-        ///             { "cpuSockets", example.Apply(getNodeLegacyResult =&gt; getNodeLegacyResult.CpuSockets) },
-        ///             { "cpuModel", example.Apply(getNodeLegacyResult =&gt; getNodeLegacyResult.CpuModel) },
-        ///             { "memoryTotal", example.Apply(getNodeLegacyResult =&gt; getNodeLegacyResult.MemoryTotal) },
-        ///             { "uptime", example.Apply(getNodeLegacyResult =&gt; getNodeLegacyResult.Uptime) },
+        ///             ["cpuCores"] = example.Apply(getNodeLegacyResult =&gt; getNodeLegacyResult.CpuCores),
+        ///             ["cpuCount"] = example.Apply(getNodeLegacyResult =&gt; getNodeLegacyResult.CpuCount),
+        ///             ["cpuSockets"] = example.Apply(getNodeLegacyResult =&gt; getNodeLegacyResult.CpuSockets),
+        ///             ["cpuModel"] = example.Apply(getNodeLegacyResult =&gt; getNodeLegacyResult.CpuModel),
+        ///             ["memoryTotal"] = example.Apply(getNodeLegacyResult =&gt; getNodeLegacyResult.MemoryTotal),
+        ///             ["uptime"] = example.Apply(getNodeLegacyResult =&gt; getNodeLegacyResult.Uptime),
         ///         },
         ///     };
         /// });
@@ -67,14 +67,14 @@ namespace Pulumi.ProxmoxVE
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxVirtualEnvironmentNode"] = 
+        ///         ["dataProxmoxVirtualEnvironmentNode"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "cpuCores", example.Apply(getNodeLegacyResult =&gt; getNodeLegacyResult.CpuCores) },
-        ///             { "cpuCount", example.Apply(getNodeLegacyResult =&gt; getNodeLegacyResult.CpuCount) },
-        ///             { "cpuSockets", example.Apply(getNodeLegacyResult =&gt; getNodeLegacyResult.CpuSockets) },
-        ///             { "cpuModel", example.Apply(getNodeLegacyResult =&gt; getNodeLegacyResult.CpuModel) },
-        ///             { "memoryTotal", example.Apply(getNodeLegacyResult =&gt; getNodeLegacyResult.MemoryTotal) },
-        ///             { "uptime", example.Apply(getNodeLegacyResult =&gt; getNodeLegacyResult.Uptime) },
+        ///             ["cpuCores"] = example.Apply(getNodeLegacyResult =&gt; getNodeLegacyResult.CpuCores),
+        ///             ["cpuCount"] = example.Apply(getNodeLegacyResult =&gt; getNodeLegacyResult.CpuCount),
+        ///             ["cpuSockets"] = example.Apply(getNodeLegacyResult =&gt; getNodeLegacyResult.CpuSockets),
+        ///             ["cpuModel"] = example.Apply(getNodeLegacyResult =&gt; getNodeLegacyResult.CpuModel),
+        ///             ["memoryTotal"] = example.Apply(getNodeLegacyResult =&gt; getNodeLegacyResult.MemoryTotal),
+        ///             ["uptime"] = example.Apply(getNodeLegacyResult =&gt; getNodeLegacyResult.Uptime),
         ///         },
         ///     };
         /// });
@@ -103,14 +103,14 @@ namespace Pulumi.ProxmoxVE
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxVirtualEnvironmentNode"] = 
+        ///         ["dataProxmoxVirtualEnvironmentNode"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "cpuCores", example.Apply(getNodeLegacyResult =&gt; getNodeLegacyResult.CpuCores) },
-        ///             { "cpuCount", example.Apply(getNodeLegacyResult =&gt; getNodeLegacyResult.CpuCount) },
-        ///             { "cpuSockets", example.Apply(getNodeLegacyResult =&gt; getNodeLegacyResult.CpuSockets) },
-        ///             { "cpuModel", example.Apply(getNodeLegacyResult =&gt; getNodeLegacyResult.CpuModel) },
-        ///             { "memoryTotal", example.Apply(getNodeLegacyResult =&gt; getNodeLegacyResult.MemoryTotal) },
-        ///             { "uptime", example.Apply(getNodeLegacyResult =&gt; getNodeLegacyResult.Uptime) },
+        ///             ["cpuCores"] = example.Apply(getNodeLegacyResult =&gt; getNodeLegacyResult.CpuCores),
+        ///             ["cpuCount"] = example.Apply(getNodeLegacyResult =&gt; getNodeLegacyResult.CpuCount),
+        ///             ["cpuSockets"] = example.Apply(getNodeLegacyResult =&gt; getNodeLegacyResult.CpuSockets),
+        ///             ["cpuModel"] = example.Apply(getNodeLegacyResult =&gt; getNodeLegacyResult.CpuModel),
+        ///             ["memoryTotal"] = example.Apply(getNodeLegacyResult =&gt; getNodeLegacyResult.MemoryTotal),
+        ///             ["uptime"] = example.Apply(getNodeLegacyResult =&gt; getNodeLegacyResult.Uptime),
         ///         },
         ///     };
         /// });

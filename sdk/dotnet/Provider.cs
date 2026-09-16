@@ -114,6 +114,22 @@ namespace Pulumi.ProxmoxVE
 
     public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
+        [Input("apiHeaders", json: true)]
+        private InputMap<string>? _apiHeaders;
+
+        /// <summary>
+        /// Additional HTTP headers to send with every Proxmox VE API request. Useful when the API is behind an authenticating reverse proxy, e.g. Cloudflare Access. Headers managed by the provider or by the HTTP client, such as `Authorization`, are rejected. Can also be sourced from `PROXMOX_VE_API_HEADERS` as a comma-separated list of `Name=Value` pairs.
+        /// </summary>
+        public InputMap<string> ApiHeaders
+        {
+            get => _apiHeaders ?? (_apiHeaders = new InputMap<string>());
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
+                _apiHeaders = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
+        }
+
         [Input("apiToken")]
         private Input<string>? _apiToken;
 

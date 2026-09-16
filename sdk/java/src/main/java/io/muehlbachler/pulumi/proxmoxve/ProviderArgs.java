@@ -9,6 +9,7 @@ import io.muehlbachler.pulumi.proxmoxve.inputs.ProviderSshArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,6 +18,21 @@ import javax.annotation.Nullable;
 public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ProviderArgs Empty = new ProviderArgs();
+
+    /**
+     * Additional HTTP headers to send with every Proxmox VE API request. Useful when the API is behind an authenticating reverse proxy, e.g. Cloudflare Access. Headers managed by the provider or by the HTTP client, such as `Authorization`, are rejected. Can also be sourced from `PROXMOX_VE_API_HEADERS` as a comma-separated list of `Name=Value` pairs.
+     * 
+     */
+    @Import(name="apiHeaders", json=true)
+    private @Nullable Output<Map<String,String>> apiHeaders;
+
+    /**
+     * @return Additional HTTP headers to send with every Proxmox VE API request. Useful when the API is behind an authenticating reverse proxy, e.g. Cloudflare Access. Headers managed by the provider or by the HTTP client, such as `Authorization`, are rejected. Can also be sourced from `PROXMOX_VE_API_HEADERS` as a comma-separated list of `Name=Value` pairs.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> apiHeaders() {
+        return Optional.ofNullable(this.apiHeaders);
+    }
 
     /**
      * The API token for the Proxmox VE API.
@@ -239,6 +255,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     private ProviderArgs() {}
 
     private ProviderArgs(ProviderArgs $) {
+        this.apiHeaders = $.apiHeaders;
         this.apiToken = $.apiToken;
         this.authTicket = $.authTicket;
         this.csrfPreventionToken = $.csrfPreventionToken;
@@ -271,6 +288,27 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ProviderArgs defaults) {
             $ = new ProviderArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param apiHeaders Additional HTTP headers to send with every Proxmox VE API request. Useful when the API is behind an authenticating reverse proxy, e.g. Cloudflare Access. Headers managed by the provider or by the HTTP client, such as `Authorization`, are rejected. Can also be sourced from `PROXMOX_VE_API_HEADERS` as a comma-separated list of `Name=Value` pairs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apiHeaders(@Nullable Output<Map<String,String>> apiHeaders) {
+            $.apiHeaders = apiHeaders;
+            return this;
+        }
+
+        /**
+         * @param apiHeaders Additional HTTP headers to send with every Proxmox VE API request. Useful when the API is behind an authenticating reverse proxy, e.g. Cloudflare Access. Headers managed by the provider or by the HTTP client, such as `Authorization`, are rejected. Can also be sourced from `PROXMOX_VE_API_HEADERS` as a comma-separated list of `Name=Value` pairs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apiHeaders(Map<String,String> apiHeaders) {
+            return apiHeaders(Output.of(apiHeaders));
         }
 
         /**

@@ -126,7 +126,7 @@ class GetJobsJobResult(dict):
         :param _builtins.bool enabled: Indicates whether the backup job is enabled.
         :param Sequence[_builtins.str] excludes: List of guest VM/CT IDs excluded from the backup.
         :param _builtins.str id: Unique identifier of the backup job.
-        :param _builtins.str mailnotification: When to send email notifications (always or failure).
+        :param _builtins.str mailnotification: When to send email notifications (`always` or `failure`). Ignored by Proxmox VE unless `mailto` is set or the job uses the `legacy-sendmail` notification mode.
         :param Sequence[_builtins.str] mailtos: List of email addresses for notifications.
         :param _builtins.str mode: Backup mode (e.g. snapshot, suspend, stop).
         :param _builtins.str node: Node on which the backup job runs.
@@ -199,7 +199,7 @@ class GetJobsJobResult(dict):
     @pulumi.getter
     def mailnotification(self) -> _builtins.str:
         """
-        When to send email notifications (always or failure).
+        When to send email notifications (`always` or `failure`). Ignored by Proxmox VE unless `mailto` is set or the job uses the `legacy-sendmail` notification mode.
         """
         return pulumi.get(self, "mailnotification")
 

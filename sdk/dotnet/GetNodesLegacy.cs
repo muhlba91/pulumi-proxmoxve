@@ -28,11 +28,11 @@ namespace Pulumi.ProxmoxVE
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxVirtualEnvironmentNodes"] = 
+        ///         ["dataProxmoxVirtualEnvironmentNodes"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "names", example.Apply(getNodesLegacyResult =&gt; getNodesLegacyResult.Names) },
-        ///             { "cpuCount", example.Apply(getNodesLegacyResult =&gt; getNodesLegacyResult.CpuCounts) },
-        ///             { "online", example.Apply(getNodesLegacyResult =&gt; getNodesLegacyResult.Onlines) },
+        ///             ["names"] = example.Apply(getNodesLegacyResult =&gt; getNodesLegacyResult.Names),
+        ///             ["cpuCount"] = example.Apply(getNodesLegacyResult =&gt; getNodesLegacyResult.CpuCounts),
+        ///             ["online"] = example.Apply(getNodesLegacyResult =&gt; getNodesLegacyResult.Onlines),
         ///         },
         ///     };
         /// });
@@ -58,11 +58,11 @@ namespace Pulumi.ProxmoxVE
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxVirtualEnvironmentNodes"] = 
+        ///         ["dataProxmoxVirtualEnvironmentNodes"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "names", example.Apply(getNodesLegacyResult =&gt; getNodesLegacyResult.Names) },
-        ///             { "cpuCount", example.Apply(getNodesLegacyResult =&gt; getNodesLegacyResult.CpuCounts) },
-        ///             { "online", example.Apply(getNodesLegacyResult =&gt; getNodesLegacyResult.Onlines) },
+        ///             ["names"] = example.Apply(getNodesLegacyResult =&gt; getNodesLegacyResult.Names),
+        ///             ["cpuCount"] = example.Apply(getNodesLegacyResult =&gt; getNodesLegacyResult.CpuCounts),
+        ///             ["online"] = example.Apply(getNodesLegacyResult =&gt; getNodesLegacyResult.Onlines),
         ///         },
         ///     };
         /// });
@@ -88,11 +88,11 @@ namespace Pulumi.ProxmoxVE
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxVirtualEnvironmentNodes"] = 
+        ///         ["dataProxmoxVirtualEnvironmentNodes"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "names", example.Apply(getNodesLegacyResult =&gt; getNodesLegacyResult.Names) },
-        ///             { "cpuCount", example.Apply(getNodesLegacyResult =&gt; getNodesLegacyResult.CpuCounts) },
-        ///             { "online", example.Apply(getNodesLegacyResult =&gt; getNodesLegacyResult.Onlines) },
+        ///             ["names"] = example.Apply(getNodesLegacyResult =&gt; getNodesLegacyResult.Names),
+        ///             ["cpuCount"] = example.Apply(getNodesLegacyResult =&gt; getNodesLegacyResult.CpuCounts),
+        ///             ["online"] = example.Apply(getNodesLegacyResult =&gt; getNodesLegacyResult.Onlines),
         ///         },
         ///     };
         /// });

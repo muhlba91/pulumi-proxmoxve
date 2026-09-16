@@ -20,6 +20,7 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
+                 api_headers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  api_token: pulumi.Input[Optional[_builtins.str]] = None,
                  auth_ticket: pulumi.Input[Optional[_builtins.str]] = None,
                  csrf_prevention_token: pulumi.Input[Optional[_builtins.str]] = None,
@@ -37,6 +38,7 @@ class ProviderArgs:
         """
         The set of arguments for constructing a Provider resource.
 
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] api_headers: Additional HTTP headers to send with every Proxmox VE API request. Useful when the API is behind an authenticating reverse proxy, e.g. Cloudflare Access. Headers managed by the provider or by the HTTP client, such as `Authorization`, are rejected. Can also be sourced from `PROXMOX_VE_API_HEADERS` as a comma-separated list of `Name=Value` pairs.
         :param pulumi.Input[_builtins.str] api_token: The API token for the Proxmox VE API.
         :param pulumi.Input[_builtins.str] auth_ticket: The pre-authenticated Ticket for the Proxmox VE API.
         :param pulumi.Input[_builtins.str] csrf_prevention_token: The pre-authenticated CSRF Prevention Token for the Proxmox VE API.
@@ -52,6 +54,8 @@ class ProviderArgs:
         :param pulumi.Input[_builtins.str] tmp_dir: The alternative temporary directory.
         :param pulumi.Input[_builtins.str] username: The username for the Proxmox VE API.
         """
+        if api_headers is not None:
+            pulumi.set(__self__, "api_headers", api_headers)
         if api_token is not None:
             pulumi.set(__self__, "api_token", api_token)
         if auth_ticket is not None:
@@ -83,6 +87,18 @@ class ProviderArgs:
             pulumi.set(__self__, "tmp_dir", tmp_dir)
         if username is not None:
             pulumi.set(__self__, "username", username)
+
+    @_builtins.property
+    @pulumi.getter(name="apiHeaders")
+    def api_headers(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Additional HTTP headers to send with every Proxmox VE API request. Useful when the API is behind an authenticating reverse proxy, e.g. Cloudflare Access. Headers managed by the provider or by the HTTP client, such as `Authorization`, are rejected. Can also be sourced from `PROXMOX_VE_API_HEADERS` as a comma-separated list of `Name=Value` pairs.
+        """
+        return pulumi.get(self, "api_headers")
+
+    @api_headers.setter
+    def api_headers(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "api_headers", value)
 
     @_builtins.property
     @pulumi.getter(name="apiToken")
@@ -260,6 +276,7 @@ class Provider(pulumi.ProviderResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 api_headers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  api_token: pulumi.Input[Optional[_builtins.str]] = None,
                  auth_ticket: pulumi.Input[Optional[_builtins.str]] = None,
                  csrf_prevention_token: pulumi.Input[Optional[_builtins.str]] = None,
@@ -284,6 +301,7 @@ class Provider(pulumi.ProviderResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] api_headers: Additional HTTP headers to send with every Proxmox VE API request. Useful when the API is behind an authenticating reverse proxy, e.g. Cloudflare Access. Headers managed by the provider or by the HTTP client, such as `Authorization`, are rejected. Can also be sourced from `PROXMOX_VE_API_HEADERS` as a comma-separated list of `Name=Value` pairs.
         :param pulumi.Input[_builtins.str] api_token: The API token for the Proxmox VE API.
         :param pulumi.Input[_builtins.str] auth_ticket: The pre-authenticated Ticket for the Proxmox VE API.
         :param pulumi.Input[_builtins.str] csrf_prevention_token: The pre-authenticated CSRF Prevention Token for the Proxmox VE API.
@@ -327,6 +345,7 @@ class Provider(pulumi.ProviderResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 api_headers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  api_token: pulumi.Input[Optional[_builtins.str]] = None,
                  auth_ticket: pulumi.Input[Optional[_builtins.str]] = None,
                  csrf_prevention_token: pulumi.Input[Optional[_builtins.str]] = None,
@@ -350,6 +369,7 @@ class Provider(pulumi.ProviderResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ProviderArgs.__new__(ProviderArgs)
 
+            __props__.__dict__["api_headers"] = pulumi.Output.secret(api_headers).apply(pulumi.runtime.to_json) if api_headers is not None else None
             __props__.__dict__["api_token"] = None if api_token is None else pulumi.Output.secret(api_token)
             __props__.__dict__["auth_ticket"] = None if auth_ticket is None else pulumi.Output.secret(auth_ticket)
             __props__.__dict__["csrf_prevention_token"] = None if csrf_prevention_token is None else pulumi.Output.secret(csrf_prevention_token)

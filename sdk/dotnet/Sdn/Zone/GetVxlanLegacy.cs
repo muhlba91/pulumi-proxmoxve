@@ -33,16 +33,16 @@ namespace Pulumi.ProxmoxVE.Sdn.Zone
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxVirtualEnvironmentSdnZoneVxlan"] = 
+        ///         ["dataProxmoxVirtualEnvironmentSdnZoneVxlan"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "id", example.Apply(getVxlanLegacyResult =&gt; getVxlanLegacyResult.Id) },
-        ///             { "nodes", example.Apply(getVxlanLegacyResult =&gt; getVxlanLegacyResult.Nodes) },
-        ///             { "peers", example.Apply(getVxlanLegacyResult =&gt; getVxlanLegacyResult.Peers) },
-        ///             { "mtu", example.Apply(getVxlanLegacyResult =&gt; getVxlanLegacyResult.Mtu) },
-        ///             { "dns", example.Apply(getVxlanLegacyResult =&gt; getVxlanLegacyResult.Dns) },
-        ///             { "dnsZone", example.Apply(getVxlanLegacyResult =&gt; getVxlanLegacyResult.DnsZone) },
-        ///             { "ipam", example.Apply(getVxlanLegacyResult =&gt; getVxlanLegacyResult.Ipam) },
-        ///             { "reverseDns", example.Apply(getVxlanLegacyResult =&gt; getVxlanLegacyResult.ReverseDns) },
+        ///             ["id"] = example.Apply(getVxlanLegacyResult =&gt; getVxlanLegacyResult.Id),
+        ///             ["nodes"] = example.Apply(getVxlanLegacyResult =&gt; getVxlanLegacyResult.Nodes),
+        ///             ["peers"] = example.Apply(getVxlanLegacyResult =&gt; getVxlanLegacyResult.Peers),
+        ///             ["mtu"] = example.Apply(getVxlanLegacyResult =&gt; getVxlanLegacyResult.Mtu),
+        ///             ["dns"] = example.Apply(getVxlanLegacyResult =&gt; getVxlanLegacyResult.Dns),
+        ///             ["dnsZone"] = example.Apply(getVxlanLegacyResult =&gt; getVxlanLegacyResult.DnsZone),
+        ///             ["ipam"] = example.Apply(getVxlanLegacyResult =&gt; getVxlanLegacyResult.Ipam),
+        ///             ["reverseDns"] = example.Apply(getVxlanLegacyResult =&gt; getVxlanLegacyResult.ReverseDns),
         ///         },
         ///     };
         /// });
@@ -73,16 +73,16 @@ namespace Pulumi.ProxmoxVE.Sdn.Zone
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxVirtualEnvironmentSdnZoneVxlan"] = 
+        ///         ["dataProxmoxVirtualEnvironmentSdnZoneVxlan"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "id", example.Apply(getVxlanLegacyResult =&gt; getVxlanLegacyResult.Id) },
-        ///             { "nodes", example.Apply(getVxlanLegacyResult =&gt; getVxlanLegacyResult.Nodes) },
-        ///             { "peers", example.Apply(getVxlanLegacyResult =&gt; getVxlanLegacyResult.Peers) },
-        ///             { "mtu", example.Apply(getVxlanLegacyResult =&gt; getVxlanLegacyResult.Mtu) },
-        ///             { "dns", example.Apply(getVxlanLegacyResult =&gt; getVxlanLegacyResult.Dns) },
-        ///             { "dnsZone", example.Apply(getVxlanLegacyResult =&gt; getVxlanLegacyResult.DnsZone) },
-        ///             { "ipam", example.Apply(getVxlanLegacyResult =&gt; getVxlanLegacyResult.Ipam) },
-        ///             { "reverseDns", example.Apply(getVxlanLegacyResult =&gt; getVxlanLegacyResult.ReverseDns) },
+        ///             ["id"] = example.Apply(getVxlanLegacyResult =&gt; getVxlanLegacyResult.Id),
+        ///             ["nodes"] = example.Apply(getVxlanLegacyResult =&gt; getVxlanLegacyResult.Nodes),
+        ///             ["peers"] = example.Apply(getVxlanLegacyResult =&gt; getVxlanLegacyResult.Peers),
+        ///             ["mtu"] = example.Apply(getVxlanLegacyResult =&gt; getVxlanLegacyResult.Mtu),
+        ///             ["dns"] = example.Apply(getVxlanLegacyResult =&gt; getVxlanLegacyResult.Dns),
+        ///             ["dnsZone"] = example.Apply(getVxlanLegacyResult =&gt; getVxlanLegacyResult.DnsZone),
+        ///             ["ipam"] = example.Apply(getVxlanLegacyResult =&gt; getVxlanLegacyResult.Ipam),
+        ///             ["reverseDns"] = example.Apply(getVxlanLegacyResult =&gt; getVxlanLegacyResult.ReverseDns),
         ///         },
         ///     };
         /// });
@@ -113,16 +113,16 @@ namespace Pulumi.ProxmoxVE.Sdn.Zone
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxVirtualEnvironmentSdnZoneVxlan"] = 
+        ///         ["dataProxmoxVirtualEnvironmentSdnZoneVxlan"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "id", example.Apply(getVxlanLegacyResult =&gt; getVxlanLegacyResult.Id) },
-        ///             { "nodes", example.Apply(getVxlanLegacyResult =&gt; getVxlanLegacyResult.Nodes) },
-        ///             { "peers", example.Apply(getVxlanLegacyResult =&gt; getVxlanLegacyResult.Peers) },
-        ///             { "mtu", example.Apply(getVxlanLegacyResult =&gt; getVxlanLegacyResult.Mtu) },
-        ///             { "dns", example.Apply(getVxlanLegacyResult =&gt; getVxlanLegacyResult.Dns) },
-        ///             { "dnsZone", example.Apply(getVxlanLegacyResult =&gt; getVxlanLegacyResult.DnsZone) },
-        ///             { "ipam", example.Apply(getVxlanLegacyResult =&gt; getVxlanLegacyResult.Ipam) },
-        ///             { "reverseDns", example.Apply(getVxlanLegacyResult =&gt; getVxlanLegacyResult.ReverseDns) },
+        ///             ["id"] = example.Apply(getVxlanLegacyResult =&gt; getVxlanLegacyResult.Id),
+        ///             ["nodes"] = example.Apply(getVxlanLegacyResult =&gt; getVxlanLegacyResult.Nodes),
+        ///             ["peers"] = example.Apply(getVxlanLegacyResult =&gt; getVxlanLegacyResult.Peers),
+        ///             ["mtu"] = example.Apply(getVxlanLegacyResult =&gt; getVxlanLegacyResult.Mtu),
+        ///             ["dns"] = example.Apply(getVxlanLegacyResult =&gt; getVxlanLegacyResult.Dns),
+        ///             ["dnsZone"] = example.Apply(getVxlanLegacyResult =&gt; getVxlanLegacyResult.DnsZone),
+        ///             ["ipam"] = example.Apply(getVxlanLegacyResult =&gt; getVxlanLegacyResult.Ipam),
+        ///             ["reverseDns"] = example.Apply(getVxlanLegacyResult =&gt; getVxlanLegacyResult.ReverseDns),
         ///         },
         ///     };
         /// });

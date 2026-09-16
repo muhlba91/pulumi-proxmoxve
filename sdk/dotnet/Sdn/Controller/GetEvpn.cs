@@ -31,12 +31,12 @@ namespace Pulumi.ProxmoxVE.Sdn.Controller
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxSdnControllerEvpn"] = 
+        ///         ["dataProxmoxSdnControllerEvpn"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "id", example.Apply(getEvpnResult =&gt; getEvpnResult.Id) },
-        ///             { "asn", example.Apply(getEvpnResult =&gt; getEvpnResult.Asn) },
-        ///             { "fabric", example.Apply(getEvpnResult =&gt; getEvpnResult.Fabric) },
-        ///             { "peers", example.Apply(getEvpnResult =&gt; getEvpnResult.Peers) },
+        ///             ["id"] = example.Apply(getEvpnResult =&gt; getEvpnResult.Id),
+        ///             ["asn"] = example.Apply(getEvpnResult =&gt; getEvpnResult.Asn),
+        ///             ["fabric"] = example.Apply(getEvpnResult =&gt; getEvpnResult.Fabric),
+        ///             ["peers"] = example.Apply(getEvpnResult =&gt; getEvpnResult.Peers),
         ///         },
         ///     };
         /// });
@@ -65,12 +65,12 @@ namespace Pulumi.ProxmoxVE.Sdn.Controller
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxSdnControllerEvpn"] = 
+        ///         ["dataProxmoxSdnControllerEvpn"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "id", example.Apply(getEvpnResult =&gt; getEvpnResult.Id) },
-        ///             { "asn", example.Apply(getEvpnResult =&gt; getEvpnResult.Asn) },
-        ///             { "fabric", example.Apply(getEvpnResult =&gt; getEvpnResult.Fabric) },
-        ///             { "peers", example.Apply(getEvpnResult =&gt; getEvpnResult.Peers) },
+        ///             ["id"] = example.Apply(getEvpnResult =&gt; getEvpnResult.Id),
+        ///             ["asn"] = example.Apply(getEvpnResult =&gt; getEvpnResult.Asn),
+        ///             ["fabric"] = example.Apply(getEvpnResult =&gt; getEvpnResult.Fabric),
+        ///             ["peers"] = example.Apply(getEvpnResult =&gt; getEvpnResult.Peers),
         ///         },
         ///     };
         /// });
@@ -99,12 +99,12 @@ namespace Pulumi.ProxmoxVE.Sdn.Controller
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxSdnControllerEvpn"] = 
+        ///         ["dataProxmoxSdnControllerEvpn"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "id", example.Apply(getEvpnResult =&gt; getEvpnResult.Id) },
-        ///             { "asn", example.Apply(getEvpnResult =&gt; getEvpnResult.Asn) },
-        ///             { "fabric", example.Apply(getEvpnResult =&gt; getEvpnResult.Fabric) },
-        ///             { "peers", example.Apply(getEvpnResult =&gt; getEvpnResult.Peers) },
+        ///             ["id"] = example.Apply(getEvpnResult =&gt; getEvpnResult.Id),
+        ///             ["asn"] = example.Apply(getEvpnResult =&gt; getEvpnResult.Asn),
+        ///             ["fabric"] = example.Apply(getEvpnResult =&gt; getEvpnResult.Fabric),
+        ///             ["peers"] = example.Apply(getEvpnResult =&gt; getEvpnResult.Peers),
         ///         },
         ///     };
         /// });

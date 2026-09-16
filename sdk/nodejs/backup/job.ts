@@ -96,7 +96,7 @@ export class Job extends pulumi.CustomResource {
      */
     declare public readonly lockwait: pulumi.Output<number | undefined>;
     /**
-     * Email notification setting (always or failure).
+     * Email notification setting (`always` or `failure`). Deprecated by Proxmox VE in favour of the notification system: it is only honoured when `mailto` is set (notification mode `auto`) or the job uses the `legacy-sendmail` notification mode. Otherwise notifications are routed through the PVE notification system and this setting is ignored.
      */
     declare public readonly mailnotification: pulumi.Output<string>;
     /**
@@ -329,7 +329,7 @@ export interface JobState {
      */
     lockwait?: pulumi.Input<number | undefined>;
     /**
-     * Email notification setting (always or failure).
+     * Email notification setting (`always` or `failure`). Deprecated by Proxmox VE in favour of the notification system: it is only honoured when `mailto` is set (notification mode `auto`) or the job uses the `legacy-sendmail` notification mode. Otherwise notifications are routed through the PVE notification system and this setting is ignored.
      */
     mailnotification?: pulumi.Input<string | undefined>;
     /**
@@ -467,7 +467,7 @@ export interface JobArgs {
      */
     lockwait?: pulumi.Input<number | undefined>;
     /**
-     * Email notification setting (always or failure).
+     * Email notification setting (`always` or `failure`). Deprecated by Proxmox VE in favour of the notification system: it is only honoured when `mailto` is set (notification mode `auto`) or the job uses the `legacy-sendmail` notification mode. Otherwise notifications are routed through the PVE notification system and this setting is ignored.
      */
     mailnotification?: pulumi.Input<string | undefined>;
     /**

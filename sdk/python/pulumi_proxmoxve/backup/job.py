@@ -69,7 +69,7 @@ class JobArgs:
         :param pulumi.Input['JobFleecingArgs'] fleecing: Fleecing configuration for the backup job.
         :param pulumi.Input[_builtins.int] ionice: I/O priority (0-8).
         :param pulumi.Input[_builtins.int] lockwait: Maximum wait time in minutes for the global lock.
-        :param pulumi.Input[_builtins.str] mailnotification: Email notification setting (always or failure).
+        :param pulumi.Input[_builtins.str] mailnotification: Email notification setting (`always` or `failure`). Deprecated by Proxmox VE in favour of the notification system: it is only honoured when `mailto` is set (notification mode `auto`) or the job uses the `legacy-sendmail` notification mode. Otherwise notifications are routed through the PVE notification system and this setting is ignored.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mailtos: A list of email addresses to send notifications to.
         :param pulumi.Input[_builtins.int] maxfiles: Deprecated: use prune_backups instead. Maximum number of backup files per guest.
         :param pulumi.Input[_builtins.str] mode: The backup mode (snapshot, suspend, or stop).
@@ -303,7 +303,7 @@ class JobArgs:
     @pulumi.getter
     def mailnotification(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Email notification setting (always or failure).
+        Email notification setting (`always` or `failure`). Deprecated by Proxmox VE in favour of the notification system: it is only honoured when `mailto` is set (notification mode `auto`) or the job uses the `legacy-sendmail` notification mode. Otherwise notifications are routed through the PVE notification system and this setting is ignored.
         """
         return pulumi.get(self, "mailnotification")
 
@@ -600,7 +600,7 @@ class _JobState:
         :param pulumi.Input['JobFleecingArgs'] fleecing: Fleecing configuration for the backup job.
         :param pulumi.Input[_builtins.int] ionice: I/O priority (0-8).
         :param pulumi.Input[_builtins.int] lockwait: Maximum wait time in minutes for the global lock.
-        :param pulumi.Input[_builtins.str] mailnotification: Email notification setting (always or failure).
+        :param pulumi.Input[_builtins.str] mailnotification: Email notification setting (`always` or `failure`). Deprecated by Proxmox VE in favour of the notification system: it is only honoured when `mailto` is set (notification mode `auto`) or the job uses the `legacy-sendmail` notification mode. Otherwise notifications are routed through the PVE notification system and this setting is ignored.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mailtos: A list of email addresses to send notifications to.
         :param pulumi.Input[_builtins.int] maxfiles: Deprecated: use prune_backups instead. Maximum number of backup files per guest.
         :param pulumi.Input[_builtins.str] mode: The backup mode (snapshot, suspend, or stop).
@@ -804,7 +804,7 @@ class _JobState:
     @pulumi.getter
     def mailnotification(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Email notification setting (always or failure).
+        Email notification setting (`always` or `failure`). Deprecated by Proxmox VE in favour of the notification system: it is only honoured when `mailto` is set (notification mode `auto`) or the job uses the `legacy-sendmail` notification mode. Otherwise notifications are routed through the PVE notification system and this setting is ignored.
         """
         return pulumi.get(self, "mailnotification")
 
@@ -1165,7 +1165,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[Union['JobFleecingArgs', 'JobFleecingArgsDict', 'outputs.JobFleecing']] fleecing: Fleecing configuration for the backup job.
         :param pulumi.Input[_builtins.int] ionice: I/O priority (0-8).
         :param pulumi.Input[_builtins.int] lockwait: Maximum wait time in minutes for the global lock.
-        :param pulumi.Input[_builtins.str] mailnotification: Email notification setting (always or failure).
+        :param pulumi.Input[_builtins.str] mailnotification: Email notification setting (`always` or `failure`). Deprecated by Proxmox VE in favour of the notification system: it is only honoured when `mailto` is set (notification mode `auto`) or the job uses the `legacy-sendmail` notification mode. Otherwise notifications are routed through the PVE notification system and this setting is ignored.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mailtos: A list of email addresses to send notifications to.
         :param pulumi.Input[_builtins.int] maxfiles: Deprecated: use prune_backups instead. Maximum number of backup files per guest.
         :param pulumi.Input[_builtins.str] mode: The backup mode (snapshot, suspend, or stop).
@@ -1376,7 +1376,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[Union['JobFleecingArgs', 'JobFleecingArgsDict', 'outputs.JobFleecing']] fleecing: Fleecing configuration for the backup job.
         :param pulumi.Input[_builtins.int] ionice: I/O priority (0-8).
         :param pulumi.Input[_builtins.int] lockwait: Maximum wait time in minutes for the global lock.
-        :param pulumi.Input[_builtins.str] mailnotification: Email notification setting (always or failure).
+        :param pulumi.Input[_builtins.str] mailnotification: Email notification setting (`always` or `failure`). Deprecated by Proxmox VE in favour of the notification system: it is only honoured when `mailto` is set (notification mode `auto`) or the job uses the `legacy-sendmail` notification mode. Otherwise notifications are routed through the PVE notification system and this setting is ignored.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mailtos: A list of email addresses to send notifications to.
         :param pulumi.Input[_builtins.int] maxfiles: Deprecated: use prune_backups instead. Maximum number of backup files per guest.
         :param pulumi.Input[_builtins.str] mode: The backup mode (snapshot, suspend, or stop).
@@ -1516,7 +1516,7 @@ class Job(pulumi.CustomResource):
     @pulumi.getter
     def mailnotification(self) -> pulumi.Output[_builtins.str]:
         """
-        Email notification setting (always or failure).
+        Email notification setting (`always` or `failure`). Deprecated by Proxmox VE in favour of the notification system: it is only honoured when `mailto` is set (notification mode `auto`) or the job uses the `legacy-sendmail` notification mode. Otherwise notifications are routed through the PVE notification system and this setting is ignored.
         """
         return pulumi.get(self, "mailnotification")
 

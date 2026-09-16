@@ -31,23 +31,23 @@ namespace Pulumi.ProxmoxVE.Sdn.Zone
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxSdnZoneEvpn"] = 
+        ///         ["dataProxmoxSdnZoneEvpn"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "id", example.Apply(getEvpnResult =&gt; getEvpnResult.Id) },
-        ///             { "nodes", example.Apply(getEvpnResult =&gt; getEvpnResult.Nodes) },
-        ///             { "controller", example.Apply(getEvpnResult =&gt; getEvpnResult.Controller) },
-        ///             { "vrfVxlan", example.Apply(getEvpnResult =&gt; getEvpnResult.VrfVxlan) },
-        ///             { "advertiseSubnets", example.Apply(getEvpnResult =&gt; getEvpnResult.AdvertiseSubnets) },
-        ///             { "disableArpNdSuppression", example.Apply(getEvpnResult =&gt; getEvpnResult.DisableArpNdSuppression) },
-        ///             { "exitNodes", example.Apply(getEvpnResult =&gt; getEvpnResult.ExitNodes) },
-        ///             { "exitNodesLocalRouting", example.Apply(getEvpnResult =&gt; getEvpnResult.ExitNodesLocalRouting) },
-        ///             { "primaryExitNode", example.Apply(getEvpnResult =&gt; getEvpnResult.PrimaryExitNode) },
-        ///             { "rtImport", example.Apply(getEvpnResult =&gt; getEvpnResult.RtImport) },
-        ///             { "mtu", example.Apply(getEvpnResult =&gt; getEvpnResult.Mtu) },
-        ///             { "dns", example.Apply(getEvpnResult =&gt; getEvpnResult.Dns) },
-        ///             { "dnsZone", example.Apply(getEvpnResult =&gt; getEvpnResult.DnsZone) },
-        ///             { "ipam", example.Apply(getEvpnResult =&gt; getEvpnResult.Ipam) },
-        ///             { "reverseDns", example.Apply(getEvpnResult =&gt; getEvpnResult.ReverseDns) },
+        ///             ["id"] = example.Apply(getEvpnResult =&gt; getEvpnResult.Id),
+        ///             ["nodes"] = example.Apply(getEvpnResult =&gt; getEvpnResult.Nodes),
+        ///             ["controller"] = example.Apply(getEvpnResult =&gt; getEvpnResult.Controller),
+        ///             ["vrfVxlan"] = example.Apply(getEvpnResult =&gt; getEvpnResult.VrfVxlan),
+        ///             ["advertiseSubnets"] = example.Apply(getEvpnResult =&gt; getEvpnResult.AdvertiseSubnets),
+        ///             ["disableArpNdSuppression"] = example.Apply(getEvpnResult =&gt; getEvpnResult.DisableArpNdSuppression),
+        ///             ["exitNodes"] = example.Apply(getEvpnResult =&gt; getEvpnResult.ExitNodes),
+        ///             ["exitNodesLocalRouting"] = example.Apply(getEvpnResult =&gt; getEvpnResult.ExitNodesLocalRouting),
+        ///             ["primaryExitNode"] = example.Apply(getEvpnResult =&gt; getEvpnResult.PrimaryExitNode),
+        ///             ["rtImport"] = example.Apply(getEvpnResult =&gt; getEvpnResult.RtImport),
+        ///             ["mtu"] = example.Apply(getEvpnResult =&gt; getEvpnResult.Mtu),
+        ///             ["dns"] = example.Apply(getEvpnResult =&gt; getEvpnResult.Dns),
+        ///             ["dnsZone"] = example.Apply(getEvpnResult =&gt; getEvpnResult.DnsZone),
+        ///             ["ipam"] = example.Apply(getEvpnResult =&gt; getEvpnResult.Ipam),
+        ///             ["reverseDns"] = example.Apply(getEvpnResult =&gt; getEvpnResult.ReverseDns),
         ///         },
         ///     };
         /// });
@@ -76,23 +76,23 @@ namespace Pulumi.ProxmoxVE.Sdn.Zone
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxSdnZoneEvpn"] = 
+        ///         ["dataProxmoxSdnZoneEvpn"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "id", example.Apply(getEvpnResult =&gt; getEvpnResult.Id) },
-        ///             { "nodes", example.Apply(getEvpnResult =&gt; getEvpnResult.Nodes) },
-        ///             { "controller", example.Apply(getEvpnResult =&gt; getEvpnResult.Controller) },
-        ///             { "vrfVxlan", example.Apply(getEvpnResult =&gt; getEvpnResult.VrfVxlan) },
-        ///             { "advertiseSubnets", example.Apply(getEvpnResult =&gt; getEvpnResult.AdvertiseSubnets) },
-        ///             { "disableArpNdSuppression", example.Apply(getEvpnResult =&gt; getEvpnResult.DisableArpNdSuppression) },
-        ///             { "exitNodes", example.Apply(getEvpnResult =&gt; getEvpnResult.ExitNodes) },
-        ///             { "exitNodesLocalRouting", example.Apply(getEvpnResult =&gt; getEvpnResult.ExitNodesLocalRouting) },
-        ///             { "primaryExitNode", example.Apply(getEvpnResult =&gt; getEvpnResult.PrimaryExitNode) },
-        ///             { "rtImport", example.Apply(getEvpnResult =&gt; getEvpnResult.RtImport) },
-        ///             { "mtu", example.Apply(getEvpnResult =&gt; getEvpnResult.Mtu) },
-        ///             { "dns", example.Apply(getEvpnResult =&gt; getEvpnResult.Dns) },
-        ///             { "dnsZone", example.Apply(getEvpnResult =&gt; getEvpnResult.DnsZone) },
-        ///             { "ipam", example.Apply(getEvpnResult =&gt; getEvpnResult.Ipam) },
-        ///             { "reverseDns", example.Apply(getEvpnResult =&gt; getEvpnResult.ReverseDns) },
+        ///             ["id"] = example.Apply(getEvpnResult =&gt; getEvpnResult.Id),
+        ///             ["nodes"] = example.Apply(getEvpnResult =&gt; getEvpnResult.Nodes),
+        ///             ["controller"] = example.Apply(getEvpnResult =&gt; getEvpnResult.Controller),
+        ///             ["vrfVxlan"] = example.Apply(getEvpnResult =&gt; getEvpnResult.VrfVxlan),
+        ///             ["advertiseSubnets"] = example.Apply(getEvpnResult =&gt; getEvpnResult.AdvertiseSubnets),
+        ///             ["disableArpNdSuppression"] = example.Apply(getEvpnResult =&gt; getEvpnResult.DisableArpNdSuppression),
+        ///             ["exitNodes"] = example.Apply(getEvpnResult =&gt; getEvpnResult.ExitNodes),
+        ///             ["exitNodesLocalRouting"] = example.Apply(getEvpnResult =&gt; getEvpnResult.ExitNodesLocalRouting),
+        ///             ["primaryExitNode"] = example.Apply(getEvpnResult =&gt; getEvpnResult.PrimaryExitNode),
+        ///             ["rtImport"] = example.Apply(getEvpnResult =&gt; getEvpnResult.RtImport),
+        ///             ["mtu"] = example.Apply(getEvpnResult =&gt; getEvpnResult.Mtu),
+        ///             ["dns"] = example.Apply(getEvpnResult =&gt; getEvpnResult.Dns),
+        ///             ["dnsZone"] = example.Apply(getEvpnResult =&gt; getEvpnResult.DnsZone),
+        ///             ["ipam"] = example.Apply(getEvpnResult =&gt; getEvpnResult.Ipam),
+        ///             ["reverseDns"] = example.Apply(getEvpnResult =&gt; getEvpnResult.ReverseDns),
         ///         },
         ///     };
         /// });
@@ -121,23 +121,23 @@ namespace Pulumi.ProxmoxVE.Sdn.Zone
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxSdnZoneEvpn"] = 
+        ///         ["dataProxmoxSdnZoneEvpn"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "id", example.Apply(getEvpnResult =&gt; getEvpnResult.Id) },
-        ///             { "nodes", example.Apply(getEvpnResult =&gt; getEvpnResult.Nodes) },
-        ///             { "controller", example.Apply(getEvpnResult =&gt; getEvpnResult.Controller) },
-        ///             { "vrfVxlan", example.Apply(getEvpnResult =&gt; getEvpnResult.VrfVxlan) },
-        ///             { "advertiseSubnets", example.Apply(getEvpnResult =&gt; getEvpnResult.AdvertiseSubnets) },
-        ///             { "disableArpNdSuppression", example.Apply(getEvpnResult =&gt; getEvpnResult.DisableArpNdSuppression) },
-        ///             { "exitNodes", example.Apply(getEvpnResult =&gt; getEvpnResult.ExitNodes) },
-        ///             { "exitNodesLocalRouting", example.Apply(getEvpnResult =&gt; getEvpnResult.ExitNodesLocalRouting) },
-        ///             { "primaryExitNode", example.Apply(getEvpnResult =&gt; getEvpnResult.PrimaryExitNode) },
-        ///             { "rtImport", example.Apply(getEvpnResult =&gt; getEvpnResult.RtImport) },
-        ///             { "mtu", example.Apply(getEvpnResult =&gt; getEvpnResult.Mtu) },
-        ///             { "dns", example.Apply(getEvpnResult =&gt; getEvpnResult.Dns) },
-        ///             { "dnsZone", example.Apply(getEvpnResult =&gt; getEvpnResult.DnsZone) },
-        ///             { "ipam", example.Apply(getEvpnResult =&gt; getEvpnResult.Ipam) },
-        ///             { "reverseDns", example.Apply(getEvpnResult =&gt; getEvpnResult.ReverseDns) },
+        ///             ["id"] = example.Apply(getEvpnResult =&gt; getEvpnResult.Id),
+        ///             ["nodes"] = example.Apply(getEvpnResult =&gt; getEvpnResult.Nodes),
+        ///             ["controller"] = example.Apply(getEvpnResult =&gt; getEvpnResult.Controller),
+        ///             ["vrfVxlan"] = example.Apply(getEvpnResult =&gt; getEvpnResult.VrfVxlan),
+        ///             ["advertiseSubnets"] = example.Apply(getEvpnResult =&gt; getEvpnResult.AdvertiseSubnets),
+        ///             ["disableArpNdSuppression"] = example.Apply(getEvpnResult =&gt; getEvpnResult.DisableArpNdSuppression),
+        ///             ["exitNodes"] = example.Apply(getEvpnResult =&gt; getEvpnResult.ExitNodes),
+        ///             ["exitNodesLocalRouting"] = example.Apply(getEvpnResult =&gt; getEvpnResult.ExitNodesLocalRouting),
+        ///             ["primaryExitNode"] = example.Apply(getEvpnResult =&gt; getEvpnResult.PrimaryExitNode),
+        ///             ["rtImport"] = example.Apply(getEvpnResult =&gt; getEvpnResult.RtImport),
+        ///             ["mtu"] = example.Apply(getEvpnResult =&gt; getEvpnResult.Mtu),
+        ///             ["dns"] = example.Apply(getEvpnResult =&gt; getEvpnResult.Dns),
+        ///             ["dnsZone"] = example.Apply(getEvpnResult =&gt; getEvpnResult.DnsZone),
+        ///             ["ipam"] = example.Apply(getEvpnResult =&gt; getEvpnResult.Ipam),
+        ///             ["reverseDns"] = example.Apply(getEvpnResult =&gt; getEvpnResult.ReverseDns),
         ///         },
         ///     };
         /// });

@@ -32,6 +32,16 @@ namespace Pulumi.ProxmoxVE
 
         private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("proxmoxve");
 
+        private static readonly __Value<ImmutableDictionary<string, string>?> _apiHeaders = new __Value<ImmutableDictionary<string, string>?>(() => __config.GetObject<ImmutableDictionary<string, string>>("apiHeaders"));
+        /// <summary>
+        /// Additional HTTP headers to send with every Proxmox VE API request. Useful when the API is behind an authenticating reverse proxy, e.g. Cloudflare Access. Headers managed by the provider or by the HTTP client, such as `Authorization`, are rejected. Can also be sourced from `PROXMOX_VE_API_HEADERS` as a comma-separated list of `Name=Value` pairs.
+        /// </summary>
+        public static ImmutableDictionary<string, string>? ApiHeaders
+        {
+            get => _apiHeaders.Get();
+            set => _apiHeaders.Set(value);
+        }
+
         private static readonly __Value<string?> _apiToken = new __Value<string?>(() => __config.Get("apiToken"));
         /// <summary>
         /// The API token for the Proxmox VE API.

@@ -216,6 +216,12 @@ type ContainerLegacy struct {
 	Console ContainerLegacyConsolePtrOutput `pulumi:"console"`
 	// The CPU configuration.
 	Cpu ContainerLegacyCpuPtrOutput `pulumi:"cpu"`
+	// Whether to also delete
+	// disks on any enabled storage that carry the container ID but are not
+	// referenced in its configuration (defaults to `false`). Unlike the VM
+	// resource, this is opt-in for containers so that deliberately detached
+	// volumes are not removed on destroy.
+	DeleteUnreferencedDisksOnDestroy pulumi.BoolPtrOutput `pulumi:"deleteUnreferencedDisksOnDestroy"`
 	// The description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Device to pass through to the container (multiple blocks supported).
@@ -259,6 +265,11 @@ type ContainerLegacy struct {
 	PoolId pulumi.StringPtrOutput `pulumi:"poolId"`
 	// Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
 	Protection pulumi.BoolPtrOutput `pulumi:"protection"`
+	// Whether to purge the container from backup,
+	// replication and HA configurations on destroy (defaults to `true`). Proxmox
+	// refuses to delete a container that is still referenced by an HA resource or
+	// a replication job unless this is set.
+	PurgeOnDestroy pulumi.BoolPtrOutput `pulumi:"purgeOnDestroy"`
 	// Automatically start container when the host
 	// system boots (defaults to `true`).
 	StartOnBoot pulumi.BoolPtrOutput `pulumi:"startOnBoot"`
@@ -333,6 +344,12 @@ type containerLegacyState struct {
 	Console *ContainerLegacyConsole `pulumi:"console"`
 	// The CPU configuration.
 	Cpu *ContainerLegacyCpu `pulumi:"cpu"`
+	// Whether to also delete
+	// disks on any enabled storage that carry the container ID but are not
+	// referenced in its configuration (defaults to `false`). Unlike the VM
+	// resource, this is opt-in for containers so that deliberately detached
+	// volumes are not removed on destroy.
+	DeleteUnreferencedDisksOnDestroy *bool `pulumi:"deleteUnreferencedDisksOnDestroy"`
 	// The description.
 	Description *string `pulumi:"description"`
 	// Device to pass through to the container (multiple blocks supported).
@@ -376,6 +393,11 @@ type containerLegacyState struct {
 	PoolId *string `pulumi:"poolId"`
 	// Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
 	Protection *bool `pulumi:"protection"`
+	// Whether to purge the container from backup,
+	// replication and HA configurations on destroy (defaults to `true`). Proxmox
+	// refuses to delete a container that is still referenced by an HA resource or
+	// a replication job unless this is set.
+	PurgeOnDestroy *bool `pulumi:"purgeOnDestroy"`
 	// Automatically start container when the host
 	// system boots (defaults to `true`).
 	StartOnBoot *bool `pulumi:"startOnBoot"`
@@ -418,6 +440,12 @@ type ContainerLegacyState struct {
 	Console ContainerLegacyConsolePtrInput
 	// The CPU configuration.
 	Cpu ContainerLegacyCpuPtrInput
+	// Whether to also delete
+	// disks on any enabled storage that carry the container ID but are not
+	// referenced in its configuration (defaults to `false`). Unlike the VM
+	// resource, this is opt-in for containers so that deliberately detached
+	// volumes are not removed on destroy.
+	DeleteUnreferencedDisksOnDestroy pulumi.BoolPtrInput
 	// The description.
 	Description pulumi.StringPtrInput
 	// Device to pass through to the container (multiple blocks supported).
@@ -461,6 +489,11 @@ type ContainerLegacyState struct {
 	PoolId pulumi.StringPtrInput
 	// Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
 	Protection pulumi.BoolPtrInput
+	// Whether to purge the container from backup,
+	// replication and HA configurations on destroy (defaults to `true`). Proxmox
+	// refuses to delete a container that is still referenced by an HA resource or
+	// a replication job unless this is set.
+	PurgeOnDestroy pulumi.BoolPtrInput
 	// Automatically start container when the host
 	// system boots (defaults to `true`).
 	StartOnBoot pulumi.BoolPtrInput
@@ -507,6 +540,12 @@ type containerLegacyArgs struct {
 	Console *ContainerLegacyConsole `pulumi:"console"`
 	// The CPU configuration.
 	Cpu *ContainerLegacyCpu `pulumi:"cpu"`
+	// Whether to also delete
+	// disks on any enabled storage that carry the container ID but are not
+	// referenced in its configuration (defaults to `false`). Unlike the VM
+	// resource, this is opt-in for containers so that deliberately detached
+	// volumes are not removed on destroy.
+	DeleteUnreferencedDisksOnDestroy *bool `pulumi:"deleteUnreferencedDisksOnDestroy"`
 	// The description.
 	Description *string `pulumi:"description"`
 	// Device to pass through to the container (multiple blocks supported).
@@ -546,6 +585,11 @@ type containerLegacyArgs struct {
 	PoolId *string `pulumi:"poolId"`
 	// Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
 	Protection *bool `pulumi:"protection"`
+	// Whether to purge the container from backup,
+	// replication and HA configurations on destroy (defaults to `true`). Proxmox
+	// refuses to delete a container that is still referenced by an HA resource or
+	// a replication job unless this is set.
+	PurgeOnDestroy *bool `pulumi:"purgeOnDestroy"`
 	// Automatically start container when the host
 	// system boots (defaults to `true`).
 	StartOnBoot *bool `pulumi:"startOnBoot"`
@@ -589,6 +633,12 @@ type ContainerLegacyArgs struct {
 	Console ContainerLegacyConsolePtrInput
 	// The CPU configuration.
 	Cpu ContainerLegacyCpuPtrInput
+	// Whether to also delete
+	// disks on any enabled storage that carry the container ID but are not
+	// referenced in its configuration (defaults to `false`). Unlike the VM
+	// resource, this is opt-in for containers so that deliberately detached
+	// volumes are not removed on destroy.
+	DeleteUnreferencedDisksOnDestroy pulumi.BoolPtrInput
 	// The description.
 	Description pulumi.StringPtrInput
 	// Device to pass through to the container (multiple blocks supported).
@@ -628,6 +678,11 @@ type ContainerLegacyArgs struct {
 	PoolId pulumi.StringPtrInput
 	// Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
 	Protection pulumi.BoolPtrInput
+	// Whether to purge the container from backup,
+	// replication and HA configurations on destroy (defaults to `true`). Proxmox
+	// refuses to delete a container that is still referenced by an HA resource or
+	// a replication job unless this is set.
+	PurgeOnDestroy pulumi.BoolPtrInput
 	// Automatically start container when the host
 	// system boots (defaults to `true`).
 	StartOnBoot pulumi.BoolPtrInput
@@ -765,6 +820,15 @@ func (o ContainerLegacyOutput) Cpu() ContainerLegacyCpuPtrOutput {
 	return o.ApplyT(func(v *ContainerLegacy) ContainerLegacyCpuPtrOutput { return v.Cpu }).(ContainerLegacyCpuPtrOutput)
 }
 
+// Whether to also delete
+// disks on any enabled storage that carry the container ID but are not
+// referenced in its configuration (defaults to `false`). Unlike the VM
+// resource, this is opt-in for containers so that deliberately detached
+// volumes are not removed on destroy.
+func (o ContainerLegacyOutput) DeleteUnreferencedDisksOnDestroy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ContainerLegacy) pulumi.BoolPtrOutput { return v.DeleteUnreferencedDisksOnDestroy }).(pulumi.BoolPtrOutput)
+}
+
 // The description.
 func (o ContainerLegacyOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContainerLegacy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -857,6 +921,14 @@ func (o ContainerLegacyOutput) PoolId() pulumi.StringPtrOutput {
 // Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
 func (o ContainerLegacyOutput) Protection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ContainerLegacy) pulumi.BoolPtrOutput { return v.Protection }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to purge the container from backup,
+// replication and HA configurations on destroy (defaults to `true`). Proxmox
+// refuses to delete a container that is still referenced by an HA resource or
+// a replication job unless this is set.
+func (o ContainerLegacyOutput) PurgeOnDestroy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ContainerLegacy) pulumi.BoolPtrOutput { return v.PurgeOnDestroy }).(pulumi.BoolPtrOutput)
 }
 
 // Automatically start container when the host

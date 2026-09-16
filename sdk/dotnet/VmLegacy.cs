@@ -291,6 +291,65 @@ namespace Pulumi.ProxmoxVE
     /// the `DatastoreId` argument of the disks in the `Disks` block to move the disks
     /// to the correct datastore after the cloning and migrating succeeded.
     /// 
+    /// ## Example: UEFI boot
+    /// 
+    /// Set `bios = "ovmf"` and add an `EfiDisk` block. The EFI disk stores the UEFI
+    /// variables (boot entries, Secure Boot state). Without it, Proxmox VE starts the
+    /// VM with a temporary variables file and those settings are lost on every stop
+    /// and start.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var uefiVm = new ProxmoxVE.VmLegacy("uefi_vm", new()
+    ///     {
+    ///         Name = "terraform-provider-proxmox-uefi-vm",
+    ///         NodeName = "first-node",
+    ///         Bios = "ovmf",
+    ///         EfiDisk = new ProxmoxVE.Inputs.VmLegacyEfiDiskArgs
+    ///         {
+    ///             DatastoreId = "local-lvm",
+    ///             Type = "4m",
+    ///             PreEnrolledKeys = true,
+    ///         },
+    ///         Disks = new[]
+    ///         {
+    ///             new ProxmoxVE.Inputs.VmLegacyDiskArgs
+    ///             {
+    ///                 DatastoreId = "local-lvm",
+    ///                 Interface = "scsi0",
+    ///                 Size = 20,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// &gt; **arm64 hosts** always boot VMs through UEFI (AAVMF); SeaBIOS is not
+    /// available there. The provider still defaults `Bios` to `Seabios`, so set
+    /// `bios = "ovmf"` explicitly together with `cpu.architecture = "aarch64"`.
+    /// `efi_disk.type` is ignored on `Aarch64`.
+    /// 
+    /// ## Pool Management
+    /// 
+    /// The provider automatically detects VM pool membership using a two-step process:
+    /// 
+    /// 1. **Primary Detection**: Checks the VM's direct configuration for pool assignment
+    /// 2. **Fallback Detection**: If no pool is found, queries all available pools to determine membership
+    /// 
+    /// This ensures accurate state management and drift detection when VMs are moved between pools outside of Terraform.
+    /// 
+    /// ### Best Practices
+    /// 
+    /// - Always specify `PoolId` explicitly in your Terraform configuration when managing VM pool membership
+    /// - Use `pulumi preview` regularly to detect any manual changes to VM pool assignments
+    /// 
     /// ## Import
     /// 
     /// Instances can be imported using the `NodeName` and the `VmId`, e.g.,
@@ -376,7 +435,7 @@ namespace Pulumi.ProxmoxVE
 
         /// <summary>
         /// The efi disk device (required if `Bios` is set
-        /// to `Ovmf`)
+        /// to `Ovmf`). See Example: UEFI boot.
         /// </summary>
         [Output("efiDisk")]
         public Output<Outputs.VmLegacyEfiDisk?> EfiDisk { get; private set; } = null!;
@@ -840,7 +899,7 @@ namespace Pulumi.ProxmoxVE
 
         /// <summary>
         /// The efi disk device (required if `Bios` is set
-        /// to `Ovmf`)
+        /// to `Ovmf`). See Example: UEFI boot.
         /// </summary>
         [Input("efiDisk")]
         public Input<Inputs.VmLegacyEfiDiskArgs>? EfiDisk { get; set; }
@@ -1298,7 +1357,7 @@ namespace Pulumi.ProxmoxVE
 
         /// <summary>
         /// The efi disk device (required if `Bios` is set
-        /// to `Ovmf`)
+        /// to `Ovmf`). See Example: UEFI boot.
         /// </summary>
         [Input("efiDisk")]
         public Input<Inputs.VmLegacyEfiDiskGetArgs>? EfiDisk { get; set; }

@@ -39,7 +39,7 @@ public final class GetJobsJob {
      */
     private String id;
     /**
-     * @return When to send email notifications (always or failure).
+     * @return When to send email notifications (`always` or `failure`). Ignored by Proxmox VE unless `mailto` is set or the job uses the `legacy-sendmail` notification mode.
      * 
      */
     private String mailnotification;
@@ -131,7 +131,7 @@ public final class GetJobsJob {
         return this.id;
     }
     /**
-     * @return When to send email notifications (always or failure).
+     * @return When to send email notifications (`always` or `failure`). Ignored by Proxmox VE unless `mailto` is set or the job uses the `legacy-sendmail` notification mode.
      * 
      */
     public String mailnotification() {

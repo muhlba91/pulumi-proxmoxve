@@ -333,6 +333,77 @@ import javax.annotation.Nullable;
  * the `datastoreId` argument of the disks in the `disks` block to move the disks
  * to the correct datastore after the cloning and migrating succeeded.
  * 
+ * ## Example: UEFI boot
+ * 
+ * Set `bios = &#34;ovmf&#34;` and add an `efiDisk` block. The EFI disk stores the UEFI
+ * variables (boot entries, Secure Boot state). Without it, Proxmox VE starts the
+ * VM with a temporary variables file and those settings are lost on every stop
+ * and start.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import io.muehlbachler.pulumi.proxmoxve.VmLegacy;
+ * import io.muehlbachler.pulumi.proxmoxve.VmLegacyArgs;
+ * import com.pulumi.proxmoxve.inputs.VmLegacyEfiDiskArgs;
+ * import com.pulumi.proxmoxve.inputs.VmLegacyDiskArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var uefiVm = new VmLegacy("uefiVm", VmLegacyArgs.builder()
+ *             .name("terraform-provider-proxmox-uefi-vm")
+ *             .nodeName("first-node")
+ *             .bios("ovmf")
+ *             .efiDisk(VmLegacyEfiDiskArgs.builder()
+ *                 .datastoreId("local-lvm")
+ *                 .type("4m")
+ *                 .preEnrolledKeys(true)
+ *                 .build())
+ *             .disks(VmLegacyDiskArgs.builder()
+ *                 .datastoreId("local-lvm")
+ *                 .interface_("scsi0")
+ *                 .size(20)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * &gt; **arm64 hosts** always boot VMs through UEFI (AAVMF); SeaBIOS is not
+ * available there. The provider still defaults `bios` to `seabios`, so set
+ * `bios = &#34;ovmf&#34;` explicitly together with `cpu.architecture = &#34;aarch64&#34;`.
+ * `efi_disk.type` is ignored on `aarch64`.
+ * 
+ * ## Pool Management
+ * 
+ * The provider automatically detects VM pool membership using a two-step process:
+ * 
+ * 1. **Primary Detection**: Checks the VM&#39;s direct configuration for pool assignment
+ * 2. **Fallback Detection**: If no pool is found, queries all available pools to determine membership
+ * 
+ * This ensures accurate state management and drift detection when VMs are moved between pools outside of Terraform.
+ * 
+ * ### Best Practices
+ * 
+ * - Always specify `poolId` explicitly in your Terraform configuration when managing VM pool membership
+ * - Use `pulumi preview` regularly to detect any manual changes to VM pool assignments
+ * 
  * ## Import
  * 
  * Instances can be imported using the `nodeName` and the `vmId`, e.g.,
@@ -514,7 +585,7 @@ public class VmLegacy extends com.pulumi.resources.CustomResource {
     }
     /**
      * The efi disk device (required if `bios` is set
-     * to `ovmf`)
+     * to `ovmf`). See Example: UEFI boot.
      * 
      */
     @Export(name="efiDisk", refs={VmLegacyEfiDisk.class}, tree="[0]")
@@ -522,7 +593,7 @@ public class VmLegacy extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The efi disk device (required if `bios` is set
-     * to `ovmf`)
+     * to `ovmf`). See Example: UEFI boot.
      * 
      */
     public Output<Optional<VmLegacyEfiDisk>> efiDisk() {

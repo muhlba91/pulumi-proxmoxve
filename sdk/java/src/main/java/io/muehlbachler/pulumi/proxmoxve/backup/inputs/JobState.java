@@ -157,14 +157,14 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Email notification setting (always or failure).
+     * Email notification setting (`always` or `failure`). Deprecated by Proxmox VE in favour of the notification system: it is only honoured when `mailto` is set (notification mode `auto`) or the job uses the `legacy-sendmail` notification mode. Otherwise notifications are routed through the PVE notification system and this setting is ignored.
      * 
      */
     @Import(name="mailnotification")
     private @Nullable Output<String> mailnotification;
 
     /**
-     * @return Email notification setting (always or failure).
+     * @return Email notification setting (`always` or `failure`). Deprecated by Proxmox VE in favour of the notification system: it is only honoured when `mailto` is set (notification mode `auto`) or the job uses the `legacy-sendmail` notification mode. Otherwise notifications are routed through the PVE notification system and this setting is ignored.
      * 
      */
     public Optional<Output<String>> mailnotification() {
@@ -782,7 +782,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mailnotification Email notification setting (always or failure).
+         * @param mailnotification Email notification setting (`always` or `failure`). Deprecated by Proxmox VE in favour of the notification system: it is only honoured when `mailto` is set (notification mode `auto`) or the job uses the `legacy-sendmail` notification mode. Otherwise notifications are routed through the PVE notification system and this setting is ignored.
          * 
          * @return builder
          * 
@@ -793,7 +793,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mailnotification Email notification setting (always or failure).
+         * @param mailnotification Email notification setting (`always` or `failure`). Deprecated by Proxmox VE in favour of the notification system: it is only honoured when `mailto` is set (notification mode `auto`) or the job uses the `legacy-sendmail` notification mode. Otherwise notifications are routed through the PVE notification system and this setting is ignored.
          * 
          * @return builder
          * 

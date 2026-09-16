@@ -41,14 +41,14 @@ namespace Pulumi.ProxmoxVE.Sdn
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxSdnZonesAll"] = 
+        ///         ["dataProxmoxSdnZonesAll"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "zones", all.Apply(getZonesResult =&gt; getZonesResult.Zones) },
+        ///             ["zones"] = all.Apply(getZonesResult =&gt; getZonesResult.Zones),
         ///         },
-        ///         ["dataProxmoxSdnZonesFiltered"] = 
+        ///         ["dataProxmoxSdnZonesFiltered"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "evpnZones", evpnOnly.Apply(getZonesResult =&gt; getZonesResult.Zones) },
-        ///             { "simpleZones", simpleOnly.Apply(getZonesResult =&gt; getZonesResult.Zones) },
+        ///             ["evpnZones"] = evpnOnly.Apply(getZonesResult =&gt; getZonesResult.Zones),
+        ///             ["simpleZones"] = simpleOnly.Apply(getZonesResult =&gt; getZonesResult.Zones),
         ///         },
         ///     };
         /// });
@@ -87,14 +87,14 @@ namespace Pulumi.ProxmoxVE.Sdn
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxSdnZonesAll"] = 
+        ///         ["dataProxmoxSdnZonesAll"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "zones", all.Apply(getZonesResult =&gt; getZonesResult.Zones) },
+        ///             ["zones"] = all.Apply(getZonesResult =&gt; getZonesResult.Zones),
         ///         },
-        ///         ["dataProxmoxSdnZonesFiltered"] = 
+        ///         ["dataProxmoxSdnZonesFiltered"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "evpnZones", evpnOnly.Apply(getZonesResult =&gt; getZonesResult.Zones) },
-        ///             { "simpleZones", simpleOnly.Apply(getZonesResult =&gt; getZonesResult.Zones) },
+        ///             ["evpnZones"] = evpnOnly.Apply(getZonesResult =&gt; getZonesResult.Zones),
+        ///             ["simpleZones"] = simpleOnly.Apply(getZonesResult =&gt; getZonesResult.Zones),
         ///         },
         ///     };
         /// });
@@ -133,14 +133,14 @@ namespace Pulumi.ProxmoxVE.Sdn
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxSdnZonesAll"] = 
+        ///         ["dataProxmoxSdnZonesAll"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "zones", all.Apply(getZonesResult =&gt; getZonesResult.Zones) },
+        ///             ["zones"] = all.Apply(getZonesResult =&gt; getZonesResult.Zones),
         ///         },
-        ///         ["dataProxmoxSdnZonesFiltered"] = 
+        ///         ["dataProxmoxSdnZonesFiltered"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "evpnZones", evpnOnly.Apply(getZonesResult =&gt; getZonesResult.Zones) },
-        ///             { "simpleZones", simpleOnly.Apply(getZonesResult =&gt; getZonesResult.Zones) },
+        ///             ["evpnZones"] = evpnOnly.Apply(getZonesResult =&gt; getZonesResult.Zones),
+        ///             ["simpleZones"] = simpleOnly.Apply(getZonesResult =&gt; getZonesResult.Zones),
         ///         },
         ///     };
         /// });

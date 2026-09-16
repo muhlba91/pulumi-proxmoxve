@@ -71,7 +71,7 @@ type Job struct {
 	Ionice pulumi.IntOutput `pulumi:"ionice"`
 	// Maximum wait time in minutes for the global lock.
 	Lockwait pulumi.IntPtrOutput `pulumi:"lockwait"`
-	// Email notification setting (always or failure).
+	// Email notification setting (`always` or `failure`). Deprecated by Proxmox VE in favour of the notification system: it is only honoured when `mailto` is set (notification mode `auto`) or the job uses the `legacy-sendmail` notification mode. Otherwise notifications are routed through the PVE notification system and this setting is ignored.
 	Mailnotification pulumi.StringOutput `pulumi:"mailnotification"`
 	// A list of email addresses to send notifications to.
 	Mailtos pulumi.StringArrayOutput `pulumi:"mailtos"`
@@ -178,7 +178,7 @@ type jobState struct {
 	Ionice *int `pulumi:"ionice"`
 	// Maximum wait time in minutes for the global lock.
 	Lockwait *int `pulumi:"lockwait"`
-	// Email notification setting (always or failure).
+	// Email notification setting (`always` or `failure`). Deprecated by Proxmox VE in favour of the notification system: it is only honoured when `mailto` is set (notification mode `auto`) or the job uses the `legacy-sendmail` notification mode. Otherwise notifications are routed through the PVE notification system and this setting is ignored.
 	Mailnotification *string `pulumi:"mailnotification"`
 	// A list of email addresses to send notifications to.
 	Mailtos []string `pulumi:"mailtos"`
@@ -247,7 +247,7 @@ type JobState struct {
 	Ionice pulumi.IntPtrInput
 	// Maximum wait time in minutes for the global lock.
 	Lockwait pulumi.IntPtrInput
-	// Email notification setting (always or failure).
+	// Email notification setting (`always` or `failure`). Deprecated by Proxmox VE in favour of the notification system: it is only honoured when `mailto` is set (notification mode `auto`) or the job uses the `legacy-sendmail` notification mode. Otherwise notifications are routed through the PVE notification system and this setting is ignored.
 	Mailnotification pulumi.StringPtrInput
 	// A list of email addresses to send notifications to.
 	Mailtos pulumi.StringArrayInput
@@ -320,7 +320,7 @@ type jobArgs struct {
 	Ionice *int `pulumi:"ionice"`
 	// Maximum wait time in minutes for the global lock.
 	Lockwait *int `pulumi:"lockwait"`
-	// Email notification setting (always or failure).
+	// Email notification setting (`always` or `failure`). Deprecated by Proxmox VE in favour of the notification system: it is only honoured when `mailto` is set (notification mode `auto`) or the job uses the `legacy-sendmail` notification mode. Otherwise notifications are routed through the PVE notification system and this setting is ignored.
 	Mailnotification *string `pulumi:"mailnotification"`
 	// A list of email addresses to send notifications to.
 	Mailtos []string `pulumi:"mailtos"`
@@ -390,7 +390,7 @@ type JobArgs struct {
 	Ionice pulumi.IntPtrInput
 	// Maximum wait time in minutes for the global lock.
 	Lockwait pulumi.IntPtrInput
-	// Email notification setting (always or failure).
+	// Email notification setting (`always` or `failure`). Deprecated by Proxmox VE in favour of the notification system: it is only honoured when `mailto` is set (notification mode `auto`) or the job uses the `legacy-sendmail` notification mode. Otherwise notifications are routed through the PVE notification system and this setting is ignored.
 	Mailnotification pulumi.StringPtrInput
 	// A list of email addresses to send notifications to.
 	Mailtos pulumi.StringArrayInput
@@ -572,7 +572,7 @@ func (o JobOutput) Lockwait() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.IntPtrOutput { return v.Lockwait }).(pulumi.IntPtrOutput)
 }
 
-// Email notification setting (always or failure).
+// Email notification setting (`always` or `failure`). Deprecated by Proxmox VE in favour of the notification system: it is only honoured when `mailto` is set (notification mode `auto`) or the job uses the `legacy-sendmail` notification mode. Otherwise notifications are routed through the PVE notification system and this setting is ignored.
 func (o JobOutput) Mailnotification() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Mailnotification }).(pulumi.StringOutput)
 }

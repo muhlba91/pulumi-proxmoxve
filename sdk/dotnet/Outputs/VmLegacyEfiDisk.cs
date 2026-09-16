@@ -23,10 +23,11 @@ namespace Pulumi.ProxmoxVE.Outputs
         /// </summary>
         public readonly string? FileFormat;
         /// <summary>
-        /// Use am EFI vars template with
+        /// Use an EFI vars template with
         /// distribution-specific and Microsoft Standard keys enrolled, if used with
-        /// EFI type=`4m`. Ignored for VMs with cpu.architecture=`Aarch64` (defaults
-        /// to `False`).
+        /// EFI type=`4m`. For VMs with cpu.architecture=`Aarch64` this requires
+        /// `pve-edk2-firmware-aarch64` newer than `4.2025.05-2` on the host and is
+        /// ignored otherwise (defaults to `False`).
         /// </summary>
         public readonly bool? PreEnrolledKeys;
         /// <summary>

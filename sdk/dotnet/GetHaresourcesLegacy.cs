@@ -37,10 +37,10 @@ namespace Pulumi.ProxmoxVE
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxVirtualEnvironmentHaresources"] = 
+        ///         ["dataProxmoxVirtualEnvironmentHaresources"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "all", exampleAll.Apply(getHaresourcesLegacyResult =&gt; getHaresourcesLegacyResult.ResourceIds) },
-        ///             { "vms", exampleVm.Apply(getHaresourcesLegacyResult =&gt; getHaresourcesLegacyResult.ResourceIds) },
+        ///             ["all"] = exampleAll.Apply(getHaresourcesLegacyResult =&gt; getHaresourcesLegacyResult.ResourceIds),
+        ///             ["vms"] = exampleVm.Apply(getHaresourcesLegacyResult =&gt; getHaresourcesLegacyResult.ResourceIds),
         ///         },
         ///     };
         /// });
@@ -75,10 +75,10 @@ namespace Pulumi.ProxmoxVE
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxVirtualEnvironmentHaresources"] = 
+        ///         ["dataProxmoxVirtualEnvironmentHaresources"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "all", exampleAll.Apply(getHaresourcesLegacyResult =&gt; getHaresourcesLegacyResult.ResourceIds) },
-        ///             { "vms", exampleVm.Apply(getHaresourcesLegacyResult =&gt; getHaresourcesLegacyResult.ResourceIds) },
+        ///             ["all"] = exampleAll.Apply(getHaresourcesLegacyResult =&gt; getHaresourcesLegacyResult.ResourceIds),
+        ///             ["vms"] = exampleVm.Apply(getHaresourcesLegacyResult =&gt; getHaresourcesLegacyResult.ResourceIds),
         ///         },
         ///     };
         /// });
@@ -113,10 +113,10 @@ namespace Pulumi.ProxmoxVE
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxVirtualEnvironmentHaresources"] = 
+        ///         ["dataProxmoxVirtualEnvironmentHaresources"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "all", exampleAll.Apply(getHaresourcesLegacyResult =&gt; getHaresourcesLegacyResult.ResourceIds) },
-        ///             { "vms", exampleVm.Apply(getHaresourcesLegacyResult =&gt; getHaresourcesLegacyResult.ResourceIds) },
+        ///             ["all"] = exampleAll.Apply(getHaresourcesLegacyResult =&gt; getHaresourcesLegacyResult.ResourceIds),
+        ///             ["vms"] = exampleVm.Apply(getHaresourcesLegacyResult =&gt; getHaresourcesLegacyResult.ResourceIds),
         ///         },
         ///     };
         /// });

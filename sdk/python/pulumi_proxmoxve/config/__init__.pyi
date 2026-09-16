@@ -15,6 +15,11 @@ else:
 from .. import _utilities
 from . import outputs
 
+apiHeaders: Optional[str]
+"""
+Additional HTTP headers to send with every Proxmox VE API request. Useful when the API is behind an authenticating reverse proxy, e.g. Cloudflare Access. Headers managed by the provider or by the HTTP client, such as `Authorization`, are rejected. Can also be sourced from `PROXMOX_VE_API_HEADERS` as a comma-separated list of `Name=Value` pairs.
+"""
+
 apiToken: Optional[str]
 """
 The API token for the Proxmox VE API.

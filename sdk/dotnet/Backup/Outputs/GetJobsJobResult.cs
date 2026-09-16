@@ -34,7 +34,7 @@ namespace Pulumi.ProxmoxVE.Backup.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// When to send email notifications (always or failure).
+        /// When to send email notifications (`Always` or `Failure`). Ignored by Proxmox VE unless `Mailto` is set or the job uses the `legacy-sendmail` notification mode.
         /// </summary>
         public readonly string Mailnotification;
         /// <summary>

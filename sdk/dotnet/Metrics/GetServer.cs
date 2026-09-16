@@ -31,10 +31,10 @@ namespace Pulumi.ProxmoxVE.Metrics
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxMetricsServer"] = 
+        ///         ["dataProxmoxMetricsServer"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "server", example.Apply(getServerResult =&gt; getServerResult.Server) },
-        ///             { "port", example.Apply(getServerResult =&gt; getServerResult.Port) },
+        ///             ["server"] = example.Apply(getServerResult =&gt; getServerResult.Server),
+        ///             ["port"] = example.Apply(getServerResult =&gt; getServerResult.Port),
         ///         },
         ///     };
         /// });
@@ -63,10 +63,10 @@ namespace Pulumi.ProxmoxVE.Metrics
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxMetricsServer"] = 
+        ///         ["dataProxmoxMetricsServer"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "server", example.Apply(getServerResult =&gt; getServerResult.Server) },
-        ///             { "port", example.Apply(getServerResult =&gt; getServerResult.Port) },
+        ///             ["server"] = example.Apply(getServerResult =&gt; getServerResult.Server),
+        ///             ["port"] = example.Apply(getServerResult =&gt; getServerResult.Port),
         ///         },
         ///     };
         /// });
@@ -95,10 +95,10 @@ namespace Pulumi.ProxmoxVE.Metrics
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxMetricsServer"] = 
+        ///         ["dataProxmoxMetricsServer"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "server", example.Apply(getServerResult =&gt; getServerResult.Server) },
-        ///             { "port", example.Apply(getServerResult =&gt; getServerResult.Port) },
+        ///             ["server"] = example.Apply(getServerResult =&gt; getServerResult.Server),
+        ///             ["port"] = example.Apply(getServerResult =&gt; getServerResult.Port),
         ///         },
         ///     };
         /// });

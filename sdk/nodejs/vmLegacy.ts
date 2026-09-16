@@ -234,6 +234,53 @@ import * as utilities from "./utilities";
  * the `datastoreId` argument of the disks in the `disks` block to move the disks
  * to the correct datastore after the cloning and migrating succeeded.
  *
+ * ## Example: UEFI boot
+ *
+ * Set `bios = "ovmf"` and add an `efiDisk` block. The EFI disk stores the UEFI
+ * variables (boot entries, Secure Boot state). Without it, Proxmox VE starts the
+ * VM with a temporary variables file and those settings are lost on every stop
+ * and start.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const uefiVm = new proxmoxve.VmLegacy("uefi_vm", {
+ *     name: "terraform-provider-proxmox-uefi-vm",
+ *     nodeName: "first-node",
+ *     bios: "ovmf",
+ *     efiDisk: {
+ *         datastoreId: "local-lvm",
+ *         type: "4m",
+ *         preEnrolledKeys: true,
+ *     },
+ *     disks: [{
+ *         datastoreId: "local-lvm",
+ *         "interface": "scsi0",
+ *         size: 20,
+ *     }],
+ * });
+ * ```
+ *
+ * > **arm64 hosts** always boot VMs through UEFI (AAVMF); SeaBIOS is not
+ * available there. The provider still defaults `bios` to `seabios`, so set
+ * `bios = "ovmf"` explicitly together with `cpu.architecture = "aarch64"`.
+ * `efi_disk.type` is ignored on `aarch64`.
+ *
+ * ## Pool Management
+ *
+ * The provider automatically detects VM pool membership using a two-step process:
+ *
+ * 1. **Primary Detection**: Checks the VM's direct configuration for pool assignment
+ * 2. **Fallback Detection**: If no pool is found, queries all available pools to determine membership
+ *
+ * This ensures accurate state management and drift detection when VMs are moved between pools outside of Terraform.
+ *
+ * ### Best Practices
+ *
+ * - Always specify `poolId` explicitly in your Terraform configuration when managing VM pool membership
+ * - Use `pulumi preview` regularly to detect any manual changes to VM pool assignments
+ *
  * ## Import
  *
  * Instances can be imported using the `nodeName` and the `vmId`, e.g.,
@@ -320,7 +367,7 @@ export class VmLegacy extends pulumi.CustomResource {
     declare public readonly disks: pulumi.Output<outputs.VmLegacyDisk[] | undefined>;
     /**
      * The efi disk device (required if `bios` is set
-     * to `ovmf`)
+     * to `ovmf`). See Example: UEFI boot.
      */
     declare public readonly efiDisk: pulumi.Output<outputs.VmLegacyEfiDisk | undefined>;
     /**
@@ -756,7 +803,7 @@ export interface VmLegacyState {
     disks?: pulumi.Input<pulumi.Input<inputs.VmLegacyDisk>[] | undefined>;
     /**
      * The efi disk device (required if `bios` is set
-     * to `ovmf`)
+     * to `ovmf`). See Example: UEFI boot.
      */
     efiDisk?: pulumi.Input<inputs.VmLegacyEfiDisk | undefined>;
     /**
@@ -1047,7 +1094,7 @@ export interface VmLegacyArgs {
     disks?: pulumi.Input<pulumi.Input<inputs.VmLegacyDisk>[] | undefined>;
     /**
      * The efi disk device (required if `bios` is set
-     * to `ovmf`)
+     * to `ovmf`). See Example: UEFI boot.
      */
     efiDisk?: pulumi.Input<inputs.VmLegacyEfiDisk | undefined>;
     /**

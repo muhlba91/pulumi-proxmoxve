@@ -22,6 +22,13 @@ __config__ = pulumi.Config('proxmoxve')
 
 class _ExportableConfig(types.ModuleType):
     @_builtins.property
+    def api_headers(self) -> Optional[str]:
+        """
+        Additional HTTP headers to send with every Proxmox VE API request. Useful when the API is behind an authenticating reverse proxy, e.g. Cloudflare Access. Headers managed by the provider or by the HTTP client, such as `Authorization`, are rejected. Can also be sourced from `PROXMOX_VE_API_HEADERS` as a comma-separated list of `Name=Value` pairs.
+        """
+        return __config__.get('apiHeaders')
+
+    @_builtins.property
     def api_token(self) -> Optional[str]:
         """
         The API token for the Proxmox VE API.

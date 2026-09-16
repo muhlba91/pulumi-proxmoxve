@@ -10,6 +10,17 @@ declare var exports: any;
 const __config = new pulumi.Config("proxmoxve");
 
 /**
+ * Additional HTTP headers to send with every Proxmox VE API request. Useful when the API is behind an authenticating reverse proxy, e.g. Cloudflare Access. Headers managed by the provider or by the HTTP client, such as `Authorization`, are rejected. Can also be sourced from `PROXMOX_VE_API_HEADERS` as a comma-separated list of `Name=Value` pairs.
+ */
+export declare const apiHeaders: {[key: string]: string} | undefined;
+Object.defineProperty(exports, "apiHeaders", {
+    get() {
+        return __config.getObject<{[key: string]: string}>("apiHeaders");
+    },
+    enumerable: true,
+});
+
+/**
  * The API token for the Proxmox VE API.
  */
 export declare const apiToken: string | undefined;

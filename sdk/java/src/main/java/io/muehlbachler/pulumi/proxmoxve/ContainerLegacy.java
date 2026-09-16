@@ -291,6 +291,28 @@ public class ContainerLegacy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.cpu);
     }
     /**
+     * Whether to also delete
+     * disks on any enabled storage that carry the container ID but are not
+     * referenced in its configuration (defaults to `false`). Unlike the VM
+     * resource, this is opt-in for containers so that deliberately detached
+     * volumes are not removed on destroy.
+     * 
+     */
+    @Export(name="deleteUnreferencedDisksOnDestroy", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> deleteUnreferencedDisksOnDestroy;
+
+    /**
+     * @return Whether to also delete
+     * disks on any enabled storage that carry the container ID but are not
+     * referenced in its configuration (defaults to `false`). Unlike the VM
+     * resource, this is opt-in for containers so that deliberately detached
+     * volumes are not removed on destroy.
+     * 
+     */
+    public Output<Optional<Boolean>> deleteUnreferencedDisksOnDestroy() {
+        return Codegen.optional(this.deleteUnreferencedDisksOnDestroy);
+    }
+    /**
      * The description.
      * 
      */
@@ -545,6 +567,26 @@ public class ContainerLegacy extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> protection() {
         return Codegen.optional(this.protection);
+    }
+    /**
+     * Whether to purge the container from backup,
+     * replication and HA configurations on destroy (defaults to `true`). Proxmox
+     * refuses to delete a container that is still referenced by an HA resource or
+     * a replication job unless this is set.
+     * 
+     */
+    @Export(name="purgeOnDestroy", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> purgeOnDestroy;
+
+    /**
+     * @return Whether to purge the container from backup,
+     * replication and HA configurations on destroy (defaults to `true`). Proxmox
+     * refuses to delete a container that is still referenced by an HA resource or
+     * a replication job unless this is set.
+     * 
+     */
+    public Output<Optional<Boolean>> purgeOnDestroy() {
+        return Codegen.optional(this.purgeOnDestroy);
     }
     /**
      * Automatically start container when the host

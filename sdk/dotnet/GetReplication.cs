@@ -31,13 +31,13 @@ namespace Pulumi.ProxmoxVE
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxReplication"] = 
+        ///         ["dataProxmoxReplication"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "id", example.Apply(getReplicationResult =&gt; getReplicationResult.Id) },
-        ///             { "target", example.Apply(getReplicationResult =&gt; getReplicationResult.Target) },
-        ///             { "type", example.Apply(getReplicationResult =&gt; getReplicationResult.Type) },
-        ///             { "jobnum", example.Apply(getReplicationResult =&gt; getReplicationResult.Jobnum) },
-        ///             { "guest", example.Apply(getReplicationResult =&gt; getReplicationResult.Guest) },
+        ///             ["id"] = example.Apply(getReplicationResult =&gt; getReplicationResult.Id),
+        ///             ["target"] = example.Apply(getReplicationResult =&gt; getReplicationResult.Target),
+        ///             ["type"] = example.Apply(getReplicationResult =&gt; getReplicationResult.Type),
+        ///             ["jobnum"] = example.Apply(getReplicationResult =&gt; getReplicationResult.Jobnum),
+        ///             ["guest"] = example.Apply(getReplicationResult =&gt; getReplicationResult.Guest),
         ///         },
         ///     };
         /// });
@@ -66,13 +66,13 @@ namespace Pulumi.ProxmoxVE
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxReplication"] = 
+        ///         ["dataProxmoxReplication"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "id", example.Apply(getReplicationResult =&gt; getReplicationResult.Id) },
-        ///             { "target", example.Apply(getReplicationResult =&gt; getReplicationResult.Target) },
-        ///             { "type", example.Apply(getReplicationResult =&gt; getReplicationResult.Type) },
-        ///             { "jobnum", example.Apply(getReplicationResult =&gt; getReplicationResult.Jobnum) },
-        ///             { "guest", example.Apply(getReplicationResult =&gt; getReplicationResult.Guest) },
+        ///             ["id"] = example.Apply(getReplicationResult =&gt; getReplicationResult.Id),
+        ///             ["target"] = example.Apply(getReplicationResult =&gt; getReplicationResult.Target),
+        ///             ["type"] = example.Apply(getReplicationResult =&gt; getReplicationResult.Type),
+        ///             ["jobnum"] = example.Apply(getReplicationResult =&gt; getReplicationResult.Jobnum),
+        ///             ["guest"] = example.Apply(getReplicationResult =&gt; getReplicationResult.Guest),
         ///         },
         ///     };
         /// });
@@ -101,13 +101,13 @@ namespace Pulumi.ProxmoxVE
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxReplication"] = 
+        ///         ["dataProxmoxReplication"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "id", example.Apply(getReplicationResult =&gt; getReplicationResult.Id) },
-        ///             { "target", example.Apply(getReplicationResult =&gt; getReplicationResult.Target) },
-        ///             { "type", example.Apply(getReplicationResult =&gt; getReplicationResult.Type) },
-        ///             { "jobnum", example.Apply(getReplicationResult =&gt; getReplicationResult.Jobnum) },
-        ///             { "guest", example.Apply(getReplicationResult =&gt; getReplicationResult.Guest) },
+        ///             ["id"] = example.Apply(getReplicationResult =&gt; getReplicationResult.Id),
+        ///             ["target"] = example.Apply(getReplicationResult =&gt; getReplicationResult.Target),
+        ///             ["type"] = example.Apply(getReplicationResult =&gt; getReplicationResult.Type),
+        ///             ["jobnum"] = example.Apply(getReplicationResult =&gt; getReplicationResult.Jobnum),
+        ///             ["guest"] = example.Apply(getReplicationResult =&gt; getReplicationResult.Guest),
         ///         },
         ///     };
         /// });

@@ -3398,10 +3398,11 @@ class VmLegacyEfiDisk(dict):
         :param _builtins.str datastore_id: The identifier for the datastore to create
                the disk in (defaults to `local-lvm`).
         :param _builtins.str file_format: The file format (defaults to `raw`).
-        :param _builtins.bool pre_enrolled_keys: Use am EFI vars template with
+        :param _builtins.bool pre_enrolled_keys: Use an EFI vars template with
                distribution-specific and Microsoft Standard keys enrolled, if used with
-               EFI type=`4m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
-               to `false`).
+               EFI type=`4m`. For VMs with cpu.architecture=`aarch64` this requires
+               `pve-edk2-firmware-aarch64` newer than `4.2025.05-2` on the host and is
+               ignored otherwise (defaults to `false`).
         :param _builtins.str type: Size and type of the OVMF EFI disk. `4m` is newer and
                recommended, and required for Secure Boot. For backwards compatibility
                use `2m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
@@ -3437,10 +3438,11 @@ class VmLegacyEfiDisk(dict):
     @pulumi.getter(name="preEnrolledKeys")
     def pre_enrolled_keys(self) -> Optional[_builtins.bool]:
         """
-        Use am EFI vars template with
+        Use an EFI vars template with
         distribution-specific and Microsoft Standard keys enrolled, if used with
-        EFI type=`4m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
-        to `false`).
+        EFI type=`4m`. For VMs with cpu.architecture=`aarch64` this requires
+        `pve-edk2-firmware-aarch64` newer than `4.2025.05-2` on the host and is
+        ignored otherwise (defaults to `false`).
         """
         return pulumi.get(self, "pre_enrolled_keys")
 

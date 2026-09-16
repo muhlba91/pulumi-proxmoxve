@@ -336,7 +336,7 @@ type GetJobsJob struct {
 	Excludes []string `pulumi:"excludes"`
 	// Unique identifier of the backup job.
 	Id string `pulumi:"id"`
-	// When to send email notifications (always or failure).
+	// When to send email notifications (`always` or `failure`). Ignored by Proxmox VE unless `mailto` is set or the job uses the `legacy-sendmail` notification mode.
 	Mailnotification string `pulumi:"mailnotification"`
 	// List of email addresses for notifications.
 	Mailtos []string `pulumi:"mailtos"`
@@ -382,7 +382,7 @@ type GetJobsJobArgs struct {
 	Excludes pulumi.StringArrayInput `pulumi:"excludes"`
 	// Unique identifier of the backup job.
 	Id pulumi.StringInput `pulumi:"id"`
-	// When to send email notifications (always or failure).
+	// When to send email notifications (`always` or `failure`). Ignored by Proxmox VE unless `mailto` is set or the job uses the `legacy-sendmail` notification mode.
 	Mailnotification pulumi.StringInput `pulumi:"mailnotification"`
 	// List of email addresses for notifications.
 	Mailtos pulumi.StringArrayInput `pulumi:"mailtos"`
@@ -482,7 +482,7 @@ func (o GetJobsJobOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobsJob) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// When to send email notifications (always or failure).
+// When to send email notifications (`always` or `failure`). Ignored by Proxmox VE unless `mailto` is set or the job uses the `legacy-sendmail` notification mode.
 func (o GetJobsJobOutput) Mailnotification() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobsJob) string { return v.Mailnotification }).(pulumi.StringOutput)
 }

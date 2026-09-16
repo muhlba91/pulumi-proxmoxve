@@ -31,16 +31,16 @@ namespace Pulumi.ProxmoxVE.Sdn.Zone
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxSdnZoneVlan"] = 
+        ///         ["dataProxmoxSdnZoneVlan"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "id", example.Apply(getVlanResult =&gt; getVlanResult.Id) },
-        ///             { "nodes", example.Apply(getVlanResult =&gt; getVlanResult.Nodes) },
-        ///             { "bridge", example.Apply(getVlanResult =&gt; getVlanResult.Bridge) },
-        ///             { "mtu", example.Apply(getVlanResult =&gt; getVlanResult.Mtu) },
-        ///             { "dns", example.Apply(getVlanResult =&gt; getVlanResult.Dns) },
-        ///             { "dnsZone", example.Apply(getVlanResult =&gt; getVlanResult.DnsZone) },
-        ///             { "ipam", example.Apply(getVlanResult =&gt; getVlanResult.Ipam) },
-        ///             { "reverseDns", example.Apply(getVlanResult =&gt; getVlanResult.ReverseDns) },
+        ///             ["id"] = example.Apply(getVlanResult =&gt; getVlanResult.Id),
+        ///             ["nodes"] = example.Apply(getVlanResult =&gt; getVlanResult.Nodes),
+        ///             ["bridge"] = example.Apply(getVlanResult =&gt; getVlanResult.Bridge),
+        ///             ["mtu"] = example.Apply(getVlanResult =&gt; getVlanResult.Mtu),
+        ///             ["dns"] = example.Apply(getVlanResult =&gt; getVlanResult.Dns),
+        ///             ["dnsZone"] = example.Apply(getVlanResult =&gt; getVlanResult.DnsZone),
+        ///             ["ipam"] = example.Apply(getVlanResult =&gt; getVlanResult.Ipam),
+        ///             ["reverseDns"] = example.Apply(getVlanResult =&gt; getVlanResult.ReverseDns),
         ///         },
         ///     };
         /// });
@@ -69,16 +69,16 @@ namespace Pulumi.ProxmoxVE.Sdn.Zone
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxSdnZoneVlan"] = 
+        ///         ["dataProxmoxSdnZoneVlan"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "id", example.Apply(getVlanResult =&gt; getVlanResult.Id) },
-        ///             { "nodes", example.Apply(getVlanResult =&gt; getVlanResult.Nodes) },
-        ///             { "bridge", example.Apply(getVlanResult =&gt; getVlanResult.Bridge) },
-        ///             { "mtu", example.Apply(getVlanResult =&gt; getVlanResult.Mtu) },
-        ///             { "dns", example.Apply(getVlanResult =&gt; getVlanResult.Dns) },
-        ///             { "dnsZone", example.Apply(getVlanResult =&gt; getVlanResult.DnsZone) },
-        ///             { "ipam", example.Apply(getVlanResult =&gt; getVlanResult.Ipam) },
-        ///             { "reverseDns", example.Apply(getVlanResult =&gt; getVlanResult.ReverseDns) },
+        ///             ["id"] = example.Apply(getVlanResult =&gt; getVlanResult.Id),
+        ///             ["nodes"] = example.Apply(getVlanResult =&gt; getVlanResult.Nodes),
+        ///             ["bridge"] = example.Apply(getVlanResult =&gt; getVlanResult.Bridge),
+        ///             ["mtu"] = example.Apply(getVlanResult =&gt; getVlanResult.Mtu),
+        ///             ["dns"] = example.Apply(getVlanResult =&gt; getVlanResult.Dns),
+        ///             ["dnsZone"] = example.Apply(getVlanResult =&gt; getVlanResult.DnsZone),
+        ///             ["ipam"] = example.Apply(getVlanResult =&gt; getVlanResult.Ipam),
+        ///             ["reverseDns"] = example.Apply(getVlanResult =&gt; getVlanResult.ReverseDns),
         ///         },
         ///     };
         /// });
@@ -107,16 +107,16 @@ namespace Pulumi.ProxmoxVE.Sdn.Zone
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxSdnZoneVlan"] = 
+        ///         ["dataProxmoxSdnZoneVlan"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "id", example.Apply(getVlanResult =&gt; getVlanResult.Id) },
-        ///             { "nodes", example.Apply(getVlanResult =&gt; getVlanResult.Nodes) },
-        ///             { "bridge", example.Apply(getVlanResult =&gt; getVlanResult.Bridge) },
-        ///             { "mtu", example.Apply(getVlanResult =&gt; getVlanResult.Mtu) },
-        ///             { "dns", example.Apply(getVlanResult =&gt; getVlanResult.Dns) },
-        ///             { "dnsZone", example.Apply(getVlanResult =&gt; getVlanResult.DnsZone) },
-        ///             { "ipam", example.Apply(getVlanResult =&gt; getVlanResult.Ipam) },
-        ///             { "reverseDns", example.Apply(getVlanResult =&gt; getVlanResult.ReverseDns) },
+        ///             ["id"] = example.Apply(getVlanResult =&gt; getVlanResult.Id),
+        ///             ["nodes"] = example.Apply(getVlanResult =&gt; getVlanResult.Nodes),
+        ///             ["bridge"] = example.Apply(getVlanResult =&gt; getVlanResult.Bridge),
+        ///             ["mtu"] = example.Apply(getVlanResult =&gt; getVlanResult.Mtu),
+        ///             ["dns"] = example.Apply(getVlanResult =&gt; getVlanResult.Dns),
+        ///             ["dnsZone"] = example.Apply(getVlanResult =&gt; getVlanResult.DnsZone),
+        ///             ["ipam"] = example.Apply(getVlanResult =&gt; getVlanResult.Ipam),
+        ///             ["reverseDns"] = example.Apply(getVlanResult =&gt; getVlanResult.ReverseDns),
         ///         },
         ///     };
         /// });

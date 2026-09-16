@@ -31,16 +31,16 @@ namespace Pulumi.ProxmoxVE.Sdn.Zone
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxSdnZoneVxlan"] = 
+        ///         ["dataProxmoxSdnZoneVxlan"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "id", example.Apply(getVxlanResult =&gt; getVxlanResult.Id) },
-        ///             { "nodes", example.Apply(getVxlanResult =&gt; getVxlanResult.Nodes) },
-        ///             { "peers", example.Apply(getVxlanResult =&gt; getVxlanResult.Peers) },
-        ///             { "mtu", example.Apply(getVxlanResult =&gt; getVxlanResult.Mtu) },
-        ///             { "dns", example.Apply(getVxlanResult =&gt; getVxlanResult.Dns) },
-        ///             { "dnsZone", example.Apply(getVxlanResult =&gt; getVxlanResult.DnsZone) },
-        ///             { "ipam", example.Apply(getVxlanResult =&gt; getVxlanResult.Ipam) },
-        ///             { "reverseDns", example.Apply(getVxlanResult =&gt; getVxlanResult.ReverseDns) },
+        ///             ["id"] = example.Apply(getVxlanResult =&gt; getVxlanResult.Id),
+        ///             ["nodes"] = example.Apply(getVxlanResult =&gt; getVxlanResult.Nodes),
+        ///             ["peers"] = example.Apply(getVxlanResult =&gt; getVxlanResult.Peers),
+        ///             ["mtu"] = example.Apply(getVxlanResult =&gt; getVxlanResult.Mtu),
+        ///             ["dns"] = example.Apply(getVxlanResult =&gt; getVxlanResult.Dns),
+        ///             ["dnsZone"] = example.Apply(getVxlanResult =&gt; getVxlanResult.DnsZone),
+        ///             ["ipam"] = example.Apply(getVxlanResult =&gt; getVxlanResult.Ipam),
+        ///             ["reverseDns"] = example.Apply(getVxlanResult =&gt; getVxlanResult.ReverseDns),
         ///         },
         ///     };
         /// });
@@ -69,16 +69,16 @@ namespace Pulumi.ProxmoxVE.Sdn.Zone
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxSdnZoneVxlan"] = 
+        ///         ["dataProxmoxSdnZoneVxlan"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "id", example.Apply(getVxlanResult =&gt; getVxlanResult.Id) },
-        ///             { "nodes", example.Apply(getVxlanResult =&gt; getVxlanResult.Nodes) },
-        ///             { "peers", example.Apply(getVxlanResult =&gt; getVxlanResult.Peers) },
-        ///             { "mtu", example.Apply(getVxlanResult =&gt; getVxlanResult.Mtu) },
-        ///             { "dns", example.Apply(getVxlanResult =&gt; getVxlanResult.Dns) },
-        ///             { "dnsZone", example.Apply(getVxlanResult =&gt; getVxlanResult.DnsZone) },
-        ///             { "ipam", example.Apply(getVxlanResult =&gt; getVxlanResult.Ipam) },
-        ///             { "reverseDns", example.Apply(getVxlanResult =&gt; getVxlanResult.ReverseDns) },
+        ///             ["id"] = example.Apply(getVxlanResult =&gt; getVxlanResult.Id),
+        ///             ["nodes"] = example.Apply(getVxlanResult =&gt; getVxlanResult.Nodes),
+        ///             ["peers"] = example.Apply(getVxlanResult =&gt; getVxlanResult.Peers),
+        ///             ["mtu"] = example.Apply(getVxlanResult =&gt; getVxlanResult.Mtu),
+        ///             ["dns"] = example.Apply(getVxlanResult =&gt; getVxlanResult.Dns),
+        ///             ["dnsZone"] = example.Apply(getVxlanResult =&gt; getVxlanResult.DnsZone),
+        ///             ["ipam"] = example.Apply(getVxlanResult =&gt; getVxlanResult.Ipam),
+        ///             ["reverseDns"] = example.Apply(getVxlanResult =&gt; getVxlanResult.ReverseDns),
         ///         },
         ///     };
         /// });
@@ -107,16 +107,16 @@ namespace Pulumi.ProxmoxVE.Sdn.Zone
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxSdnZoneVxlan"] = 
+        ///         ["dataProxmoxSdnZoneVxlan"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "id", example.Apply(getVxlanResult =&gt; getVxlanResult.Id) },
-        ///             { "nodes", example.Apply(getVxlanResult =&gt; getVxlanResult.Nodes) },
-        ///             { "peers", example.Apply(getVxlanResult =&gt; getVxlanResult.Peers) },
-        ///             { "mtu", example.Apply(getVxlanResult =&gt; getVxlanResult.Mtu) },
-        ///             { "dns", example.Apply(getVxlanResult =&gt; getVxlanResult.Dns) },
-        ///             { "dnsZone", example.Apply(getVxlanResult =&gt; getVxlanResult.DnsZone) },
-        ///             { "ipam", example.Apply(getVxlanResult =&gt; getVxlanResult.Ipam) },
-        ///             { "reverseDns", example.Apply(getVxlanResult =&gt; getVxlanResult.ReverseDns) },
+        ///             ["id"] = example.Apply(getVxlanResult =&gt; getVxlanResult.Id),
+        ///             ["nodes"] = example.Apply(getVxlanResult =&gt; getVxlanResult.Nodes),
+        ///             ["peers"] = example.Apply(getVxlanResult =&gt; getVxlanResult.Peers),
+        ///             ["mtu"] = example.Apply(getVxlanResult =&gt; getVxlanResult.Mtu),
+        ///             ["dns"] = example.Apply(getVxlanResult =&gt; getVxlanResult.Dns),
+        ///             ["dnsZone"] = example.Apply(getVxlanResult =&gt; getVxlanResult.DnsZone),
+        ///             ["ipam"] = example.Apply(getVxlanResult =&gt; getVxlanResult.Ipam),
+        ///             ["reverseDns"] = example.Apply(getVxlanResult =&gt; getVxlanResult.ReverseDns),
         ///         },
         ///     };
         /// });

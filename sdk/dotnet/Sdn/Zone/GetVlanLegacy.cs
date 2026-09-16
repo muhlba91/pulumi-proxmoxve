@@ -33,16 +33,16 @@ namespace Pulumi.ProxmoxVE.Sdn.Zone
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxVirtualEnvironmentSdnZoneVlan"] = 
+        ///         ["dataProxmoxVirtualEnvironmentSdnZoneVlan"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "id", example.Apply(getVlanLegacyResult =&gt; getVlanLegacyResult.Id) },
-        ///             { "nodes", example.Apply(getVlanLegacyResult =&gt; getVlanLegacyResult.Nodes) },
-        ///             { "bridge", example.Apply(getVlanLegacyResult =&gt; getVlanLegacyResult.Bridge) },
-        ///             { "mtu", example.Apply(getVlanLegacyResult =&gt; getVlanLegacyResult.Mtu) },
-        ///             { "dns", example.Apply(getVlanLegacyResult =&gt; getVlanLegacyResult.Dns) },
-        ///             { "dnsZone", example.Apply(getVlanLegacyResult =&gt; getVlanLegacyResult.DnsZone) },
-        ///             { "ipam", example.Apply(getVlanLegacyResult =&gt; getVlanLegacyResult.Ipam) },
-        ///             { "reverseDns", example.Apply(getVlanLegacyResult =&gt; getVlanLegacyResult.ReverseDns) },
+        ///             ["id"] = example.Apply(getVlanLegacyResult =&gt; getVlanLegacyResult.Id),
+        ///             ["nodes"] = example.Apply(getVlanLegacyResult =&gt; getVlanLegacyResult.Nodes),
+        ///             ["bridge"] = example.Apply(getVlanLegacyResult =&gt; getVlanLegacyResult.Bridge),
+        ///             ["mtu"] = example.Apply(getVlanLegacyResult =&gt; getVlanLegacyResult.Mtu),
+        ///             ["dns"] = example.Apply(getVlanLegacyResult =&gt; getVlanLegacyResult.Dns),
+        ///             ["dnsZone"] = example.Apply(getVlanLegacyResult =&gt; getVlanLegacyResult.DnsZone),
+        ///             ["ipam"] = example.Apply(getVlanLegacyResult =&gt; getVlanLegacyResult.Ipam),
+        ///             ["reverseDns"] = example.Apply(getVlanLegacyResult =&gt; getVlanLegacyResult.ReverseDns),
         ///         },
         ///     };
         /// });
@@ -73,16 +73,16 @@ namespace Pulumi.ProxmoxVE.Sdn.Zone
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxVirtualEnvironmentSdnZoneVlan"] = 
+        ///         ["dataProxmoxVirtualEnvironmentSdnZoneVlan"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "id", example.Apply(getVlanLegacyResult =&gt; getVlanLegacyResult.Id) },
-        ///             { "nodes", example.Apply(getVlanLegacyResult =&gt; getVlanLegacyResult.Nodes) },
-        ///             { "bridge", example.Apply(getVlanLegacyResult =&gt; getVlanLegacyResult.Bridge) },
-        ///             { "mtu", example.Apply(getVlanLegacyResult =&gt; getVlanLegacyResult.Mtu) },
-        ///             { "dns", example.Apply(getVlanLegacyResult =&gt; getVlanLegacyResult.Dns) },
-        ///             { "dnsZone", example.Apply(getVlanLegacyResult =&gt; getVlanLegacyResult.DnsZone) },
-        ///             { "ipam", example.Apply(getVlanLegacyResult =&gt; getVlanLegacyResult.Ipam) },
-        ///             { "reverseDns", example.Apply(getVlanLegacyResult =&gt; getVlanLegacyResult.ReverseDns) },
+        ///             ["id"] = example.Apply(getVlanLegacyResult =&gt; getVlanLegacyResult.Id),
+        ///             ["nodes"] = example.Apply(getVlanLegacyResult =&gt; getVlanLegacyResult.Nodes),
+        ///             ["bridge"] = example.Apply(getVlanLegacyResult =&gt; getVlanLegacyResult.Bridge),
+        ///             ["mtu"] = example.Apply(getVlanLegacyResult =&gt; getVlanLegacyResult.Mtu),
+        ///             ["dns"] = example.Apply(getVlanLegacyResult =&gt; getVlanLegacyResult.Dns),
+        ///             ["dnsZone"] = example.Apply(getVlanLegacyResult =&gt; getVlanLegacyResult.DnsZone),
+        ///             ["ipam"] = example.Apply(getVlanLegacyResult =&gt; getVlanLegacyResult.Ipam),
+        ///             ["reverseDns"] = example.Apply(getVlanLegacyResult =&gt; getVlanLegacyResult.ReverseDns),
         ///         },
         ///     };
         /// });
@@ -113,16 +113,16 @@ namespace Pulumi.ProxmoxVE.Sdn.Zone
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxVirtualEnvironmentSdnZoneVlan"] = 
+        ///         ["dataProxmoxVirtualEnvironmentSdnZoneVlan"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "id", example.Apply(getVlanLegacyResult =&gt; getVlanLegacyResult.Id) },
-        ///             { "nodes", example.Apply(getVlanLegacyResult =&gt; getVlanLegacyResult.Nodes) },
-        ///             { "bridge", example.Apply(getVlanLegacyResult =&gt; getVlanLegacyResult.Bridge) },
-        ///             { "mtu", example.Apply(getVlanLegacyResult =&gt; getVlanLegacyResult.Mtu) },
-        ///             { "dns", example.Apply(getVlanLegacyResult =&gt; getVlanLegacyResult.Dns) },
-        ///             { "dnsZone", example.Apply(getVlanLegacyResult =&gt; getVlanLegacyResult.DnsZone) },
-        ///             { "ipam", example.Apply(getVlanLegacyResult =&gt; getVlanLegacyResult.Ipam) },
-        ///             { "reverseDns", example.Apply(getVlanLegacyResult =&gt; getVlanLegacyResult.ReverseDns) },
+        ///             ["id"] = example.Apply(getVlanLegacyResult =&gt; getVlanLegacyResult.Id),
+        ///             ["nodes"] = example.Apply(getVlanLegacyResult =&gt; getVlanLegacyResult.Nodes),
+        ///             ["bridge"] = example.Apply(getVlanLegacyResult =&gt; getVlanLegacyResult.Bridge),
+        ///             ["mtu"] = example.Apply(getVlanLegacyResult =&gt; getVlanLegacyResult.Mtu),
+        ///             ["dns"] = example.Apply(getVlanLegacyResult =&gt; getVlanLegacyResult.Dns),
+        ///             ["dnsZone"] = example.Apply(getVlanLegacyResult =&gt; getVlanLegacyResult.DnsZone),
+        ///             ["ipam"] = example.Apply(getVlanLegacyResult =&gt; getVlanLegacyResult.Ipam),
+        ///             ["reverseDns"] = example.Apply(getVlanLegacyResult =&gt; getVlanLegacyResult.ReverseDns),
         ///         },
         ///     };
         /// });

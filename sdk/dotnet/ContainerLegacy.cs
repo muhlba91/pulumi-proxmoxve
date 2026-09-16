@@ -229,6 +229,16 @@ namespace Pulumi.ProxmoxVE
         public Output<Outputs.ContainerLegacyCpu?> Cpu { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to also delete
+        /// disks on any enabled storage that carry the container ID but are not
+        /// referenced in its configuration (defaults to `False`). Unlike the VM
+        /// resource, this is opt-in for containers so that deliberately detached
+        /// volumes are not removed on destroy.
+        /// </summary>
+        [Output("deleteUnreferencedDisksOnDestroy")]
+        public Output<bool?> DeleteUnreferencedDisksOnDestroy { get; private set; } = null!;
+
+        /// <summary>
         /// The description.
         /// </summary>
         [Output("description")]
@@ -338,6 +348,15 @@ namespace Pulumi.ProxmoxVE
         /// </summary>
         [Output("protection")]
         public Output<bool?> Protection { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to purge the container from backup,
+        /// replication and HA configurations on destroy (defaults to `True`). Proxmox
+        /// refuses to delete a container that is still referenced by an HA resource or
+        /// a replication job unless this is set.
+        /// </summary>
+        [Output("purgeOnDestroy")]
+        public Output<bool?> PurgeOnDestroy { get; private set; } = null!;
 
         /// <summary>
         /// Automatically start container when the host
@@ -488,6 +507,16 @@ namespace Pulumi.ProxmoxVE
         public Input<Inputs.ContainerLegacyCpuArgs>? Cpu { get; set; }
 
         /// <summary>
+        /// Whether to also delete
+        /// disks on any enabled storage that carry the container ID but are not
+        /// referenced in its configuration (defaults to `False`). Unlike the VM
+        /// resource, this is opt-in for containers so that deliberately detached
+        /// volumes are not removed on destroy.
+        /// </summary>
+        [Input("deleteUnreferencedDisksOnDestroy")]
+        public Input<bool>? DeleteUnreferencedDisksOnDestroy { get; set; }
+
+        /// <summary>
         /// The description.
         /// </summary>
         [Input("description")]
@@ -617,6 +646,15 @@ namespace Pulumi.ProxmoxVE
         public Input<bool>? Protection { get; set; }
 
         /// <summary>
+        /// Whether to purge the container from backup,
+        /// replication and HA configurations on destroy (defaults to `True`). Proxmox
+        /// refuses to delete a container that is still referenced by an HA resource or
+        /// a replication job unless this is set.
+        /// </summary>
+        [Input("purgeOnDestroy")]
+        public Input<bool>? PurgeOnDestroy { get; set; }
+
+        /// <summary>
         /// Automatically start container when the host
         /// system boots (defaults to `True`).
         /// </summary>
@@ -730,6 +768,16 @@ namespace Pulumi.ProxmoxVE
         /// </summary>
         [Input("cpu")]
         public Input<Inputs.ContainerLegacyCpuGetArgs>? Cpu { get; set; }
+
+        /// <summary>
+        /// Whether to also delete
+        /// disks on any enabled storage that carry the container ID but are not
+        /// referenced in its configuration (defaults to `False`). Unlike the VM
+        /// resource, this is opt-in for containers so that deliberately detached
+        /// volumes are not removed on destroy.
+        /// </summary>
+        [Input("deleteUnreferencedDisksOnDestroy")]
+        public Input<bool>? DeleteUnreferencedDisksOnDestroy { get; set; }
 
         /// <summary>
         /// The description.
@@ -883,6 +931,15 @@ namespace Pulumi.ProxmoxVE
         /// </summary>
         [Input("protection")]
         public Input<bool>? Protection { get; set; }
+
+        /// <summary>
+        /// Whether to purge the container from backup,
+        /// replication and HA configurations on destroy (defaults to `True`). Proxmox
+        /// refuses to delete a container that is still referenced by an HA resource or
+        /// a replication job unless this is set.
+        /// </summary>
+        [Input("purgeOnDestroy")]
+        public Input<bool>? PurgeOnDestroy { get; set; }
 
         /// <summary>
         /// Automatically start container when the host

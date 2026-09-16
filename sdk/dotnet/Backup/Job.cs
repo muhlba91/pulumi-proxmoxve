@@ -99,7 +99,7 @@ namespace Pulumi.ProxmoxVE.Backup
         public Output<int?> Lockwait { get; private set; } = null!;
 
         /// <summary>
-        /// Email notification setting (always or failure).
+        /// Email notification setting (`Always` or `Failure`). Deprecated by Proxmox VE in favour of the notification system: it is only honoured when `Mailto` is set (notification mode `Auto`) or the job uses the `legacy-sendmail` notification mode. Otherwise notifications are routed through the PVE notification system and this setting is ignored.
         /// </summary>
         [Output("mailnotification")]
         public Output<string> Mailnotification { get; private set; } = null!;
@@ -356,7 +356,7 @@ namespace Pulumi.ProxmoxVE.Backup
         public Input<int>? Lockwait { get; set; }
 
         /// <summary>
-        /// Email notification setting (always or failure).
+        /// Email notification setting (`Always` or `Failure`). Deprecated by Proxmox VE in favour of the notification system: it is only honoured when `Mailto` is set (notification mode `Auto`) or the job uses the `legacy-sendmail` notification mode. Otherwise notifications are routed through the PVE notification system and this setting is ignored.
         /// </summary>
         [Input("mailnotification")]
         public Input<string>? Mailnotification { get; set; }
@@ -592,7 +592,7 @@ namespace Pulumi.ProxmoxVE.Backup
         public Input<int>? Lockwait { get; set; }
 
         /// <summary>
-        /// Email notification setting (always or failure).
+        /// Email notification setting (`Always` or `Failure`). Deprecated by Proxmox VE in favour of the notification system: it is only honoured when `Mailto` is set (notification mode `Auto`) or the job uses the `legacy-sendmail` notification mode. Otherwise notifications are routed through the PVE notification system and this setting is ignored.
         /// </summary>
         [Input("mailnotification")]
         public Input<string>? Mailnotification { get; set; }

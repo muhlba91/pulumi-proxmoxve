@@ -30,11 +30,11 @@ namespace Pulumi.ProxmoxVE
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxVirtualEnvironmentVersion"] = 
+        ///         ["dataProxmoxVirtualEnvironmentVersion"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "release", example.Apply(getVersionLegacyResult =&gt; getVersionLegacyResult.Release) },
-        ///             { "repositoryId", example.Apply(getVersionLegacyResult =&gt; getVersionLegacyResult.RepositoryId) },
-        ///             { "version", example.Apply(getVersionLegacyResult =&gt; getVersionLegacyResult.Version) },
+        ///             ["release"] = example.Apply(getVersionLegacyResult =&gt; getVersionLegacyResult.Release),
+        ///             ["repositoryId"] = example.Apply(getVersionLegacyResult =&gt; getVersionLegacyResult.RepositoryId),
+        ///             ["version"] = example.Apply(getVersionLegacyResult =&gt; getVersionLegacyResult.Version),
         ///         },
         ///     };
         /// });
@@ -62,11 +62,11 @@ namespace Pulumi.ProxmoxVE
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxVirtualEnvironmentVersion"] = 
+        ///         ["dataProxmoxVirtualEnvironmentVersion"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "release", example.Apply(getVersionLegacyResult =&gt; getVersionLegacyResult.Release) },
-        ///             { "repositoryId", example.Apply(getVersionLegacyResult =&gt; getVersionLegacyResult.RepositoryId) },
-        ///             { "version", example.Apply(getVersionLegacyResult =&gt; getVersionLegacyResult.Version) },
+        ///             ["release"] = example.Apply(getVersionLegacyResult =&gt; getVersionLegacyResult.Release),
+        ///             ["repositoryId"] = example.Apply(getVersionLegacyResult =&gt; getVersionLegacyResult.RepositoryId),
+        ///             ["version"] = example.Apply(getVersionLegacyResult =&gt; getVersionLegacyResult.Version),
         ///         },
         ///     };
         /// });
@@ -94,11 +94,11 @@ namespace Pulumi.ProxmoxVE
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxVirtualEnvironmentVersion"] = 
+        ///         ["dataProxmoxVirtualEnvironmentVersion"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "release", example.Apply(getVersionLegacyResult =&gt; getVersionLegacyResult.Release) },
-        ///             { "repositoryId", example.Apply(getVersionLegacyResult =&gt; getVersionLegacyResult.RepositoryId) },
-        ///             { "version", example.Apply(getVersionLegacyResult =&gt; getVersionLegacyResult.Version) },
+        ///             ["release"] = example.Apply(getVersionLegacyResult =&gt; getVersionLegacyResult.Release),
+        ///             ["repositoryId"] = example.Apply(getVersionLegacyResult =&gt; getVersionLegacyResult.RepositoryId),
+        ///             ["version"] = example.Apply(getVersionLegacyResult =&gt; getVersionLegacyResult.Version),
         ///         },
         ///     };
         /// });

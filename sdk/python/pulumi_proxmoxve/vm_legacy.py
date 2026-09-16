@@ -97,7 +97,7 @@ class VmLegacyArgs:
         :param pulumi.Input[_builtins.str] description: The description.
         :param pulumi.Input[Sequence[pulumi.Input['VmLegacyDiskArgs']]] disks: A disk (multiple blocks supported).
         :param pulumi.Input['VmLegacyEfiDiskArgs'] efi_disk: The efi disk device (required if `bios` is set
-               to `ovmf`)
+               to `ovmf`). See Example: UEFI boot.
         :param pulumi.Input[_builtins.str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
         :param pulumi.Input[Sequence[pulumi.Input['VmLegacyHostpciArgs']]] hostpcis: A host PCI device mapping (multiple blocks supported).
         :param pulumi.Input[_builtins.str] hotplug: Selectively enable hotplug features. Use `0` to
@@ -458,7 +458,7 @@ class VmLegacyArgs:
     def efi_disk(self) -> pulumi.Input[Optional['VmLegacyEfiDiskArgs']]:
         """
         The efi disk device (required if `bios` is set
-        to `ovmf`)
+        to `ovmf`). See Example: UEFI boot.
         """
         return pulumi.get(self, "efi_disk")
 
@@ -1110,7 +1110,7 @@ class _VmLegacyState:
         :param pulumi.Input[_builtins.str] description: The description.
         :param pulumi.Input[Sequence[pulumi.Input['VmLegacyDiskArgs']]] disks: A disk (multiple blocks supported).
         :param pulumi.Input['VmLegacyEfiDiskArgs'] efi_disk: The efi disk device (required if `bios` is set
-               to `ovmf`)
+               to `ovmf`). See Example: UEFI boot.
         :param pulumi.Input[_builtins.str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
         :param pulumi.Input[Sequence[pulumi.Input['VmLegacyHostpciArgs']]] hostpcis: A host PCI device mapping (multiple blocks supported).
         :param pulumi.Input[_builtins.str] hotplug: Selectively enable hotplug features. Use `0` to
@@ -1473,7 +1473,7 @@ class _VmLegacyState:
     def efi_disk(self) -> pulumi.Input[Optional['VmLegacyEfiDiskArgs']]:
         """
         The efi disk device (required if `bios` is set
-        to `ovmf`)
+        to `ovmf`). See Example: UEFI boot.
         """
         return pulumi.get(self, "efi_disk")
 
@@ -2378,6 +2378,52 @@ class VmLegacy(pulumi.CustomResource):
         the `datastore_id` argument of the disks in the `disks` block to move the disks
         to the correct datastore after the cloning and migrating succeeded.
 
+        ## Example: UEFI boot
+
+        Set `bios = "ovmf"` and add an `efi_disk` block. The EFI disk stores the UEFI
+        variables (boot entries, Secure Boot state). Without it, Proxmox VE starts the
+        VM with a temporary variables file and those settings are lost on every stop
+        and start.
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        uefi_vm = proxmoxve.VmLegacy("uefi_vm",
+            name="terraform-provider-proxmox-uefi-vm",
+            node_name="first-node",
+            bios="ovmf",
+            efi_disk={
+                "datastore_id": "local-lvm",
+                "type": "4m",
+                "pre_enrolled_keys": True,
+            },
+            disks=[{
+                "datastore_id": "local-lvm",
+                "interface": "scsi0",
+                "size": 20,
+            }])
+        ```
+
+        > **arm64 hosts** always boot VMs through UEFI (AAVMF); SeaBIOS is not
+        available there. The provider still defaults `bios` to `seabios`, so set
+        `bios = "ovmf"` explicitly together with `cpu.architecture = "aarch64"`.
+        `efi_disk.type` is ignored on `aarch64`.
+
+        ## Pool Management
+
+        The provider automatically detects VM pool membership using a two-step process:
+
+        1. **Primary Detection**: Checks the VM's direct configuration for pool assignment
+        2. **Fallback Detection**: If no pool is found, queries all available pools to determine membership
+
+        This ensures accurate state management and drift detection when VMs are moved between pools outside of Terraform.
+
+        ### Best Practices
+
+        - Always specify `pool_id` explicitly in your Terraform configuration when managing VM pool membership
+        - Use `pulumi preview` regularly to detect any manual changes to VM pool assignments
+
         ## Import
 
         Instances can be imported using the `node_name` and the `vm_id`, e.g.,
@@ -2402,7 +2448,7 @@ class VmLegacy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The description.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VmLegacyDiskArgs', 'VmLegacyDiskArgsDict', 'outputs.VmLegacyDisk']]]] disks: A disk (multiple blocks supported).
         :param pulumi.Input[Union['VmLegacyEfiDiskArgs', 'VmLegacyEfiDiskArgsDict', 'outputs.VmLegacyEfiDisk']] efi_disk: The efi disk device (required if `bios` is set
-               to `ovmf`)
+               to `ovmf`). See Example: UEFI boot.
         :param pulumi.Input[_builtins.str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
         :param pulumi.Input[Sequence[pulumi.Input[Union['VmLegacyHostpciArgs', 'VmLegacyHostpciArgsDict', 'outputs.VmLegacyHostpci']]]] hostpcis: A host PCI device mapping (multiple blocks supported).
         :param pulumi.Input[_builtins.str] hotplug: Selectively enable hotplug features. Use `0` to
@@ -2706,6 +2752,52 @@ class VmLegacy(pulumi.CustomResource):
         the `datastore_id` argument of the disks in the `disks` block to move the disks
         to the correct datastore after the cloning and migrating succeeded.
 
+        ## Example: UEFI boot
+
+        Set `bios = "ovmf"` and add an `efi_disk` block. The EFI disk stores the UEFI
+        variables (boot entries, Secure Boot state). Without it, Proxmox VE starts the
+        VM with a temporary variables file and those settings are lost on every stop
+        and start.
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        uefi_vm = proxmoxve.VmLegacy("uefi_vm",
+            name="terraform-provider-proxmox-uefi-vm",
+            node_name="first-node",
+            bios="ovmf",
+            efi_disk={
+                "datastore_id": "local-lvm",
+                "type": "4m",
+                "pre_enrolled_keys": True,
+            },
+            disks=[{
+                "datastore_id": "local-lvm",
+                "interface": "scsi0",
+                "size": 20,
+            }])
+        ```
+
+        > **arm64 hosts** always boot VMs through UEFI (AAVMF); SeaBIOS is not
+        available there. The provider still defaults `bios` to `seabios`, so set
+        `bios = "ovmf"` explicitly together with `cpu.architecture = "aarch64"`.
+        `efi_disk.type` is ignored on `aarch64`.
+
+        ## Pool Management
+
+        The provider automatically detects VM pool membership using a two-step process:
+
+        1. **Primary Detection**: Checks the VM's direct configuration for pool assignment
+        2. **Fallback Detection**: If no pool is found, queries all available pools to determine membership
+
+        This ensures accurate state management and drift detection when VMs are moved between pools outside of Terraform.
+
+        ### Best Practices
+
+        - Always specify `pool_id` explicitly in your Terraform configuration when managing VM pool membership
+        - Use `pulumi preview` regularly to detect any manual changes to VM pool assignments
+
         ## Import
 
         Instances can be imported using the `node_name` and the `vm_id`, e.g.,
@@ -2951,7 +3043,7 @@ class VmLegacy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The description.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VmLegacyDiskArgs', 'VmLegacyDiskArgsDict', 'outputs.VmLegacyDisk']]]] disks: A disk (multiple blocks supported).
         :param pulumi.Input[Union['VmLegacyEfiDiskArgs', 'VmLegacyEfiDiskArgsDict', 'outputs.VmLegacyEfiDisk']] efi_disk: The efi disk device (required if `bios` is set
-               to `ovmf`)
+               to `ovmf`). See Example: UEFI boot.
         :param pulumi.Input[_builtins.str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
         :param pulumi.Input[Sequence[pulumi.Input[Union['VmLegacyHostpciArgs', 'VmLegacyHostpciArgsDict', 'outputs.VmLegacyHostpci']]]] hostpcis: A host PCI device mapping (multiple blocks supported).
         :param pulumi.Input[_builtins.str] hotplug: Selectively enable hotplug features. Use `0` to
@@ -3207,7 +3299,7 @@ class VmLegacy(pulumi.CustomResource):
     def efi_disk(self) -> pulumi.Output[Optional['outputs.VmLegacyEfiDisk']]:
         """
         The efi disk device (required if `bios` is set
-        to `ovmf`)
+        to `ovmf`). See Example: UEFI boot.
         """
         return pulumi.get(self, "efi_disk")
 

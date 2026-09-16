@@ -29,9 +29,9 @@ namespace Pulumi.ProxmoxVE.Sdn
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxSdnVnetsAll"] = 
+        ///         ["dataProxmoxSdnVnetsAll"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "vnets", all.Apply(getVnetsResult =&gt; getVnetsResult.Vnets) },
+        ///             ["vnets"] = all.Apply(getVnetsResult =&gt; getVnetsResult.Vnets),
         ///         },
         ///     };
         /// });
@@ -58,9 +58,9 @@ namespace Pulumi.ProxmoxVE.Sdn
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxSdnVnetsAll"] = 
+        ///         ["dataProxmoxSdnVnetsAll"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "vnets", all.Apply(getVnetsResult =&gt; getVnetsResult.Vnets) },
+        ///             ["vnets"] = all.Apply(getVnetsResult =&gt; getVnetsResult.Vnets),
         ///         },
         ///     };
         /// });
@@ -87,9 +87,9 @@ namespace Pulumi.ProxmoxVE.Sdn
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxSdnVnetsAll"] = 
+        ///         ["dataProxmoxSdnVnetsAll"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "vnets", all.Apply(getVnetsResult =&gt; getVnetsResult.Vnets) },
+        ///             ["vnets"] = all.Apply(getVnetsResult =&gt; getVnetsResult.Vnets),
         ///         },
         ///     };
         /// });

@@ -25,6 +25,7 @@ class ContainerLegacyArgs:
                  clone: pulumi.Input[Optional['ContainerLegacyCloneArgs']] = None,
                  console: pulumi.Input[Optional['ContainerLegacyConsoleArgs']] = None,
                  cpu: pulumi.Input[Optional['ContainerLegacyCpuArgs']] = None,
+                 delete_unreferenced_disks_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  device_passthroughs: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerLegacyDevicePassthroughArgs']]]] = None,
                  disk: pulumi.Input[Optional['ContainerLegacyDiskArgs']] = None,
@@ -39,6 +40,7 @@ class ContainerLegacyArgs:
                  operating_system: pulumi.Input[Optional['ContainerLegacyOperatingSystemArgs']] = None,
                  pool_id: pulumi.Input[Optional[_builtins.str]] = None,
                  protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 purge_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  start_on_boot: pulumi.Input[Optional[_builtins.bool]] = None,
                  started: pulumi.Input[Optional[_builtins.bool]] = None,
                  startup: pulumi.Input[Optional['ContainerLegacyStartupArgs']] = None,
@@ -59,6 +61,11 @@ class ContainerLegacyArgs:
         :param pulumi.Input['ContainerLegacyCloneArgs'] clone: The cloning configuration.
         :param pulumi.Input['ContainerLegacyConsoleArgs'] console: The console configuration.
         :param pulumi.Input['ContainerLegacyCpuArgs'] cpu: The CPU configuration.
+        :param pulumi.Input[_builtins.bool] delete_unreferenced_disks_on_destroy: Whether to also delete
+               disks on any enabled storage that carry the container ID but are not
+               referenced in its configuration (defaults to `false`). Unlike the VM
+               resource, this is opt-in for containers so that deliberately detached
+               volumes are not removed on destroy.
         :param pulumi.Input[_builtins.str] description: The description.
         :param pulumi.Input[Sequence[pulumi.Input['ContainerLegacyDevicePassthroughArgs']]] device_passthroughs: Device to pass through to the container (multiple blocks supported).
         :param pulumi.Input['ContainerLegacyDiskArgs'] disk: The root filesystem (rootfs) storage configuration.
@@ -82,6 +89,10 @@ class ContainerLegacyArgs:
         :param pulumi.Input['ContainerLegacyOperatingSystemArgs'] operating_system: The Operating System configuration.
         :param pulumi.Input[_builtins.str] pool_id: The identifier for a pool to assign the container to.
         :param pulumi.Input[_builtins.bool] protection: Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
+        :param pulumi.Input[_builtins.bool] purge_on_destroy: Whether to purge the container from backup,
+               replication and HA configurations on destroy (defaults to `true`). Proxmox
+               refuses to delete a container that is still referenced by an HA resource or
+               a replication job unless this is set.
         :param pulumi.Input[_builtins.bool] start_on_boot: Automatically start container when the host
                system boots (defaults to `true`).
         :param pulumi.Input[_builtins.bool] started: Whether to start the container (defaults to `true`).
@@ -108,6 +119,8 @@ class ContainerLegacyArgs:
             pulumi.set(__self__, "console", console)
         if cpu is not None:
             pulumi.set(__self__, "cpu", cpu)
+        if delete_unreferenced_disks_on_destroy is not None:
+            pulumi.set(__self__, "delete_unreferenced_disks_on_destroy", delete_unreferenced_disks_on_destroy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if device_passthroughs is not None:
@@ -136,6 +149,8 @@ class ContainerLegacyArgs:
             pulumi.set(__self__, "pool_id", pool_id)
         if protection is not None:
             pulumi.set(__self__, "protection", protection)
+        if purge_on_destroy is not None:
+            pulumi.set(__self__, "purge_on_destroy", purge_on_destroy)
         if start_on_boot is not None:
             pulumi.set(__self__, "start_on_boot", start_on_boot)
         if started is not None:
@@ -213,6 +228,22 @@ class ContainerLegacyArgs:
     @cpu.setter
     def cpu(self, value: pulumi.Input[Optional['ContainerLegacyCpuArgs']]):
         pulumi.set(self, "cpu", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deleteUnreferencedDisksOnDestroy")
+    def delete_unreferenced_disks_on_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to also delete
+        disks on any enabled storage that carry the container ID but are not
+        referenced in its configuration (defaults to `false`). Unlike the VM
+        resource, this is opt-in for containers so that deliberately detached
+        volumes are not removed on destroy.
+        """
+        return pulumi.get(self, "delete_unreferenced_disks_on_destroy")
+
+    @delete_unreferenced_disks_on_destroy.setter
+    def delete_unreferenced_disks_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "delete_unreferenced_disks_on_destroy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -392,6 +423,21 @@ class ContainerLegacyArgs:
         pulumi.set(self, "protection", value)
 
     @_builtins.property
+    @pulumi.getter(name="purgeOnDestroy")
+    def purge_on_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to purge the container from backup,
+        replication and HA configurations on destroy (defaults to `true`). Proxmox
+        refuses to delete a container that is still referenced by an HA resource or
+        a replication job unless this is set.
+        """
+        return pulumi.get(self, "purge_on_destroy")
+
+    @purge_on_destroy.setter
+    def purge_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "purge_on_destroy", value)
+
+    @_builtins.property
     @pulumi.getter(name="startOnBoot")
     def start_on_boot(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -560,6 +606,7 @@ class _ContainerLegacyState:
                  clone: pulumi.Input[Optional['ContainerLegacyCloneArgs']] = None,
                  console: pulumi.Input[Optional['ContainerLegacyConsoleArgs']] = None,
                  cpu: pulumi.Input[Optional['ContainerLegacyCpuArgs']] = None,
+                 delete_unreferenced_disks_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  device_passthroughs: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerLegacyDevicePassthroughArgs']]]] = None,
                  disk: pulumi.Input[Optional['ContainerLegacyDiskArgs']] = None,
@@ -577,6 +624,7 @@ class _ContainerLegacyState:
                  operating_system: pulumi.Input[Optional['ContainerLegacyOperatingSystemArgs']] = None,
                  pool_id: pulumi.Input[Optional[_builtins.str]] = None,
                  protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 purge_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  start_on_boot: pulumi.Input[Optional[_builtins.bool]] = None,
                  started: pulumi.Input[Optional[_builtins.bool]] = None,
                  startup: pulumi.Input[Optional['ContainerLegacyStartupArgs']] = None,
@@ -596,6 +644,11 @@ class _ContainerLegacyState:
         :param pulumi.Input['ContainerLegacyCloneArgs'] clone: The cloning configuration.
         :param pulumi.Input['ContainerLegacyConsoleArgs'] console: The console configuration.
         :param pulumi.Input['ContainerLegacyCpuArgs'] cpu: The CPU configuration.
+        :param pulumi.Input[_builtins.bool] delete_unreferenced_disks_on_destroy: Whether to also delete
+               disks on any enabled storage that carry the container ID but are not
+               referenced in its configuration (defaults to `false`). Unlike the VM
+               resource, this is opt-in for containers so that deliberately detached
+               volumes are not removed on destroy.
         :param pulumi.Input[_builtins.str] description: The description.
         :param pulumi.Input[Sequence[pulumi.Input['ContainerLegacyDevicePassthroughArgs']]] device_passthroughs: Device to pass through to the container (multiple blocks supported).
         :param pulumi.Input['ContainerLegacyDiskArgs'] disk: The root filesystem (rootfs) storage configuration.
@@ -622,6 +675,10 @@ class _ContainerLegacyState:
         :param pulumi.Input['ContainerLegacyOperatingSystemArgs'] operating_system: The Operating System configuration.
         :param pulumi.Input[_builtins.str] pool_id: The identifier for a pool to assign the container to.
         :param pulumi.Input[_builtins.bool] protection: Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
+        :param pulumi.Input[_builtins.bool] purge_on_destroy: Whether to purge the container from backup,
+               replication and HA configurations on destroy (defaults to `true`). Proxmox
+               refuses to delete a container that is still referenced by an HA resource or
+               a replication job unless this is set.
         :param pulumi.Input[_builtins.bool] start_on_boot: Automatically start container when the host
                system boots (defaults to `true`).
         :param pulumi.Input[_builtins.bool] started: Whether to start the container (defaults to `true`).
@@ -647,6 +704,8 @@ class _ContainerLegacyState:
             pulumi.set(__self__, "console", console)
         if cpu is not None:
             pulumi.set(__self__, "cpu", cpu)
+        if delete_unreferenced_disks_on_destroy is not None:
+            pulumi.set(__self__, "delete_unreferenced_disks_on_destroy", delete_unreferenced_disks_on_destroy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if device_passthroughs is not None:
@@ -681,6 +740,8 @@ class _ContainerLegacyState:
             pulumi.set(__self__, "pool_id", pool_id)
         if protection is not None:
             pulumi.set(__self__, "protection", protection)
+        if purge_on_destroy is not None:
+            pulumi.set(__self__, "purge_on_destroy", purge_on_destroy)
         if start_on_boot is not None:
             pulumi.set(__self__, "start_on_boot", start_on_boot)
         if started is not None:
@@ -746,6 +807,22 @@ class _ContainerLegacyState:
     @cpu.setter
     def cpu(self, value: pulumi.Input[Optional['ContainerLegacyCpuArgs']]):
         pulumi.set(self, "cpu", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deleteUnreferencedDisksOnDestroy")
+    def delete_unreferenced_disks_on_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to also delete
+        disks on any enabled storage that carry the container ID but are not
+        referenced in its configuration (defaults to `false`). Unlike the VM
+        resource, this is opt-in for containers so that deliberately detached
+        volumes are not removed on destroy.
+        """
+        return pulumi.get(self, "delete_unreferenced_disks_on_destroy")
+
+    @delete_unreferenced_disks_on_destroy.setter
+    def delete_unreferenced_disks_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "delete_unreferenced_disks_on_destroy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -961,6 +1038,21 @@ class _ContainerLegacyState:
         pulumi.set(self, "protection", value)
 
     @_builtins.property
+    @pulumi.getter(name="purgeOnDestroy")
+    def purge_on_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to purge the container from backup,
+        replication and HA configurations on destroy (defaults to `true`). Proxmox
+        refuses to delete a container that is still referenced by an HA resource or
+        a replication job unless this is set.
+        """
+        return pulumi.get(self, "purge_on_destroy")
+
+    @purge_on_destroy.setter
+    def purge_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "purge_on_destroy", value)
+
+    @_builtins.property
     @pulumi.getter(name="startOnBoot")
     def start_on_boot(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -1132,6 +1224,7 @@ class ContainerLegacy(pulumi.CustomResource):
                  clone: pulumi.Input[Optional[Union['ContainerLegacyCloneArgs', 'ContainerLegacyCloneArgsDict', 'outputs.ContainerLegacyClone']]] = None,
                  console: pulumi.Input[Optional[Union['ContainerLegacyConsoleArgs', 'ContainerLegacyConsoleArgsDict', 'outputs.ContainerLegacyConsole']]] = None,
                  cpu: pulumi.Input[Optional[Union['ContainerLegacyCpuArgs', 'ContainerLegacyCpuArgsDict', 'outputs.ContainerLegacyCpu']]] = None,
+                 delete_unreferenced_disks_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  device_passthroughs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerLegacyDevicePassthroughArgs', 'ContainerLegacyDevicePassthroughArgsDict', 'outputs.ContainerLegacyDevicePassthrough']]]]] = None,
                  disk: pulumi.Input[Optional[Union['ContainerLegacyDiskArgs', 'ContainerLegacyDiskArgsDict', 'outputs.ContainerLegacyDisk']]] = None,
@@ -1147,6 +1240,7 @@ class ContainerLegacy(pulumi.CustomResource):
                  operating_system: pulumi.Input[Optional[Union['ContainerLegacyOperatingSystemArgs', 'ContainerLegacyOperatingSystemArgsDict', 'outputs.ContainerLegacyOperatingSystem']]] = None,
                  pool_id: pulumi.Input[Optional[_builtins.str]] = None,
                  protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 purge_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  start_on_boot: pulumi.Input[Optional[_builtins.bool]] = None,
                  started: pulumi.Input[Optional[_builtins.bool]] = None,
                  startup: pulumi.Input[Optional[Union['ContainerLegacyStartupArgs', 'ContainerLegacyStartupArgsDict', 'outputs.ContainerLegacyStartup']]] = None,
@@ -1311,6 +1405,11 @@ class ContainerLegacy(pulumi.CustomResource):
         :param pulumi.Input[Union['ContainerLegacyCloneArgs', 'ContainerLegacyCloneArgsDict', 'outputs.ContainerLegacyClone']] clone: The cloning configuration.
         :param pulumi.Input[Union['ContainerLegacyConsoleArgs', 'ContainerLegacyConsoleArgsDict', 'outputs.ContainerLegacyConsole']] console: The console configuration.
         :param pulumi.Input[Union['ContainerLegacyCpuArgs', 'ContainerLegacyCpuArgsDict', 'outputs.ContainerLegacyCpu']] cpu: The CPU configuration.
+        :param pulumi.Input[_builtins.bool] delete_unreferenced_disks_on_destroy: Whether to also delete
+               disks on any enabled storage that carry the container ID but are not
+               referenced in its configuration (defaults to `false`). Unlike the VM
+               resource, this is opt-in for containers so that deliberately detached
+               volumes are not removed on destroy.
         :param pulumi.Input[_builtins.str] description: The description.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerLegacyDevicePassthroughArgs', 'ContainerLegacyDevicePassthroughArgsDict', 'outputs.ContainerLegacyDevicePassthrough']]]] device_passthroughs: Device to pass through to the container (multiple blocks supported).
         :param pulumi.Input[Union['ContainerLegacyDiskArgs', 'ContainerLegacyDiskArgsDict', 'outputs.ContainerLegacyDisk']] disk: The root filesystem (rootfs) storage configuration.
@@ -1335,6 +1434,10 @@ class ContainerLegacy(pulumi.CustomResource):
         :param pulumi.Input[Union['ContainerLegacyOperatingSystemArgs', 'ContainerLegacyOperatingSystemArgsDict', 'outputs.ContainerLegacyOperatingSystem']] operating_system: The Operating System configuration.
         :param pulumi.Input[_builtins.str] pool_id: The identifier for a pool to assign the container to.
         :param pulumi.Input[_builtins.bool] protection: Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
+        :param pulumi.Input[_builtins.bool] purge_on_destroy: Whether to purge the container from backup,
+               replication and HA configurations on destroy (defaults to `true`). Proxmox
+               refuses to delete a container that is still referenced by an HA resource or
+               a replication job unless this is set.
         :param pulumi.Input[_builtins.bool] start_on_boot: Automatically start container when the host
                system boots (defaults to `true`).
         :param pulumi.Input[_builtins.bool] started: Whether to start the container (defaults to `true`).
@@ -1523,6 +1626,7 @@ class ContainerLegacy(pulumi.CustomResource):
                  clone: pulumi.Input[Optional[Union['ContainerLegacyCloneArgs', 'ContainerLegacyCloneArgsDict', 'outputs.ContainerLegacyClone']]] = None,
                  console: pulumi.Input[Optional[Union['ContainerLegacyConsoleArgs', 'ContainerLegacyConsoleArgsDict', 'outputs.ContainerLegacyConsole']]] = None,
                  cpu: pulumi.Input[Optional[Union['ContainerLegacyCpuArgs', 'ContainerLegacyCpuArgsDict', 'outputs.ContainerLegacyCpu']]] = None,
+                 delete_unreferenced_disks_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  device_passthroughs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerLegacyDevicePassthroughArgs', 'ContainerLegacyDevicePassthroughArgsDict', 'outputs.ContainerLegacyDevicePassthrough']]]]] = None,
                  disk: pulumi.Input[Optional[Union['ContainerLegacyDiskArgs', 'ContainerLegacyDiskArgsDict', 'outputs.ContainerLegacyDisk']]] = None,
@@ -1538,6 +1642,7 @@ class ContainerLegacy(pulumi.CustomResource):
                  operating_system: pulumi.Input[Optional[Union['ContainerLegacyOperatingSystemArgs', 'ContainerLegacyOperatingSystemArgsDict', 'outputs.ContainerLegacyOperatingSystem']]] = None,
                  pool_id: pulumi.Input[Optional[_builtins.str]] = None,
                  protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 purge_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  start_on_boot: pulumi.Input[Optional[_builtins.bool]] = None,
                  started: pulumi.Input[Optional[_builtins.bool]] = None,
                  startup: pulumi.Input[Optional[Union['ContainerLegacyStartupArgs', 'ContainerLegacyStartupArgsDict', 'outputs.ContainerLegacyStartup']]] = None,
@@ -1563,6 +1668,7 @@ class ContainerLegacy(pulumi.CustomResource):
             __props__.__dict__["clone"] = clone
             __props__.__dict__["console"] = console
             __props__.__dict__["cpu"] = cpu
+            __props__.__dict__["delete_unreferenced_disks_on_destroy"] = delete_unreferenced_disks_on_destroy
             __props__.__dict__["description"] = description
             __props__.__dict__["device_passthroughs"] = device_passthroughs
             __props__.__dict__["disk"] = disk
@@ -1580,6 +1686,7 @@ class ContainerLegacy(pulumi.CustomResource):
             __props__.__dict__["operating_system"] = operating_system
             __props__.__dict__["pool_id"] = pool_id
             __props__.__dict__["protection"] = protection
+            __props__.__dict__["purge_on_destroy"] = purge_on_destroy
             __props__.__dict__["start_on_boot"] = start_on_boot
             __props__.__dict__["started"] = started
             __props__.__dict__["startup"] = startup
@@ -1608,6 +1715,7 @@ class ContainerLegacy(pulumi.CustomResource):
             clone: pulumi.Input[Optional[Union['ContainerLegacyCloneArgs', 'ContainerLegacyCloneArgsDict', 'outputs.ContainerLegacyClone']]] = None,
             console: pulumi.Input[Optional[Union['ContainerLegacyConsoleArgs', 'ContainerLegacyConsoleArgsDict', 'outputs.ContainerLegacyConsole']]] = None,
             cpu: pulumi.Input[Optional[Union['ContainerLegacyCpuArgs', 'ContainerLegacyCpuArgsDict', 'outputs.ContainerLegacyCpu']]] = None,
+            delete_unreferenced_disks_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             device_passthroughs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerLegacyDevicePassthroughArgs', 'ContainerLegacyDevicePassthroughArgsDict', 'outputs.ContainerLegacyDevicePassthrough']]]]] = None,
             disk: pulumi.Input[Optional[Union['ContainerLegacyDiskArgs', 'ContainerLegacyDiskArgsDict', 'outputs.ContainerLegacyDisk']]] = None,
@@ -1625,6 +1733,7 @@ class ContainerLegacy(pulumi.CustomResource):
             operating_system: pulumi.Input[Optional[Union['ContainerLegacyOperatingSystemArgs', 'ContainerLegacyOperatingSystemArgsDict', 'outputs.ContainerLegacyOperatingSystem']]] = None,
             pool_id: pulumi.Input[Optional[_builtins.str]] = None,
             protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            purge_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
             start_on_boot: pulumi.Input[Optional[_builtins.bool]] = None,
             started: pulumi.Input[Optional[_builtins.bool]] = None,
             startup: pulumi.Input[Optional[Union['ContainerLegacyStartupArgs', 'ContainerLegacyStartupArgsDict', 'outputs.ContainerLegacyStartup']]] = None,
@@ -1648,6 +1757,11 @@ class ContainerLegacy(pulumi.CustomResource):
         :param pulumi.Input[Union['ContainerLegacyCloneArgs', 'ContainerLegacyCloneArgsDict', 'outputs.ContainerLegacyClone']] clone: The cloning configuration.
         :param pulumi.Input[Union['ContainerLegacyConsoleArgs', 'ContainerLegacyConsoleArgsDict', 'outputs.ContainerLegacyConsole']] console: The console configuration.
         :param pulumi.Input[Union['ContainerLegacyCpuArgs', 'ContainerLegacyCpuArgsDict', 'outputs.ContainerLegacyCpu']] cpu: The CPU configuration.
+        :param pulumi.Input[_builtins.bool] delete_unreferenced_disks_on_destroy: Whether to also delete
+               disks on any enabled storage that carry the container ID but are not
+               referenced in its configuration (defaults to `false`). Unlike the VM
+               resource, this is opt-in for containers so that deliberately detached
+               volumes are not removed on destroy.
         :param pulumi.Input[_builtins.str] description: The description.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerLegacyDevicePassthroughArgs', 'ContainerLegacyDevicePassthroughArgsDict', 'outputs.ContainerLegacyDevicePassthrough']]]] device_passthroughs: Device to pass through to the container (multiple blocks supported).
         :param pulumi.Input[Union['ContainerLegacyDiskArgs', 'ContainerLegacyDiskArgsDict', 'outputs.ContainerLegacyDisk']] disk: The root filesystem (rootfs) storage configuration.
@@ -1674,6 +1788,10 @@ class ContainerLegacy(pulumi.CustomResource):
         :param pulumi.Input[Union['ContainerLegacyOperatingSystemArgs', 'ContainerLegacyOperatingSystemArgsDict', 'outputs.ContainerLegacyOperatingSystem']] operating_system: The Operating System configuration.
         :param pulumi.Input[_builtins.str] pool_id: The identifier for a pool to assign the container to.
         :param pulumi.Input[_builtins.bool] protection: Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
+        :param pulumi.Input[_builtins.bool] purge_on_destroy: Whether to purge the container from backup,
+               replication and HA configurations on destroy (defaults to `true`). Proxmox
+               refuses to delete a container that is still referenced by an HA resource or
+               a replication job unless this is set.
         :param pulumi.Input[_builtins.bool] start_on_boot: Automatically start container when the host
                system boots (defaults to `true`).
         :param pulumi.Input[_builtins.bool] started: Whether to start the container (defaults to `true`).
@@ -1700,6 +1818,7 @@ class ContainerLegacy(pulumi.CustomResource):
         __props__.__dict__["clone"] = clone
         __props__.__dict__["console"] = console
         __props__.__dict__["cpu"] = cpu
+        __props__.__dict__["delete_unreferenced_disks_on_destroy"] = delete_unreferenced_disks_on_destroy
         __props__.__dict__["description"] = description
         __props__.__dict__["device_passthroughs"] = device_passthroughs
         __props__.__dict__["disk"] = disk
@@ -1717,6 +1836,7 @@ class ContainerLegacy(pulumi.CustomResource):
         __props__.__dict__["operating_system"] = operating_system
         __props__.__dict__["pool_id"] = pool_id
         __props__.__dict__["protection"] = protection
+        __props__.__dict__["purge_on_destroy"] = purge_on_destroy
         __props__.__dict__["start_on_boot"] = start_on_boot
         __props__.__dict__["started"] = started
         __props__.__dict__["startup"] = startup
@@ -1755,6 +1875,18 @@ class ContainerLegacy(pulumi.CustomResource):
         The CPU configuration.
         """
         return pulumi.get(self, "cpu")
+
+    @_builtins.property
+    @pulumi.getter(name="deleteUnreferencedDisksOnDestroy")
+    def delete_unreferenced_disks_on_destroy(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether to also delete
+        disks on any enabled storage that carry the container ID but are not
+        referenced in its configuration (defaults to `false`). Unlike the VM
+        resource, this is opt-in for containers so that deliberately detached
+        volumes are not removed on destroy.
+        """
+        return pulumi.get(self, "delete_unreferenced_disks_on_destroy")
 
     @_builtins.property
     @pulumi.getter
@@ -1900,6 +2032,17 @@ class ContainerLegacy(pulumi.CustomResource):
         Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
         """
         return pulumi.get(self, "protection")
+
+    @_builtins.property
+    @pulumi.getter(name="purgeOnDestroy")
+    def purge_on_destroy(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether to purge the container from backup,
+        replication and HA configurations on destroy (defaults to `true`). Proxmox
+        refuses to delete a container that is still referenced by an HA resource or
+        a replication job unless this is set.
+        """
+        return pulumi.get(self, "purge_on_destroy")
 
     @_builtins.property
     @pulumi.getter(name="startOnBoot")

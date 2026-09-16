@@ -294,6 +294,70 @@ import (
 // the `datastoreId` argument of the disks in the `disks` block to move the disks
 // to the correct datastore after the cloning and migrating succeeded.
 //
+// ## Example: UEFI boot
+//
+// Set `bios = "ovmf"` and add an `efiDisk` block. The EFI disk stores the UEFI
+// variables (boot entries, Secure Boot state). Without it, Proxmox VE starts the
+// VM with a temporary variables file and those settings are lost on every stop
+// and start.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := proxmoxve.NewVmLegacy(ctx, "uefi_vm", &proxmoxve.VmLegacyArgs{
+//				Name:     pulumi.String("terraform-provider-proxmox-uefi-vm"),
+//				NodeName: pulumi.String("first-node"),
+//				Bios:     pulumi.String("ovmf"),
+//				EfiDisk: &proxmoxve.VmLegacyEfiDiskArgs{
+//					DatastoreId:     pulumi.String("local-lvm"),
+//					Type:            pulumi.String("4m"),
+//					PreEnrolledKeys: pulumi.Bool(true),
+//				},
+//				Disks: proxmoxve.VmLegacyDiskArray{
+//					&proxmoxve.VmLegacyDiskArgs{
+//						DatastoreId: pulumi.String("local-lvm"),
+//						Interface:   pulumi.String("scsi0"),
+//						Size:        pulumi.Int(20),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// > **arm64 hosts** always boot VMs through UEFI (AAVMF); SeaBIOS is not
+// available there. The provider still defaults `bios` to `seabios`, so set
+// `bios = "ovmf"` explicitly together with `cpu.architecture = "aarch64"`.
+// `efi_disk.type` is ignored on `aarch64`.
+//
+// ## Pool Management
+//
+// The provider automatically detects VM pool membership using a two-step process:
+//
+// 1. **Primary Detection**: Checks the VM's direct configuration for pool assignment
+// 2. **Fallback Detection**: If no pool is found, queries all available pools to determine membership
+//
+// This ensures accurate state management and drift detection when VMs are moved between pools outside of Terraform.
+//
+// ### Best Practices
+//
+// - Always specify `poolId` explicitly in your Terraform configuration when managing VM pool membership
+// - Use `pulumi preview` regularly to detect any manual changes to VM pool assignments
+//
 // ## Import
 //
 // Instances can be imported using the `nodeName` and the `vmId`, e.g.,
@@ -329,7 +393,7 @@ type VmLegacy struct {
 	// A disk (multiple blocks supported).
 	Disks VmLegacyDiskArrayOutput `pulumi:"disks"`
 	// The efi disk device (required if `bios` is set
-	// to `ovmf`)
+	// to `ovmf`). See Example: UEFI boot.
 	EfiDisk VmLegacyEfiDiskPtrOutput `pulumi:"efiDisk"`
 	// The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
 	HookScriptFileId pulumi.StringPtrOutput `pulumi:"hookScriptFileId"`
@@ -527,7 +591,7 @@ type vmLegacyState struct {
 	// A disk (multiple blocks supported).
 	Disks []VmLegacyDisk `pulumi:"disks"`
 	// The efi disk device (required if `bios` is set
-	// to `ovmf`)
+	// to `ovmf`). See Example: UEFI boot.
 	EfiDisk *VmLegacyEfiDisk `pulumi:"efiDisk"`
 	// The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
 	HookScriptFileId *string `pulumi:"hookScriptFileId"`
@@ -693,7 +757,7 @@ type VmLegacyState struct {
 	// A disk (multiple blocks supported).
 	Disks VmLegacyDiskArrayInput
 	// The efi disk device (required if `bios` is set
-	// to `ovmf`)
+	// to `ovmf`). See Example: UEFI boot.
 	EfiDisk VmLegacyEfiDiskPtrInput
 	// The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
 	HookScriptFileId pulumi.StringPtrInput
@@ -863,7 +927,7 @@ type vmLegacyArgs struct {
 	// A disk (multiple blocks supported).
 	Disks []VmLegacyDisk `pulumi:"disks"`
 	// The efi disk device (required if `bios` is set
-	// to `ovmf`)
+	// to `ovmf`). See Example: UEFI boot.
 	EfiDisk *VmLegacyEfiDisk `pulumi:"efiDisk"`
 	// The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
 	HookScriptFileId *string `pulumi:"hookScriptFileId"`
@@ -1021,7 +1085,7 @@ type VmLegacyArgs struct {
 	// A disk (multiple blocks supported).
 	Disks VmLegacyDiskArrayInput
 	// The efi disk device (required if `bios` is set
-	// to `ovmf`)
+	// to `ovmf`). See Example: UEFI boot.
 	EfiDisk VmLegacyEfiDiskPtrInput
 	// The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
 	HookScriptFileId pulumi.StringPtrInput
@@ -1300,7 +1364,7 @@ func (o VmLegacyOutput) Disks() VmLegacyDiskArrayOutput {
 }
 
 // The efi disk device (required if `bios` is set
-// to `ovmf`)
+// to `ovmf`). See Example: UEFI boot.
 func (o VmLegacyOutput) EfiDisk() VmLegacyEfiDiskPtrOutput {
 	return o.ApplyT(func(v *VmLegacy) VmLegacyEfiDiskPtrOutput { return v.EfiDisk }).(VmLegacyEfiDiskPtrOutput)
 }

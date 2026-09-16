@@ -31,9 +31,9 @@ namespace Pulumi.ProxmoxVE
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxVirtualEnvironmentReplicationsAll"] = 
+        ///         ["dataProxmoxVirtualEnvironmentReplicationsAll"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "replications", all.Apply(getReplicationsLegacyResult =&gt; getReplicationsLegacyResult.Replications) },
+        ///             ["replications"] = all.Apply(getReplicationsLegacyResult =&gt; getReplicationsLegacyResult.Replications),
         ///         },
         ///     };
         /// });
@@ -62,9 +62,9 @@ namespace Pulumi.ProxmoxVE
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxVirtualEnvironmentReplicationsAll"] = 
+        ///         ["dataProxmoxVirtualEnvironmentReplicationsAll"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "replications", all.Apply(getReplicationsLegacyResult =&gt; getReplicationsLegacyResult.Replications) },
+        ///             ["replications"] = all.Apply(getReplicationsLegacyResult =&gt; getReplicationsLegacyResult.Replications),
         ///         },
         ///     };
         /// });
@@ -93,9 +93,9 @@ namespace Pulumi.ProxmoxVE
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxVirtualEnvironmentReplicationsAll"] = 
+        ///         ["dataProxmoxVirtualEnvironmentReplicationsAll"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "replications", all.Apply(getReplicationsLegacyResult =&gt; getReplicationsLegacyResult.Replications) },
+        ///             ["replications"] = all.Apply(getReplicationsLegacyResult =&gt; getReplicationsLegacyResult.Replications),
         ///         },
         ///     };
         /// });

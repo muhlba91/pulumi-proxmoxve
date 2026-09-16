@@ -197,14 +197,14 @@ public class Job extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.lockwait);
     }
     /**
-     * Email notification setting (always or failure).
+     * Email notification setting (`always` or `failure`). Deprecated by Proxmox VE in favour of the notification system: it is only honoured when `mailto` is set (notification mode `auto`) or the job uses the `legacy-sendmail` notification mode. Otherwise notifications are routed through the PVE notification system and this setting is ignored.
      * 
      */
     @Export(name="mailnotification", refs={String.class}, tree="[0]")
     private Output<String> mailnotification;
 
     /**
-     * @return Email notification setting (always or failure).
+     * @return Email notification setting (`always` or `failure`). Deprecated by Proxmox VE in favour of the notification system: it is only honoured when `mailto` is set (notification mode `auto`) or the job uses the `legacy-sendmail` notification mode. Otherwise notifications are routed through the PVE notification system and this setting is ignored.
      * 
      */
     public Output<String> mailnotification() {

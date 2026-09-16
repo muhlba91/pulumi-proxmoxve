@@ -79,6 +79,29 @@ public final class ContainerLegacyState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Whether to also delete
+     * disks on any enabled storage that carry the container ID but are not
+     * referenced in its configuration (defaults to `false`). Unlike the VM
+     * resource, this is opt-in for containers so that deliberately detached
+     * volumes are not removed on destroy.
+     * 
+     */
+    @Import(name="deleteUnreferencedDisksOnDestroy")
+    private @Nullable Output<Boolean> deleteUnreferencedDisksOnDestroy;
+
+    /**
+     * @return Whether to also delete
+     * disks on any enabled storage that carry the container ID but are not
+     * referenced in its configuration (defaults to `false`). Unlike the VM
+     * resource, this is opt-in for containers so that deliberately detached
+     * volumes are not removed on destroy.
+     * 
+     */
+    public Optional<Output<Boolean>> deleteUnreferencedDisksOnDestroy() {
+        return Optional.ofNullable(this.deleteUnreferencedDisksOnDestroy);
+    }
+
+    /**
      * The description.
      * 
      */
@@ -352,6 +375,27 @@ public final class ContainerLegacyState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Whether to purge the container from backup,
+     * replication and HA configurations on destroy (defaults to `true`). Proxmox
+     * refuses to delete a container that is still referenced by an HA resource or
+     * a replication job unless this is set.
+     * 
+     */
+    @Import(name="purgeOnDestroy")
+    private @Nullable Output<Boolean> purgeOnDestroy;
+
+    /**
+     * @return Whether to purge the container from backup,
+     * replication and HA configurations on destroy (defaults to `true`). Proxmox
+     * refuses to delete a container that is still referenced by an HA resource or
+     * a replication job unless this is set.
+     * 
+     */
+    public Optional<Output<Boolean>> purgeOnDestroy() {
+        return Optional.ofNullable(this.purgeOnDestroy);
+    }
+
+    /**
      * Automatically start container when the host
      * system boots (defaults to `true`).
      * 
@@ -570,6 +614,7 @@ public final class ContainerLegacyState extends com.pulumi.resources.ResourceArg
         this.clone = $.clone;
         this.console = $.console;
         this.cpu = $.cpu;
+        this.deleteUnreferencedDisksOnDestroy = $.deleteUnreferencedDisksOnDestroy;
         this.description = $.description;
         this.devicePassthroughs = $.devicePassthroughs;
         this.disk = $.disk;
@@ -587,6 +632,7 @@ public final class ContainerLegacyState extends com.pulumi.resources.ResourceArg
         this.operatingSystem = $.operatingSystem;
         this.poolId = $.poolId;
         this.protection = $.protection;
+        this.purgeOnDestroy = $.purgeOnDestroy;
         this.startOnBoot = $.startOnBoot;
         this.started = $.started;
         this.startup = $.startup;
@@ -681,6 +727,35 @@ public final class ContainerLegacyState extends com.pulumi.resources.ResourceArg
          */
         public Builder cpu(ContainerLegacyCpuArgs cpu) {
             return cpu(Output.of(cpu));
+        }
+
+        /**
+         * @param deleteUnreferencedDisksOnDestroy Whether to also delete
+         * disks on any enabled storage that carry the container ID but are not
+         * referenced in its configuration (defaults to `false`). Unlike the VM
+         * resource, this is opt-in for containers so that deliberately detached
+         * volumes are not removed on destroy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteUnreferencedDisksOnDestroy(@Nullable Output<Boolean> deleteUnreferencedDisksOnDestroy) {
+            $.deleteUnreferencedDisksOnDestroy = deleteUnreferencedDisksOnDestroy;
+            return this;
+        }
+
+        /**
+         * @param deleteUnreferencedDisksOnDestroy Whether to also delete
+         * disks on any enabled storage that carry the container ID but are not
+         * referenced in its configuration (defaults to `false`). Unlike the VM
+         * resource, this is opt-in for containers so that deliberately detached
+         * volumes are not removed on destroy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteUnreferencedDisksOnDestroy(Boolean deleteUnreferencedDisksOnDestroy) {
+            return deleteUnreferencedDisksOnDestroy(Output.of(deleteUnreferencedDisksOnDestroy));
         }
 
         /**
@@ -1102,6 +1177,33 @@ public final class ContainerLegacyState extends com.pulumi.resources.ResourceArg
          */
         public Builder protection(Boolean protection) {
             return protection(Output.of(protection));
+        }
+
+        /**
+         * @param purgeOnDestroy Whether to purge the container from backup,
+         * replication and HA configurations on destroy (defaults to `true`). Proxmox
+         * refuses to delete a container that is still referenced by an HA resource or
+         * a replication job unless this is set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder purgeOnDestroy(@Nullable Output<Boolean> purgeOnDestroy) {
+            $.purgeOnDestroy = purgeOnDestroy;
+            return this;
+        }
+
+        /**
+         * @param purgeOnDestroy Whether to purge the container from backup,
+         * replication and HA configurations on destroy (defaults to `true`). Proxmox
+         * refuses to delete a container that is still referenced by an HA resource or
+         * a replication job unless this is set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder purgeOnDestroy(Boolean purgeOnDestroy) {
+            return purgeOnDestroy(Output.of(purgeOnDestroy));
         }
 
         /**

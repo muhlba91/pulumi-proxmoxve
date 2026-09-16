@@ -29,9 +29,9 @@ namespace Pulumi.ProxmoxVE
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxReplicationsAll"] = 
+        ///         ["dataProxmoxReplicationsAll"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "replications", all.Apply(getReplicationsResult =&gt; getReplicationsResult.Replications) },
+        ///             ["replications"] = all.Apply(getReplicationsResult =&gt; getReplicationsResult.Replications),
         ///         },
         ///     };
         /// });
@@ -58,9 +58,9 @@ namespace Pulumi.ProxmoxVE
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxReplicationsAll"] = 
+        ///         ["dataProxmoxReplicationsAll"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "replications", all.Apply(getReplicationsResult =&gt; getReplicationsResult.Replications) },
+        ///             ["replications"] = all.Apply(getReplicationsResult =&gt; getReplicationsResult.Replications),
         ///         },
         ///     };
         /// });
@@ -87,9 +87,9 @@ namespace Pulumi.ProxmoxVE
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxReplicationsAll"] = 
+        ///         ["dataProxmoxReplicationsAll"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "replications", all.Apply(getReplicationsResult =&gt; getReplicationsResult.Replications) },
+        ///             ["replications"] = all.Apply(getReplicationsResult =&gt; getReplicationsResult.Replications),
         ///         },
         ///     };
         /// });

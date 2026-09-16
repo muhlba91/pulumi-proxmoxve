@@ -33,13 +33,13 @@ namespace Pulumi.ProxmoxVE
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxVirtualEnvironmentReplication"] = 
+        ///         ["dataProxmoxVirtualEnvironmentReplication"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "id", example.Apply(getReplicationLegacyResult =&gt; getReplicationLegacyResult.Id) },
-        ///             { "target", example.Apply(getReplicationLegacyResult =&gt; getReplicationLegacyResult.Target) },
-        ///             { "type", example.Apply(getReplicationLegacyResult =&gt; getReplicationLegacyResult.Type) },
-        ///             { "jobnum", example.Apply(getReplicationLegacyResult =&gt; getReplicationLegacyResult.Jobnum) },
-        ///             { "guest", example.Apply(getReplicationLegacyResult =&gt; getReplicationLegacyResult.Guest) },
+        ///             ["id"] = example.Apply(getReplicationLegacyResult =&gt; getReplicationLegacyResult.Id),
+        ///             ["target"] = example.Apply(getReplicationLegacyResult =&gt; getReplicationLegacyResult.Target),
+        ///             ["type"] = example.Apply(getReplicationLegacyResult =&gt; getReplicationLegacyResult.Type),
+        ///             ["jobnum"] = example.Apply(getReplicationLegacyResult =&gt; getReplicationLegacyResult.Jobnum),
+        ///             ["guest"] = example.Apply(getReplicationLegacyResult =&gt; getReplicationLegacyResult.Guest),
         ///         },
         ///     };
         /// });
@@ -70,13 +70,13 @@ namespace Pulumi.ProxmoxVE
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxVirtualEnvironmentReplication"] = 
+        ///         ["dataProxmoxVirtualEnvironmentReplication"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "id", example.Apply(getReplicationLegacyResult =&gt; getReplicationLegacyResult.Id) },
-        ///             { "target", example.Apply(getReplicationLegacyResult =&gt; getReplicationLegacyResult.Target) },
-        ///             { "type", example.Apply(getReplicationLegacyResult =&gt; getReplicationLegacyResult.Type) },
-        ///             { "jobnum", example.Apply(getReplicationLegacyResult =&gt; getReplicationLegacyResult.Jobnum) },
-        ///             { "guest", example.Apply(getReplicationLegacyResult =&gt; getReplicationLegacyResult.Guest) },
+        ///             ["id"] = example.Apply(getReplicationLegacyResult =&gt; getReplicationLegacyResult.Id),
+        ///             ["target"] = example.Apply(getReplicationLegacyResult =&gt; getReplicationLegacyResult.Target),
+        ///             ["type"] = example.Apply(getReplicationLegacyResult =&gt; getReplicationLegacyResult.Type),
+        ///             ["jobnum"] = example.Apply(getReplicationLegacyResult =&gt; getReplicationLegacyResult.Jobnum),
+        ///             ["guest"] = example.Apply(getReplicationLegacyResult =&gt; getReplicationLegacyResult.Guest),
         ///         },
         ///     };
         /// });
@@ -107,13 +107,13 @@ namespace Pulumi.ProxmoxVE
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxVirtualEnvironmentReplication"] = 
+        ///         ["dataProxmoxVirtualEnvironmentReplication"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "id", example.Apply(getReplicationLegacyResult =&gt; getReplicationLegacyResult.Id) },
-        ///             { "target", example.Apply(getReplicationLegacyResult =&gt; getReplicationLegacyResult.Target) },
-        ///             { "type", example.Apply(getReplicationLegacyResult =&gt; getReplicationLegacyResult.Type) },
-        ///             { "jobnum", example.Apply(getReplicationLegacyResult =&gt; getReplicationLegacyResult.Jobnum) },
-        ///             { "guest", example.Apply(getReplicationLegacyResult =&gt; getReplicationLegacyResult.Guest) },
+        ///             ["id"] = example.Apply(getReplicationLegacyResult =&gt; getReplicationLegacyResult.Id),
+        ///             ["target"] = example.Apply(getReplicationLegacyResult =&gt; getReplicationLegacyResult.Target),
+        ///             ["type"] = example.Apply(getReplicationLegacyResult =&gt; getReplicationLegacyResult.Type),
+        ///             ["jobnum"] = example.Apply(getReplicationLegacyResult =&gt; getReplicationLegacyResult.Jobnum),
+        ///             ["guest"] = example.Apply(getReplicationLegacyResult =&gt; getReplicationLegacyResult.Guest),
         ///         },
         ///     };
         /// });

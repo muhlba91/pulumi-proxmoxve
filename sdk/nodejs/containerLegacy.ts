@@ -202,6 +202,14 @@ export class ContainerLegacy extends pulumi.CustomResource {
      */
     declare public readonly cpu: pulumi.Output<outputs.ContainerLegacyCpu | undefined>;
     /**
+     * Whether to also delete
+     * disks on any enabled storage that carry the container ID but are not
+     * referenced in its configuration (defaults to `false`). Unlike the VM
+     * resource, this is opt-in for containers so that deliberately detached
+     * volumes are not removed on destroy.
+     */
+    declare public readonly deleteUnreferencedDisksOnDestroy: pulumi.Output<boolean | undefined>;
+    /**
      * The description.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -279,6 +287,13 @@ export class ContainerLegacy extends pulumi.CustomResource {
      */
     declare public readonly protection: pulumi.Output<boolean | undefined>;
     /**
+     * Whether to purge the container from backup,
+     * replication and HA configurations on destroy (defaults to `true`). Proxmox
+     * refuses to delete a container that is still referenced by an HA resource or
+     * a replication job unless this is set.
+     */
+    declare public readonly purgeOnDestroy: pulumi.Output<boolean | undefined>;
+    /**
      * Automatically start container when the host
      * system boots (defaults to `true`).
      */
@@ -354,6 +369,7 @@ export class ContainerLegacy extends pulumi.CustomResource {
             resourceInputs["clone"] = state?.clone;
             resourceInputs["console"] = state?.console;
             resourceInputs["cpu"] = state?.cpu;
+            resourceInputs["deleteUnreferencedDisksOnDestroy"] = state?.deleteUnreferencedDisksOnDestroy;
             resourceInputs["description"] = state?.description;
             resourceInputs["devicePassthroughs"] = state?.devicePassthroughs;
             resourceInputs["disk"] = state?.disk;
@@ -371,6 +387,7 @@ export class ContainerLegacy extends pulumi.CustomResource {
             resourceInputs["operatingSystem"] = state?.operatingSystem;
             resourceInputs["poolId"] = state?.poolId;
             resourceInputs["protection"] = state?.protection;
+            resourceInputs["purgeOnDestroy"] = state?.purgeOnDestroy;
             resourceInputs["startOnBoot"] = state?.startOnBoot;
             resourceInputs["started"] = state?.started;
             resourceInputs["startup"] = state?.startup;
@@ -392,6 +409,7 @@ export class ContainerLegacy extends pulumi.CustomResource {
             resourceInputs["clone"] = args?.clone;
             resourceInputs["console"] = args?.console;
             resourceInputs["cpu"] = args?.cpu;
+            resourceInputs["deleteUnreferencedDisksOnDestroy"] = args?.deleteUnreferencedDisksOnDestroy;
             resourceInputs["description"] = args?.description;
             resourceInputs["devicePassthroughs"] = args?.devicePassthroughs;
             resourceInputs["disk"] = args?.disk;
@@ -407,6 +425,7 @@ export class ContainerLegacy extends pulumi.CustomResource {
             resourceInputs["operatingSystem"] = args?.operatingSystem;
             resourceInputs["poolId"] = args?.poolId;
             resourceInputs["protection"] = args?.protection;
+            resourceInputs["purgeOnDestroy"] = args?.purgeOnDestroy;
             resourceInputs["startOnBoot"] = args?.startOnBoot;
             resourceInputs["started"] = args?.started;
             resourceInputs["startup"] = args?.startup;
@@ -444,6 +463,14 @@ export interface ContainerLegacyState {
      * The CPU configuration.
      */
     cpu?: pulumi.Input<inputs.ContainerLegacyCpu | undefined>;
+    /**
+     * Whether to also delete
+     * disks on any enabled storage that carry the container ID but are not
+     * referenced in its configuration (defaults to `false`). Unlike the VM
+     * resource, this is opt-in for containers so that deliberately detached
+     * volumes are not removed on destroy.
+     */
+    deleteUnreferencedDisksOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * The description.
      */
@@ -522,6 +549,13 @@ export interface ContainerLegacyState {
      */
     protection?: pulumi.Input<boolean | undefined>;
     /**
+     * Whether to purge the container from backup,
+     * replication and HA configurations on destroy (defaults to `true`). Proxmox
+     * refuses to delete a container that is still referenced by an HA resource or
+     * a replication job unless this is set.
+     */
+    purgeOnDestroy?: pulumi.Input<boolean | undefined>;
+    /**
      * Automatically start container when the host
      * system boots (defaults to `true`).
      */
@@ -599,6 +633,14 @@ export interface ContainerLegacyArgs {
      */
     cpu?: pulumi.Input<inputs.ContainerLegacyCpu | undefined>;
     /**
+     * Whether to also delete
+     * disks on any enabled storage that carry the container ID but are not
+     * referenced in its configuration (defaults to `false`). Unlike the VM
+     * resource, this is opt-in for containers so that deliberately detached
+     * volumes are not removed on destroy.
+     */
+    deleteUnreferencedDisksOnDestroy?: pulumi.Input<boolean | undefined>;
+    /**
      * The description.
      */
     description?: pulumi.Input<string | undefined>;
@@ -667,6 +709,13 @@ export interface ContainerLegacyArgs {
      * Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
      */
     protection?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether to purge the container from backup,
+     * replication and HA configurations on destroy (defaults to `true`). Proxmox
+     * refuses to delete a container that is still referenced by an HA resource or
+     * a replication job unless this is set.
+     */
+    purgeOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * Automatically start container when the host
      * system boots (defaults to `true`).

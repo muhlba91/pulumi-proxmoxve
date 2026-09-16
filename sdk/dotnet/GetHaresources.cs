@@ -35,10 +35,10 @@ namespace Pulumi.ProxmoxVE
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxHaresources"] = 
+        ///         ["dataProxmoxHaresources"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "all", exampleAll.Apply(getHaresourcesResult =&gt; getHaresourcesResult.ResourceIds) },
-        ///             { "vms", exampleVm.Apply(getHaresourcesResult =&gt; getHaresourcesResult.ResourceIds) },
+        ///             ["all"] = exampleAll.Apply(getHaresourcesResult =&gt; getHaresourcesResult.ResourceIds),
+        ///             ["vms"] = exampleVm.Apply(getHaresourcesResult =&gt; getHaresourcesResult.ResourceIds),
         ///         },
         ///     };
         /// });
@@ -71,10 +71,10 @@ namespace Pulumi.ProxmoxVE
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxHaresources"] = 
+        ///         ["dataProxmoxHaresources"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "all", exampleAll.Apply(getHaresourcesResult =&gt; getHaresourcesResult.ResourceIds) },
-        ///             { "vms", exampleVm.Apply(getHaresourcesResult =&gt; getHaresourcesResult.ResourceIds) },
+        ///             ["all"] = exampleAll.Apply(getHaresourcesResult =&gt; getHaresourcesResult.ResourceIds),
+        ///             ["vms"] = exampleVm.Apply(getHaresourcesResult =&gt; getHaresourcesResult.ResourceIds),
         ///         },
         ///     };
         /// });
@@ -107,10 +107,10 @@ namespace Pulumi.ProxmoxVE
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxHaresources"] = 
+        ///         ["dataProxmoxHaresources"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "all", exampleAll.Apply(getHaresourcesResult =&gt; getHaresourcesResult.ResourceIds) },
-        ///             { "vms", exampleVm.Apply(getHaresourcesResult =&gt; getHaresourcesResult.ResourceIds) },
+        ///             ["all"] = exampleAll.Apply(getHaresourcesResult =&gt; getHaresourcesResult.ResourceIds),
+        ///             ["vms"] = exampleVm.Apply(getHaresourcesResult =&gt; getHaresourcesResult.ResourceIds),
         ///         },
         ///     };
         /// });

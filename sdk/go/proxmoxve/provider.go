@@ -47,6 +47,9 @@ func NewProvider(ctx *pulumi.Context,
 		args = &ProviderArgs{}
 	}
 
+	if args.ApiHeaders != nil {
+		args.ApiHeaders = pulumi.ToSecret(args.ApiHeaders).(pulumi.StringMapInput)
+	}
 	if args.ApiToken != nil {
 		args.ApiToken = pulumi.ToSecret(args.ApiToken).(pulumi.StringPtrInput)
 	}
@@ -76,6 +79,8 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
+	// Additional HTTP headers to send with every Proxmox VE API request. Useful when the API is behind an authenticating reverse proxy, e.g. Cloudflare Access. Headers managed by the provider or by the HTTP client, such as `Authorization`, are rejected. Can also be sourced from `PROXMOX_VE_API_HEADERS` as a comma-separated list of `Name=Value` pairs.
+	ApiHeaders map[string]string `pulumi:"apiHeaders"`
 	// The API token for the Proxmox VE API.
 	ApiToken *string `pulumi:"apiToken"`
 	// The pre-authenticated Ticket for the Proxmox VE API.
@@ -110,6 +115,8 @@ type providerArgs struct {
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
+	// Additional HTTP headers to send with every Proxmox VE API request. Useful when the API is behind an authenticating reverse proxy, e.g. Cloudflare Access. Headers managed by the provider or by the HTTP client, such as `Authorization`, are rejected. Can also be sourced from `PROXMOX_VE_API_HEADERS` as a comma-separated list of `Name=Value` pairs.
+	ApiHeaders pulumi.StringMapInput
 	// The API token for the Proxmox VE API.
 	ApiToken pulumi.StringPtrInput
 	// The pre-authenticated Ticket for the Proxmox VE API.

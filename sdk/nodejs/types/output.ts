@@ -1528,10 +1528,11 @@ export interface VmLegacyEfiDisk {
      */
     fileFormat: string;
     /**
-     * Use am EFI vars template with
+     * Use an EFI vars template with
      * distribution-specific and Microsoft Standard keys enrolled, if used with
-     * EFI type=`4m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
-     * to `false`).
+     * EFI type=`4m`. For VMs with cpu.architecture=`aarch64` this requires
+     * `pve-edk2-firmware-aarch64` newer than `4.2025.05-2` on the host and is
+     * ignored otherwise (defaults to `false`).
      */
     preEnrolledKeys?: boolean;
     /**
@@ -2169,7 +2170,7 @@ export namespace backup {
          */
         id: string;
         /**
-         * When to send email notifications (always or failure).
+         * When to send email notifications (`always` or `failure`). Ignored by Proxmox VE unless `mailto` is set or the job uses the `legacy-sendmail` notification mode.
          */
         mailnotification: string;
         /**

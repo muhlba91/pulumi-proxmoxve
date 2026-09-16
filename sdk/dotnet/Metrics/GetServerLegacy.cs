@@ -33,10 +33,10 @@ namespace Pulumi.ProxmoxVE.Metrics
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxVirtualEnvironmentMetricsServer"] = 
+        ///         ["dataProxmoxVirtualEnvironmentMetricsServer"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "server", example.Apply(getServerLegacyResult =&gt; getServerLegacyResult.Server) },
-        ///             { "port", example.Apply(getServerLegacyResult =&gt; getServerLegacyResult.Port) },
+        ///             ["server"] = example.Apply(getServerLegacyResult =&gt; getServerLegacyResult.Server),
+        ///             ["port"] = example.Apply(getServerLegacyResult =&gt; getServerLegacyResult.Port),
         ///         },
         ///     };
         /// });
@@ -67,10 +67,10 @@ namespace Pulumi.ProxmoxVE.Metrics
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxVirtualEnvironmentMetricsServer"] = 
+        ///         ["dataProxmoxVirtualEnvironmentMetricsServer"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "server", example.Apply(getServerLegacyResult =&gt; getServerLegacyResult.Server) },
-        ///             { "port", example.Apply(getServerLegacyResult =&gt; getServerLegacyResult.Port) },
+        ///             ["server"] = example.Apply(getServerLegacyResult =&gt; getServerLegacyResult.Server),
+        ///             ["port"] = example.Apply(getServerLegacyResult =&gt; getServerLegacyResult.Port),
         ///         },
         ///     };
         /// });
@@ -101,10 +101,10 @@ namespace Pulumi.ProxmoxVE.Metrics
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxVirtualEnvironmentMetricsServer"] = 
+        ///         ["dataProxmoxVirtualEnvironmentMetricsServer"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "server", example.Apply(getServerLegacyResult =&gt; getServerLegacyResult.Server) },
-        ///             { "port", example.Apply(getServerLegacyResult =&gt; getServerLegacyResult.Port) },
+        ///             ["server"] = example.Apply(getServerLegacyResult =&gt; getServerLegacyResult.Server),
+        ///             ["port"] = example.Apply(getServerLegacyResult =&gt; getServerLegacyResult.Port),
         ///         },
         ///     };
         /// });

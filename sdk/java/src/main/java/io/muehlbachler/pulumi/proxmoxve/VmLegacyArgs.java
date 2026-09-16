@@ -224,7 +224,7 @@ public final class VmLegacyArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The efi disk device (required if `bios` is set
-     * to `ovmf`)
+     * to `ovmf`). See Example: UEFI boot.
      * 
      */
     @Import(name="efiDisk")
@@ -232,7 +232,7 @@ public final class VmLegacyArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The efi disk device (required if `bios` is set
-     * to `ovmf`)
+     * to `ovmf`). See Example: UEFI boot.
      * 
      */
     public Optional<Output<VmLegacyEfiDiskArgs>> efiDisk() {
@@ -1347,7 +1347,7 @@ public final class VmLegacyArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param efiDisk The efi disk device (required if `bios` is set
-         * to `ovmf`)
+         * to `ovmf`). See Example: UEFI boot.
          * 
          * @return builder
          * 
@@ -1359,7 +1359,7 @@ public final class VmLegacyArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param efiDisk The efi disk device (required if `bios` is set
-         * to `ovmf`)
+         * to `ovmf`). See Example: UEFI boot.
          * 
          * @return builder
          * 

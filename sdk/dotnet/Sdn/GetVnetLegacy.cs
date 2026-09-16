@@ -33,14 +33,14 @@ namespace Pulumi.ProxmoxVE.Sdn
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxVirtualEnvironmentSdnVnet"] = 
+        ///         ["dataProxmoxVirtualEnvironmentSdnVnet"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "id", example.Apply(getVnetLegacyResult =&gt; getVnetLegacyResult.Id) },
-        ///             { "zone", example.Apply(getVnetLegacyResult =&gt; getVnetLegacyResult.Zone) },
-        ///             { "alias", example.Apply(getVnetLegacyResult =&gt; getVnetLegacyResult.Alias) },
-        ///             { "isolatePorts", example.Apply(getVnetLegacyResult =&gt; getVnetLegacyResult.IsolatePorts) },
-        ///             { "tag", example.Apply(getVnetLegacyResult =&gt; getVnetLegacyResult.Tag) },
-        ///             { "vlanAware", example.Apply(getVnetLegacyResult =&gt; getVnetLegacyResult.VlanAware) },
+        ///             ["id"] = example.Apply(getVnetLegacyResult =&gt; getVnetLegacyResult.Id),
+        ///             ["zone"] = example.Apply(getVnetLegacyResult =&gt; getVnetLegacyResult.Zone),
+        ///             ["alias"] = example.Apply(getVnetLegacyResult =&gt; getVnetLegacyResult.Alias),
+        ///             ["isolatePorts"] = example.Apply(getVnetLegacyResult =&gt; getVnetLegacyResult.IsolatePorts),
+        ///             ["tag"] = example.Apply(getVnetLegacyResult =&gt; getVnetLegacyResult.Tag),
+        ///             ["vlanAware"] = example.Apply(getVnetLegacyResult =&gt; getVnetLegacyResult.VlanAware),
         ///         },
         ///     };
         /// });
@@ -71,14 +71,14 @@ namespace Pulumi.ProxmoxVE.Sdn
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxVirtualEnvironmentSdnVnet"] = 
+        ///         ["dataProxmoxVirtualEnvironmentSdnVnet"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "id", example.Apply(getVnetLegacyResult =&gt; getVnetLegacyResult.Id) },
-        ///             { "zone", example.Apply(getVnetLegacyResult =&gt; getVnetLegacyResult.Zone) },
-        ///             { "alias", example.Apply(getVnetLegacyResult =&gt; getVnetLegacyResult.Alias) },
-        ///             { "isolatePorts", example.Apply(getVnetLegacyResult =&gt; getVnetLegacyResult.IsolatePorts) },
-        ///             { "tag", example.Apply(getVnetLegacyResult =&gt; getVnetLegacyResult.Tag) },
-        ///             { "vlanAware", example.Apply(getVnetLegacyResult =&gt; getVnetLegacyResult.VlanAware) },
+        ///             ["id"] = example.Apply(getVnetLegacyResult =&gt; getVnetLegacyResult.Id),
+        ///             ["zone"] = example.Apply(getVnetLegacyResult =&gt; getVnetLegacyResult.Zone),
+        ///             ["alias"] = example.Apply(getVnetLegacyResult =&gt; getVnetLegacyResult.Alias),
+        ///             ["isolatePorts"] = example.Apply(getVnetLegacyResult =&gt; getVnetLegacyResult.IsolatePorts),
+        ///             ["tag"] = example.Apply(getVnetLegacyResult =&gt; getVnetLegacyResult.Tag),
+        ///             ["vlanAware"] = example.Apply(getVnetLegacyResult =&gt; getVnetLegacyResult.VlanAware),
         ///         },
         ///     };
         /// });
@@ -109,14 +109,14 @@ namespace Pulumi.ProxmoxVE.Sdn
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxVirtualEnvironmentSdnVnet"] = 
+        ///         ["dataProxmoxVirtualEnvironmentSdnVnet"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "id", example.Apply(getVnetLegacyResult =&gt; getVnetLegacyResult.Id) },
-        ///             { "zone", example.Apply(getVnetLegacyResult =&gt; getVnetLegacyResult.Zone) },
-        ///             { "alias", example.Apply(getVnetLegacyResult =&gt; getVnetLegacyResult.Alias) },
-        ///             { "isolatePorts", example.Apply(getVnetLegacyResult =&gt; getVnetLegacyResult.IsolatePorts) },
-        ///             { "tag", example.Apply(getVnetLegacyResult =&gt; getVnetLegacyResult.Tag) },
-        ///             { "vlanAware", example.Apply(getVnetLegacyResult =&gt; getVnetLegacyResult.VlanAware) },
+        ///             ["id"] = example.Apply(getVnetLegacyResult =&gt; getVnetLegacyResult.Id),
+        ///             ["zone"] = example.Apply(getVnetLegacyResult =&gt; getVnetLegacyResult.Zone),
+        ///             ["alias"] = example.Apply(getVnetLegacyResult =&gt; getVnetLegacyResult.Alias),
+        ///             ["isolatePorts"] = example.Apply(getVnetLegacyResult =&gt; getVnetLegacyResult.IsolatePorts),
+        ///             ["tag"] = example.Apply(getVnetLegacyResult =&gt; getVnetLegacyResult.Tag),
+        ///             ["vlanAware"] = example.Apply(getVnetLegacyResult =&gt; getVnetLegacyResult.VlanAware),
         ///         },
         ///     };
         /// });

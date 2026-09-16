@@ -33,15 +33,15 @@ namespace Pulumi.ProxmoxVE.Sdn.Zone
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxVirtualEnvironmentSdnZoneSimple"] = 
+        ///         ["dataProxmoxVirtualEnvironmentSdnZoneSimple"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "id", example.Apply(getSimpleLegacyResult =&gt; getSimpleLegacyResult.Id) },
-        ///             { "nodes", example.Apply(getSimpleLegacyResult =&gt; getSimpleLegacyResult.Nodes) },
-        ///             { "mtu", example.Apply(getSimpleLegacyResult =&gt; getSimpleLegacyResult.Mtu) },
-        ///             { "dns", example.Apply(getSimpleLegacyResult =&gt; getSimpleLegacyResult.Dns) },
-        ///             { "dnsZone", example.Apply(getSimpleLegacyResult =&gt; getSimpleLegacyResult.DnsZone) },
-        ///             { "ipam", example.Apply(getSimpleLegacyResult =&gt; getSimpleLegacyResult.Ipam) },
-        ///             { "reverseDns", example.Apply(getSimpleLegacyResult =&gt; getSimpleLegacyResult.ReverseDns) },
+        ///             ["id"] = example.Apply(getSimpleLegacyResult =&gt; getSimpleLegacyResult.Id),
+        ///             ["nodes"] = example.Apply(getSimpleLegacyResult =&gt; getSimpleLegacyResult.Nodes),
+        ///             ["mtu"] = example.Apply(getSimpleLegacyResult =&gt; getSimpleLegacyResult.Mtu),
+        ///             ["dns"] = example.Apply(getSimpleLegacyResult =&gt; getSimpleLegacyResult.Dns),
+        ///             ["dnsZone"] = example.Apply(getSimpleLegacyResult =&gt; getSimpleLegacyResult.DnsZone),
+        ///             ["ipam"] = example.Apply(getSimpleLegacyResult =&gt; getSimpleLegacyResult.Ipam),
+        ///             ["reverseDns"] = example.Apply(getSimpleLegacyResult =&gt; getSimpleLegacyResult.ReverseDns),
         ///         },
         ///     };
         /// });
@@ -72,15 +72,15 @@ namespace Pulumi.ProxmoxVE.Sdn.Zone
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxVirtualEnvironmentSdnZoneSimple"] = 
+        ///         ["dataProxmoxVirtualEnvironmentSdnZoneSimple"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "id", example.Apply(getSimpleLegacyResult =&gt; getSimpleLegacyResult.Id) },
-        ///             { "nodes", example.Apply(getSimpleLegacyResult =&gt; getSimpleLegacyResult.Nodes) },
-        ///             { "mtu", example.Apply(getSimpleLegacyResult =&gt; getSimpleLegacyResult.Mtu) },
-        ///             { "dns", example.Apply(getSimpleLegacyResult =&gt; getSimpleLegacyResult.Dns) },
-        ///             { "dnsZone", example.Apply(getSimpleLegacyResult =&gt; getSimpleLegacyResult.DnsZone) },
-        ///             { "ipam", example.Apply(getSimpleLegacyResult =&gt; getSimpleLegacyResult.Ipam) },
-        ///             { "reverseDns", example.Apply(getSimpleLegacyResult =&gt; getSimpleLegacyResult.ReverseDns) },
+        ///             ["id"] = example.Apply(getSimpleLegacyResult =&gt; getSimpleLegacyResult.Id),
+        ///             ["nodes"] = example.Apply(getSimpleLegacyResult =&gt; getSimpleLegacyResult.Nodes),
+        ///             ["mtu"] = example.Apply(getSimpleLegacyResult =&gt; getSimpleLegacyResult.Mtu),
+        ///             ["dns"] = example.Apply(getSimpleLegacyResult =&gt; getSimpleLegacyResult.Dns),
+        ///             ["dnsZone"] = example.Apply(getSimpleLegacyResult =&gt; getSimpleLegacyResult.DnsZone),
+        ///             ["ipam"] = example.Apply(getSimpleLegacyResult =&gt; getSimpleLegacyResult.Ipam),
+        ///             ["reverseDns"] = example.Apply(getSimpleLegacyResult =&gt; getSimpleLegacyResult.ReverseDns),
         ///         },
         ///     };
         /// });
@@ -111,15 +111,15 @@ namespace Pulumi.ProxmoxVE.Sdn.Zone
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxVirtualEnvironmentSdnZoneSimple"] = 
+        ///         ["dataProxmoxVirtualEnvironmentSdnZoneSimple"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "id", example.Apply(getSimpleLegacyResult =&gt; getSimpleLegacyResult.Id) },
-        ///             { "nodes", example.Apply(getSimpleLegacyResult =&gt; getSimpleLegacyResult.Nodes) },
-        ///             { "mtu", example.Apply(getSimpleLegacyResult =&gt; getSimpleLegacyResult.Mtu) },
-        ///             { "dns", example.Apply(getSimpleLegacyResult =&gt; getSimpleLegacyResult.Dns) },
-        ///             { "dnsZone", example.Apply(getSimpleLegacyResult =&gt; getSimpleLegacyResult.DnsZone) },
-        ///             { "ipam", example.Apply(getSimpleLegacyResult =&gt; getSimpleLegacyResult.Ipam) },
-        ///             { "reverseDns", example.Apply(getSimpleLegacyResult =&gt; getSimpleLegacyResult.ReverseDns) },
+        ///             ["id"] = example.Apply(getSimpleLegacyResult =&gt; getSimpleLegacyResult.Id),
+        ///             ["nodes"] = example.Apply(getSimpleLegacyResult =&gt; getSimpleLegacyResult.Nodes),
+        ///             ["mtu"] = example.Apply(getSimpleLegacyResult =&gt; getSimpleLegacyResult.Mtu),
+        ///             ["dns"] = example.Apply(getSimpleLegacyResult =&gt; getSimpleLegacyResult.Dns),
+        ///             ["dnsZone"] = example.Apply(getSimpleLegacyResult =&gt; getSimpleLegacyResult.DnsZone),
+        ///             ["ipam"] = example.Apply(getSimpleLegacyResult =&gt; getSimpleLegacyResult.Ipam),
+        ///             ["reverseDns"] = example.Apply(getSimpleLegacyResult =&gt; getSimpleLegacyResult.ReverseDns),
         ///         },
         ///     };
         /// });

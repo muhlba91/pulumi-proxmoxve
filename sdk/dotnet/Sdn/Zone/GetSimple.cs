@@ -31,15 +31,15 @@ namespace Pulumi.ProxmoxVE.Sdn.Zone
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxSdnZoneSimple"] = 
+        ///         ["dataProxmoxSdnZoneSimple"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "id", example.Apply(getSimpleResult =&gt; getSimpleResult.Id) },
-        ///             { "nodes", example.Apply(getSimpleResult =&gt; getSimpleResult.Nodes) },
-        ///             { "mtu", example.Apply(getSimpleResult =&gt; getSimpleResult.Mtu) },
-        ///             { "dns", example.Apply(getSimpleResult =&gt; getSimpleResult.Dns) },
-        ///             { "dnsZone", example.Apply(getSimpleResult =&gt; getSimpleResult.DnsZone) },
-        ///             { "ipam", example.Apply(getSimpleResult =&gt; getSimpleResult.Ipam) },
-        ///             { "reverseDns", example.Apply(getSimpleResult =&gt; getSimpleResult.ReverseDns) },
+        ///             ["id"] = example.Apply(getSimpleResult =&gt; getSimpleResult.Id),
+        ///             ["nodes"] = example.Apply(getSimpleResult =&gt; getSimpleResult.Nodes),
+        ///             ["mtu"] = example.Apply(getSimpleResult =&gt; getSimpleResult.Mtu),
+        ///             ["dns"] = example.Apply(getSimpleResult =&gt; getSimpleResult.Dns),
+        ///             ["dnsZone"] = example.Apply(getSimpleResult =&gt; getSimpleResult.DnsZone),
+        ///             ["ipam"] = example.Apply(getSimpleResult =&gt; getSimpleResult.Ipam),
+        ///             ["reverseDns"] = example.Apply(getSimpleResult =&gt; getSimpleResult.ReverseDns),
         ///         },
         ///     };
         /// });
@@ -68,15 +68,15 @@ namespace Pulumi.ProxmoxVE.Sdn.Zone
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxSdnZoneSimple"] = 
+        ///         ["dataProxmoxSdnZoneSimple"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "id", example.Apply(getSimpleResult =&gt; getSimpleResult.Id) },
-        ///             { "nodes", example.Apply(getSimpleResult =&gt; getSimpleResult.Nodes) },
-        ///             { "mtu", example.Apply(getSimpleResult =&gt; getSimpleResult.Mtu) },
-        ///             { "dns", example.Apply(getSimpleResult =&gt; getSimpleResult.Dns) },
-        ///             { "dnsZone", example.Apply(getSimpleResult =&gt; getSimpleResult.DnsZone) },
-        ///             { "ipam", example.Apply(getSimpleResult =&gt; getSimpleResult.Ipam) },
-        ///             { "reverseDns", example.Apply(getSimpleResult =&gt; getSimpleResult.ReverseDns) },
+        ///             ["id"] = example.Apply(getSimpleResult =&gt; getSimpleResult.Id),
+        ///             ["nodes"] = example.Apply(getSimpleResult =&gt; getSimpleResult.Nodes),
+        ///             ["mtu"] = example.Apply(getSimpleResult =&gt; getSimpleResult.Mtu),
+        ///             ["dns"] = example.Apply(getSimpleResult =&gt; getSimpleResult.Dns),
+        ///             ["dnsZone"] = example.Apply(getSimpleResult =&gt; getSimpleResult.DnsZone),
+        ///             ["ipam"] = example.Apply(getSimpleResult =&gt; getSimpleResult.Ipam),
+        ///             ["reverseDns"] = example.Apply(getSimpleResult =&gt; getSimpleResult.ReverseDns),
         ///         },
         ///     };
         /// });
@@ -105,15 +105,15 @@ namespace Pulumi.ProxmoxVE.Sdn.Zone
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxSdnZoneSimple"] = 
+        ///         ["dataProxmoxSdnZoneSimple"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "id", example.Apply(getSimpleResult =&gt; getSimpleResult.Id) },
-        ///             { "nodes", example.Apply(getSimpleResult =&gt; getSimpleResult.Nodes) },
-        ///             { "mtu", example.Apply(getSimpleResult =&gt; getSimpleResult.Mtu) },
-        ///             { "dns", example.Apply(getSimpleResult =&gt; getSimpleResult.Dns) },
-        ///             { "dnsZone", example.Apply(getSimpleResult =&gt; getSimpleResult.DnsZone) },
-        ///             { "ipam", example.Apply(getSimpleResult =&gt; getSimpleResult.Ipam) },
-        ///             { "reverseDns", example.Apply(getSimpleResult =&gt; getSimpleResult.ReverseDns) },
+        ///             ["id"] = example.Apply(getSimpleResult =&gt; getSimpleResult.Id),
+        ///             ["nodes"] = example.Apply(getSimpleResult =&gt; getSimpleResult.Nodes),
+        ///             ["mtu"] = example.Apply(getSimpleResult =&gt; getSimpleResult.Mtu),
+        ///             ["dns"] = example.Apply(getSimpleResult =&gt; getSimpleResult.Dns),
+        ///             ["dnsZone"] = example.Apply(getSimpleResult =&gt; getSimpleResult.DnsZone),
+        ///             ["ipam"] = example.Apply(getSimpleResult =&gt; getSimpleResult.Ipam),
+        ///             ["reverseDns"] = example.Apply(getSimpleResult =&gt; getSimpleResult.ReverseDns),
         ///         },
         ///     };
         /// });

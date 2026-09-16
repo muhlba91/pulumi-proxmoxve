@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
 /**
  * Manages a Linux Bridge network interface in a Proxmox VE node.
  * 
+ * &gt; Proxmox VE hides bridges from the interface list (`GET /nodes/{node}/network`) when the API user lacks `SDN.Audit` or `SDN.Use` on `/sdn/zones/localnetwork/&lt;iface&gt;` (a grant on `/` propagates). The provider reads this resource from that list, so a token without these privileges fails with &#34;interface not found&#34; after create or on import. Privilege-separated tokens (`privsep=1`, the `pveum` default) need the grant on the token itself, not only on the user.
+ * 
  * ## Example Usage
  * 
  * <pre>

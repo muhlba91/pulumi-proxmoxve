@@ -43,14 +43,14 @@ namespace Pulumi.ProxmoxVE.Sdn
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxVirtualEnvironmentSdnZonesAll"] = 
+        ///         ["dataProxmoxVirtualEnvironmentSdnZonesAll"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "zones", all.Apply(getZonesLegacyResult =&gt; getZonesLegacyResult.Zones) },
+        ///             ["zones"] = all.Apply(getZonesLegacyResult =&gt; getZonesLegacyResult.Zones),
         ///         },
-        ///         ["dataProxmoxVirtualEnvironmentSdnZonesFiltered"] = 
+        ///         ["dataProxmoxVirtualEnvironmentSdnZonesFiltered"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "evpnZones", evpnOnly.Apply(getZonesLegacyResult =&gt; getZonesLegacyResult.Zones) },
-        ///             { "simpleZones", simpleOnly.Apply(getZonesLegacyResult =&gt; getZonesLegacyResult.Zones) },
+        ///             ["evpnZones"] = evpnOnly.Apply(getZonesLegacyResult =&gt; getZonesLegacyResult.Zones),
+        ///             ["simpleZones"] = simpleOnly.Apply(getZonesLegacyResult =&gt; getZonesLegacyResult.Zones),
         ///         },
         ///     };
         /// });
@@ -91,14 +91,14 @@ namespace Pulumi.ProxmoxVE.Sdn
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxVirtualEnvironmentSdnZonesAll"] = 
+        ///         ["dataProxmoxVirtualEnvironmentSdnZonesAll"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "zones", all.Apply(getZonesLegacyResult =&gt; getZonesLegacyResult.Zones) },
+        ///             ["zones"] = all.Apply(getZonesLegacyResult =&gt; getZonesLegacyResult.Zones),
         ///         },
-        ///         ["dataProxmoxVirtualEnvironmentSdnZonesFiltered"] = 
+        ///         ["dataProxmoxVirtualEnvironmentSdnZonesFiltered"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "evpnZones", evpnOnly.Apply(getZonesLegacyResult =&gt; getZonesLegacyResult.Zones) },
-        ///             { "simpleZones", simpleOnly.Apply(getZonesLegacyResult =&gt; getZonesLegacyResult.Zones) },
+        ///             ["evpnZones"] = evpnOnly.Apply(getZonesLegacyResult =&gt; getZonesLegacyResult.Zones),
+        ///             ["simpleZones"] = simpleOnly.Apply(getZonesLegacyResult =&gt; getZonesLegacyResult.Zones),
         ///         },
         ///     };
         /// });
@@ -139,14 +139,14 @@ namespace Pulumi.ProxmoxVE.Sdn
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxVirtualEnvironmentSdnZonesAll"] = 
+        ///         ["dataProxmoxVirtualEnvironmentSdnZonesAll"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "zones", all.Apply(getZonesLegacyResult =&gt; getZonesLegacyResult.Zones) },
+        ///             ["zones"] = all.Apply(getZonesLegacyResult =&gt; getZonesLegacyResult.Zones),
         ///         },
-        ///         ["dataProxmoxVirtualEnvironmentSdnZonesFiltered"] = 
+        ///         ["dataProxmoxVirtualEnvironmentSdnZonesFiltered"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "evpnZones", evpnOnly.Apply(getZonesLegacyResult =&gt; getZonesLegacyResult.Zones) },
-        ///             { "simpleZones", simpleOnly.Apply(getZonesLegacyResult =&gt; getZonesLegacyResult.Zones) },
+        ///             ["evpnZones"] = evpnOnly.Apply(getZonesLegacyResult =&gt; getZonesLegacyResult.Zones),
+        ///             ["simpleZones"] = simpleOnly.Apply(getZonesLegacyResult =&gt; getZonesLegacyResult.Zones),
         ///         },
         ///     };
         /// });

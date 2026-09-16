@@ -3,16 +3,25 @@
 
 package io.muehlbachler.pulumi.proxmoxve;
 
+import com.pulumi.core.TypeShape;
 import com.pulumi.core.internal.Codegen;
 import io.muehlbachler.pulumi.proxmoxve.config.inputs.Ssh;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import java.util.Optional;
 
 public final class Config {
 
     private static final com.pulumi.Config config = com.pulumi.Config.of("proxmoxve");
+/**
+ * Additional HTTP headers to send with every Proxmox VE API request. Useful when the API is behind an authenticating reverse proxy, e.g. Cloudflare Access. Headers managed by the provider or by the HTTP client, such as `Authorization`, are rejected. Can also be sourced from `PROXMOX_VE_API_HEADERS` as a comma-separated list of `Name=Value` pairs.
+ * 
+ */
+    public Optional<Map<String,String>> apiHeaders() {
+        return Codegen.objectProp("apiHeaders", TypeShape.<Map<String,String>>builder(Map.class).addParameter(String.class).addParameter(String.class).build()).config(config).get();
+    }
 /**
  * The API token for the Proxmox VE API.
  * 

@@ -77,6 +77,7 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
+            resourceInputs["apiHeaders"] = pulumi.output(args?.apiHeaders ? pulumi.secret(args.apiHeaders) : undefined).apply(JSON.stringify);
             resourceInputs["apiToken"] = args?.apiToken ? pulumi.secret(args.apiToken) : undefined;
             resourceInputs["authTicket"] = args?.authTicket ? pulumi.secret(args.authTicket) : undefined;
             resourceInputs["csrfPreventionToken"] = args?.csrfPreventionToken ? pulumi.secret(args.csrfPreventionToken) : undefined;
@@ -112,6 +113,10 @@ export class Provider extends pulumi.ProviderResource {
  * The set of arguments for constructing a Provider resource.
  */
 export interface ProviderArgs {
+    /**
+     * Additional HTTP headers to send with every Proxmox VE API request. Useful when the API is behind an authenticating reverse proxy, e.g. Cloudflare Access. Headers managed by the provider or by the HTTP client, such as `Authorization`, are rejected. Can also be sourced from `PROXMOX_VE_API_HEADERS` as a comma-separated list of `Name=Value` pairs.
+     */
+    apiHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The API token for the Proxmox VE API.
      */

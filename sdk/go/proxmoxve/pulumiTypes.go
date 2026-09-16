@@ -8387,10 +8387,11 @@ type VmLegacyEfiDisk struct {
 	DatastoreId *string `pulumi:"datastoreId"`
 	// The file format (defaults to `raw`).
 	FileFormat *string `pulumi:"fileFormat"`
-	// Use am EFI vars template with
+	// Use an EFI vars template with
 	// distribution-specific and Microsoft Standard keys enrolled, if used with
-	// EFI type=`4m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
-	// to `false`).
+	// EFI type=`4m`. For VMs with cpu.architecture=`aarch64` this requires
+	// `pve-edk2-firmware-aarch64` newer than `4.2025.05-2` on the host and is
+	// ignored otherwise (defaults to `false`).
 	PreEnrolledKeys *bool `pulumi:"preEnrolledKeys"`
 	// Size and type of the OVMF EFI disk. `4m` is newer and
 	// recommended, and required for Secure Boot. For backwards compatibility
@@ -8416,10 +8417,11 @@ type VmLegacyEfiDiskArgs struct {
 	DatastoreId pulumi.StringPtrInput `pulumi:"datastoreId"`
 	// The file format (defaults to `raw`).
 	FileFormat pulumi.StringPtrInput `pulumi:"fileFormat"`
-	// Use am EFI vars template with
+	// Use an EFI vars template with
 	// distribution-specific and Microsoft Standard keys enrolled, if used with
-	// EFI type=`4m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
-	// to `false`).
+	// EFI type=`4m`. For VMs with cpu.architecture=`aarch64` this requires
+	// `pve-edk2-firmware-aarch64` newer than `4.2025.05-2` on the host and is
+	// ignored otherwise (defaults to `false`).
 	PreEnrolledKeys pulumi.BoolPtrInput `pulumi:"preEnrolledKeys"`
 	// Size and type of the OVMF EFI disk. `4m` is newer and
 	// recommended, and required for Secure Boot. For backwards compatibility
@@ -8516,10 +8518,11 @@ func (o VmLegacyEfiDiskOutput) FileFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmLegacyEfiDisk) *string { return v.FileFormat }).(pulumi.StringPtrOutput)
 }
 
-// Use am EFI vars template with
+// Use an EFI vars template with
 // distribution-specific and Microsoft Standard keys enrolled, if used with
-// EFI type=`4m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
-// to `false`).
+// EFI type=`4m`. For VMs with cpu.architecture=`aarch64` this requires
+// `pve-edk2-firmware-aarch64` newer than `4.2025.05-2` on the host and is
+// ignored otherwise (defaults to `false`).
 func (o VmLegacyEfiDiskOutput) PreEnrolledKeys() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VmLegacyEfiDisk) *bool { return v.PreEnrolledKeys }).(pulumi.BoolPtrOutput)
 }
@@ -8577,10 +8580,11 @@ func (o VmLegacyEfiDiskPtrOutput) FileFormat() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Use am EFI vars template with
+// Use an EFI vars template with
 // distribution-specific and Microsoft Standard keys enrolled, if used with
-// EFI type=`4m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
-// to `false`).
+// EFI type=`4m`. For VMs with cpu.architecture=`aarch64` this requires
+// `pve-edk2-firmware-aarch64` newer than `4.2025.05-2` on the host and is
+// ignored otherwise (defaults to `false`).
 func (o VmLegacyEfiDiskPtrOutput) PreEnrolledKeys() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VmLegacyEfiDisk) *bool {
 		if v == nil {

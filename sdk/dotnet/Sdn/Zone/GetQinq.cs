@@ -31,18 +31,18 @@ namespace Pulumi.ProxmoxVE.Sdn.Zone
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxSdnZoneQinq"] = 
+        ///         ["dataProxmoxSdnZoneQinq"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "id", example.Apply(getQinqResult =&gt; getQinqResult.Id) },
-        ///             { "nodes", example.Apply(getQinqResult =&gt; getQinqResult.Nodes) },
-        ///             { "bridge", example.Apply(getQinqResult =&gt; getQinqResult.Bridge) },
-        ///             { "serviceVlan", example.Apply(getQinqResult =&gt; getQinqResult.ServiceVlan) },
-        ///             { "serviceVlanProtocol", example.Apply(getQinqResult =&gt; getQinqResult.ServiceVlanProtocol) },
-        ///             { "mtu", example.Apply(getQinqResult =&gt; getQinqResult.Mtu) },
-        ///             { "dns", example.Apply(getQinqResult =&gt; getQinqResult.Dns) },
-        ///             { "dnsZone", example.Apply(getQinqResult =&gt; getQinqResult.DnsZone) },
-        ///             { "ipam", example.Apply(getQinqResult =&gt; getQinqResult.Ipam) },
-        ///             { "reverseDns", example.Apply(getQinqResult =&gt; getQinqResult.ReverseDns) },
+        ///             ["id"] = example.Apply(getQinqResult =&gt; getQinqResult.Id),
+        ///             ["nodes"] = example.Apply(getQinqResult =&gt; getQinqResult.Nodes),
+        ///             ["bridge"] = example.Apply(getQinqResult =&gt; getQinqResult.Bridge),
+        ///             ["serviceVlan"] = example.Apply(getQinqResult =&gt; getQinqResult.ServiceVlan),
+        ///             ["serviceVlanProtocol"] = example.Apply(getQinqResult =&gt; getQinqResult.ServiceVlanProtocol),
+        ///             ["mtu"] = example.Apply(getQinqResult =&gt; getQinqResult.Mtu),
+        ///             ["dns"] = example.Apply(getQinqResult =&gt; getQinqResult.Dns),
+        ///             ["dnsZone"] = example.Apply(getQinqResult =&gt; getQinqResult.DnsZone),
+        ///             ["ipam"] = example.Apply(getQinqResult =&gt; getQinqResult.Ipam),
+        ///             ["reverseDns"] = example.Apply(getQinqResult =&gt; getQinqResult.ReverseDns),
         ///         },
         ///     };
         /// });
@@ -71,18 +71,18 @@ namespace Pulumi.ProxmoxVE.Sdn.Zone
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxSdnZoneQinq"] = 
+        ///         ["dataProxmoxSdnZoneQinq"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "id", example.Apply(getQinqResult =&gt; getQinqResult.Id) },
-        ///             { "nodes", example.Apply(getQinqResult =&gt; getQinqResult.Nodes) },
-        ///             { "bridge", example.Apply(getQinqResult =&gt; getQinqResult.Bridge) },
-        ///             { "serviceVlan", example.Apply(getQinqResult =&gt; getQinqResult.ServiceVlan) },
-        ///             { "serviceVlanProtocol", example.Apply(getQinqResult =&gt; getQinqResult.ServiceVlanProtocol) },
-        ///             { "mtu", example.Apply(getQinqResult =&gt; getQinqResult.Mtu) },
-        ///             { "dns", example.Apply(getQinqResult =&gt; getQinqResult.Dns) },
-        ///             { "dnsZone", example.Apply(getQinqResult =&gt; getQinqResult.DnsZone) },
-        ///             { "ipam", example.Apply(getQinqResult =&gt; getQinqResult.Ipam) },
-        ///             { "reverseDns", example.Apply(getQinqResult =&gt; getQinqResult.ReverseDns) },
+        ///             ["id"] = example.Apply(getQinqResult =&gt; getQinqResult.Id),
+        ///             ["nodes"] = example.Apply(getQinqResult =&gt; getQinqResult.Nodes),
+        ///             ["bridge"] = example.Apply(getQinqResult =&gt; getQinqResult.Bridge),
+        ///             ["serviceVlan"] = example.Apply(getQinqResult =&gt; getQinqResult.ServiceVlan),
+        ///             ["serviceVlanProtocol"] = example.Apply(getQinqResult =&gt; getQinqResult.ServiceVlanProtocol),
+        ///             ["mtu"] = example.Apply(getQinqResult =&gt; getQinqResult.Mtu),
+        ///             ["dns"] = example.Apply(getQinqResult =&gt; getQinqResult.Dns),
+        ///             ["dnsZone"] = example.Apply(getQinqResult =&gt; getQinqResult.DnsZone),
+        ///             ["ipam"] = example.Apply(getQinqResult =&gt; getQinqResult.Ipam),
+        ///             ["reverseDns"] = example.Apply(getQinqResult =&gt; getQinqResult.ReverseDns),
         ///         },
         ///     };
         /// });
@@ -111,18 +111,18 @@ namespace Pulumi.ProxmoxVE.Sdn.Zone
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dataProxmoxSdnZoneQinq"] = 
+        ///         ["dataProxmoxSdnZoneQinq"] = new Dictionary&lt;string, object?&gt;
         ///         {
-        ///             { "id", example.Apply(getQinqResult =&gt; getQinqResult.Id) },
-        ///             { "nodes", example.Apply(getQinqResult =&gt; getQinqResult.Nodes) },
-        ///             { "bridge", example.Apply(getQinqResult =&gt; getQinqResult.Bridge) },
-        ///             { "serviceVlan", example.Apply(getQinqResult =&gt; getQinqResult.ServiceVlan) },
-        ///             { "serviceVlanProtocol", example.Apply(getQinqResult =&gt; getQinqResult.ServiceVlanProtocol) },
-        ///             { "mtu", example.Apply(getQinqResult =&gt; getQinqResult.Mtu) },
-        ///             { "dns", example.Apply(getQinqResult =&gt; getQinqResult.Dns) },
-        ///             { "dnsZone", example.Apply(getQinqResult =&gt; getQinqResult.DnsZone) },
-        ///             { "ipam", example.Apply(getQinqResult =&gt; getQinqResult.Ipam) },
-        ///             { "reverseDns", example.Apply(getQinqResult =&gt; getQinqResult.ReverseDns) },
+        ///             ["id"] = example.Apply(getQinqResult =&gt; getQinqResult.Id),
+        ///             ["nodes"] = example.Apply(getQinqResult =&gt; getQinqResult.Nodes),
+        ///             ["bridge"] = example.Apply(getQinqResult =&gt; getQinqResult.Bridge),
+        ///             ["serviceVlan"] = example.Apply(getQinqResult =&gt; getQinqResult.ServiceVlan),
+        ///             ["serviceVlanProtocol"] = example.Apply(getQinqResult =&gt; getQinqResult.ServiceVlanProtocol),
+        ///             ["mtu"] = example.Apply(getQinqResult =&gt; getQinqResult.Mtu),
+        ///             ["dns"] = example.Apply(getQinqResult =&gt; getQinqResult.Dns),
+        ///             ["dnsZone"] = example.Apply(getQinqResult =&gt; getQinqResult.DnsZone),
+        ///             ["ipam"] = example.Apply(getQinqResult =&gt; getQinqResult.Ipam),
+        ///             ["reverseDns"] = example.Apply(getQinqResult =&gt; getQinqResult.ReverseDns),
         ///         },
         ///     };
         /// });
