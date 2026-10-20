@@ -190,7 +190,7 @@ jobs:
           dotnet nuget push --source "${{ env.NUGET_FEED_URL }}" --api-key "${{ steps.nuget-login.outputs.NUGET_API_KEY }}" ${{github.workspace}}/sdk/dotnet/bin/Debug/*.nupkg
         if: matrix.language == 'dotnet'
 
-      - uses: pypa/gh-action-pypi-publish@dc37677b2e1c63e2034f94d8a5b11f265b73ba33 # release/v1
+      - uses: pypa/gh-action-pypi-publish@7245906fb61fa33a13554f9d5fb856fe61758086 # release/v1
         with:
           skip-existing: true
           packages-dir: "${{ github.workspace }}/sdk/python/bin/dist/"
