@@ -7,7 +7,7 @@ lockfile_platforms = ["macos-arm64", "linux-x64", "linux-arm64"]
 [tools]
 go = "1.27.3"
 golangci-lint = "2.15.0"
-pulumi = "3.268.0"
+pulumi = "3.272.0"
 "github:pulumi/pulumictl" = "0.0.50"
 goreleaser = "2.18.1"
 node = "24.21.0"
