@@ -48,10 +48,6 @@ jobs:
       attestations: write
     needs:
       - release
-    strategy:
-      max-parallel: 4
-      matrix:
-        go-version: [1.27.x]
 
     steps:
       - uses: step-security/harden-runner@dc2769abcc0fcfbadfc1df54081c1608579ef6b2 # v2.22.2
@@ -62,23 +58,17 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+      - uses: jdx/mise-action@82a612c5ab8bcda7cc5db6b7e81a8e7584c3dc6e # v5.2.3
         with:
-          go-version: "${{ matrix.go-version }}"
-          cache-dependency-path: "**/*.sum"
+          cache: false
+          install_args: go pulumi github:pulumi/pulumictl goreleaser
 
-      - uses: jaxxstorm/action-install-gh-release@25e24d2d23ae098373794ef1d6faecb48ee52da8 # v3.0.0
-        with:
-          repo: pulumi/pulumictl
       - uses: pulumi/actions@8e5e406f4007fca908480587cb9893c07090f58d # v7
 
       - uses: sigstore/cosign-installer@6f9f17788090df1f26f669e9d70d6ae9567deba6 # v4.1.2
       - uses: anchore/sbom-action/download-syft@66cbf4bc1f1c0d2edc94016e65bc221b6bb0ad6c # v0.24.3
 
-      - uses: goreleaser/goreleaser-action@a4f02ab5355a589de60d917a659ce617ed19b3de # v7.3.0
-        with:
-          args: -p 3 release --clean --timeout 60m0s
-          version: latest
+      - run: goreleaser -p 3 release --clean --timeout 60m0s
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -103,11 +93,6 @@ jobs:
     strategy:
       max-parallel: 10
       matrix:
-        go-version: [1.27.x]
-        node-version: ["24"]
-        dotnet-version: [8.0.x]
-        python-version: [3.11]
-        java-version: [21]
         language:
           - go
           - nodejs
@@ -124,36 +109,20 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+      - uses: jdx/mise-action@82a612c5ab8bcda7cc5db6b7e81a8e7584c3dc6e # v5.2.3
         with:
-          go-version: "${{ matrix.go-version }}"
-          cache-dependency-path: "**/*.sum"
+          cache: false
+          install_args: go pulumi github:pulumi/pulumictl ${{ fromJSON('{"go":"","nodejs":"node","python":"python","dotnet":"dotnet","java":"java"}')[matrix.language] }}
 
-      - uses: jaxxstorm/action-install-gh-release@25e24d2d23ae098373794ef1d6faecb48ee52da8 # v3.0.0
-        with:
-          repo: pulumi/pulumictl
       - uses: pulumi/actions@8e5e406f4007fca908480587cb9893c07090f58d # v7
 
-      - uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
-        with:
-          dotnet-version: "${{ matrix.dotnet-version }}"
-        if: matrix.language == 'dotnet'
-      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
-        with:
-          python-version: "${{ matrix.python-version }}"
-        if: matrix.language == 'python'
+      # Node comes from mise; setup-node only writes the npm registry config.
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
-          node-version: "${{ matrix.node-version }}"
           registry-url: "https://registry.npmjs.org"
         if: matrix.language == 'nodejs'
       - run: corepack enable && corepack prepare yarn@stable --activate
         if: matrix.language == 'nodejs'
-      - uses: actions/setup-java@b843ebf9b913146b38da2eaa7aeddf76074ae1ad # v6.1.0
-        with:
-          distribution: corretto
-          java-version: ${{ matrix.java-version }}
-        if: matrix.language == 'java'
       - uses: gradle/actions/setup-gradle@3f5f9adaf7d9fecd50b5935e54106014257a94e6 # v6.4.0
         if: matrix.language == 'java'
 

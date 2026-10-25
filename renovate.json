@@ -17,6 +17,7 @@
     "enabledManagers": [
         "github-actions",
         "gomod",
-        "npm"
+        "npm",
+        "mise"
     ]
 }
