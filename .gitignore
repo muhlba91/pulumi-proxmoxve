@@ -447,3 +447,6 @@ provider/**/schema.go
 yarn.lock
 
 local.env
+
+# mise
+mise.local.toml
