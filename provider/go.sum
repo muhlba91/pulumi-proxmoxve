@@ -2900,6 +2900,8 @@ github.com/bpg/terraform-provider-proxmox v0.117.0 h1:iZjuyk+eIf0ui2fkbU6VXu6eU5
 github.com/bpg/terraform-provider-proxmox v0.117.0/go.mod h1:iqUqWZAtu9LHwEOSpHbCCs+Y61mc9H9LiONMGrBjiK0=
 github.com/bpg/terraform-provider-proxmox v0.118.0 h1:sOiWb52DrmTzvnbCF5YT7vWGzbwV2CRZ9RC7x4eSSdg=
 github.com/bpg/terraform-provider-proxmox v0.118.0/go.mod h1:iqUqWZAtu9LHwEOSpHbCCs+Y61mc9H9LiONMGrBjiK0=
+github.com/bpg/terraform-provider-proxmox v0.118.1 h1:oclZPrC2iHTHc4KjB0udJhwgae6kg/Wq/CyvBkTUaaw=
+github.com/bpg/terraform-provider-proxmox v0.118.1/go.mod h1:0gNDdy/W9Ub/SBc8913ebiyMxlBnhLENOiGFcd/8Izs=
 github.com/brianvoe/gofakeit/v7 v7.17.0 h1:usvHa73vmAjC1JmX4dpZAm1eQkR0riXaxvilScRTFb0=
 github.com/brianvoe/gofakeit/v7 v7.17.0/go.mod h1:QXuPeBw164PJCzCUZVmgpgHJ3Llj49jSLVkKPMtxtxA=
 github.com/bufbuild/protocompile v0.14.1 h1:iA73zAf/fyljNjQKwYzUHD6AD4R8KMasmwa/FBatYVw=
@@ -3855,6 +3857,8 @@ github.com/pkg/sftp v1.10.1/go.mod h1:lYOWFsE0bwd1+KfKJaKeuokY15vzFx25BLbzYYoAxZ
 github.com/pkg/sftp v1.13.1/go.mod h1:3HaPG6Dq1ILlpPZRO0HVMrsydcdLt6HRDccSgb87qRg=
 github.com/pkg/sftp v1.13.11 h1:0N92SLTB8JqASJB14ZLHHzFnBV8mG9zw4K7jghEFWuE=
 github.com/pkg/sftp v1.13.11/go.mod h1:uNkH9roSXglNJqM+glJJi+TQXQUm0fXFWqCFmT8hsN0=
+github.com/pkg/sftp v1.13.12 h1:Myhzy/ZzLPnCtE2F2WtDHsgs8RfgMnH2gfbHuCJhkMU=
+github.com/pkg/sftp v1.13.12/go.mod h1:uNkH9roSXglNJqM+glJJi+TQXQUm0fXFWqCFmT8hsN0=
 github.com/pkg/term v1.1.0 h1:xIAAdCMh3QIAy+5FrE8Ad8XoDhEU4ufwbaSozViP9kk=
 github.com/pkg/term v1.1.0/go.mod h1:E25nymQcrSllhX42Ok8MRm1+hyBdHY0dCeiKZ9jpNGw=
 github.com/planetscale/vtprotobuf v0.6.1-0.20240319094008-0393e58bdf10 h1:GFCKgmp0tecUJ0sJuv4pzYCqS9+RGSn52M3FUwPs+uo=
