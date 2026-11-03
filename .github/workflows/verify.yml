@@ -52,7 +52,7 @@ jobs:
         with:
           cache-dependency-path: "**/*.sum"
 
-      - uses: pulumi/actions@8e5e406f4007fca908480587cb9893c07090f58d # v7
+      - uses: pulumi/actions@96c7761824268174e0d2a4e8c7d75671eebd24a7 # v7
 
       - run: make provider
       - uses: golangci/golangci-lint-action@ba0d7d2ec06a0ea1cb5fa41b2e4a3ab91d21278a # v9.3.0
@@ -90,7 +90,7 @@ jobs:
         with:
           cache-dependency-path: "**/*.sum"
 
-      - uses: pulumi/actions@8e5e406f4007fca908480587cb9893c07090f58d # v7
+      - uses: pulumi/actions@96c7761824268174e0d2a4e8c7d75671eebd24a7 # v7
 
       - run: corepack enable && corepack prepare yarn@stable --activate
         if: matrix.language == 'nodejs'
