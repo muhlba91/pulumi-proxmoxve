@@ -8,7 +8,7 @@ require (
 	github.com/bpg/terraform-provider-proxmox v0.120.0
 	github.com/ettle/strcase v0.2.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.142.0
-	github.com/pulumi/pulumi/sdk/v3 v3.273.0
+	github.com/pulumi/pulumi/sdk/v3 v3.274.0
 )
 
 require (
@@ -177,7 +177,7 @@ require (
 	github.com/pulumi-labs/pulumi-hcl v0.12.0 // indirect
 	github.com/pulumi/appdash v0.0.0-20231130102222-75f619a67231 // indirect
 	github.com/pulumi/inflector v0.2.1 // indirect
-	github.com/pulumi/pulumi-cloud-sdk/go v1.20261026.1126 // indirect
+	github.com/pulumi/pulumi-cloud-sdk/go v1.20261027.1310 // indirect
 	github.com/pulumi/pulumi-dotnet/pulumi-language-dotnet/v3 v3.116.1 // indirect
 	github.com/pulumi/pulumi-hcl v0.18.8 // indirect
 	github.com/pulumi/pulumi-java v1.37.8 // indirect
