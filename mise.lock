@@ -125,26 +125,26 @@ checksum = "sha256:d38bd5e5a2ddce6bbb5ce45e46e208337da4d51fffe611e567fd32073d643
 url = "https://nodejs.org/dist/v26.13.0/node-v26.13.0-darwin-arm64.tar.gz"
 
 [[tools.pulumi]]
-version = "3.274.0"
+version = "3.274.1"
 backend = "aqua:pulumi/pulumi"
-specifiers = ["3.274.0"]
+specifiers = ["3.274.1"]
 
 [tools.pulumi."platforms.linux-arm64"]
-checksum = "sha256:8992dbe3ea47f3d7bda723d7ea2e09344e566ef0135aec5bccefb7cf58f59605"
-url = "https://github.com/pulumi/pulumi/releases/download/v3.274.0/pulumi-v3.274.0-linux-arm64.tar.gz"
-url_api = "https://api.github.com/repos/pulumi/pulumi/releases/assets/707171524"
+checksum = "sha256:3deec71250f46c8f63e2b1f2078b08f5a8df4815d0e5e141420eb4e7f072f36e"
+url = "https://github.com/pulumi/pulumi/releases/download/v3.274.1/pulumi-v3.274.1-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/pulumi/pulumi/releases/assets/713535883"
 provenance = "cosign"
 
 [tools.pulumi."platforms.linux-x64"]
-checksum = "sha256:4d8fcc13a3bc6c2bcfbb45fcea422a62b7173f3d62d3f51d66da701e5aa578da"
-url = "https://github.com/pulumi/pulumi/releases/download/v3.274.0/pulumi-v3.274.0-linux-x64.tar.gz"
-url_api = "https://api.github.com/repos/pulumi/pulumi/releases/assets/707171692"
+checksum = "sha256:32ae6d09d0df51637db7a0affb3ceb7d0511093b22d477aff5f20214d0b7e471"
+url = "https://github.com/pulumi/pulumi/releases/download/v3.274.1/pulumi-v3.274.1-linux-x64.tar.gz"
+url_api = "https://api.github.com/repos/pulumi/pulumi/releases/assets/713536181"
 provenance = "cosign"
 
 [tools.pulumi."platforms.macos-arm64"]
-checksum = "sha256:ddda97a108484985876464745eb63070593fd2ba350ebdf241e98a4cdab0c1dc"
-url = "https://github.com/pulumi/pulumi/releases/download/v3.274.0/pulumi-v3.274.0-darwin-arm64.tar.gz"
-url_api = "https://api.github.com/repos/pulumi/pulumi/releases/assets/707171118"
+checksum = "sha256:053f2b243d09dfc2e83bacd9921f4a5d365bb8804cdc19fa09fb5a1240eb171b"
+url = "https://github.com/pulumi/pulumi/releases/download/v3.274.1/pulumi-v3.274.1-darwin-arm64.tar.gz"
+url_api = "https://api.github.com/repos/pulumi/pulumi/releases/assets/713535320"
 provenance = "cosign"
 
 [[tools.python]]
