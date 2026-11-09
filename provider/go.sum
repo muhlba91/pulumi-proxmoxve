@@ -2783,6 +2783,8 @@ github.com/armon/go-socks5 v0.0.0-20160902184237-e75332964ef5/go.mod h1:wHh0iHkY
 github.com/aryann/difflib v0.0.0-20170710044230-e206f873d14a/go.mod h1:DAHtR1m6lCRdSC2Tm3DSWRPvIPr6xNKyeHdqDQSQT+A=
 github.com/avast/retry-go/v5 v5.0.0 h1:kf1Qc2UsTZ4qq8elDymqfbISvkyMuhgRxuJqX2NHP7k=
 github.com/avast/retry-go/v5 v5.0.0/go.mod h1://d+usmKWio1agtZfS1H/ltTqwtIfBnRq9zEwjc3eH8=
+github.com/avast/retry-go/v5 v5.1.1 h1:xinK2CJs8zMswWeFFSYeqBbqx9RskWDDdzybrFrz4Q8=
+github.com/avast/retry-go/v5 v5.1.1/go.mod h1:kb/MOVQOBAxjo+kIre6StLXJro2ZPAQh5IO/6wICTjI=
 github.com/aws/aws-lambda-go v1.13.3/go.mod h1:4UKl9IzQMoD+QF79YdCuzCwp8VbmG4VAQwij/eHl5CU=
 github.com/aws/aws-sdk-go v1.15.78/go.mod h1:E3/ieXAlvM0XWO57iftYVDLLvQ824smPP3ATZkfNZeM=
 github.com/aws/aws-sdk-go v1.25.3/go.mod h1:KmX6BPdI08NWTb3/sm4ZGu5ShLoqVDhKgpiN924inxo=
@@ -2906,6 +2908,8 @@ github.com/bpg/terraform-provider-proxmox v0.119.0 h1:uKnCFGZ+lwn+cyt4kq6HhdPY6Y
 github.com/bpg/terraform-provider-proxmox v0.119.0/go.mod h1:AGedN7aJgIQLJ0rB+hGlP6BZZjY3ACRAqw7EMXvPhHY=
 github.com/bpg/terraform-provider-proxmox v0.120.0 h1:thNnY00cxDLO8/XWtJFvapMRHUJE1AtLlICk0jaw6EE=
 github.com/bpg/terraform-provider-proxmox v0.120.0/go.mod h1:58/E+LnG0Ki/jitwi4xHyvBba89+DzlqSX3JFSsccT0=
+github.com/bpg/terraform-provider-proxmox v0.121.0 h1:Mxz6vC6H72/gV+SMxtC7IRl4pOn8cAnU3qw3Zr+uY1M=
+github.com/bpg/terraform-provider-proxmox v0.121.0/go.mod h1:Tm9vuakPK2RtmOFFes2cY9wwijdgpBiUp68+m6Hz0SQ=
 github.com/brianvoe/gofakeit/v7 v7.17.0 h1:usvHa73vmAjC1JmX4dpZAm1eQkR0riXaxvilScRTFb0=
 github.com/brianvoe/gofakeit/v7 v7.17.0/go.mod h1:QXuPeBw164PJCzCUZVmgpgHJ3Llj49jSLVkKPMtxtxA=
 github.com/bufbuild/protocompile v0.14.1 h1:iA73zAf/fyljNjQKwYzUHD6AD4R8KMasmwa/FBatYVw=
