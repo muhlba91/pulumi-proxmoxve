@@ -10,7 +10,8 @@ policies:
       body:
         required: false
       dco: false
-      gpg: false
+      gpg:
+        required: false
       spellcheck:
         locale: US
       maximumOfOneCommit: false
