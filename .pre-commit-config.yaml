@@ -1,7 +1,7 @@
 ---
 repos:
-  - repo: https://github.com/talos-systems/conform
-    rev: v0.1.0-alpha.31
+  - repo: https://github.com/siderolabs/conform
+    rev: v0.1.0-alpha.33
     hooks:
       - id: conform
         stages:
