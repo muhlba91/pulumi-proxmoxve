@@ -112,7 +112,7 @@ jobs:
       - uses: jdx/mise-action@b44d12e7d0d8ee7461bb893e1b1993500433185b # v5.2.7
         with:
           cache: false
-          install_args: go pulumi github:pulumi/pulumictl ${{ fromJSON('{"go":"","nodejs":"node","python":"python","dotnet":"dotnet","java":"java"}')[matrix.language] }}
+          install_args: go pulumi github:pulumi/pulumictl fnox vault ${{ fromJSON('{"go":"","nodejs":"node","python":"python","dotnet":"dotnet","java":"java"}')[matrix.language] }}
 
       - uses: pulumi/actions@96c7761824268174e0d2a4e8c7d75671eebd24a7 # v7
 
@@ -143,12 +143,16 @@ jobs:
           url: ${{ secrets.VAULT_ADDR }}
           path: ${{ secrets.VAULT_PATH }}
           role: ${{ secrets.VAULT_ROLE }}
-          secrets: |
-            github-pulumi-proxmoxve/data/java signing_key | SIGNING_KEY ;
-            github-pulumi-proxmoxve/data/java signing_key_id | SIGNING_KEY_ID ;
-            github-pulumi-proxmoxve/data/java signing_password | SIGNING_PASSWORD ;
-            github-pulumi-proxmoxve/data/sonatype publish_password | PUBLISH_REPO_PASSWORD ;
-            github-pulumi-proxmoxve/data/sonatype publish_username | PUBLISH_REPO_USERNAME
+          # login only: the secrets are read by fnox (fnox.toml), the same list as on the developer machines
+          exportToken: true
+
+      # the Java signing key is multi-line, so the values are not exported to $GITHUB_ENV: fnox exec passes them to the
+      # Gradle step only; this step registers the masks (fnox cannot mask the multi-line key itself)
+      - name: Mask secrets
+        env:
+          VAULT_ADDR: ${{ secrets.VAULT_ADDR }}
+        run: fnox ci-redact
+        if: matrix.language == 'java'
 
       - uses: NuGet/login@8d196754b4036150537f80ac539e15c2f1028841 # v1
         id: nuget-login
@@ -174,7 +178,9 @@ jobs:
           echo "PACKAGE_VERSION=${{ env.VERSION_NAME }}" >> $GITHUB_ENV
         if: matrix.language == 'java'
       - working-directory: sdk/java
-        run: gradle --init-script "${{ github.workspace }}/.github/gradle/fix-pom-metadata.init.gradle" publishToSonatype closeAndReleaseSonatypeStagingRepository
+        env:
+          VAULT_ADDR: ${{ secrets.VAULT_ADDR }}
+        run: fnox exec -- gradle --init-script "${{ github.workspace }}/.github/gradle/fix-pom-metadata.init.gradle" publishToSonatype closeAndReleaseSonatypeStagingRepository
         if: matrix.language == 'java'
         continue-on-error: true # Java SDK publishing is in alpha stage, so we will continue on error until it is supported (https://github.com/muhlba91/pulumi-proxmoxve/issues/66)
 
