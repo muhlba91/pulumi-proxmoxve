@@ -1,0 +1,22 @@
+# Secrets for CI and local runs, read from Vault with fnox (https://fnox.jdx.dev)
+#
+# - CI: the default profile; the Vault token comes from the GitHub OIDC login (hashicorp/vault-action, exportToken)
+#   (only the release workflow's "Publish SDK" job uses them: the Java signing and Sonatype publishing credentials)
+# - developer machines: the same default profile; there is no `dev` profile
+#
+# run: fnox exec -- gradle publishToSonatype   (in sdk/java)
+
+if_missing = "error"
+
+# the repository's Vault mount; the token from VAULT_TOKEN (CI) or the Vault CLI's token helper
+[providers.vault]
+type = "vault"
+path = "github-pulumi-proxmoxve"
+credential_command = "vault print token"
+
+[secrets]
+SIGNING_KEY = { provider = "vault", value = "java/signing_key" }
+SIGNING_KEY_ID = { provider = "vault", value = "java/signing_key_id" }
+SIGNING_PASSWORD = { provider = "vault", value = "java/signing_password" }
+PUBLISH_REPO_PASSWORD = { provider = "vault", value = "sonatype/publish_password" }
+PUBLISH_REPO_USERNAME = { provider = "vault", value = "sonatype/publish_username" }
