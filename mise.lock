@@ -8,25 +8,25 @@ backend = "core:dotnet"
 specifiers = ["8.0.426"]
 
 [[tools.fnox]]
-version = "1.47.0"
+version = "1.48.0"
 backend = "packslip:github.com/jdx/fnox"
-specifiers = ["1.47.0"]
+specifiers = ["v1.48.0"]
 
 [tools.fnox."platforms.linux-arm64"]
-checksum = "sha256:11a347e775fe0531f0b767c38fa9f6a2848f10b04f2d6824680821c56fe11da1"
-url = "https://github.com/jdx/fnox/releases/download/v1.47.0/fnox-aarch64-unknown-linux-gnu.tar.gz"
+checksum = "sha256:706edaa5293abb9fc9cd8f40c826222fc2f455433c90c36f6dd83f1526a9ef67"
+url = "https://github.com/jdx/fnox/releases/download/v1.48.0/fnox-aarch64-unknown-linux-gnu.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/fnox/.github/workflows/release.yml"
 repository_ids = { repository = "1078762196" }
 
 [tools.fnox."platforms.linux-x64"]
-checksum = "sha256:6d48c4b088a713fa976e5fdbe869c7e0620f77a1e9e6ad1d71c6f4523d7aafb4"
-url = "https://github.com/jdx/fnox/releases/download/v1.47.0/fnox-x86_64-unknown-linux-gnu.tar.gz"
+checksum = "sha256:4c8ef00618e4ae659b4c9e1d4efd93961c97ebc7723df149234fe38a9dac62fb"
+url = "https://github.com/jdx/fnox/releases/download/v1.48.0/fnox-x86_64-unknown-linux-gnu.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/fnox/.github/workflows/release.yml"
 repository_ids = { repository = "1078762196" }
 
 [tools.fnox."platforms.macos-arm64"]
-checksum = "sha256:e1afc59116fe9bfee645f3e0d0353b0f7ff68ce4a76bc6c516da7aedd9a47179"
-url = "https://github.com/jdx/fnox/releases/download/v1.47.0/fnox-aarch64-apple-darwin.tar.gz"
+checksum = "sha256:1b81153805a485072ecbeb14b2b2aaa24a9bfeb467002a7d725cbfc01cbb1811"
+url = "https://github.com/jdx/fnox/releases/download/v1.48.0/fnox-aarch64-apple-darwin.tar.gz"
 signer = "sigstore-oidc:https://github.com/jdx/fnox/.github/workflows/release.yml"
 repository_ids = { repository = "1078762196" }
 
