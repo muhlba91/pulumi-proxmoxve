@@ -191,18 +191,18 @@ url = "https://github.com/astral-sh/python-build-standalone/releases/download/20
 provenance = "github-attestations"
 
 [[tools.vault]]
-version = "2.2.1"
+version = "2.2.2"
 backend = "aqua:hashicorp/vault"
-specifiers = ["2.2.1"]
+specifiers = ["2.2.2"]
 
 [tools.vault."platforms.linux-arm64"]
-checksum = "sha256:b8d3a7611ce996dcad8702355895a3f8657dab73311fd8f7f1b797e251aba29a"
-url = "https://releases.hashicorp.com/vault/2.2.1/vault_2.2.1_linux_arm64.zip"
+checksum = "sha256:78634c8672601ad1ca9b27f24e76c54224d12521c59ece957ab8d23976ddca12"
+url = "https://releases.hashicorp.com/vault/2.2.2/vault_2.2.2_linux_arm64.zip"
 
 [tools.vault."platforms.linux-x64"]
-checksum = "sha256:079435de8ff146bdec4cdbe3be71d672ef4e59e4df6af0f2dba672e71be21a68"
-url = "https://releases.hashicorp.com/vault/2.2.1/vault_2.2.1_linux_amd64.zip"
+checksum = "sha256:5700edf139113609962fe371af7d2a53de8ecb720d545dc39b43de204515d3c4"
+url = "https://releases.hashicorp.com/vault/2.2.2/vault_2.2.2_linux_amd64.zip"
 
 [tools.vault."platforms.macos-arm64"]
-checksum = "sha256:9bcf30cfa62f2fb68ed0b928bc51e4a4f2cf291f2356c63db2a8fca6bbd5f8f1"
-url = "https://releases.hashicorp.com/vault/2.2.1/vault_2.2.1_darwin_arm64.zip"
+checksum = "sha256:75843ff0559dfa4d69bfde073f98caaa22674c27fd80446d092ad2069d7f25f8"
+url = "https://releases.hashicorp.com/vault/2.2.2/vault_2.2.2_darwin_arm64.zip"

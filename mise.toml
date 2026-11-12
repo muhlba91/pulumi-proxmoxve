@@ -15,4 +15,4 @@ python = "3.11.17"
 dotnet = "8.0.426"
 java = "corretto-21.0.12.12.1"
 fnox = { version = "v1.48.0", workflow = "release.yml" }
-vault = "2.2.1"
+vault = "2.2.2"
