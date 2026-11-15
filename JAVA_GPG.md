@@ -11,10 +11,10 @@ export GNUPGHOME=$(mktemp -d)
 
 # primary signing key, 10 years validity (prompts for a passphrase unless
 # you add --batch --pinentry-mode loopback --passphrase '...')
-gpg --quick-generate-key "Daniel Muehlbachler-Pietrzykowski <daniel@muehlbachler.io>" ed25519 sign 10y
+gpg --quick-generate-key "Daniel Muehlbachler-Pietrzykowski <dev@muehlbachler.io>" ed25519 sign 10y
 
 # grab the fingerprint
-FPR=$(gpg -k --with-colons "daniel@muehlbachler.io" | awk -F: '/^fpr:/{print $10; exit}')
+FPR=$(gpg -k --with-colons "dev@muehlbachler.io" | awk -F: '/^fpr:/{print $10; exit}')
 
 # add an encryption subkey (matches the previous key's shape)
 gpg --quick-add-key "$FPR" cv25519 encr 10y
