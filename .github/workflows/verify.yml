@@ -43,7 +43,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: jdx/mise-action@b44d12e7d0d8ee7461bb893e1b1993500433185b # v5.2.7
+      - uses: jdx/mise-action@d5574b52816a478f9d4e6529a3f6ff17a8a36785 # v5.2.8
         with:
           install_args: go golangci-lint pulumi github:pulumi/pulumictl
 
@@ -81,7 +81,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: jdx/mise-action@b44d12e7d0d8ee7461bb893e1b1993500433185b # v5.2.7
+      - uses: jdx/mise-action@d5574b52816a478f9d4e6529a3f6ff17a8a36785 # v5.2.8
         with:
           install_args: go pulumi github:pulumi/pulumictl ${{ fromJSON('{"go":"","nodejs":"node","python":"python","dotnet":"dotnet","java":"java"}')[matrix.language] }}
 
