@@ -26,7 +26,7 @@ allprojects {
                             developer.name.set("Daniel Muehlbachler-Pietrzykowski")
                         }
                         if (developer.email.getOrElse("").trim().isEmpty()) {
-                            developer.email.set("daniel@muehlbachler.io")
+                            developer.email.set("dev@muehlbachler.io")
                         }
                     }
                 }
