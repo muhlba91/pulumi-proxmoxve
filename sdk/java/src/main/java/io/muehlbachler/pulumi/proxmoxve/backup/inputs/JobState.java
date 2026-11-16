@@ -52,6 +52,21 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Description of the backup job, shown in the Proxmox VE web UI.
+     * 
+     */
+    @Import(name="comment")
+    private @Nullable Output<String> comment;
+
+    /**
+     * @return Description of the backup job, shown in the Proxmox VE web UI.
+     * 
+     */
+    public Optional<Output<String>> comment() {
+        return Optional.ofNullable(this.comment);
+    }
+
+    /**
      * The compression algorithm (0, 1, gzip, lzo, or zstd).
      * 
      */
@@ -244,6 +259,21 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> notesTemplate() {
         return Optional.ofNullable(this.notesTemplate);
+    }
+
+    /**
+     * Notification mode (`auto`, `legacy-sendmail` or `notification-system`). With `auto` (the Proxmox VE default), an email is sent if `mailto` is set, otherwise the notification system is used. `legacy-sendmail` always uses `mailto` and `mailnotification`; `notification-system` always uses the PVE notification system and ignores them.
+     * 
+     */
+    @Import(name="notificationMode")
+    private @Nullable Output<String> notificationMode;
+
+    /**
+     * @return Notification mode (`auto`, `legacy-sendmail` or `notification-system`). With `auto` (the Proxmox VE default), an email is sent if `mailto` is set, otherwise the notification system is used. `legacy-sendmail` always uses `mailto` and `mailnotification`; `notification-system` always uses the PVE notification system and ignores them.
+     * 
+     */
+    public Optional<Output<String>> notificationMode() {
+        return Optional.ofNullable(this.notificationMode);
     }
 
     /**
@@ -521,6 +551,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     private JobState(JobState $) {
         this.all = $.all;
         this.bwlimit = $.bwlimit;
+        this.comment = $.comment;
         this.compress = $.compress;
         this.enabled = $.enabled;
         this.excludePaths = $.excludePaths;
@@ -534,6 +565,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         this.mode = $.mode;
         this.node = $.node;
         this.notesTemplate = $.notesTemplate;
+        this.notificationMode = $.notificationMode;
         this.pbsChangeDetectionMode = $.pbsChangeDetectionMode;
         this.performance = $.performance;
         this.pigz = $.pigz;
@@ -612,6 +644,27 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder bwlimit(Integer bwlimit) {
             return bwlimit(Output.of(bwlimit));
+        }
+
+        /**
+         * @param comment Description of the backup job, shown in the Proxmox VE web UI.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder comment(@Nullable Output<String> comment) {
+            $.comment = comment;
+            return this;
+        }
+
+        /**
+         * @param comment Description of the backup job, shown in the Proxmox VE web UI.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder comment(String comment) {
+            return comment(Output.of(comment));
         }
 
         /**
@@ -915,6 +968,27 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder notesTemplate(String notesTemplate) {
             return notesTemplate(Output.of(notesTemplate));
+        }
+
+        /**
+         * @param notificationMode Notification mode (`auto`, `legacy-sendmail` or `notification-system`). With `auto` (the Proxmox VE default), an email is sent if `mailto` is set, otherwise the notification system is used. `legacy-sendmail` always uses `mailto` and `mailnotification`; `notification-system` always uses the PVE notification system and ignores them.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notificationMode(@Nullable Output<String> notificationMode) {
+            $.notificationMode = notificationMode;
+            return this;
+        }
+
+        /**
+         * @param notificationMode Notification mode (`auto`, `legacy-sendmail` or `notification-system`). With `auto` (the Proxmox VE default), an email is sent if `mailto` is set, otherwise the notification system is used. `legacy-sendmail` always uses `mailto` and `mailnotification`; `notification-system` always uses the PVE notification system and ignores them.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notificationMode(String notificationMode) {
+            return notificationMode(Output.of(notificationMode));
         }
 
         /**

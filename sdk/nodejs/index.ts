@@ -322,6 +322,7 @@ import * as ceph from "./ceph";
 import * as cloned from "./cloned";
 import * as cluster from "./cluster";
 import * as config from "./config";
+import * as custom from "./custom";
 import * as download from "./download";
 import * as firewall from "./firewall";
 import * as hardware from "./hardware";
@@ -344,6 +345,7 @@ export {
     cloned,
     cluster,
     config,
+    custom,
     download,
     firewall,
     hardware,

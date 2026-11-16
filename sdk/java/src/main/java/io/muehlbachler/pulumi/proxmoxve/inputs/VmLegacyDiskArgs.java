@@ -117,8 +117,9 @@ public final class VmLegacyDiskArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The file ID for a disk image when importing a disk into VM. The ID format is
-     * `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/centos8.img`. Can be also taken from
-     * `proxmoxve.download.FileLegacy` resource. Prefer `importFrom` for uncompressed images.
+     * `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/centos8.img`, without whitespace, `,` or `=`.
+     * Can be also taken from `proxmoxve.download.FileLegacy` resource. Prefer `importFrom` for
+     * uncompressed images.
      * Use `fileId` when working with compressed cloud images (e.g., `.qcow2.xz`) that were downloaded
      * with `contentType = &#34;iso&#34;` and `decompressionAlgorithm` set. See the
      * Create a VM from a Cloud Image guide for examples.
@@ -129,8 +130,9 @@ public final class VmLegacyDiskArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The file ID for a disk image when importing a disk into VM. The ID format is
-     * `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/centos8.img`. Can be also taken from
-     * `proxmoxve.download.FileLegacy` resource. Prefer `importFrom` for uncompressed images.
+     * `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/centos8.img`, without whitespace, `,` or `=`.
+     * Can be also taken from `proxmoxve.download.FileLegacy` resource. Prefer `importFrom` for
+     * uncompressed images.
      * Use `fileId` when working with compressed cloud images (e.g., `.qcow2.xz`) that were downloaded
      * with `contentType = &#34;iso&#34;` and `decompressionAlgorithm` set. See the
      * Create a VM from a Cloud Image guide for examples.
@@ -257,14 +259,16 @@ public final class VmLegacyDiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The serial number of the disk, up to 20 bytes long.
+     * The serial number of the disk, up to 20 characters. Letters, digits and
+     * `-%_.!~*&#39;()` only.
      * 
      */
     @Import(name="serial")
     private @Nullable Output<String> serial;
 
     /**
-     * @return The serial number of the disk, up to 20 bytes long.
+     * @return The serial number of the disk, up to 20 characters. Letters, digits and
+     * `-%_.!~*&#39;()` only.
      * 
      */
     public Optional<Output<String>> serial() {
@@ -494,8 +498,9 @@ public final class VmLegacyDiskArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param fileId The file ID for a disk image when importing a disk into VM. The ID format is
-         * `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/centos8.img`. Can be also taken from
-         * `proxmoxve.download.FileLegacy` resource. Prefer `importFrom` for uncompressed images.
+         * `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/centos8.img`, without whitespace, `,` or `=`.
+         * Can be also taken from `proxmoxve.download.FileLegacy` resource. Prefer `importFrom` for
+         * uncompressed images.
          * Use `fileId` when working with compressed cloud images (e.g., `.qcow2.xz`) that were downloaded
          * with `contentType = &#34;iso&#34;` and `decompressionAlgorithm` set. See the
          * Create a VM from a Cloud Image guide for examples.
@@ -510,8 +515,9 @@ public final class VmLegacyDiskArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param fileId The file ID for a disk image when importing a disk into VM. The ID format is
-         * `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/centos8.img`. Can be also taken from
-         * `proxmoxve.download.FileLegacy` resource. Prefer `importFrom` for uncompressed images.
+         * `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/centos8.img`, without whitespace, `,` or `=`.
+         * Can be also taken from `proxmoxve.download.FileLegacy` resource. Prefer `importFrom` for
+         * uncompressed images.
          * Use `fileId` when working with compressed cloud images (e.g., `.qcow2.xz`) that were downloaded
          * with `contentType = &#34;iso&#34;` and `decompressionAlgorithm` set. See the
          * Create a VM from a Cloud Image guide for examples.
@@ -676,7 +682,8 @@ public final class VmLegacyDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serial The serial number of the disk, up to 20 bytes long.
+         * @param serial The serial number of the disk, up to 20 characters. Letters, digits and
+         * `-%_.!~*&#39;()` only.
          * 
          * @return builder
          * 
@@ -687,7 +694,8 @@ public final class VmLegacyDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serial The serial number of the disk, up to 20 bytes long.
+         * @param serial The serial number of the disk, up to 20 characters. Letters, digits and
+         * `-%_.!~*&#39;()` only.
          * 
          * @return builder
          * 

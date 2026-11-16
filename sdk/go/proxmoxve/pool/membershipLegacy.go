@@ -50,14 +50,14 @@ import (
 //				return err
 //			}
 //			_, err = pool.NewMembershipLegacy(ctx, "vm_membership", &pool.MembershipLegacyArgs{
-//				PoolId: testPool.ID().ToIDOutput().ToStringOutput(),
-//				VmId:   testVm1.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				PoolId: testPool.ID(),
+//				VmId:   testVm1.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = pool.NewMembershipLegacy(ctx, "storage_membership", &pool.MembershipLegacyArgs{
-//				PoolId:    testPool.ID().ToIDOutput().ToStringOutput(),
+//				PoolId:    testPool.ID(),
 //				StorageId: pulumi.String("local-lvm"),
 //			})
 //			if err != nil {
@@ -146,6 +146,12 @@ type MembershipLegacyState struct {
 
 func (MembershipLegacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*membershipLegacyState)(nil)).Elem()
+}
+
+// MembershipLegacyExists checks whether an existing MembershipLegacy resource with the given ID exists.
+func MembershipLegacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MembershipLegacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:pool/membershipLegacy:MembershipLegacy", id, state, "", opts...)
 }
 
 type membershipLegacyArgs struct {

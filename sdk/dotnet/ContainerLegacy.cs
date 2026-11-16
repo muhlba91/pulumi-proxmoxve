@@ -199,6 +199,56 @@ namespace Pulumi.ProxmoxVE
     /// | Storage ID + volume name   | Mount an existing volume by its full PVE volume ID       | `local-lvm:subvol-108-disk-101`    |
     /// | Absolute host path         | Bind-mount a host directory (requires `root@pam` auth)   | `/mnt/bindmounts/shared`           |
     /// 
+    /// ## Container migration
+    /// 
+    /// Setting `migrate = true` makes a change to `NodeName` migrate the container instead of destroying and
+    /// recreating it.
+    /// 
+    /// &gt; **Important:** containers cannot be migrated live. Unlike virtual machines, a running container is
+    /// migrated by shutting it down, moving it, and starting it again on the target node, so every migration of
+    /// a running container incurs downtime. Set `TimeoutMigrate` high enough to cover the shutdown grace
+    /// period, the volume copy and the boot.
+    /// 
+    /// A stopped container is migrated offline and is not started as a side effect. If `started = true`, it is
+    /// started on the target node afterwards as usual.
+    /// 
+    /// If the same apply also makes any other configuration change — including ones that would not need a
+    /// restart on their own, such as `Tags` or `Description` — or changes `Idmap`, or sets `Started` to `False`,
+    /// the provider shuts the container down, migrates it offline, applies the change on the target node, and then
+    /// starts it (or leaves it stopped). This avoids starting the container with stale configuration and
+    /// restarting it twice.
+    /// 
+    /// The `TimeoutUpdate` clock restarts once the container has arrived on the target node, so a long volume
+    /// copy cannot eat into the time available for the configuration write, start or reboot that follows it.
+    /// 
+    /// Containers managed by Proxmox HA are set to the HA state `Ignored` for the duration of the migration, so
+    /// that HA does not intercept the shutdown, migration and start or relocate the container afterwards. Once the
+    /// container is in its final run state on the target node, its original HA state is restored; if the apply
+    /// changes `Started`, a `Started`, `Stopped` or `Disabled` HA state is restored to match it instead.
+    /// 
+    /// Every migration needs `VM.Migrate` on the container and `Sys.Audit` on `/`, which the provider uses to check
+    /// whether the container is HA-managed. Migrating an HA-managed container also needs `Sys.Console` on `/` to
+    /// change its HA state.
+    /// 
+    /// ### Bind mounts
+    /// 
+    /// A `MountPoint` that references a host path rather than a storage volume blocks migration unless the
+    /// mount point has `shared = true`. This asserts that the same path exists on all nodes in the cluster.
+    /// 
+    /// &gt; **Note:** `Shared` and `NodeName` cannot be changed in the same apply. Proxmox validates the mount
+    /// point against the container's current configuration when the migration starts, and the provider writes
+    /// configuration changes to the target node after the move, so the migration is refused before the new
+    /// `shared = true` takes effect. Apply `shared = true` first, then change `NodeName`.
+    /// 
+    /// &gt; **Warning:** if the asserted path does not exist on the target node, the configuration and volumes
+    /// still move, but starting the container there fails. The container is left stopped on the target node and
+    /// its configuration on the source node is gone — there is no automatic fail-back. Create the missing path
+    /// on the target node, then start the container to recover.
+    /// 
+    /// Migration behavior for `DevicePassthrough` devices has not been verified. A device passed through to a
+    /// container is node-local, so the same device should be expected to need to exist on the target node, but
+    /// this has not been tested — do not assume it behaves like a `Shared` bind mount.
+    /// 
     /// ## Import
     /// 
     /// Instances can be imported using the `NodeName` and the `VmId`, e.g.,
@@ -311,9 +361,26 @@ namespace Pulumi.ProxmoxVE
         public Output<Outputs.ContainerLegacyMemory?> Memory { get; private set; } = null!;
 
         /// <summary>
+        /// Migrate the container on node change instead of
+        /// re-creating it (defaults to `False`).
+        /// </summary>
+        [Output("migrate")]
+        public Output<bool?> Migrate { get; private set; } = null!;
+
+        /// <summary>
         /// An additional volume mount or host bind mount
         /// (multiple blocks supported). Use this for data volumes, shared
         /// directories, or attaching pre-existing PVE volumes.
+        /// 
+        /// &gt; Mount points are positional: the first block is `Mp0` in Proxmox VE, the
+        /// second `Mp1`, and so on. Appending a block, removing the last block, or
+        /// reconfiguring an existing one is applied in place, and a running container
+        /// is restarted. Removing or inserting a block before existing ones recreates
+        /// the container, as does changing the `Size` of an existing mount point or
+        /// pointing its `Volume` at a different datastore or host path. Changing
+        /// `Volume` from one volume ID to another on the same datastore is not
+        /// detected. A removed volume mount stays on the datastore as an unused
+        /// volume; bind and device mounts are just dropped.
         /// </summary>
         [Output("mountPoints")]
         public Output<ImmutableArray<Outputs.ContainerLegacyMountPoint>> MountPoints { get; private set; } = null!;
@@ -412,9 +479,17 @@ namespace Pulumi.ProxmoxVE
         public Output<int?> TimeoutDelete { get; private set; } = null!;
 
         /// <summary>
+        /// Timeout for migrating the container to another node, in seconds (defaults to
+        /// 1800).
+        /// </summary>
+        [Output("timeoutMigrate")]
+        public Output<int?> TimeoutMigrate { get; private set; } = null!;
+
+        /// <summary>
         /// Start container timeout
         /// </summary>
         [Output("timeoutStart")]
+        [Obsolete(@"This field is deprecated and will be removed in a future release. An overall operation timeout (`TimeoutCreate` / `TimeoutClone`) is used instead.")]
         public Output<int?> TimeoutStart { get; private set; } = null!;
 
         /// <summary>
@@ -594,6 +669,13 @@ namespace Pulumi.ProxmoxVE
         [Input("memory")]
         public Input<Inputs.ContainerLegacyMemoryArgs>? Memory { get; set; }
 
+        /// <summary>
+        /// Migrate the container on node change instead of
+        /// re-creating it (defaults to `False`).
+        /// </summary>
+        [Input("migrate")]
+        public Input<bool>? Migrate { get; set; }
+
         [Input("mountPoints")]
         private InputList<Inputs.ContainerLegacyMountPointArgs>? _mountPoints;
 
@@ -601,6 +683,16 @@ namespace Pulumi.ProxmoxVE
         /// An additional volume mount or host bind mount
         /// (multiple blocks supported). Use this for data volumes, shared
         /// directories, or attaching pre-existing PVE volumes.
+        /// 
+        /// &gt; Mount points are positional: the first block is `Mp0` in Proxmox VE, the
+        /// second `Mp1`, and so on. Appending a block, removing the last block, or
+        /// reconfiguring an existing one is applied in place, and a running container
+        /// is restarted. Removing or inserting a block before existing ones recreates
+        /// the container, as does changing the `Size` of an existing mount point or
+        /// pointing its `Volume` at a different datastore or host path. Changing
+        /// `Volume` from one volume ID to another on the same datastore is not
+        /// detected. A removed volume mount stays on the datastore as an unused
+        /// volume; bind and device mounts are just dropped.
         /// </summary>
         public InputList<Inputs.ContainerLegacyMountPointArgs> MountPoints
         {
@@ -714,9 +806,17 @@ namespace Pulumi.ProxmoxVE
         public Input<int>? TimeoutDelete { get; set; }
 
         /// <summary>
+        /// Timeout for migrating the container to another node, in seconds (defaults to
+        /// 1800).
+        /// </summary>
+        [Input("timeoutMigrate")]
+        public Input<int>? TimeoutMigrate { get; set; }
+
+        /// <summary>
         /// Start container timeout
         /// </summary>
         [Input("timeoutStart")]
+        [Obsolete(@"This field is deprecated and will be removed in a future release. An overall operation timeout (`TimeoutCreate` / `TimeoutClone`) is used instead.")]
         public Input<int>? TimeoutStart { get; set; }
 
         /// <summary>
@@ -881,6 +981,13 @@ namespace Pulumi.ProxmoxVE
         [Input("memory")]
         public Input<Inputs.ContainerLegacyMemoryGetArgs>? Memory { get; set; }
 
+        /// <summary>
+        /// Migrate the container on node change instead of
+        /// re-creating it (defaults to `False`).
+        /// </summary>
+        [Input("migrate")]
+        public Input<bool>? Migrate { get; set; }
+
         [Input("mountPoints")]
         private InputList<Inputs.ContainerLegacyMountPointGetArgs>? _mountPoints;
 
@@ -888,6 +995,16 @@ namespace Pulumi.ProxmoxVE
         /// An additional volume mount or host bind mount
         /// (multiple blocks supported). Use this for data volumes, shared
         /// directories, or attaching pre-existing PVE volumes.
+        /// 
+        /// &gt; Mount points are positional: the first block is `Mp0` in Proxmox VE, the
+        /// second `Mp1`, and so on. Appending a block, removing the last block, or
+        /// reconfiguring an existing one is applied in place, and a running container
+        /// is restarted. Removing or inserting a block before existing ones recreates
+        /// the container, as does changing the `Size` of an existing mount point or
+        /// pointing its `Volume` at a different datastore or host path. Changing
+        /// `Volume` from one volume ID to another on the same datastore is not
+        /// detected. A removed volume mount stays on the datastore as an unused
+        /// volume; bind and device mounts are just dropped.
         /// </summary>
         public InputList<Inputs.ContainerLegacyMountPointGetArgs> MountPoints
         {
@@ -1001,9 +1118,17 @@ namespace Pulumi.ProxmoxVE
         public Input<int>? TimeoutDelete { get; set; }
 
         /// <summary>
+        /// Timeout for migrating the container to another node, in seconds (defaults to
+        /// 1800).
+        /// </summary>
+        [Input("timeoutMigrate")]
+        public Input<int>? TimeoutMigrate { get; set; }
+
+        /// <summary>
         /// Start container timeout
         /// </summary>
         [Input("timeoutStart")]
+        [Obsolete(@"This field is deprecated and will be removed in a future release. An overall operation timeout (`TimeoutCreate` / `TimeoutClone`) is used instead.")]
         public Input<int>? TimeoutStart { get; set; }
 
         /// <summary>

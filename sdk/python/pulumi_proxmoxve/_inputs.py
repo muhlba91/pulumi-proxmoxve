@@ -346,7 +346,11 @@ class ContainerLegacyCpuArgsDict(TypedDict):
     """
     cores: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    The number of CPU cores (defaults to `1`).
+    The number of CPU cores (between `1` and `8192`). When unset,
+    a new container has no `cores` setting and can use all host cores, and a clone
+    keeps the value of its source. Removing the attribute keeps the current value, set
+    `0` to remove the setting from the container. Removing the whole `cpu` block also
+    removes the setting, unless it is `1`.
     """
     limit: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
@@ -355,7 +359,9 @@ class ContainerLegacyCpuArgsDict(TypedDict):
     units: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The CPU units (between `1` and `500000`). When unset,
-    Proxmox applies its own default.
+    Proxmox applies its own default to a new container, and a clone keeps the value of
+    its source. Removing the attribute keeps the current value, removing the whole
+    `cpu` block removes the setting from the container.
     """
 
 @pulumi.input_type
@@ -367,10 +373,16 @@ class ContainerLegacyCpuArgs:
                  units: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] architecture: The CPU architecture (defaults to `amd64`).
-        :param pulumi.Input[_builtins.int] cores: The number of CPU cores (defaults to `1`).
+        :param pulumi.Input[_builtins.int] cores: The number of CPU cores (between `1` and `8192`). When unset,
+               a new container has no `cores` setting and can use all host cores, and a clone
+               keeps the value of its source. Removing the attribute keeps the current value, set
+               `0` to remove the setting from the container. Removing the whole `cpu` block also
+               removes the setting, unless it is `1`.
         :param pulumi.Input[_builtins.float] limit: Limit of CPU usage. Value `0` indicates no limit (defaults to `0`).
         :param pulumi.Input[_builtins.int] units: The CPU units (between `1` and `500000`). When unset,
-               Proxmox applies its own default.
+               Proxmox applies its own default to a new container, and a clone keeps the value of
+               its source. Removing the attribute keeps the current value, removing the whole
+               `cpu` block removes the setting from the container.
         """
         if architecture is not None:
             pulumi.set(__self__, "architecture", architecture)
@@ -397,7 +409,11 @@ class ContainerLegacyCpuArgs:
     @pulumi.getter
     def cores(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The number of CPU cores (defaults to `1`).
+        The number of CPU cores (between `1` and `8192`). When unset,
+        a new container has no `cores` setting and can use all host cores, and a clone
+        keeps the value of its source. Removing the attribute keeps the current value, set
+        `0` to remove the setting from the container. Removing the whole `cpu` block also
+        removes the setting, unless it is `1`.
         """
         return pulumi.get(self, "cores")
 
@@ -422,7 +438,9 @@ class ContainerLegacyCpuArgs:
     def units(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The CPU units (between `1` and `500000`). When unset,
-        Proxmox applies its own default.
+        Proxmox applies its own default to a new container, and a clone keeps the value of
+        its source. Removing the attribute keeps the current value, removing the whole
+        `cpu` block removes the setting from the container.
         """
         return pulumi.get(self, "units")
 
@@ -917,7 +935,9 @@ class ContainerLegacyInitializationArgsDict(TypedDict):
     """
     user_account: NotRequired[pulumi.Input[Optional['ContainerLegacyInitializationUserAccountArgsDict']]]
     """
-    The user account configuration.
+    The user account configuration. It only applies when the
+    container is created, not when it is cloned: a cloned container keeps the SSH keys and
+    root password of its source container, and a warning is shown if this block is set.
     """
 
 @pulumi.input_type
@@ -934,7 +954,9 @@ class ContainerLegacyInitializationArgs:
         :param pulumi.Input[_builtins.str] hostname: The hostname. Must be a valid DNS name.
         :param pulumi.Input[Sequence[pulumi.Input['ContainerLegacyInitializationIpConfigArgs']]] ip_configs: The IP configuration (one block per network
                device).
-        :param pulumi.Input['ContainerLegacyInitializationUserAccountArgs'] user_account: The user account configuration.
+        :param pulumi.Input['ContainerLegacyInitializationUserAccountArgs'] user_account: The user account configuration. It only applies when the
+               container is created, not when it is cloned: a cloned container keeps the SSH keys and
+               root password of its source container, and a warning is shown if this block is set.
         """
         if dns is not None:
             pulumi.set(__self__, "dns", dns)
@@ -1000,7 +1022,9 @@ class ContainerLegacyInitializationArgs:
     @pulumi.getter(name="userAccount")
     def user_account(self) -> pulumi.Input[Optional['ContainerLegacyInitializationUserAccountArgs']]:
         """
-        The user account configuration.
+        The user account configuration. It only applies when the
+        container is created, not when it is cloned: a cloned container keeps the SSH keys and
+        root password of its source container, and a warning is shown if this block is set.
         """
         return pulumi.get(self, "user_account")
 
@@ -1874,8 +1898,11 @@ class ContainerLegacyOperatingSystemArgs:
 class ContainerLegacyStartupArgsDict(TypedDict):
     down_delay: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    A non-negative number defining the delay in
-    seconds before the next container is shut down.
+    A non-negative number defining the shutdown
+    timeout in seconds. When the node stops all guests (e.g. on host
+    shutdown), Proxmox VE waits this long for the container to shut down before
+    stopping it. When unset, the node's bulk stop timeout is used
+    (180 seconds by default).
     """
     order: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -1895,8 +1922,11 @@ class ContainerLegacyStartupArgs:
                  order: pulumi.Input[Optional[_builtins.int]] = None,
                  up_delay: pulumi.Input[Optional[_builtins.int]] = None):
         """
-        :param pulumi.Input[_builtins.int] down_delay: A non-negative number defining the delay in
-               seconds before the next container is shut down.
+        :param pulumi.Input[_builtins.int] down_delay: A non-negative number defining the shutdown
+               timeout in seconds. When the node stops all guests (e.g. on host
+               shutdown), Proxmox VE waits this long for the container to shut down before
+               stopping it. When unset, the node's bulk stop timeout is used
+               (180 seconds by default).
         :param pulumi.Input[_builtins.int] order: A non-negative number defining the general startup
                order (defaults to `-1`, meaning no specific order).
         :param pulumi.Input[_builtins.int] up_delay: A non-negative number defining the delay in
@@ -1913,8 +1943,11 @@ class ContainerLegacyStartupArgs:
     @pulumi.getter(name="downDelay")
     def down_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        A non-negative number defining the delay in
-        seconds before the next container is shut down.
+        A non-negative number defining the shutdown
+        timeout in seconds. When the node stops all guests (e.g. on host
+        shutdown), Proxmox VE waits this long for the container to shut down before
+        stopping it. When unset, the node's bulk stop timeout is used
+        (180 seconds by default).
         """
         return pulumi.get(self, "down_delay")
 
@@ -1950,38 +1983,90 @@ class ContainerLegacyStartupArgs:
 
 
 class ContainerLegacyWaitForIpArgsDict(TypedDict):
+    cidrs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Only addresses inside one of these CIDRs (e.g. `["10.0.0.0/8", "2001:db8::/64"]`) count when waiting. Setting this disables the default loopback/link-local address exclusion; the `lo` interface is still skipped unless `interfaces` is also set. Avoid catch-all CIDRs such as `0.0.0.0/0` or `::/0`: they also match link-local addresses, which can end the wait before the real address is assigned; use `ipv4` or `ipv6` to require a family instead. When `ipv4` or `ipv6` is `true`, at least one CIDR of that family is required.
+    """
+    interfaces: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Only addresses on interfaces whose name fully matches one of these regular expressions (RE2, e.g. `["eth[0-9]+"]`) count when waiting. Setting this disables the default skip of the `lo` interface; loopback/link-local addresses stay excluded unless `cidrs` is also set.
+    """
     ipv4: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
+    Wait for at least one IPv4 address (non-loopback, non-link-local unless allowed by `cidrs`) (defaults to `false`).
     """
     ipv6: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
+    Wait for at least one IPv6 address (non-loopback, non-link-local unless allowed by `cidrs`) (defaults to `false`).
+    """
+    timeout: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    How long to wait for an address after the provider starts or reboots the container (defaults to `5m`). On timeout the apply continues with a warning listing the addresses that were rejected.
 
     When `wait_for_ip` is not specified or both `ipv4` and `ipv6` are `false`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+
+    `cidrs` and `interfaces` are combined per address (an address must match both). They only decide when waiting stops; `ipv4` and `ipv6` are not filtered. When the block is set, create and any update that starts or reboots the container wait for up to `timeout`. Every refresh also waits, for up to 10 seconds, and if no address qualifies, `ipv4` and `ipv6` are left empty.
     """
 
 @pulumi.input_type
 class ContainerLegacyWaitForIpArgs:
     def __init__(__self__, *,
+                 cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ipv4: pulumi.Input[Optional[_builtins.bool]] = None,
-                 ipv6: pulumi.Input[Optional[_builtins.bool]] = None):
+                 ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.bool] ipv4: Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
-        :param pulumi.Input[_builtins.bool] ipv6: Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cidrs: Only addresses inside one of these CIDRs (e.g. `["10.0.0.0/8", "2001:db8::/64"]`) count when waiting. Setting this disables the default loopback/link-local address exclusion; the `lo` interface is still skipped unless `interfaces` is also set. Avoid catch-all CIDRs such as `0.0.0.0/0` or `::/0`: they also match link-local addresses, which can end the wait before the real address is assigned; use `ipv4` or `ipv6` to require a family instead. When `ipv4` or `ipv6` is `true`, at least one CIDR of that family is required.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] interfaces: Only addresses on interfaces whose name fully matches one of these regular expressions (RE2, e.g. `["eth[0-9]+"]`) count when waiting. Setting this disables the default skip of the `lo` interface; loopback/link-local addresses stay excluded unless `cidrs` is also set.
+        :param pulumi.Input[_builtins.bool] ipv4: Wait for at least one IPv4 address (non-loopback, non-link-local unless allowed by `cidrs`) (defaults to `false`).
+        :param pulumi.Input[_builtins.bool] ipv6: Wait for at least one IPv6 address (non-loopback, non-link-local unless allowed by `cidrs`) (defaults to `false`).
+        :param pulumi.Input[_builtins.str] timeout: How long to wait for an address after the provider starts or reboots the container (defaults to `5m`). On timeout the apply continues with a warning listing the addresses that were rejected.
                
                When `wait_for_ip` is not specified or both `ipv4` and `ipv6` are `false`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+               
+               `cidrs` and `interfaces` are combined per address (an address must match both). They only decide when waiting stops; `ipv4` and `ipv6` are not filtered. When the block is set, create and any update that starts or reboots the container wait for up to `timeout`. Every refresh also waits, for up to 10 seconds, and if no address qualifies, `ipv4` and `ipv6` are left empty.
         """
+        if cidrs is not None:
+            pulumi.set(__self__, "cidrs", cidrs)
+        if interfaces is not None:
+            pulumi.set(__self__, "interfaces", interfaces)
         if ipv4 is not None:
             pulumi.set(__self__, "ipv4", ipv4)
         if ipv6 is not None:
             pulumi.set(__self__, "ipv6", ipv6)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+
+    @_builtins.property
+    @pulumi.getter
+    def cidrs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Only addresses inside one of these CIDRs (e.g. `["10.0.0.0/8", "2001:db8::/64"]`) count when waiting. Setting this disables the default loopback/link-local address exclusion; the `lo` interface is still skipped unless `interfaces` is also set. Avoid catch-all CIDRs such as `0.0.0.0/0` or `::/0`: they also match link-local addresses, which can end the wait before the real address is assigned; use `ipv4` or `ipv6` to require a family instead. When `ipv4` or `ipv6` is `true`, at least one CIDR of that family is required.
+        """
+        return pulumi.get(self, "cidrs")
+
+    @cidrs.setter
+    def cidrs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "cidrs", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def interfaces(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Only addresses on interfaces whose name fully matches one of these regular expressions (RE2, e.g. `["eth[0-9]+"]`) count when waiting. Setting this disables the default skip of the `lo` interface; loopback/link-local addresses stay excluded unless `cidrs` is also set.
+        """
+        return pulumi.get(self, "interfaces")
+
+    @interfaces.setter
+    def interfaces(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "interfaces", value)
 
     @_builtins.property
     @pulumi.getter
     def ipv4(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
+        Wait for at least one IPv4 address (non-loopback, non-link-local unless allowed by `cidrs`) (defaults to `false`).
         """
         return pulumi.get(self, "ipv4")
 
@@ -1993,15 +2078,29 @@ class ContainerLegacyWaitForIpArgs:
     @pulumi.getter
     def ipv6(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
-
-        When `wait_for_ip` is not specified or both `ipv4` and `ipv6` are `false`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+        Wait for at least one IPv6 address (non-loopback, non-link-local unless allowed by `cidrs`) (defaults to `false`).
         """
         return pulumi.get(self, "ipv6")
 
     @ipv6.setter
     def ipv6(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ipv6", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def timeout(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        How long to wait for an address after the provider starts or reboots the container (defaults to `5m`). On timeout the apply continues with a warning listing the addresses that were rejected.
+
+        When `wait_for_ip` is not specified or both `ipv4` and `ipv6` are `false`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+
+        `cidrs` and `interfaces` are combined per address (an address must match both). They only decide when waiting stops; `ipv4` and `ipv6` are not filtered. When the block is set, create and any update that starts or reboots the container wait for up to `timeout`. Every refresh also waits, for up to 10 seconds, and if no address qualifies, `ipv4` and `ipv6` are left empty.
+        """
+        return pulumi.get(self, "timeout")
+
+    @timeout.setter
+    def timeout(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "timeout", value)
 
 
 class FileLegacySourceFileArgsDict(TypedDict):
@@ -2022,6 +2121,7 @@ class FileLegacySourceFileArgsDict(TypedDict):
     The file name to use instead of the source file
     name. Useful when the source file does not have a valid file extension,
     for example when the source file is a URL referencing a `.qcow2` image.
+    Must be a plain file name without path separators or whitespace.
     """
     insecure: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
@@ -2050,6 +2150,7 @@ class FileLegacySourceFileArgs:
         :param pulumi.Input[_builtins.str] file_name: The file name to use instead of the source file
                name. Useful when the source file does not have a valid file extension,
                for example when the source file is a URL referencing a `.qcow2` image.
+               Must be a plain file name without path separators or whitespace.
         :param pulumi.Input[_builtins.bool] insecure: Whether to skip the TLS verification step for
                HTTPS sources (defaults to `false`).
         :param pulumi.Input[_builtins.str] min_tls: The minimum required TLS version for HTTPS
@@ -2110,6 +2211,7 @@ class FileLegacySourceFileArgs:
         The file name to use instead of the source file
         name. Useful when the source file does not have a valid file extension,
         for example when the source file is a URL referencing a `.qcow2` image.
+        Must be a plain file name without path separators or whitespace.
         """
         return pulumi.get(self, "file_name")
 
@@ -2151,7 +2253,8 @@ class FileLegacySourceRawArgsDict(TypedDict):
     """
     file_name: pulumi.Input[_builtins.str]
     """
-    The file name.
+    The file name. Must be a plain file name without
+    path separators or whitespace.
     """
     resize: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -2166,7 +2269,8 @@ class FileLegacySourceRawArgs:
                  resize: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] data: The raw data.
-        :param pulumi.Input[_builtins.str] file_name: The file name.
+        :param pulumi.Input[_builtins.str] file_name: The file name. Must be a plain file name without
+               path separators or whitespace.
         :param pulumi.Input[_builtins.int] resize: The number of bytes to resize the file to.
         """
         pulumi.set(__self__, "data", data)
@@ -2190,7 +2294,8 @@ class FileLegacySourceRawArgs:
     @pulumi.getter(name="fileName")
     def file_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The file name.
+        The file name. Must be a plain file name without
+        path separators or whitespace.
         """
         return pulumi.get(self, "file_name")
 
@@ -2463,6 +2568,10 @@ class ProviderSshArgsDict(TypedDict):
     """
     The unencrypted private key (in PEM format) used for the SSH connection. Defaults to the value of the `PROXMOX_VE_SSH_PRIVATE_KEY` environment variable.
     """
+    root_ticket: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to run API calls under `/nodes/{node}/` with a `root@pam` ticket minted on that node over SSH, so an API token can perform `root@pam`-only operations. Those calls then run as `root@pam`, bypassing the token's permissions. Requires an SSH connection as `root`. Defaults to the value of the `PROXMOX_VE_SSH_ROOT_TICKET` environment variable, or `false` if not set.
+    """
     socks5_password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The password for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_PASSWORD` environment variable.
@@ -2490,6 +2599,7 @@ class ProviderSshArgs:
                  nodes: pulumi.Input[Optional[Sequence[pulumi.Input['ProviderSshNodeArgs']]]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
                  private_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 root_ticket: pulumi.Input[Optional[_builtins.bool]] = None,
                  socks5_password: pulumi.Input[Optional[_builtins.str]] = None,
                  socks5_server: pulumi.Input[Optional[_builtins.str]] = None,
                  socks5_username: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2502,6 +2612,7 @@ class ProviderSshArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ProviderSshNodeArgs']]] nodes: Overrides for SSH connection configuration for a Proxmox VE node.
         :param pulumi.Input[_builtins.str] password: The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block when using username/password authentication. Default has no effect when using API token authentication, as there is no password to inherit. Can also be sourced from `PROXMOX_VE_SSH_PASSWORD`.
         :param pulumi.Input[_builtins.str] private_key: The unencrypted private key (in PEM format) used for the SSH connection. Defaults to the value of the `PROXMOX_VE_SSH_PRIVATE_KEY` environment variable.
+        :param pulumi.Input[_builtins.bool] root_ticket: Whether to run API calls under `/nodes/{node}/` with a `root@pam` ticket minted on that node over SSH, so an API token can perform `root@pam`-only operations. Those calls then run as `root@pam`, bypassing the token's permissions. Requires an SSH connection as `root`. Defaults to the value of the `PROXMOX_VE_SSH_ROOT_TICKET` environment variable, or `false` if not set.
         :param pulumi.Input[_builtins.str] socks5_password: The password for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_PASSWORD` environment variable.
         :param pulumi.Input[_builtins.str] socks5_server: The address:port of the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_SERVER` environment variable.
         :param pulumi.Input[_builtins.str] socks5_username: The username for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_USERNAME` environment variable.
@@ -2521,6 +2632,8 @@ class ProviderSshArgs:
             pulumi.set(__self__, "password", password)
         if private_key is not None:
             pulumi.set(__self__, "private_key", private_key)
+        if root_ticket is not None:
+            pulumi.set(__self__, "root_ticket", root_ticket)
         if socks5_password is not None:
             pulumi.set(__self__, "socks5_password", socks5_password)
         if socks5_server is not None:
@@ -2613,6 +2726,18 @@ class ProviderSshArgs:
     @private_key.setter
     def private_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="rootTicket")
+    def root_ticket(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to run API calls under `/nodes/{node}/` with a `root@pam` ticket minted on that node over SSH, so an API token can perform `root@pam`-only operations. Those calls then run as `root@pam`, bypassing the token's permissions. Requires an SSH connection as `root`. Defaults to the value of the `PROXMOX_VE_SSH_ROOT_TICKET` environment variable, or `false` if not set.
+        """
+        return pulumi.get(self, "root_ticket")
+
+    @root_ticket.setter
+    def root_ticket(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "root_ticket", value)
 
     @_builtins.property
     @pulumi.getter(name="socks5Password")
@@ -3619,40 +3744,72 @@ class VmLegacyAgentArgs:
 
 
 class VmLegacyAgentWaitForIpArgsDict(TypedDict):
+    cidrs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Only addresses inside one of these CIDRs (e.g. `["10.0.0.0/8", "2001:db8::/64"]`) count when waiting. Setting this disables the default loopback/link-local address exclusion; the `lo` interface is still skipped unless `interfaces` is also set. Avoid catch-all CIDRs such as `0.0.0.0/0` or `::/0`: they also match link-local addresses, which can end the wait before the real address is assigned; use `ipv4` or `ipv6` to require a family instead. When `ipv4` or `ipv6` is `true`, at least one CIDR of that family is required.
+    """
     disabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to disable waiting for the agent to report an IP address (defaults to `false`). Set to `true` to skip the IP lookup entirely, so the provider does not wait for the agent during `refresh` and at the end of `apply`. Useful when the guest agent is slow to start, not yet installed, or not running, to avoid blocking those operations. When disabled, `ipv4_addresses`, `ipv6_addresses`, and `network_interface_names` are left empty.
     """
+    interfaces: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Only addresses on interfaces whose name fully matches one of these regular expressions (RE2, e.g. `["eth[0-9]+", "ens.*"]`) count when waiting. Setting this disables the default skip of the `lo` interface; loopback/link-local addresses stay excluded unless `cidrs` is also set.
+
+    When `wait_for_ip` is not specified or both `ipv4` and `ipv6` are `false` (and `disabled` is `false`), the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+
+    `cidrs` and `interfaces` are combined per address (an address must match both), and they cannot be used with `disabled = true`. They are useful to ignore addresses such as Docker's `docker0` bridge, which would otherwise end the wait early. They only decide when waiting stops: `ipv4_addresses`, `ipv6_addresses` and `network_interface_names` still list every address the agent reports. The wait also runs on every refresh, so a filter that never matches makes refresh wait for the full agent `timeout` and then leaves those attributes and `mac_addresses` empty. On timeout, the warning reported by refresh lists each rejected address and the reason.
+    """
     ipv4: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
+    Wait for at least one IPv4 address (non-loopback, non-link-local unless allowed by `cidrs`) (defaults to `false`).
     """
     ipv6: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
-
-    When `wait_for_ip` is not specified or both `ipv4` and `ipv6` are `false` (and `disabled` is `false`), the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+    Wait for at least one IPv6 address (non-loopback, non-link-local unless allowed by `cidrs`) (defaults to `false`).
     """
 
 @pulumi.input_type
 class VmLegacyAgentWaitForIpArgs:
     def __init__(__self__, *,
+                 cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ipv4: pulumi.Input[Optional[_builtins.bool]] = None,
                  ipv6: pulumi.Input[Optional[_builtins.bool]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cidrs: Only addresses inside one of these CIDRs (e.g. `["10.0.0.0/8", "2001:db8::/64"]`) count when waiting. Setting this disables the default loopback/link-local address exclusion; the `lo` interface is still skipped unless `interfaces` is also set. Avoid catch-all CIDRs such as `0.0.0.0/0` or `::/0`: they also match link-local addresses, which can end the wait before the real address is assigned; use `ipv4` or `ipv6` to require a family instead. When `ipv4` or `ipv6` is `true`, at least one CIDR of that family is required.
         :param pulumi.Input[_builtins.bool] disabled: Whether to disable waiting for the agent to report an IP address (defaults to `false`). Set to `true` to skip the IP lookup entirely, so the provider does not wait for the agent during `refresh` and at the end of `apply`. Useful when the guest agent is slow to start, not yet installed, or not running, to avoid blocking those operations. When disabled, `ipv4_addresses`, `ipv6_addresses`, and `network_interface_names` are left empty.
-        :param pulumi.Input[_builtins.bool] ipv4: Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
-        :param pulumi.Input[_builtins.bool] ipv6: Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] interfaces: Only addresses on interfaces whose name fully matches one of these regular expressions (RE2, e.g. `["eth[0-9]+", "ens.*"]`) count when waiting. Setting this disables the default skip of the `lo` interface; loopback/link-local addresses stay excluded unless `cidrs` is also set.
                
                When `wait_for_ip` is not specified or both `ipv4` and `ipv6` are `false` (and `disabled` is `false`), the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+               
+               `cidrs` and `interfaces` are combined per address (an address must match both), and they cannot be used with `disabled = true`. They are useful to ignore addresses such as Docker's `docker0` bridge, which would otherwise end the wait early. They only decide when waiting stops: `ipv4_addresses`, `ipv6_addresses` and `network_interface_names` still list every address the agent reports. The wait also runs on every refresh, so a filter that never matches makes refresh wait for the full agent `timeout` and then leaves those attributes and `mac_addresses` empty. On timeout, the warning reported by refresh lists each rejected address and the reason.
+        :param pulumi.Input[_builtins.bool] ipv4: Wait for at least one IPv4 address (non-loopback, non-link-local unless allowed by `cidrs`) (defaults to `false`).
+        :param pulumi.Input[_builtins.bool] ipv6: Wait for at least one IPv6 address (non-loopback, non-link-local unless allowed by `cidrs`) (defaults to `false`).
         """
+        if cidrs is not None:
+            pulumi.set(__self__, "cidrs", cidrs)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
+        if interfaces is not None:
+            pulumi.set(__self__, "interfaces", interfaces)
         if ipv4 is not None:
             pulumi.set(__self__, "ipv4", ipv4)
         if ipv6 is not None:
             pulumi.set(__self__, "ipv6", ipv6)
+
+    @_builtins.property
+    @pulumi.getter
+    def cidrs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Only addresses inside one of these CIDRs (e.g. `["10.0.0.0/8", "2001:db8::/64"]`) count when waiting. Setting this disables the default loopback/link-local address exclusion; the `lo` interface is still skipped unless `interfaces` is also set. Avoid catch-all CIDRs such as `0.0.0.0/0` or `::/0`: they also match link-local addresses, which can end the wait before the real address is assigned; use `ipv4` or `ipv6` to require a family instead. When `ipv4` or `ipv6` is `true`, at least one CIDR of that family is required.
+        """
+        return pulumi.get(self, "cidrs")
+
+    @cidrs.setter
+    def cidrs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "cidrs", value)
 
     @_builtins.property
     @pulumi.getter
@@ -3668,9 +3825,25 @@ class VmLegacyAgentWaitForIpArgs:
 
     @_builtins.property
     @pulumi.getter
+    def interfaces(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Only addresses on interfaces whose name fully matches one of these regular expressions (RE2, e.g. `["eth[0-9]+", "ens.*"]`) count when waiting. Setting this disables the default skip of the `lo` interface; loopback/link-local addresses stay excluded unless `cidrs` is also set.
+
+        When `wait_for_ip` is not specified or both `ipv4` and `ipv6` are `false` (and `disabled` is `false`), the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+
+        `cidrs` and `interfaces` are combined per address (an address must match both), and they cannot be used with `disabled = true`. They are useful to ignore addresses such as Docker's `docker0` bridge, which would otherwise end the wait early. They only decide when waiting stops: `ipv4_addresses`, `ipv6_addresses` and `network_interface_names` still list every address the agent reports. The wait also runs on every refresh, so a filter that never matches makes refresh wait for the full agent `timeout` and then leaves those attributes and `mac_addresses` empty. On timeout, the warning reported by refresh lists each rejected address and the reason.
+        """
+        return pulumi.get(self, "interfaces")
+
+    @interfaces.setter
+    def interfaces(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "interfaces", value)
+
+    @_builtins.property
+    @pulumi.getter
     def ipv4(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
+        Wait for at least one IPv4 address (non-loopback, non-link-local unless allowed by `cidrs`) (defaults to `false`).
         """
         return pulumi.get(self, "ipv4")
 
@@ -3682,9 +3855,7 @@ class VmLegacyAgentWaitForIpArgs:
     @pulumi.getter
     def ipv6(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
-
-        When `wait_for_ip` is not specified or both `ipv4` and `ipv6` are `false` (and `disabled` is `false`), the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+        Wait for at least one IPv6 address (non-loopback, non-link-local unless allowed by `cidrs`) (defaults to `false`).
         """
         return pulumi.get(self, "ipv6")
 
@@ -4164,6 +4335,15 @@ class VmLegacyCpuArgsDict(TypedDict):
     """
     The emulated CPU type, it's recommended to
     use `x86-64-v2-AES` (defaults to `qemu64`).
+    Representative models include `host`, `qemu64`, `x86-64-v2-AES`,
+    `EPYC-Genoa`, and `EPYC-Genoa-v2`. Model availability is validated by
+    the target Proxmox VE version, which returns an error for an unknown
+    model. See the
+    [PVE administration guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings)
+    for the models a release offers.
+    - `custom-<model>` - Custom CPU model. `custom-<model>` names refer to
+      PVE custom model definitions in
+      `/etc/pve/virtual-guest/cpu-models.conf`.
     """
     units: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -4221,6 +4401,15 @@ class VmLegacyCpuArgs:
         :param pulumi.Input[_builtins.int] sockets: The number of CPU sockets (defaults to `1`).
         :param pulumi.Input[_builtins.str] type: The emulated CPU type, it's recommended to
                use `x86-64-v2-AES` (defaults to `qemu64`).
+               Representative models include `host`, `qemu64`, `x86-64-v2-AES`,
+               `EPYC-Genoa`, and `EPYC-Genoa-v2`. Model availability is validated by
+               the target Proxmox VE version, which returns an error for an unknown
+               model. See the
+               [PVE administration guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings)
+               for the models a release offers.
+               - `custom-<model>` - Custom CPU model. `custom-<model>` names refer to
+                 PVE custom model definitions in
+                 `/etc/pve/virtual-guest/cpu-models.conf`.
         :param pulumi.Input[_builtins.int] units: The CPU units. PVE default is `1024` for cgroups v1 and `100` for cgroups v2.
         """
         if affinity is not None:
@@ -4373,6 +4562,15 @@ class VmLegacyCpuArgs:
         """
         The emulated CPU type, it's recommended to
         use `x86-64-v2-AES` (defaults to `qemu64`).
+        Representative models include `host`, `qemu64`, `x86-64-v2-AES`,
+        `EPYC-Genoa`, and `EPYC-Genoa-v2`. Model availability is validated by
+        the target Proxmox VE version, which returns an error for an unknown
+        model. See the
+        [PVE administration guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings)
+        for the models a release offers.
+        - `custom-<model>` - Custom CPU model. `custom-<model>` names refer to
+          PVE custom model definitions in
+          `/etc/pve/virtual-guest/cpu-models.conf`.
         """
         return pulumi.get(self, "type")
 
@@ -4431,8 +4629,9 @@ class VmLegacyDiskArgsDict(TypedDict):
     file_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The file ID for a disk image when importing a disk into VM. The ID format is
-    `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/centos8.img`. Can be also taken from
-    `download.FileLegacy` resource. Prefer `import_from` for uncompressed images.
+    `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/centos8.img`, without whitespace, `,` or `=`.
+    Can be also taken from `download.FileLegacy` resource. Prefer `import_from` for
+    uncompressed images.
     Use `file_id` when working with compressed cloud images (e.g., `.qcow2.xz`) that were downloaded
     with `content_type = "iso"` and `decompression_algorithm` set. See the
     Create a VM from a Cloud Image guide for examples.
@@ -4469,7 +4668,8 @@ class VmLegacyDiskArgsDict(TypedDict):
     """
     serial: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The serial number of the disk, up to 20 bytes long.
+    The serial number of the disk, up to 20 characters. Letters, digits and
+    `-%_.!~*'()` only.
     """
     size: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -4521,8 +4721,9 @@ class VmLegacyDiskArgs:
                to `ignore`).
         :param pulumi.Input[_builtins.str] file_format: The file format.
         :param pulumi.Input[_builtins.str] file_id: The file ID for a disk image when importing a disk into VM. The ID format is
-               `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/centos8.img`. Can be also taken from
-               `download.FileLegacy` resource. Prefer `import_from` for uncompressed images.
+               `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/centos8.img`, without whitespace, `,` or `=`.
+               Can be also taken from `download.FileLegacy` resource. Prefer `import_from` for
+               uncompressed images.
                Use `file_id` when working with compressed cloud images (e.g., `.qcow2.xz`) that were downloaded
                with `content_type = "iso"` and `decompression_algorithm` set. See the
                Create a VM from a Cloud Image guide for examples.
@@ -4541,7 +4742,8 @@ class VmLegacyDiskArgs:
                when `scsi_hardware` is set to `virtio-scsi-single`. A change requires
                a VM power cycle (or reboot via the Proxmox API) to take effect.
         :param pulumi.Input[_builtins.bool] replicate: Whether the drive should be considered for replication jobs (defaults to `true`).
-        :param pulumi.Input[_builtins.str] serial: The serial number of the disk, up to 20 bytes long.
+        :param pulumi.Input[_builtins.str] serial: The serial number of the disk, up to 20 characters. Letters, digits and
+               `-%_.!~*'()` only.
         :param pulumi.Input[_builtins.int] size: The disk size in gigabytes (defaults to `8`).
         :param pulumi.Input['VmLegacyDiskSpeedArgs'] speed: The speed limits.
         :param pulumi.Input[_builtins.bool] ssd: Whether to use an SSD emulation option for this disk (
@@ -4677,8 +4879,9 @@ class VmLegacyDiskArgs:
     def file_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The file ID for a disk image when importing a disk into VM. The ID format is
-        `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/centos8.img`. Can be also taken from
-        `download.FileLegacy` resource. Prefer `import_from` for uncompressed images.
+        `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/centos8.img`, without whitespace, `,` or `=`.
+        Can be also taken from `download.FileLegacy` resource. Prefer `import_from` for
+        uncompressed images.
         Use `file_id` when working with compressed cloud images (e.g., `.qcow2.xz`) that were downloaded
         with `content_type = "iso"` and `decompression_algorithm` set. See the
         Create a VM from a Cloud Image guide for examples.
@@ -4763,7 +4966,8 @@ class VmLegacyDiskArgs:
     @pulumi.getter
     def serial(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The serial number of the disk, up to 20 bytes long.
+        The serial number of the disk, up to 20 characters. Letters, digits and
+        `-%_.!~*'()` only.
         """
         return pulumi.get(self, "serial")
 
@@ -5313,6 +5517,9 @@ class VmLegacyInitializationArgsDict(TypedDict):
     image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
     detected if the setting is missing but a cloud-init image is present,
     otherwise defaults to `ide2`.
+    Must not be the same as the `interface` of any `disk` block, the plan
+    fails if it is. If the setting is missing, `ide2` is used on create
+    (unless cloning) and checked against the `disk` interfaces too.
     """
     ip_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VmLegacyInitializationIpConfigArgsDict']]]]]
     """
@@ -5323,6 +5530,9 @@ class VmLegacyInitializationArgsDict(TypedDict):
     """
     The identifier for a file containing
     all meta data passed to the VM via cloud-init.
+    - When cloning, setting any of the four `*_data_file_id` attributes above to `""` clears
+      the custom cloud-init files inherited from the template, as long as none of them is set
+      to a value.
     """
     network_data_file_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -5380,10 +5590,16 @@ class VmLegacyInitializationArgs:
                image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
                detected if the setting is missing but a cloud-init image is present,
                otherwise defaults to `ide2`.
+               Must not be the same as the `interface` of any `disk` block, the plan
+               fails if it is. If the setting is missing, `ide2` is used on create
+               (unless cloning) and checked against the `disk` interfaces too.
         :param pulumi.Input[Sequence[pulumi.Input['VmLegacyInitializationIpConfigArgs']]] ip_configs: The IP configuration (one block per network
                device, up to 32 blocks).
         :param pulumi.Input[_builtins.str] meta_data_file_id: The identifier for a file containing
                all meta data passed to the VM via cloud-init.
+               - When cloning, setting any of the four `*_data_file_id` attributes above to `""` clears
+                 the custom cloud-init files inherited from the template, as long as none of them is set
+                 to a value.
         :param pulumi.Input[_builtins.str] network_data_file_id: The identifier for a file containing
                network configuration data passed to the VM via cloud-init (conflicts
                with `ip_config`).
@@ -5468,6 +5684,9 @@ class VmLegacyInitializationArgs:
         image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
         detected if the setting is missing but a cloud-init image is present,
         otherwise defaults to `ide2`.
+        Must not be the same as the `interface` of any `disk` block, the plan
+        fails if it is. If the setting is missing, `ide2` is used on create
+        (unless cloning) and checked against the `disk` interfaces too.
         """
         return pulumi.get(self, "interface")
 
@@ -5494,6 +5713,9 @@ class VmLegacyInitializationArgs:
         """
         The identifier for a file containing
         all meta data passed to the VM via cloud-init.
+        - When cloning, setting any of the four `*_data_file_id` attributes above to `""` clears
+          the custom cloud-init files inherited from the template, as long as none of them is set
+          to a value.
         """
         return pulumi.get(self, "meta_data_file_id")
 
@@ -6617,8 +6839,12 @@ class VmLegacySmbiosArgs:
 class VmLegacyStartupArgsDict(TypedDict):
     down_delay: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    A non-negative number defining the delay in
-    seconds before the next VM is shut down.
+    A non-negative number defining the shutdown
+    timeout in seconds. When the node stops all guests (e.g. on host
+    shutdown), Proxmox VE waits this long for the VM to shut down before
+    stopping it. It is also the default timeout for a shutdown of this
+    VM that doesn't set one. When unset, the node's bulk stop timeout is
+    used (180 seconds by default).
     """
     order: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -6638,8 +6864,12 @@ class VmLegacyStartupArgs:
                  order: pulumi.Input[Optional[_builtins.int]] = None,
                  up_delay: pulumi.Input[Optional[_builtins.int]] = None):
         """
-        :param pulumi.Input[_builtins.int] down_delay: A non-negative number defining the delay in
-               seconds before the next VM is shut down.
+        :param pulumi.Input[_builtins.int] down_delay: A non-negative number defining the shutdown
+               timeout in seconds. When the node stops all guests (e.g. on host
+               shutdown), Proxmox VE waits this long for the VM to shut down before
+               stopping it. It is also the default timeout for a shutdown of this
+               VM that doesn't set one. When unset, the node's bulk stop timeout is
+               used (180 seconds by default).
         :param pulumi.Input[_builtins.int] order: A non-negative number defining the general startup
                order (defaults to `-1`, meaning no specific order).
         :param pulumi.Input[_builtins.int] up_delay: A non-negative number defining the delay in
@@ -6656,8 +6886,12 @@ class VmLegacyStartupArgs:
     @pulumi.getter(name="downDelay")
     def down_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        A non-negative number defining the delay in
-        seconds before the next VM is shut down.
+        A non-negative number defining the shutdown
+        timeout in seconds. When the node stops all guests (e.g. on host
+        shutdown), Proxmox VE waits this long for the VM to shut down before
+        stopping it. It is also the default timeout for a shutdown of this
+        VM that doesn't set one. When unset, the node's bulk stop timeout is
+        used (180 seconds by default).
         """
         return pulumi.get(self, "down_delay")
 

@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { CephfsArgs, CephfsState } from "./cephfs";
+export type Cephfs = import("./cephfs").Cephfs;
+export const Cephfs: typeof import("./cephfs").Cephfs = null as any;
+utilities.lazyLoad(exports, ["Cephfs"], () => require("./cephfs"));
+
 export { CifsArgs, CifsState } from "./cifs";
 export type Cifs = import("./cifs").Cifs;
 export const Cifs: typeof import("./cifs").Cifs = null as any;
@@ -65,6 +70,11 @@ export type PbsLegacy = import("./pbsLegacy").PbsLegacy;
 export const PbsLegacy: typeof import("./pbsLegacy").PbsLegacy = null as any;
 utilities.lazyLoad(exports, ["PbsLegacy"], () => require("./pbsLegacy"));
 
+export { RbdArgs, RbdState } from "./rbd";
+export type Rbd = import("./rbd").Rbd;
+export const Rbd: typeof import("./rbd").Rbd = null as any;
+utilities.lazyLoad(exports, ["Rbd"], () => require("./rbd"));
+
 export { ZfspoolArgs, ZfspoolState } from "./zfspool";
 export type Zfspool = import("./zfspool").Zfspool;
 export const Zfspool: typeof import("./zfspool").Zfspool = null as any;
@@ -80,6 +90,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "proxmoxve:storage/cephfs:Cephfs":
+                return new Cephfs(name, <any>undefined, { urn })
             case "proxmoxve:storage/cifs:Cifs":
                 return new Cifs(name, <any>undefined, { urn })
             case "proxmoxve:storage/cifsLegacy:CifsLegacy":
@@ -104,6 +116,8 @@ const _module = {
                 return new Pbs(name, <any>undefined, { urn })
             case "proxmoxve:storage/pbsLegacy:PbsLegacy":
                 return new PbsLegacy(name, <any>undefined, { urn })
+            case "proxmoxve:storage/rbd:Rbd":
+                return new Rbd(name, <any>undefined, { urn })
             case "proxmoxve:storage/zfspool:Zfspool":
                 return new Zfspool(name, <any>undefined, { urn })
             case "proxmoxve:storage/zfspoolLegacy:ZfspoolLegacy":
@@ -113,6 +127,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("proxmoxve", "storage/cephfs", _module)
 pulumi.runtime.registerResourceModule("proxmoxve", "storage/cifs", _module)
 pulumi.runtime.registerResourceModule("proxmoxve", "storage/cifsLegacy", _module)
 pulumi.runtime.registerResourceModule("proxmoxve", "storage/directory", _module)
@@ -125,5 +140,6 @@ pulumi.runtime.registerResourceModule("proxmoxve", "storage/nfs", _module)
 pulumi.runtime.registerResourceModule("proxmoxve", "storage/nfsLegacy", _module)
 pulumi.runtime.registerResourceModule("proxmoxve", "storage/pbs", _module)
 pulumi.runtime.registerResourceModule("proxmoxve", "storage/pbsLegacy", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "storage/rbd", _module)
 pulumi.runtime.registerResourceModule("proxmoxve", "storage/zfspool", _module)
 pulumi.runtime.registerResourceModule("proxmoxve", "storage/zfspoolLegacy", _module)

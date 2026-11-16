@@ -16,16 +16,22 @@ public final class ContainerLegacyStartupArgs extends com.pulumi.resources.Resou
     public static final ContainerLegacyStartupArgs Empty = new ContainerLegacyStartupArgs();
 
     /**
-     * A non-negative number defining the delay in
-     * seconds before the next container is shut down.
+     * A non-negative number defining the shutdown
+     * timeout in seconds. When the node stops all guests (e.g. on host
+     * shutdown), Proxmox VE waits this long for the container to shut down before
+     * stopping it. When unset, the node&#39;s bulk stop timeout is used
+     * (180 seconds by default).
      * 
      */
     @Import(name="downDelay")
     private @Nullable Output<Integer> downDelay;
 
     /**
-     * @return A non-negative number defining the delay in
-     * seconds before the next container is shut down.
+     * @return A non-negative number defining the shutdown
+     * timeout in seconds. When the node stops all guests (e.g. on host
+     * shutdown), Proxmox VE waits this long for the container to shut down before
+     * stopping it. When unset, the node&#39;s bulk stop timeout is used
+     * (180 seconds by default).
      * 
      */
     public Optional<Output<Integer>> downDelay() {
@@ -93,8 +99,11 @@ public final class ContainerLegacyStartupArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param downDelay A non-negative number defining the delay in
-         * seconds before the next container is shut down.
+         * @param downDelay A non-negative number defining the shutdown
+         * timeout in seconds. When the node stops all guests (e.g. on host
+         * shutdown), Proxmox VE waits this long for the container to shut down before
+         * stopping it. When unset, the node&#39;s bulk stop timeout is used
+         * (180 seconds by default).
          * 
          * @return builder
          * 
@@ -105,8 +114,11 @@ public final class ContainerLegacyStartupArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param downDelay A non-negative number defining the delay in
-         * seconds before the next container is shut down.
+         * @param downDelay A non-negative number defining the shutdown
+         * timeout in seconds. When the node stops all guests (e.g. on host
+         * shutdown), Proxmox VE waits this long for the container to shut down before
+         * stopping it. When unset, the node&#39;s bulk stop timeout is used
+         * (180 seconds by default).
          * 
          * @return builder
          * 

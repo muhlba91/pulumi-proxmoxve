@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var ipset = new IpsetLegacy("ipset", IpsetLegacyArgs.builder()
  *             .nodeName(example.get("nodeName"))
- *             .vmId(((Number) example.get("vmId")).intValue())
+ *             .vmId(example.get("vmId"))
  *             .name("local_network")
  *             .comment("Managed by Pulumi")
  *             .cidrs(            
@@ -78,28 +78,34 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ### Cluster IPSet
+ * 
  * Use the import ID: `cluster/&lt;ipset_name&gt;`
  * Example uses ipset name `localNetwork`.
  * 
  * **Example:**
+ * 
  * ```sh
  * $ pulumi import proxmoxve:firewall/ipsetLegacy:IpsetLegacy cluster_ipset cluster/local_network
  * ```
  * 
  * ### VM IPSet
+ * 
  * Use the import ID format: `vm/&lt;node_name&gt;/&lt;vm_id&gt;/&lt;ipset_name&gt;`
  * Example uses node name `pve` and VM ID `100` and ipset name `localNetwork`.
  * 
  * **Example:**
+ * 
  * ```sh
  * $ pulumi import proxmoxve:firewall/ipsetLegacy:IpsetLegacy vm_ipset vm/pve/100/local_network
  * ```
  * 
  * ### Container IPSet
+ * 
  * Use the import ID format: `container/&lt;node_name&gt;/&lt;container_id&gt;/&lt;ipset_name&gt;`
  * Example uses node name `pve` and container ID `100` and ipset name `localNetwork`.
  * 
  * **Example:**
+ * 
  * ```sh
  * $ pulumi import proxmoxve:firewall/ipsetLegacy:IpsetLegacy container_ipset container/pve/100/local_network
  * ```
@@ -136,14 +142,14 @@ public class IpsetLegacy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.comment);
     }
     /**
-     * Container ID. Leave empty for cluster level ipsets.
+     * Container ID. Leave empty for cluster level ipsets. Changing this value forces replacement.
      * 
      */
     @Export(name="containerId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> containerId;
 
     /**
-     * @return Container ID. Leave empty for cluster level ipsets.
+     * @return Container ID. Leave empty for cluster level ipsets. Changing this value forces replacement.
      * 
      */
     public Output<Optional<Integer>> containerId() {
@@ -164,28 +170,28 @@ public class IpsetLegacy extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Node name. Leave empty for cluster level ipsets.
+     * Node name. Leave empty for cluster level ipsets. Changing it forces replacement unless `vmId` or `containerId` is set, so it can change in place after a migration.
      * 
      */
     @Export(name="nodeName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> nodeName;
 
     /**
-     * @return Node name. Leave empty for cluster level ipsets.
+     * @return Node name. Leave empty for cluster level ipsets. Changing it forces replacement unless `vmId` or `containerId` is set, so it can change in place after a migration.
      * 
      */
     public Output<Optional<String>> nodeName() {
         return Codegen.optional(this.nodeName);
     }
     /**
-     * VM ID. Leave empty for cluster level ipsets.
+     * VM ID. Leave empty for cluster level ipsets. Changing this value forces replacement.
      * 
      */
     @Export(name="vmId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> vmId;
 
     /**
-     * @return VM ID. Leave empty for cluster level ipsets.
+     * @return VM ID. Leave empty for cluster level ipsets. Changing this value forces replacement.
      * 
      */
     public Output<Optional<Integer>> vmId() {

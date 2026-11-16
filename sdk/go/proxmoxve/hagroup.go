@@ -136,6 +136,12 @@ func (HagroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*hagroupState)(nil)).Elem()
 }
 
+// HagroupExists checks whether an existing Hagroup resource with the given ID exists.
+func HagroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HagroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:index/hagroup:Hagroup", id, state, "", opts...)
+}
+
 type hagroupArgs struct {
 	// The comment associated with this group
 	Comment *string `pulumi:"comment"`

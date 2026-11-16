@@ -192,6 +192,12 @@ func (VnetLegacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vnetLegacyState)(nil)).Elem()
 }
 
+// VnetLegacyExists checks whether an existing VnetLegacy resource with the given ID exists.
+func VnetLegacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VnetLegacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:sdn/vnetLegacy:VnetLegacy", id, state, "", opts...)
+}
+
 type vnetLegacyArgs struct {
 	// An optional alias for this VNet.
 	Alias *string `pulumi:"alias"`

@@ -1367,6 +1367,64 @@ class Ldap(pulumi.CustomResource):
         __props__.__dict__["verify"] = verify
         return Ldap(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            base_dn: pulumi.Input[Optional[_builtins.str]] = None,
+            bind_dn: pulumi.Input[Optional[_builtins.str]] = None,
+            bind_password: pulumi.Input[Optional[_builtins.str]] = None,
+            ca_path: pulumi.Input[Optional[_builtins.str]] = None,
+            case_sensitive: pulumi.Input[Optional[_builtins.bool]] = None,
+            cert_key_path: pulumi.Input[Optional[_builtins.str]] = None,
+            cert_path: pulumi.Input[Optional[_builtins.str]] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            default: pulumi.Input[Optional[_builtins.bool]] = None,
+            filter: pulumi.Input[Optional[_builtins.str]] = None,
+            group_classes: pulumi.Input[Optional[_builtins.str]] = None,
+            group_dn: pulumi.Input[Optional[_builtins.str]] = None,
+            group_filter: pulumi.Input[Optional[_builtins.str]] = None,
+            group_name_attr: pulumi.Input[Optional[_builtins.str]] = None,
+            mode: pulumi.Input[Optional[_builtins.str]] = None,
+            port: pulumi.Input[Optional[_builtins.int]] = None,
+            realm: pulumi.Input[Optional[_builtins.str]] = None,
+            secure: pulumi.Input[Optional[_builtins.bool]] = None,
+            server1: pulumi.Input[Optional[_builtins.str]] = None,
+            server2: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_version: pulumi.Input[Optional[_builtins.str]] = None,
+            sync_attributes: pulumi.Input[Optional[_builtins.str]] = None,
+            sync_defaults_options: pulumi.Input[Optional[_builtins.str]] = None,
+            user_attr: pulumi.Input[Optional[_builtins.str]] = None,
+            user_classes: pulumi.Input[Optional[_builtins.str]] = None,
+            verify: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["baseDn"] = base_dn
+        __props__["bindDn"] = bind_dn
+        __props__["bindPassword"] = bind_password
+        __props__["caPath"] = ca_path
+        __props__["caseSensitive"] = case_sensitive
+        __props__["certKeyPath"] = cert_key_path
+        __props__["certPath"] = cert_path
+        __props__["comment"] = comment
+        __props__["default"] = default
+        __props__["filter"] = filter
+        __props__["groupClasses"] = group_classes
+        __props__["groupDn"] = group_dn
+        __props__["groupFilter"] = group_filter
+        __props__["groupNameAttr"] = group_name_attr
+        __props__["mode"] = mode
+        __props__["port"] = port
+        __props__["realm"] = realm
+        __props__["secure"] = secure
+        __props__["server1"] = server1
+        __props__["server2"] = server2
+        __props__["sslVersion"] = ssl_version
+        __props__["syncAttributes"] = sync_attributes
+        __props__["syncDefaultsOptions"] = sync_defaults_options
+        __props__["userAttr"] = user_attr
+        __props__["userClasses"] = user_classes
+        __props__["verify"] = verify
+        return pulumi.runtime.exists_resource(None, 'proxmoxve:realm/ldap:Ldap', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="baseDn")
     def base_dn(self) -> pulumi.Output[_builtins.str]:

@@ -70,6 +70,12 @@ func (ApplierLegacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*applierLegacyState)(nil)).Elem()
 }
 
+// ApplierLegacyExists checks whether an existing ApplierLegacy resource with the given ID exists.
+func ApplierLegacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApplierLegacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:sdn/applierLegacy:ApplierLegacy", id, state, "", opts...)
+}
+
 type applierLegacyArgs struct {
 	// Whether to apply SDN configuration on resource creation. Defaults to true.
 	OnCreate *bool `pulumi:"onCreate"`

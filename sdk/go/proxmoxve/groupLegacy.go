@@ -133,6 +133,12 @@ func (GroupLegacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupLegacyState)(nil)).Elem()
 }
 
+// GroupLegacyExists checks whether an existing GroupLegacy resource with the given ID exists.
+func GroupLegacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GroupLegacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:index/groupLegacy:GroupLegacy", id, state, "", opts...)
+}
+
 type groupLegacyArgs struct {
 	// The access control list (multiple blocks supported). Use
 	// `Acl` instead.

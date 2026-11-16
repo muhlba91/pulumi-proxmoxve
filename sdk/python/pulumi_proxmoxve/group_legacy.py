@@ -308,6 +308,20 @@ class GroupLegacy(pulumi.CustomResource):
         __props__.__dict__["members"] = members
         return GroupLegacy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            acls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupLegacyAclArgs', 'GroupLegacyAclArgsDict', 'outputs.GroupLegacyAcl']]]]] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["acls"] = acls
+        __props__["comment"] = comment
+        __props__["groupId"] = group_id
+        __props__["members"] = members
+        return pulumi.runtime.exists_resource(None, 'proxmoxve:index/groupLegacy:GroupLegacy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Manage ACLs via the dedicated `Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing groups with `acl` blocks continue to work, but new code should use `Acl`.""")

@@ -69,8 +69,8 @@ type SimpleLegacy struct {
 	DnsZone pulumi.StringPtrOutput `pulumi:"dnsZone"`
 	// IP Address Management system.
 	Ipam pulumi.StringPtrOutput `pulumi:"ipam"`
-	// MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
-	Mtu pulumi.IntOutput `pulumi:"mtu"`
+	// MTU value for the zone.
+	Mtu pulumi.IntPtrOutput `pulumi:"mtu"`
 	// The Proxmox nodes which the zone and associated VNets should be deployed on
 	Nodes pulumi.StringArrayOutput `pulumi:"nodes"`
 	// Indicates if the zone has pending configuration changes that need to be applied.
@@ -124,7 +124,7 @@ type simpleLegacyState struct {
 	DnsZone *string `pulumi:"dnsZone"`
 	// IP Address Management system.
 	Ipam *string `pulumi:"ipam"`
-	// MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
+	// MTU value for the zone.
 	Mtu *int `pulumi:"mtu"`
 	// The Proxmox nodes which the zone and associated VNets should be deployed on
 	Nodes []string `pulumi:"nodes"`
@@ -147,7 +147,7 @@ type SimpleLegacyState struct {
 	DnsZone pulumi.StringPtrInput
 	// IP Address Management system.
 	Ipam pulumi.StringPtrInput
-	// MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
+	// MTU value for the zone.
 	Mtu pulumi.IntPtrInput
 	// The Proxmox nodes which the zone and associated VNets should be deployed on
 	Nodes pulumi.StringArrayInput
@@ -165,6 +165,12 @@ func (SimpleLegacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*simpleLegacyState)(nil)).Elem()
 }
 
+// SimpleLegacyExists checks whether an existing SimpleLegacy resource with the given ID exists.
+func SimpleLegacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SimpleLegacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:sdn/zone/simpleLegacy:SimpleLegacy", id, state, "", opts...)
+}
+
 type simpleLegacyArgs struct {
 	// The type of the DHCP backend for this zone. Currently the only supported value is `dnsmasq`.
 	Dhcp *string `pulumi:"dhcp"`
@@ -174,7 +180,7 @@ type simpleLegacyArgs struct {
 	DnsZone *string `pulumi:"dnsZone"`
 	// IP Address Management system.
 	Ipam *string `pulumi:"ipam"`
-	// MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
+	// MTU value for the zone.
 	Mtu *int `pulumi:"mtu"`
 	// The Proxmox nodes which the zone and associated VNets should be deployed on
 	Nodes []string `pulumi:"nodes"`
@@ -194,7 +200,7 @@ type SimpleLegacyArgs struct {
 	DnsZone pulumi.StringPtrInput
 	// IP Address Management system.
 	Ipam pulumi.StringPtrInput
-	// MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
+	// MTU value for the zone.
 	Mtu pulumi.IntPtrInput
 	// The Proxmox nodes which the zone and associated VNets should be deployed on
 	Nodes pulumi.StringArrayInput
@@ -311,9 +317,9 @@ func (o SimpleLegacyOutput) Ipam() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SimpleLegacy) pulumi.StringPtrOutput { return v.Ipam }).(pulumi.StringPtrOutput)
 }
 
-// MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
-func (o SimpleLegacyOutput) Mtu() pulumi.IntOutput {
-	return o.ApplyT(func(v *SimpleLegacy) pulumi.IntOutput { return v.Mtu }).(pulumi.IntOutput)
+// MTU value for the zone.
+func (o SimpleLegacyOutput) Mtu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SimpleLegacy) pulumi.IntPtrOutput { return v.Mtu }).(pulumi.IntPtrOutput)
 }
 
 // The Proxmox nodes which the zone and associated VNets should be deployed on

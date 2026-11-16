@@ -57,6 +57,17 @@ export class BridgeLegacy extends pulumi.CustomResource {
         return new BridgeLegacy(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing BridgeLegacy resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: BridgeLegacyState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("proxmoxve:network/linux/bridgeLegacy:BridgeLegacy", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'proxmoxve:network/linux/bridgeLegacy:BridgeLegacy';
 
@@ -112,6 +123,10 @@ export class BridgeLegacy extends pulumi.CustomResource {
      */
     declare public readonly ports: pulumi.Output<string[] | undefined>;
     /**
+     * Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
+     */
+    declare public readonly reload: pulumi.Output<boolean>;
+    /**
      * Timeout for network reload operations in seconds (defaults to `100`).
      */
     declare public readonly timeoutReload: pulumi.Output<number>;
@@ -147,6 +162,7 @@ export class BridgeLegacy extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["nodeName"] = state?.nodeName;
             resourceInputs["ports"] = state?.ports;
+            resourceInputs["reload"] = state?.reload;
             resourceInputs["timeoutReload"] = state?.timeoutReload;
             resourceInputs["vids"] = state?.vids;
             resourceInputs["vlanAware"] = state?.vlanAware;
@@ -165,6 +181,7 @@ export class BridgeLegacy extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["nodeName"] = args?.nodeName;
             resourceInputs["ports"] = args?.ports;
+            resourceInputs["reload"] = args?.reload;
             resourceInputs["timeoutReload"] = args?.timeoutReload;
             resourceInputs["vids"] = args?.vids;
             resourceInputs["vlanAware"] = args?.vlanAware;
@@ -218,6 +235,10 @@ export interface BridgeLegacyState {
      * The interface bridge ports.
      */
     ports?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
+     */
+    reload?: pulumi.Input<boolean | undefined>;
     /**
      * Timeout for network reload operations in seconds (defaults to `100`).
      */
@@ -276,6 +297,10 @@ export interface BridgeLegacyArgs {
      * The interface bridge ports.
      */
     ports?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
+     */
+    reload?: pulumi.Input<boolean | undefined>;
     /**
      * Timeout for network reload operations in seconds (defaults to `100`).
      */

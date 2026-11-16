@@ -10,6 +10,8 @@ import com.pulumi.core.internal.Codegen;
 import io.muehlbachler.pulumi.proxmoxve.Utilities;
 import io.muehlbachler.pulumi.proxmoxve.ceph.PoolArgs;
 import io.muehlbachler.pulumi.proxmoxve.ceph.inputs.PoolState;
+import io.muehlbachler.pulumi.proxmoxve.ceph.outputs.PoolDataPool;
+import io.muehlbachler.pulumi.proxmoxve.ceph.outputs.PoolErasureCoding;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
@@ -22,6 +24,10 @@ import javax.annotation.Nullable;
  * 
  * Manages a Ceph pool on a Proxmox VE cluster.
  * 
+ * **Erasure-coded pools.** With `erasureCoding`, Proxmox creates no pool named `name`. It creates an erasure-coded data pool `&lt;name&gt;-data` and a replicated metadata pool `&lt;name&gt;-metadata`, as `pveceph pool create --erasure-coding` does. As in `pveceph`, `size`, `minSize` and `crushRule` then apply to the **metadata pool**, while `pgNum`, `pgNumMin`, `pgAutoscaleMode`, `application`, `targetSize` and `targetSizeRatio` apply to the **data pool**. The data pool&#39;s own size, minimum size and CRUSH rule follow from the erasure code profile and are reported in `dataPool`.
+ * 
+ * **Storages.** The provider never asks Proxmox to add a storage for the pool; manage RBD storages on it with `proxmoxve.storage.Rbd`. Destroying the pool removes no storage. Destroying an erasure-coded pool removes both of its pools, and its erasure code profile when Proxmox created that profile (that is, when `erasure_coding.profile` is not set).
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -33,6 +39,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import io.muehlbachler.pulumi.proxmoxve.ceph.Pool;
  * import io.muehlbachler.pulumi.proxmoxve.ceph.PoolArgs;
+ * import com.pulumi.proxmoxve.ceph.inputs.PoolErasureCodingArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -56,6 +63,22 @@ import javax.annotation.Nullable;
  *             .pgAutoscaleMode("warn")
  *             .build());
  * 
+ *         // An erasure-coded pool: Proxmox creates the data pool "archive-data" and the metadata pool "archive-metadata".
+ *         var erasureCoded = new Pool("erasureCoded", PoolArgs.builder()
+ *             .nodeName("pve")
+ *             .name("archive")
+ *             .size(3)
+ *             .minSize(2)
+ *             .crushRule("replicated_rule")
+ *             .pgNum(32)
+ *             .erasureCoding(PoolErasureCodingArgs.builder()
+ *                 .k(4)
+ *                 .m(2)
+ *                 .failureDomain("host")
+ *                 .deviceClass("hdd")
+ *                 .build())
+ *             .build());
+ * 
  *     }
  * }
  * }
@@ -70,102 +93,137 @@ import javax.annotation.Nullable;
  * $ pulumi import proxmoxve:ceph/pool:Pool example pve/tank
  * ```
  * 
+ * An erasure-coded pool is imported by the name it was created with (without `-data` or `-metadata`); its
+ * configuration must then include a matching `erasureCoding` attribute.
+ * 
+ * ```sh
+ * $ pulumi import proxmoxve:ceph/pool:Pool erasure_coded pve/archive
+ * ```
+ * 
  */
 @ResourceType(type="proxmoxve:ceph/pool:Pool")
 public class Pool extends com.pulumi.resources.CustomResource {
     /**
-     * Configure VM and CT storage entries using the new pool. Applied at create time only; changing this value forces replacement.
-     * 
-     */
-    @Export(name="addStorages", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> addStorages;
-
-    /**
-     * @return Configure VM and CT storage entries using the new pool. Applied at create time only; changing this value forces replacement.
-     * 
-     */
-    public Output<Optional<Boolean>> addStorages() {
-        return Codegen.optional(this.addStorages);
-    }
-    /**
-     * The application using the pool. One of `rbd`, `cephfs`, `rgw`. Defaults to `rbd` server-side.
+     * The application using the pool. One of `rbd`, `cephfs`, `rgw`. Defaults to `rbd` server-side. With `erasureCoding`, this is the data pool&#39;s application (Proxmox also sets it on the metadata pool at creation).
      * 
      */
     @Export(name="application", refs={String.class}, tree="[0]")
     private Output<String> application;
 
     /**
-     * @return The application using the pool. One of `rbd`, `cephfs`, `rgw`. Defaults to `rbd` server-side.
+     * @return The application using the pool. One of `rbd`, `cephfs`, `rgw`. Defaults to `rbd` server-side. With `erasureCoding`, this is the data pool&#39;s application (Proxmox also sets it on the metadata pool at creation).
      * 
      */
     public Output<String> application() {
         return this.application;
     }
     /**
-     * The CRUSH rule name used for object placement.
+     * The CRUSH rule name used for object placement. With `erasureCoding`, it is used solely for the metadata pool; the data pool uses the rule Ceph generates from the erasure code profile (`data_pool.crush_rule`).
      * 
      */
     @Export(name="crushRule", refs={String.class}, tree="[0]")
     private Output<String> crushRule;
 
     /**
-     * @return The CRUSH rule name used for object placement.
+     * @return The CRUSH rule name used for object placement. With `erasureCoding`, it is used solely for the metadata pool; the data pool uses the rule Ceph generates from the erasure code profile (`data_pool.crush_rule`).
      * 
      */
     public Output<String> crushRule() {
         return this.crushRule;
     }
     /**
-     * Create an erasure coded pool. Specified as `k=&lt;int&gt;,m=&lt;int&gt;[,profile=name][,device-class=class][,failure-domain=domain]` (e.g. `k=4,m=2`). Cannot be changed after creation.
+     * The erasure-coded data pool `&lt;name&gt;-data` of an erasure-coded pool; null for a replicated pool. Its size, minimum size and CRUSH rule follow from the erasure code profile.
      * 
      */
-    @Export(name="erasureCoding", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> erasureCoding;
+    @Export(name="dataPool", refs={PoolDataPool.class}, tree="[0]")
+    private Output<PoolDataPool> dataPool;
 
     /**
-     * @return Create an erasure coded pool. Specified as `k=&lt;int&gt;,m=&lt;int&gt;[,profile=name][,device-class=class][,failure-domain=domain]` (e.g. `k=4,m=2`). Cannot be changed after creation.
+     * @return The erasure-coded data pool `&lt;name&gt;-data` of an erasure-coded pool; null for a replicated pool. Its size, minimum size and CRUSH rule follow from the erasure code profile.
      * 
      */
-    public Output<Optional<String>> erasureCoding() {
+    public Output<PoolDataPool> dataPool() {
+        return this.dataPool;
+    }
+    /**
+     * Create an erasure-coded pool instead of a replicated one: Proxmox creates an erasure-coded data pool `&lt;name&gt;-data` and a replicated metadata pool `&lt;name&gt;-metadata`. While this is set, `size`, `minSize` and `crushRule` describe the metadata pool. Cannot be changed after creation, except that after an import the configured value is only recorded.
+     * 
+     */
+    @Export(name="erasureCoding", refs={PoolErasureCoding.class}, tree="[0]")
+    private Output</* @Nullable */ PoolErasureCoding> erasureCoding;
+
+    /**
+     * @return Create an erasure-coded pool instead of a replicated one: Proxmox creates an erasure-coded data pool `&lt;name&gt;-data` and a replicated metadata pool `&lt;name&gt;-metadata`. While this is set, `size`, `minSize` and `crushRule` describe the metadata pool. Cannot be changed after creation, except that after an import the configured value is only recorded.
+     * 
+     */
+    public Output<Optional<PoolErasureCoding>> erasureCoding() {
         return Codegen.optional(this.erasureCoding);
     }
     /**
-     * If true, destroy the pool even when in use. Passed as `force=1` on delete.
+     * If true, destroy the pool even when in use. Passed as `force=1` on delete. With `erasureCoding`, this applies to both pools.
      * 
      */
     @Export(name="forceDestroy", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> forceDestroy;
 
     /**
-     * @return If true, destroy the pool even when in use. Passed as `force=1` on delete.
+     * @return If true, destroy the pool even when in use. Passed as `force=1` on delete. With `erasureCoding`, this applies to both pools.
      * 
      */
     public Output<Boolean> forceDestroy() {
         return this.forceDestroy;
     }
     /**
-     * Minimum number of replicas per object.
+     * The numeric ID Ceph assigned to an erasure-coded pool&#39;s metadata pool; null for a replicated pool.
+     * 
+     */
+    @Export(name="metadataPoolId", refs={Integer.class}, tree="[0]")
+    private Output<Integer> metadataPoolId;
+
+    /**
+     * @return The numeric ID Ceph assigned to an erasure-coded pool&#39;s metadata pool; null for a replicated pool.
+     * 
+     */
+    public Output<Integer> metadataPoolId() {
+        return this.metadataPoolId;
+    }
+    /**
+     * The name of an erasure-coded pool&#39;s replicated metadata pool, `&lt;name&gt;-metadata`; null for a replicated pool. `size`, `minSize` and `crushRule` describe this pool.
+     * 
+     */
+    @Export(name="metadataPoolName", refs={String.class}, tree="[0]")
+    private Output<String> metadataPoolName;
+
+    /**
+     * @return The name of an erasure-coded pool&#39;s replicated metadata pool, `&lt;name&gt;-metadata`; null for a replicated pool. `size`, `minSize` and `crushRule` describe this pool.
+     * 
+     */
+    public Output<String> metadataPoolName() {
+        return this.metadataPoolName;
+    }
+    /**
+     * Minimum number of replicas per object. With `erasureCoding`, this is the metadata pool&#39;s; the data pool&#39;s is `data_pool.min_size`.
      * 
      */
     @Export(name="minSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> minSize;
 
     /**
-     * @return Minimum number of replicas per object.
+     * @return Minimum number of replicas per object. With `erasureCoding`, this is the metadata pool&#39;s; the data pool&#39;s is `data_pool.min_size`.
      * 
      */
     public Output<Integer> minSize() {
         return this.minSize;
     }
     /**
-     * The pool name. Must be unique within the Ceph cluster.
+     * The pool name. Must be unique within the Ceph cluster. With `erasureCoding`, Proxmox creates the pools `&lt;name&gt;-data` and `&lt;name&gt;-metadata` instead, and no pool of this name.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The pool name. Must be unique within the Ceph cluster.
+     * @return The pool name. Must be unique within the Ceph cluster. With `erasureCoding`, Proxmox creates the pools `&lt;name&gt;-data` and `&lt;name&gt;-metadata` instead, and no pool of this name.
      * 
      */
     public Output<String> name() {
@@ -186,112 +244,98 @@ public class Pool extends com.pulumi.resources.CustomResource {
         return this.nodeName;
     }
     /**
-     * PG autoscaler mode. One of `on`, `off`, `warn`.
+     * PG autoscaler mode. One of `on`, `off`, `warn`. With `erasureCoding`, this is the data pool&#39;s (Proxmox also applies it to the metadata pool at creation).
      * 
      */
     @Export(name="pgAutoscaleMode", refs={String.class}, tree="[0]")
     private Output<String> pgAutoscaleMode;
 
     /**
-     * @return PG autoscaler mode. One of `on`, `off`, `warn`.
+     * @return PG autoscaler mode. One of `on`, `off`, `warn`. With `erasureCoding`, this is the data pool&#39;s (Proxmox also applies it to the metadata pool at creation).
      * 
      */
     public Output<String> pgAutoscaleMode() {
         return this.pgAutoscaleMode;
     }
     /**
-     * Number of placement groups.
+     * Number of placement groups. With `erasureCoding`, this is the data pool&#39;s (Proxmox creates the metadata pool with 32).
      * 
      */
     @Export(name="pgNum", refs={Integer.class}, tree="[0]")
     private Output<Integer> pgNum;
 
     /**
-     * @return Number of placement groups.
+     * @return Number of placement groups. With `erasureCoding`, this is the data pool&#39;s (Proxmox creates the metadata pool with 32).
      * 
      */
     public Output<Integer> pgNum() {
         return this.pgNum;
     }
     /**
-     * Minimum number of placement groups (used by the autoscaler).
+     * Minimum number of placement groups (used by the autoscaler). With `erasureCoding`, this is the data pool&#39;s (Proxmox also applies it to the metadata pool at creation).
      * 
      */
     @Export(name="pgNumMin", refs={Integer.class}, tree="[0]")
     private Output<Integer> pgNumMin;
 
     /**
-     * @return Minimum number of placement groups (used by the autoscaler).
+     * @return Minimum number of placement groups (used by the autoscaler). With `erasureCoding`, this is the data pool&#39;s (Proxmox also applies it to the metadata pool at creation).
      * 
      */
     public Output<Integer> pgNumMin() {
         return this.pgNumMin;
     }
     /**
-     * If true, remove the erasure code profile on destroy. Defaults to true. Only relevant for EC pools.
+     * The numeric pool ID assigned by Ceph. Ceph assigns a new ID when the pool is recreated. Null with `erasureCoding`, where no pool named `name` exists; see `data_pool.pool_id` and `metadataPoolId`.
      * 
      */
-    @Export(name="removeEcprofile", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> removeEcprofile;
+    @Export(name="poolId", refs={Integer.class}, tree="[0]")
+    private Output<Integer> poolId;
 
     /**
-     * @return If true, remove the erasure code profile on destroy. Defaults to true. Only relevant for EC pools.
+     * @return The numeric pool ID assigned by Ceph. Ceph assigns a new ID when the pool is recreated. Null with `erasureCoding`, where no pool named `name` exists; see `data_pool.pool_id` and `metadataPoolId`.
      * 
      */
-    public Output<Boolean> removeEcprofile() {
-        return this.removeEcprofile;
+    public Output<Integer> poolId() {
+        return this.poolId;
     }
     /**
-     * If true, remove all pveceph-managed storages configured for this pool on destroy.
-     * 
-     */
-    @Export(name="removeStorages", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> removeStorages;
-
-    /**
-     * @return If true, remove all pveceph-managed storages configured for this pool on destroy.
-     * 
-     */
-    public Output<Boolean> removeStorages() {
-        return this.removeStorages;
-    }
-    /**
-     * Number of replicas per object.
+     * Number of replicas per object. With `erasureCoding`, this is the metadata pool&#39;s replica count; the data pool&#39;s size is `k + m` (`data_pool.size`).
      * 
      */
     @Export(name="size", refs={Integer.class}, tree="[0]")
     private Output<Integer> size;
 
     /**
-     * @return Number of replicas per object.
+     * @return Number of replicas per object. With `erasureCoding`, this is the metadata pool&#39;s replica count; the data pool&#39;s size is `k + m` (`data_pool.size`).
      * 
      */
     public Output<Integer> size() {
         return this.size;
     }
     /**
-     * Estimated target size for the PG autoscaler (e.g. `100G`). **Write-only:** PVE returns this as a bytes integer (e.g. `1073741824`) while the input accepts a unit-suffixed string, so the configured spec is not round-tripped from the server.
+     * Estimated target size for the PG autoscaler (e.g. `100G`). **Write-only:** PVE returns this as a bytes integer (e.g. `1073741824`) while the input accepts a unit-suffixed string, so the configured spec is not round-tripped from the server. With `erasureCoding`, this is the data pool&#39;s (Proxmox also applies it to the metadata pool at creation).
      * 
      */
     @Export(name="targetSize", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> targetSize;
 
     /**
-     * @return Estimated target size for the PG autoscaler (e.g. `100G`). **Write-only:** PVE returns this as a bytes integer (e.g. `1073741824`) while the input accepts a unit-suffixed string, so the configured spec is not round-tripped from the server.
+     * @return Estimated target size for the PG autoscaler (e.g. `100G`). **Write-only:** PVE returns this as a bytes integer (e.g. `1073741824`) while the input accepts a unit-suffixed string, so the configured spec is not round-tripped from the server. With `erasureCoding`, this is the data pool&#39;s (Proxmox also applies it to the metadata pool at creation).
      * 
      */
     public Output<Optional<String>> targetSize() {
         return Codegen.optional(this.targetSize);
     }
     /**
-     * Estimated target ratio for the PG autoscaler. **Write-only:** kept symmetric with `targetSize` (which cannot be round-tripped), so the configured value is not refreshed from the server.
+     * Estimated target ratio for the PG autoscaler. **Write-only:** kept symmetric with `targetSize` (which cannot be round-tripped), so the configured value is not refreshed from the server. With `erasureCoding`, this is the data pool&#39;s (Proxmox also applies it to the metadata pool at creation).
      * 
      */
     @Export(name="targetSizeRatio", refs={Double.class}, tree="[0]")
     private Output</* @Nullable */ Double> targetSizeRatio;
 
     /**
-     * @return Estimated target ratio for the PG autoscaler. **Write-only:** kept symmetric with `targetSize` (which cannot be round-tripped), so the configured value is not refreshed from the server.
+     * @return Estimated target ratio for the PG autoscaler. **Write-only:** kept symmetric with `targetSize` (which cannot be round-tripped), so the configured value is not refreshed from the server. With `erasureCoding`, this is the data pool&#39;s (Proxmox also applies it to the metadata pool at creation).
      * 
      */
     public Output<Optional<Double>> targetSizeRatio() {

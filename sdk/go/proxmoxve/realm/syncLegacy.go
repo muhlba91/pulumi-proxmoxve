@@ -182,6 +182,12 @@ func (SyncLegacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*syncLegacyState)(nil)).Elem()
 }
 
+// SyncLegacyExists checks whether an existing SyncLegacy resource with the given ID exists.
+func SyncLegacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SyncLegacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:realm/syncLegacy:SyncLegacy", id, state, "", opts...)
+}
+
 type syncLegacyArgs struct {
 	// Only simulate the sync without applying changes.
 	DryRun *bool `pulumi:"dryRun"`

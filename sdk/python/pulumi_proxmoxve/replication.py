@@ -476,6 +476,32 @@ class Replication(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         return Replication(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            disable: pulumi.Input[Optional[_builtins.bool]] = None,
+            guest: pulumi.Input[Optional[_builtins.int]] = None,
+            jobnum: pulumi.Input[Optional[_builtins.int]] = None,
+            rate: pulumi.Input[Optional[_builtins.float]] = None,
+            resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+            schedule: pulumi.Input[Optional[_builtins.str]] = None,
+            source: pulumi.Input[Optional[_builtins.str]] = None,
+            target: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["comment"] = comment
+        __props__["disable"] = disable
+        __props__["guest"] = guest
+        __props__["jobnum"] = jobnum
+        __props__["rate"] = rate
+        __props__["resourceId"] = resource_id
+        __props__["schedule"] = schedule
+        __props__["source"] = source
+        __props__["target"] = target
+        __props__["type"] = type
+        return pulumi.runtime.exists_resource(None, 'proxmoxve:index/replication:Replication', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def comment(self) -> pulumi.Output[Optional[_builtins.str]]:

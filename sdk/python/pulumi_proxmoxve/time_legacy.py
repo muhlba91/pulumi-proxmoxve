@@ -264,6 +264,20 @@ class TimeLegacy(pulumi.CustomResource):
         __props__.__dict__["utc_time"] = utc_time
         return TimeLegacy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            local_time: pulumi.Input[Optional[_builtins.str]] = None,
+            node_name: pulumi.Input[Optional[_builtins.str]] = None,
+            time_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            utc_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["localTime"] = local_time
+        __props__["nodeName"] = node_name
+        __props__["timeZone"] = time_zone
+        __props__["utcTime"] = utc_time
+        return pulumi.runtime.exists_resource(None, 'proxmoxve:index/timeLegacy:TimeLegacy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="localTime")
     def local_time(self) -> pulumi.Output[_builtins.str]:

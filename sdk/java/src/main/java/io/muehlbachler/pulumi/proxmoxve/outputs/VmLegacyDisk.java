@@ -50,8 +50,9 @@ public final class VmLegacyDisk {
     private @Nullable String fileFormat;
     /**
      * @return The file ID for a disk image when importing a disk into VM. The ID format is
-     * `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/centos8.img`. Can be also taken from
-     * `proxmoxve.download.FileLegacy` resource. Prefer `importFrom` for uncompressed images.
+     * `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/centos8.img`, without whitespace, `,` or `=`.
+     * Can be also taken from `proxmoxve.download.FileLegacy` resource. Prefer `importFrom` for
+     * uncompressed images.
      * Use `fileId` when working with compressed cloud images (e.g., `.qcow2.xz`) that were downloaded
      * with `contentType = &#34;iso&#34;` and `decompressionAlgorithm` set. See the
      * Create a VM from a Cloud Image guide for examples.
@@ -102,7 +103,8 @@ public final class VmLegacyDisk {
      */
     private @Nullable Boolean replicate;
     /**
-     * @return The serial number of the disk, up to 20 bytes long.
+     * @return The serial number of the disk, up to 20 characters. Letters, digits and
+     * `-%_.!~*&#39;()` only.
      * 
      */
     private @Nullable String serial;
@@ -172,8 +174,9 @@ public final class VmLegacyDisk {
     }
     /**
      * @return The file ID for a disk image when importing a disk into VM. The ID format is
-     * `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/centos8.img`. Can be also taken from
-     * `proxmoxve.download.FileLegacy` resource. Prefer `importFrom` for uncompressed images.
+     * `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/centos8.img`, without whitespace, `,` or `=`.
+     * Can be also taken from `proxmoxve.download.FileLegacy` resource. Prefer `importFrom` for
+     * uncompressed images.
      * Use `fileId` when working with compressed cloud images (e.g., `.qcow2.xz`) that were downloaded
      * with `contentType = &#34;iso&#34;` and `decompressionAlgorithm` set. See the
      * Create a VM from a Cloud Image guide for examples.
@@ -238,7 +241,8 @@ public final class VmLegacyDisk {
         return Optional.ofNullable(this.replicate);
     }
     /**
-     * @return The serial number of the disk, up to 20 bytes long.
+     * @return The serial number of the disk, up to 20 characters. Letters, digits and
+     * `-%_.!~*&#39;()` only.
      * 
      */
     public Optional<String> serial() {

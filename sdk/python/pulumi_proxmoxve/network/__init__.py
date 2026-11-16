@@ -5,6 +5,8 @@
 import builtins as _builtins
 from .. import _utilities
 import typing
+# Export this package's modules as members:
+from .applier import *
 
 # Make subpackages available:
 if typing.TYPE_CHECKING:

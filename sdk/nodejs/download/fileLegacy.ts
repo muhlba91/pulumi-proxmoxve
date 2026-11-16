@@ -105,6 +105,17 @@ export class FileLegacy extends pulumi.CustomResource {
         return new FileLegacy(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing FileLegacy resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: FileLegacyState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("proxmoxve:download/fileLegacy:FileLegacy", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'proxmoxve:download/fileLegacy:FileLegacy';
 

@@ -27,7 +27,7 @@ namespace Pulumi.ProxmoxVE.Firewall
     ///     var localNetwork = new ProxmoxVE.Firewall.AliasLegacy("local_network", new()
     ///     {
     ///         NodeName = example.NodeName,
-    ///         VmId = int.Parse(example.VmId, System.Globalization.CultureInfo.InvariantCulture),
+    ///         VmId = example.VmId,
     ///         Name = "local_network",
     ///         Cidr = "192.168.0.0/23",
     ///         Comment = "Managed by Pulumi",
@@ -48,6 +48,41 @@ namespace Pulumi.ProxmoxVE.Firewall
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ### Cluster Alias
+    /// 
+    /// Use the import ID: `cluster/&lt;alias_name&gt;`
+    /// Example uses alias name `Ubuntu`.
+    /// 
+    /// **Example:**
+    /// 
+    /// ```sh
+    /// $ pulumi import proxmoxve:firewall/aliasLegacy:AliasLegacy ubuntu_vm cluster/ubuntu
+    /// ```
+    /// 
+    /// ### VM Alias
+    /// 
+    /// Use the import ID format: `vm/&lt;node_name&gt;/&lt;vm_id&gt;/&lt;alias_name&gt;`
+    /// Example uses node name `Pve` and VM ID `100` and alias name `LocalNetwork`.
+    /// 
+    /// **Example:**
+    /// 
+    /// ```sh
+    /// $ pulumi import proxmoxve:firewall/aliasLegacy:AliasLegacy local_network vm/pve/100/local_network
+    /// ```
+    /// 
+    /// ### Container Alias
+    /// 
+    /// Use the import ID format: `container/&lt;node_name&gt;/&lt;container_id&gt;/&lt;alias_name&gt;`
+    /// Example uses node name `Pve` and container ID `100` and alias name `LocalNetwork`.
+    /// 
+    /// **Example:**
+    /// 
+    /// ```sh
+    /// $ pulumi import proxmoxve:firewall/aliasLegacy:AliasLegacy container_alias container/pve/100/local_network
+    /// ```
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:firewall/aliasLegacy:AliasLegacy")]
     public partial class AliasLegacy : global::Pulumi.CustomResource
@@ -65,7 +100,7 @@ namespace Pulumi.ProxmoxVE.Firewall
         public Output<string?> Comment { get; private set; } = null!;
 
         /// <summary>
-        /// Container ID. Leave empty for cluster level aliases.
+        /// Container ID. Leave empty for cluster level aliases. Changing this value forces replacement.
         /// </summary>
         [Output("containerId")]
         public Output<int?> ContainerId { get; private set; } = null!;
@@ -77,13 +112,13 @@ namespace Pulumi.ProxmoxVE.Firewall
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Node name. Leave empty for cluster level aliases.
+        /// Node name. Leave empty for cluster level aliases. Changing it forces replacement unless `VmId` or `ContainerId` is set, so it can change in place after a migration.
         /// </summary>
         [Output("nodeName")]
         public Output<string?> NodeName { get; private set; } = null!;
 
         /// <summary>
-        /// VM ID. Leave empty for cluster level aliases.
+        /// VM ID. Leave empty for cluster level aliases. Changing this value forces replacement.
         /// </summary>
         [Output("vmId")]
         public Output<int?> VmId { get; private set; } = null!;
@@ -148,7 +183,7 @@ namespace Pulumi.ProxmoxVE.Firewall
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// Container ID. Leave empty for cluster level aliases.
+        /// Container ID. Leave empty for cluster level aliases. Changing this value forces replacement.
         /// </summary>
         [Input("containerId")]
         public Input<int>? ContainerId { get; set; }
@@ -160,13 +195,13 @@ namespace Pulumi.ProxmoxVE.Firewall
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Node name. Leave empty for cluster level aliases.
+        /// Node name. Leave empty for cluster level aliases. Changing it forces replacement unless `VmId` or `ContainerId` is set, so it can change in place after a migration.
         /// </summary>
         [Input("nodeName")]
         public Input<string>? NodeName { get; set; }
 
         /// <summary>
-        /// VM ID. Leave empty for cluster level aliases.
+        /// VM ID. Leave empty for cluster level aliases. Changing this value forces replacement.
         /// </summary>
         [Input("vmId")]
         public Input<int>? VmId { get; set; }
@@ -192,7 +227,7 @@ namespace Pulumi.ProxmoxVE.Firewall
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// Container ID. Leave empty for cluster level aliases.
+        /// Container ID. Leave empty for cluster level aliases. Changing this value forces replacement.
         /// </summary>
         [Input("containerId")]
         public Input<int>? ContainerId { get; set; }
@@ -204,13 +239,13 @@ namespace Pulumi.ProxmoxVE.Firewall
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Node name. Leave empty for cluster level aliases.
+        /// Node name. Leave empty for cluster level aliases. Changing it forces replacement unless `VmId` or `ContainerId` is set, so it can change in place after a migration.
         /// </summary>
         [Input("nodeName")]
         public Input<string>? NodeName { get; set; }
 
         /// <summary>
-        /// VM ID. Leave empty for cluster level aliases.
+        /// VM ID. Leave empty for cluster level aliases. Changing this value forces replacement.
         /// </summary>
         [Input("vmId")]
         public Input<int>? VmId { get; set; }

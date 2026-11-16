@@ -201,6 +201,12 @@ func (UserLegacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*userLegacyState)(nil)).Elem()
 }
 
+// UserLegacyExists checks whether an existing UserLegacy resource with the given ID exists.
+func UserLegacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UserLegacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:index/userLegacy:UserLegacy", id, state, "", opts...)
+}
+
 type userLegacyArgs struct {
 	// The access control list (multiple blocks supported). Use
 	// `Acl` instead.

@@ -29,6 +29,7 @@ class VlanLegacyArgs:
                  interface: pulumi.Input[Optional[_builtins.str]] = None,
                  mtu: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 reload: pulumi.Input[Optional[_builtins.bool]] = None,
                  timeout_reload: pulumi.Input[Optional[_builtins.int]] = None,
                  vlan: pulumi.Input[Optional[_builtins.int]] = None):
         """
@@ -44,6 +45,7 @@ class VlanLegacyArgs:
         :param pulumi.Input[_builtins.str] interface: The VLAN raw device. See also `name`.
         :param pulumi.Input[_builtins.int] mtu: The interface MTU.
         :param pulumi.Input[_builtins.str] name: The interface name. Either add the VLAN tag number to an existing interface name, e.g. `ens18.21` (and do not set `interface` and `vlan`), or use custom name, e.g. `vlan_lab` (`interface` and `vlan` are then required).
+        :param pulumi.Input[_builtins.bool] reload: Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
         :param pulumi.Input[_builtins.int] timeout_reload: Timeout for network reload operations in seconds (defaults to `100`).
         :param pulumi.Input[_builtins.int] vlan: The VLAN tag. See also `name`.
         """
@@ -66,6 +68,8 @@ class VlanLegacyArgs:
             pulumi.set(__self__, "mtu", mtu)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if reload is not None:
+            pulumi.set(__self__, "reload", reload)
         if timeout_reload is not None:
             pulumi.set(__self__, "timeout_reload", timeout_reload)
         if vlan is not None:
@@ -192,6 +196,18 @@ class VlanLegacyArgs:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter
+    def reload(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
+        """
+        return pulumi.get(self, "reload")
+
+    @reload.setter
+    def reload(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "reload", value)
+
+    @_builtins.property
     @pulumi.getter(name="timeoutReload")
     def timeout_reload(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
@@ -229,6 +245,7 @@ class _VlanLegacyState:
                  mtu: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 reload: pulumi.Input[Optional[_builtins.bool]] = None,
                  timeout_reload: pulumi.Input[Optional[_builtins.int]] = None,
                  vlan: pulumi.Input[Optional[_builtins.int]] = None):
         """
@@ -244,6 +261,7 @@ class _VlanLegacyState:
         :param pulumi.Input[_builtins.int] mtu: The interface MTU.
         :param pulumi.Input[_builtins.str] name: The interface name. Either add the VLAN tag number to an existing interface name, e.g. `ens18.21` (and do not set `interface` and `vlan`), or use custom name, e.g. `vlan_lab` (`interface` and `vlan` are then required).
         :param pulumi.Input[_builtins.str] node_name: The name of the node.
+        :param pulumi.Input[_builtins.bool] reload: Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
         :param pulumi.Input[_builtins.int] timeout_reload: Timeout for network reload operations in seconds (defaults to `100`).
         :param pulumi.Input[_builtins.int] vlan: The VLAN tag. See also `name`.
         """
@@ -267,6 +285,8 @@ class _VlanLegacyState:
             pulumi.set(__self__, "name", name)
         if node_name is not None:
             pulumi.set(__self__, "node_name", node_name)
+        if reload is not None:
+            pulumi.set(__self__, "reload", reload)
         if timeout_reload is not None:
             pulumi.set(__self__, "timeout_reload", timeout_reload)
         if vlan is not None:
@@ -393,6 +413,18 @@ class _VlanLegacyState:
         pulumi.set(self, "node_name", value)
 
     @_builtins.property
+    @pulumi.getter
+    def reload(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
+        """
+        return pulumi.get(self, "reload")
+
+    @reload.setter
+    def reload(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "reload", value)
+
+    @_builtins.property
     @pulumi.getter(name="timeoutReload")
     def timeout_reload(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
@@ -433,6 +465,7 @@ class VlanLegacy(pulumi.CustomResource):
                  mtu: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 reload: pulumi.Input[Optional[_builtins.bool]] = None,
                  timeout_reload: pulumi.Input[Optional[_builtins.int]] = None,
                  vlan: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
@@ -483,6 +516,7 @@ class VlanLegacy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] mtu: The interface MTU.
         :param pulumi.Input[_builtins.str] name: The interface name. Either add the VLAN tag number to an existing interface name, e.g. `ens18.21` (and do not set `interface` and `vlan`), or use custom name, e.g. `vlan_lab` (`interface` and `vlan` are then required).
         :param pulumi.Input[_builtins.str] node_name: The name of the node.
+        :param pulumi.Input[_builtins.bool] reload: Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
         :param pulumi.Input[_builtins.int] timeout_reload: Timeout for network reload operations in seconds (defaults to `100`).
         :param pulumi.Input[_builtins.int] vlan: The VLAN tag. See also `name`.
         """
@@ -552,6 +586,7 @@ class VlanLegacy(pulumi.CustomResource):
                  mtu: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 reload: pulumi.Input[Optional[_builtins.bool]] = None,
                  timeout_reload: pulumi.Input[Optional[_builtins.int]] = None,
                  vlan: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
@@ -575,6 +610,7 @@ class VlanLegacy(pulumi.CustomResource):
             if node_name is None and not opts.urn:
                 raise TypeError("Missing required property 'node_name'")
             __props__.__dict__["node_name"] = node_name
+            __props__.__dict__["reload"] = reload
             __props__.__dict__["timeout_reload"] = timeout_reload
             __props__.__dict__["vlan"] = vlan
         super(VlanLegacy, __self__).__init__(
@@ -597,6 +633,7 @@ class VlanLegacy(pulumi.CustomResource):
             mtu: pulumi.Input[Optional[_builtins.int]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             node_name: pulumi.Input[Optional[_builtins.str]] = None,
+            reload: pulumi.Input[Optional[_builtins.bool]] = None,
             timeout_reload: pulumi.Input[Optional[_builtins.int]] = None,
             vlan: pulumi.Input[Optional[_builtins.int]] = None) -> 'VlanLegacy':
         """
@@ -616,6 +653,7 @@ class VlanLegacy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] mtu: The interface MTU.
         :param pulumi.Input[_builtins.str] name: The interface name. Either add the VLAN tag number to an existing interface name, e.g. `ens18.21` (and do not set `interface` and `vlan`), or use custom name, e.g. `vlan_lab` (`interface` and `vlan` are then required).
         :param pulumi.Input[_builtins.str] node_name: The name of the node.
+        :param pulumi.Input[_builtins.bool] reload: Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
         :param pulumi.Input[_builtins.int] timeout_reload: Timeout for network reload operations in seconds (defaults to `100`).
         :param pulumi.Input[_builtins.int] vlan: The VLAN tag. See also `name`.
         """
@@ -633,9 +671,42 @@ class VlanLegacy(pulumi.CustomResource):
         __props__.__dict__["mtu"] = mtu
         __props__.__dict__["name"] = name
         __props__.__dict__["node_name"] = node_name
+        __props__.__dict__["reload"] = reload
         __props__.__dict__["timeout_reload"] = timeout_reload
         __props__.__dict__["vlan"] = vlan
         return VlanLegacy(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            address: pulumi.Input[Optional[_builtins.str]] = None,
+            address6: pulumi.Input[Optional[_builtins.str]] = None,
+            autostart: pulumi.Input[Optional[_builtins.bool]] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway6: pulumi.Input[Optional[_builtins.str]] = None,
+            interface: pulumi.Input[Optional[_builtins.str]] = None,
+            mtu: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_name: pulumi.Input[Optional[_builtins.str]] = None,
+            reload: pulumi.Input[Optional[_builtins.bool]] = None,
+            timeout_reload: pulumi.Input[Optional[_builtins.int]] = None,
+            vlan: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["address"] = address
+        __props__["address6"] = address6
+        __props__["autostart"] = autostart
+        __props__["comment"] = comment
+        __props__["gateway"] = gateway
+        __props__["gateway6"] = gateway6
+        __props__["interface"] = interface
+        __props__["mtu"] = mtu
+        __props__["name"] = name
+        __props__["nodeName"] = node_name
+        __props__["reload"] = reload
+        __props__["timeoutReload"] = timeout_reload
+        __props__["vlan"] = vlan
+        return pulumi.runtime.exists_resource(None, 'proxmoxve:network/linux/vlanLegacy:VlanLegacy', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter
@@ -716,6 +787,14 @@ class VlanLegacy(pulumi.CustomResource):
         The name of the node.
         """
         return pulumi.get(self, "node_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def reload(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
+        """
+        return pulumi.get(self, "reload")
 
     @_builtins.property
     @pulumi.getter(name="timeoutReload")

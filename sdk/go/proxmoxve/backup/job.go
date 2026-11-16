@@ -57,6 +57,8 @@ type Job struct {
 	All pulumi.BoolOutput `pulumi:"all"`
 	// I/O bandwidth limit in KiB/s.
 	Bwlimit pulumi.IntOutput `pulumi:"bwlimit"`
+	// Description of the backup job, shown in the Proxmox VE web UI.
+	Comment pulumi.StringPtrOutput `pulumi:"comment"`
 	// The compression algorithm (0, 1, gzip, lzo, or zstd).
 	Compress pulumi.StringOutput `pulumi:"compress"`
 	// Whether the backup job is enabled.
@@ -83,6 +85,8 @@ type Job struct {
 	Node pulumi.StringPtrOutput `pulumi:"node"`
 	// Template for notes attached to the backup.
 	NotesTemplate pulumi.StringPtrOutput `pulumi:"notesTemplate"`
+	// Notification mode (`auto`, `legacy-sendmail` or `notification-system`). With `auto` (the Proxmox VE default), an email is sent if `mailto` is set, otherwise the notification system is used. `legacy-sendmail` always uses `mailto` and `mailnotification`; `notification-system` always uses the PVE notification system and ignores them.
+	NotificationMode pulumi.StringPtrOutput `pulumi:"notificationMode"`
 	// PBS change detection mode (legacy, data, or metadata).
 	PbsChangeDetectionMode pulumi.StringPtrOutput `pulumi:"pbsChangeDetectionMode"`
 	// Performance-related settings for the backup job.
@@ -164,6 +168,8 @@ type jobState struct {
 	All *bool `pulumi:"all"`
 	// I/O bandwidth limit in KiB/s.
 	Bwlimit *int `pulumi:"bwlimit"`
+	// Description of the backup job, shown in the Proxmox VE web UI.
+	Comment *string `pulumi:"comment"`
 	// The compression algorithm (0, 1, gzip, lzo, or zstd).
 	Compress *string `pulumi:"compress"`
 	// Whether the backup job is enabled.
@@ -190,6 +196,8 @@ type jobState struct {
 	Node *string `pulumi:"node"`
 	// Template for notes attached to the backup.
 	NotesTemplate *string `pulumi:"notesTemplate"`
+	// Notification mode (`auto`, `legacy-sendmail` or `notification-system`). With `auto` (the Proxmox VE default), an email is sent if `mailto` is set, otherwise the notification system is used. `legacy-sendmail` always uses `mailto` and `mailnotification`; `notification-system` always uses the PVE notification system and ignores them.
+	NotificationMode *string `pulumi:"notificationMode"`
 	// PBS change detection mode (legacy, data, or metadata).
 	PbsChangeDetectionMode *string `pulumi:"pbsChangeDetectionMode"`
 	// Performance-related settings for the backup job.
@@ -233,6 +241,8 @@ type JobState struct {
 	All pulumi.BoolPtrInput
 	// I/O bandwidth limit in KiB/s.
 	Bwlimit pulumi.IntPtrInput
+	// Description of the backup job, shown in the Proxmox VE web UI.
+	Comment pulumi.StringPtrInput
 	// The compression algorithm (0, 1, gzip, lzo, or zstd).
 	Compress pulumi.StringPtrInput
 	// Whether the backup job is enabled.
@@ -259,6 +269,8 @@ type JobState struct {
 	Node pulumi.StringPtrInput
 	// Template for notes attached to the backup.
 	NotesTemplate pulumi.StringPtrInput
+	// Notification mode (`auto`, `legacy-sendmail` or `notification-system`). With `auto` (the Proxmox VE default), an email is sent if `mailto` is set, otherwise the notification system is used. `legacy-sendmail` always uses `mailto` and `mailnotification`; `notification-system` always uses the PVE notification system and ignores them.
+	NotificationMode pulumi.StringPtrInput
 	// PBS change detection mode (legacy, data, or metadata).
 	PbsChangeDetectionMode pulumi.StringPtrInput
 	// Performance-related settings for the backup job.
@@ -301,11 +313,19 @@ func (JobState) ElementType() reflect.Type {
 	return reflect.TypeOf((*jobState)(nil)).Elem()
 }
 
+// JobExists checks whether an existing Job resource with the given ID exists.
+func JobExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *JobState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:backup/job:Job", id, state, "", opts...)
+}
+
 type jobArgs struct {
 	// Whether to back up all known guests on the node.
 	All *bool `pulumi:"all"`
 	// I/O bandwidth limit in KiB/s.
 	Bwlimit *int `pulumi:"bwlimit"`
+	// Description of the backup job, shown in the Proxmox VE web UI.
+	Comment *string `pulumi:"comment"`
 	// The compression algorithm (0, 1, gzip, lzo, or zstd).
 	Compress *string `pulumi:"compress"`
 	// Whether the backup job is enabled.
@@ -332,6 +352,8 @@ type jobArgs struct {
 	Node *string `pulumi:"node"`
 	// Template for notes attached to the backup.
 	NotesTemplate *string `pulumi:"notesTemplate"`
+	// Notification mode (`auto`, `legacy-sendmail` or `notification-system`). With `auto` (the Proxmox VE default), an email is sent if `mailto` is set, otherwise the notification system is used. `legacy-sendmail` always uses `mailto` and `mailnotification`; `notification-system` always uses the PVE notification system and ignores them.
+	NotificationMode *string `pulumi:"notificationMode"`
 	// PBS change detection mode (legacy, data, or metadata).
 	PbsChangeDetectionMode *string `pulumi:"pbsChangeDetectionMode"`
 	// Performance-related settings for the backup job.
@@ -376,6 +398,8 @@ type JobArgs struct {
 	All pulumi.BoolPtrInput
 	// I/O bandwidth limit in KiB/s.
 	Bwlimit pulumi.IntPtrInput
+	// Description of the backup job, shown in the Proxmox VE web UI.
+	Comment pulumi.StringPtrInput
 	// The compression algorithm (0, 1, gzip, lzo, or zstd).
 	Compress pulumi.StringPtrInput
 	// Whether the backup job is enabled.
@@ -402,6 +426,8 @@ type JobArgs struct {
 	Node pulumi.StringPtrInput
 	// Template for notes attached to the backup.
 	NotesTemplate pulumi.StringPtrInput
+	// Notification mode (`auto`, `legacy-sendmail` or `notification-system`). With `auto` (the Proxmox VE default), an email is sent if `mailto` is set, otherwise the notification system is used. `legacy-sendmail` always uses `mailto` and `mailnotification`; `notification-system` always uses the PVE notification system and ignores them.
+	NotificationMode pulumi.StringPtrInput
 	// PBS change detection mode (legacy, data, or metadata).
 	PbsChangeDetectionMode pulumi.StringPtrInput
 	// Performance-related settings for the backup job.
@@ -537,6 +563,11 @@ func (o JobOutput) Bwlimit() pulumi.IntOutput {
 	return o.ApplyT(func(v *Job) pulumi.IntOutput { return v.Bwlimit }).(pulumi.IntOutput)
 }
 
+// Description of the backup job, shown in the Proxmox VE web UI.
+func (o JobOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
 // The compression algorithm (0, 1, gzip, lzo, or zstd).
 func (o JobOutput) Compress() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Compress }).(pulumi.StringOutput)
@@ -600,6 +631,11 @@ func (o JobOutput) Node() pulumi.StringPtrOutput {
 // Template for notes attached to the backup.
 func (o JobOutput) NotesTemplate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringPtrOutput { return v.NotesTemplate }).(pulumi.StringPtrOutput)
+}
+
+// Notification mode (`auto`, `legacy-sendmail` or `notification-system`). With `auto` (the Proxmox VE default), an email is sent if `mailto` is set, otherwise the notification system is used. `legacy-sendmail` always uses `mailto` and `mailnotification`; `notification-system` always uses the PVE notification system and ignores them.
+func (o JobOutput) NotificationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringPtrOutput { return v.NotificationMode }).(pulumi.StringPtrOutput)
 }
 
 // PBS change detection mode (legacy, data, or metadata).

@@ -17,11 +17,10 @@ public final class VmLegacyCdrom {
      * to `false`). *Deprecated*. The attribute will be removed in the next version of the provider.
      * Set `fileId` to `none` to leave the CD-ROM drive empty.
      * 
-     * @deprecated
-     * Remove this attribute&#39;s configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `fileId` to `none` to leave the CDROM drive empty.
+     * @deprecated Remove this attribute&#39;s configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `fileId` to `none` to leave the CDROM drive empty.
      * 
      */
-    @Deprecated /* Remove this attribute's configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `fileId` to `none` to leave the CDROM drive empty. */
+    @Deprecated
     private @Nullable Boolean enabled;
     /**
      * @return A file ID for an ISO file (defaults to `cdrom` as
@@ -43,11 +42,10 @@ public final class VmLegacyCdrom {
      * to `false`). *Deprecated*. The attribute will be removed in the next version of the provider.
      * Set `fileId` to `none` to leave the CD-ROM drive empty.
      * 
-     * @deprecated
-     * Remove this attribute&#39;s configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `fileId` to `none` to leave the CDROM drive empty.
+     * @deprecated Remove this attribute&#39;s configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `fileId` to `none` to leave the CDROM drive empty.
      * 
      */
-    @Deprecated /* Remove this attribute's configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `fileId` to `none` to leave the CDROM drive empty. */
+    @Deprecated
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }

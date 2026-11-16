@@ -126,6 +126,17 @@ const vnet = new proxmox.sdn.Vnet('my-vnet', {
 - **Proxmox API**: [Proxmox VE API Viewer](https://pve.proxmox.com/pve-docs/api-viewer/index.html)
 - **Official Documentation**: [Proxmox VE Documentation](https://pve.proxmox.com/pve-docs/)
 
+## Development
+
+Tool versions (Go, golangci-lint, Pulumi, pulumictl, GoReleaser, Node, Python, .NET, Java) are managed with [mise](https://mise.jdx.dev): run `mise trust` and `mise install` once, then use the usual commands (`make ...`, `go test ./...`).
+
+### Secrets
+
+The release credentials (Java signing key, Sonatype publishing login) come from Vault through [fnox](https://fnox.jdx.dev) (`fnox.toml`, installed by mise):
+
+- **CI:** `hashicorp/vault-action` only logs in (GitHub OIDC, `exportToken`); fnox reads the values listed in `fnox.toml`.
+- **Locally:** set `VAULT_ADDR` and log in with the Vault CLI, then run commands with `fnox exec -- <command>`. `fnox.local.toml` (ignored by git) can override values for experiments.
+
 ## Contributors
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):

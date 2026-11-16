@@ -338,6 +338,26 @@ class Repository(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return Repository(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            file_path: pulumi.Input[Optional[_builtins.str]] = None,
+            handle: pulumi.Input[Optional[_builtins.str]] = None,
+            index: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            node: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["filePath"] = file_path
+        __props__["handle"] = handle
+        __props__["index"] = index
+        __props__["name"] = name
+        __props__["node"] = node
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'proxmoxve:apt/standard/repository:Repository', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[_builtins.str]:

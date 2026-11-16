@@ -28,12 +28,12 @@ class RulesLegacyArgs:
         """
         The set of arguments for constructing a RulesLegacy resource.
 
-        :param pulumi.Input[_builtins.int] container_id: Container ID. Leave empty for node/cluster level rules.
-        :param pulumi.Input[_builtins.str] node_name: Node name. Leave empty for cluster level rules.
+        :param pulumi.Input[_builtins.int] container_id: Container ID. Leave empty for node/cluster level rules. Changing this value forces replacement.
+        :param pulumi.Input[_builtins.str] node_name: Node name. Leave empty for cluster level rules. Changing it forces replacement of node/cluster level rules; for VM/container level rules it can change in place (e.g. after a migration).
         :param pulumi.Input[Sequence[pulumi.Input['RulesLegacyRuleArgs']]] rules: Firewall rule block (multiple blocks supported).
                The provider supports two types of the `rule` blocks:
                - A rule definition block, which includes the following arguments:
-        :param pulumi.Input[_builtins.int] vm_id: VM ID. Leave empty for node/cluster level rules.
+        :param pulumi.Input[_builtins.int] vm_id: VM ID. Leave empty for node/cluster level rules. Changing this value forces replacement.
         """
         if container_id is not None:
             pulumi.set(__self__, "container_id", container_id)
@@ -48,7 +48,7 @@ class RulesLegacyArgs:
     @pulumi.getter(name="containerId")
     def container_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Container ID. Leave empty for node/cluster level rules.
+        Container ID. Leave empty for node/cluster level rules. Changing this value forces replacement.
         """
         return pulumi.get(self, "container_id")
 
@@ -60,7 +60,7 @@ class RulesLegacyArgs:
     @pulumi.getter(name="nodeName")
     def node_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Node name. Leave empty for cluster level rules.
+        Node name. Leave empty for cluster level rules. Changing it forces replacement of node/cluster level rules; for VM/container level rules it can change in place (e.g. after a migration).
         """
         return pulumi.get(self, "node_name")
 
@@ -86,7 +86,7 @@ class RulesLegacyArgs:
     @pulumi.getter(name="vmId")
     def vm_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        VM ID. Leave empty for node/cluster level rules.
+        VM ID. Leave empty for node/cluster level rules. Changing this value forces replacement.
         """
         return pulumi.get(self, "vm_id")
 
@@ -105,12 +105,12 @@ class _RulesLegacyState:
         """
         Input properties used for looking up and filtering RulesLegacy resources.
 
-        :param pulumi.Input[_builtins.int] container_id: Container ID. Leave empty for node/cluster level rules.
-        :param pulumi.Input[_builtins.str] node_name: Node name. Leave empty for cluster level rules.
+        :param pulumi.Input[_builtins.int] container_id: Container ID. Leave empty for node/cluster level rules. Changing this value forces replacement.
+        :param pulumi.Input[_builtins.str] node_name: Node name. Leave empty for cluster level rules. Changing it forces replacement of node/cluster level rules; for VM/container level rules it can change in place (e.g. after a migration).
         :param pulumi.Input[Sequence[pulumi.Input['RulesLegacyRuleArgs']]] rules: Firewall rule block (multiple blocks supported).
                The provider supports two types of the `rule` blocks:
                - A rule definition block, which includes the following arguments:
-        :param pulumi.Input[_builtins.int] vm_id: VM ID. Leave empty for node/cluster level rules.
+        :param pulumi.Input[_builtins.int] vm_id: VM ID. Leave empty for node/cluster level rules. Changing this value forces replacement.
         """
         if container_id is not None:
             pulumi.set(__self__, "container_id", container_id)
@@ -125,7 +125,7 @@ class _RulesLegacyState:
     @pulumi.getter(name="containerId")
     def container_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Container ID. Leave empty for node/cluster level rules.
+        Container ID. Leave empty for node/cluster level rules. Changing this value forces replacement.
         """
         return pulumi.get(self, "container_id")
 
@@ -137,7 +137,7 @@ class _RulesLegacyState:
     @pulumi.getter(name="nodeName")
     def node_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Node name. Leave empty for cluster level rules.
+        Node name. Leave empty for cluster level rules. Changing it forces replacement of node/cluster level rules; for VM/container level rules it can change in place (e.g. after a migration).
         """
         return pulumi.get(self, "node_name")
 
@@ -163,7 +163,7 @@ class _RulesLegacyState:
     @pulumi.getter(name="vmId")
     def vm_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        VM ID. Leave empty for node/cluster level rules.
+        VM ID. Leave empty for node/cluster level rules. Changing this value forces replacement.
         """
         return pulumi.get(self, "vm_id")
 
@@ -196,7 +196,7 @@ class RulesLegacy(pulumi.CustomResource):
 
         inbound = proxmoxve.firewall.RulesLegacy("inbound",
             node_name=example["nodeName"],
-            vm_id=int(example["vmId"]),
+            vm_id=example["vmId"],
             rules=[
                 {
                     "type": "in",
@@ -231,36 +231,44 @@ class RulesLegacy(pulumi.CustomResource):
         ## Import
 
         ### Cluster Rules
+
         Use the import ID: `cluster`
 
         **Example:**
+
         ```sh
         $ pulumi import proxmoxve:firewall/rulesLegacy:RulesLegacy cluster_rules cluster
         ```
 
         ### Node Rules
+
         Use the import ID format: `node/<node_name>`
         Example uses node name `pve`.
 
         **Example:**
+
         ```sh
         $ pulumi import proxmoxve:firewall/rulesLegacy:RulesLegacy node_rules node/pve
         ```
 
         ### VM Rules
+
         Use the import ID format: `vm/<node_name>/<vm_id>`
         Example uses node name `pve` and VM ID `100`.
 
         **Example:**
+
         ```sh
         $ pulumi import proxmoxve:firewall/rulesLegacy:RulesLegacy vm_rules vm/pve/100
         ```
 
         ### Container Rules
+
         Use the import ID format: `container/<node_name>/<container_id>`
         Example uses node name `pve` and container ID `100`.
 
         **Example:**
+
         ```sh
         $ pulumi import proxmoxve:firewall/rulesLegacy:RulesLegacy container_rules container/pve/100
         ```
@@ -268,12 +276,12 @@ class RulesLegacy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.int] container_id: Container ID. Leave empty for node/cluster level rules.
-        :param pulumi.Input[_builtins.str] node_name: Node name. Leave empty for cluster level rules.
+        :param pulumi.Input[_builtins.int] container_id: Container ID. Leave empty for node/cluster level rules. Changing this value forces replacement.
+        :param pulumi.Input[_builtins.str] node_name: Node name. Leave empty for cluster level rules. Changing it forces replacement of node/cluster level rules; for VM/container level rules it can change in place (e.g. after a migration).
         :param pulumi.Input[Sequence[pulumi.Input[Union['RulesLegacyRuleArgs', 'RulesLegacyRuleArgsDict', 'outputs.RulesLegacyRule']]]] rules: Firewall rule block (multiple blocks supported).
                The provider supports two types of the `rule` blocks:
                - A rule definition block, which includes the following arguments:
-        :param pulumi.Input[_builtins.int] vm_id: VM ID. Leave empty for node/cluster level rules.
+        :param pulumi.Input[_builtins.int] vm_id: VM ID. Leave empty for node/cluster level rules. Changing this value forces replacement.
         """
         ...
     @overload
@@ -294,7 +302,7 @@ class RulesLegacy(pulumi.CustomResource):
 
         inbound = proxmoxve.firewall.RulesLegacy("inbound",
             node_name=example["nodeName"],
-            vm_id=int(example["vmId"]),
+            vm_id=example["vmId"],
             rules=[
                 {
                     "type": "in",
@@ -329,36 +337,44 @@ class RulesLegacy(pulumi.CustomResource):
         ## Import
 
         ### Cluster Rules
+
         Use the import ID: `cluster`
 
         **Example:**
+
         ```sh
         $ pulumi import proxmoxve:firewall/rulesLegacy:RulesLegacy cluster_rules cluster
         ```
 
         ### Node Rules
+
         Use the import ID format: `node/<node_name>`
         Example uses node name `pve`.
 
         **Example:**
+
         ```sh
         $ pulumi import proxmoxve:firewall/rulesLegacy:RulesLegacy node_rules node/pve
         ```
 
         ### VM Rules
+
         Use the import ID format: `vm/<node_name>/<vm_id>`
         Example uses node name `pve` and VM ID `100`.
 
         **Example:**
+
         ```sh
         $ pulumi import proxmoxve:firewall/rulesLegacy:RulesLegacy vm_rules vm/pve/100
         ```
 
         ### Container Rules
+
         Use the import ID format: `container/<node_name>/<container_id>`
         Example uses node name `pve` and container ID `100`.
 
         **Example:**
+
         ```sh
         $ pulumi import proxmoxve:firewall/rulesLegacy:RulesLegacy container_rules container/pve/100
         ```
@@ -417,12 +433,12 @@ class RulesLegacy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.int] container_id: Container ID. Leave empty for node/cluster level rules.
-        :param pulumi.Input[_builtins.str] node_name: Node name. Leave empty for cluster level rules.
+        :param pulumi.Input[_builtins.int] container_id: Container ID. Leave empty for node/cluster level rules. Changing this value forces replacement.
+        :param pulumi.Input[_builtins.str] node_name: Node name. Leave empty for cluster level rules. Changing it forces replacement of node/cluster level rules; for VM/container level rules it can change in place (e.g. after a migration).
         :param pulumi.Input[Sequence[pulumi.Input[Union['RulesLegacyRuleArgs', 'RulesLegacyRuleArgsDict', 'outputs.RulesLegacyRule']]]] rules: Firewall rule block (multiple blocks supported).
                The provider supports two types of the `rule` blocks:
                - A rule definition block, which includes the following arguments:
-        :param pulumi.Input[_builtins.int] vm_id: VM ID. Leave empty for node/cluster level rules.
+        :param pulumi.Input[_builtins.int] vm_id: VM ID. Leave empty for node/cluster level rules. Changing this value forces replacement.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -434,11 +450,25 @@ class RulesLegacy(pulumi.CustomResource):
         __props__.__dict__["vm_id"] = vm_id
         return RulesLegacy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            container_id: pulumi.Input[Optional[_builtins.int]] = None,
+            node_name: pulumi.Input[Optional[_builtins.str]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RulesLegacyRuleArgs', 'RulesLegacyRuleArgsDict', 'outputs.RulesLegacyRule']]]]] = None,
+            vm_id: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["containerId"] = container_id
+        __props__["nodeName"] = node_name
+        __props__["rules"] = rules
+        __props__["vmId"] = vm_id
+        return pulumi.runtime.exists_resource(None, 'proxmoxve:firewall/rulesLegacy:RulesLegacy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="containerId")
     def container_id(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        Container ID. Leave empty for node/cluster level rules.
+        Container ID. Leave empty for node/cluster level rules. Changing this value forces replacement.
         """
         return pulumi.get(self, "container_id")
 
@@ -446,7 +476,7 @@ class RulesLegacy(pulumi.CustomResource):
     @pulumi.getter(name="nodeName")
     def node_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Node name. Leave empty for cluster level rules.
+        Node name. Leave empty for cluster level rules. Changing it forces replacement of node/cluster level rules; for VM/container level rules it can change in place (e.g. after a migration).
         """
         return pulumi.get(self, "node_name")
 
@@ -464,7 +494,7 @@ class RulesLegacy(pulumi.CustomResource):
     @pulumi.getter(name="vmId")
     def vm_id(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        VM ID. Leave empty for node/cluster level rules.
+        VM ID. Leave empty for node/cluster level rules. Changing this value forces replacement.
         """
         return pulumi.get(self, "vm_id")
 

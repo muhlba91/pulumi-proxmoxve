@@ -99,6 +99,20 @@ public class Job extends com.pulumi.resources.CustomResource {
         return this.bwlimit;
     }
     /**
+     * Description of the backup job, shown in the Proxmox VE web UI.
+     * 
+     */
+    @Export(name="comment", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> comment;
+
+    /**
+     * @return Description of the backup job, shown in the Proxmox VE web UI.
+     * 
+     */
+    public Output<Optional<String>> comment() {
+        return Codegen.optional(this.comment);
+    }
+    /**
      * The compression algorithm (0, 1, gzip, lzo, or zstd).
      * 
      */
@@ -279,6 +293,20 @@ public class Job extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> notesTemplate() {
         return Codegen.optional(this.notesTemplate);
+    }
+    /**
+     * Notification mode (`auto`, `legacy-sendmail` or `notification-system`). With `auto` (the Proxmox VE default), an email is sent if `mailto` is set, otherwise the notification system is used. `legacy-sendmail` always uses `mailto` and `mailnotification`; `notification-system` always uses the PVE notification system and ignores them.
+     * 
+     */
+    @Export(name="notificationMode", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> notificationMode;
+
+    /**
+     * @return Notification mode (`auto`, `legacy-sendmail` or `notification-system`). With `auto` (the Proxmox VE default), an email is sent if `mailto` is set, otherwise the notification system is used. `legacy-sendmail` always uses `mailto` and `mailnotification`; `notification-system` always uses the PVE notification system and ignores them.
+     * 
+     */
+    public Output<Optional<String>> notificationMode() {
+        return Codegen.optional(this.notificationMode);
     }
     /**
      * PBS change detection mode (legacy, data, or metadata).

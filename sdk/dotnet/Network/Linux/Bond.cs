@@ -11,6 +11,59 @@ namespace Pulumi.ProxmoxVE.Network.Linux
 {
     /// <summary>
     /// Manages a Linux Bond network interface in a Proxmox VE node.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var bond0 = new ProxmoxVE.Network.Linux.Bond("bond0", new()
+    ///     {
+    ///         NodeName = "pve",
+    ///         Name = "bond0",
+    ///         Slaves = new[]
+    ///         {
+    ///             "ens18",
+    ///             "ens19",
+    ///         },
+    ///         BondMode = "802.3ad",
+    ///         BondXmitHashPolicy = "layer3+4",
+    ///         Comment = "bond0 comment",
+    ///     });
+    /// 
+    ///     var vmbr10 = new ProxmoxVE.Network.Linux.Bridge("vmbr10", new()
+    ///     {
+    ///         NodeName = "pve",
+    ///         Name = "vmbr10",
+    ///         Address = "10.10.10.10/24",
+    ///         Ports = new[]
+    ///         {
+    ///             "bond0",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             bond0,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// !/usr/bin/env sh
+    /// Interfaces can be imported using the `node_name:iface` format, e.g.
+    /// 
+    /// ```sh
+    /// $ pulumi import proxmoxve:network/linux/bond:Bond bond0 pve:bond0
+    /// ```
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:network/linux/bond:Bond")]
     public partial class Bond : global::Pulumi.CustomResource
@@ -86,6 +139,12 @@ namespace Pulumi.ProxmoxVE.Network.Linux
         /// </summary>
         [Output("nodeName")]
         public Output<string> NodeName { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `True`). When `False`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
+        /// </summary>
+        [Output("reload")]
+        public Output<bool> Reload { get; private set; } = null!;
 
         /// <summary>
         /// The interface bond slaves (member interfaces).
@@ -218,6 +277,12 @@ namespace Pulumi.ProxmoxVE.Network.Linux
         [Input("nodeName", required: true)]
         public Input<string> NodeName { get; set; } = null!;
 
+        /// <summary>
+        /// Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `True`). When `False`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
+        /// </summary>
+        [Input("reload")]
+        public Input<bool>? Reload { get; set; }
+
         [Input("slaves", required: true)]
         private InputList<string>? _slaves;
 
@@ -315,6 +380,12 @@ namespace Pulumi.ProxmoxVE.Network.Linux
         /// </summary>
         [Input("nodeName")]
         public Input<string>? NodeName { get; set; }
+
+        /// <summary>
+        /// Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `True`). When `False`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
+        /// </summary>
+        [Input("reload")]
+        public Input<bool>? Reload { get; set; }
 
         [Input("slaves")]
         private InputList<string>? _slaves;

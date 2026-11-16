@@ -13,8 +13,11 @@ namespace Pulumi.ProxmoxVE.Inputs
     public sealed class ContainerLegacyStartupGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A non-negative number defining the delay in
-        /// seconds before the next container is shut down.
+        /// A non-negative number defining the shutdown
+        /// timeout in seconds. When the node stops all guests (e.g. on host
+        /// shutdown), Proxmox VE waits this long for the container to shut down before
+        /// stopping it. When unset, the node's bulk stop timeout is used
+        /// (180 seconds by default).
         /// </summary>
         [Input("downDelay")]
         public Input<int>? DownDelay { get; set; }

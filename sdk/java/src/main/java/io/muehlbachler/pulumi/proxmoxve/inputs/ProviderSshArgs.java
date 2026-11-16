@@ -124,6 +124,21 @@ public final class ProviderSshArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether to run API calls under `/nodes/{node}/` with a `root{@literal @}pam` ticket minted on that node over SSH, so an API token can perform `root{@literal @}pam`-only operations. Those calls then run as `root{@literal @}pam`, bypassing the token&#39;s permissions. Requires an SSH connection as `root`. Defaults to the value of the `PROXMOX_VE_SSH_ROOT_TICKET` environment variable, or `false` if not set.
+     * 
+     */
+    @Import(name="rootTicket")
+    private @Nullable Output<Boolean> rootTicket;
+
+    /**
+     * @return Whether to run API calls under `/nodes/{node}/` with a `root{@literal @}pam` ticket minted on that node over SSH, so an API token can perform `root{@literal @}pam`-only operations. Those calls then run as `root{@literal @}pam`, bypassing the token&#39;s permissions. Requires an SSH connection as `root`. Defaults to the value of the `PROXMOX_VE_SSH_ROOT_TICKET` environment variable, or `false` if not set.
+     * 
+     */
+    public Optional<Output<Boolean>> rootTicket() {
+        return Optional.ofNullable(this.rootTicket);
+    }
+
+    /**
      * The password for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_PASSWORD` environment variable.
      * 
      */
@@ -193,6 +208,7 @@ public final class ProviderSshArgs extends com.pulumi.resources.ResourceArgs {
         this.nodes = $.nodes;
         this.password = $.password;
         this.privateKey = $.privateKey;
+        this.rootTicket = $.rootTicket;
         this.socks5Password = $.socks5Password;
         this.socks5Server = $.socks5Server;
         this.socks5Username = $.socks5Username;
@@ -372,6 +388,27 @@ public final class ProviderSshArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder privateKey(String privateKey) {
             return privateKey(Output.of(privateKey));
+        }
+
+        /**
+         * @param rootTicket Whether to run API calls under `/nodes/{node}/` with a `root{@literal @}pam` ticket minted on that node over SSH, so an API token can perform `root{@literal @}pam`-only operations. Those calls then run as `root{@literal @}pam`, bypassing the token&#39;s permissions. Requires an SSH connection as `root`. Defaults to the value of the `PROXMOX_VE_SSH_ROOT_TICKET` environment variable, or `false` if not set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rootTicket(@Nullable Output<Boolean> rootTicket) {
+            $.rootTicket = rootTicket;
+            return this;
+        }
+
+        /**
+         * @param rootTicket Whether to run API calls under `/nodes/{node}/` with a `root{@literal @}pam` ticket minted on that node over SSH, so an API token can perform `root{@literal @}pam`-only operations. Those calls then run as `root{@literal @}pam`, bypassing the token&#39;s permissions. Requires an SSH connection as `root`. Defaults to the value of the `PROXMOX_VE_SSH_ROOT_TICKET` environment variable, or `false` if not set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rootTicket(Boolean rootTicket) {
+            return rootTicket(Output.of(rootTicket));
         }
 
         /**

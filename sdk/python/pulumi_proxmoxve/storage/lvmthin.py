@@ -411,6 +411,26 @@ class Lvmthin(pulumi.CustomResource):
         __props__.__dict__["volume_group"] = volume_group
         return Lvmthin(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            contents: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            disable: pulumi.Input[Optional[_builtins.bool]] = None,
+            nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+            shared: pulumi.Input[Optional[_builtins.bool]] = None,
+            thin_pool: pulumi.Input[Optional[_builtins.str]] = None,
+            volume_group: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["contents"] = contents
+        __props__["disable"] = disable
+        __props__["nodes"] = nodes
+        __props__["resourceId"] = resource_id
+        __props__["shared"] = shared
+        __props__["thinPool"] = thin_pool
+        __props__["volumeGroup"] = volume_group
+        return pulumi.runtime.exists_resource(None, 'proxmoxve:storage/lvmthin:Lvmthin', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def contents(self) -> pulumi.Output[Sequence[_builtins.str]]:

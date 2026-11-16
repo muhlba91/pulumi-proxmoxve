@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * const example = new proxmoxve.firewall.OptionsLegacy("example", {
  *     nodeName: exampleProxmoxVirtualEnvironmentVm.nodeName,
- *     vmId: Number(exampleProxmoxVirtualEnvironmentVm.vmId),
+ *     vmId: exampleProxmoxVirtualEnvironmentVm.vmId,
  *     dhcp: true,
  *     enabled: false,
  *     ipfilter: true,
@@ -63,6 +63,17 @@ export class OptionsLegacy extends pulumi.CustomResource {
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: OptionsLegacyState, opts?: pulumi.CustomResourceOptions): OptionsLegacy {
         return new OptionsLegacy(name, <any>state, { ...opts, id: id });
+    }
+
+    /**
+     * Check whether an existing OptionsLegacy resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: OptionsLegacyState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("proxmoxve:firewall/optionsLegacy:OptionsLegacy", id, <any>state || {}, { ...opts }, undefined);
     }
 
     /** @internal */

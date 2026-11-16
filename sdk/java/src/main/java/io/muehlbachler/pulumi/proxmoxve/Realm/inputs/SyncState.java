@@ -49,22 +49,20 @@ public final class SyncState extends com.pulumi.resources.ResourceArgs {
     /**
      * Perform a full sync.
      * 
-     * @deprecated
-     * Deprecated by Proxmox: use removeVanished instead.
+     * @deprecated Deprecated by Proxmox: use removeVanished instead.
      * 
      */
-    @Deprecated /* Deprecated by Proxmox: use removeVanished instead. */
+    @Deprecated
     @Import(name="full")
     private @Nullable Output<Boolean> full;
 
     /**
      * @return Perform a full sync.
      * 
-     * @deprecated
-     * Deprecated by Proxmox: use removeVanished instead.
+     * @deprecated Deprecated by Proxmox: use removeVanished instead.
      * 
      */
-    @Deprecated /* Deprecated by Proxmox: use removeVanished instead. */
+    @Deprecated
     public Optional<Output<Boolean>> full() {
         return Optional.ofNullable(this.full);
     }
@@ -72,22 +70,20 @@ public final class SyncState extends com.pulumi.resources.ResourceArgs {
     /**
      * Purge removed entries.
      * 
-     * @deprecated
-     * Deprecated by Proxmox: use removeVanished instead.
+     * @deprecated Deprecated by Proxmox: use removeVanished instead.
      * 
      */
-    @Deprecated /* Deprecated by Proxmox: use removeVanished instead. */
+    @Deprecated
     @Import(name="purge")
     private @Nullable Output<Boolean> purge;
 
     /**
      * @return Purge removed entries.
      * 
-     * @deprecated
-     * Deprecated by Proxmox: use removeVanished instead.
+     * @deprecated Deprecated by Proxmox: use removeVanished instead.
      * 
      */
-    @Deprecated /* Deprecated by Proxmox: use removeVanished instead. */
+    @Deprecated
     public Optional<Output<Boolean>> purge() {
         return Optional.ofNullable(this.purge);
     }
@@ -214,11 +210,10 @@ public final class SyncState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Deprecated by Proxmox: use removeVanished instead.
+         * @deprecated Deprecated by Proxmox: use removeVanished instead.
          * 
          */
-        @Deprecated /* Deprecated by Proxmox: use removeVanished instead. */
+        @Deprecated
         public Builder full(@Nullable Output<Boolean> full) {
             $.full = full;
             return this;
@@ -229,11 +224,10 @@ public final class SyncState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Deprecated by Proxmox: use removeVanished instead.
+         * @deprecated Deprecated by Proxmox: use removeVanished instead.
          * 
          */
-        @Deprecated /* Deprecated by Proxmox: use removeVanished instead. */
+        @Deprecated
         public Builder full(Boolean full) {
             return full(Output.of(full));
         }
@@ -243,11 +237,10 @@ public final class SyncState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Deprecated by Proxmox: use removeVanished instead.
+         * @deprecated Deprecated by Proxmox: use removeVanished instead.
          * 
          */
-        @Deprecated /* Deprecated by Proxmox: use removeVanished instead. */
+        @Deprecated
         public Builder purge(@Nullable Output<Boolean> purge) {
             $.purge = purge;
             return this;
@@ -258,11 +251,10 @@ public final class SyncState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Deprecated by Proxmox: use removeVanished instead.
+         * @deprecated Deprecated by Proxmox: use removeVanished instead.
          * 
          */
-        @Deprecated /* Deprecated by Proxmox: use removeVanished instead. */
+        @Deprecated
         public Builder purge(Boolean purge) {
             return purge(Output.of(purge));
         }

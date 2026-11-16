@@ -29,6 +29,7 @@ class BridgeArgs:
                  mtu: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 reload: pulumi.Input[Optional[_builtins.bool]] = None,
                  timeout_reload: pulumi.Input[Optional[_builtins.int]] = None,
                  vids: pulumi.Input[Optional[_builtins.str]] = None,
                  vlan_aware: pulumi.Input[Optional[_builtins.bool]] = None):
@@ -45,6 +46,7 @@ class BridgeArgs:
         :param pulumi.Input[_builtins.int] mtu: The interface MTU.
         :param pulumi.Input[_builtins.str] name: The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any string containing only letters, numbers, and underscores (_), starting with a letter and at most 10 characters long.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ports: The interface bridge ports.
+        :param pulumi.Input[_builtins.bool] reload: Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
         :param pulumi.Input[_builtins.int] timeout_reload: Timeout for network reload operations in seconds (defaults to `100`).
         :param pulumi.Input[_builtins.str] vids: VLAN IDs allowed on the bridge (Linux Bridge `bridge-vids`). Space-separated list of VLAN IDs and/or hyphenated ranges (e.g. `"2-4094"`, `"1 20 130"`, or `"1 10-20 30"`). Requires `vlan_aware = true`. PVE/ifupdown2 fills in `2-4094` as the implicit default for VLAN-aware bridges when this attribute is omitted; the provider surfaces that default in state.
         :param pulumi.Input[_builtins.bool] vlan_aware: Whether the interface bridge is VLAN aware (defaults to `false`).
@@ -68,6 +70,8 @@ class BridgeArgs:
             pulumi.set(__self__, "name", name)
         if ports is not None:
             pulumi.set(__self__, "ports", ports)
+        if reload is not None:
+            pulumi.set(__self__, "reload", reload)
         if timeout_reload is not None:
             pulumi.set(__self__, "timeout_reload", timeout_reload)
         if vids is not None:
@@ -196,6 +200,18 @@ class BridgeArgs:
         pulumi.set(self, "ports", value)
 
     @_builtins.property
+    @pulumi.getter
+    def reload(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
+        """
+        return pulumi.get(self, "reload")
+
+    @reload.setter
+    def reload(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "reload", value)
+
+    @_builtins.property
     @pulumi.getter(name="timeoutReload")
     def timeout_reload(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
@@ -245,6 +261,7 @@ class _BridgeState:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  node_name: pulumi.Input[Optional[_builtins.str]] = None,
                  ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 reload: pulumi.Input[Optional[_builtins.bool]] = None,
                  timeout_reload: pulumi.Input[Optional[_builtins.int]] = None,
                  vids: pulumi.Input[Optional[_builtins.str]] = None,
                  vlan_aware: pulumi.Input[Optional[_builtins.bool]] = None):
@@ -261,6 +278,7 @@ class _BridgeState:
         :param pulumi.Input[_builtins.str] name: The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any string containing only letters, numbers, and underscores (_), starting with a letter and at most 10 characters long.
         :param pulumi.Input[_builtins.str] node_name: The name of the node.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ports: The interface bridge ports.
+        :param pulumi.Input[_builtins.bool] reload: Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
         :param pulumi.Input[_builtins.int] timeout_reload: Timeout for network reload operations in seconds (defaults to `100`).
         :param pulumi.Input[_builtins.str] vids: VLAN IDs allowed on the bridge (Linux Bridge `bridge-vids`). Space-separated list of VLAN IDs and/or hyphenated ranges (e.g. `"2-4094"`, `"1 20 130"`, or `"1 10-20 30"`). Requires `vlan_aware = true`. PVE/ifupdown2 fills in `2-4094` as the implicit default for VLAN-aware bridges when this attribute is omitted; the provider surfaces that default in state.
         :param pulumi.Input[_builtins.bool] vlan_aware: Whether the interface bridge is VLAN aware (defaults to `false`).
@@ -285,6 +303,8 @@ class _BridgeState:
             pulumi.set(__self__, "node_name", node_name)
         if ports is not None:
             pulumi.set(__self__, "ports", ports)
+        if reload is not None:
+            pulumi.set(__self__, "reload", reload)
         if timeout_reload is not None:
             pulumi.set(__self__, "timeout_reload", timeout_reload)
         if vids is not None:
@@ -413,6 +433,18 @@ class _BridgeState:
         pulumi.set(self, "ports", value)
 
     @_builtins.property
+    @pulumi.getter
+    def reload(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
+        """
+        return pulumi.get(self, "reload")
+
+    @reload.setter
+    def reload(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "reload", value)
+
+    @_builtins.property
     @pulumi.getter(name="timeoutReload")
     def timeout_reload(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
@@ -465,6 +497,7 @@ class Bridge(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  node_name: pulumi.Input[Optional[_builtins.str]] = None,
                  ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 reload: pulumi.Input[Optional[_builtins.bool]] = None,
                  timeout_reload: pulumi.Input[Optional[_builtins.int]] = None,
                  vids: pulumi.Input[Optional[_builtins.str]] = None,
                  vlan_aware: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -516,6 +549,7 @@ class Bridge(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any string containing only letters, numbers, and underscores (_), starting with a letter and at most 10 characters long.
         :param pulumi.Input[_builtins.str] node_name: The name of the node.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ports: The interface bridge ports.
+        :param pulumi.Input[_builtins.bool] reload: Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
         :param pulumi.Input[_builtins.int] timeout_reload: Timeout for network reload operations in seconds (defaults to `100`).
         :param pulumi.Input[_builtins.str] vids: VLAN IDs allowed on the bridge (Linux Bridge `bridge-vids`). Space-separated list of VLAN IDs and/or hyphenated ranges (e.g. `"2-4094"`, `"1 20 130"`, or `"1 10-20 30"`). Requires `vlan_aware = true`. PVE/ifupdown2 fills in `2-4094` as the implicit default for VLAN-aware bridges when this attribute is omitted; the provider surfaces that default in state.
         :param pulumi.Input[_builtins.bool] vlan_aware: Whether the interface bridge is VLAN aware (defaults to `false`).
@@ -586,6 +620,7 @@ class Bridge(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  node_name: pulumi.Input[Optional[_builtins.str]] = None,
                  ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 reload: pulumi.Input[Optional[_builtins.bool]] = None,
                  timeout_reload: pulumi.Input[Optional[_builtins.int]] = None,
                  vids: pulumi.Input[Optional[_builtins.str]] = None,
                  vlan_aware: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -610,6 +645,7 @@ class Bridge(pulumi.CustomResource):
                 raise TypeError("Missing required property 'node_name'")
             __props__.__dict__["node_name"] = node_name
             __props__.__dict__["ports"] = ports
+            __props__.__dict__["reload"] = reload
             __props__.__dict__["timeout_reload"] = timeout_reload
             __props__.__dict__["vids"] = vids
             __props__.__dict__["vlan_aware"] = vlan_aware
@@ -633,6 +669,7 @@ class Bridge(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             node_name: pulumi.Input[Optional[_builtins.str]] = None,
             ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            reload: pulumi.Input[Optional[_builtins.bool]] = None,
             timeout_reload: pulumi.Input[Optional[_builtins.int]] = None,
             vids: pulumi.Input[Optional[_builtins.str]] = None,
             vlan_aware: pulumi.Input[Optional[_builtins.bool]] = None) -> 'Bridge':
@@ -653,6 +690,7 @@ class Bridge(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any string containing only letters, numbers, and underscores (_), starting with a letter and at most 10 characters long.
         :param pulumi.Input[_builtins.str] node_name: The name of the node.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ports: The interface bridge ports.
+        :param pulumi.Input[_builtins.bool] reload: Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
         :param pulumi.Input[_builtins.int] timeout_reload: Timeout for network reload operations in seconds (defaults to `100`).
         :param pulumi.Input[_builtins.str] vids: VLAN IDs allowed on the bridge (Linux Bridge `bridge-vids`). Space-separated list of VLAN IDs and/or hyphenated ranges (e.g. `"2-4094"`, `"1 20 130"`, or `"1 10-20 30"`). Requires `vlan_aware = true`. PVE/ifupdown2 fills in `2-4094` as the implicit default for VLAN-aware bridges when this attribute is omitted; the provider surfaces that default in state.
         :param pulumi.Input[_builtins.bool] vlan_aware: Whether the interface bridge is VLAN aware (defaults to `false`).
@@ -671,10 +709,45 @@ class Bridge(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["node_name"] = node_name
         __props__.__dict__["ports"] = ports
+        __props__.__dict__["reload"] = reload
         __props__.__dict__["timeout_reload"] = timeout_reload
         __props__.__dict__["vids"] = vids
         __props__.__dict__["vlan_aware"] = vlan_aware
         return Bridge(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            address: pulumi.Input[Optional[_builtins.str]] = None,
+            address6: pulumi.Input[Optional[_builtins.str]] = None,
+            autostart: pulumi.Input[Optional[_builtins.bool]] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway6: pulumi.Input[Optional[_builtins.str]] = None,
+            mtu: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_name: pulumi.Input[Optional[_builtins.str]] = None,
+            ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            reload: pulumi.Input[Optional[_builtins.bool]] = None,
+            timeout_reload: pulumi.Input[Optional[_builtins.int]] = None,
+            vids: pulumi.Input[Optional[_builtins.str]] = None,
+            vlan_aware: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["address"] = address
+        __props__["address6"] = address6
+        __props__["autostart"] = autostart
+        __props__["comment"] = comment
+        __props__["gateway"] = gateway
+        __props__["gateway6"] = gateway6
+        __props__["mtu"] = mtu
+        __props__["name"] = name
+        __props__["nodeName"] = node_name
+        __props__["ports"] = ports
+        __props__["reload"] = reload
+        __props__["timeoutReload"] = timeout_reload
+        __props__["vids"] = vids
+        __props__["vlanAware"] = vlan_aware
+        return pulumi.runtime.exists_resource(None, 'proxmoxve:network/linux/bridge:Bridge', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter
@@ -755,6 +828,14 @@ class Bridge(pulumi.CustomResource):
         The interface bridge ports.
         """
         return pulumi.get(self, "ports")
+
+    @_builtins.property
+    @pulumi.getter
+    def reload(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
+        """
+        return pulumi.get(self, "reload")
 
     @_builtins.property
     @pulumi.getter(name="timeoutReload")

@@ -541,6 +541,26 @@ class SubnetLegacy(pulumi.CustomResource):
         __props__.__dict__["vnet"] = vnet
         return SubnetLegacy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            dhcp_dns_server: pulumi.Input[Optional[_builtins.str]] = None,
+            dhcp_range: pulumi.Input[Optional[Union['SubnetLegacyDhcpRangeArgs', 'SubnetLegacyDhcpRangeArgsDict', 'outputs.SubnetLegacyDhcpRange']]] = None,
+            dns_zone_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway: pulumi.Input[Optional[_builtins.str]] = None,
+            snat: pulumi.Input[Optional[_builtins.bool]] = None,
+            vnet: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cidr"] = cidr
+        __props__["dhcpDnsServer"] = dhcp_dns_server
+        __props__["dhcpRange"] = dhcp_range
+        __props__["dnsZonePrefix"] = dns_zone_prefix
+        __props__["gateway"] = gateway
+        __props__["snat"] = snat
+        __props__["vnet"] = vnet
+        return pulumi.runtime.exists_resource(None, 'proxmoxve:sdn/subnetLegacy:SubnetLegacy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def cidr(self) -> pulumi.Output[_builtins.str]:

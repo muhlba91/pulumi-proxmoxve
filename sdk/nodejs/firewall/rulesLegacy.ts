@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *
  * const inbound = new proxmoxve.firewall.RulesLegacy("inbound", {
  *     nodeName: example.nodeName,
- *     vmId: Number(example.vmId),
+ *     vmId: example.vmId,
  *     rules: [
  *         {
  *             type: "in",
@@ -56,36 +56,44 @@ import * as utilities from "../utilities";
  * ## Import
  *
  * ### Cluster Rules
+ *
  * Use the import ID: `cluster`
  *
  * **Example:**
+ *
  * ```sh
  * $ pulumi import proxmoxve:firewall/rulesLegacy:RulesLegacy cluster_rules cluster
  * ```
  *
  * ### Node Rules
+ *
  * Use the import ID format: `node/<node_name>`
  * Example uses node name `pve`.
  *
  * **Example:**
+ *
  * ```sh
  * $ pulumi import proxmoxve:firewall/rulesLegacy:RulesLegacy node_rules node/pve
  * ```
  *
  * ### VM Rules
+ *
  * Use the import ID format: `vm/<node_name>/<vm_id>`
  * Example uses node name `pve` and VM ID `100`.
  *
  * **Example:**
+ *
  * ```sh
  * $ pulumi import proxmoxve:firewall/rulesLegacy:RulesLegacy vm_rules vm/pve/100
  * ```
  *
  * ### Container Rules
+ *
  * Use the import ID format: `container/<node_name>/<container_id>`
  * Example uses node name `pve` and container ID `100`.
  *
  * **Example:**
+ *
  * ```sh
  * $ pulumi import proxmoxve:firewall/rulesLegacy:RulesLegacy container_rules container/pve/100
  * ```
@@ -104,6 +112,17 @@ export class RulesLegacy extends pulumi.CustomResource {
         return new RulesLegacy(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing RulesLegacy resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: RulesLegacyState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("proxmoxve:firewall/rulesLegacy:RulesLegacy", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'proxmoxve:firewall/rulesLegacy:RulesLegacy';
 
@@ -119,11 +138,11 @@ export class RulesLegacy extends pulumi.CustomResource {
     }
 
     /**
-     * Container ID. Leave empty for node/cluster level rules.
+     * Container ID. Leave empty for node/cluster level rules. Changing this value forces replacement.
      */
     declare public readonly containerId: pulumi.Output<number | undefined>;
     /**
-     * Node name. Leave empty for cluster level rules.
+     * Node name. Leave empty for cluster level rules. Changing it forces replacement of node/cluster level rules; for VM/container level rules it can change in place (e.g. after a migration).
      */
     declare public readonly nodeName: pulumi.Output<string | undefined>;
     /**
@@ -133,7 +152,7 @@ export class RulesLegacy extends pulumi.CustomResource {
      */
     declare public readonly rules: pulumi.Output<outputs.firewall.RulesLegacyRule[] | undefined>;
     /**
-     * VM ID. Leave empty for node/cluster level rules.
+     * VM ID. Leave empty for node/cluster level rules. Changing this value forces replacement.
      */
     declare public readonly vmId: pulumi.Output<number | undefined>;
 
@@ -171,11 +190,11 @@ export class RulesLegacy extends pulumi.CustomResource {
  */
 export interface RulesLegacyState {
     /**
-     * Container ID. Leave empty for node/cluster level rules.
+     * Container ID. Leave empty for node/cluster level rules. Changing this value forces replacement.
      */
     containerId?: pulumi.Input<number | undefined>;
     /**
-     * Node name. Leave empty for cluster level rules.
+     * Node name. Leave empty for cluster level rules. Changing it forces replacement of node/cluster level rules; for VM/container level rules it can change in place (e.g. after a migration).
      */
     nodeName?: pulumi.Input<string | undefined>;
     /**
@@ -185,7 +204,7 @@ export interface RulesLegacyState {
      */
     rules?: pulumi.Input<pulumi.Input<inputs.firewall.RulesLegacyRule>[] | undefined>;
     /**
-     * VM ID. Leave empty for node/cluster level rules.
+     * VM ID. Leave empty for node/cluster level rules. Changing this value forces replacement.
      */
     vmId?: pulumi.Input<number | undefined>;
 }
@@ -195,11 +214,11 @@ export interface RulesLegacyState {
  */
 export interface RulesLegacyArgs {
     /**
-     * Container ID. Leave empty for node/cluster level rules.
+     * Container ID. Leave empty for node/cluster level rules. Changing this value forces replacement.
      */
     containerId?: pulumi.Input<number | undefined>;
     /**
-     * Node name. Leave empty for cluster level rules.
+     * Node name. Leave empty for cluster level rules. Changing it forces replacement of node/cluster level rules; for VM/container level rules it can change in place (e.g. after a migration).
      */
     nodeName?: pulumi.Input<string | undefined>;
     /**
@@ -209,7 +228,7 @@ export interface RulesLegacyArgs {
      */
     rules?: pulumi.Input<pulumi.Input<inputs.firewall.RulesLegacyRule>[] | undefined>;
     /**
-     * VM ID. Leave empty for node/cluster level rules.
+     * VM ID. Leave empty for node/cluster level rules. Changing this value forces replacement.
      */
     vmId?: pulumi.Input<number | undefined>;
 }

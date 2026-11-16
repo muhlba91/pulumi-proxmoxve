@@ -12,19 +12,51 @@ namespace Pulumi.ProxmoxVE.Inputs
 
     public sealed class ContainerLegacyWaitForIpArgs : global::Pulumi.ResourceArgs
     {
+        [Input("cidrs")]
+        private InputList<string>? _cidrs;
+
         /// <summary>
-        /// Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `False`).
+        /// Only addresses inside one of these CIDRs (e.g. `["10.0.0.0/8", "2001:db8::/64"]`) count when waiting. Setting this disables the default loopback/link-local address exclusion; the `Lo` interface is still skipped unless `Interfaces` is also set. Avoid catch-all CIDRs such as `0.0.0.0/0` or `::/0`: they also match link-local addresses, which can end the wait before the real address is assigned; use `Ipv4` or `Ipv6` to require a family instead. When `Ipv4` or `Ipv6` is `True`, at least one CIDR of that family is required.
+        /// </summary>
+        public InputList<string> Cidrs
+        {
+            get => _cidrs ?? (_cidrs = new InputList<string>());
+            set => _cidrs = value;
+        }
+
+        [Input("interfaces")]
+        private InputList<string>? _interfaces;
+
+        /// <summary>
+        /// Only addresses on interfaces whose name fully matches one of these regular expressions (RE2, e.g. `["eth[0-9]+"]`) count when waiting. Setting this disables the default skip of the `Lo` interface; loopback/link-local addresses stay excluded unless `Cidrs` is also set.
+        /// </summary>
+        public InputList<string> Interfaces
+        {
+            get => _interfaces ?? (_interfaces = new InputList<string>());
+            set => _interfaces = value;
+        }
+
+        /// <summary>
+        /// Wait for at least one IPv4 address (non-loopback, non-link-local unless allowed by `Cidrs`) (defaults to `False`).
         /// </summary>
         [Input("ipv4")]
         public Input<bool>? Ipv4 { get; set; }
 
         /// <summary>
-        /// Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `False`).
-        /// 
-        /// When `WaitForIp` is not specified or both `Ipv4` and `Ipv6` are `False`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+        /// Wait for at least one IPv6 address (non-loopback, non-link-local unless allowed by `Cidrs`) (defaults to `False`).
         /// </summary>
         [Input("ipv6")]
         public Input<bool>? Ipv6 { get; set; }
+
+        /// <summary>
+        /// How long to wait for an address after the provider starts or reboots the container (defaults to `5m`). On timeout the apply continues with a warning listing the addresses that were rejected.
+        /// 
+        /// When `WaitForIp` is not specified or both `Ipv4` and `Ipv6` are `False`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+        /// 
+        /// `Cidrs` and `Interfaces` are combined per address (an address must match both). They only decide when waiting stops; `Ipv4` and `Ipv6` are not filtered. When the block is set, create and any update that starts or reboots the container wait for up to `Timeout`. Every refresh also waits, for up to 10 seconds, and if no address qualifies, `Ipv4` and `Ipv6` are left empty.
+        /// </summary>
+        [Input("timeout")]
+        public Input<string>? Timeout { get; set; }
 
         public ContainerLegacyWaitForIpArgs()
         {

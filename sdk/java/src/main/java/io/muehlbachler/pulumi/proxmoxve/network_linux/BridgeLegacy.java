@@ -226,6 +226,20 @@ public class BridgeLegacy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ports);
     }
     /**
+     * Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
+     * 
+     */
+    @Export(name="reload", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> reload;
+
+    /**
+     * @return Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
+     * 
+     */
+    public Output<Boolean> reload() {
+        return this.reload;
+    }
+    /**
      * Timeout for network reload operations in seconds (defaults to `100`).
      * 
      */

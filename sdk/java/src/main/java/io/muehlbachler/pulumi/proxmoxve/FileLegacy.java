@@ -230,12 +230,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var hookScript = new FileLegacy("hookScript", FileLegacyArgs.builder()
  *             .contentType("snippets")
  *             .datastoreId("local")
@@ -245,14 +245,14 @@ import javax.annotation.Nullable;
  *                 .data("""
  * #!/usr/bin/env bash
  * 
- * echo \"Running hook script\"
+ * echo }&#92;{@code "Running hook script}&#92;{@code "
  *                 """)
  *                 .fileName("prepare-hook.sh")
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -357,14 +357,14 @@ public class FileLegacy extends com.pulumi.resources.CustomResource {
         return this.datastoreId;
     }
     /**
-     * The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root{@literal @}pam` authenticated user.
+     * The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! With a non-root SSH user, the provider sets the mode with `sudo chmod`, which needs its own sudoers rule (see SSH User).
      * 
      */
     @Export(name="fileMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> fileMode;
 
     /**
-     * @return The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root{@literal @}pam` authenticated user.
+     * @return The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! With a non-root SSH user, the provider sets the mode with `sudo chmod`, which needs its own sudoers rule (see SSH User).
      * 
      */
     public Output<Optional<String>> fileMode() {
@@ -427,14 +427,14 @@ public class FileLegacy extends com.pulumi.resources.CustomResource {
         return this.fileTag;
     }
     /**
-     * The node name.
+     * The preferred node name. If this node has been removed from the cluster, the provider automatically uses an online node with access to the same active, enabled shared datastore. The datastore must support the file&#39;s content type.
      * 
      */
     @Export(name="nodeName", refs={String.class}, tree="[0]")
     private Output<String> nodeName;
 
     /**
-     * @return The node name.
+     * @return The preferred node name. If this node has been removed from the cluster, the provider automatically uses an online node with access to the same active, enabled shared datastore. The datastore must support the file&#39;s content type.
      * 
      */
     public Output<String> nodeName() {

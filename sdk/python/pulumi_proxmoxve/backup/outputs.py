@@ -105,6 +105,7 @@ class JobPerformance(dict):
 class GetJobsJobResult(dict):
     def __init__(__self__, *,
                  all: _builtins.bool,
+                 comment: _builtins.str,
                  compress: _builtins.str,
                  enabled: _builtins.bool,
                  excludes: Sequence[_builtins.str],
@@ -114,6 +115,7 @@ class GetJobsJobResult(dict):
                  mode: _builtins.str,
                  node: _builtins.str,
                  notes_template: _builtins.str,
+                 notification_mode: _builtins.str,
                  pool: _builtins.str,
                  protected: _builtins.bool,
                  prune_backups: Mapping[str, _builtins.str],
@@ -122,6 +124,7 @@ class GetJobsJobResult(dict):
                  vmids: Sequence[_builtins.str]):
         """
         :param _builtins.bool all: Indicates whether all VMs and CTs are backed up.
+        :param _builtins.str comment: Description of the backup job, shown in the Proxmox VE web UI.
         :param _builtins.str compress: Compression algorithm used for the backup.
         :param _builtins.bool enabled: Indicates whether the backup job is enabled.
         :param Sequence[_builtins.str] excludes: List of guest VM/CT IDs excluded from the backup.
@@ -131,6 +134,7 @@ class GetJobsJobResult(dict):
         :param _builtins.str mode: Backup mode (e.g. snapshot, suspend, stop).
         :param _builtins.str node: Node on which the backup job runs.
         :param _builtins.str notes_template: Template for backup notes.
+        :param _builtins.str notification_mode: Notification mode of the job (`auto`, `legacy-sendmail` or `notification-system`).
         :param _builtins.str pool: Pool whose members are backed up.
         :param _builtins.bool protected: Indicates whether backups created by this job are protected from pruning.
         :param Mapping[str, _builtins.str] prune_backups: Retention options as a map of keep policies (e.g. keep-last = "3", keep-weekly = "2").
@@ -139,6 +143,7 @@ class GetJobsJobResult(dict):
         :param Sequence[_builtins.str] vmids: List of VM/CT IDs included in the backup job.
         """
         pulumi.set(__self__, "all", all)
+        pulumi.set(__self__, "comment", comment)
         pulumi.set(__self__, "compress", compress)
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "excludes", excludes)
@@ -148,6 +153,7 @@ class GetJobsJobResult(dict):
         pulumi.set(__self__, "mode", mode)
         pulumi.set(__self__, "node", node)
         pulumi.set(__self__, "notes_template", notes_template)
+        pulumi.set(__self__, "notification_mode", notification_mode)
         pulumi.set(__self__, "pool", pool)
         pulumi.set(__self__, "protected", protected)
         pulumi.set(__self__, "prune_backups", prune_backups)
@@ -162,6 +168,14 @@ class GetJobsJobResult(dict):
         Indicates whether all VMs and CTs are backed up.
         """
         return pulumi.get(self, "all")
+
+    @_builtins.property
+    @pulumi.getter
+    def comment(self) -> _builtins.str:
+        """
+        Description of the backup job, shown in the Proxmox VE web UI.
+        """
+        return pulumi.get(self, "comment")
 
     @_builtins.property
     @pulumi.getter
@@ -234,6 +248,14 @@ class GetJobsJobResult(dict):
         Template for backup notes.
         """
         return pulumi.get(self, "notes_template")
+
+    @_builtins.property
+    @pulumi.getter(name="notificationMode")
+    def notification_mode(self) -> _builtins.str:
+        """
+        Notification mode of the job (`auto`, `legacy-sendmail` or `notification-system`).
+        """
+        return pulumi.get(self, "notification_mode")
 
     @_builtins.property
     @pulumi.getter

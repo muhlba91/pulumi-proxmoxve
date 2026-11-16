@@ -236,6 +236,12 @@ func (CifsLegacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*cifsLegacyState)(nil)).Elem()
 }
 
+// CifsLegacyExists checks whether an existing CifsLegacy resource with the given ID exists.
+func CifsLegacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CifsLegacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:storage/cifsLegacy:CifsLegacy", id, state, "", opts...)
+}
+
 type cifsLegacyArgs struct {
 	// Configure backup retention settings for the storage type.
 	Backups *CifsLegacyBackups `pulumi:"backups"`

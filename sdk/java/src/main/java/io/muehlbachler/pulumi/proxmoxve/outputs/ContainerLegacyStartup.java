@@ -12,8 +12,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ContainerLegacyStartup {
     /**
-     * @return A non-negative number defining the delay in
-     * seconds before the next container is shut down.
+     * @return A non-negative number defining the shutdown
+     * timeout in seconds. When the node stops all guests (e.g. on host
+     * shutdown), Proxmox VE waits this long for the container to shut down before
+     * stopping it. When unset, the node&#39;s bulk stop timeout is used
+     * (180 seconds by default).
      * 
      */
     private @Nullable Integer downDelay;
@@ -32,8 +35,11 @@ public final class ContainerLegacyStartup {
 
     private ContainerLegacyStartup() {}
     /**
-     * @return A non-negative number defining the delay in
-     * seconds before the next container is shut down.
+     * @return A non-negative number defining the shutdown
+     * timeout in seconds. When the node stops all guests (e.g. on host
+     * shutdown), Proxmox VE waits this long for the container to shut down before
+     * stopping it. When unset, the node&#39;s bulk stop timeout is used
+     * (180 seconds by default).
      * 
      */
     public Optional<Integer> downDelay() {

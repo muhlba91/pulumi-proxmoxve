@@ -5,6 +5,8 @@ package io.muehlbachler.pulumi.proxmoxve.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
+import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -12,24 +14,43 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VmLegacyAgentWaitForIp {
     /**
+     * @return Only addresses inside one of these CIDRs (e.g. `[&#34;10.0.0.0/8&#34;, &#34;2001:db8::/64&#34;]`) count when waiting. Setting this disables the default loopback/link-local address exclusion; the `lo` interface is still skipped unless `interfaces` is also set. Avoid catch-all CIDRs such as `0.0.0.0/0` or `::/0`: they also match link-local addresses, which can end the wait before the real address is assigned; use `ipv4` or `ipv6` to require a family instead. When `ipv4` or `ipv6` is `true`, at least one CIDR of that family is required.
+     * 
+     */
+    private @Nullable List<String> cidrs;
+    /**
      * @return Whether to disable waiting for the agent to report an IP address (defaults to `false`). Set to `true` to skip the IP lookup entirely, so the provider does not wait for the agent during `refresh` and at the end of `apply`. Useful when the guest agent is slow to start, not yet installed, or not running, to avoid blocking those operations. When disabled, `ipv4Addresses`, `ipv6Addresses`, and `networkInterfaceNames` are left empty.
      * 
      */
     private @Nullable Boolean disabled;
     /**
-     * @return Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
+     * @return Only addresses on interfaces whose name fully matches one of these regular expressions (RE2, e.g. `[&#34;eth[0-9]+&#34;, &#34;ens.*&#34;]`) count when waiting. Setting this disables the default skip of the `lo` interface; loopback/link-local addresses stay excluded unless `cidrs` is also set.
+     * 
+     * When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false` (and `disabled` is `false`), the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+     * 
+     * `cidrs` and `interfaces` are combined per address (an address must match both), and they cannot be used with `disabled = true`. They are useful to ignore addresses such as Docker&#39;s `docker0` bridge, which would otherwise end the wait early. They only decide when waiting stops: `ipv4Addresses`, `ipv6Addresses` and `networkInterfaceNames` still list every address the agent reports. The wait also runs on every refresh, so a filter that never matches makes refresh wait for the full agent `timeout` and then leaves those attributes and `macAddresses` empty. On timeout, the warning reported by refresh lists each rejected address and the reason.
+     * 
+     */
+    private @Nullable List<String> interfaces;
+    /**
+     * @return Wait for at least one IPv4 address (non-loopback, non-link-local unless allowed by `cidrs`) (defaults to `false`).
      * 
      */
     private @Nullable Boolean ipv4;
     /**
-     * @return Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
-     * 
-     * When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false` (and `disabled` is `false`), the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+     * @return Wait for at least one IPv6 address (non-loopback, non-link-local unless allowed by `cidrs`) (defaults to `false`).
      * 
      */
     private @Nullable Boolean ipv6;
 
     private VmLegacyAgentWaitForIp() {}
+    /**
+     * @return Only addresses inside one of these CIDRs (e.g. `[&#34;10.0.0.0/8&#34;, &#34;2001:db8::/64&#34;]`) count when waiting. Setting this disables the default loopback/link-local address exclusion; the `lo` interface is still skipped unless `interfaces` is also set. Avoid catch-all CIDRs such as `0.0.0.0/0` or `::/0`: they also match link-local addresses, which can end the wait before the real address is assigned; use `ipv4` or `ipv6` to require a family instead. When `ipv4` or `ipv6` is `true`, at least one CIDR of that family is required.
+     * 
+     */
+    public List<String> cidrs() {
+        return this.cidrs == null ? List.of() : this.cidrs;
+    }
     /**
      * @return Whether to disable waiting for the agent to report an IP address (defaults to `false`). Set to `true` to skip the IP lookup entirely, so the provider does not wait for the agent during `refresh` and at the end of `apply`. Useful when the guest agent is slow to start, not yet installed, or not running, to avoid blocking those operations. When disabled, `ipv4Addresses`, `ipv6Addresses`, and `networkInterfaceNames` are left empty.
      * 
@@ -38,16 +59,25 @@ public final class VmLegacyAgentWaitForIp {
         return Optional.ofNullable(this.disabled);
     }
     /**
-     * @return Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
+     * @return Only addresses on interfaces whose name fully matches one of these regular expressions (RE2, e.g. `[&#34;eth[0-9]+&#34;, &#34;ens.*&#34;]`) count when waiting. Setting this disables the default skip of the `lo` interface; loopback/link-local addresses stay excluded unless `cidrs` is also set.
+     * 
+     * When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false` (and `disabled` is `false`), the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+     * 
+     * `cidrs` and `interfaces` are combined per address (an address must match both), and they cannot be used with `disabled = true`. They are useful to ignore addresses such as Docker&#39;s `docker0` bridge, which would otherwise end the wait early. They only decide when waiting stops: `ipv4Addresses`, `ipv6Addresses` and `networkInterfaceNames` still list every address the agent reports. The wait also runs on every refresh, so a filter that never matches makes refresh wait for the full agent `timeout` and then leaves those attributes and `macAddresses` empty. On timeout, the warning reported by refresh lists each rejected address and the reason.
+     * 
+     */
+    public List<String> interfaces() {
+        return this.interfaces == null ? List.of() : this.interfaces;
+    }
+    /**
+     * @return Wait for at least one IPv4 address (non-loopback, non-link-local unless allowed by `cidrs`) (defaults to `false`).
      * 
      */
     public Optional<Boolean> ipv4() {
         return Optional.ofNullable(this.ipv4);
     }
     /**
-     * @return Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
-     * 
-     * When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false` (and `disabled` is `false`), the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+     * @return Wait for at least one IPv6 address (non-loopback, non-link-local unless allowed by `cidrs`) (defaults to `false`).
      * 
      */
     public Optional<Boolean> ipv6() {
@@ -63,22 +93,44 @@ public final class VmLegacyAgentWaitForIp {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<String> cidrs;
         private @Nullable Boolean disabled;
+        private @Nullable List<String> interfaces;
         private @Nullable Boolean ipv4;
         private @Nullable Boolean ipv6;
         public Builder() {}
         public Builder(VmLegacyAgentWaitForIp defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.cidrs = defaults.cidrs;
     	      this.disabled = defaults.disabled;
+    	      this.interfaces = defaults.interfaces;
     	      this.ipv4 = defaults.ipv4;
     	      this.ipv6 = defaults.ipv6;
         }
 
         @CustomType.Setter
+        public Builder cidrs(@Nullable List<String> cidrs) {
+
+            this.cidrs = cidrs;
+            return this;
+        }
+        public Builder cidrs(String... cidrs) {
+            return cidrs(List.of(cidrs));
+        }
+        @CustomType.Setter
         public Builder disabled(@Nullable Boolean disabled) {
 
             this.disabled = disabled;
             return this;
+        }
+        @CustomType.Setter
+        public Builder interfaces(@Nullable List<String> interfaces) {
+
+            this.interfaces = interfaces;
+            return this;
+        }
+        public Builder interfaces(String... interfaces) {
+            return interfaces(List.of(interfaces));
         }
         @CustomType.Setter
         public Builder ipv4(@Nullable Boolean ipv4) {
@@ -94,7 +146,9 @@ public final class VmLegacyAgentWaitForIp {
         }
         public VmLegacyAgentWaitForIp build() {
             final var _resultValue = new VmLegacyAgentWaitForIp();
+            _resultValue.cidrs = cidrs;
             _resultValue.disabled = disabled;
+            _resultValue.interfaces = interfaces;
             _resultValue.ipv4 = ipv4;
             _resultValue.ipv6 = ipv6;
             return _resultValue;

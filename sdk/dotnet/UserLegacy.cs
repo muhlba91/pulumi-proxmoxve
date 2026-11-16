@@ -70,6 +70,7 @@ namespace Pulumi.ProxmoxVE
         /// `proxmoxve.Acl` instead.
         /// </summary>
         [Output("acls")]
+        [Obsolete(@"Manage ACLs via the dedicated `proxmoxve.Acl` resource instead. The inline `Acl` block is no longer auto-populated from the cluster on refresh or import; existing users with `Acl` blocks continue to work, but new code should use `proxmoxve.Acl`.")]
         public Output<ImmutableArray<Outputs.UserLegacyAcl>> Acls { get; private set; } = null!;
 
         /// <summary>

@@ -13,6 +13,11 @@ import java.util.Objects;
 @CustomType
 public final class GetHaresourceLegacyResult {
     /**
+     * @return Whether this HA resource may be migrated during automatic rebalancing (PVE 9.2+).
+     * 
+     */
+    private Boolean autoRebalance;
+    /**
      * @return The comment associated with this resource.
      * 
      */
@@ -59,6 +64,13 @@ public final class GetHaresourceLegacyResult {
     private String type;
 
     private GetHaresourceLegacyResult() {}
+    /**
+     * @return Whether this HA resource may be migrated during automatic rebalancing (PVE 9.2+).
+     * 
+     */
+    public Boolean autoRebalance() {
+        return this.autoRebalance;
+    }
     /**
      * @return The comment associated with this resource.
      * 
@@ -132,6 +144,7 @@ public final class GetHaresourceLegacyResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Boolean autoRebalance;
         private String comment;
         private Boolean failback;
         private String group;
@@ -144,6 +157,7 @@ public final class GetHaresourceLegacyResult {
         public Builder() {}
         public Builder(GetHaresourceLegacyResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.autoRebalance = defaults.autoRebalance;
     	      this.comment = defaults.comment;
     	      this.failback = defaults.failback;
     	      this.group = defaults.group;
@@ -155,6 +169,14 @@ public final class GetHaresourceLegacyResult {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
+        public Builder autoRebalance(Boolean autoRebalance) {
+            if (autoRebalance == null) {
+              throw new MissingRequiredPropertyException("GetHaresourceLegacyResult", "autoRebalance");
+            }
+            this.autoRebalance = autoRebalance;
+            return this;
+        }
         @CustomType.Setter
         public Builder comment(String comment) {
             if (comment == null) {
@@ -229,6 +251,7 @@ public final class GetHaresourceLegacyResult {
         }
         public GetHaresourceLegacyResult build() {
             final var _resultValue = new GetHaresourceLegacyResult();
+            _resultValue.autoRebalance = autoRebalance;
             _resultValue.comment = comment;
             _resultValue.failback = failback;
             _resultValue.group = group;

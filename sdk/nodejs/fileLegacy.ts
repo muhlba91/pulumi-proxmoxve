@@ -184,6 +184,17 @@ export class FileLegacy extends pulumi.CustomResource {
         return new FileLegacy(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing FileLegacy resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: FileLegacyState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("proxmoxve:index/fileLegacy:FileLegacy", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'proxmoxve:index/fileLegacy:FileLegacy';
 
@@ -208,7 +219,7 @@ export class FileLegacy extends pulumi.CustomResource {
      */
     declare public readonly datastoreId: pulumi.Output<string>;
     /**
-     * The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root@pam` authenticated user.
+     * The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! With a non-root SSH user, the provider sets the mode with `sudo chmod`, which needs its own sudoers rule (see SSH User).
      */
     declare public readonly fileMode: pulumi.Output<string | undefined>;
     /**
@@ -228,7 +239,7 @@ export class FileLegacy extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly fileTag: pulumi.Output<string>;
     /**
-     * The node name.
+     * The preferred node name. If this node has been removed from the cluster, the provider automatically uses an online node with access to the same active, enabled shared datastore. The datastore must support the file's content type.
      */
     declare public readonly nodeName: pulumi.Output<string>;
     /**
@@ -330,7 +341,7 @@ export interface FileLegacyState {
      */
     datastoreId?: pulumi.Input<string | undefined>;
     /**
-     * The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root@pam` authenticated user.
+     * The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! With a non-root SSH user, the provider sets the mode with `sudo chmod`, which needs its own sudoers rule (see SSH User).
      */
     fileMode?: pulumi.Input<string | undefined>;
     /**
@@ -350,7 +361,7 @@ export interface FileLegacyState {
      */
     fileTag?: pulumi.Input<string | undefined>;
     /**
-     * The node name.
+     * The preferred node name. If this node has been removed from the cluster, the provider automatically uses an online node with access to the same active, enabled shared datastore. The datastore must support the file's content type.
      */
     nodeName?: pulumi.Input<string | undefined>;
     /**
@@ -400,11 +411,11 @@ export interface FileLegacyArgs {
      */
     datastoreId: pulumi.Input<string>;
     /**
-     * The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root@pam` authenticated user.
+     * The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! With a non-root SSH user, the provider sets the mode with `sudo chmod`, which needs its own sudoers rule (see SSH User).
      */
     fileMode?: pulumi.Input<string | undefined>;
     /**
-     * The node name.
+     * The preferred node name. If this node has been removed from the cluster, the provider automatically uses an online node with access to the same active, enabled shared datastore. The datastore must support the file's content type.
      */
     nodeName: pulumi.Input<string>;
     /**

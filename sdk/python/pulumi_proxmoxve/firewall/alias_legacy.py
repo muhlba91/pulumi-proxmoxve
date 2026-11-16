@@ -30,10 +30,10 @@ class AliasLegacyArgs:
 
         :param pulumi.Input[_builtins.str] cidr: Network/IP specification in CIDR format.
         :param pulumi.Input[_builtins.str] comment: Alias comment.
-        :param pulumi.Input[_builtins.int] container_id: Container ID. Leave empty for cluster level aliases.
+        :param pulumi.Input[_builtins.int] container_id: Container ID. Leave empty for cluster level aliases. Changing this value forces replacement.
         :param pulumi.Input[_builtins.str] name: Alias name.
-        :param pulumi.Input[_builtins.str] node_name: Node name. Leave empty for cluster level aliases.
-        :param pulumi.Input[_builtins.int] vm_id: VM ID. Leave empty for cluster level aliases.
+        :param pulumi.Input[_builtins.str] node_name: Node name. Leave empty for cluster level aliases. Changing it forces replacement unless `vm_id` or `container_id` is set, so it can change in place after a migration.
+        :param pulumi.Input[_builtins.int] vm_id: VM ID. Leave empty for cluster level aliases. Changing this value forces replacement.
         """
         pulumi.set(__self__, "cidr", cidr)
         if comment is not None:
@@ -75,7 +75,7 @@ class AliasLegacyArgs:
     @pulumi.getter(name="containerId")
     def container_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Container ID. Leave empty for cluster level aliases.
+        Container ID. Leave empty for cluster level aliases. Changing this value forces replacement.
         """
         return pulumi.get(self, "container_id")
 
@@ -99,7 +99,7 @@ class AliasLegacyArgs:
     @pulumi.getter(name="nodeName")
     def node_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Node name. Leave empty for cluster level aliases.
+        Node name. Leave empty for cluster level aliases. Changing it forces replacement unless `vm_id` or `container_id` is set, so it can change in place after a migration.
         """
         return pulumi.get(self, "node_name")
 
@@ -111,7 +111,7 @@ class AliasLegacyArgs:
     @pulumi.getter(name="vmId")
     def vm_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        VM ID. Leave empty for cluster level aliases.
+        VM ID. Leave empty for cluster level aliases. Changing this value forces replacement.
         """
         return pulumi.get(self, "vm_id")
 
@@ -134,10 +134,10 @@ class _AliasLegacyState:
 
         :param pulumi.Input[_builtins.str] cidr: Network/IP specification in CIDR format.
         :param pulumi.Input[_builtins.str] comment: Alias comment.
-        :param pulumi.Input[_builtins.int] container_id: Container ID. Leave empty for cluster level aliases.
+        :param pulumi.Input[_builtins.int] container_id: Container ID. Leave empty for cluster level aliases. Changing this value forces replacement.
         :param pulumi.Input[_builtins.str] name: Alias name.
-        :param pulumi.Input[_builtins.str] node_name: Node name. Leave empty for cluster level aliases.
-        :param pulumi.Input[_builtins.int] vm_id: VM ID. Leave empty for cluster level aliases.
+        :param pulumi.Input[_builtins.str] node_name: Node name. Leave empty for cluster level aliases. Changing it forces replacement unless `vm_id` or `container_id` is set, so it can change in place after a migration.
+        :param pulumi.Input[_builtins.int] vm_id: VM ID. Leave empty for cluster level aliases. Changing this value forces replacement.
         """
         if cidr is not None:
             pulumi.set(__self__, "cidr", cidr)
@@ -180,7 +180,7 @@ class _AliasLegacyState:
     @pulumi.getter(name="containerId")
     def container_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Container ID. Leave empty for cluster level aliases.
+        Container ID. Leave empty for cluster level aliases. Changing this value forces replacement.
         """
         return pulumi.get(self, "container_id")
 
@@ -204,7 +204,7 @@ class _AliasLegacyState:
     @pulumi.getter(name="nodeName")
     def node_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Node name. Leave empty for cluster level aliases.
+        Node name. Leave empty for cluster level aliases. Changing it forces replacement unless `vm_id` or `container_id` is set, so it can change in place after a migration.
         """
         return pulumi.get(self, "node_name")
 
@@ -216,7 +216,7 @@ class _AliasLegacyState:
     @pulumi.getter(name="vmId")
     def vm_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        VM ID. Leave empty for cluster level aliases.
+        VM ID. Leave empty for cluster level aliases. Changing this value forces replacement.
         """
         return pulumi.get(self, "vm_id")
 
@@ -251,7 +251,7 @@ class AliasLegacy(pulumi.CustomResource):
 
         local_network = proxmoxve.firewall.AliasLegacy("local_network",
             node_name=example["nodeName"],
-            vm_id=int(example["vmId"]),
+            vm_id=example["vmId"],
             name="local_network",
             cidr="192.168.0.0/23",
             comment="Managed by Pulumi",
@@ -262,15 +262,50 @@ class AliasLegacy(pulumi.CustomResource):
             comment="Managed by Pulumi")
         ```
 
+        ## Import
+
+        ### Cluster Alias
+
+        Use the import ID: `cluster/<alias_name>`
+        Example uses alias name `ubuntu`.
+
+        **Example:**
+
+        ```sh
+        $ pulumi import proxmoxve:firewall/aliasLegacy:AliasLegacy ubuntu_vm cluster/ubuntu
+        ```
+
+        ### VM Alias
+
+        Use the import ID format: `vm/<node_name>/<vm_id>/<alias_name>`
+        Example uses node name `pve` and VM ID `100` and alias name `local_network`.
+
+        **Example:**
+
+        ```sh
+        $ pulumi import proxmoxve:firewall/aliasLegacy:AliasLegacy local_network vm/pve/100/local_network
+        ```
+
+        ### Container Alias
+
+        Use the import ID format: `container/<node_name>/<container_id>/<alias_name>`
+        Example uses node name `pve` and container ID `100` and alias name `local_network`.
+
+        **Example:**
+
+        ```sh
+        $ pulumi import proxmoxve:firewall/aliasLegacy:AliasLegacy container_alias container/pve/100/local_network
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cidr: Network/IP specification in CIDR format.
         :param pulumi.Input[_builtins.str] comment: Alias comment.
-        :param pulumi.Input[_builtins.int] container_id: Container ID. Leave empty for cluster level aliases.
+        :param pulumi.Input[_builtins.int] container_id: Container ID. Leave empty for cluster level aliases. Changing this value forces replacement.
         :param pulumi.Input[_builtins.str] name: Alias name.
-        :param pulumi.Input[_builtins.str] node_name: Node name. Leave empty for cluster level aliases.
-        :param pulumi.Input[_builtins.int] vm_id: VM ID. Leave empty for cluster level aliases.
+        :param pulumi.Input[_builtins.str] node_name: Node name. Leave empty for cluster level aliases. Changing it forces replacement unless `vm_id` or `container_id` is set, so it can change in place after a migration.
+        :param pulumi.Input[_builtins.int] vm_id: VM ID. Leave empty for cluster level aliases. Changing this value forces replacement.
         """
         ...
     @overload
@@ -291,7 +326,7 @@ class AliasLegacy(pulumi.CustomResource):
 
         local_network = proxmoxve.firewall.AliasLegacy("local_network",
             node_name=example["nodeName"],
-            vm_id=int(example["vmId"]),
+            vm_id=example["vmId"],
             name="local_network",
             cidr="192.168.0.0/23",
             comment="Managed by Pulumi",
@@ -300,6 +335,41 @@ class AliasLegacy(pulumi.CustomResource):
             name="ubuntu",
             cidr="192.168.0.1",
             comment="Managed by Pulumi")
+        ```
+
+        ## Import
+
+        ### Cluster Alias
+
+        Use the import ID: `cluster/<alias_name>`
+        Example uses alias name `ubuntu`.
+
+        **Example:**
+
+        ```sh
+        $ pulumi import proxmoxve:firewall/aliasLegacy:AliasLegacy ubuntu_vm cluster/ubuntu
+        ```
+
+        ### VM Alias
+
+        Use the import ID format: `vm/<node_name>/<vm_id>/<alias_name>`
+        Example uses node name `pve` and VM ID `100` and alias name `local_network`.
+
+        **Example:**
+
+        ```sh
+        $ pulumi import proxmoxve:firewall/aliasLegacy:AliasLegacy local_network vm/pve/100/local_network
+        ```
+
+        ### Container Alias
+
+        Use the import ID format: `container/<node_name>/<container_id>/<alias_name>`
+        Example uses node name `pve` and container ID `100` and alias name `local_network`.
+
+        **Example:**
+
+        ```sh
+        $ pulumi import proxmoxve:firewall/aliasLegacy:AliasLegacy container_alias container/pve/100/local_network
         ```
 
 
@@ -366,10 +436,10 @@ class AliasLegacy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cidr: Network/IP specification in CIDR format.
         :param pulumi.Input[_builtins.str] comment: Alias comment.
-        :param pulumi.Input[_builtins.int] container_id: Container ID. Leave empty for cluster level aliases.
+        :param pulumi.Input[_builtins.int] container_id: Container ID. Leave empty for cluster level aliases. Changing this value forces replacement.
         :param pulumi.Input[_builtins.str] name: Alias name.
-        :param pulumi.Input[_builtins.str] node_name: Node name. Leave empty for cluster level aliases.
-        :param pulumi.Input[_builtins.int] vm_id: VM ID. Leave empty for cluster level aliases.
+        :param pulumi.Input[_builtins.str] node_name: Node name. Leave empty for cluster level aliases. Changing it forces replacement unless `vm_id` or `container_id` is set, so it can change in place after a migration.
+        :param pulumi.Input[_builtins.int] vm_id: VM ID. Leave empty for cluster level aliases. Changing this value forces replacement.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -382,6 +452,24 @@ class AliasLegacy(pulumi.CustomResource):
         __props__.__dict__["node_name"] = node_name
         __props__.__dict__["vm_id"] = vm_id
         return AliasLegacy(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            container_id: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_name: pulumi.Input[Optional[_builtins.str]] = None,
+            vm_id: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cidr"] = cidr
+        __props__["comment"] = comment
+        __props__["containerId"] = container_id
+        __props__["name"] = name
+        __props__["nodeName"] = node_name
+        __props__["vmId"] = vm_id
+        return pulumi.runtime.exists_resource(None, 'proxmoxve:firewall/aliasLegacy:AliasLegacy', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter
@@ -403,7 +491,7 @@ class AliasLegacy(pulumi.CustomResource):
     @pulumi.getter(name="containerId")
     def container_id(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        Container ID. Leave empty for cluster level aliases.
+        Container ID. Leave empty for cluster level aliases. Changing this value forces replacement.
         """
         return pulumi.get(self, "container_id")
 
@@ -419,7 +507,7 @@ class AliasLegacy(pulumi.CustomResource):
     @pulumi.getter(name="nodeName")
     def node_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Node name. Leave empty for cluster level aliases.
+        Node name. Leave empty for cluster level aliases. Changing it forces replacement unless `vm_id` or `container_id` is set, so it can change in place after a migration.
         """
         return pulumi.get(self, "node_name")
 
@@ -427,7 +515,7 @@ class AliasLegacy(pulumi.CustomResource):
     @pulumi.getter(name="vmId")
     def vm_id(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        VM ID. Leave empty for cluster level aliases.
+        VM ID. Leave empty for cluster level aliases. Changing this value forces replacement.
         """
         return pulumi.get(self, "vm_id")
 

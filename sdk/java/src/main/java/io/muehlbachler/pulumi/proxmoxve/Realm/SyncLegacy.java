@@ -127,11 +127,10 @@ public class SyncLegacy extends com.pulumi.resources.CustomResource {
     /**
      * Perform a full sync.
      * 
-     * @deprecated
-     * Deprecated by Proxmox: use removeVanished instead.
+     * @deprecated Deprecated by Proxmox: use removeVanished instead.
      * 
      */
-    @Deprecated /* Deprecated by Proxmox: use removeVanished instead. */
+    @Deprecated
     @Export(name="full", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> full;
 
@@ -145,11 +144,10 @@ public class SyncLegacy extends com.pulumi.resources.CustomResource {
     /**
      * Purge removed entries.
      * 
-     * @deprecated
-     * Deprecated by Proxmox: use removeVanished instead.
+     * @deprecated Deprecated by Proxmox: use removeVanished instead.
      * 
      */
-    @Deprecated /* Deprecated by Proxmox: use removeVanished instead. */
+    @Deprecated
     @Export(name="purge", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> purge;
 

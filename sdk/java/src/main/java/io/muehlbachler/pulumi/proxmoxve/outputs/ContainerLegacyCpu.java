@@ -19,7 +19,11 @@ public final class ContainerLegacyCpu {
      */
     private @Nullable String architecture;
     /**
-     * @return The number of CPU cores (defaults to `1`).
+     * @return The number of CPU cores (between `1` and `8192`). When unset,
+     * a new container has no `cores` setting and can use all host cores, and a clone
+     * keeps the value of its source. Removing the attribute keeps the current value, set
+     * `0` to remove the setting from the container. Removing the whole `cpu` block also
+     * removes the setting, unless it is `1`.
      * 
      */
     private @Nullable Integer cores;
@@ -30,7 +34,9 @@ public final class ContainerLegacyCpu {
     private @Nullable Double limit;
     /**
      * @return The CPU units (between `1` and `500000`). When unset,
-     * Proxmox applies its own default.
+     * Proxmox applies its own default to a new container, and a clone keeps the value of
+     * its source. Removing the attribute keeps the current value, removing the whole
+     * `cpu` block removes the setting from the container.
      * 
      */
     private @Nullable Integer units;
@@ -44,7 +50,11 @@ public final class ContainerLegacyCpu {
         return Optional.ofNullable(this.architecture);
     }
     /**
-     * @return The number of CPU cores (defaults to `1`).
+     * @return The number of CPU cores (between `1` and `8192`). When unset,
+     * a new container has no `cores` setting and can use all host cores, and a clone
+     * keeps the value of its source. Removing the attribute keeps the current value, set
+     * `0` to remove the setting from the container. Removing the whole `cpu` block also
+     * removes the setting, unless it is `1`.
      * 
      */
     public Optional<Integer> cores() {
@@ -59,7 +69,9 @@ public final class ContainerLegacyCpu {
     }
     /**
      * @return The CPU units (between `1` and `500000`). When unset,
-     * Proxmox applies its own default.
+     * Proxmox applies its own default to a new container, and a clone keeps the value of
+     * its source. Removing the attribute keeps the current value, removing the whole
+     * `cpu` block removes the setting from the container.
      * 
      */
     public Optional<Integer> units() {

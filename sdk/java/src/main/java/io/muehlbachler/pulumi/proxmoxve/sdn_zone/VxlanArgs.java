@@ -64,14 +64,14 @@ public final class VxlanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
+     * MTU value for the zone.
      * 
      */
     @Import(name="mtu")
     private @Nullable Output<Integer> mtu;
 
     /**
-     * @return MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
+     * @return MTU value for the zone.
      * 
      */
     public Optional<Output<Integer>> mtu() {
@@ -233,7 +233,7 @@ public final class VxlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mtu MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
+         * @param mtu MTU value for the zone.
          * 
          * @return builder
          * 
@@ -244,7 +244,7 @@ public final class VxlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mtu MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
+         * @param mtu MTU value for the zone.
          * 
          * @return builder
          * 

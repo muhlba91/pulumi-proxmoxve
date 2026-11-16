@@ -161,6 +161,12 @@ func (PluginState) ElementType() reflect.Type {
 	return reflect.TypeOf((*pluginState)(nil)).Elem()
 }
 
+// PluginExists checks whether an existing Plugin resource with the given ID exists.
+func PluginExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PluginState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:acme/dns/plugin:Plugin", id, state, "", opts...)
+}
+
 type pluginArgs struct {
 	// API plugin name.
 	Api string `pulumi:"api"`

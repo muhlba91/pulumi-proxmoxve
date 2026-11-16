@@ -541,6 +541,34 @@ class Certificate(pulumi.CustomResource):
         __props__.__dict__["subject_alternative_names"] = subject_alternative_names
         return Certificate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account: pulumi.Input[Optional[_builtins.str]] = None,
+            certificate: pulumi.Input[Optional[_builtins.str]] = None,
+            domains: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CertificateDomainArgs', 'CertificateDomainArgsDict', 'outputs.CertificateDomain']]]]] = None,
+            fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            force: pulumi.Input[Optional[_builtins.bool]] = None,
+            issuer: pulumi.Input[Optional[_builtins.str]] = None,
+            node_name: pulumi.Input[Optional[_builtins.str]] = None,
+            not_after: pulumi.Input[Optional[_builtins.str]] = None,
+            not_before: pulumi.Input[Optional[_builtins.str]] = None,
+            subject: pulumi.Input[Optional[_builtins.str]] = None,
+            subject_alternative_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["account"] = account
+        __props__["certificate"] = certificate
+        __props__["domains"] = domains
+        __props__["fingerprint"] = fingerprint
+        __props__["force"] = force
+        __props__["issuer"] = issuer
+        __props__["nodeName"] = node_name
+        __props__["notAfter"] = not_after
+        __props__["notBefore"] = not_before
+        __props__["subject"] = subject
+        __props__["subjectAlternativeNames"] = subject_alternative_names
+        return pulumi.runtime.exists_resource(None, 'proxmoxve:acme/certificate:Certificate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def account(self) -> pulumi.Output[_builtins.str]:

@@ -276,7 +276,7 @@ namespace Pulumi.ProxmoxVE
     /// Otherwise, the schema defaults will take effect and override the source values.
     /// 
     /// Furthermore, when cloning from one node to a different one, the behavior changes
-    /// depening on the datastores of the source VM. If at least one non-shared
+    /// depending on the datastores of the source VM. If at least one non-shared
     /// datastore is used, the VM is first cloned to the source node before being
     /// migrated to the target node. This circumvents a limitation in the Proxmox clone
     /// API.
@@ -441,7 +441,7 @@ namespace Pulumi.ProxmoxVE
         public Output<Outputs.VmLegacyEfiDisk?> EfiDisk { get; private set; } = null!;
 
         /// <summary>
-        /// The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
+        /// The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute). When cloning a VM, the hookscript is inherited from the template unless this attribute is explicitly set. Note that setting or changing a hookscript requires a direct `root@pam` password session; API tokens (including one issued for `root@pam`) are rejected by Proxmox with "only root can set 'hookscript' config".
         /// </summary>
         [Output("hookScriptFileId")]
         public Output<string?> HookScriptFileId { get; private set; } = null!;
@@ -697,6 +697,7 @@ namespace Pulumi.ProxmoxVE
         /// Disk move timeout
         /// </summary>
         [Output("timeoutMoveDisk")]
+        [Obsolete(@"This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / TimeoutClone / timeout_migrate) is used instead.")]
         public Output<int?> TimeoutMoveDisk { get; private set; } = null!;
 
         /// <summary>
@@ -737,7 +738,9 @@ namespace Pulumi.ProxmoxVE
         public Output<Outputs.VmLegacyTpmState?> TpmState { get; private set; } = null!;
 
         /// <summary>
-        /// A host USB device mapping (multiple blocks supported).
+        /// A host USB device mapping (multiple blocks supported, up to 14).
+        /// Proxmox VE only starts a VM with `Usb5` and up on machine type &gt;= 7.1 with
+        /// an `L26` or Windows &gt; 7 `OperatingSystem`.
         /// </summary>
         [Output("usbs")]
         public Output<ImmutableArray<Outputs.VmLegacyUsb>> Usbs { get; private set; } = null!;
@@ -905,7 +908,7 @@ namespace Pulumi.ProxmoxVE
         public Input<Inputs.VmLegacyEfiDiskArgs>? EfiDisk { get; set; }
 
         /// <summary>
-        /// The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
+        /// The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute). When cloning a VM, the hookscript is inherited from the template unless this attribute is explicitly set. Note that setting or changing a hookscript requires a direct `root@pam` password session; API tokens (including one issued for `root@pam`) are rejected by Proxmox with "only root can set 'hookscript' config".
         /// </summary>
         [Input("hookScriptFileId")]
         public Input<string>? HookScriptFileId { get; set; }
@@ -1182,6 +1185,7 @@ namespace Pulumi.ProxmoxVE
         /// Disk move timeout
         /// </summary>
         [Input("timeoutMoveDisk")]
+        [Obsolete(@"This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / TimeoutClone / timeout_migrate) is used instead.")]
         public Input<int>? TimeoutMoveDisk { get; set; }
 
         /// <summary>
@@ -1225,7 +1229,9 @@ namespace Pulumi.ProxmoxVE
         private InputList<Inputs.VmLegacyUsbArgs>? _usbs;
 
         /// <summary>
-        /// A host USB device mapping (multiple blocks supported).
+        /// A host USB device mapping (multiple blocks supported, up to 14).
+        /// Proxmox VE only starts a VM with `Usb5` and up on machine type &gt;= 7.1 with
+        /// an `L26` or Windows &gt; 7 `OperatingSystem`.
         /// </summary>
         public InputList<Inputs.VmLegacyUsbArgs> Usbs
         {
@@ -1363,7 +1369,7 @@ namespace Pulumi.ProxmoxVE
         public Input<Inputs.VmLegacyEfiDiskGetArgs>? EfiDisk { get; set; }
 
         /// <summary>
-        /// The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
+        /// The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute). When cloning a VM, the hookscript is inherited from the template unless this attribute is explicitly set. Note that setting or changing a hookscript requires a direct `root@pam` password session; API tokens (including one issued for `root@pam`) are rejected by Proxmox with "only root can set 'hookscript' config".
         /// </summary>
         [Input("hookScriptFileId")]
         public Input<string>? HookScriptFileId { get; set; }
@@ -1679,6 +1685,7 @@ namespace Pulumi.ProxmoxVE
         /// Disk move timeout
         /// </summary>
         [Input("timeoutMoveDisk")]
+        [Obsolete(@"This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / TimeoutClone / timeout_migrate) is used instead.")]
         public Input<int>? TimeoutMoveDisk { get; set; }
 
         /// <summary>
@@ -1722,7 +1729,9 @@ namespace Pulumi.ProxmoxVE
         private InputList<Inputs.VmLegacyUsbGetArgs>? _usbs;
 
         /// <summary>
-        /// A host USB device mapping (multiple blocks supported).
+        /// A host USB device mapping (multiple blocks supported, up to 14).
+        /// Proxmox VE only starts a VM with `Usb5` and up on machine type &gt;= 7.1 with
+        /// an `L26` or Windows &gt; 7 `OperatingSystem`.
         /// </summary>
         public InputList<Inputs.VmLegacyUsbGetArgs> Usbs
         {

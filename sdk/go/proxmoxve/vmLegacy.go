@@ -89,7 +89,7 @@ import (
 //				Disks: proxmoxve.VmLegacyDiskArray{
 //					&proxmoxve.VmLegacyDiskArgs{
 //						DatastoreId: pulumi.String("local-lvm"),
-//						ImportFrom:  latestUbuntu22JammyQcow2Img.ID().ToIDOutput().ToStringOutput(),
+//						ImportFrom:  latestUbuntu22JammyQcow2Img.ID(),
 //						Interface:   pulumi.String("scsi0"),
 //					},
 //				},
@@ -279,7 +279,7 @@ import (
 // Otherwise, the schema defaults will take effect and override the source values.
 //
 // Furthermore, when cloning from one node to a different one, the behavior changes
-// depening on the datastores of the source VM. If at least one non-shared
+// depending on the datastores of the source VM. If at least one non-shared
 // datastore is used, the VM is first cloned to the source node before being
 // migrated to the target node. This circumvents a limitation in the Proxmox clone
 // API.
@@ -395,7 +395,7 @@ type VmLegacy struct {
 	// The efi disk device (required if `bios` is set
 	// to `ovmf`). See Example: UEFI boot.
 	EfiDisk VmLegacyEfiDiskPtrOutput `pulumi:"efiDisk"`
-	// The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
+	// The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute). When cloning a VM, the hookscript is inherited from the template unless this attribute is explicitly set. Note that setting or changing a hookscript requires a direct `root@pam` password session; API tokens (including one issued for `root@pam`) are rejected by Proxmox with "only root can set 'hookscript' config".
 	HookScriptFileId pulumi.StringPtrOutput `pulumi:"hookScriptFileId"`
 	// A host PCI device mapping (multiple blocks supported).
 	Hostpcis VmLegacyHostpciArrayOutput `pulumi:"hostpcis"`
@@ -521,7 +521,9 @@ type VmLegacy struct {
 	// handles the shutdown/start cycle. Changing `version` requires recreating the
 	// VM because Proxmox only supports setting the TPM version at creation time.
 	TpmState VmLegacyTpmStatePtrOutput `pulumi:"tpmState"`
-	// A host USB device mapping (multiple blocks supported).
+	// A host USB device mapping (multiple blocks supported, up to 14).
+	// Proxmox VE only starts a VM with `usb5` and up on machine type >= 7.1 with
+	// an `l26` or Windows > 7 `operatingSystem`.
 	Usbs VmLegacyUsbArrayOutput `pulumi:"usbs"`
 	// The VGA configuration.
 	Vga VmLegacyVgaOutput `pulumi:"vga"`
@@ -593,7 +595,7 @@ type vmLegacyState struct {
 	// The efi disk device (required if `bios` is set
 	// to `ovmf`). See Example: UEFI boot.
 	EfiDisk *VmLegacyEfiDisk `pulumi:"efiDisk"`
-	// The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
+	// The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute). When cloning a VM, the hookscript is inherited from the template unless this attribute is explicitly set. Note that setting or changing a hookscript requires a direct `root@pam` password session; API tokens (including one issued for `root@pam`) are rejected by Proxmox with "only root can set 'hookscript' config".
 	HookScriptFileId *string `pulumi:"hookScriptFileId"`
 	// A host PCI device mapping (multiple blocks supported).
 	Hostpcis []VmLegacyHostpci `pulumi:"hostpcis"`
@@ -719,7 +721,9 @@ type vmLegacyState struct {
 	// handles the shutdown/start cycle. Changing `version` requires recreating the
 	// VM because Proxmox only supports setting the TPM version at creation time.
 	TpmState *VmLegacyTpmState `pulumi:"tpmState"`
-	// A host USB device mapping (multiple blocks supported).
+	// A host USB device mapping (multiple blocks supported, up to 14).
+	// Proxmox VE only starts a VM with `usb5` and up on machine type >= 7.1 with
+	// an `l26` or Windows > 7 `operatingSystem`.
 	Usbs []VmLegacyUsb `pulumi:"usbs"`
 	// The VGA configuration.
 	Vga *VmLegacyVga `pulumi:"vga"`
@@ -759,7 +763,7 @@ type VmLegacyState struct {
 	// The efi disk device (required if `bios` is set
 	// to `ovmf`). See Example: UEFI boot.
 	EfiDisk VmLegacyEfiDiskPtrInput
-	// The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
+	// The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute). When cloning a VM, the hookscript is inherited from the template unless this attribute is explicitly set. Note that setting or changing a hookscript requires a direct `root@pam` password session; API tokens (including one issued for `root@pam`) are rejected by Proxmox with "only root can set 'hookscript' config".
 	HookScriptFileId pulumi.StringPtrInput
 	// A host PCI device mapping (multiple blocks supported).
 	Hostpcis VmLegacyHostpciArrayInput
@@ -885,7 +889,9 @@ type VmLegacyState struct {
 	// handles the shutdown/start cycle. Changing `version` requires recreating the
 	// VM because Proxmox only supports setting the TPM version at creation time.
 	TpmState VmLegacyTpmStatePtrInput
-	// A host USB device mapping (multiple blocks supported).
+	// A host USB device mapping (multiple blocks supported, up to 14).
+	// Proxmox VE only starts a VM with `usb5` and up on machine type >= 7.1 with
+	// an `l26` or Windows > 7 `operatingSystem`.
 	Usbs VmLegacyUsbArrayInput
 	// The VGA configuration.
 	Vga VmLegacyVgaPtrInput
@@ -899,6 +905,12 @@ type VmLegacyState struct {
 
 func (VmLegacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vmLegacyState)(nil)).Elem()
+}
+
+// VmLegacyExists checks whether an existing VmLegacy resource with the given ID exists.
+func VmLegacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VmLegacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:index/vmLegacy:VmLegacy", id, state, "", opts...)
 }
 
 type vmLegacyArgs struct {
@@ -929,7 +941,7 @@ type vmLegacyArgs struct {
 	// The efi disk device (required if `bios` is set
 	// to `ovmf`). See Example: UEFI boot.
 	EfiDisk *VmLegacyEfiDisk `pulumi:"efiDisk"`
-	// The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
+	// The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute). When cloning a VM, the hookscript is inherited from the template unless this attribute is explicitly set. Note that setting or changing a hookscript requires a direct `root@pam` password session; API tokens (including one issued for `root@pam`) are rejected by Proxmox with "only root can set 'hookscript' config".
 	HookScriptFileId *string `pulumi:"hookScriptFileId"`
 	// A host PCI device mapping (multiple blocks supported).
 	Hostpcis []VmLegacyHostpci `pulumi:"hostpcis"`
@@ -1046,7 +1058,9 @@ type vmLegacyArgs struct {
 	// handles the shutdown/start cycle. Changing `version` requires recreating the
 	// VM because Proxmox only supports setting the TPM version at creation time.
 	TpmState *VmLegacyTpmState `pulumi:"tpmState"`
-	// A host USB device mapping (multiple blocks supported).
+	// A host USB device mapping (multiple blocks supported, up to 14).
+	// Proxmox VE only starts a VM with `usb5` and up on machine type >= 7.1 with
+	// an `l26` or Windows > 7 `operatingSystem`.
 	Usbs []VmLegacyUsb `pulumi:"usbs"`
 	// The VGA configuration.
 	Vga *VmLegacyVga `pulumi:"vga"`
@@ -1087,7 +1101,7 @@ type VmLegacyArgs struct {
 	// The efi disk device (required if `bios` is set
 	// to `ovmf`). See Example: UEFI boot.
 	EfiDisk VmLegacyEfiDiskPtrInput
-	// The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
+	// The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute). When cloning a VM, the hookscript is inherited from the template unless this attribute is explicitly set. Note that setting or changing a hookscript requires a direct `root@pam` password session; API tokens (including one issued for `root@pam`) are rejected by Proxmox with "only root can set 'hookscript' config".
 	HookScriptFileId pulumi.StringPtrInput
 	// A host PCI device mapping (multiple blocks supported).
 	Hostpcis VmLegacyHostpciArrayInput
@@ -1204,7 +1218,9 @@ type VmLegacyArgs struct {
 	// handles the shutdown/start cycle. Changing `version` requires recreating the
 	// VM because Proxmox only supports setting the TPM version at creation time.
 	TpmState VmLegacyTpmStatePtrInput
-	// A host USB device mapping (multiple blocks supported).
+	// A host USB device mapping (multiple blocks supported, up to 14).
+	// Proxmox VE only starts a VM with `usb5` and up on machine type >= 7.1 with
+	// an `l26` or Windows > 7 `operatingSystem`.
 	Usbs VmLegacyUsbArrayInput
 	// The VGA configuration.
 	Vga VmLegacyVgaPtrInput
@@ -1369,7 +1385,7 @@ func (o VmLegacyOutput) EfiDisk() VmLegacyEfiDiskPtrOutput {
 	return o.ApplyT(func(v *VmLegacy) VmLegacyEfiDiskPtrOutput { return v.EfiDisk }).(VmLegacyEfiDiskPtrOutput)
 }
 
-// The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
+// The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute). When cloning a VM, the hookscript is inherited from the template unless this attribute is explicitly set. Note that setting or changing a hookscript requires a direct `root@pam` password session; API tokens (including one issued for `root@pam`) are rejected by Proxmox with "only root can set 'hookscript' config".
 func (o VmLegacyOutput) HookScriptFileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VmLegacy) pulumi.StringPtrOutput { return v.HookScriptFileId }).(pulumi.StringPtrOutput)
 }
@@ -1624,7 +1640,9 @@ func (o VmLegacyOutput) TpmState() VmLegacyTpmStatePtrOutput {
 	return o.ApplyT(func(v *VmLegacy) VmLegacyTpmStatePtrOutput { return v.TpmState }).(VmLegacyTpmStatePtrOutput)
 }
 
-// A host USB device mapping (multiple blocks supported).
+// A host USB device mapping (multiple blocks supported, up to 14).
+// Proxmox VE only starts a VM with `usb5` and up on machine type >= 7.1 with
+// an `l26` or Windows > 7 `operatingSystem`.
 func (o VmLegacyOutput) Usbs() VmLegacyUsbArrayOutput {
 	return o.ApplyT(func(v *VmLegacy) VmLegacyUsbArrayOutput { return v.Usbs }).(VmLegacyUsbArrayOutput)
 }

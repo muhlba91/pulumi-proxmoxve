@@ -240,6 +240,12 @@ func (CifsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*cifsState)(nil)).Elem()
 }
 
+// CifsExists checks whether an existing Cifs resource with the given ID exists.
+func CifsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CifsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:storage/cifs:Cifs", id, state, "", opts...)
+}
+
 type cifsArgs struct {
 	// Configure backup retention settings for the storage type.
 	Backups *CifsBackups `pulumi:"backups"`

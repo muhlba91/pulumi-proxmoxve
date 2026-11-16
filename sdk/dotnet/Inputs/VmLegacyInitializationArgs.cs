@@ -36,6 +36,9 @@ namespace Pulumi.ProxmoxVE.Inputs
         /// image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
         /// detected if the setting is missing but a cloud-init image is present,
         /// otherwise defaults to `Ide2`.
+        /// Must not be the same as the `Interface` of any `Disk` block, the plan
+        /// fails if it is. If the setting is missing, `Ide2` is used on create
+        /// (unless cloning) and checked against the `Disk` interfaces too.
         /// </summary>
         [Input("interface")]
         public Input<string>? Interface { get; set; }
@@ -56,6 +59,9 @@ namespace Pulumi.ProxmoxVE.Inputs
         /// <summary>
         /// The identifier for a file containing
         /// all meta data passed to the VM via cloud-init.
+        /// - When cloning, setting any of the four `*_data_file_id` attributes above to `""` clears
+        ///   the custom cloud-init files inherited from the template, as long as none of them is set
+        ///   to a value.
         /// </summary>
         [Input("metaDataFileId")]
         public Input<string>? MetaDataFileId { get; set; }

@@ -18,6 +18,7 @@ namespace Pulumi.ProxmoxVE.Outputs
         /// to `False`). *Deprecated*. The attribute will be removed in the next version of the provider.
         /// Set `FileId` to `None` to leave the CD-ROM drive empty.
         /// </summary>
+        [Obsolete(@"Remove this attribute's configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `FileId` to `None` to leave the CDROM drive empty.")]
         public readonly bool? Enabled;
         /// <summary>
         /// A file ID for an ISO file (defaults to `Cdrom` as
@@ -39,7 +40,9 @@ namespace Pulumi.ProxmoxVE.Outputs
 
             string? @interface)
         {
+#pragma warning disable CS0618
             Enabled = enabled;
+#pragma warning restore CS0618
             FileId = fileId;
             Interface = @interface;
         }

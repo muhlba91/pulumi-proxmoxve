@@ -133,6 +133,12 @@ func (PciLegacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*pciLegacyState)(nil)).Elem()
 }
 
+// PciLegacyExists checks whether an existing PciLegacy resource with the given ID exists.
+func PciLegacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PciLegacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:hardware/mapping/pciLegacy:PciLegacy", id, state, "", opts...)
+}
+
 type pciLegacyArgs struct {
 	// The comment of this PCI hardware mapping.
 	Comment *string `pulumi:"comment"`

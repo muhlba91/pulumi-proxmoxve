@@ -32,6 +32,7 @@ class BondArgs:
                  gateway6: pulumi.Input[Optional[_builtins.str]] = None,
                  mtu: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 reload: pulumi.Input[Optional[_builtins.bool]] = None,
                  timeout_reload: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a Bond resource.
@@ -49,6 +50,7 @@ class BondArgs:
         :param pulumi.Input[_builtins.str] gateway6: Default IPv6 gateway address.
         :param pulumi.Input[_builtins.int] mtu: The interface MTU.
         :param pulumi.Input[_builtins.str] name: The interface name. Must be `bond[N]`, where 0 ≤ N (e.g. bond0, bond1), or any alphanumeric string that starts with a character and is at most 10 characters long.
+        :param pulumi.Input[_builtins.bool] reload: Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
         :param pulumi.Input[_builtins.int] timeout_reload: Timeout for network reload operations in seconds (defaults to `100`).
         """
         pulumi.set(__self__, "node_name", node_name)
@@ -75,6 +77,8 @@ class BondArgs:
             pulumi.set(__self__, "mtu", mtu)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if reload is not None:
+            pulumi.set(__self__, "reload", reload)
         if timeout_reload is not None:
             pulumi.set(__self__, "timeout_reload", timeout_reload)
 
@@ -235,6 +239,18 @@ class BondArgs:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter
+    def reload(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
+        """
+        return pulumi.get(self, "reload")
+
+    @reload.setter
+    def reload(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "reload", value)
+
+    @_builtins.property
     @pulumi.getter(name="timeoutReload")
     def timeout_reload(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
@@ -262,6 +278,7 @@ class _BondState:
                  mtu: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 reload: pulumi.Input[Optional[_builtins.bool]] = None,
                  slaves: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  timeout_reload: pulumi.Input[Optional[_builtins.int]] = None):
         """
@@ -279,6 +296,7 @@ class _BondState:
         :param pulumi.Input[_builtins.int] mtu: The interface MTU.
         :param pulumi.Input[_builtins.str] name: The interface name. Must be `bond[N]`, where 0 ≤ N (e.g. bond0, bond1), or any alphanumeric string that starts with a character and is at most 10 characters long.
         :param pulumi.Input[_builtins.str] node_name: The name of the node.
+        :param pulumi.Input[_builtins.bool] reload: Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] slaves: The interface bond slaves (member interfaces).
         :param pulumi.Input[_builtins.int] timeout_reload: Timeout for network reload operations in seconds (defaults to `100`).
         """
@@ -306,6 +324,8 @@ class _BondState:
             pulumi.set(__self__, "name", name)
         if node_name is not None:
             pulumi.set(__self__, "node_name", node_name)
+        if reload is not None:
+            pulumi.set(__self__, "reload", reload)
         if slaves is not None:
             pulumi.set(__self__, "slaves", slaves)
         if timeout_reload is not None:
@@ -457,6 +477,18 @@ class _BondState:
 
     @_builtins.property
     @pulumi.getter
+    def reload(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
+        """
+        return pulumi.get(self, "reload")
+
+    @reload.setter
+    def reload(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "reload", value)
+
+    @_builtins.property
+    @pulumi.getter
     def slaves(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The interface bond slaves (member interfaces).
@@ -498,11 +530,45 @@ class Bond(pulumi.CustomResource):
                  mtu: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 reload: pulumi.Input[Optional[_builtins.bool]] = None,
                  slaves: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  timeout_reload: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Manages a Linux Bond network interface in a Proxmox VE node.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        bond0 = proxmoxve.network.linux.Bond("bond0",
+            node_name="pve",
+            name="bond0",
+            slaves=[
+                "ens18",
+                "ens19",
+            ],
+            bond_mode="802.3ad",
+            bond_xmit_hash_policy="layer3+4",
+            comment="bond0 comment")
+        vmbr10 = proxmoxve.network.linux.Bridge("vmbr10",
+            node_name="pve",
+            name="vmbr10",
+            address="10.10.10.10/24",
+            ports=["bond0"],
+            opts = pulumi.ResourceOptions(depends_on=[bond0]))
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        Interfaces can be imported using the `node_name:iface` format, e.g.
+
+        ```sh
+        $ pulumi import proxmoxve:network/linux/bond:Bond bond0 pve:bond0
+        ```
 
 
         :param str resource_name: The name of the resource.
@@ -519,6 +585,7 @@ class Bond(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] mtu: The interface MTU.
         :param pulumi.Input[_builtins.str] name: The interface name. Must be `bond[N]`, where 0 ≤ N (e.g. bond0, bond1), or any alphanumeric string that starts with a character and is at most 10 characters long.
         :param pulumi.Input[_builtins.str] node_name: The name of the node.
+        :param pulumi.Input[_builtins.bool] reload: Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] slaves: The interface bond slaves (member interfaces).
         :param pulumi.Input[_builtins.int] timeout_reload: Timeout for network reload operations in seconds (defaults to `100`).
         """
@@ -530,6 +597,39 @@ class Bond(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a Linux Bond network interface in a Proxmox VE node.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        bond0 = proxmoxve.network.linux.Bond("bond0",
+            node_name="pve",
+            name="bond0",
+            slaves=[
+                "ens18",
+                "ens19",
+            ],
+            bond_mode="802.3ad",
+            bond_xmit_hash_policy="layer3+4",
+            comment="bond0 comment")
+        vmbr10 = proxmoxve.network.linux.Bridge("vmbr10",
+            node_name="pve",
+            name="vmbr10",
+            address="10.10.10.10/24",
+            ports=["bond0"],
+            opts = pulumi.ResourceOptions(depends_on=[bond0]))
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        Interfaces can be imported using the `node_name:iface` format, e.g.
+
+        ```sh
+        $ pulumi import proxmoxve:network/linux/bond:Bond bond0 pve:bond0
+        ```
 
 
         :param str resource_name: The name of the resource.
@@ -559,6 +659,7 @@ class Bond(pulumi.CustomResource):
                  mtu: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 reload: pulumi.Input[Optional[_builtins.bool]] = None,
                  slaves: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  timeout_reload: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
@@ -584,6 +685,7 @@ class Bond(pulumi.CustomResource):
             if node_name is None and not opts.urn:
                 raise TypeError("Missing required property 'node_name'")
             __props__.__dict__["node_name"] = node_name
+            __props__.__dict__["reload"] = reload
             if slaves is None and not opts.urn:
                 raise TypeError("Missing required property 'slaves'")
             __props__.__dict__["slaves"] = slaves
@@ -610,6 +712,7 @@ class Bond(pulumi.CustomResource):
             mtu: pulumi.Input[Optional[_builtins.int]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             node_name: pulumi.Input[Optional[_builtins.str]] = None,
+            reload: pulumi.Input[Optional[_builtins.bool]] = None,
             slaves: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             timeout_reload: pulumi.Input[Optional[_builtins.int]] = None) -> 'Bond':
         """
@@ -631,6 +734,7 @@ class Bond(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] mtu: The interface MTU.
         :param pulumi.Input[_builtins.str] name: The interface name. Must be `bond[N]`, where 0 ≤ N (e.g. bond0, bond1), or any alphanumeric string that starts with a character and is at most 10 characters long.
         :param pulumi.Input[_builtins.str] node_name: The name of the node.
+        :param pulumi.Input[_builtins.bool] reload: Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] slaves: The interface bond slaves (member interfaces).
         :param pulumi.Input[_builtins.int] timeout_reload: Timeout for network reload operations in seconds (defaults to `100`).
         """
@@ -650,9 +754,46 @@ class Bond(pulumi.CustomResource):
         __props__.__dict__["mtu"] = mtu
         __props__.__dict__["name"] = name
         __props__.__dict__["node_name"] = node_name
+        __props__.__dict__["reload"] = reload
         __props__.__dict__["slaves"] = slaves
         __props__.__dict__["timeout_reload"] = timeout_reload
         return Bond(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            address: pulumi.Input[Optional[_builtins.str]] = None,
+            address6: pulumi.Input[Optional[_builtins.str]] = None,
+            autostart: pulumi.Input[Optional[_builtins.bool]] = None,
+            bond_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            bond_primary: pulumi.Input[Optional[_builtins.str]] = None,
+            bond_xmit_hash_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway6: pulumi.Input[Optional[_builtins.str]] = None,
+            mtu: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_name: pulumi.Input[Optional[_builtins.str]] = None,
+            reload: pulumi.Input[Optional[_builtins.bool]] = None,
+            slaves: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            timeout_reload: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["address"] = address
+        __props__["address6"] = address6
+        __props__["autostart"] = autostart
+        __props__["bondMode"] = bond_mode
+        __props__["bondPrimary"] = bond_primary
+        __props__["bondXmitHashPolicy"] = bond_xmit_hash_policy
+        __props__["comment"] = comment
+        __props__["gateway"] = gateway
+        __props__["gateway6"] = gateway6
+        __props__["mtu"] = mtu
+        __props__["name"] = name
+        __props__["nodeName"] = node_name
+        __props__["reload"] = reload
+        __props__["slaves"] = slaves
+        __props__["timeoutReload"] = timeout_reload
+        return pulumi.runtime.exists_resource(None, 'proxmoxve:network/linux/bond:Bond', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter
@@ -749,6 +890,14 @@ class Bond(pulumi.CustomResource):
         The name of the node.
         """
         return pulumi.get(self, "node_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def reload(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
+        """
+        return pulumi.get(self, "reload")
 
     @_builtins.property
     @pulumi.getter

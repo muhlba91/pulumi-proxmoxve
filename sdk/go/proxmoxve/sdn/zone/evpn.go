@@ -86,8 +86,8 @@ type Evpn struct {
 	ExitNodesLocalRouting pulumi.BoolOutput `pulumi:"exitNodesLocalRouting"`
 	// IP Address Management system.
 	Ipam pulumi.StringPtrOutput `pulumi:"ipam"`
-	// MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
-	Mtu pulumi.IntOutput `pulumi:"mtu"`
+	// MTU value for the zone.
+	Mtu pulumi.IntPtrOutput `pulumi:"mtu"`
 	// The Proxmox nodes which the zone and associated VNets should be deployed on
 	Nodes pulumi.StringArrayOutput `pulumi:"nodes"`
 	// Indicates if the zone has pending configuration changes that need to be applied.
@@ -167,7 +167,7 @@ type evpnState struct {
 	ExitNodesLocalRouting *bool `pulumi:"exitNodesLocalRouting"`
 	// IP Address Management system.
 	Ipam *string `pulumi:"ipam"`
-	// MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
+	// MTU value for the zone.
 	Mtu *int `pulumi:"mtu"`
 	// The Proxmox nodes which the zone and associated VNets should be deployed on
 	Nodes []string `pulumi:"nodes"`
@@ -204,7 +204,7 @@ type EvpnState struct {
 	ExitNodesLocalRouting pulumi.BoolPtrInput
 	// IP Address Management system.
 	Ipam pulumi.StringPtrInput
-	// MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
+	// MTU value for the zone.
 	Mtu pulumi.IntPtrInput
 	// The Proxmox nodes which the zone and associated VNets should be deployed on
 	Nodes pulumi.StringArrayInput
@@ -228,6 +228,12 @@ func (EvpnState) ElementType() reflect.Type {
 	return reflect.TypeOf((*evpnState)(nil)).Elem()
 }
 
+// EvpnExists checks whether an existing Evpn resource with the given ID exists.
+func EvpnExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EvpnState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:sdn/zone/evpn:Evpn", id, state, "", opts...)
+}
+
 type evpnArgs struct {
 	// Enable subnet advertisement for EVPN.
 	AdvertiseSubnets *bool `pulumi:"advertiseSubnets"`
@@ -245,7 +251,7 @@ type evpnArgs struct {
 	ExitNodesLocalRouting *bool `pulumi:"exitNodesLocalRouting"`
 	// IP Address Management system.
 	Ipam *string `pulumi:"ipam"`
-	// MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
+	// MTU value for the zone.
 	Mtu *int `pulumi:"mtu"`
 	// The Proxmox nodes which the zone and associated VNets should be deployed on
 	Nodes []string `pulumi:"nodes"`
@@ -279,7 +285,7 @@ type EvpnArgs struct {
 	ExitNodesLocalRouting pulumi.BoolPtrInput
 	// IP Address Management system.
 	Ipam pulumi.StringPtrInput
-	// MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
+	// MTU value for the zone.
 	Mtu pulumi.IntPtrInput
 	// The Proxmox nodes which the zone and associated VNets should be deployed on
 	Nodes pulumi.StringArrayInput
@@ -422,9 +428,9 @@ func (o EvpnOutput) Ipam() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Evpn) pulumi.StringPtrOutput { return v.Ipam }).(pulumi.StringPtrOutput)
 }
 
-// MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
-func (o EvpnOutput) Mtu() pulumi.IntOutput {
-	return o.ApplyT(func(v *Evpn) pulumi.IntOutput { return v.Mtu }).(pulumi.IntOutput)
+// MTU value for the zone.
+func (o EvpnOutput) Mtu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Evpn) pulumi.IntPtrOutput { return v.Mtu }).(pulumi.IntPtrOutput)
 }
 
 // The Proxmox nodes which the zone and associated VNets should be deployed on

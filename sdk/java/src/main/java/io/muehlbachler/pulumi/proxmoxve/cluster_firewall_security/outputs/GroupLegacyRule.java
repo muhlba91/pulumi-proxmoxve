@@ -36,7 +36,7 @@ public final class GroupLegacyRule {
     /**
      * @return Restrict TCP/UDP destination port. You can use
      * service names or simple numbers (0-65535), as defined in &#39;/etc/
-     * services&#39;. Port ranges can be specified with &#39;\d+:\d+&#39;, for example
+     * services&#39;. Port ranges can be specified with &#39;&#92;d+:&#92;d+&#39;, for example
      * `80:85`, and you can use comma separated list to match several ports or
      * ranges.
      * 
@@ -49,7 +49,7 @@ public final class GroupLegacyRule {
     private @Nullable Boolean enabled;
     /**
      * @return Network interface name. You have to use network
-     * configuration key names for VMs and containers (&#39;net\d+&#39;). Host related
+     * configuration key names for VMs and containers (&#39;net&#92;d+&#39;). Host related
      * rules can use arbitrary strings.
      * 
      */
@@ -95,7 +95,7 @@ public final class GroupLegacyRule {
     /**
      * @return Restrict TCP/UDP source port. You can use
      * service names or simple numbers (0-65535), as defined in &#39;/etc/
-     * services&#39;. Port ranges can be specified with &#39;\d+:\d+&#39;, for example
+     * services&#39;. Port ranges can be specified with &#39;&#92;d+:&#92;d+&#39;, for example
      * `80:85`, and you can use comma separated list to match several ports or
      * ranges.
      * 
@@ -137,7 +137,7 @@ public final class GroupLegacyRule {
     /**
      * @return Restrict TCP/UDP destination port. You can use
      * service names or simple numbers (0-65535), as defined in &#39;/etc/
-     * services&#39;. Port ranges can be specified with &#39;\d+:\d+&#39;, for example
+     * services&#39;. Port ranges can be specified with &#39;&#92;d+:&#92;d+&#39;, for example
      * `80:85`, and you can use comma separated list to match several ports or
      * ranges.
      * 
@@ -154,7 +154,7 @@ public final class GroupLegacyRule {
     }
     /**
      * @return Network interface name. You have to use network
-     * configuration key names for VMs and containers (&#39;net\d+&#39;). Host related
+     * configuration key names for VMs and containers (&#39;net&#92;d+&#39;). Host related
      * rules can use arbitrary strings.
      * 
      */
@@ -214,7 +214,7 @@ public final class GroupLegacyRule {
     /**
      * @return Restrict TCP/UDP source port. You can use
      * service names or simple numbers (0-65535), as defined in &#39;/etc/
-     * services&#39;. Port ranges can be specified with &#39;\d+:\d+&#39;, for example
+     * services&#39;. Port ranges can be specified with &#39;&#92;d+:&#92;d+&#39;, for example
      * `80:85`, and you can use comma separated list to match several ports or
      * ranges.
      * 

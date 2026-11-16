@@ -157,6 +157,12 @@ func (ZfspoolLegacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zfspoolLegacyState)(nil)).Elem()
 }
 
+// ZfspoolLegacyExists checks whether an existing ZfspoolLegacy resource with the given ID exists.
+func ZfspoolLegacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZfspoolLegacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:storage/zfspoolLegacy:ZfspoolLegacy", id, state, "", opts...)
+}
+
 type zfspoolLegacyArgs struct {
 	// Block size for newly created volumes (e.g. `4k`, `8k`, `16k`). Larger values may improve throughput for large I/O, while smaller values optimize space efficiency.
 	Blocksize *string `pulumi:"blocksize"`

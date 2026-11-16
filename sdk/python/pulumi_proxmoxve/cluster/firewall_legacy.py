@@ -406,6 +406,24 @@ class FirewallLegacy(pulumi.CustomResource):
         __props__.__dict__["output_policy"] = output_policy
         return FirewallLegacy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            ebtables: pulumi.Input[Optional[_builtins.bool]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            forward_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            input_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            log_ratelimit: pulumi.Input[Optional[Union['FirewallLegacyLogRatelimitArgs', 'FirewallLegacyLogRatelimitArgsDict', 'outputs.FirewallLegacyLogRatelimit']]] = None,
+            output_policy: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["ebtables"] = ebtables
+        __props__["enabled"] = enabled
+        __props__["forwardPolicy"] = forward_policy
+        __props__["inputPolicy"] = input_policy
+        __props__["logRatelimit"] = log_ratelimit
+        __props__["outputPolicy"] = output_policy
+        return pulumi.runtime.exists_resource(None, 'proxmoxve:cluster/firewallLegacy:FirewallLegacy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def ebtables(self) -> pulumi.Output[Optional[_builtins.bool]]:

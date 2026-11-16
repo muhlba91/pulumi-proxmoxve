@@ -451,6 +451,28 @@ class Zfspool(pulumi.CustomResource):
         __props__.__dict__["zfs_pool"] = zfs_pool
         return Zfspool(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            blocksize: pulumi.Input[Optional[_builtins.str]] = None,
+            contents: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            disable: pulumi.Input[Optional[_builtins.bool]] = None,
+            nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+            shared: pulumi.Input[Optional[_builtins.bool]] = None,
+            thin_provision: pulumi.Input[Optional[_builtins.bool]] = None,
+            zfs_pool: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["blocksize"] = blocksize
+        __props__["contents"] = contents
+        __props__["disable"] = disable
+        __props__["nodes"] = nodes
+        __props__["resourceId"] = resource_id
+        __props__["shared"] = shared
+        __props__["thinProvision"] = thin_provision
+        __props__["zfsPool"] = zfs_pool
+        return pulumi.runtime.exists_resource(None, 'proxmoxve:storage/zfspool:Zfspool', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def blocksize(self) -> pulumi.Output[Optional[_builtins.str]]:

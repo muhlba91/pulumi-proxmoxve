@@ -13,6 +13,276 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type CephfsBackups struct {
+	// Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
+	KeepAll *bool `pulumi:"keepAll"`
+	// The number of daily backups to keep. Older backups will be removed.
+	KeepDaily *int `pulumi:"keepDaily"`
+	// The number of hourly backups to keep. Older backups will be removed.
+	KeepHourly *int `pulumi:"keepHourly"`
+	// Specifies the number of the most recent backups to keep, regardless of their age.
+	KeepLast *int `pulumi:"keepLast"`
+	// The number of monthly backups to keep. Older backups will be removed.
+	KeepMonthly *int `pulumi:"keepMonthly"`
+	// The number of weekly backups to keep. Older backups will be removed.
+	KeepWeekly *int `pulumi:"keepWeekly"`
+	// The number of yearly backups to keep. Older backups will be removed.
+	KeepYearly *int `pulumi:"keepYearly"`
+	// The maximum number of protected backups per guest. Use '-1' for unlimited.
+	MaxProtectedBackups *int `pulumi:"maxProtectedBackups"`
+}
+
+// CephfsBackupsInput is an input type that accepts CephfsBackupsArgs and CephfsBackupsOutput values.
+// You can construct a concrete instance of `CephfsBackupsInput` via:
+//
+//	CephfsBackupsArgs{...}
+type CephfsBackupsInput interface {
+	pulumi.Input
+
+	ToCephfsBackupsOutput() CephfsBackupsOutput
+	ToCephfsBackupsOutputWithContext(context.Context) CephfsBackupsOutput
+}
+
+type CephfsBackupsArgs struct {
+	// Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
+	KeepAll pulumi.BoolPtrInput `pulumi:"keepAll"`
+	// The number of daily backups to keep. Older backups will be removed.
+	KeepDaily pulumi.IntPtrInput `pulumi:"keepDaily"`
+	// The number of hourly backups to keep. Older backups will be removed.
+	KeepHourly pulumi.IntPtrInput `pulumi:"keepHourly"`
+	// Specifies the number of the most recent backups to keep, regardless of their age.
+	KeepLast pulumi.IntPtrInput `pulumi:"keepLast"`
+	// The number of monthly backups to keep. Older backups will be removed.
+	KeepMonthly pulumi.IntPtrInput `pulumi:"keepMonthly"`
+	// The number of weekly backups to keep. Older backups will be removed.
+	KeepWeekly pulumi.IntPtrInput `pulumi:"keepWeekly"`
+	// The number of yearly backups to keep. Older backups will be removed.
+	KeepYearly pulumi.IntPtrInput `pulumi:"keepYearly"`
+	// The maximum number of protected backups per guest. Use '-1' for unlimited.
+	MaxProtectedBackups pulumi.IntPtrInput `pulumi:"maxProtectedBackups"`
+}
+
+func (CephfsBackupsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CephfsBackups)(nil)).Elem()
+}
+
+func (i CephfsBackupsArgs) ToCephfsBackupsOutput() CephfsBackupsOutput {
+	return i.ToCephfsBackupsOutputWithContext(context.Background())
+}
+
+func (i CephfsBackupsArgs) ToCephfsBackupsOutputWithContext(ctx context.Context) CephfsBackupsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CephfsBackupsOutput)
+}
+
+func (i CephfsBackupsArgs) ToCephfsBackupsPtrOutput() CephfsBackupsPtrOutput {
+	return i.ToCephfsBackupsPtrOutputWithContext(context.Background())
+}
+
+func (i CephfsBackupsArgs) ToCephfsBackupsPtrOutputWithContext(ctx context.Context) CephfsBackupsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CephfsBackupsOutput).ToCephfsBackupsPtrOutputWithContext(ctx)
+}
+
+// CephfsBackupsPtrInput is an input type that accepts CephfsBackupsArgs, CephfsBackupsPtr and CephfsBackupsPtrOutput values.
+// You can construct a concrete instance of `CephfsBackupsPtrInput` via:
+//
+//	        CephfsBackupsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CephfsBackupsPtrInput interface {
+	pulumi.Input
+
+	ToCephfsBackupsPtrOutput() CephfsBackupsPtrOutput
+	ToCephfsBackupsPtrOutputWithContext(context.Context) CephfsBackupsPtrOutput
+}
+
+type cephfsBackupsPtrType CephfsBackupsArgs
+
+func CephfsBackupsPtr(v *CephfsBackupsArgs) CephfsBackupsPtrInput {
+	return (*cephfsBackupsPtrType)(v)
+}
+
+func (*cephfsBackupsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CephfsBackups)(nil)).Elem()
+}
+
+func (i *cephfsBackupsPtrType) ToCephfsBackupsPtrOutput() CephfsBackupsPtrOutput {
+	return i.ToCephfsBackupsPtrOutputWithContext(context.Background())
+}
+
+func (i *cephfsBackupsPtrType) ToCephfsBackupsPtrOutputWithContext(ctx context.Context) CephfsBackupsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CephfsBackupsPtrOutput)
+}
+
+type CephfsBackupsOutput struct{ *pulumi.OutputState }
+
+func (CephfsBackupsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CephfsBackups)(nil)).Elem()
+}
+
+func (o CephfsBackupsOutput) ToCephfsBackupsOutput() CephfsBackupsOutput {
+	return o
+}
+
+func (o CephfsBackupsOutput) ToCephfsBackupsOutputWithContext(ctx context.Context) CephfsBackupsOutput {
+	return o
+}
+
+func (o CephfsBackupsOutput) ToCephfsBackupsPtrOutput() CephfsBackupsPtrOutput {
+	return o.ToCephfsBackupsPtrOutputWithContext(context.Background())
+}
+
+func (o CephfsBackupsOutput) ToCephfsBackupsPtrOutputWithContext(ctx context.Context) CephfsBackupsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CephfsBackups) *CephfsBackups {
+		return &v
+	}).(CephfsBackupsPtrOutput)
+}
+
+// Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
+func (o CephfsBackupsOutput) KeepAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CephfsBackups) *bool { return v.KeepAll }).(pulumi.BoolPtrOutput)
+}
+
+// The number of daily backups to keep. Older backups will be removed.
+func (o CephfsBackupsOutput) KeepDaily() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CephfsBackups) *int { return v.KeepDaily }).(pulumi.IntPtrOutput)
+}
+
+// The number of hourly backups to keep. Older backups will be removed.
+func (o CephfsBackupsOutput) KeepHourly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CephfsBackups) *int { return v.KeepHourly }).(pulumi.IntPtrOutput)
+}
+
+// Specifies the number of the most recent backups to keep, regardless of their age.
+func (o CephfsBackupsOutput) KeepLast() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CephfsBackups) *int { return v.KeepLast }).(pulumi.IntPtrOutput)
+}
+
+// The number of monthly backups to keep. Older backups will be removed.
+func (o CephfsBackupsOutput) KeepMonthly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CephfsBackups) *int { return v.KeepMonthly }).(pulumi.IntPtrOutput)
+}
+
+// The number of weekly backups to keep. Older backups will be removed.
+func (o CephfsBackupsOutput) KeepWeekly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CephfsBackups) *int { return v.KeepWeekly }).(pulumi.IntPtrOutput)
+}
+
+// The number of yearly backups to keep. Older backups will be removed.
+func (o CephfsBackupsOutput) KeepYearly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CephfsBackups) *int { return v.KeepYearly }).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of protected backups per guest. Use '-1' for unlimited.
+func (o CephfsBackupsOutput) MaxProtectedBackups() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CephfsBackups) *int { return v.MaxProtectedBackups }).(pulumi.IntPtrOutput)
+}
+
+type CephfsBackupsPtrOutput struct{ *pulumi.OutputState }
+
+func (CephfsBackupsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CephfsBackups)(nil)).Elem()
+}
+
+func (o CephfsBackupsPtrOutput) ToCephfsBackupsPtrOutput() CephfsBackupsPtrOutput {
+	return o
+}
+
+func (o CephfsBackupsPtrOutput) ToCephfsBackupsPtrOutputWithContext(ctx context.Context) CephfsBackupsPtrOutput {
+	return o
+}
+
+func (o CephfsBackupsPtrOutput) Elem() CephfsBackupsOutput {
+	return o.ApplyT(func(v *CephfsBackups) CephfsBackups {
+		if v != nil {
+			return *v
+		}
+		var ret CephfsBackups
+		return ret
+	}).(CephfsBackupsOutput)
+}
+
+// Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
+func (o CephfsBackupsPtrOutput) KeepAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CephfsBackups) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.KeepAll
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The number of daily backups to keep. Older backups will be removed.
+func (o CephfsBackupsPtrOutput) KeepDaily() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CephfsBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepDaily
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of hourly backups to keep. Older backups will be removed.
+func (o CephfsBackupsPtrOutput) KeepHourly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CephfsBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepHourly
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies the number of the most recent backups to keep, regardless of their age.
+func (o CephfsBackupsPtrOutput) KeepLast() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CephfsBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepLast
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of monthly backups to keep. Older backups will be removed.
+func (o CephfsBackupsPtrOutput) KeepMonthly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CephfsBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepMonthly
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of weekly backups to keep. Older backups will be removed.
+func (o CephfsBackupsPtrOutput) KeepWeekly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CephfsBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepWeekly
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of yearly backups to keep. Older backups will be removed.
+func (o CephfsBackupsPtrOutput) KeepYearly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CephfsBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepYearly
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of protected backups per guest. Use '-1' for unlimited.
+func (o CephfsBackupsPtrOutput) MaxProtectedBackups() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CephfsBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxProtectedBackups
+	}).(pulumi.IntPtrOutput)
+}
+
 type CifsBackups struct {
 	// Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
 	KeepAll *bool `pulumi:"keepAll"`
@@ -2174,6 +2444,8 @@ func (o PbsLegacyBackupsPtrOutput) MaxProtectedBackups() pulumi.IntPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CephfsBackupsInput)(nil)).Elem(), CephfsBackupsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CephfsBackupsPtrInput)(nil)).Elem(), CephfsBackupsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CifsBackupsInput)(nil)).Elem(), CifsBackupsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CifsBackupsPtrInput)(nil)).Elem(), CifsBackupsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CifsLegacyBackupsInput)(nil)).Elem(), CifsLegacyBackupsArgs{})
@@ -2190,6 +2462,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PbsBackupsPtrInput)(nil)).Elem(), PbsBackupsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PbsLegacyBackupsInput)(nil)).Elem(), PbsLegacyBackupsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PbsLegacyBackupsPtrInput)(nil)).Elem(), PbsLegacyBackupsArgs{})
+	pulumi.RegisterOutputType(CephfsBackupsOutput{})
+	pulumi.RegisterOutputType(CephfsBackupsPtrOutput{})
 	pulumi.RegisterOutputType(CifsBackupsOutput{})
 	pulumi.RegisterOutputType(CifsBackupsPtrOutput{})
 	pulumi.RegisterOutputType(CifsLegacyBackupsOutput{})

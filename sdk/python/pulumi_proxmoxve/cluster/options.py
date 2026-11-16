@@ -1159,6 +1159,62 @@ class Options(pulumi.CustomResource):
         __props__.__dict__["notify"] = notify
         return Options(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bandwidth_limit_clone: pulumi.Input[Optional[_builtins.int]] = None,
+            bandwidth_limit_default: pulumi.Input[Optional[_builtins.int]] = None,
+            bandwidth_limit_migration: pulumi.Input[Optional[_builtins.int]] = None,
+            bandwidth_limit_move: pulumi.Input[Optional[_builtins.int]] = None,
+            bandwidth_limit_restore: pulumi.Input[Optional[_builtins.int]] = None,
+            console: pulumi.Input[Optional[_builtins.str]] = None,
+            crs_ha: pulumi.Input[Optional[_builtins.str]] = None,
+            crs_ha_auto_rebalance: pulumi.Input[Optional[_builtins.bool]] = None,
+            crs_ha_auto_rebalance_hold_duration: pulumi.Input[Optional[_builtins.int]] = None,
+            crs_ha_auto_rebalance_margin: pulumi.Input[Optional[_builtins.int]] = None,
+            crs_ha_auto_rebalance_method: pulumi.Input[Optional[_builtins.str]] = None,
+            crs_ha_auto_rebalance_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+            crs_ha_rebalance_on_start: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            email_from: pulumi.Input[Optional[_builtins.str]] = None,
+            ha_shutdown_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            http_proxy: pulumi.Input[Optional[_builtins.str]] = None,
+            keyboard: pulumi.Input[Optional[_builtins.str]] = None,
+            language: pulumi.Input[Optional[_builtins.str]] = None,
+            mac_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            max_workers: pulumi.Input[Optional[_builtins.int]] = None,
+            migration_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            migration_type: pulumi.Input[Optional[_builtins.str]] = None,
+            next_id: pulumi.Input[Optional[Union['OptionsNextIdArgs', 'OptionsNextIdArgsDict', 'outputs.OptionsNextId']]] = None,
+            notify: pulumi.Input[Optional[Union['OptionsNotifyArgs', 'OptionsNotifyArgsDict', 'outputs.OptionsNotify']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bandwidthLimitClone"] = bandwidth_limit_clone
+        __props__["bandwidthLimitDefault"] = bandwidth_limit_default
+        __props__["bandwidthLimitMigration"] = bandwidth_limit_migration
+        __props__["bandwidthLimitMove"] = bandwidth_limit_move
+        __props__["bandwidthLimitRestore"] = bandwidth_limit_restore
+        __props__["console"] = console
+        __props__["crsHa"] = crs_ha
+        __props__["crsHaAutoRebalance"] = crs_ha_auto_rebalance
+        __props__["crsHaAutoRebalanceHoldDuration"] = crs_ha_auto_rebalance_hold_duration
+        __props__["crsHaAutoRebalanceMargin"] = crs_ha_auto_rebalance_margin
+        __props__["crsHaAutoRebalanceMethod"] = crs_ha_auto_rebalance_method
+        __props__["crsHaAutoRebalanceThreshold"] = crs_ha_auto_rebalance_threshold
+        __props__["crsHaRebalanceOnStart"] = crs_ha_rebalance_on_start
+        __props__["description"] = description
+        __props__["emailFrom"] = email_from
+        __props__["haShutdownPolicy"] = ha_shutdown_policy
+        __props__["httpProxy"] = http_proxy
+        __props__["keyboard"] = keyboard
+        __props__["language"] = language
+        __props__["macPrefix"] = mac_prefix
+        __props__["maxWorkers"] = max_workers
+        __props__["migrationCidr"] = migration_cidr
+        __props__["migrationType"] = migration_type
+        __props__["nextId"] = next_id
+        __props__["notify"] = notify
+        return pulumi.runtime.exists_resource(None, 'proxmoxve:cluster/options:Options', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="bandwidthLimitClone")
     def bandwidth_limit_clone(self) -> pulumi.Output[Optional[_builtins.int]]:

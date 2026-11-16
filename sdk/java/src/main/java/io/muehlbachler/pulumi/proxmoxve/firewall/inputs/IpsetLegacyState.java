@@ -49,14 +49,14 @@ public final class IpsetLegacyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Container ID. Leave empty for cluster level ipsets.
+     * Container ID. Leave empty for cluster level ipsets. Changing this value forces replacement.
      * 
      */
     @Import(name="containerId")
     private @Nullable Output<Integer> containerId;
 
     /**
-     * @return Container ID. Leave empty for cluster level ipsets.
+     * @return Container ID. Leave empty for cluster level ipsets. Changing this value forces replacement.
      * 
      */
     public Optional<Output<Integer>> containerId() {
@@ -79,14 +79,14 @@ public final class IpsetLegacyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Node name. Leave empty for cluster level ipsets.
+     * Node name. Leave empty for cluster level ipsets. Changing it forces replacement unless `vmId` or `containerId` is set, so it can change in place after a migration.
      * 
      */
     @Import(name="nodeName")
     private @Nullable Output<String> nodeName;
 
     /**
-     * @return Node name. Leave empty for cluster level ipsets.
+     * @return Node name. Leave empty for cluster level ipsets. Changing it forces replacement unless `vmId` or `containerId` is set, so it can change in place after a migration.
      * 
      */
     public Optional<Output<String>> nodeName() {
@@ -94,14 +94,14 @@ public final class IpsetLegacyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * VM ID. Leave empty for cluster level ipsets.
+     * VM ID. Leave empty for cluster level ipsets. Changing this value forces replacement.
      * 
      */
     @Import(name="vmId")
     private @Nullable Output<Integer> vmId;
 
     /**
-     * @return VM ID. Leave empty for cluster level ipsets.
+     * @return VM ID. Leave empty for cluster level ipsets. Changing this value forces replacement.
      * 
      */
     public Optional<Output<Integer>> vmId() {
@@ -190,7 +190,7 @@ public final class IpsetLegacyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param containerId Container ID. Leave empty for cluster level ipsets.
+         * @param containerId Container ID. Leave empty for cluster level ipsets. Changing this value forces replacement.
          * 
          * @return builder
          * 
@@ -201,7 +201,7 @@ public final class IpsetLegacyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param containerId Container ID. Leave empty for cluster level ipsets.
+         * @param containerId Container ID. Leave empty for cluster level ipsets. Changing this value forces replacement.
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class IpsetLegacyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeName Node name. Leave empty for cluster level ipsets.
+         * @param nodeName Node name. Leave empty for cluster level ipsets. Changing it forces replacement unless `vmId` or `containerId` is set, so it can change in place after a migration.
          * 
          * @return builder
          * 
@@ -243,7 +243,7 @@ public final class IpsetLegacyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeName Node name. Leave empty for cluster level ipsets.
+         * @param nodeName Node name. Leave empty for cluster level ipsets. Changing it forces replacement unless `vmId` or `containerId` is set, so it can change in place after a migration.
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class IpsetLegacyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vmId VM ID. Leave empty for cluster level ipsets.
+         * @param vmId VM ID. Leave empty for cluster level ipsets. Changing this value forces replacement.
          * 
          * @return builder
          * 
@@ -264,7 +264,7 @@ public final class IpsetLegacyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vmId VM ID. Leave empty for cluster level ipsets.
+         * @param vmId VM ID. Leave empty for cluster level ipsets. Changing this value forces replacement.
          * 
          * @return builder
          * 

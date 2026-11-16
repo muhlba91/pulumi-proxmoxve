@@ -173,6 +173,12 @@ func (DirectoryLegacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*directoryLegacyState)(nil)).Elem()
 }
 
+// DirectoryLegacyExists checks whether an existing DirectoryLegacy resource with the given ID exists.
+func DirectoryLegacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DirectoryLegacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:storage/directoryLegacy:DirectoryLegacy", id, state, "", opts...)
+}
+
 type directoryLegacyArgs struct {
 	// Configure backup retention settings for the storage type.
 	Backups *DirectoryLegacyBackups `pulumi:"backups"`

@@ -202,6 +202,12 @@ func (ZfsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zfsState)(nil)).Elem()
 }
 
+// ZfsExists checks whether an existing Zfs resource with the given ID exists.
+func ZfsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZfsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:node/disk/zfs:Zfs", id, state, "", opts...)
+}
+
 type zfsArgs struct {
 	// Configure a Proxmox storage entry using this zpool after creation. Applied at create time only.
 	AddStorage *bool `pulumi:"addStorage"`

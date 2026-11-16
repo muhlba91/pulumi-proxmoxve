@@ -28,7 +28,16 @@ namespace Pulumi.ProxmoxVE.Acme
         ///     var all = ProxmoxVE.Acme.GetAccounts.Invoke();
         /// 
         ///     // ...which we will go through in order to fetch the whole data on each account.
-        ///     var example = ;
+        ///     var example = .ToDictionary(item =&gt; {
+        ///         var __key = item.Key;
+        ///         return __key.ToString(System.Globalization.CultureInfo.InvariantCulture);
+        ///     }, item =&gt; {
+        ///         var __value = item.Value;
+        ///         return ProxmoxVE.Acme.GetAccount.Invoke(new()
+        ///         {
+        ///             Name = __value,
+        ///         });
+        ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -57,7 +66,16 @@ namespace Pulumi.ProxmoxVE.Acme
         ///     var all = ProxmoxVE.Acme.GetAccounts.Invoke();
         /// 
         ///     // ...which we will go through in order to fetch the whole data on each account.
-        ///     var example = ;
+        ///     var example = .ToDictionary(item =&gt; {
+        ///         var __key = item.Key;
+        ///         return __key.ToString(System.Globalization.CultureInfo.InvariantCulture);
+        ///     }, item =&gt; {
+        ///         var __value = item.Value;
+        ///         return ProxmoxVE.Acme.GetAccount.Invoke(new()
+        ///         {
+        ///             Name = __value,
+        ///         });
+        ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -86,7 +104,16 @@ namespace Pulumi.ProxmoxVE.Acme
         ///     var all = ProxmoxVE.Acme.GetAccounts.Invoke();
         /// 
         ///     // ...which we will go through in order to fetch the whole data on each account.
-        ///     var example = ;
+        ///     var example = .ToDictionary(item =&gt; {
+        ///         var __key = item.Key;
+        ///         return __key.ToString(System.Globalization.CultureInfo.InvariantCulture);
+        ///     }, item =&gt; {
+        ///         var __value = item.Value;
+        ///         return ProxmoxVE.Acme.GetAccount.Invoke(new()
+        ///         {
+        ///             Name = __value,
+        ///         });
+        ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {

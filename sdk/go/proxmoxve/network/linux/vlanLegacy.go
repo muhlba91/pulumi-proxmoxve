@@ -87,6 +87,8 @@ type VlanLegacy struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name of the node.
 	NodeName pulumi.StringOutput `pulumi:"nodeName"`
+	// Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
+	Reload pulumi.BoolOutput `pulumi:"reload"`
 	// Timeout for network reload operations in seconds (defaults to `100`).
 	TimeoutReload pulumi.IntOutput `pulumi:"timeoutReload"`
 	// The VLAN tag. See also `name`.
@@ -146,6 +148,8 @@ type vlanLegacyState struct {
 	Name *string `pulumi:"name"`
 	// The name of the node.
 	NodeName *string `pulumi:"nodeName"`
+	// Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
+	Reload *bool `pulumi:"reload"`
 	// Timeout for network reload operations in seconds (defaults to `100`).
 	TimeoutReload *int `pulumi:"timeoutReload"`
 	// The VLAN tag. See also `name`.
@@ -173,6 +177,8 @@ type VlanLegacyState struct {
 	Name pulumi.StringPtrInput
 	// The name of the node.
 	NodeName pulumi.StringPtrInput
+	// Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
+	Reload pulumi.BoolPtrInput
 	// Timeout for network reload operations in seconds (defaults to `100`).
 	TimeoutReload pulumi.IntPtrInput
 	// The VLAN tag. See also `name`.
@@ -181,6 +187,12 @@ type VlanLegacyState struct {
 
 func (VlanLegacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vlanLegacyState)(nil)).Elem()
+}
+
+// VlanLegacyExists checks whether an existing VlanLegacy resource with the given ID exists.
+func VlanLegacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VlanLegacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:network/linux/vlanLegacy:VlanLegacy", id, state, "", opts...)
 }
 
 type vlanLegacyArgs struct {
@@ -204,6 +216,8 @@ type vlanLegacyArgs struct {
 	Name *string `pulumi:"name"`
 	// The name of the node.
 	NodeName string `pulumi:"nodeName"`
+	// Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
+	Reload *bool `pulumi:"reload"`
 	// Timeout for network reload operations in seconds (defaults to `100`).
 	TimeoutReload *int `pulumi:"timeoutReload"`
 	// The VLAN tag. See also `name`.
@@ -232,6 +246,8 @@ type VlanLegacyArgs struct {
 	Name pulumi.StringPtrInput
 	// The name of the node.
 	NodeName pulumi.StringInput
+	// Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
+	Reload pulumi.BoolPtrInput
 	// Timeout for network reload operations in seconds (defaults to `100`).
 	TimeoutReload pulumi.IntPtrInput
 	// The VLAN tag. See also `name`.
@@ -373,6 +389,11 @@ func (o VlanLegacyOutput) Name() pulumi.StringOutput {
 // The name of the node.
 func (o VlanLegacyOutput) NodeName() pulumi.StringOutput {
 	return o.ApplyT(func(v *VlanLegacy) pulumi.StringOutput { return v.NodeName }).(pulumi.StringOutput)
+}
+
+// Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
+func (o VlanLegacyOutput) Reload() pulumi.BoolOutput {
+	return o.ApplyT(func(v *VlanLegacy) pulumi.BoolOutput { return v.Reload }).(pulumi.BoolOutput)
 }
 
 // Timeout for network reload operations in seconds (defaults to `100`).

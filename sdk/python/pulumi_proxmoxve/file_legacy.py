@@ -34,10 +34,10 @@ class FileLegacyArgs:
         The set of arguments for constructing a FileLegacy resource.
 
         :param pulumi.Input[_builtins.str] datastore_id: The datastore id.
-        :param pulumi.Input[_builtins.str] node_name: The node name.
+        :param pulumi.Input[_builtins.str] node_name: The preferred node name. If this node has been removed from the cluster, the provider automatically uses an online node with access to the same active, enabled shared datastore. The datastore must support the file's content type.
         :param pulumi.Input[_builtins.str] content_type: The content type. If not specified, the content
                type will be inferred from the file extension. Valid values are:
-        :param pulumi.Input[_builtins.str] file_mode: The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root@pam` authenticated user.
+        :param pulumi.Input[_builtins.str] file_mode: The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! With a non-root SSH user, the provider sets the mode with `sudo chmod`, which needs its own sudoers rule (see SSH User).
         :param pulumi.Input[_builtins.bool] overwrite: Whether to overwrite an existing file (defaults to
                `true`).
         :param pulumi.Input['FileLegacySourceFileArgs'] source_file: The source file (conflicts with `source_raw`),
@@ -88,7 +88,7 @@ class FileLegacyArgs:
     @pulumi.getter(name="nodeName")
     def node_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The node name.
+        The preferred node name. If this node has been removed from the cluster, the provider automatically uses an online node with access to the same active, enabled shared datastore. The datastore must support the file's content type.
         """
         return pulumi.get(self, "node_name")
 
@@ -113,7 +113,7 @@ class FileLegacyArgs:
     @pulumi.getter(name="fileMode")
     def file_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root@pam` authenticated user.
+        The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! With a non-root SSH user, the provider sets the mode with `sudo chmod`, which needs its own sudoers rule (see SSH User).
         """
         return pulumi.get(self, "file_mode")
 
@@ -215,12 +215,12 @@ class _FileLegacyState:
         :param pulumi.Input[_builtins.str] content_type: The content type. If not specified, the content
                type will be inferred from the file extension. Valid values are:
         :param pulumi.Input[_builtins.str] datastore_id: The datastore id.
-        :param pulumi.Input[_builtins.str] file_mode: The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root@pam` authenticated user.
+        :param pulumi.Input[_builtins.str] file_mode: The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! With a non-root SSH user, the provider sets the mode with `sudo chmod`, which needs its own sudoers rule (see SSH User).
         :param pulumi.Input[_builtins.str] file_modification_date: The file modification date (RFC 3339).
         :param pulumi.Input[_builtins.str] file_name: The file name.
         :param pulumi.Input[_builtins.int] file_size: The file size in bytes.
         :param pulumi.Input[_builtins.str] file_tag: The file tag.
-        :param pulumi.Input[_builtins.str] node_name: The node name.
+        :param pulumi.Input[_builtins.str] node_name: The preferred node name. If this node has been removed from the cluster, the provider automatically uses an online node with access to the same active, enabled shared datastore. The datastore must support the file's content type.
         :param pulumi.Input[_builtins.bool] overwrite: Whether to overwrite an existing file (defaults to
                `true`).
         :param pulumi.Input['FileLegacySourceFileArgs'] source_file: The source file (conflicts with `source_raw`),
@@ -294,7 +294,7 @@ class _FileLegacyState:
     @pulumi.getter(name="fileMode")
     def file_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root@pam` authenticated user.
+        The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! With a non-root SSH user, the provider sets the mode with `sudo chmod`, which needs its own sudoers rule (see SSH User).
         """
         return pulumi.get(self, "file_mode")
 
@@ -354,7 +354,7 @@ class _FileLegacyState:
     @pulumi.getter(name="nodeName")
     def node_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The node name.
+        The preferred node name. If this node has been removed from the cluster, the provider automatically uses an online node with access to the same active, enabled shared datastore. The datastore must support the file's content type.
         """
         return pulumi.get(self, "node_name")
 
@@ -612,8 +612,8 @@ class FileLegacy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] content_type: The content type. If not specified, the content
                type will be inferred from the file extension. Valid values are:
         :param pulumi.Input[_builtins.str] datastore_id: The datastore id.
-        :param pulumi.Input[_builtins.str] file_mode: The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root@pam` authenticated user.
-        :param pulumi.Input[_builtins.str] node_name: The node name.
+        :param pulumi.Input[_builtins.str] file_mode: The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! With a non-root SSH user, the provider sets the mode with `sudo chmod`, which needs its own sudoers rule (see SSH User).
+        :param pulumi.Input[_builtins.str] node_name: The preferred node name. If this node has been removed from the cluster, the provider automatically uses an online node with access to the same active, enabled shared datastore. The datastore must support the file's content type.
         :param pulumi.Input[_builtins.bool] overwrite: Whether to overwrite an existing file (defaults to
                `true`).
         :param pulumi.Input[Union['FileLegacySourceFileArgs', 'FileLegacySourceFileArgsDict', 'outputs.FileLegacySourceFile']] source_file: The source file (conflicts with `source_raw`),
@@ -877,12 +877,12 @@ class FileLegacy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] content_type: The content type. If not specified, the content
                type will be inferred from the file extension. Valid values are:
         :param pulumi.Input[_builtins.str] datastore_id: The datastore id.
-        :param pulumi.Input[_builtins.str] file_mode: The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root@pam` authenticated user.
+        :param pulumi.Input[_builtins.str] file_mode: The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! With a non-root SSH user, the provider sets the mode with `sudo chmod`, which needs its own sudoers rule (see SSH User).
         :param pulumi.Input[_builtins.str] file_modification_date: The file modification date (RFC 3339).
         :param pulumi.Input[_builtins.str] file_name: The file name.
         :param pulumi.Input[_builtins.int] file_size: The file size in bytes.
         :param pulumi.Input[_builtins.str] file_tag: The file tag.
-        :param pulumi.Input[_builtins.str] node_name: The node name.
+        :param pulumi.Input[_builtins.str] node_name: The preferred node name. If this node has been removed from the cluster, the provider automatically uses an online node with access to the same active, enabled shared datastore. The datastore must support the file's content type.
         :param pulumi.Input[_builtins.bool] overwrite: Whether to overwrite an existing file (defaults to
                `true`).
         :param pulumi.Input[Union['FileLegacySourceFileArgs', 'FileLegacySourceFileArgsDict', 'outputs.FileLegacySourceFile']] source_file: The source file (conflicts with `source_raw`),
@@ -919,6 +919,38 @@ class FileLegacy(pulumi.CustomResource):
         __props__.__dict__["upload_mode"] = upload_mode
         return FileLegacy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            content_type: pulumi.Input[Optional[_builtins.str]] = None,
+            datastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+            file_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            file_modification_date: pulumi.Input[Optional[_builtins.str]] = None,
+            file_name: pulumi.Input[Optional[_builtins.str]] = None,
+            file_size: pulumi.Input[Optional[_builtins.int]] = None,
+            file_tag: pulumi.Input[Optional[_builtins.str]] = None,
+            node_name: pulumi.Input[Optional[_builtins.str]] = None,
+            overwrite: pulumi.Input[Optional[_builtins.bool]] = None,
+            source_file: pulumi.Input[Optional[Union['FileLegacySourceFileArgs', 'FileLegacySourceFileArgsDict', 'outputs.FileLegacySourceFile']]] = None,
+            source_raw: pulumi.Input[Optional[Union['FileLegacySourceRawArgs', 'FileLegacySourceRawArgsDict', 'outputs.FileLegacySourceRaw']]] = None,
+            timeout_upload: pulumi.Input[Optional[_builtins.int]] = None,
+            upload_mode: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["contentType"] = content_type
+        __props__["datastoreId"] = datastore_id
+        __props__["fileMode"] = file_mode
+        __props__["fileModificationDate"] = file_modification_date
+        __props__["fileName"] = file_name
+        __props__["fileSize"] = file_size
+        __props__["fileTag"] = file_tag
+        __props__["nodeName"] = node_name
+        __props__["overwrite"] = overwrite
+        __props__["sourceFile"] = source_file
+        __props__["sourceRaw"] = source_raw
+        __props__["timeoutUpload"] = timeout_upload
+        __props__["uploadMode"] = upload_mode
+        return pulumi.runtime.exists_resource(None, 'proxmoxve:index/fileLegacy:FileLegacy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="contentType")
     def content_type(self) -> pulumi.Output[_builtins.str]:
@@ -940,7 +972,7 @@ class FileLegacy(pulumi.CustomResource):
     @pulumi.getter(name="fileMode")
     def file_mode(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root@pam` authenticated user.
+        The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! With a non-root SSH user, the provider sets the mode with `sudo chmod`, which needs its own sudoers rule (see SSH User).
         """
         return pulumi.get(self, "file_mode")
 
@@ -980,7 +1012,7 @@ class FileLegacy(pulumi.CustomResource):
     @pulumi.getter(name="nodeName")
     def node_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The node name.
+        The preferred node name. If this node has been removed from the cluster, the provider automatically uses an online node with access to the same active, enabled shared datastore. The datastore must support the file's content type.
         """
         return pulumi.get(self, "node_name")
 

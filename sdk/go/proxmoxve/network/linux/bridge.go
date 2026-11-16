@@ -90,6 +90,8 @@ type Bridge struct {
 	NodeName pulumi.StringOutput `pulumi:"nodeName"`
 	// The interface bridge ports.
 	Ports pulumi.StringArrayOutput `pulumi:"ports"`
+	// Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
+	Reload pulumi.BoolOutput `pulumi:"reload"`
 	// Timeout for network reload operations in seconds (defaults to `100`).
 	TimeoutReload pulumi.IntOutput `pulumi:"timeoutReload"`
 	// VLAN IDs allowed on the bridge (Linux Bridge `bridge-vids`). Space-separated list of VLAN IDs and/or hyphenated ranges (e.g. `"2-4094"`, `"1 20 130"`, or `"1 10-20 30"`). Requires `vlanAware = true`. PVE/ifupdown2 fills in `2-4094` as the implicit default for VLAN-aware bridges when this attribute is omitted; the provider surfaces that default in state.
@@ -151,6 +153,8 @@ type bridgeState struct {
 	NodeName *string `pulumi:"nodeName"`
 	// The interface bridge ports.
 	Ports []string `pulumi:"ports"`
+	// Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
+	Reload *bool `pulumi:"reload"`
 	// Timeout for network reload operations in seconds (defaults to `100`).
 	TimeoutReload *int `pulumi:"timeoutReload"`
 	// VLAN IDs allowed on the bridge (Linux Bridge `bridge-vids`). Space-separated list of VLAN IDs and/or hyphenated ranges (e.g. `"2-4094"`, `"1 20 130"`, or `"1 10-20 30"`). Requires `vlanAware = true`. PVE/ifupdown2 fills in `2-4094` as the implicit default for VLAN-aware bridges when this attribute is omitted; the provider surfaces that default in state.
@@ -180,6 +184,8 @@ type BridgeState struct {
 	NodeName pulumi.StringPtrInput
 	// The interface bridge ports.
 	Ports pulumi.StringArrayInput
+	// Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
+	Reload pulumi.BoolPtrInput
 	// Timeout for network reload operations in seconds (defaults to `100`).
 	TimeoutReload pulumi.IntPtrInput
 	// VLAN IDs allowed on the bridge (Linux Bridge `bridge-vids`). Space-separated list of VLAN IDs and/or hyphenated ranges (e.g. `"2-4094"`, `"1 20 130"`, or `"1 10-20 30"`). Requires `vlanAware = true`. PVE/ifupdown2 fills in `2-4094` as the implicit default for VLAN-aware bridges when this attribute is omitted; the provider surfaces that default in state.
@@ -190,6 +196,12 @@ type BridgeState struct {
 
 func (BridgeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bridgeState)(nil)).Elem()
+}
+
+// BridgeExists checks whether an existing Bridge resource with the given ID exists.
+func BridgeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BridgeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:network/linux/bridge:Bridge", id, state, "", opts...)
 }
 
 type bridgeArgs struct {
@@ -213,6 +225,8 @@ type bridgeArgs struct {
 	NodeName string `pulumi:"nodeName"`
 	// The interface bridge ports.
 	Ports []string `pulumi:"ports"`
+	// Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
+	Reload *bool `pulumi:"reload"`
 	// Timeout for network reload operations in seconds (defaults to `100`).
 	TimeoutReload *int `pulumi:"timeoutReload"`
 	// VLAN IDs allowed on the bridge (Linux Bridge `bridge-vids`). Space-separated list of VLAN IDs and/or hyphenated ranges (e.g. `"2-4094"`, `"1 20 130"`, or `"1 10-20 30"`). Requires `vlanAware = true`. PVE/ifupdown2 fills in `2-4094` as the implicit default for VLAN-aware bridges when this attribute is omitted; the provider surfaces that default in state.
@@ -243,6 +257,8 @@ type BridgeArgs struct {
 	NodeName pulumi.StringInput
 	// The interface bridge ports.
 	Ports pulumi.StringArrayInput
+	// Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
+	Reload pulumi.BoolPtrInput
 	// Timeout for network reload operations in seconds (defaults to `100`).
 	TimeoutReload pulumi.IntPtrInput
 	// VLAN IDs allowed on the bridge (Linux Bridge `bridge-vids`). Space-separated list of VLAN IDs and/or hyphenated ranges (e.g. `"2-4094"`, `"1 20 130"`, or `"1 10-20 30"`). Requires `vlanAware = true`. PVE/ifupdown2 fills in `2-4094` as the implicit default for VLAN-aware bridges when this attribute is omitted; the provider surfaces that default in state.
@@ -386,6 +402,11 @@ func (o BridgeOutput) NodeName() pulumi.StringOutput {
 // The interface bridge ports.
 func (o BridgeOutput) Ports() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Bridge) pulumi.StringArrayOutput { return v.Ports }).(pulumi.StringArrayOutput)
+}
+
+// Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
+func (o BridgeOutput) Reload() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Bridge) pulumi.BoolOutput { return v.Reload }).(pulumi.BoolOutput)
 }
 
 // Timeout for network reload operations in seconds (defaults to `100`).

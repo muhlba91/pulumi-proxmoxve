@@ -52,6 +52,7 @@ namespace Pulumi.ProxmoxVE
         /// The one-time password for the Proxmox VE API.
         /// </summary>
         [Output("otp")]
+        [Obsolete(@"The `Otp` attribute is deprecated and will be removed in a future release. Please use the `ApiToken` attribute instead.")]
         public Output<string?> Otp { get; private set; } = null!;
 
         /// <summary>
@@ -200,6 +201,7 @@ namespace Pulumi.ProxmoxVE
         /// The one-time password for the Proxmox VE API.
         /// </summary>
         [Input("otp")]
+        [Obsolete(@"The `Otp` attribute is deprecated and will be removed in a future release. Please use the `ApiToken` attribute instead.")]
         public Input<string>? Otp { get; set; }
 
         [Input("password")]

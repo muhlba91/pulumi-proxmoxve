@@ -184,6 +184,16 @@ class Applier(pulumi.CustomResource):
         __props__.__dict__["on_destroy"] = on_destroy
         return Applier(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            on_create: pulumi.Input[Optional[_builtins.bool]] = None,
+            on_destroy: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["onCreate"] = on_create
+        __props__["onDestroy"] = on_destroy
+        return pulumi.runtime.exists_resource(None, 'proxmoxve:sdn/applier:Applier', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="onCreate")
     def on_create(self) -> pulumi.Output[_builtins.bool]:

@@ -233,6 +233,12 @@ func (PbsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*pbsState)(nil)).Elem()
 }
 
+// PbsExists checks whether an existing Pbs resource with the given ID exists.
+func PbsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PbsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:storage/pbs:Pbs", id, state, "", opts...)
+}
+
 type pbsArgs struct {
 	// Configure backup retention settings for the storage type.
 	Backups *PbsBackups `pulumi:"backups"`

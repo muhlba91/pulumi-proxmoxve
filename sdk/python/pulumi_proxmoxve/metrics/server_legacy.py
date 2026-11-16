@@ -1201,6 +1201,64 @@ class ServerLegacy(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         return ServerLegacy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            disable: pulumi.Input[Optional[_builtins.bool]] = None,
+            graphite_path: pulumi.Input[Optional[_builtins.str]] = None,
+            graphite_proto: pulumi.Input[Optional[_builtins.str]] = None,
+            influx_api_path_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            influx_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            influx_db_proto: pulumi.Input[Optional[_builtins.str]] = None,
+            influx_max_body_size: pulumi.Input[Optional[_builtins.int]] = None,
+            influx_organization: pulumi.Input[Optional[_builtins.str]] = None,
+            influx_token: pulumi.Input[Optional[_builtins.str]] = None,
+            influx_token_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            influx_token_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
+            influx_verify: pulumi.Input[Optional[_builtins.bool]] = None,
+            mtu: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            opentelemetry_compression: pulumi.Input[Optional[_builtins.str]] = None,
+            opentelemetry_headers: pulumi.Input[Optional[_builtins.str]] = None,
+            opentelemetry_max_body_size: pulumi.Input[Optional[_builtins.int]] = None,
+            opentelemetry_path: pulumi.Input[Optional[_builtins.str]] = None,
+            opentelemetry_proto: pulumi.Input[Optional[_builtins.str]] = None,
+            opentelemetry_resource_attributes: pulumi.Input[Optional[_builtins.str]] = None,
+            opentelemetry_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            opentelemetry_verify_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+            port: pulumi.Input[Optional[_builtins.int]] = None,
+            server: pulumi.Input[Optional[_builtins.str]] = None,
+            timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["disable"] = disable
+        __props__["graphitePath"] = graphite_path
+        __props__["graphiteProto"] = graphite_proto
+        __props__["influxApiPathPrefix"] = influx_api_path_prefix
+        __props__["influxBucket"] = influx_bucket
+        __props__["influxDbProto"] = influx_db_proto
+        __props__["influxMaxBodySize"] = influx_max_body_size
+        __props__["influxOrganization"] = influx_organization
+        __props__["influxToken"] = influx_token
+        __props__["influxTokenWo"] = influx_token_wo
+        __props__["influxTokenWoVersion"] = influx_token_wo_version
+        __props__["influxVerify"] = influx_verify
+        __props__["mtu"] = mtu
+        __props__["name"] = name
+        __props__["opentelemetryCompression"] = opentelemetry_compression
+        __props__["opentelemetryHeaders"] = opentelemetry_headers
+        __props__["opentelemetryMaxBodySize"] = opentelemetry_max_body_size
+        __props__["opentelemetryPath"] = opentelemetry_path
+        __props__["opentelemetryProto"] = opentelemetry_proto
+        __props__["opentelemetryResourceAttributes"] = opentelemetry_resource_attributes
+        __props__["opentelemetryTimeout"] = opentelemetry_timeout
+        __props__["opentelemetryVerifySsl"] = opentelemetry_verify_ssl
+        __props__["port"] = port
+        __props__["server"] = server
+        __props__["timeout"] = timeout
+        __props__["type"] = type
+        return pulumi.runtime.exists_resource(None, 'proxmoxve:metrics/serverLegacy:ServerLegacy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def disable(self) -> pulumi.Output[_builtins.bool]:

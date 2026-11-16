@@ -16,6 +16,10 @@ import (
 //
 // Manages a Ceph pool on a Proxmox VE cluster.
 //
+// **Erasure-coded pools.** With `erasureCoding`, Proxmox creates no pool named `name`. It creates an erasure-coded data pool `<name>-data` and a replicated metadata pool `<name>-metadata`, as `pveceph pool create --erasure-coding` does. As in `pveceph`, `size`, `minSize` and `crushRule` then apply to the **metadata pool**, while `pgNum`, `pgNumMin`, `pgAutoscaleMode`, `application`, `targetSize` and `targetSizeRatio` apply to the **data pool**. The data pool's own size, minimum size and CRUSH rule follow from the erasure code profile and are reported in `dataPool`.
+//
+// **Storages.** The provider never asks Proxmox to add a storage for the pool; manage RBD storages on it with `storage.Rbd`. Destroying the pool removes no storage. Destroying an erasure-coded pool removes both of its pools, and its erasure code profile when Proxmox created that profile (that is, when `erasure_coding.profile` is not set).
+//
 // ## Example Usage
 //
 // ```go
@@ -42,6 +46,24 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// An erasure-coded pool: Proxmox creates the data pool "archive-data" and the metadata pool "archive-metadata".
+//			_, err = ceph.NewPool(ctx, "erasure_coded", &ceph.PoolArgs{
+//				NodeName:  pulumi.String("pve"),
+//				Name:      pulumi.String("archive"),
+//				Size:      pulumi.Int(3),
+//				MinSize:   pulumi.Int(2),
+//				CrushRule: pulumi.String("replicated_rule"),
+//				PgNum:     pulumi.Int(32),
+//				ErasureCoding: &ceph.PoolErasureCodingArgs{
+//					K:             pulumi.Int(4),
+//					M:             pulumi.Int(2),
+//					FailureDomain: pulumi.String("host"),
+//					DeviceClass:   pulumi.String("hdd"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}
@@ -56,40 +78,49 @@ import (
 // ```sh
 // $ pulumi import proxmoxve:ceph/pool:Pool example pve/tank
 // ```
+//
+// An erasure-coded pool is imported by the name it was created with (without `-data` or `-metadata`); its
+// configuration must then include a matching `erasureCoding` attribute.
+//
+// ```sh
+// $ pulumi import proxmoxve:ceph/pool:Pool erasure_coded pve/archive
+// ```
 type Pool struct {
 	pulumi.CustomResourceState
 
-	// Configure VM and CT storage entries using the new pool. Applied at create time only; changing this value forces replacement.
-	AddStorages pulumi.BoolPtrOutput `pulumi:"addStorages"`
-	// The application using the pool. One of `rbd`, `cephfs`, `rgw`. Defaults to `rbd` server-side.
+	// The application using the pool. One of `rbd`, `cephfs`, `rgw`. Defaults to `rbd` server-side. With `erasureCoding`, this is the data pool's application (Proxmox also sets it on the metadata pool at creation).
 	Application pulumi.StringOutput `pulumi:"application"`
-	// The CRUSH rule name used for object placement.
+	// The CRUSH rule name used for object placement. With `erasureCoding`, it is used solely for the metadata pool; the data pool uses the rule Ceph generates from the erasure code profile (`data_pool.crush_rule`).
 	CrushRule pulumi.StringOutput `pulumi:"crushRule"`
-	// Create an erasure coded pool. Specified as `k=<int>,m=<int>[,profile=name][,device-class=class][,failure-domain=domain]` (e.g. `k=4,m=2`). Cannot be changed after creation.
-	ErasureCoding pulumi.StringPtrOutput `pulumi:"erasureCoding"`
-	// If true, destroy the pool even when in use. Passed as `force=1` on delete.
+	// The erasure-coded data pool `<name>-data` of an erasure-coded pool; null for a replicated pool. Its size, minimum size and CRUSH rule follow from the erasure code profile.
+	DataPool PoolDataPoolOutput `pulumi:"dataPool"`
+	// Create an erasure-coded pool instead of a replicated one: Proxmox creates an erasure-coded data pool `<name>-data` and a replicated metadata pool `<name>-metadata`. While this is set, `size`, `minSize` and `crushRule` describe the metadata pool. Cannot be changed after creation, except that after an import the configured value is only recorded.
+	ErasureCoding PoolErasureCodingPtrOutput `pulumi:"erasureCoding"`
+	// If true, destroy the pool even when in use. Passed as `force=1` on delete. With `erasureCoding`, this applies to both pools.
 	ForceDestroy pulumi.BoolOutput `pulumi:"forceDestroy"`
-	// Minimum number of replicas per object.
+	// The numeric ID Ceph assigned to an erasure-coded pool's metadata pool; null for a replicated pool.
+	MetadataPoolId pulumi.IntOutput `pulumi:"metadataPoolId"`
+	// The name of an erasure-coded pool's replicated metadata pool, `<name>-metadata`; null for a replicated pool. `size`, `minSize` and `crushRule` describe this pool.
+	MetadataPoolName pulumi.StringOutput `pulumi:"metadataPoolName"`
+	// Minimum number of replicas per object. With `erasureCoding`, this is the metadata pool's; the data pool's is `data_pool.min_size`.
 	MinSize pulumi.IntOutput `pulumi:"minSize"`
-	// The pool name. Must be unique within the Ceph cluster.
+	// The pool name. Must be unique within the Ceph cluster. With `erasureCoding`, Proxmox creates the pools `<name>-data` and `<name>-metadata` instead, and no pool of this name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The cluster node used to dispatch the API call. Any node running Ceph is acceptable; the pool itself is cluster-wide.
 	NodeName pulumi.StringOutput `pulumi:"nodeName"`
-	// PG autoscaler mode. One of `on`, `off`, `warn`.
+	// PG autoscaler mode. One of `on`, `off`, `warn`. With `erasureCoding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
 	PgAutoscaleMode pulumi.StringOutput `pulumi:"pgAutoscaleMode"`
-	// Number of placement groups.
+	// Number of placement groups. With `erasureCoding`, this is the data pool's (Proxmox creates the metadata pool with 32).
 	PgNum pulumi.IntOutput `pulumi:"pgNum"`
-	// Minimum number of placement groups (used by the autoscaler).
+	// Minimum number of placement groups (used by the autoscaler). With `erasureCoding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
 	PgNumMin pulumi.IntOutput `pulumi:"pgNumMin"`
-	// If true, remove the erasure code profile on destroy. Defaults to true. Only relevant for EC pools.
-	RemoveEcprofile pulumi.BoolOutput `pulumi:"removeEcprofile"`
-	// If true, remove all pveceph-managed storages configured for this pool on destroy.
-	RemoveStorages pulumi.BoolOutput `pulumi:"removeStorages"`
-	// Number of replicas per object.
+	// The numeric pool ID assigned by Ceph. Ceph assigns a new ID when the pool is recreated. Null with `erasureCoding`, where no pool named `name` exists; see `data_pool.pool_id` and `metadataPoolId`.
+	PoolId pulumi.IntOutput `pulumi:"poolId"`
+	// Number of replicas per object. With `erasureCoding`, this is the metadata pool's replica count; the data pool's size is `k + m` (`data_pool.size`).
 	Size pulumi.IntOutput `pulumi:"size"`
-	// Estimated target size for the PG autoscaler (e.g. `100G`). **Write-only:** PVE returns this as a bytes integer (e.g. `1073741824`) while the input accepts a unit-suffixed string, so the configured spec is not round-tripped from the server.
+	// Estimated target size for the PG autoscaler (e.g. `100G`). **Write-only:** PVE returns this as a bytes integer (e.g. `1073741824`) while the input accepts a unit-suffixed string, so the configured spec is not round-tripped from the server. With `erasureCoding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
 	TargetSize pulumi.StringPtrOutput `pulumi:"targetSize"`
-	// Estimated target ratio for the PG autoscaler. **Write-only:** kept symmetric with `targetSize` (which cannot be round-tripped), so the configured value is not refreshed from the server.
+	// Estimated target ratio for the PG autoscaler. **Write-only:** kept symmetric with `targetSize` (which cannot be round-tripped), so the configured value is not refreshed from the server. With `erasureCoding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
 	TargetSizeRatio pulumi.Float64PtrOutput `pulumi:"targetSizeRatio"`
 }
 
@@ -126,72 +157,76 @@ func GetPool(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Pool resources.
 type poolState struct {
-	// Configure VM and CT storage entries using the new pool. Applied at create time only; changing this value forces replacement.
-	AddStorages *bool `pulumi:"addStorages"`
-	// The application using the pool. One of `rbd`, `cephfs`, `rgw`. Defaults to `rbd` server-side.
+	// The application using the pool. One of `rbd`, `cephfs`, `rgw`. Defaults to `rbd` server-side. With `erasureCoding`, this is the data pool's application (Proxmox also sets it on the metadata pool at creation).
 	Application *string `pulumi:"application"`
-	// The CRUSH rule name used for object placement.
+	// The CRUSH rule name used for object placement. With `erasureCoding`, it is used solely for the metadata pool; the data pool uses the rule Ceph generates from the erasure code profile (`data_pool.crush_rule`).
 	CrushRule *string `pulumi:"crushRule"`
-	// Create an erasure coded pool. Specified as `k=<int>,m=<int>[,profile=name][,device-class=class][,failure-domain=domain]` (e.g. `k=4,m=2`). Cannot be changed after creation.
-	ErasureCoding *string `pulumi:"erasureCoding"`
-	// If true, destroy the pool even when in use. Passed as `force=1` on delete.
+	// The erasure-coded data pool `<name>-data` of an erasure-coded pool; null for a replicated pool. Its size, minimum size and CRUSH rule follow from the erasure code profile.
+	DataPool *PoolDataPool `pulumi:"dataPool"`
+	// Create an erasure-coded pool instead of a replicated one: Proxmox creates an erasure-coded data pool `<name>-data` and a replicated metadata pool `<name>-metadata`. While this is set, `size`, `minSize` and `crushRule` describe the metadata pool. Cannot be changed after creation, except that after an import the configured value is only recorded.
+	ErasureCoding *PoolErasureCoding `pulumi:"erasureCoding"`
+	// If true, destroy the pool even when in use. Passed as `force=1` on delete. With `erasureCoding`, this applies to both pools.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
-	// Minimum number of replicas per object.
+	// The numeric ID Ceph assigned to an erasure-coded pool's metadata pool; null for a replicated pool.
+	MetadataPoolId *int `pulumi:"metadataPoolId"`
+	// The name of an erasure-coded pool's replicated metadata pool, `<name>-metadata`; null for a replicated pool. `size`, `minSize` and `crushRule` describe this pool.
+	MetadataPoolName *string `pulumi:"metadataPoolName"`
+	// Minimum number of replicas per object. With `erasureCoding`, this is the metadata pool's; the data pool's is `data_pool.min_size`.
 	MinSize *int `pulumi:"minSize"`
-	// The pool name. Must be unique within the Ceph cluster.
+	// The pool name. Must be unique within the Ceph cluster. With `erasureCoding`, Proxmox creates the pools `<name>-data` and `<name>-metadata` instead, and no pool of this name.
 	Name *string `pulumi:"name"`
 	// The cluster node used to dispatch the API call. Any node running Ceph is acceptable; the pool itself is cluster-wide.
 	NodeName *string `pulumi:"nodeName"`
-	// PG autoscaler mode. One of `on`, `off`, `warn`.
+	// PG autoscaler mode. One of `on`, `off`, `warn`. With `erasureCoding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
 	PgAutoscaleMode *string `pulumi:"pgAutoscaleMode"`
-	// Number of placement groups.
+	// Number of placement groups. With `erasureCoding`, this is the data pool's (Proxmox creates the metadata pool with 32).
 	PgNum *int `pulumi:"pgNum"`
-	// Minimum number of placement groups (used by the autoscaler).
+	// Minimum number of placement groups (used by the autoscaler). With `erasureCoding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
 	PgNumMin *int `pulumi:"pgNumMin"`
-	// If true, remove the erasure code profile on destroy. Defaults to true. Only relevant for EC pools.
-	RemoveEcprofile *bool `pulumi:"removeEcprofile"`
-	// If true, remove all pveceph-managed storages configured for this pool on destroy.
-	RemoveStorages *bool `pulumi:"removeStorages"`
-	// Number of replicas per object.
+	// The numeric pool ID assigned by Ceph. Ceph assigns a new ID when the pool is recreated. Null with `erasureCoding`, where no pool named `name` exists; see `data_pool.pool_id` and `metadataPoolId`.
+	PoolId *int `pulumi:"poolId"`
+	// Number of replicas per object. With `erasureCoding`, this is the metadata pool's replica count; the data pool's size is `k + m` (`data_pool.size`).
 	Size *int `pulumi:"size"`
-	// Estimated target size for the PG autoscaler (e.g. `100G`). **Write-only:** PVE returns this as a bytes integer (e.g. `1073741824`) while the input accepts a unit-suffixed string, so the configured spec is not round-tripped from the server.
+	// Estimated target size for the PG autoscaler (e.g. `100G`). **Write-only:** PVE returns this as a bytes integer (e.g. `1073741824`) while the input accepts a unit-suffixed string, so the configured spec is not round-tripped from the server. With `erasureCoding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
 	TargetSize *string `pulumi:"targetSize"`
-	// Estimated target ratio for the PG autoscaler. **Write-only:** kept symmetric with `targetSize` (which cannot be round-tripped), so the configured value is not refreshed from the server.
+	// Estimated target ratio for the PG autoscaler. **Write-only:** kept symmetric with `targetSize` (which cannot be round-tripped), so the configured value is not refreshed from the server. With `erasureCoding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
 	TargetSizeRatio *float64 `pulumi:"targetSizeRatio"`
 }
 
 type PoolState struct {
-	// Configure VM and CT storage entries using the new pool. Applied at create time only; changing this value forces replacement.
-	AddStorages pulumi.BoolPtrInput
-	// The application using the pool. One of `rbd`, `cephfs`, `rgw`. Defaults to `rbd` server-side.
+	// The application using the pool. One of `rbd`, `cephfs`, `rgw`. Defaults to `rbd` server-side. With `erasureCoding`, this is the data pool's application (Proxmox also sets it on the metadata pool at creation).
 	Application pulumi.StringPtrInput
-	// The CRUSH rule name used for object placement.
+	// The CRUSH rule name used for object placement. With `erasureCoding`, it is used solely for the metadata pool; the data pool uses the rule Ceph generates from the erasure code profile (`data_pool.crush_rule`).
 	CrushRule pulumi.StringPtrInput
-	// Create an erasure coded pool. Specified as `k=<int>,m=<int>[,profile=name][,device-class=class][,failure-domain=domain]` (e.g. `k=4,m=2`). Cannot be changed after creation.
-	ErasureCoding pulumi.StringPtrInput
-	// If true, destroy the pool even when in use. Passed as `force=1` on delete.
+	// The erasure-coded data pool `<name>-data` of an erasure-coded pool; null for a replicated pool. Its size, minimum size and CRUSH rule follow from the erasure code profile.
+	DataPool PoolDataPoolPtrInput
+	// Create an erasure-coded pool instead of a replicated one: Proxmox creates an erasure-coded data pool `<name>-data` and a replicated metadata pool `<name>-metadata`. While this is set, `size`, `minSize` and `crushRule` describe the metadata pool. Cannot be changed after creation, except that after an import the configured value is only recorded.
+	ErasureCoding PoolErasureCodingPtrInput
+	// If true, destroy the pool even when in use. Passed as `force=1` on delete. With `erasureCoding`, this applies to both pools.
 	ForceDestroy pulumi.BoolPtrInput
-	// Minimum number of replicas per object.
+	// The numeric ID Ceph assigned to an erasure-coded pool's metadata pool; null for a replicated pool.
+	MetadataPoolId pulumi.IntPtrInput
+	// The name of an erasure-coded pool's replicated metadata pool, `<name>-metadata`; null for a replicated pool. `size`, `minSize` and `crushRule` describe this pool.
+	MetadataPoolName pulumi.StringPtrInput
+	// Minimum number of replicas per object. With `erasureCoding`, this is the metadata pool's; the data pool's is `data_pool.min_size`.
 	MinSize pulumi.IntPtrInput
-	// The pool name. Must be unique within the Ceph cluster.
+	// The pool name. Must be unique within the Ceph cluster. With `erasureCoding`, Proxmox creates the pools `<name>-data` and `<name>-metadata` instead, and no pool of this name.
 	Name pulumi.StringPtrInput
 	// The cluster node used to dispatch the API call. Any node running Ceph is acceptable; the pool itself is cluster-wide.
 	NodeName pulumi.StringPtrInput
-	// PG autoscaler mode. One of `on`, `off`, `warn`.
+	// PG autoscaler mode. One of `on`, `off`, `warn`. With `erasureCoding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
 	PgAutoscaleMode pulumi.StringPtrInput
-	// Number of placement groups.
+	// Number of placement groups. With `erasureCoding`, this is the data pool's (Proxmox creates the metadata pool with 32).
 	PgNum pulumi.IntPtrInput
-	// Minimum number of placement groups (used by the autoscaler).
+	// Minimum number of placement groups (used by the autoscaler). With `erasureCoding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
 	PgNumMin pulumi.IntPtrInput
-	// If true, remove the erasure code profile on destroy. Defaults to true. Only relevant for EC pools.
-	RemoveEcprofile pulumi.BoolPtrInput
-	// If true, remove all pveceph-managed storages configured for this pool on destroy.
-	RemoveStorages pulumi.BoolPtrInput
-	// Number of replicas per object.
+	// The numeric pool ID assigned by Ceph. Ceph assigns a new ID when the pool is recreated. Null with `erasureCoding`, where no pool named `name` exists; see `data_pool.pool_id` and `metadataPoolId`.
+	PoolId pulumi.IntPtrInput
+	// Number of replicas per object. With `erasureCoding`, this is the metadata pool's replica count; the data pool's size is `k + m` (`data_pool.size`).
 	Size pulumi.IntPtrInput
-	// Estimated target size for the PG autoscaler (e.g. `100G`). **Write-only:** PVE returns this as a bytes integer (e.g. `1073741824`) while the input accepts a unit-suffixed string, so the configured spec is not round-tripped from the server.
+	// Estimated target size for the PG autoscaler (e.g. `100G`). **Write-only:** PVE returns this as a bytes integer (e.g. `1073741824`) while the input accepts a unit-suffixed string, so the configured spec is not round-tripped from the server. With `erasureCoding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
 	TargetSize pulumi.StringPtrInput
-	// Estimated target ratio for the PG autoscaler. **Write-only:** kept symmetric with `targetSize` (which cannot be round-tripped), so the configured value is not refreshed from the server.
+	// Estimated target ratio for the PG autoscaler. **Write-only:** kept symmetric with `targetSize` (which cannot be round-tripped), so the configured value is not refreshed from the server. With `erasureCoding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
 	TargetSizeRatio pulumi.Float64PtrInput
 }
 
@@ -199,74 +234,68 @@ func (PoolState) ElementType() reflect.Type {
 	return reflect.TypeOf((*poolState)(nil)).Elem()
 }
 
+// PoolExists checks whether an existing Pool resource with the given ID exists.
+func PoolExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PoolState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:ceph/pool:Pool", id, state, "", opts...)
+}
+
 type poolArgs struct {
-	// Configure VM and CT storage entries using the new pool. Applied at create time only; changing this value forces replacement.
-	AddStorages *bool `pulumi:"addStorages"`
-	// The application using the pool. One of `rbd`, `cephfs`, `rgw`. Defaults to `rbd` server-side.
+	// The application using the pool. One of `rbd`, `cephfs`, `rgw`. Defaults to `rbd` server-side. With `erasureCoding`, this is the data pool's application (Proxmox also sets it on the metadata pool at creation).
 	Application *string `pulumi:"application"`
-	// The CRUSH rule name used for object placement.
+	// The CRUSH rule name used for object placement. With `erasureCoding`, it is used solely for the metadata pool; the data pool uses the rule Ceph generates from the erasure code profile (`data_pool.crush_rule`).
 	CrushRule *string `pulumi:"crushRule"`
-	// Create an erasure coded pool. Specified as `k=<int>,m=<int>[,profile=name][,device-class=class][,failure-domain=domain]` (e.g. `k=4,m=2`). Cannot be changed after creation.
-	ErasureCoding *string `pulumi:"erasureCoding"`
-	// If true, destroy the pool even when in use. Passed as `force=1` on delete.
+	// Create an erasure-coded pool instead of a replicated one: Proxmox creates an erasure-coded data pool `<name>-data` and a replicated metadata pool `<name>-metadata`. While this is set, `size`, `minSize` and `crushRule` describe the metadata pool. Cannot be changed after creation, except that after an import the configured value is only recorded.
+	ErasureCoding *PoolErasureCoding `pulumi:"erasureCoding"`
+	// If true, destroy the pool even when in use. Passed as `force=1` on delete. With `erasureCoding`, this applies to both pools.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
-	// Minimum number of replicas per object.
+	// Minimum number of replicas per object. With `erasureCoding`, this is the metadata pool's; the data pool's is `data_pool.min_size`.
 	MinSize *int `pulumi:"minSize"`
-	// The pool name. Must be unique within the Ceph cluster.
+	// The pool name. Must be unique within the Ceph cluster. With `erasureCoding`, Proxmox creates the pools `<name>-data` and `<name>-metadata` instead, and no pool of this name.
 	Name *string `pulumi:"name"`
 	// The cluster node used to dispatch the API call. Any node running Ceph is acceptable; the pool itself is cluster-wide.
 	NodeName string `pulumi:"nodeName"`
-	// PG autoscaler mode. One of `on`, `off`, `warn`.
+	// PG autoscaler mode. One of `on`, `off`, `warn`. With `erasureCoding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
 	PgAutoscaleMode *string `pulumi:"pgAutoscaleMode"`
-	// Number of placement groups.
+	// Number of placement groups. With `erasureCoding`, this is the data pool's (Proxmox creates the metadata pool with 32).
 	PgNum *int `pulumi:"pgNum"`
-	// Minimum number of placement groups (used by the autoscaler).
+	// Minimum number of placement groups (used by the autoscaler). With `erasureCoding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
 	PgNumMin *int `pulumi:"pgNumMin"`
-	// If true, remove the erasure code profile on destroy. Defaults to true. Only relevant for EC pools.
-	RemoveEcprofile *bool `pulumi:"removeEcprofile"`
-	// If true, remove all pveceph-managed storages configured for this pool on destroy.
-	RemoveStorages *bool `pulumi:"removeStorages"`
-	// Number of replicas per object.
+	// Number of replicas per object. With `erasureCoding`, this is the metadata pool's replica count; the data pool's size is `k + m` (`data_pool.size`).
 	Size *int `pulumi:"size"`
-	// Estimated target size for the PG autoscaler (e.g. `100G`). **Write-only:** PVE returns this as a bytes integer (e.g. `1073741824`) while the input accepts a unit-suffixed string, so the configured spec is not round-tripped from the server.
+	// Estimated target size for the PG autoscaler (e.g. `100G`). **Write-only:** PVE returns this as a bytes integer (e.g. `1073741824`) while the input accepts a unit-suffixed string, so the configured spec is not round-tripped from the server. With `erasureCoding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
 	TargetSize *string `pulumi:"targetSize"`
-	// Estimated target ratio for the PG autoscaler. **Write-only:** kept symmetric with `targetSize` (which cannot be round-tripped), so the configured value is not refreshed from the server.
+	// Estimated target ratio for the PG autoscaler. **Write-only:** kept symmetric with `targetSize` (which cannot be round-tripped), so the configured value is not refreshed from the server. With `erasureCoding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
 	TargetSizeRatio *float64 `pulumi:"targetSizeRatio"`
 }
 
 // The set of arguments for constructing a Pool resource.
 type PoolArgs struct {
-	// Configure VM and CT storage entries using the new pool. Applied at create time only; changing this value forces replacement.
-	AddStorages pulumi.BoolPtrInput
-	// The application using the pool. One of `rbd`, `cephfs`, `rgw`. Defaults to `rbd` server-side.
+	// The application using the pool. One of `rbd`, `cephfs`, `rgw`. Defaults to `rbd` server-side. With `erasureCoding`, this is the data pool's application (Proxmox also sets it on the metadata pool at creation).
 	Application pulumi.StringPtrInput
-	// The CRUSH rule name used for object placement.
+	// The CRUSH rule name used for object placement. With `erasureCoding`, it is used solely for the metadata pool; the data pool uses the rule Ceph generates from the erasure code profile (`data_pool.crush_rule`).
 	CrushRule pulumi.StringPtrInput
-	// Create an erasure coded pool. Specified as `k=<int>,m=<int>[,profile=name][,device-class=class][,failure-domain=domain]` (e.g. `k=4,m=2`). Cannot be changed after creation.
-	ErasureCoding pulumi.StringPtrInput
-	// If true, destroy the pool even when in use. Passed as `force=1` on delete.
+	// Create an erasure-coded pool instead of a replicated one: Proxmox creates an erasure-coded data pool `<name>-data` and a replicated metadata pool `<name>-metadata`. While this is set, `size`, `minSize` and `crushRule` describe the metadata pool. Cannot be changed after creation, except that after an import the configured value is only recorded.
+	ErasureCoding PoolErasureCodingPtrInput
+	// If true, destroy the pool even when in use. Passed as `force=1` on delete. With `erasureCoding`, this applies to both pools.
 	ForceDestroy pulumi.BoolPtrInput
-	// Minimum number of replicas per object.
+	// Minimum number of replicas per object. With `erasureCoding`, this is the metadata pool's; the data pool's is `data_pool.min_size`.
 	MinSize pulumi.IntPtrInput
-	// The pool name. Must be unique within the Ceph cluster.
+	// The pool name. Must be unique within the Ceph cluster. With `erasureCoding`, Proxmox creates the pools `<name>-data` and `<name>-metadata` instead, and no pool of this name.
 	Name pulumi.StringPtrInput
 	// The cluster node used to dispatch the API call. Any node running Ceph is acceptable; the pool itself is cluster-wide.
 	NodeName pulumi.StringInput
-	// PG autoscaler mode. One of `on`, `off`, `warn`.
+	// PG autoscaler mode. One of `on`, `off`, `warn`. With `erasureCoding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
 	PgAutoscaleMode pulumi.StringPtrInput
-	// Number of placement groups.
+	// Number of placement groups. With `erasureCoding`, this is the data pool's (Proxmox creates the metadata pool with 32).
 	PgNum pulumi.IntPtrInput
-	// Minimum number of placement groups (used by the autoscaler).
+	// Minimum number of placement groups (used by the autoscaler). With `erasureCoding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
 	PgNumMin pulumi.IntPtrInput
-	// If true, remove the erasure code profile on destroy. Defaults to true. Only relevant for EC pools.
-	RemoveEcprofile pulumi.BoolPtrInput
-	// If true, remove all pveceph-managed storages configured for this pool on destroy.
-	RemoveStorages pulumi.BoolPtrInput
-	// Number of replicas per object.
+	// Number of replicas per object. With `erasureCoding`, this is the metadata pool's replica count; the data pool's size is `k + m` (`data_pool.size`).
 	Size pulumi.IntPtrInput
-	// Estimated target size for the PG autoscaler (e.g. `100G`). **Write-only:** PVE returns this as a bytes integer (e.g. `1073741824`) while the input accepts a unit-suffixed string, so the configured spec is not round-tripped from the server.
+	// Estimated target size for the PG autoscaler (e.g. `100G`). **Write-only:** PVE returns this as a bytes integer (e.g. `1073741824`) while the input accepts a unit-suffixed string, so the configured spec is not round-tripped from the server. With `erasureCoding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
 	TargetSize pulumi.StringPtrInput
-	// Estimated target ratio for the PG autoscaler. **Write-only:** kept symmetric with `targetSize` (which cannot be round-tripped), so the configured value is not refreshed from the server.
+	// Estimated target ratio for the PG autoscaler. **Write-only:** kept symmetric with `targetSize` (which cannot be round-tripped), so the configured value is not refreshed from the server. With `erasureCoding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
 	TargetSizeRatio pulumi.Float64PtrInput
 }
 
@@ -357,37 +386,47 @@ func (o PoolOutput) ToPoolOutputWithContext(ctx context.Context) PoolOutput {
 	return o
 }
 
-// Configure VM and CT storage entries using the new pool. Applied at create time only; changing this value forces replacement.
-func (o PoolOutput) AddStorages() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Pool) pulumi.BoolPtrOutput { return v.AddStorages }).(pulumi.BoolPtrOutput)
-}
-
-// The application using the pool. One of `rbd`, `cephfs`, `rgw`. Defaults to `rbd` server-side.
+// The application using the pool. One of `rbd`, `cephfs`, `rgw`. Defaults to `rbd` server-side. With `erasureCoding`, this is the data pool's application (Proxmox also sets it on the metadata pool at creation).
 func (o PoolOutput) Application() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pool) pulumi.StringOutput { return v.Application }).(pulumi.StringOutput)
 }
 
-// The CRUSH rule name used for object placement.
+// The CRUSH rule name used for object placement. With `erasureCoding`, it is used solely for the metadata pool; the data pool uses the rule Ceph generates from the erasure code profile (`data_pool.crush_rule`).
 func (o PoolOutput) CrushRule() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pool) pulumi.StringOutput { return v.CrushRule }).(pulumi.StringOutput)
 }
 
-// Create an erasure coded pool. Specified as `k=<int>,m=<int>[,profile=name][,device-class=class][,failure-domain=domain]` (e.g. `k=4,m=2`). Cannot be changed after creation.
-func (o PoolOutput) ErasureCoding() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Pool) pulumi.StringPtrOutput { return v.ErasureCoding }).(pulumi.StringPtrOutput)
+// The erasure-coded data pool `<name>-data` of an erasure-coded pool; null for a replicated pool. Its size, minimum size and CRUSH rule follow from the erasure code profile.
+func (o PoolOutput) DataPool() PoolDataPoolOutput {
+	return o.ApplyT(func(v *Pool) PoolDataPoolOutput { return v.DataPool }).(PoolDataPoolOutput)
 }
 
-// If true, destroy the pool even when in use. Passed as `force=1` on delete.
+// Create an erasure-coded pool instead of a replicated one: Proxmox creates an erasure-coded data pool `<name>-data` and a replicated metadata pool `<name>-metadata`. While this is set, `size`, `minSize` and `crushRule` describe the metadata pool. Cannot be changed after creation, except that after an import the configured value is only recorded.
+func (o PoolOutput) ErasureCoding() PoolErasureCodingPtrOutput {
+	return o.ApplyT(func(v *Pool) PoolErasureCodingPtrOutput { return v.ErasureCoding }).(PoolErasureCodingPtrOutput)
+}
+
+// If true, destroy the pool even when in use. Passed as `force=1` on delete. With `erasureCoding`, this applies to both pools.
 func (o PoolOutput) ForceDestroy() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Pool) pulumi.BoolOutput { return v.ForceDestroy }).(pulumi.BoolOutput)
 }
 
-// Minimum number of replicas per object.
+// The numeric ID Ceph assigned to an erasure-coded pool's metadata pool; null for a replicated pool.
+func (o PoolOutput) MetadataPoolId() pulumi.IntOutput {
+	return o.ApplyT(func(v *Pool) pulumi.IntOutput { return v.MetadataPoolId }).(pulumi.IntOutput)
+}
+
+// The name of an erasure-coded pool's replicated metadata pool, `<name>-metadata`; null for a replicated pool. `size`, `minSize` and `crushRule` describe this pool.
+func (o PoolOutput) MetadataPoolName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Pool) pulumi.StringOutput { return v.MetadataPoolName }).(pulumi.StringOutput)
+}
+
+// Minimum number of replicas per object. With `erasureCoding`, this is the metadata pool's; the data pool's is `data_pool.min_size`.
 func (o PoolOutput) MinSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *Pool) pulumi.IntOutput { return v.MinSize }).(pulumi.IntOutput)
 }
 
-// The pool name. Must be unique within the Ceph cluster.
+// The pool name. Must be unique within the Ceph cluster. With `erasureCoding`, Proxmox creates the pools `<name>-data` and `<name>-metadata` instead, and no pool of this name.
 func (o PoolOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -397,42 +436,37 @@ func (o PoolOutput) NodeName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pool) pulumi.StringOutput { return v.NodeName }).(pulumi.StringOutput)
 }
 
-// PG autoscaler mode. One of `on`, `off`, `warn`.
+// PG autoscaler mode. One of `on`, `off`, `warn`. With `erasureCoding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
 func (o PoolOutput) PgAutoscaleMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Pool) pulumi.StringOutput { return v.PgAutoscaleMode }).(pulumi.StringOutput)
 }
 
-// Number of placement groups.
+// Number of placement groups. With `erasureCoding`, this is the data pool's (Proxmox creates the metadata pool with 32).
 func (o PoolOutput) PgNum() pulumi.IntOutput {
 	return o.ApplyT(func(v *Pool) pulumi.IntOutput { return v.PgNum }).(pulumi.IntOutput)
 }
 
-// Minimum number of placement groups (used by the autoscaler).
+// Minimum number of placement groups (used by the autoscaler). With `erasureCoding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
 func (o PoolOutput) PgNumMin() pulumi.IntOutput {
 	return o.ApplyT(func(v *Pool) pulumi.IntOutput { return v.PgNumMin }).(pulumi.IntOutput)
 }
 
-// If true, remove the erasure code profile on destroy. Defaults to true. Only relevant for EC pools.
-func (o PoolOutput) RemoveEcprofile() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Pool) pulumi.BoolOutput { return v.RemoveEcprofile }).(pulumi.BoolOutput)
+// The numeric pool ID assigned by Ceph. Ceph assigns a new ID when the pool is recreated. Null with `erasureCoding`, where no pool named `name` exists; see `data_pool.pool_id` and `metadataPoolId`.
+func (o PoolOutput) PoolId() pulumi.IntOutput {
+	return o.ApplyT(func(v *Pool) pulumi.IntOutput { return v.PoolId }).(pulumi.IntOutput)
 }
 
-// If true, remove all pveceph-managed storages configured for this pool on destroy.
-func (o PoolOutput) RemoveStorages() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Pool) pulumi.BoolOutput { return v.RemoveStorages }).(pulumi.BoolOutput)
-}
-
-// Number of replicas per object.
+// Number of replicas per object. With `erasureCoding`, this is the metadata pool's replica count; the data pool's size is `k + m` (`data_pool.size`).
 func (o PoolOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v *Pool) pulumi.IntOutput { return v.Size }).(pulumi.IntOutput)
 }
 
-// Estimated target size for the PG autoscaler (e.g. `100G`). **Write-only:** PVE returns this as a bytes integer (e.g. `1073741824`) while the input accepts a unit-suffixed string, so the configured spec is not round-tripped from the server.
+// Estimated target size for the PG autoscaler (e.g. `100G`). **Write-only:** PVE returns this as a bytes integer (e.g. `1073741824`) while the input accepts a unit-suffixed string, so the configured spec is not round-tripped from the server. With `erasureCoding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
 func (o PoolOutput) TargetSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Pool) pulumi.StringPtrOutput { return v.TargetSize }).(pulumi.StringPtrOutput)
 }
 
-// Estimated target ratio for the PG autoscaler. **Write-only:** kept symmetric with `targetSize` (which cannot be round-tripped), so the configured value is not refreshed from the server.
+// Estimated target ratio for the PG autoscaler. **Write-only:** kept symmetric with `targetSize` (which cannot be round-tripped), so the configured value is not refreshed from the server. With `erasureCoding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
 func (o PoolOutput) TargetSizeRatio() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *Pool) pulumi.Float64PtrOutput { return v.TargetSizeRatio }).(pulumi.Float64PtrOutput)
 }

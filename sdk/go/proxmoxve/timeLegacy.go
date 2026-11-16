@@ -122,6 +122,12 @@ func (TimeLegacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*timeLegacyState)(nil)).Elem()
 }
 
+// TimeLegacyExists checks whether an existing TimeLegacy resource with the given ID exists.
+func TimeLegacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TimeLegacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:index/timeLegacy:TimeLegacy", id, state, "", opts...)
+}
+
 type timeLegacyArgs struct {
 	// A node name.
 	NodeName string `pulumi:"nodeName"`

@@ -46,14 +46,14 @@ import (
 //				return err
 //			}
 //			_, err = pool.NewMembership(ctx, "vm_membership", &pool.MembershipArgs{
-//				PoolId: testPool.ID().ToIDOutput().ToStringOutput(),
+//				PoolId: testPool.ID(),
 //				VmId:   testVm1.ResourceId,
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = pool.NewMembership(ctx, "storage_membership", &pool.MembershipArgs{
-//				PoolId:    testPool.ID().ToIDOutput().ToStringOutput(),
+//				PoolId:    testPool.ID(),
 //				StorageId: pulumi.String("local-lvm"),
 //			})
 //			if err != nil {
@@ -142,6 +142,12 @@ type MembershipState struct {
 
 func (MembershipState) ElementType() reflect.Type {
 	return reflect.TypeOf((*membershipState)(nil)).Elem()
+}
+
+// MembershipExists checks whether an existing Membership resource with the given ID exists.
+func MembershipExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MembershipState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:pool/membership:Membership", id, state, "", opts...)
 }
 
 type membershipArgs struct {

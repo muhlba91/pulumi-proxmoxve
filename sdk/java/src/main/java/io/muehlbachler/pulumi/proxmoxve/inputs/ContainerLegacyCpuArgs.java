@@ -33,14 +33,22 @@ public final class ContainerLegacyCpuArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The number of CPU cores (defaults to `1`).
+     * The number of CPU cores (between `1` and `8192`). When unset,
+     * a new container has no `cores` setting and can use all host cores, and a clone
+     * keeps the value of its source. Removing the attribute keeps the current value, set
+     * `0` to remove the setting from the container. Removing the whole `cpu` block also
+     * removes the setting, unless it is `1`.
      * 
      */
     @Import(name="cores")
     private @Nullable Output<Integer> cores;
 
     /**
-     * @return The number of CPU cores (defaults to `1`).
+     * @return The number of CPU cores (between `1` and `8192`). When unset,
+     * a new container has no `cores` setting and can use all host cores, and a clone
+     * keeps the value of its source. Removing the attribute keeps the current value, set
+     * `0` to remove the setting from the container. Removing the whole `cpu` block also
+     * removes the setting, unless it is `1`.
      * 
      */
     public Optional<Output<Integer>> cores() {
@@ -64,7 +72,9 @@ public final class ContainerLegacyCpuArgs extends com.pulumi.resources.ResourceA
 
     /**
      * The CPU units (between `1` and `500000`). When unset,
-     * Proxmox applies its own default.
+     * Proxmox applies its own default to a new container, and a clone keeps the value of
+     * its source. Removing the attribute keeps the current value, removing the whole
+     * `cpu` block removes the setting from the container.
      * 
      */
     @Import(name="units")
@@ -72,7 +82,9 @@ public final class ContainerLegacyCpuArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return The CPU units (between `1` and `500000`). When unset,
-     * Proxmox applies its own default.
+     * Proxmox applies its own default to a new container, and a clone keeps the value of
+     * its source. Removing the attribute keeps the current value, removing the whole
+     * `cpu` block removes the setting from the container.
      * 
      */
     public Optional<Output<Integer>> units() {
@@ -128,7 +140,11 @@ public final class ContainerLegacyCpuArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param cores The number of CPU cores (defaults to `1`).
+         * @param cores The number of CPU cores (between `1` and `8192`). When unset,
+         * a new container has no `cores` setting and can use all host cores, and a clone
+         * keeps the value of its source. Removing the attribute keeps the current value, set
+         * `0` to remove the setting from the container. Removing the whole `cpu` block also
+         * removes the setting, unless it is `1`.
          * 
          * @return builder
          * 
@@ -139,7 +155,11 @@ public final class ContainerLegacyCpuArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param cores The number of CPU cores (defaults to `1`).
+         * @param cores The number of CPU cores (between `1` and `8192`). When unset,
+         * a new container has no `cores` setting and can use all host cores, and a clone
+         * keeps the value of its source. Removing the attribute keeps the current value, set
+         * `0` to remove the setting from the container. Removing the whole `cpu` block also
+         * removes the setting, unless it is `1`.
          * 
          * @return builder
          * 
@@ -171,7 +191,9 @@ public final class ContainerLegacyCpuArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param units The CPU units (between `1` and `500000`). When unset,
-         * Proxmox applies its own default.
+         * Proxmox applies its own default to a new container, and a clone keeps the value of
+         * its source. Removing the attribute keeps the current value, removing the whole
+         * `cpu` block removes the setting from the container.
          * 
          * @return builder
          * 
@@ -183,7 +205,9 @@ public final class ContainerLegacyCpuArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param units The CPU units (between `1` and `500000`). When unset,
-         * Proxmox applies its own default.
+         * Proxmox applies its own default to a new container, and a clone keeps the value of
+         * its source. Removing the attribute keeps the current value, removing the whole
+         * `cpu` block removes the setting from the container.
          * 
          * @return builder
          * 

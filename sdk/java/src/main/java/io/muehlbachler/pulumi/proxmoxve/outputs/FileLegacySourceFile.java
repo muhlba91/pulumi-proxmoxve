@@ -27,6 +27,7 @@ public final class FileLegacySourceFile {
      * @return The file name to use instead of the source file
      * name. Useful when the source file does not have a valid file extension,
      * for example when the source file is a URL referencing a `.qcow2` image.
+     * Must be a plain file name without path separators or whitespace.
      * 
      */
     private @Nullable String fileName;
@@ -67,6 +68,7 @@ public final class FileLegacySourceFile {
      * @return The file name to use instead of the source file
      * name. Useful when the source file does not have a valid file extension,
      * for example when the source file is a URL referencing a `.qcow2` image.
+     * Must be a plain file name without path separators or whitespace.
      * 
      */
     public Optional<String> fileName() {

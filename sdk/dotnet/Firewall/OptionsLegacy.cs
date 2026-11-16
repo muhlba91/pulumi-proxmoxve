@@ -25,7 +25,7 @@ namespace Pulumi.ProxmoxVE.Firewall
     ///     var example = new ProxmoxVE.Firewall.OptionsLegacy("example", new()
     ///     {
     ///         NodeName = exampleProxmoxVirtualEnvironmentVm.NodeName,
-    ///         VmId = int.Parse(exampleProxmoxVirtualEnvironmentVm.VmId, System.Globalization.CultureInfo.InvariantCulture),
+    ///         VmId = exampleProxmoxVirtualEnvironmentVm.VmId,
     ///         Dhcp = true,
     ///         Enabled = false,
     ///         Ipfilter = true,

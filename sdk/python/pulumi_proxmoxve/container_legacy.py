@@ -35,6 +35,7 @@ class ContainerLegacyArgs:
                  idmaps: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerLegacyIdmapArgs']]]] = None,
                  initialization: pulumi.Input[Optional['ContainerLegacyInitializationArgs']] = None,
                  memory: pulumi.Input[Optional['ContainerLegacyMemoryArgs']] = None,
+                 migrate: pulumi.Input[Optional[_builtins.bool]] = None,
                  mount_points: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerLegacyMountPointArgs']]]] = None,
                  network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerLegacyNetworkInterfaceArgs']]]] = None,
                  operating_system: pulumi.Input[Optional['ContainerLegacyOperatingSystemArgs']] = None,
@@ -49,6 +50,7 @@ class ContainerLegacyArgs:
                  timeout_clone: pulumi.Input[Optional[_builtins.int]] = None,
                  timeout_create: pulumi.Input[Optional[_builtins.int]] = None,
                  timeout_delete: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeout_migrate: pulumi.Input[Optional[_builtins.int]] = None,
                  timeout_start: pulumi.Input[Optional[_builtins.int]] = None,
                  timeout_update: pulumi.Input[Optional[_builtins.int]] = None,
                  unprivileged: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -81,9 +83,21 @@ class ContainerLegacyArgs:
                `lxc[n]` parameters.
         :param pulumi.Input['ContainerLegacyInitializationArgs'] initialization: The initialization configuration.
         :param pulumi.Input['ContainerLegacyMemoryArgs'] memory: The memory configuration.
+        :param pulumi.Input[_builtins.bool] migrate: Migrate the container on node change instead of
+               re-creating it (defaults to `false`).
         :param pulumi.Input[Sequence[pulumi.Input['ContainerLegacyMountPointArgs']]] mount_points: An additional volume mount or host bind mount
                (multiple blocks supported). Use this for data volumes, shared
                directories, or attaching pre-existing PVE volumes.
+               
+               > Mount points are positional: the first block is `mp0` in Proxmox VE, the
+               second `mp1`, and so on. Appending a block, removing the last block, or
+               reconfiguring an existing one is applied in place, and a running container
+               is restarted. Removing or inserting a block before existing ones recreates
+               the container, as does changing the `size` of an existing mount point or
+               pointing its `volume` at a different datastore or host path. Changing
+               `volume` from one volume ID to another on the same datastore is not
+               detected. A removed volume mount stays on the datastore as an unused
+               volume; bind and device mounts are just dropped.
         :param pulumi.Input[Sequence[pulumi.Input['ContainerLegacyNetworkInterfaceArgs']]] network_interfaces: A network interface (multiple blocks
                supported).
         :param pulumi.Input['ContainerLegacyOperatingSystemArgs'] operating_system: The Operating System configuration.
@@ -106,6 +120,8 @@ class ContainerLegacyArgs:
         :param pulumi.Input[_builtins.int] timeout_clone: Timeout for cloning a container in seconds (defaults to 1800).
         :param pulumi.Input[_builtins.int] timeout_create: Timeout for creating a container in seconds (defaults to 1800).
         :param pulumi.Input[_builtins.int] timeout_delete: Timeout for deleting a container in seconds (defaults to 60).
+        :param pulumi.Input[_builtins.int] timeout_migrate: Timeout for migrating the container to another node, in seconds (defaults to
+               1800).
         :param pulumi.Input[_builtins.int] timeout_start: Start container timeout
         :param pulumi.Input[_builtins.int] timeout_update: Timeout for updating a container in seconds (defaults to 1800).
         :param pulumi.Input[_builtins.bool] unprivileged: Whether the container runs as unprivileged on the host (defaults to `false`).
@@ -139,6 +155,8 @@ class ContainerLegacyArgs:
             pulumi.set(__self__, "initialization", initialization)
         if memory is not None:
             pulumi.set(__self__, "memory", memory)
+        if migrate is not None:
+            pulumi.set(__self__, "migrate", migrate)
         if mount_points is not None:
             pulumi.set(__self__, "mount_points", mount_points)
         if network_interfaces is not None:
@@ -167,6 +185,8 @@ class ContainerLegacyArgs:
             pulumi.set(__self__, "timeout_create", timeout_create)
         if timeout_delete is not None:
             pulumi.set(__self__, "timeout_delete", timeout_delete)
+        if timeout_migrate is not None:
+            pulumi.set(__self__, "timeout_migrate", timeout_migrate)
         if timeout_start is not None:
             warnings.warn("""This field is deprecated and will be removed in a future release. An overall operation timeout (`timeout_create` / `timeout_clone`) is used instead.""", DeprecationWarning)
             pulumi.log.warn("""timeout_start is deprecated: This field is deprecated and will be removed in a future release. An overall operation timeout (`timeout_create` / `timeout_clone`) is used instead.""")
@@ -360,12 +380,35 @@ class ContainerLegacyArgs:
         pulumi.set(self, "memory", value)
 
     @_builtins.property
+    @pulumi.getter
+    def migrate(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Migrate the container on node change instead of
+        re-creating it (defaults to `false`).
+        """
+        return pulumi.get(self, "migrate")
+
+    @migrate.setter
+    def migrate(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "migrate", value)
+
+    @_builtins.property
     @pulumi.getter(name="mountPoints")
     def mount_points(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContainerLegacyMountPointArgs']]]]:
         """
         An additional volume mount or host bind mount
         (multiple blocks supported). Use this for data volumes, shared
         directories, or attaching pre-existing PVE volumes.
+
+        > Mount points are positional: the first block is `mp0` in Proxmox VE, the
+        second `mp1`, and so on. Appending a block, removing the last block, or
+        reconfiguring an existing one is applied in place, and a running container
+        is restarted. Removing or inserting a block before existing ones recreates
+        the container, as does changing the `size` of an existing mount point or
+        pointing its `volume` at a different datastore or host path. Changing
+        `volume` from one volume ID to another on the same datastore is not
+        detected. A removed volume mount stays on the datastore as an unused
+        volume; bind and device mounts are just dropped.
         """
         return pulumi.get(self, "mount_points")
 
@@ -539,6 +582,19 @@ class ContainerLegacyArgs:
         pulumi.set(self, "timeout_delete", value)
 
     @_builtins.property
+    @pulumi.getter(name="timeoutMigrate")
+    def timeout_migrate(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Timeout for migrating the container to another node, in seconds (defaults to
+        1800).
+        """
+        return pulumi.get(self, "timeout_migrate")
+
+    @timeout_migrate.setter
+    def timeout_migrate(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "timeout_migrate", value)
+
+    @_builtins.property
     @pulumi.getter(name="timeoutStart")
     @_utilities.deprecated("""This field is deprecated and will be removed in a future release. An overall operation timeout (`timeout_create` / `timeout_clone`) is used instead.""")
     def timeout_start(self) -> pulumi.Input[Optional[_builtins.int]]:
@@ -618,6 +674,7 @@ class _ContainerLegacyState:
                  ipv4: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  ipv6: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  memory: pulumi.Input[Optional['ContainerLegacyMemoryArgs']] = None,
+                 migrate: pulumi.Input[Optional[_builtins.bool]] = None,
                  mount_points: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerLegacyMountPointArgs']]]] = None,
                  network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerLegacyNetworkInterfaceArgs']]]] = None,
                  node_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -633,6 +690,7 @@ class _ContainerLegacyState:
                  timeout_clone: pulumi.Input[Optional[_builtins.int]] = None,
                  timeout_create: pulumi.Input[Optional[_builtins.int]] = None,
                  timeout_delete: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeout_migrate: pulumi.Input[Optional[_builtins.int]] = None,
                  timeout_start: pulumi.Input[Optional[_builtins.int]] = None,
                  timeout_update: pulumi.Input[Optional[_builtins.int]] = None,
                  unprivileged: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -666,9 +724,21 @@ class _ContainerLegacyState:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] ipv4: The map of IPv4 addresses per network devices. Returns the first address for each network device, if multiple addresses are assigned.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] ipv6: The map of IPv6 addresses per network device. Returns the first address for each network device, if multiple addresses are assigned.
         :param pulumi.Input['ContainerLegacyMemoryArgs'] memory: The memory configuration.
+        :param pulumi.Input[_builtins.bool] migrate: Migrate the container on node change instead of
+               re-creating it (defaults to `false`).
         :param pulumi.Input[Sequence[pulumi.Input['ContainerLegacyMountPointArgs']]] mount_points: An additional volume mount or host bind mount
                (multiple blocks supported). Use this for data volumes, shared
                directories, or attaching pre-existing PVE volumes.
+               
+               > Mount points are positional: the first block is `mp0` in Proxmox VE, the
+               second `mp1`, and so on. Appending a block, removing the last block, or
+               reconfiguring an existing one is applied in place, and a running container
+               is restarted. Removing or inserting a block before existing ones recreates
+               the container, as does changing the `size` of an existing mount point or
+               pointing its `volume` at a different datastore or host path. Changing
+               `volume` from one volume ID to another on the same datastore is not
+               detected. A removed volume mount stays on the datastore as an unused
+               volume; bind and device mounts are just dropped.
         :param pulumi.Input[Sequence[pulumi.Input['ContainerLegacyNetworkInterfaceArgs']]] network_interfaces: A network interface (multiple blocks
                supported).
         :param pulumi.Input[_builtins.str] node_name: The name of the node to assign the container to.
@@ -692,6 +762,8 @@ class _ContainerLegacyState:
         :param pulumi.Input[_builtins.int] timeout_clone: Timeout for cloning a container in seconds (defaults to 1800).
         :param pulumi.Input[_builtins.int] timeout_create: Timeout for creating a container in seconds (defaults to 1800).
         :param pulumi.Input[_builtins.int] timeout_delete: Timeout for deleting a container in seconds (defaults to 60).
+        :param pulumi.Input[_builtins.int] timeout_migrate: Timeout for migrating the container to another node, in seconds (defaults to
+               1800).
         :param pulumi.Input[_builtins.int] timeout_start: Start container timeout
         :param pulumi.Input[_builtins.int] timeout_update: Timeout for updating a container in seconds (defaults to 1800).
         :param pulumi.Input[_builtins.bool] unprivileged: Whether the container runs as unprivileged on the host (defaults to `false`).
@@ -728,6 +800,8 @@ class _ContainerLegacyState:
             pulumi.set(__self__, "ipv6", ipv6)
         if memory is not None:
             pulumi.set(__self__, "memory", memory)
+        if migrate is not None:
+            pulumi.set(__self__, "migrate", migrate)
         if mount_points is not None:
             pulumi.set(__self__, "mount_points", mount_points)
         if network_interfaces is not None:
@@ -758,6 +832,8 @@ class _ContainerLegacyState:
             pulumi.set(__self__, "timeout_create", timeout_create)
         if timeout_delete is not None:
             pulumi.set(__self__, "timeout_delete", timeout_delete)
+        if timeout_migrate is not None:
+            pulumi.set(__self__, "timeout_migrate", timeout_migrate)
         if timeout_start is not None:
             warnings.warn("""This field is deprecated and will be removed in a future release. An overall operation timeout (`timeout_create` / `timeout_clone`) is used instead.""", DeprecationWarning)
             pulumi.log.warn("""timeout_start is deprecated: This field is deprecated and will be removed in a future release. An overall operation timeout (`timeout_create` / `timeout_clone`) is used instead.""")
@@ -963,12 +1039,35 @@ class _ContainerLegacyState:
         pulumi.set(self, "memory", value)
 
     @_builtins.property
+    @pulumi.getter
+    def migrate(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Migrate the container on node change instead of
+        re-creating it (defaults to `false`).
+        """
+        return pulumi.get(self, "migrate")
+
+    @migrate.setter
+    def migrate(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "migrate", value)
+
+    @_builtins.property
     @pulumi.getter(name="mountPoints")
     def mount_points(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContainerLegacyMountPointArgs']]]]:
         """
         An additional volume mount or host bind mount
         (multiple blocks supported). Use this for data volumes, shared
         directories, or attaching pre-existing PVE volumes.
+
+        > Mount points are positional: the first block is `mp0` in Proxmox VE, the
+        second `mp1`, and so on. Appending a block, removing the last block, or
+        reconfiguring an existing one is applied in place, and a running container
+        is restarted. Removing or inserting a block before existing ones recreates
+        the container, as does changing the `size` of an existing mount point or
+        pointing its `volume` at a different datastore or host path. Changing
+        `volume` from one volume ID to another on the same datastore is not
+        detected. A removed volume mount stays on the datastore as an unused
+        volume; bind and device mounts are just dropped.
         """
         return pulumi.get(self, "mount_points")
 
@@ -1154,6 +1253,19 @@ class _ContainerLegacyState:
         pulumi.set(self, "timeout_delete", value)
 
     @_builtins.property
+    @pulumi.getter(name="timeoutMigrate")
+    def timeout_migrate(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Timeout for migrating the container to another node, in seconds (defaults to
+        1800).
+        """
+        return pulumi.get(self, "timeout_migrate")
+
+    @timeout_migrate.setter
+    def timeout_migrate(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "timeout_migrate", value)
+
+    @_builtins.property
     @pulumi.getter(name="timeoutStart")
     @_utilities.deprecated("""This field is deprecated and will be removed in a future release. An overall operation timeout (`timeout_create` / `timeout_clone`) is used instead.""")
     def timeout_start(self) -> pulumi.Input[Optional[_builtins.int]]:
@@ -1234,6 +1346,7 @@ class ContainerLegacy(pulumi.CustomResource):
                  idmaps: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerLegacyIdmapArgs', 'ContainerLegacyIdmapArgsDict', 'outputs.ContainerLegacyIdmap']]]]] = None,
                  initialization: pulumi.Input[Optional[Union['ContainerLegacyInitializationArgs', 'ContainerLegacyInitializationArgsDict', 'outputs.ContainerLegacyInitialization']]] = None,
                  memory: pulumi.Input[Optional[Union['ContainerLegacyMemoryArgs', 'ContainerLegacyMemoryArgsDict', 'outputs.ContainerLegacyMemory']]] = None,
+                 migrate: pulumi.Input[Optional[_builtins.bool]] = None,
                  mount_points: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerLegacyMountPointArgs', 'ContainerLegacyMountPointArgsDict', 'outputs.ContainerLegacyMountPoint']]]]] = None,
                  network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerLegacyNetworkInterfaceArgs', 'ContainerLegacyNetworkInterfaceArgsDict', 'outputs.ContainerLegacyNetworkInterface']]]]] = None,
                  node_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1249,6 +1362,7 @@ class ContainerLegacy(pulumi.CustomResource):
                  timeout_clone: pulumi.Input[Optional[_builtins.int]] = None,
                  timeout_create: pulumi.Input[Optional[_builtins.int]] = None,
                  timeout_delete: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeout_migrate: pulumi.Input[Optional[_builtins.int]] = None,
                  timeout_start: pulumi.Input[Optional[_builtins.int]] = None,
                  timeout_update: pulumi.Input[Optional[_builtins.int]] = None,
                  unprivileged: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1391,6 +1505,56 @@ class ContainerLegacy(pulumi.CustomResource):
         | Storage ID + volume name   | Mount an existing volume by its full PVE volume ID       | `local-lvm:subvol-108-disk-101`    |
         | Absolute host path         | Bind-mount a host directory (requires `root@pam` auth)   | `/mnt/bindmounts/shared`           |
 
+        ## Container migration
+
+        Setting `migrate = true` makes a change to `node_name` migrate the container instead of destroying and
+        recreating it.
+
+        > **Important:** containers cannot be migrated live. Unlike virtual machines, a running container is
+        migrated by shutting it down, moving it, and starting it again on the target node, so every migration of
+        a running container incurs downtime. Set `timeout_migrate` high enough to cover the shutdown grace
+        period, the volume copy and the boot.
+
+        A stopped container is migrated offline and is not started as a side effect. If `started = true`, it is
+        started on the target node afterwards as usual.
+
+        If the same apply also makes any other configuration change — including ones that would not need a
+        restart on their own, such as `tags` or `description` — or changes `idmap`, or sets `started` to `false`,
+        the provider shuts the container down, migrates it offline, applies the change on the target node, and then
+        starts it (or leaves it stopped). This avoids starting the container with stale configuration and
+        restarting it twice.
+
+        The `timeout_update` clock restarts once the container has arrived on the target node, so a long volume
+        copy cannot eat into the time available for the configuration write, start or reboot that follows it.
+
+        Containers managed by Proxmox HA are set to the HA state `ignored` for the duration of the migration, so
+        that HA does not intercept the shutdown, migration and start or relocate the container afterwards. Once the
+        container is in its final run state on the target node, its original HA state is restored; if the apply
+        changes `started`, a `started`, `stopped` or `disabled` HA state is restored to match it instead.
+
+        Every migration needs `VM.Migrate` on the container and `Sys.Audit` on `/`, which the provider uses to check
+        whether the container is HA-managed. Migrating an HA-managed container also needs `Sys.Console` on `/` to
+        change its HA state.
+
+        ### Bind mounts
+
+        A `mount_point` that references a host path rather than a storage volume blocks migration unless the
+        mount point has `shared = true`. This asserts that the same path exists on all nodes in the cluster.
+
+        > **Note:** `shared` and `node_name` cannot be changed in the same apply. Proxmox validates the mount
+        point against the container's current configuration when the migration starts, and the provider writes
+        configuration changes to the target node after the move, so the migration is refused before the new
+        `shared = true` takes effect. Apply `shared = true` first, then change `node_name`.
+
+        > **Warning:** if the asserted path does not exist on the target node, the configuration and volumes
+        still move, but starting the container there fails. The container is left stopped on the target node and
+        its configuration on the source node is gone — there is no automatic fail-back. Create the missing path
+        on the target node, then start the container to recover.
+
+        Migration behavior for `device_passthrough` devices has not been verified. A device passed through to a
+        container is node-local, so the same device should be expected to need to exist on the target node, but
+        this has not been tested — do not assume it behaves like a `shared` bind mount.
+
         ## Import
 
         Instances can be imported using the `node_name` and the `vm_id`, e.g.,
@@ -1425,9 +1589,21 @@ class ContainerLegacy(pulumi.CustomResource):
                `lxc[n]` parameters.
         :param pulumi.Input[Union['ContainerLegacyInitializationArgs', 'ContainerLegacyInitializationArgsDict', 'outputs.ContainerLegacyInitialization']] initialization: The initialization configuration.
         :param pulumi.Input[Union['ContainerLegacyMemoryArgs', 'ContainerLegacyMemoryArgsDict', 'outputs.ContainerLegacyMemory']] memory: The memory configuration.
+        :param pulumi.Input[_builtins.bool] migrate: Migrate the container on node change instead of
+               re-creating it (defaults to `false`).
         :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerLegacyMountPointArgs', 'ContainerLegacyMountPointArgsDict', 'outputs.ContainerLegacyMountPoint']]]] mount_points: An additional volume mount or host bind mount
                (multiple blocks supported). Use this for data volumes, shared
                directories, or attaching pre-existing PVE volumes.
+               
+               > Mount points are positional: the first block is `mp0` in Proxmox VE, the
+               second `mp1`, and so on. Appending a block, removing the last block, or
+               reconfiguring an existing one is applied in place, and a running container
+               is restarted. Removing or inserting a block before existing ones recreates
+               the container, as does changing the `size` of an existing mount point or
+               pointing its `volume` at a different datastore or host path. Changing
+               `volume` from one volume ID to another on the same datastore is not
+               detected. A removed volume mount stays on the datastore as an unused
+               volume; bind and device mounts are just dropped.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerLegacyNetworkInterfaceArgs', 'ContainerLegacyNetworkInterfaceArgsDict', 'outputs.ContainerLegacyNetworkInterface']]]] network_interfaces: A network interface (multiple blocks
                supported).
         :param pulumi.Input[_builtins.str] node_name: The name of the node to assign the container to.
@@ -1451,6 +1627,8 @@ class ContainerLegacy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] timeout_clone: Timeout for cloning a container in seconds (defaults to 1800).
         :param pulumi.Input[_builtins.int] timeout_create: Timeout for creating a container in seconds (defaults to 1800).
         :param pulumi.Input[_builtins.int] timeout_delete: Timeout for deleting a container in seconds (defaults to 60).
+        :param pulumi.Input[_builtins.int] timeout_migrate: Timeout for migrating the container to another node, in seconds (defaults to
+               1800).
         :param pulumi.Input[_builtins.int] timeout_start: Start container timeout
         :param pulumi.Input[_builtins.int] timeout_update: Timeout for updating a container in seconds (defaults to 1800).
         :param pulumi.Input[_builtins.bool] unprivileged: Whether the container runs as unprivileged on the host (defaults to `false`).
@@ -1599,6 +1777,56 @@ class ContainerLegacy(pulumi.CustomResource):
         | Storage ID + volume name   | Mount an existing volume by its full PVE volume ID       | `local-lvm:subvol-108-disk-101`    |
         | Absolute host path         | Bind-mount a host directory (requires `root@pam` auth)   | `/mnt/bindmounts/shared`           |
 
+        ## Container migration
+
+        Setting `migrate = true` makes a change to `node_name` migrate the container instead of destroying and
+        recreating it.
+
+        > **Important:** containers cannot be migrated live. Unlike virtual machines, a running container is
+        migrated by shutting it down, moving it, and starting it again on the target node, so every migration of
+        a running container incurs downtime. Set `timeout_migrate` high enough to cover the shutdown grace
+        period, the volume copy and the boot.
+
+        A stopped container is migrated offline and is not started as a side effect. If `started = true`, it is
+        started on the target node afterwards as usual.
+
+        If the same apply also makes any other configuration change — including ones that would not need a
+        restart on their own, such as `tags` or `description` — or changes `idmap`, or sets `started` to `false`,
+        the provider shuts the container down, migrates it offline, applies the change on the target node, and then
+        starts it (or leaves it stopped). This avoids starting the container with stale configuration and
+        restarting it twice.
+
+        The `timeout_update` clock restarts once the container has arrived on the target node, so a long volume
+        copy cannot eat into the time available for the configuration write, start or reboot that follows it.
+
+        Containers managed by Proxmox HA are set to the HA state `ignored` for the duration of the migration, so
+        that HA does not intercept the shutdown, migration and start or relocate the container afterwards. Once the
+        container is in its final run state on the target node, its original HA state is restored; if the apply
+        changes `started`, a `started`, `stopped` or `disabled` HA state is restored to match it instead.
+
+        Every migration needs `VM.Migrate` on the container and `Sys.Audit` on `/`, which the provider uses to check
+        whether the container is HA-managed. Migrating an HA-managed container also needs `Sys.Console` on `/` to
+        change its HA state.
+
+        ### Bind mounts
+
+        A `mount_point` that references a host path rather than a storage volume blocks migration unless the
+        mount point has `shared = true`. This asserts that the same path exists on all nodes in the cluster.
+
+        > **Note:** `shared` and `node_name` cannot be changed in the same apply. Proxmox validates the mount
+        point against the container's current configuration when the migration starts, and the provider writes
+        configuration changes to the target node after the move, so the migration is refused before the new
+        `shared = true` takes effect. Apply `shared = true` first, then change `node_name`.
+
+        > **Warning:** if the asserted path does not exist on the target node, the configuration and volumes
+        still move, but starting the container there fails. The container is left stopped on the target node and
+        its configuration on the source node is gone — there is no automatic fail-back. Create the missing path
+        on the target node, then start the container to recover.
+
+        Migration behavior for `device_passthrough` devices has not been verified. A device passed through to a
+        container is node-local, so the same device should be expected to need to exist on the target node, but
+        this has not been tested — do not assume it behaves like a `shared` bind mount.
+
         ## Import
 
         Instances can be imported using the `node_name` and the `vm_id`, e.g.,
@@ -1636,6 +1864,7 @@ class ContainerLegacy(pulumi.CustomResource):
                  idmaps: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerLegacyIdmapArgs', 'ContainerLegacyIdmapArgsDict', 'outputs.ContainerLegacyIdmap']]]]] = None,
                  initialization: pulumi.Input[Optional[Union['ContainerLegacyInitializationArgs', 'ContainerLegacyInitializationArgsDict', 'outputs.ContainerLegacyInitialization']]] = None,
                  memory: pulumi.Input[Optional[Union['ContainerLegacyMemoryArgs', 'ContainerLegacyMemoryArgsDict', 'outputs.ContainerLegacyMemory']]] = None,
+                 migrate: pulumi.Input[Optional[_builtins.bool]] = None,
                  mount_points: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerLegacyMountPointArgs', 'ContainerLegacyMountPointArgsDict', 'outputs.ContainerLegacyMountPoint']]]]] = None,
                  network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerLegacyNetworkInterfaceArgs', 'ContainerLegacyNetworkInterfaceArgsDict', 'outputs.ContainerLegacyNetworkInterface']]]]] = None,
                  node_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1651,6 +1880,7 @@ class ContainerLegacy(pulumi.CustomResource):
                  timeout_clone: pulumi.Input[Optional[_builtins.int]] = None,
                  timeout_create: pulumi.Input[Optional[_builtins.int]] = None,
                  timeout_delete: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeout_migrate: pulumi.Input[Optional[_builtins.int]] = None,
                  timeout_start: pulumi.Input[Optional[_builtins.int]] = None,
                  timeout_update: pulumi.Input[Optional[_builtins.int]] = None,
                  unprivileged: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1678,6 +1908,7 @@ class ContainerLegacy(pulumi.CustomResource):
             __props__.__dict__["idmaps"] = idmaps
             __props__.__dict__["initialization"] = initialization
             __props__.__dict__["memory"] = memory
+            __props__.__dict__["migrate"] = migrate
             __props__.__dict__["mount_points"] = mount_points
             __props__.__dict__["network_interfaces"] = network_interfaces
             if node_name is None and not opts.urn:
@@ -1695,6 +1926,7 @@ class ContainerLegacy(pulumi.CustomResource):
             __props__.__dict__["timeout_clone"] = timeout_clone
             __props__.__dict__["timeout_create"] = timeout_create
             __props__.__dict__["timeout_delete"] = timeout_delete
+            __props__.__dict__["timeout_migrate"] = timeout_migrate
             __props__.__dict__["timeout_start"] = timeout_start
             __props__.__dict__["timeout_update"] = timeout_update
             __props__.__dict__["unprivileged"] = unprivileged
@@ -1727,6 +1959,7 @@ class ContainerLegacy(pulumi.CustomResource):
             ipv4: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             ipv6: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             memory: pulumi.Input[Optional[Union['ContainerLegacyMemoryArgs', 'ContainerLegacyMemoryArgsDict', 'outputs.ContainerLegacyMemory']]] = None,
+            migrate: pulumi.Input[Optional[_builtins.bool]] = None,
             mount_points: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerLegacyMountPointArgs', 'ContainerLegacyMountPointArgsDict', 'outputs.ContainerLegacyMountPoint']]]]] = None,
             network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerLegacyNetworkInterfaceArgs', 'ContainerLegacyNetworkInterfaceArgsDict', 'outputs.ContainerLegacyNetworkInterface']]]]] = None,
             node_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1742,6 +1975,7 @@ class ContainerLegacy(pulumi.CustomResource):
             timeout_clone: pulumi.Input[Optional[_builtins.int]] = None,
             timeout_create: pulumi.Input[Optional[_builtins.int]] = None,
             timeout_delete: pulumi.Input[Optional[_builtins.int]] = None,
+            timeout_migrate: pulumi.Input[Optional[_builtins.int]] = None,
             timeout_start: pulumi.Input[Optional[_builtins.int]] = None,
             timeout_update: pulumi.Input[Optional[_builtins.int]] = None,
             unprivileged: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1779,9 +2013,21 @@ class ContainerLegacy(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] ipv4: The map of IPv4 addresses per network devices. Returns the first address for each network device, if multiple addresses are assigned.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] ipv6: The map of IPv6 addresses per network device. Returns the first address for each network device, if multiple addresses are assigned.
         :param pulumi.Input[Union['ContainerLegacyMemoryArgs', 'ContainerLegacyMemoryArgsDict', 'outputs.ContainerLegacyMemory']] memory: The memory configuration.
+        :param pulumi.Input[_builtins.bool] migrate: Migrate the container on node change instead of
+               re-creating it (defaults to `false`).
         :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerLegacyMountPointArgs', 'ContainerLegacyMountPointArgsDict', 'outputs.ContainerLegacyMountPoint']]]] mount_points: An additional volume mount or host bind mount
                (multiple blocks supported). Use this for data volumes, shared
                directories, or attaching pre-existing PVE volumes.
+               
+               > Mount points are positional: the first block is `mp0` in Proxmox VE, the
+               second `mp1`, and so on. Appending a block, removing the last block, or
+               reconfiguring an existing one is applied in place, and a running container
+               is restarted. Removing or inserting a block before existing ones recreates
+               the container, as does changing the `size` of an existing mount point or
+               pointing its `volume` at a different datastore or host path. Changing
+               `volume` from one volume ID to another on the same datastore is not
+               detected. A removed volume mount stays on the datastore as an unused
+               volume; bind and device mounts are just dropped.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerLegacyNetworkInterfaceArgs', 'ContainerLegacyNetworkInterfaceArgsDict', 'outputs.ContainerLegacyNetworkInterface']]]] network_interfaces: A network interface (multiple blocks
                supported).
         :param pulumi.Input[_builtins.str] node_name: The name of the node to assign the container to.
@@ -1805,6 +2051,8 @@ class ContainerLegacy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] timeout_clone: Timeout for cloning a container in seconds (defaults to 1800).
         :param pulumi.Input[_builtins.int] timeout_create: Timeout for creating a container in seconds (defaults to 1800).
         :param pulumi.Input[_builtins.int] timeout_delete: Timeout for deleting a container in seconds (defaults to 60).
+        :param pulumi.Input[_builtins.int] timeout_migrate: Timeout for migrating the container to another node, in seconds (defaults to
+               1800).
         :param pulumi.Input[_builtins.int] timeout_start: Start container timeout
         :param pulumi.Input[_builtins.int] timeout_update: Timeout for updating a container in seconds (defaults to 1800).
         :param pulumi.Input[_builtins.bool] unprivileged: Whether the container runs as unprivileged on the host (defaults to `false`).
@@ -1830,6 +2078,7 @@ class ContainerLegacy(pulumi.CustomResource):
         __props__.__dict__["ipv4"] = ipv4
         __props__.__dict__["ipv6"] = ipv6
         __props__.__dict__["memory"] = memory
+        __props__.__dict__["migrate"] = migrate
         __props__.__dict__["mount_points"] = mount_points
         __props__.__dict__["network_interfaces"] = network_interfaces
         __props__.__dict__["node_name"] = node_name
@@ -1845,12 +2094,93 @@ class ContainerLegacy(pulumi.CustomResource):
         __props__.__dict__["timeout_clone"] = timeout_clone
         __props__.__dict__["timeout_create"] = timeout_create
         __props__.__dict__["timeout_delete"] = timeout_delete
+        __props__.__dict__["timeout_migrate"] = timeout_migrate
         __props__.__dict__["timeout_start"] = timeout_start
         __props__.__dict__["timeout_update"] = timeout_update
         __props__.__dict__["unprivileged"] = unprivileged
         __props__.__dict__["vm_id"] = vm_id
         __props__.__dict__["wait_for_ip"] = wait_for_ip
         return ContainerLegacy(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            clone: pulumi.Input[Optional[Union['ContainerLegacyCloneArgs', 'ContainerLegacyCloneArgsDict', 'outputs.ContainerLegacyClone']]] = None,
+            console: pulumi.Input[Optional[Union['ContainerLegacyConsoleArgs', 'ContainerLegacyConsoleArgsDict', 'outputs.ContainerLegacyConsole']]] = None,
+            cpu: pulumi.Input[Optional[Union['ContainerLegacyCpuArgs', 'ContainerLegacyCpuArgsDict', 'outputs.ContainerLegacyCpu']]] = None,
+            delete_unreferenced_disks_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            device_passthroughs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerLegacyDevicePassthroughArgs', 'ContainerLegacyDevicePassthroughArgsDict', 'outputs.ContainerLegacyDevicePassthrough']]]]] = None,
+            disk: pulumi.Input[Optional[Union['ContainerLegacyDiskArgs', 'ContainerLegacyDiskArgsDict', 'outputs.ContainerLegacyDisk']]] = None,
+            environment_variables: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            features: pulumi.Input[Optional[Union['ContainerLegacyFeaturesArgs', 'ContainerLegacyFeaturesArgsDict', 'outputs.ContainerLegacyFeatures']]] = None,
+            hook_script_file_id: pulumi.Input[Optional[_builtins.str]] = None,
+            idmaps: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerLegacyIdmapArgs', 'ContainerLegacyIdmapArgsDict', 'outputs.ContainerLegacyIdmap']]]]] = None,
+            initialization: pulumi.Input[Optional[Union['ContainerLegacyInitializationArgs', 'ContainerLegacyInitializationArgsDict', 'outputs.ContainerLegacyInitialization']]] = None,
+            ipv4: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            ipv6: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            memory: pulumi.Input[Optional[Union['ContainerLegacyMemoryArgs', 'ContainerLegacyMemoryArgsDict', 'outputs.ContainerLegacyMemory']]] = None,
+            migrate: pulumi.Input[Optional[_builtins.bool]] = None,
+            mount_points: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerLegacyMountPointArgs', 'ContainerLegacyMountPointArgsDict', 'outputs.ContainerLegacyMountPoint']]]]] = None,
+            network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerLegacyNetworkInterfaceArgs', 'ContainerLegacyNetworkInterfaceArgsDict', 'outputs.ContainerLegacyNetworkInterface']]]]] = None,
+            node_name: pulumi.Input[Optional[_builtins.str]] = None,
+            operating_system: pulumi.Input[Optional[Union['ContainerLegacyOperatingSystemArgs', 'ContainerLegacyOperatingSystemArgsDict', 'outputs.ContainerLegacyOperatingSystem']]] = None,
+            pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            purge_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            start_on_boot: pulumi.Input[Optional[_builtins.bool]] = None,
+            started: pulumi.Input[Optional[_builtins.bool]] = None,
+            startup: pulumi.Input[Optional[Union['ContainerLegacyStartupArgs', 'ContainerLegacyStartupArgsDict', 'outputs.ContainerLegacyStartup']]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            template: pulumi.Input[Optional[_builtins.bool]] = None,
+            timeout_clone: pulumi.Input[Optional[_builtins.int]] = None,
+            timeout_create: pulumi.Input[Optional[_builtins.int]] = None,
+            timeout_delete: pulumi.Input[Optional[_builtins.int]] = None,
+            timeout_migrate: pulumi.Input[Optional[_builtins.int]] = None,
+            timeout_start: pulumi.Input[Optional[_builtins.int]] = None,
+            timeout_update: pulumi.Input[Optional[_builtins.int]] = None,
+            unprivileged: pulumi.Input[Optional[_builtins.bool]] = None,
+            vm_id: pulumi.Input[Optional[_builtins.int]] = None,
+            wait_for_ip: pulumi.Input[Optional[Union['ContainerLegacyWaitForIpArgs', 'ContainerLegacyWaitForIpArgsDict', 'outputs.ContainerLegacyWaitForIp']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["clone"] = clone
+        __props__["console"] = console
+        __props__["cpu"] = cpu
+        __props__["deleteUnreferencedDisksOnDestroy"] = delete_unreferenced_disks_on_destroy
+        __props__["description"] = description
+        __props__["devicePassthroughs"] = device_passthroughs
+        __props__["disk"] = disk
+        __props__["environmentVariables"] = environment_variables
+        __props__["features"] = features
+        __props__["hookScriptFileId"] = hook_script_file_id
+        __props__["idmaps"] = idmaps
+        __props__["initialization"] = initialization
+        __props__["ipv4"] = ipv4
+        __props__["ipv6"] = ipv6
+        __props__["memory"] = memory
+        __props__["migrate"] = migrate
+        __props__["mountPoints"] = mount_points
+        __props__["networkInterfaces"] = network_interfaces
+        __props__["nodeName"] = node_name
+        __props__["operatingSystem"] = operating_system
+        __props__["poolId"] = pool_id
+        __props__["protection"] = protection
+        __props__["purgeOnDestroy"] = purge_on_destroy
+        __props__["startOnBoot"] = start_on_boot
+        __props__["started"] = started
+        __props__["startup"] = startup
+        __props__["tags"] = tags
+        __props__["template"] = template
+        __props__["timeoutClone"] = timeout_clone
+        __props__["timeoutCreate"] = timeout_create
+        __props__["timeoutDelete"] = timeout_delete
+        __props__["timeoutMigrate"] = timeout_migrate
+        __props__["timeoutStart"] = timeout_start
+        __props__["timeoutUpdate"] = timeout_update
+        __props__["unprivileged"] = unprivileged
+        __props__["vmId"] = vm_id
+        __props__["waitForIp"] = wait_for_ip
+        return pulumi.runtime.exists_resource(None, 'proxmoxve:index/containerLegacy:ContainerLegacy', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter
@@ -1983,12 +2313,31 @@ class ContainerLegacy(pulumi.CustomResource):
         return pulumi.get(self, "memory")
 
     @_builtins.property
+    @pulumi.getter
+    def migrate(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Migrate the container on node change instead of
+        re-creating it (defaults to `false`).
+        """
+        return pulumi.get(self, "migrate")
+
+    @_builtins.property
     @pulumi.getter(name="mountPoints")
     def mount_points(self) -> pulumi.Output[Optional[Sequence['outputs.ContainerLegacyMountPoint']]]:
         """
         An additional volume mount or host bind mount
         (multiple blocks supported). Use this for data volumes, shared
         directories, or attaching pre-existing PVE volumes.
+
+        > Mount points are positional: the first block is `mp0` in Proxmox VE, the
+        second `mp1`, and so on. Appending a block, removing the last block, or
+        reconfiguring an existing one is applied in place, and a running container
+        is restarted. Removing or inserting a block before existing ones recreates
+        the container, as does changing the `size` of an existing mount point or
+        pointing its `volume` at a different datastore or host path. Changing
+        `volume` from one volume ID to another on the same datastore is not
+        detected. A removed volume mount stays on the datastore as an unused
+        volume; bind and device mounts are just dropped.
         """
         return pulumi.get(self, "mount_points")
 
@@ -2112,6 +2461,15 @@ class ContainerLegacy(pulumi.CustomResource):
         Timeout for deleting a container in seconds (defaults to 60).
         """
         return pulumi.get(self, "timeout_delete")
+
+    @_builtins.property
+    @pulumi.getter(name="timeoutMigrate")
+    def timeout_migrate(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        Timeout for migrating the container to another node, in seconds (defaults to
+        1800).
+        """
+        return pulumi.get(self, "timeout_migrate")
 
     @_builtins.property
     @pulumi.getter(name="timeoutStart")

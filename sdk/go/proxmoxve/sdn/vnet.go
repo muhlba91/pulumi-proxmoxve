@@ -196,6 +196,12 @@ func (VnetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vnetState)(nil)).Elem()
 }
 
+// VnetExists checks whether an existing Vnet resource with the given ID exists.
+func VnetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VnetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:sdn/vnet:Vnet", id, state, "", opts...)
+}
+
 type vnetArgs struct {
 	// An optional alias for this VNet.
 	Alias *string `pulumi:"alias"`

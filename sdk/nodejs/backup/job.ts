@@ -45,6 +45,17 @@ export class Job extends pulumi.CustomResource {
         return new Job(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing Job resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: JobState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("proxmoxve:backup/job:Job", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'proxmoxve:backup/job:Job';
 
@@ -67,6 +78,10 @@ export class Job extends pulumi.CustomResource {
      * I/O bandwidth limit in KiB/s.
      */
     declare public readonly bwlimit: pulumi.Output<number>;
+    /**
+     * Description of the backup job, shown in the Proxmox VE web UI.
+     */
+    declare public readonly comment: pulumi.Output<string | undefined>;
     /**
      * The compression algorithm (0, 1, gzip, lzo, or zstd).
      */
@@ -119,6 +134,10 @@ export class Job extends pulumi.CustomResource {
      * Template for notes attached to the backup.
      */
     declare public readonly notesTemplate: pulumi.Output<string | undefined>;
+    /**
+     * Notification mode (`auto`, `legacy-sendmail` or `notification-system`). With `auto` (the Proxmox VE default), an email is sent if `mailto` is set, otherwise the notification system is used. `legacy-sendmail` always uses `mailto` and `mailnotification`; `notification-system` always uses the PVE notification system and ignores them.
+     */
+    declare public readonly notificationMode: pulumi.Output<string | undefined>;
     /**
      * PBS change detection mode (legacy, data, or metadata).
      */
@@ -207,6 +226,7 @@ export class Job extends pulumi.CustomResource {
             const state = argsOrState as JobState | undefined;
             resourceInputs["all"] = state?.all;
             resourceInputs["bwlimit"] = state?.bwlimit;
+            resourceInputs["comment"] = state?.comment;
             resourceInputs["compress"] = state?.compress;
             resourceInputs["enabled"] = state?.enabled;
             resourceInputs["excludePaths"] = state?.excludePaths;
@@ -220,6 +240,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["mode"] = state?.mode;
             resourceInputs["node"] = state?.node;
             resourceInputs["notesTemplate"] = state?.notesTemplate;
+            resourceInputs["notificationMode"] = state?.notificationMode;
             resourceInputs["pbsChangeDetectionMode"] = state?.pbsChangeDetectionMode;
             resourceInputs["performance"] = state?.performance;
             resourceInputs["pigz"] = state?.pigz;
@@ -251,6 +272,7 @@ export class Job extends pulumi.CustomResource {
             }
             resourceInputs["all"] = args?.all;
             resourceInputs["bwlimit"] = args?.bwlimit;
+            resourceInputs["comment"] = args?.comment;
             resourceInputs["compress"] = args?.compress;
             resourceInputs["enabled"] = args?.enabled;
             resourceInputs["excludePaths"] = args?.excludePaths;
@@ -264,6 +286,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["mode"] = args?.mode;
             resourceInputs["node"] = args?.node;
             resourceInputs["notesTemplate"] = args?.notesTemplate;
+            resourceInputs["notificationMode"] = args?.notificationMode;
             resourceInputs["pbsChangeDetectionMode"] = args?.pbsChangeDetectionMode;
             resourceInputs["performance"] = args?.performance;
             resourceInputs["pigz"] = args?.pigz;
@@ -300,6 +323,10 @@ export interface JobState {
      * I/O bandwidth limit in KiB/s.
      */
     bwlimit?: pulumi.Input<number | undefined>;
+    /**
+     * Description of the backup job, shown in the Proxmox VE web UI.
+     */
+    comment?: pulumi.Input<string | undefined>;
     /**
      * The compression algorithm (0, 1, gzip, lzo, or zstd).
      */
@@ -352,6 +379,10 @@ export interface JobState {
      * Template for notes attached to the backup.
      */
     notesTemplate?: pulumi.Input<string | undefined>;
+    /**
+     * Notification mode (`auto`, `legacy-sendmail` or `notification-system`). With `auto` (the Proxmox VE default), an email is sent if `mailto` is set, otherwise the notification system is used. `legacy-sendmail` always uses `mailto` and `mailnotification`; `notification-system` always uses the PVE notification system and ignores them.
+     */
+    notificationMode?: pulumi.Input<string | undefined>;
     /**
      * PBS change detection mode (legacy, data, or metadata).
      */
@@ -439,6 +470,10 @@ export interface JobArgs {
      */
     bwlimit?: pulumi.Input<number | undefined>;
     /**
+     * Description of the backup job, shown in the Proxmox VE web UI.
+     */
+    comment?: pulumi.Input<string | undefined>;
+    /**
      * The compression algorithm (0, 1, gzip, lzo, or zstd).
      */
     compress?: pulumi.Input<string | undefined>;
@@ -490,6 +525,10 @@ export interface JobArgs {
      * Template for notes attached to the backup.
      */
     notesTemplate?: pulumi.Input<string | undefined>;
+    /**
+     * Notification mode (`auto`, `legacy-sendmail` or `notification-system`). With `auto` (the Proxmox VE default), an email is sent if `mailto` is set, otherwise the notification system is used. `legacy-sendmail` always uses `mailto` and `mailnotification`; `notification-system` always uses the PVE notification system and ignores them.
+     */
+    notificationMode?: pulumi.Input<string | undefined>;
     /**
      * PBS change detection mode (legacy, data, or metadata).
      */

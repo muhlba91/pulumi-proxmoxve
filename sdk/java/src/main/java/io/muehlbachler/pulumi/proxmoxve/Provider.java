@@ -96,11 +96,10 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     /**
      * The one-time password for the Proxmox VE API.
      * 
-     * @deprecated
-     * The `otp` attribute is deprecated and will be removed in a future release. Please use the `apiToken` attribute instead.
+     * @deprecated The `otp` attribute is deprecated and will be removed in a future release. Please use the `apiToken` attribute instead.
      * 
      */
-    @Deprecated /* The `otp` attribute is deprecated and will be removed in a future release. Please use the `apiToken` attribute instead. */
+    @Deprecated
     @Export(name="otp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> otp;
 

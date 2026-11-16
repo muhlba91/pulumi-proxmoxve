@@ -73,11 +73,10 @@ public class GroupLegacy extends com.pulumi.resources.CustomResource {
      * The access control list (multiple blocks supported). Use
      * `proxmoxve.Acl` instead.
      * 
-     * @deprecated
-     * Manage ACLs via the dedicated `proxmoxve.Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing groups with `acl` blocks continue to work, but new code should use `proxmoxve.Acl`.
+     * @deprecated Manage ACLs via the dedicated `proxmoxve.Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing groups with `acl` blocks continue to work, but new code should use `proxmoxve.Acl`.
      * 
      */
-    @Deprecated /* Manage ACLs via the dedicated `proxmoxve.Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing groups with `acl` blocks continue to work, but new code should use `proxmoxve.Acl`. */
+    @Deprecated
     @Export(name="acls", refs={List.class,GroupLegacyAcl.class}, tree="[0,1]")
     private Output</* @Nullable */ List<GroupLegacyAcl>> acls;
 

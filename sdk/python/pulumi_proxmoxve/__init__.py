@@ -87,6 +87,8 @@ if typing.TYPE_CHECKING:
     cluster = __cluster
     import pulumi_proxmoxve.config as __config
     config = __config
+    import pulumi_proxmoxve.custom as __custom
+    custom = __custom
     import pulumi_proxmoxve.download as __download
     download = __download
     import pulumi_proxmoxve.firewall as __firewall
@@ -119,6 +121,7 @@ else:
     cloned = _utilities.lazy_import('pulumi_proxmoxve.cloned')
     cluster = _utilities.lazy_import('pulumi_proxmoxve.cluster')
     config = _utilities.lazy_import('pulumi_proxmoxve.config')
+    custom = _utilities.lazy_import('pulumi_proxmoxve.custom')
     download = _utilities.lazy_import('pulumi_proxmoxve.download')
     firewall = _utilities.lazy_import('pulumi_proxmoxve.firewall')
     hardware = _utilities.lazy_import('pulumi_proxmoxve.hardware')
@@ -225,6 +228,22 @@ _utilities.register(
  },
  {
   "pkg": "proxmoxve",
+  "mod": "ceph/fs",
+  "fqn": "pulumi_proxmoxve.ceph",
+  "classes": {
+   "proxmoxve:ceph/fs:Fs": "Fs"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "ceph/mds",
+  "fqn": "pulumi_proxmoxve.ceph",
+  "classes": {
+   "proxmoxve:ceph/mds:Mds": "Mds"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
   "mod": "ceph/pool",
   "fqn": "pulumi_proxmoxve.ceph",
   "classes": {
@@ -277,6 +296,14 @@ _utilities.register(
   "fqn": "pulumi_proxmoxve.cluster",
   "classes": {
    "proxmoxve:cluster/optionsLegacy:OptionsLegacy": "OptionsLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "custom/cpu/model",
+  "fqn": "pulumi_proxmoxve.custom.cpu",
+  "classes": {
+   "proxmoxve:custom/cpu/model:Model": "Model"
   }
  },
  {
@@ -577,6 +604,14 @@ _utilities.register(
  },
  {
   "pkg": "proxmoxve",
+  "mod": "network/applier",
+  "fqn": "pulumi_proxmoxve.network",
+  "classes": {
+   "proxmoxve:network/applier:Applier": "Applier"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
   "mod": "network/linux/bond",
   "fqn": "pulumi_proxmoxve.network.linux",
   "classes": {
@@ -741,6 +776,14 @@ _utilities.register(
   "fqn": "pulumi_proxmoxve.sdn",
   "classes": {
    "proxmoxve:sdn/applierLegacy:ApplierLegacy": "ApplierLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "sdn/controller/bgp",
+  "fqn": "pulumi_proxmoxve.sdn.controller",
+  "classes": {
+   "proxmoxve:sdn/controller/bgp:Bgp": "Bgp"
   }
  },
  {
@@ -929,6 +972,14 @@ _utilities.register(
  },
  {
   "pkg": "proxmoxve",
+  "mod": "storage/cephfs",
+  "fqn": "pulumi_proxmoxve.storage",
+  "classes": {
+   "proxmoxve:storage/cephfs:Cephfs": "Cephfs"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
   "mod": "storage/cifs",
   "fqn": "pulumi_proxmoxve.storage",
   "classes": {
@@ -1021,6 +1072,14 @@ _utilities.register(
   "fqn": "pulumi_proxmoxve.storage",
   "classes": {
    "proxmoxve:storage/pbsLegacy:PbsLegacy": "PbsLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "storage/rbd",
+  "fqn": "pulumi_proxmoxve.storage",
+  "classes": {
+   "proxmoxve:storage/rbd:Rbd": "Rbd"
   }
  },
  {

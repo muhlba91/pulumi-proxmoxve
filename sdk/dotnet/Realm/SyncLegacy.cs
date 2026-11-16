@@ -90,12 +90,14 @@ namespace Pulumi.ProxmoxVE.Realm
         /// Perform a full sync.
         /// </summary>
         [Output("full")]
+        [Obsolete(@"Deprecated by Proxmox: use RemoveVanished instead.")]
         public Output<bool?> Full { get; private set; } = null!;
 
         /// <summary>
         /// Purge removed entries.
         /// </summary>
         [Output("purge")]
+        [Obsolete(@"Deprecated by Proxmox: use RemoveVanished instead.")]
         public Output<bool?> Purge { get; private set; } = null!;
 
         /// <summary>
@@ -179,12 +181,14 @@ namespace Pulumi.ProxmoxVE.Realm
         /// Perform a full sync.
         /// </summary>
         [Input("full")]
+        [Obsolete(@"Deprecated by Proxmox: use RemoveVanished instead.")]
         public Input<bool>? Full { get; set; }
 
         /// <summary>
         /// Purge removed entries.
         /// </summary>
         [Input("purge")]
+        [Obsolete(@"Deprecated by Proxmox: use RemoveVanished instead.")]
         public Input<bool>? Purge { get; set; }
 
         /// <summary>
@@ -229,12 +233,14 @@ namespace Pulumi.ProxmoxVE.Realm
         /// Perform a full sync.
         /// </summary>
         [Input("full")]
+        [Obsolete(@"Deprecated by Proxmox: use RemoveVanished instead.")]
         public Input<bool>? Full { get; set; }
 
         /// <summary>
         /// Purge removed entries.
         /// </summary>
         [Input("purge")]
+        [Obsolete(@"Deprecated by Proxmox: use RemoveVanished instead.")]
         public Input<bool>? Purge { get; set; }
 
         /// <summary>

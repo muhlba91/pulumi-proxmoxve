@@ -127,22 +127,20 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The one-time password for the Proxmox VE API.
      * 
-     * @deprecated
-     * The `otp` attribute is deprecated and will be removed in a future release. Please use the `apiToken` attribute instead.
+     * @deprecated The `otp` attribute is deprecated and will be removed in a future release. Please use the `apiToken` attribute instead.
      * 
      */
-    @Deprecated /* The `otp` attribute is deprecated and will be removed in a future release. Please use the `apiToken` attribute instead. */
+    @Deprecated
     @Import(name="otp")
     private @Nullable Output<String> otp;
 
     /**
      * @return The one-time password for the Proxmox VE API.
      * 
-     * @deprecated
-     * The `otp` attribute is deprecated and will be removed in a future release. Please use the `apiToken` attribute instead.
+     * @deprecated The `otp` attribute is deprecated and will be removed in a future release. Please use the `apiToken` attribute instead.
      * 
      */
-    @Deprecated /* The `otp` attribute is deprecated and will be removed in a future release. Please use the `apiToken` attribute instead. */
+    @Deprecated
     public Optional<Output<String>> otp() {
         return Optional.ofNullable(this.otp);
     }
@@ -442,11 +440,10 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * The `otp` attribute is deprecated and will be removed in a future release. Please use the `apiToken` attribute instead.
+         * @deprecated The `otp` attribute is deprecated and will be removed in a future release. Please use the `apiToken` attribute instead.
          * 
          */
-        @Deprecated /* The `otp` attribute is deprecated and will be removed in a future release. Please use the `apiToken` attribute instead. */
+        @Deprecated
         public Builder otp(@Nullable Output<String> otp) {
             $.otp = otp;
             return this;
@@ -457,11 +454,10 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * The `otp` attribute is deprecated and will be removed in a future release. Please use the `apiToken` attribute instead.
+         * @deprecated The `otp` attribute is deprecated and will be removed in a future release. Please use the `apiToken` attribute instead.
          * 
          */
-        @Deprecated /* The `otp` attribute is deprecated and will be removed in a future release. Please use the `apiToken` attribute instead. */
+        @Deprecated
         public Builder otp(String otp) {
             return otp(Output.of(otp));
         }

@@ -13,6 +13,62 @@ import (
 )
 
 // Manages a Linux Bond network interface in a Proxmox VE node.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve/network"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			bond0, err := network.NewBond(ctx, "bond0", &network.BondArgs{
+//				NodeName: pulumi.String("pve"),
+//				Name:     pulumi.String("bond0"),
+//				Slaves: pulumi.StringArray{
+//					pulumi.String("ens18"),
+//					pulumi.String("ens19"),
+//				},
+//				BondMode:           pulumi.String("802.3ad"),
+//				BondXmitHashPolicy: pulumi.String("layer3+4"),
+//				Comment:            pulumi.String("bond0 comment"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = network.NewBridge(ctx, "vmbr10", &network.BridgeArgs{
+//				NodeName: pulumi.String("pve"),
+//				Name:     pulumi.String("vmbr10"),
+//				Address:  pulumi.String("10.10.10.10/24"),
+//				Ports: pulumi.StringArray{
+//					pulumi.String("bond0"),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				bond0,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// !/usr/bin/env sh
+// Interfaces can be imported using the `node_name:iface` format, e.g.
+//
+// ```sh
+// $ pulumi import proxmoxve:network/linux/bond:Bond bond0 pve:bond0
+// ```
 type Bond struct {
 	pulumi.CustomResourceState
 
@@ -40,6 +96,8 @@ type Bond struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name of the node.
 	NodeName pulumi.StringOutput `pulumi:"nodeName"`
+	// Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
+	Reload pulumi.BoolOutput `pulumi:"reload"`
 	// The interface bond slaves (member interfaces).
 	Slaves pulumi.StringArrayOutput `pulumi:"slaves"`
 	// Timeout for network reload operations in seconds (defaults to `100`).
@@ -106,6 +164,8 @@ type bondState struct {
 	Name *string `pulumi:"name"`
 	// The name of the node.
 	NodeName *string `pulumi:"nodeName"`
+	// Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
+	Reload *bool `pulumi:"reload"`
 	// The interface bond slaves (member interfaces).
 	Slaves []string `pulumi:"slaves"`
 	// Timeout for network reload operations in seconds (defaults to `100`).
@@ -137,6 +197,8 @@ type BondState struct {
 	Name pulumi.StringPtrInput
 	// The name of the node.
 	NodeName pulumi.StringPtrInput
+	// Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
+	Reload pulumi.BoolPtrInput
 	// The interface bond slaves (member interfaces).
 	Slaves pulumi.StringArrayInput
 	// Timeout for network reload operations in seconds (defaults to `100`).
@@ -145,6 +207,12 @@ type BondState struct {
 
 func (BondState) ElementType() reflect.Type {
 	return reflect.TypeOf((*bondState)(nil)).Elem()
+}
+
+// BondExists checks whether an existing Bond resource with the given ID exists.
+func BondExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BondState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:network/linux/bond:Bond", id, state, "", opts...)
 }
 
 type bondArgs struct {
@@ -172,6 +240,8 @@ type bondArgs struct {
 	Name *string `pulumi:"name"`
 	// The name of the node.
 	NodeName string `pulumi:"nodeName"`
+	// Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
+	Reload *bool `pulumi:"reload"`
 	// The interface bond slaves (member interfaces).
 	Slaves []string `pulumi:"slaves"`
 	// Timeout for network reload operations in seconds (defaults to `100`).
@@ -204,6 +274,8 @@ type BondArgs struct {
 	Name pulumi.StringPtrInput
 	// The name of the node.
 	NodeName pulumi.StringInput
+	// Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
+	Reload pulumi.BoolPtrInput
 	// The interface bond slaves (member interfaces).
 	Slaves pulumi.StringArrayInput
 	// Timeout for network reload operations in seconds (defaults to `100`).
@@ -355,6 +427,11 @@ func (o BondOutput) Name() pulumi.StringOutput {
 // The name of the node.
 func (o BondOutput) NodeName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Bond) pulumi.StringOutput { return v.NodeName }).(pulumi.StringOutput)
+}
+
+// Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
+func (o BondOutput) Reload() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Bond) pulumi.BoolOutput { return v.Reload }).(pulumi.BoolOutput)
 }
 
 // The interface bond slaves (member interfaces).

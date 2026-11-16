@@ -161,6 +161,12 @@ func (AccountLegacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accountLegacyState)(nil)).Elem()
 }
 
+// AccountLegacyExists checks whether an existing AccountLegacy resource with the given ID exists.
+func AccountLegacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccountLegacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:acme/accountLegacy:AccountLegacy", id, state, "", opts...)
+}
+
 type accountLegacyArgs struct {
 	// The contact email addresses.
 	Contact string `pulumi:"contact"`

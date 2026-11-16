@@ -163,6 +163,12 @@ func (PluginLegacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*pluginLegacyState)(nil)).Elem()
 }
 
+// PluginLegacyExists checks whether an existing PluginLegacy resource with the given ID exists.
+func PluginLegacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PluginLegacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:acme/dns/pluginLegacy:PluginLegacy", id, state, "", opts...)
+}
+
 type pluginLegacyArgs struct {
 	// API plugin name.
 	Api string `pulumi:"api"`

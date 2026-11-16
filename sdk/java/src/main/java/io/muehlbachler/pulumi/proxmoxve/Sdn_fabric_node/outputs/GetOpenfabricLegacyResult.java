@@ -17,7 +17,7 @@ public final class GetOpenfabricLegacyResult {
      */
     private String fabricId;
     /**
-     * @return The unique identifier of the SDN fabric node, in the format \n\n/\n\n.
+     * @return The unique identifier of the SDN fabric node, in the format &#92;n&#92;n/&#92;n&#92;n.
      * 
      */
     private String id;
@@ -51,7 +51,7 @@ public final class GetOpenfabricLegacyResult {
         return this.fabricId;
     }
     /**
-     * @return The unique identifier of the SDN fabric node, in the format \n\n/\n\n.
+     * @return The unique identifier of the SDN fabric node, in the format &#92;n&#92;n/&#92;n&#92;n.
      * 
      */
     public String id() {

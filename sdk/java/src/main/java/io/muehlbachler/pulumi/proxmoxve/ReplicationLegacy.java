@@ -135,14 +135,14 @@ public class ReplicationLegacy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.rate);
     }
     /**
-     * Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. &#39;\n\n-\n\n&#39;.
+     * Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. &#39;&#92;n&#92;n-&#92;n&#92;n&#39;.
      * 
      */
     @Export(name="resourceId", refs={String.class}, tree="[0]")
     private Output<String> resourceId;
 
     /**
-     * @return Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. &#39;\n\n-\n\n&#39;.
+     * @return Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. &#39;&#92;n&#92;n-&#92;n&#92;n&#39;.
      * 
      */
     public Output<String> resourceId() {

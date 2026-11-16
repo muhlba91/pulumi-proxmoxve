@@ -57,6 +57,12 @@ namespace Pulumi.ProxmoxVE.Backup
         public Output<int> Bwlimit { get; private set; } = null!;
 
         /// <summary>
+        /// Description of the backup job, shown in the Proxmox VE web UI.
+        /// </summary>
+        [Output("comment")]
+        public Output<string?> Comment { get; private set; } = null!;
+
+        /// <summary>
         /// The compression algorithm (0, 1, gzip, lzo, or zstd).
         /// </summary>
         [Output("compress")]
@@ -133,6 +139,12 @@ namespace Pulumi.ProxmoxVE.Backup
         /// </summary>
         [Output("notesTemplate")]
         public Output<string?> NotesTemplate { get; private set; } = null!;
+
+        /// <summary>
+        /// Notification mode (`Auto`, `legacy-sendmail` or `notification-system`). With `Auto` (the Proxmox VE default), an email is sent if `Mailto` is set, otherwise the notification system is used. `legacy-sendmail` always uses `Mailto` and `Mailnotification`; `notification-system` always uses the PVE notification system and ignores them.
+        /// </summary>
+        [Output("notificationMode")]
+        public Output<string?> NotificationMode { get; private set; } = null!;
 
         /// <summary>
         /// PBS change detection mode (legacy, data, or metadata).
@@ -302,6 +314,12 @@ namespace Pulumi.ProxmoxVE.Backup
         public Input<int>? Bwlimit { get; set; }
 
         /// <summary>
+        /// Description of the backup job, shown in the Proxmox VE web UI.
+        /// </summary>
+        [Input("comment")]
+        public Input<string>? Comment { get; set; }
+
+        /// <summary>
         /// The compression algorithm (0, 1, gzip, lzo, or zstd).
         /// </summary>
         [Input("compress")]
@@ -396,6 +414,12 @@ namespace Pulumi.ProxmoxVE.Backup
         /// </summary>
         [Input("notesTemplate")]
         public Input<string>? NotesTemplate { get; set; }
+
+        /// <summary>
+        /// Notification mode (`Auto`, `legacy-sendmail` or `notification-system`). With `Auto` (the Proxmox VE default), an email is sent if `Mailto` is set, otherwise the notification system is used. `legacy-sendmail` always uses `Mailto` and `Mailnotification`; `notification-system` always uses the PVE notification system and ignores them.
+        /// </summary>
+        [Input("notificationMode")]
+        public Input<string>? NotificationMode { get; set; }
 
         /// <summary>
         /// PBS change detection mode (legacy, data, or metadata).
@@ -538,6 +562,12 @@ namespace Pulumi.ProxmoxVE.Backup
         public Input<int>? Bwlimit { get; set; }
 
         /// <summary>
+        /// Description of the backup job, shown in the Proxmox VE web UI.
+        /// </summary>
+        [Input("comment")]
+        public Input<string>? Comment { get; set; }
+
+        /// <summary>
         /// The compression algorithm (0, 1, gzip, lzo, or zstd).
         /// </summary>
         [Input("compress")]
@@ -632,6 +662,12 @@ namespace Pulumi.ProxmoxVE.Backup
         /// </summary>
         [Input("notesTemplate")]
         public Input<string>? NotesTemplate { get; set; }
+
+        /// <summary>
+        /// Notification mode (`Auto`, `legacy-sendmail` or `notification-system`). With `Auto` (the Proxmox VE default), an email is sent if `Mailto` is set, otherwise the notification system is used. `legacy-sendmail` always uses `Mailto` and `Mailnotification`; `notification-system` always uses the PVE notification system and ignores them.
+        /// </summary>
+        [Input("notificationMode")]
+        public Input<string>? NotificationMode { get; set; }
 
         /// <summary>
         /// PBS change detection mode (legacy, data, or metadata).

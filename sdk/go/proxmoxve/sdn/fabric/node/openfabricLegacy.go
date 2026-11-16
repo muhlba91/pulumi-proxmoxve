@@ -98,6 +98,12 @@ func (OpenfabricLegacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*openfabricLegacyState)(nil)).Elem()
 }
 
+// OpenfabricLegacyExists checks whether an existing OpenfabricLegacy resource with the given ID exists.
+func OpenfabricLegacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OpenfabricLegacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:sdn/fabric/node/openfabricLegacy:OpenfabricLegacy", id, state, "", opts...)
+}
+
 type openfabricLegacyArgs struct {
 	// The unique identifier of the SDN fabric.
 	FabricId string `pulumi:"fabricId"`

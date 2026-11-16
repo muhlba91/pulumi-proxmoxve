@@ -58,6 +58,17 @@ export class Evpn extends pulumi.CustomResource {
         return new Evpn(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing Evpn resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: EvpnState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("proxmoxve:sdn/zone/evpn:Evpn", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'proxmoxve:sdn/zone/evpn:Evpn';
 
@@ -105,9 +116,9 @@ export class Evpn extends pulumi.CustomResource {
      */
     declare public readonly ipam: pulumi.Output<string | undefined>;
     /**
-     * MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
+     * MTU value for the zone.
      */
-    declare public readonly mtu: pulumi.Output<number>;
+    declare public readonly mtu: pulumi.Output<number | undefined>;
     /**
      * The Proxmox nodes which the zone and associated VNets should be deployed on
      */
@@ -244,7 +255,7 @@ export interface EvpnState {
      */
     ipam?: pulumi.Input<string | undefined>;
     /**
-     * MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
+     * MTU value for the zone.
      */
     mtu?: pulumi.Input<number | undefined>;
     /**
@@ -318,7 +329,7 @@ export interface EvpnArgs {
      */
     ipam?: pulumi.Input<string | undefined>;
     /**
-     * MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
+     * MTU value for the zone.
      */
     mtu?: pulumi.Input<number | undefined>;
     /**

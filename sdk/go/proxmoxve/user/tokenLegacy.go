@@ -155,6 +155,12 @@ func (TokenLegacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*tokenLegacyState)(nil)).Elem()
 }
 
+// TokenLegacyExists checks whether an existing TokenLegacy resource with the given ID exists.
+func TokenLegacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TokenLegacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:user/tokenLegacy:TokenLegacy", id, state, "", opts...)
+}
+
 type tokenLegacyArgs struct {
 	// Comment for the token.
 	Comment *string `pulumi:"comment"`

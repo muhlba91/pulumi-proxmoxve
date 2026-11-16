@@ -24,6 +24,7 @@ namespace Pulumi.ProxmoxVE.Outputs
         /// <summary>
         /// Whether to enable the network device (defaults to `True`). Remove the `NetworkDevice` block from your configuration instead of setting `enabled = false`.
         /// </summary>
+        [Obsolete(@"The `Enabled` attribute is deprecated and will be removed in a future release. Remove the `NetworkDevice` block from your configuration instead of setting `enabled = false`.")]
         public readonly bool? Enabled;
         /// <summary>
         /// Whether this interface's firewall rules should be used (defaults to `False`).
@@ -86,7 +87,9 @@ namespace Pulumi.ProxmoxVE.Outputs
         {
             Bridge = bridge;
             Disconnected = disconnected;
+#pragma warning disable CS0618
             Enabled = enabled;
+#pragma warning restore CS0618
             Firewall = firewall;
             MacAddress = macAddress;
             Model = model;

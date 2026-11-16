@@ -250,9 +250,36 @@ public final class ContainerLegacyArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * Migrate the container on node change instead of
+     * re-creating it (defaults to `false`).
+     * 
+     */
+    @Import(name="migrate")
+    private @Nullable Output<Boolean> migrate;
+
+    /**
+     * @return Migrate the container on node change instead of
+     * re-creating it (defaults to `false`).
+     * 
+     */
+    public Optional<Output<Boolean>> migrate() {
+        return Optional.ofNullable(this.migrate);
+    }
+
+    /**
      * An additional volume mount or host bind mount
      * (multiple blocks supported). Use this for data volumes, shared
      * directories, or attaching pre-existing PVE volumes.
+     * 
+     * &gt; Mount points are positional: the first block is `mp0` in Proxmox VE, the
+     * second `mp1`, and so on. Appending a block, removing the last block, or
+     * reconfiguring an existing one is applied in place, and a running container
+     * is restarted. Removing or inserting a block before existing ones recreates
+     * the container, as does changing the `size` of an existing mount point or
+     * pointing its `volume` at a different datastore or host path. Changing
+     * `volume` from one volume ID to another on the same datastore is not
+     * detected. A removed volume mount stays on the datastore as an unused
+     * volume; bind and device mounts are just dropped.
      * 
      */
     @Import(name="mountPoints")
@@ -262,6 +289,16 @@ public final class ContainerLegacyArgs extends com.pulumi.resources.ResourceArgs
      * @return An additional volume mount or host bind mount
      * (multiple blocks supported). Use this for data volumes, shared
      * directories, or attaching pre-existing PVE volumes.
+     * 
+     * &gt; Mount points are positional: the first block is `mp0` in Proxmox VE, the
+     * second `mp1`, and so on. Appending a block, removing the last block, or
+     * reconfiguring an existing one is applied in place, and a running container
+     * is restarted. Removing or inserting a block before existing ones recreates
+     * the container, as does changing the `size` of an existing mount point or
+     * pointing its `volume` at a different datastore or host path. Changing
+     * `volume` from one volume ID to another on the same datastore is not
+     * detected. A removed volume mount stays on the datastore as an unused
+     * volume; bind and device mounts are just dropped.
      * 
      */
     public Optional<Output<List<ContainerLegacyMountPointArgs>>> mountPoints() {
@@ -497,24 +534,39 @@ public final class ContainerLegacyArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Start container timeout
-     * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release. An overall operation timeout (`timeoutCreate` / `timeoutClone`) is used instead.
+     * Timeout for migrating the container to another node, in seconds (defaults to
+     * 1800).
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. An overall operation timeout (`timeoutCreate` / `timeoutClone`) is used instead. */
+    @Import(name="timeoutMigrate")
+    private @Nullable Output<Integer> timeoutMigrate;
+
+    /**
+     * @return Timeout for migrating the container to another node, in seconds (defaults to
+     * 1800).
+     * 
+     */
+    public Optional<Output<Integer>> timeoutMigrate() {
+        return Optional.ofNullable(this.timeoutMigrate);
+    }
+
+    /**
+     * Start container timeout
+     * 
+     * @deprecated This field is deprecated and will be removed in a future release. An overall operation timeout (`timeoutCreate` / `timeoutClone`) is used instead.
+     * 
+     */
+    @Deprecated
     @Import(name="timeoutStart")
     private @Nullable Output<Integer> timeoutStart;
 
     /**
      * @return Start container timeout
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release. An overall operation timeout (`timeoutCreate` / `timeoutClone`) is used instead.
+     * @deprecated This field is deprecated and will be removed in a future release. An overall operation timeout (`timeoutCreate` / `timeoutClone`) is used instead.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. An overall operation timeout (`timeoutCreate` / `timeoutClone`) is used instead. */
+    @Deprecated
     public Optional<Output<Integer>> timeoutStart() {
         return Optional.ofNullable(this.timeoutStart);
     }
@@ -595,6 +647,7 @@ public final class ContainerLegacyArgs extends com.pulumi.resources.ResourceArgs
         this.idmaps = $.idmaps;
         this.initialization = $.initialization;
         this.memory = $.memory;
+        this.migrate = $.migrate;
         this.mountPoints = $.mountPoints;
         this.networkInterfaces = $.networkInterfaces;
         this.nodeName = $.nodeName;
@@ -610,6 +663,7 @@ public final class ContainerLegacyArgs extends com.pulumi.resources.ResourceArgs
         this.timeoutClone = $.timeoutClone;
         this.timeoutCreate = $.timeoutCreate;
         this.timeoutDelete = $.timeoutDelete;
+        this.timeoutMigrate = $.timeoutMigrate;
         this.timeoutStart = $.timeoutStart;
         this.timeoutUpdate = $.timeoutUpdate;
         this.unprivileged = $.unprivileged;
@@ -952,9 +1006,42 @@ public final class ContainerLegacyArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
+         * @param migrate Migrate the container on node change instead of
+         * re-creating it (defaults to `false`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder migrate(@Nullable Output<Boolean> migrate) {
+            $.migrate = migrate;
+            return this;
+        }
+
+        /**
+         * @param migrate Migrate the container on node change instead of
+         * re-creating it (defaults to `false`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder migrate(Boolean migrate) {
+            return migrate(Output.of(migrate));
+        }
+
+        /**
          * @param mountPoints An additional volume mount or host bind mount
          * (multiple blocks supported). Use this for data volumes, shared
          * directories, or attaching pre-existing PVE volumes.
+         * 
+         * &gt; Mount points are positional: the first block is `mp0` in Proxmox VE, the
+         * second `mp1`, and so on. Appending a block, removing the last block, or
+         * reconfiguring an existing one is applied in place, and a running container
+         * is restarted. Removing or inserting a block before existing ones recreates
+         * the container, as does changing the `size` of an existing mount point or
+         * pointing its `volume` at a different datastore or host path. Changing
+         * `volume` from one volume ID to another on the same datastore is not
+         * detected. A removed volume mount stays on the datastore as an unused
+         * volume; bind and device mounts are just dropped.
          * 
          * @return builder
          * 
@@ -969,6 +1056,16 @@ public final class ContainerLegacyArgs extends com.pulumi.resources.ResourceArgs
          * (multiple blocks supported). Use this for data volumes, shared
          * directories, or attaching pre-existing PVE volumes.
          * 
+         * &gt; Mount points are positional: the first block is `mp0` in Proxmox VE, the
+         * second `mp1`, and so on. Appending a block, removing the last block, or
+         * reconfiguring an existing one is applied in place, and a running container
+         * is restarted. Removing or inserting a block before existing ones recreates
+         * the container, as does changing the `size` of an existing mount point or
+         * pointing its `volume` at a different datastore or host path. Changing
+         * `volume` from one volume ID to another on the same datastore is not
+         * detected. A removed volume mount stays on the datastore as an unused
+         * volume; bind and device mounts are just dropped.
+         * 
          * @return builder
          * 
          */
@@ -980,6 +1077,16 @@ public final class ContainerLegacyArgs extends com.pulumi.resources.ResourceArgs
          * @param mountPoints An additional volume mount or host bind mount
          * (multiple blocks supported). Use this for data volumes, shared
          * directories, or attaching pre-existing PVE volumes.
+         * 
+         * &gt; Mount points are positional: the first block is `mp0` in Proxmox VE, the
+         * second `mp1`, and so on. Appending a block, removing the last block, or
+         * reconfiguring an existing one is applied in place, and a running container
+         * is restarted. Removing or inserting a block before existing ones recreates
+         * the container, as does changing the `size` of an existing mount point or
+         * pointing its `volume` at a different datastore or host path. Changing
+         * `volume` from one volume ID to another on the same datastore is not
+         * detected. A removed volume mount stays on the datastore as an unused
+         * volume; bind and device mounts are just dropped.
          * 
          * @return builder
          * 
@@ -1326,15 +1433,37 @@ public final class ContainerLegacyArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
+         * @param timeoutMigrate Timeout for migrating the container to another node, in seconds (defaults to
+         * 1800).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder timeoutMigrate(@Nullable Output<Integer> timeoutMigrate) {
+            $.timeoutMigrate = timeoutMigrate;
+            return this;
+        }
+
+        /**
+         * @param timeoutMigrate Timeout for migrating the container to another node, in seconds (defaults to
+         * 1800).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder timeoutMigrate(Integer timeoutMigrate) {
+            return timeoutMigrate(Output.of(timeoutMigrate));
+        }
+
+        /**
          * @param timeoutStart Start container timeout
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is deprecated and will be removed in a future release. An overall operation timeout (`timeoutCreate` / `timeoutClone`) is used instead.
+         * @deprecated This field is deprecated and will be removed in a future release. An overall operation timeout (`timeoutCreate` / `timeoutClone`) is used instead.
          * 
          */
-        @Deprecated /* This field is deprecated and will be removed in a future release. An overall operation timeout (`timeoutCreate` / `timeoutClone`) is used instead. */
+        @Deprecated
         public Builder timeoutStart(@Nullable Output<Integer> timeoutStart) {
             $.timeoutStart = timeoutStart;
             return this;
@@ -1345,11 +1474,10 @@ public final class ContainerLegacyArgs extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is deprecated and will be removed in a future release. An overall operation timeout (`timeoutCreate` / `timeoutClone`) is used instead.
+         * @deprecated This field is deprecated and will be removed in a future release. An overall operation timeout (`timeoutCreate` / `timeoutClone`) is used instead.
          * 
          */
-        @Deprecated /* This field is deprecated and will be removed in a future release. An overall operation timeout (`timeoutCreate` / `timeoutClone`) is used instead. */
+        @Deprecated
         public Builder timeoutStart(Integer timeoutStart) {
             return timeoutStart(Output.of(timeoutStart));
         }

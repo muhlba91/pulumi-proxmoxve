@@ -19,7 +19,8 @@ public final class FileLegacySourceRaw {
      */
     private String data;
     /**
-     * @return The file name.
+     * @return The file name. Must be a plain file name without
+     * path separators or whitespace.
      * 
      */
     private String fileName;
@@ -38,7 +39,8 @@ public final class FileLegacySourceRaw {
         return this.data;
     }
     /**
-     * @return The file name.
+     * @return The file name. Must be a plain file name without
+     * path separators or whitespace.
      * 
      */
     public String fileName() {

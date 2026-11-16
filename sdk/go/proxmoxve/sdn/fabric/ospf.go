@@ -90,6 +90,12 @@ func (OspfState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ospfState)(nil)).Elem()
 }
 
+// OspfExists checks whether an existing Ospf resource with the given ID exists.
+func OspfExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OspfState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:sdn/fabric/ospf:Ospf", id, state, "", opts...)
+}
+
 type ospfArgs struct {
 	// OSPF area. Either a IPv4 address or a 32-bit number. Gets validated in rust.
 	Area string `pulumi:"area"`

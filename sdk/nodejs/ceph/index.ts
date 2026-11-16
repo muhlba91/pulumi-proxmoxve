@@ -5,10 +5,20 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { FsArgs, FsState } from "./fs";
+export type Fs = import("./fs").Fs;
+export const Fs: typeof import("./fs").Fs = null as any;
+utilities.lazyLoad(exports, ["Fs"], () => require("./fs"));
+
 export { GetStatusArgs, GetStatusResult, GetStatusOutputArgs } from "./getStatus";
 export const getStatus: typeof import("./getStatus").getStatus = null as any;
 export const getStatusOutput: typeof import("./getStatus").getStatusOutput = null as any;
 utilities.lazyLoad(exports, ["getStatus","getStatusOutput"], () => require("./getStatus"));
+
+export { MdsArgs, MdsState } from "./mds";
+export type Mds = import("./mds").Mds;
+export const Mds: typeof import("./mds").Mds = null as any;
+utilities.lazyLoad(exports, ["Mds"], () => require("./mds"));
 
 export { PoolArgs, PoolState } from "./pool";
 export type Pool = import("./pool").Pool;
@@ -20,6 +30,10 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "proxmoxve:ceph/fs:Fs":
+                return new Fs(name, <any>undefined, { urn })
+            case "proxmoxve:ceph/mds:Mds":
+                return new Mds(name, <any>undefined, { urn })
             case "proxmoxve:ceph/pool:Pool":
                 return new Pool(name, <any>undefined, { urn })
             default:
@@ -27,4 +41,6 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("proxmoxve", "ceph/fs", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "ceph/mds", _module)
 pulumi.runtime.registerResourceModule("proxmoxve", "ceph/pool", _module)

@@ -84,7 +84,8 @@ namespace Pulumi.ProxmoxVE.Cluster.Firewall.Security
         public Output<int?> ContainerId { get; private set; } = null!;
 
         /// <summary>
-        /// Security group name.
+        /// Security group name. Must be lowercase, because PVE lowercases
+        /// security group names.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -167,7 +168,8 @@ namespace Pulumi.ProxmoxVE.Cluster.Firewall.Security
         public Input<int>? ContainerId { get; set; }
 
         /// <summary>
-        /// Security group name.
+        /// Security group name. Must be lowercase, because PVE lowercases
+        /// security group names.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -217,7 +219,8 @@ namespace Pulumi.ProxmoxVE.Cluster.Firewall.Security
         public Input<int>? ContainerId { get; set; }
 
         /// <summary>
-        /// Security group name.
+        /// Security group name. Must be lowercase, because PVE lowercases
+        /// security group names.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

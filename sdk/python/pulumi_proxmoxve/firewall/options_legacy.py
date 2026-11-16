@@ -520,7 +520,7 @@ class OptionsLegacy(pulumi.CustomResource):
 
         example = proxmoxve.firewall.OptionsLegacy("example",
             node_name=example_proxmox_virtual_environment_vm["nodeName"],
-            vm_id=int(example_proxmox_virtual_environment_vm["vmId"]),
+            vm_id=example_proxmox_virtual_environment_vm["vmId"],
             dhcp=True,
             enabled=False,
             ipfilter=True,
@@ -598,7 +598,7 @@ class OptionsLegacy(pulumi.CustomResource):
 
         example = proxmoxve.firewall.OptionsLegacy("example",
             node_name=example_proxmox_virtual_environment_vm["nodeName"],
-            vm_id=int(example_proxmox_virtual_environment_vm["vmId"]),
+            vm_id=example_proxmox_virtual_environment_vm["vmId"],
             dhcp=True,
             enabled=False,
             ipfilter=True,
@@ -757,6 +757,38 @@ class OptionsLegacy(pulumi.CustomResource):
         __props__.__dict__["radv"] = radv
         __props__.__dict__["vm_id"] = vm_id
         return OptionsLegacy(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            container_id: pulumi.Input[Optional[_builtins.int]] = None,
+            dhcp: pulumi.Input[Optional[_builtins.bool]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            input_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            ipfilter: pulumi.Input[Optional[_builtins.bool]] = None,
+            log_level_in: pulumi.Input[Optional[_builtins.str]] = None,
+            log_level_out: pulumi.Input[Optional[_builtins.str]] = None,
+            macfilter: pulumi.Input[Optional[_builtins.bool]] = None,
+            ndp: pulumi.Input[Optional[_builtins.bool]] = None,
+            node_name: pulumi.Input[Optional[_builtins.str]] = None,
+            output_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            radv: pulumi.Input[Optional[_builtins.bool]] = None,
+            vm_id: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["containerId"] = container_id
+        __props__["dhcp"] = dhcp
+        __props__["enabled"] = enabled
+        __props__["inputPolicy"] = input_policy
+        __props__["ipfilter"] = ipfilter
+        __props__["logLevelIn"] = log_level_in
+        __props__["logLevelOut"] = log_level_out
+        __props__["macfilter"] = macfilter
+        __props__["ndp"] = ndp
+        __props__["nodeName"] = node_name
+        __props__["outputPolicy"] = output_policy
+        __props__["radv"] = radv
+        __props__["vmId"] = vm_id
+        return pulumi.runtime.exists_resource(None, 'proxmoxve:firewall/optionsLegacy:OptionsLegacy', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter(name="containerId")

@@ -29,11 +29,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := proxmoxve.NewHaresource(ctx, "example", &proxmoxve.HaresourceArgs{
-//				ResourceId: pulumi.String("vm:123"),
-//				State:      pulumi.String("started"),
-//				Group:      pulumi.String("example"),
-//				Comment:    pulumi.String("Managed by Pulumi"),
-//				Failback:   pulumi.Bool(true),
+//				ResourceId:    pulumi.String("vm:123"),
+//				State:         pulumi.String("started"),
+//				Group:         pulumi.String("example"),
+//				Comment:       pulumi.String("Managed by Pulumi"),
+//				Failback:      pulumi.Bool(true),
+//				AutoRebalance: pulumi.Bool(true),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				exampleProxmoxHagroup,
 //			}))
@@ -57,6 +58,8 @@ import (
 type Haresource struct {
 	pulumi.CustomResourceState
 
+	// Whether this HA resource may be migrated during automatic rebalancing (Proxmox VE 9.2+). Leave unset to use the cluster default.
+	AutoRebalance pulumi.BoolPtrOutput `pulumi:"autoRebalance"`
 	// The comment associated with this resource.
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
 	// Automatic failback to the preferred node when it becomes available again (Proxmox VE 9+). Leave unset to use the cluster default.
@@ -108,6 +111,8 @@ func GetHaresource(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Haresource resources.
 type haresourceState struct {
+	// Whether this HA resource may be migrated during automatic rebalancing (Proxmox VE 9.2+). Leave unset to use the cluster default.
+	AutoRebalance *bool `pulumi:"autoRebalance"`
 	// The comment associated with this resource.
 	Comment *string `pulumi:"comment"`
 	// Automatic failback to the preferred node when it becomes available again (Proxmox VE 9+). Leave unset to use the cluster default.
@@ -127,6 +132,8 @@ type haresourceState struct {
 }
 
 type HaresourceState struct {
+	// Whether this HA resource may be migrated during automatic rebalancing (Proxmox VE 9.2+). Leave unset to use the cluster default.
+	AutoRebalance pulumi.BoolPtrInput
 	// The comment associated with this resource.
 	Comment pulumi.StringPtrInput
 	// Automatic failback to the preferred node when it becomes available again (Proxmox VE 9+). Leave unset to use the cluster default.
@@ -149,7 +156,15 @@ func (HaresourceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*haresourceState)(nil)).Elem()
 }
 
+// HaresourceExists checks whether an existing Haresource resource with the given ID exists.
+func HaresourceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HaresourceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:index/haresource:Haresource", id, state, "", opts...)
+}
+
 type haresourceArgs struct {
+	// Whether this HA resource may be migrated during automatic rebalancing (Proxmox VE 9.2+). Leave unset to use the cluster default.
+	AutoRebalance *bool `pulumi:"autoRebalance"`
 	// The comment associated with this resource.
 	Comment *string `pulumi:"comment"`
 	// Automatic failback to the preferred node when it becomes available again (Proxmox VE 9+). Leave unset to use the cluster default.
@@ -170,6 +185,8 @@ type haresourceArgs struct {
 
 // The set of arguments for constructing a Haresource resource.
 type HaresourceArgs struct {
+	// Whether this HA resource may be migrated during automatic rebalancing (Proxmox VE 9.2+). Leave unset to use the cluster default.
+	AutoRebalance pulumi.BoolPtrInput
 	// The comment associated with this resource.
 	Comment pulumi.StringPtrInput
 	// Automatic failback to the preferred node when it becomes available again (Proxmox VE 9+). Leave unset to use the cluster default.
@@ -273,6 +290,11 @@ func (o HaresourceOutput) ToHaresourceOutput() HaresourceOutput {
 
 func (o HaresourceOutput) ToHaresourceOutputWithContext(ctx context.Context) HaresourceOutput {
 	return o
+}
+
+// Whether this HA resource may be migrated during automatic rebalancing (Proxmox VE 9.2+). Leave unset to use the cluster default.
+func (o HaresourceOutput) AutoRebalance() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Haresource) pulumi.BoolPtrOutput { return v.AutoRebalance }).(pulumi.BoolPtrOutput)
 }
 
 // The comment associated with this resource.

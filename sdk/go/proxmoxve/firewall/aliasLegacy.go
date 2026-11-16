@@ -55,6 +55,41 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ### Cluster Alias
+//
+// Use the import ID: `cluster/<alias_name>`
+// Example uses alias name `ubuntu`.
+//
+// **Example:**
+//
+// ```sh
+// $ pulumi import proxmoxve:firewall/aliasLegacy:AliasLegacy ubuntu_vm cluster/ubuntu
+// ```
+//
+// ### VM Alias
+//
+// Use the import ID format: `vm/<node_name>/<vm_id>/<alias_name>`
+// Example uses node name `pve` and VM ID `100` and alias name `localNetwork`.
+//
+// **Example:**
+//
+// ```sh
+// $ pulumi import proxmoxve:firewall/aliasLegacy:AliasLegacy local_network vm/pve/100/local_network
+// ```
+//
+// ### Container Alias
+//
+// Use the import ID format: `container/<node_name>/<container_id>/<alias_name>`
+// Example uses node name `pve` and container ID `100` and alias name `localNetwork`.
+//
+// **Example:**
+//
+// ```sh
+// $ pulumi import proxmoxve:firewall/aliasLegacy:AliasLegacy container_alias container/pve/100/local_network
+// ```
 type AliasLegacy struct {
 	pulumi.CustomResourceState
 
@@ -62,13 +97,13 @@ type AliasLegacy struct {
 	Cidr pulumi.StringOutput `pulumi:"cidr"`
 	// Alias comment.
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
-	// Container ID. Leave empty for cluster level aliases.
+	// Container ID. Leave empty for cluster level aliases. Changing this value forces replacement.
 	ContainerId pulumi.IntPtrOutput `pulumi:"containerId"`
 	// Alias name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Node name. Leave empty for cluster level aliases.
+	// Node name. Leave empty for cluster level aliases. Changing it forces replacement unless `vmId` or `containerId` is set, so it can change in place after a migration.
 	NodeName pulumi.StringPtrOutput `pulumi:"nodeName"`
-	// VM ID. Leave empty for cluster level aliases.
+	// VM ID. Leave empty for cluster level aliases. Changing this value forces replacement.
 	VmId pulumi.IntPtrOutput `pulumi:"vmId"`
 }
 
@@ -109,13 +144,13 @@ type aliasLegacyState struct {
 	Cidr *string `pulumi:"cidr"`
 	// Alias comment.
 	Comment *string `pulumi:"comment"`
-	// Container ID. Leave empty for cluster level aliases.
+	// Container ID. Leave empty for cluster level aliases. Changing this value forces replacement.
 	ContainerId *int `pulumi:"containerId"`
 	// Alias name.
 	Name *string `pulumi:"name"`
-	// Node name. Leave empty for cluster level aliases.
+	// Node name. Leave empty for cluster level aliases. Changing it forces replacement unless `vmId` or `containerId` is set, so it can change in place after a migration.
 	NodeName *string `pulumi:"nodeName"`
-	// VM ID. Leave empty for cluster level aliases.
+	// VM ID. Leave empty for cluster level aliases. Changing this value forces replacement.
 	VmId *int `pulumi:"vmId"`
 }
 
@@ -124,13 +159,13 @@ type AliasLegacyState struct {
 	Cidr pulumi.StringPtrInput
 	// Alias comment.
 	Comment pulumi.StringPtrInput
-	// Container ID. Leave empty for cluster level aliases.
+	// Container ID. Leave empty for cluster level aliases. Changing this value forces replacement.
 	ContainerId pulumi.IntPtrInput
 	// Alias name.
 	Name pulumi.StringPtrInput
-	// Node name. Leave empty for cluster level aliases.
+	// Node name. Leave empty for cluster level aliases. Changing it forces replacement unless `vmId` or `containerId` is set, so it can change in place after a migration.
 	NodeName pulumi.StringPtrInput
-	// VM ID. Leave empty for cluster level aliases.
+	// VM ID. Leave empty for cluster level aliases. Changing this value forces replacement.
 	VmId pulumi.IntPtrInput
 }
 
@@ -138,18 +173,24 @@ func (AliasLegacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aliasLegacyState)(nil)).Elem()
 }
 
+// AliasLegacyExists checks whether an existing AliasLegacy resource with the given ID exists.
+func AliasLegacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AliasLegacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:firewall/aliasLegacy:AliasLegacy", id, state, "", opts...)
+}
+
 type aliasLegacyArgs struct {
 	// Network/IP specification in CIDR format.
 	Cidr string `pulumi:"cidr"`
 	// Alias comment.
 	Comment *string `pulumi:"comment"`
-	// Container ID. Leave empty for cluster level aliases.
+	// Container ID. Leave empty for cluster level aliases. Changing this value forces replacement.
 	ContainerId *int `pulumi:"containerId"`
 	// Alias name.
 	Name *string `pulumi:"name"`
-	// Node name. Leave empty for cluster level aliases.
+	// Node name. Leave empty for cluster level aliases. Changing it forces replacement unless `vmId` or `containerId` is set, so it can change in place after a migration.
 	NodeName *string `pulumi:"nodeName"`
-	// VM ID. Leave empty for cluster level aliases.
+	// VM ID. Leave empty for cluster level aliases. Changing this value forces replacement.
 	VmId *int `pulumi:"vmId"`
 }
 
@@ -159,13 +200,13 @@ type AliasLegacyArgs struct {
 	Cidr pulumi.StringInput
 	// Alias comment.
 	Comment pulumi.StringPtrInput
-	// Container ID. Leave empty for cluster level aliases.
+	// Container ID. Leave empty for cluster level aliases. Changing this value forces replacement.
 	ContainerId pulumi.IntPtrInput
 	// Alias name.
 	Name pulumi.StringPtrInput
-	// Node name. Leave empty for cluster level aliases.
+	// Node name. Leave empty for cluster level aliases. Changing it forces replacement unless `vmId` or `containerId` is set, so it can change in place after a migration.
 	NodeName pulumi.StringPtrInput
-	// VM ID. Leave empty for cluster level aliases.
+	// VM ID. Leave empty for cluster level aliases. Changing this value forces replacement.
 	VmId pulumi.IntPtrInput
 }
 
@@ -266,7 +307,7 @@ func (o AliasLegacyOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AliasLegacy) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
-// Container ID. Leave empty for cluster level aliases.
+// Container ID. Leave empty for cluster level aliases. Changing this value forces replacement.
 func (o AliasLegacyOutput) ContainerId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AliasLegacy) pulumi.IntPtrOutput { return v.ContainerId }).(pulumi.IntPtrOutput)
 }
@@ -276,12 +317,12 @@ func (o AliasLegacyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AliasLegacy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Node name. Leave empty for cluster level aliases.
+// Node name. Leave empty for cluster level aliases. Changing it forces replacement unless `vmId` or `containerId` is set, so it can change in place after a migration.
 func (o AliasLegacyOutput) NodeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AliasLegacy) pulumi.StringPtrOutput { return v.NodeName }).(pulumi.StringPtrOutput)
 }
 
-// VM ID. Leave empty for cluster level aliases.
+// VM ID. Leave empty for cluster level aliases. Changing this value forces replacement.
 func (o AliasLegacyOutput) VmId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AliasLegacy) pulumi.IntPtrOutput { return v.VmId }).(pulumi.IntPtrOutput)
 }

@@ -405,12 +405,18 @@ func (o ContainerLegacyConsolePtrOutput) Type() pulumi.StringPtrOutput {
 type ContainerLegacyCpu struct {
 	// The CPU architecture (defaults to `amd64`).
 	Architecture *string `pulumi:"architecture"`
-	// The number of CPU cores (defaults to `1`).
+	// The number of CPU cores (between `1` and `8192`). When unset,
+	// a new container has no `cores` setting and can use all host cores, and a clone
+	// keeps the value of its source. Removing the attribute keeps the current value, set
+	// `0` to remove the setting from the container. Removing the whole `cpu` block also
+	// removes the setting, unless it is `1`.
 	Cores *int `pulumi:"cores"`
 	// Limit of CPU usage. Value `0` indicates no limit (defaults to `0`).
 	Limit *float64 `pulumi:"limit"`
 	// The CPU units (between `1` and `500000`). When unset,
-	// Proxmox applies its own default.
+	// Proxmox applies its own default to a new container, and a clone keeps the value of
+	// its source. Removing the attribute keeps the current value, removing the whole
+	// `cpu` block removes the setting from the container.
 	Units *int `pulumi:"units"`
 }
 
@@ -428,12 +434,18 @@ type ContainerLegacyCpuInput interface {
 type ContainerLegacyCpuArgs struct {
 	// The CPU architecture (defaults to `amd64`).
 	Architecture pulumi.StringPtrInput `pulumi:"architecture"`
-	// The number of CPU cores (defaults to `1`).
+	// The number of CPU cores (between `1` and `8192`). When unset,
+	// a new container has no `cores` setting and can use all host cores, and a clone
+	// keeps the value of its source. Removing the attribute keeps the current value, set
+	// `0` to remove the setting from the container. Removing the whole `cpu` block also
+	// removes the setting, unless it is `1`.
 	Cores pulumi.IntPtrInput `pulumi:"cores"`
 	// Limit of CPU usage. Value `0` indicates no limit (defaults to `0`).
 	Limit pulumi.Float64PtrInput `pulumi:"limit"`
 	// The CPU units (between `1` and `500000`). When unset,
-	// Proxmox applies its own default.
+	// Proxmox applies its own default to a new container, and a clone keeps the value of
+	// its source. Removing the attribute keeps the current value, removing the whole
+	// `cpu` block removes the setting from the container.
 	Units pulumi.IntPtrInput `pulumi:"units"`
 }
 
@@ -519,7 +531,11 @@ func (o ContainerLegacyCpuOutput) Architecture() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerLegacyCpu) *string { return v.Architecture }).(pulumi.StringPtrOutput)
 }
 
-// The number of CPU cores (defaults to `1`).
+// The number of CPU cores (between `1` and `8192`). When unset,
+// a new container has no `cores` setting and can use all host cores, and a clone
+// keeps the value of its source. Removing the attribute keeps the current value, set
+// `0` to remove the setting from the container. Removing the whole `cpu` block also
+// removes the setting, unless it is `1`.
 func (o ContainerLegacyCpuOutput) Cores() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ContainerLegacyCpu) *int { return v.Cores }).(pulumi.IntPtrOutput)
 }
@@ -530,7 +546,9 @@ func (o ContainerLegacyCpuOutput) Limit() pulumi.Float64PtrOutput {
 }
 
 // The CPU units (between `1` and `500000`). When unset,
-// Proxmox applies its own default.
+// Proxmox applies its own default to a new container, and a clone keeps the value of
+// its source. Removing the attribute keeps the current value, removing the whole
+// `cpu` block removes the setting from the container.
 func (o ContainerLegacyCpuOutput) Units() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ContainerLegacyCpu) *int { return v.Units }).(pulumi.IntPtrOutput)
 }
@@ -569,7 +587,11 @@ func (o ContainerLegacyCpuPtrOutput) Architecture() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The number of CPU cores (defaults to `1`).
+// The number of CPU cores (between `1` and `8192`). When unset,
+// a new container has no `cores` setting and can use all host cores, and a clone
+// keeps the value of its source. Removing the attribute keeps the current value, set
+// `0` to remove the setting from the container. Removing the whole `cpu` block also
+// removes the setting, unless it is `1`.
 func (o ContainerLegacyCpuPtrOutput) Cores() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ContainerLegacyCpu) *int {
 		if v == nil {
@@ -590,7 +612,9 @@ func (o ContainerLegacyCpuPtrOutput) Limit() pulumi.Float64PtrOutput {
 }
 
 // The CPU units (between `1` and `500000`). When unset,
-// Proxmox applies its own default.
+// Proxmox applies its own default to a new container, and a clone keeps the value of
+// its source. Removing the attribute keeps the current value, removing the whole
+// `cpu` block removes the setting from the container.
 func (o ContainerLegacyCpuPtrOutput) Units() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ContainerLegacyCpu) *int {
 		if v == nil {
@@ -1350,7 +1374,9 @@ type ContainerLegacyInitialization struct {
 	// The IP configuration (one block per network
 	// device).
 	IpConfigs []ContainerLegacyInitializationIpConfig `pulumi:"ipConfigs"`
-	// The user account configuration.
+	// The user account configuration. It only applies when the
+	// container is created, not when it is cloned: a cloned container keeps the SSH keys and
+	// root password of its source container, and a warning is shown if this block is set.
 	UserAccount *ContainerLegacyInitializationUserAccount `pulumi:"userAccount"`
 }
 
@@ -1375,7 +1401,9 @@ type ContainerLegacyInitializationArgs struct {
 	// The IP configuration (one block per network
 	// device).
 	IpConfigs ContainerLegacyInitializationIpConfigArrayInput `pulumi:"ipConfigs"`
-	// The user account configuration.
+	// The user account configuration. It only applies when the
+	// container is created, not when it is cloned: a cloned container keeps the SSH keys and
+	// root password of its source container, and a warning is shown if this block is set.
 	UserAccount ContainerLegacyInitializationUserAccountPtrInput `pulumi:"userAccount"`
 }
 
@@ -1477,7 +1505,9 @@ func (o ContainerLegacyInitializationOutput) IpConfigs() ContainerLegacyInitiali
 	return o.ApplyT(func(v ContainerLegacyInitialization) []ContainerLegacyInitializationIpConfig { return v.IpConfigs }).(ContainerLegacyInitializationIpConfigArrayOutput)
 }
 
-// The user account configuration.
+// The user account configuration. It only applies when the
+// container is created, not when it is cloned: a cloned container keeps the SSH keys and
+// root password of its source container, and a warning is shown if this block is set.
 func (o ContainerLegacyInitializationOutput) UserAccount() ContainerLegacyInitializationUserAccountPtrOutput {
 	return o.ApplyT(func(v ContainerLegacyInitialization) *ContainerLegacyInitializationUserAccount { return v.UserAccount }).(ContainerLegacyInitializationUserAccountPtrOutput)
 }
@@ -1547,7 +1577,9 @@ func (o ContainerLegacyInitializationPtrOutput) IpConfigs() ContainerLegacyIniti
 	}).(ContainerLegacyInitializationIpConfigArrayOutput)
 }
 
-// The user account configuration.
+// The user account configuration. It only applies when the
+// container is created, not when it is cloned: a cloned container keeps the SSH keys and
+// root password of its source container, and a warning is shown if this block is set.
 func (o ContainerLegacyInitializationPtrOutput) UserAccount() ContainerLegacyInitializationUserAccountPtrOutput {
 	return o.ApplyT(func(v *ContainerLegacyInitialization) *ContainerLegacyInitializationUserAccount {
 		if v == nil {
@@ -3079,8 +3111,11 @@ func (o ContainerLegacyOperatingSystemPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 type ContainerLegacyStartup struct {
-	// A non-negative number defining the delay in
-	// seconds before the next container is shut down.
+	// A non-negative number defining the shutdown
+	// timeout in seconds. When the node stops all guests (e.g. on host
+	// shutdown), Proxmox VE waits this long for the container to shut down before
+	// stopping it. When unset, the node's bulk stop timeout is used
+	// (180 seconds by default).
 	DownDelay *int `pulumi:"downDelay"`
 	// A non-negative number defining the general startup
 	// order (defaults to `-1`, meaning no specific order).
@@ -3102,8 +3137,11 @@ type ContainerLegacyStartupInput interface {
 }
 
 type ContainerLegacyStartupArgs struct {
-	// A non-negative number defining the delay in
-	// seconds before the next container is shut down.
+	// A non-negative number defining the shutdown
+	// timeout in seconds. When the node stops all guests (e.g. on host
+	// shutdown), Proxmox VE waits this long for the container to shut down before
+	// stopping it. When unset, the node's bulk stop timeout is used
+	// (180 seconds by default).
 	DownDelay pulumi.IntPtrInput `pulumi:"downDelay"`
 	// A non-negative number defining the general startup
 	// order (defaults to `-1`, meaning no specific order).
@@ -3190,8 +3228,11 @@ func (o ContainerLegacyStartupOutput) ToContainerLegacyStartupPtrOutputWithConte
 	}).(ContainerLegacyStartupPtrOutput)
 }
 
-// A non-negative number defining the delay in
-// seconds before the next container is shut down.
+// A non-negative number defining the shutdown
+// timeout in seconds. When the node stops all guests (e.g. on host
+// shutdown), Proxmox VE waits this long for the container to shut down before
+// stopping it. When unset, the node's bulk stop timeout is used
+// (180 seconds by default).
 func (o ContainerLegacyStartupOutput) DownDelay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ContainerLegacyStartup) *int { return v.DownDelay }).(pulumi.IntPtrOutput)
 }
@@ -3232,8 +3273,11 @@ func (o ContainerLegacyStartupPtrOutput) Elem() ContainerLegacyStartupOutput {
 	}).(ContainerLegacyStartupOutput)
 }
 
-// A non-negative number defining the delay in
-// seconds before the next container is shut down.
+// A non-negative number defining the shutdown
+// timeout in seconds. When the node stops all guests (e.g. on host
+// shutdown), Proxmox VE waits this long for the container to shut down before
+// stopping it. When unset, the node's bulk stop timeout is used
+// (180 seconds by default).
 func (o ContainerLegacyStartupPtrOutput) DownDelay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ContainerLegacyStartup) *int {
 		if v == nil {
@@ -3266,12 +3310,20 @@ func (o ContainerLegacyStartupPtrOutput) UpDelay() pulumi.IntPtrOutput {
 }
 
 type ContainerLegacyWaitForIp struct {
-	// Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
+	// Only addresses inside one of these CIDRs (e.g. `["10.0.0.0/8", "2001:db8::/64"]`) count when waiting. Setting this disables the default loopback/link-local address exclusion; the `lo` interface is still skipped unless `interfaces` is also set. Avoid catch-all CIDRs such as `0.0.0.0/0` or `::/0`: they also match link-local addresses, which can end the wait before the real address is assigned; use `ipv4` or `ipv6` to require a family instead. When `ipv4` or `ipv6` is `true`, at least one CIDR of that family is required.
+	Cidrs []string `pulumi:"cidrs"`
+	// Only addresses on interfaces whose name fully matches one of these regular expressions (RE2, e.g. `["eth[0-9]+"]`) count when waiting. Setting this disables the default skip of the `lo` interface; loopback/link-local addresses stay excluded unless `cidrs` is also set.
+	Interfaces []string `pulumi:"interfaces"`
+	// Wait for at least one IPv4 address (non-loopback, non-link-local unless allowed by `cidrs`) (defaults to `false`).
 	Ipv4 *bool `pulumi:"ipv4"`
-	// Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
+	// Wait for at least one IPv6 address (non-loopback, non-link-local unless allowed by `cidrs`) (defaults to `false`).
+	Ipv6 *bool `pulumi:"ipv6"`
+	// How long to wait for an address after the provider starts or reboots the container (defaults to `5m`). On timeout the apply continues with a warning listing the addresses that were rejected.
 	//
 	// When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
-	Ipv6 *bool `pulumi:"ipv6"`
+	//
+	// `cidrs` and `interfaces` are combined per address (an address must match both). They only decide when waiting stops; `ipv4` and `ipv6` are not filtered. When the block is set, create and any update that starts or reboots the container wait for up to `timeout`. Every refresh also waits, for up to 10 seconds, and if no address qualifies, `ipv4` and `ipv6` are left empty.
+	Timeout *string `pulumi:"timeout"`
 }
 
 // ContainerLegacyWaitForIpInput is an input type that accepts ContainerLegacyWaitForIpArgs and ContainerLegacyWaitForIpOutput values.
@@ -3286,12 +3338,20 @@ type ContainerLegacyWaitForIpInput interface {
 }
 
 type ContainerLegacyWaitForIpArgs struct {
-	// Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
+	// Only addresses inside one of these CIDRs (e.g. `["10.0.0.0/8", "2001:db8::/64"]`) count when waiting. Setting this disables the default loopback/link-local address exclusion; the `lo` interface is still skipped unless `interfaces` is also set. Avoid catch-all CIDRs such as `0.0.0.0/0` or `::/0`: they also match link-local addresses, which can end the wait before the real address is assigned; use `ipv4` or `ipv6` to require a family instead. When `ipv4` or `ipv6` is `true`, at least one CIDR of that family is required.
+	Cidrs pulumi.StringArrayInput `pulumi:"cidrs"`
+	// Only addresses on interfaces whose name fully matches one of these regular expressions (RE2, e.g. `["eth[0-9]+"]`) count when waiting. Setting this disables the default skip of the `lo` interface; loopback/link-local addresses stay excluded unless `cidrs` is also set.
+	Interfaces pulumi.StringArrayInput `pulumi:"interfaces"`
+	// Wait for at least one IPv4 address (non-loopback, non-link-local unless allowed by `cidrs`) (defaults to `false`).
 	Ipv4 pulumi.BoolPtrInput `pulumi:"ipv4"`
-	// Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
+	// Wait for at least one IPv6 address (non-loopback, non-link-local unless allowed by `cidrs`) (defaults to `false`).
+	Ipv6 pulumi.BoolPtrInput `pulumi:"ipv6"`
+	// How long to wait for an address after the provider starts or reboots the container (defaults to `5m`). On timeout the apply continues with a warning listing the addresses that were rejected.
 	//
 	// When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
-	Ipv6 pulumi.BoolPtrInput `pulumi:"ipv6"`
+	//
+	// `cidrs` and `interfaces` are combined per address (an address must match both). They only decide when waiting stops; `ipv4` and `ipv6` are not filtered. When the block is set, create and any update that starts or reboots the container wait for up to `timeout`. Every refresh also waits, for up to 10 seconds, and if no address qualifies, `ipv4` and `ipv6` are left empty.
+	Timeout pulumi.StringPtrInput `pulumi:"timeout"`
 }
 
 func (ContainerLegacyWaitForIpArgs) ElementType() reflect.Type {
@@ -3371,16 +3431,33 @@ func (o ContainerLegacyWaitForIpOutput) ToContainerLegacyWaitForIpPtrOutputWithC
 	}).(ContainerLegacyWaitForIpPtrOutput)
 }
 
-// Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
+// Only addresses inside one of these CIDRs (e.g. `["10.0.0.0/8", "2001:db8::/64"]`) count when waiting. Setting this disables the default loopback/link-local address exclusion; the `lo` interface is still skipped unless `interfaces` is also set. Avoid catch-all CIDRs such as `0.0.0.0/0` or `::/0`: they also match link-local addresses, which can end the wait before the real address is assigned; use `ipv4` or `ipv6` to require a family instead. When `ipv4` or `ipv6` is `true`, at least one CIDR of that family is required.
+func (o ContainerLegacyWaitForIpOutput) Cidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ContainerLegacyWaitForIp) []string { return v.Cidrs }).(pulumi.StringArrayOutput)
+}
+
+// Only addresses on interfaces whose name fully matches one of these regular expressions (RE2, e.g. `["eth[0-9]+"]`) count when waiting. Setting this disables the default skip of the `lo` interface; loopback/link-local addresses stay excluded unless `cidrs` is also set.
+func (o ContainerLegacyWaitForIpOutput) Interfaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ContainerLegacyWaitForIp) []string { return v.Interfaces }).(pulumi.StringArrayOutput)
+}
+
+// Wait for at least one IPv4 address (non-loopback, non-link-local unless allowed by `cidrs`) (defaults to `false`).
 func (o ContainerLegacyWaitForIpOutput) Ipv4() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ContainerLegacyWaitForIp) *bool { return v.Ipv4 }).(pulumi.BoolPtrOutput)
 }
 
-// Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
-//
-// When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+// Wait for at least one IPv6 address (non-loopback, non-link-local unless allowed by `cidrs`) (defaults to `false`).
 func (o ContainerLegacyWaitForIpOutput) Ipv6() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ContainerLegacyWaitForIp) *bool { return v.Ipv6 }).(pulumi.BoolPtrOutput)
+}
+
+// How long to wait for an address after the provider starts or reboots the container (defaults to `5m`). On timeout the apply continues with a warning listing the addresses that were rejected.
+//
+// When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+//
+// `cidrs` and `interfaces` are combined per address (an address must match both). They only decide when waiting stops; `ipv4` and `ipv6` are not filtered. When the block is set, create and any update that starts or reboots the container wait for up to `timeout`. Every refresh also waits, for up to 10 seconds, and if no address qualifies, `ipv4` and `ipv6` are left empty.
+func (o ContainerLegacyWaitForIpOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyWaitForIp) *string { return v.Timeout }).(pulumi.StringPtrOutput)
 }
 
 type ContainerLegacyWaitForIpPtrOutput struct{ *pulumi.OutputState }
@@ -3407,7 +3484,27 @@ func (o ContainerLegacyWaitForIpPtrOutput) Elem() ContainerLegacyWaitForIpOutput
 	}).(ContainerLegacyWaitForIpOutput)
 }
 
-// Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
+// Only addresses inside one of these CIDRs (e.g. `["10.0.0.0/8", "2001:db8::/64"]`) count when waiting. Setting this disables the default loopback/link-local address exclusion; the `lo` interface is still skipped unless `interfaces` is also set. Avoid catch-all CIDRs such as `0.0.0.0/0` or `::/0`: they also match link-local addresses, which can end the wait before the real address is assigned; use `ipv4` or `ipv6` to require a family instead. When `ipv4` or `ipv6` is `true`, at least one CIDR of that family is required.
+func (o ContainerLegacyWaitForIpPtrOutput) Cidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ContainerLegacyWaitForIp) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Cidrs
+	}).(pulumi.StringArrayOutput)
+}
+
+// Only addresses on interfaces whose name fully matches one of these regular expressions (RE2, e.g. `["eth[0-9]+"]`) count when waiting. Setting this disables the default skip of the `lo` interface; loopback/link-local addresses stay excluded unless `cidrs` is also set.
+func (o ContainerLegacyWaitForIpPtrOutput) Interfaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ContainerLegacyWaitForIp) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Interfaces
+	}).(pulumi.StringArrayOutput)
+}
+
+// Wait for at least one IPv4 address (non-loopback, non-link-local unless allowed by `cidrs`) (defaults to `false`).
 func (o ContainerLegacyWaitForIpPtrOutput) Ipv4() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ContainerLegacyWaitForIp) *bool {
 		if v == nil {
@@ -3417,9 +3514,7 @@ func (o ContainerLegacyWaitForIpPtrOutput) Ipv4() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
-//
-// When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+// Wait for at least one IPv6 address (non-loopback, non-link-local unless allowed by `cidrs`) (defaults to `false`).
 func (o ContainerLegacyWaitForIpPtrOutput) Ipv6() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ContainerLegacyWaitForIp) *bool {
 		if v == nil {
@@ -3427,6 +3522,20 @@ func (o ContainerLegacyWaitForIpPtrOutput) Ipv6() pulumi.BoolPtrOutput {
 		}
 		return v.Ipv6
 	}).(pulumi.BoolPtrOutput)
+}
+
+// How long to wait for an address after the provider starts or reboots the container (defaults to `5m`). On timeout the apply continues with a warning listing the addresses that were rejected.
+//
+// When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+//
+// `cidrs` and `interfaces` are combined per address (an address must match both). They only decide when waiting stops; `ipv4` and `ipv6` are not filtered. When the block is set, create and any update that starts or reboots the container wait for up to `timeout`. Every refresh also waits, for up to 10 seconds, and if no address qualifies, `ipv4` and `ipv6` are left empty.
+func (o ContainerLegacyWaitForIpPtrOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContainerLegacyWaitForIp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(pulumi.StringPtrOutput)
 }
 
 type FileLegacySourceFile struct {
@@ -3437,6 +3546,7 @@ type FileLegacySourceFile struct {
 	// The file name to use instead of the source file
 	// name. Useful when the source file does not have a valid file extension,
 	// for example when the source file is a URL referencing a `.qcow2` image.
+	// Must be a plain file name without path separators or whitespace.
 	FileName *string `pulumi:"fileName"`
 	// Whether to skip the TLS verification step for
 	// HTTPS sources (defaults to `false`).
@@ -3467,6 +3577,7 @@ type FileLegacySourceFileArgs struct {
 	// The file name to use instead of the source file
 	// name. Useful when the source file does not have a valid file extension,
 	// for example when the source file is a URL referencing a `.qcow2` image.
+	// Must be a plain file name without path separators or whitespace.
 	FileName pulumi.StringPtrInput `pulumi:"fileName"`
 	// Whether to skip the TLS verification step for
 	// HTTPS sources (defaults to `false`).
@@ -3568,6 +3679,7 @@ func (o FileLegacySourceFileOutput) Checksum() pulumi.StringPtrOutput {
 // The file name to use instead of the source file
 // name. Useful when the source file does not have a valid file extension,
 // for example when the source file is a URL referencing a `.qcow2` image.
+// Must be a plain file name without path separators or whitespace.
 func (o FileLegacySourceFileOutput) FileName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FileLegacySourceFile) *string { return v.FileName }).(pulumi.StringPtrOutput)
 }
@@ -3636,6 +3748,7 @@ func (o FileLegacySourceFilePtrOutput) Checksum() pulumi.StringPtrOutput {
 // The file name to use instead of the source file
 // name. Useful when the source file does not have a valid file extension,
 // for example when the source file is a URL referencing a `.qcow2` image.
+// Must be a plain file name without path separators or whitespace.
 func (o FileLegacySourceFilePtrOutput) FileName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FileLegacySourceFile) *string {
 		if v == nil {
@@ -3680,7 +3793,8 @@ func (o FileLegacySourceFilePtrOutput) Path() pulumi.StringPtrOutput {
 type FileLegacySourceRaw struct {
 	// The raw data.
 	Data string `pulumi:"data"`
-	// The file name.
+	// The file name. Must be a plain file name without
+	// path separators or whitespace.
 	FileName string `pulumi:"fileName"`
 	// The number of bytes to resize the file to.
 	Resize *int `pulumi:"resize"`
@@ -3700,7 +3814,8 @@ type FileLegacySourceRawInput interface {
 type FileLegacySourceRawArgs struct {
 	// The raw data.
 	Data pulumi.StringInput `pulumi:"data"`
-	// The file name.
+	// The file name. Must be a plain file name without
+	// path separators or whitespace.
 	FileName pulumi.StringInput `pulumi:"fileName"`
 	// The number of bytes to resize the file to.
 	Resize pulumi.IntPtrInput `pulumi:"resize"`
@@ -3788,7 +3903,8 @@ func (o FileLegacySourceRawOutput) Data() pulumi.StringOutput {
 	return o.ApplyT(func(v FileLegacySourceRaw) string { return v.Data }).(pulumi.StringOutput)
 }
 
-// The file name.
+// The file name. Must be a plain file name without
+// path separators or whitespace.
 func (o FileLegacySourceRawOutput) FileName() pulumi.StringOutput {
 	return o.ApplyT(func(v FileLegacySourceRaw) string { return v.FileName }).(pulumi.StringOutput)
 }
@@ -3832,7 +3948,8 @@ func (o FileLegacySourceRawPtrOutput) Data() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The file name.
+// The file name. Must be a plain file name without
+// path separators or whitespace.
 func (o FileLegacySourceRawPtrOutput) FileName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FileLegacySourceRaw) *string {
 		if v == nil {
@@ -4221,6 +4338,8 @@ type ProviderSsh struct {
 	Password *string `pulumi:"password"`
 	// The unencrypted private key (in PEM format) used for the SSH connection. Defaults to the value of the `PROXMOX_VE_SSH_PRIVATE_KEY` environment variable.
 	PrivateKey *string `pulumi:"privateKey"`
+	// Whether to run API calls under `/nodes/{node}/` with a `root@pam` ticket minted on that node over SSH, so an API token can perform `root@pam`-only operations. Those calls then run as `root@pam`, bypassing the token's permissions. Requires an SSH connection as `root`. Defaults to the value of the `PROXMOX_VE_SSH_ROOT_TICKET` environment variable, or `false` if not set.
+	RootTicket *bool `pulumi:"rootTicket"`
 	// The password for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_PASSWORD` environment variable.
 	Socks5Password *string `pulumi:"socks5Password"`
 	// The address:port of the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_SERVER` environment variable.
@@ -4257,6 +4376,8 @@ type ProviderSshArgs struct {
 	Password pulumi.StringPtrInput `pulumi:"password"`
 	// The unencrypted private key (in PEM format) used for the SSH connection. Defaults to the value of the `PROXMOX_VE_SSH_PRIVATE_KEY` environment variable.
 	PrivateKey pulumi.StringPtrInput `pulumi:"privateKey"`
+	// Whether to run API calls under `/nodes/{node}/` with a `root@pam` ticket minted on that node over SSH, so an API token can perform `root@pam`-only operations. Those calls then run as `root@pam`, bypassing the token's permissions. Requires an SSH connection as `root`. Defaults to the value of the `PROXMOX_VE_SSH_ROOT_TICKET` environment variable, or `false` if not set.
+	RootTicket pulumi.BoolPtrInput `pulumi:"rootTicket"`
 	// The password for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_PASSWORD` environment variable.
 	Socks5Password pulumi.StringPtrInput `pulumi:"socks5Password"`
 	// The address:port of the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_SERVER` environment variable.
@@ -4379,6 +4500,11 @@ func (o ProviderSshOutput) PrivateKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderSsh) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
 }
 
+// Whether to run API calls under `/nodes/{node}/` with a `root@pam` ticket minted on that node over SSH, so an API token can perform `root@pam`-only operations. Those calls then run as `root@pam`, bypassing the token's permissions. Requires an SSH connection as `root`. Defaults to the value of the `PROXMOX_VE_SSH_ROOT_TICKET` environment variable, or `false` if not set.
+func (o ProviderSshOutput) RootTicket() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ProviderSsh) *bool { return v.RootTicket }).(pulumi.BoolPtrOutput)
+}
+
 // The password for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_PASSWORD` environment variable.
 func (o ProviderSshOutput) Socks5Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderSsh) *string { return v.Socks5Password }).(pulumi.StringPtrOutput)
@@ -4491,6 +4617,16 @@ func (o ProviderSshPtrOutput) PrivateKey() pulumi.StringPtrOutput {
 		}
 		return v.PrivateKey
 	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to run API calls under `/nodes/{node}/` with a `root@pam` ticket minted on that node over SSH, so an API token can perform `root@pam`-only operations. Those calls then run as `root@pam`, bypassing the token's permissions. Requires an SSH connection as `root`. Defaults to the value of the `PROXMOX_VE_SSH_ROOT_TICKET` environment variable, or `false` if not set.
+func (o ProviderSshPtrOutput) RootTicket() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProviderSsh) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RootTicket
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The password for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_PASSWORD` environment variable.
@@ -6343,13 +6479,19 @@ func (o VmLegacyAgentPtrOutput) WaitForIp() VmLegacyAgentWaitForIpPtrOutput {
 }
 
 type VmLegacyAgentWaitForIp struct {
+	// Only addresses inside one of these CIDRs (e.g. `["10.0.0.0/8", "2001:db8::/64"]`) count when waiting. Setting this disables the default loopback/link-local address exclusion; the `lo` interface is still skipped unless `interfaces` is also set. Avoid catch-all CIDRs such as `0.0.0.0/0` or `::/0`: they also match link-local addresses, which can end the wait before the real address is assigned; use `ipv4` or `ipv6` to require a family instead. When `ipv4` or `ipv6` is `true`, at least one CIDR of that family is required.
+	Cidrs []string `pulumi:"cidrs"`
 	// Whether to disable waiting for the agent to report an IP address (defaults to `false`). Set to `true` to skip the IP lookup entirely, so the provider does not wait for the agent during `refresh` and at the end of `apply`. Useful when the guest agent is slow to start, not yet installed, or not running, to avoid blocking those operations. When disabled, `ipv4Addresses`, `ipv6Addresses`, and `networkInterfaceNames` are left empty.
 	Disabled *bool `pulumi:"disabled"`
-	// Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
-	Ipv4 *bool `pulumi:"ipv4"`
-	// Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
+	// Only addresses on interfaces whose name fully matches one of these regular expressions (RE2, e.g. `["eth[0-9]+", "ens.*"]`) count when waiting. Setting this disables the default skip of the `lo` interface; loopback/link-local addresses stay excluded unless `cidrs` is also set.
 	//
 	// When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false` (and `disabled` is `false`), the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+	//
+	// `cidrs` and `interfaces` are combined per address (an address must match both), and they cannot be used with `disabled = true`. They are useful to ignore addresses such as Docker's `docker0` bridge, which would otherwise end the wait early. They only decide when waiting stops: `ipv4Addresses`, `ipv6Addresses` and `networkInterfaceNames` still list every address the agent reports. The wait also runs on every refresh, so a filter that never matches makes refresh wait for the full agent `timeout` and then leaves those attributes and `macAddresses` empty. On timeout, the warning reported by refresh lists each rejected address and the reason.
+	Interfaces []string `pulumi:"interfaces"`
+	// Wait for at least one IPv4 address (non-loopback, non-link-local unless allowed by `cidrs`) (defaults to `false`).
+	Ipv4 *bool `pulumi:"ipv4"`
+	// Wait for at least one IPv6 address (non-loopback, non-link-local unless allowed by `cidrs`) (defaults to `false`).
 	Ipv6 *bool `pulumi:"ipv6"`
 }
 
@@ -6365,13 +6507,19 @@ type VmLegacyAgentWaitForIpInput interface {
 }
 
 type VmLegacyAgentWaitForIpArgs struct {
+	// Only addresses inside one of these CIDRs (e.g. `["10.0.0.0/8", "2001:db8::/64"]`) count when waiting. Setting this disables the default loopback/link-local address exclusion; the `lo` interface is still skipped unless `interfaces` is also set. Avoid catch-all CIDRs such as `0.0.0.0/0` or `::/0`: they also match link-local addresses, which can end the wait before the real address is assigned; use `ipv4` or `ipv6` to require a family instead. When `ipv4` or `ipv6` is `true`, at least one CIDR of that family is required.
+	Cidrs pulumi.StringArrayInput `pulumi:"cidrs"`
 	// Whether to disable waiting for the agent to report an IP address (defaults to `false`). Set to `true` to skip the IP lookup entirely, so the provider does not wait for the agent during `refresh` and at the end of `apply`. Useful when the guest agent is slow to start, not yet installed, or not running, to avoid blocking those operations. When disabled, `ipv4Addresses`, `ipv6Addresses`, and `networkInterfaceNames` are left empty.
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
-	// Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
-	Ipv4 pulumi.BoolPtrInput `pulumi:"ipv4"`
-	// Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
+	// Only addresses on interfaces whose name fully matches one of these regular expressions (RE2, e.g. `["eth[0-9]+", "ens.*"]`) count when waiting. Setting this disables the default skip of the `lo` interface; loopback/link-local addresses stay excluded unless `cidrs` is also set.
 	//
 	// When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false` (and `disabled` is `false`), the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+	//
+	// `cidrs` and `interfaces` are combined per address (an address must match both), and they cannot be used with `disabled = true`. They are useful to ignore addresses such as Docker's `docker0` bridge, which would otherwise end the wait early. They only decide when waiting stops: `ipv4Addresses`, `ipv6Addresses` and `networkInterfaceNames` still list every address the agent reports. The wait also runs on every refresh, so a filter that never matches makes refresh wait for the full agent `timeout` and then leaves those attributes and `macAddresses` empty. On timeout, the warning reported by refresh lists each rejected address and the reason.
+	Interfaces pulumi.StringArrayInput `pulumi:"interfaces"`
+	// Wait for at least one IPv4 address (non-loopback, non-link-local unless allowed by `cidrs`) (defaults to `false`).
+	Ipv4 pulumi.BoolPtrInput `pulumi:"ipv4"`
+	// Wait for at least one IPv6 address (non-loopback, non-link-local unless allowed by `cidrs`) (defaults to `false`).
 	Ipv6 pulumi.BoolPtrInput `pulumi:"ipv6"`
 }
 
@@ -6452,19 +6600,31 @@ func (o VmLegacyAgentWaitForIpOutput) ToVmLegacyAgentWaitForIpPtrOutputWithConte
 	}).(VmLegacyAgentWaitForIpPtrOutput)
 }
 
+// Only addresses inside one of these CIDRs (e.g. `["10.0.0.0/8", "2001:db8::/64"]`) count when waiting. Setting this disables the default loopback/link-local address exclusion; the `lo` interface is still skipped unless `interfaces` is also set. Avoid catch-all CIDRs such as `0.0.0.0/0` or `::/0`: they also match link-local addresses, which can end the wait before the real address is assigned; use `ipv4` or `ipv6` to require a family instead. When `ipv4` or `ipv6` is `true`, at least one CIDR of that family is required.
+func (o VmLegacyAgentWaitForIpOutput) Cidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VmLegacyAgentWaitForIp) []string { return v.Cidrs }).(pulumi.StringArrayOutput)
+}
+
 // Whether to disable waiting for the agent to report an IP address (defaults to `false`). Set to `true` to skip the IP lookup entirely, so the provider does not wait for the agent during `refresh` and at the end of `apply`. Useful when the guest agent is slow to start, not yet installed, or not running, to avoid blocking those operations. When disabled, `ipv4Addresses`, `ipv6Addresses`, and `networkInterfaceNames` are left empty.
 func (o VmLegacyAgentWaitForIpOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VmLegacyAgentWaitForIp) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
-// Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
+// Only addresses on interfaces whose name fully matches one of these regular expressions (RE2, e.g. `["eth[0-9]+", "ens.*"]`) count when waiting. Setting this disables the default skip of the `lo` interface; loopback/link-local addresses stay excluded unless `cidrs` is also set.
+//
+// When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false` (and `disabled` is `false`), the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+//
+// `cidrs` and `interfaces` are combined per address (an address must match both), and they cannot be used with `disabled = true`. They are useful to ignore addresses such as Docker's `docker0` bridge, which would otherwise end the wait early. They only decide when waiting stops: `ipv4Addresses`, `ipv6Addresses` and `networkInterfaceNames` still list every address the agent reports. The wait also runs on every refresh, so a filter that never matches makes refresh wait for the full agent `timeout` and then leaves those attributes and `macAddresses` empty. On timeout, the warning reported by refresh lists each rejected address and the reason.
+func (o VmLegacyAgentWaitForIpOutput) Interfaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VmLegacyAgentWaitForIp) []string { return v.Interfaces }).(pulumi.StringArrayOutput)
+}
+
+// Wait for at least one IPv4 address (non-loopback, non-link-local unless allowed by `cidrs`) (defaults to `false`).
 func (o VmLegacyAgentWaitForIpOutput) Ipv4() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VmLegacyAgentWaitForIp) *bool { return v.Ipv4 }).(pulumi.BoolPtrOutput)
 }
 
-// Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
-//
-// When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false` (and `disabled` is `false`), the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+// Wait for at least one IPv6 address (non-loopback, non-link-local unless allowed by `cidrs`) (defaults to `false`).
 func (o VmLegacyAgentWaitForIpOutput) Ipv6() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VmLegacyAgentWaitForIp) *bool { return v.Ipv6 }).(pulumi.BoolPtrOutput)
 }
@@ -6493,6 +6653,16 @@ func (o VmLegacyAgentWaitForIpPtrOutput) Elem() VmLegacyAgentWaitForIpOutput {
 	}).(VmLegacyAgentWaitForIpOutput)
 }
 
+// Only addresses inside one of these CIDRs (e.g. `["10.0.0.0/8", "2001:db8::/64"]`) count when waiting. Setting this disables the default loopback/link-local address exclusion; the `lo` interface is still skipped unless `interfaces` is also set. Avoid catch-all CIDRs such as `0.0.0.0/0` or `::/0`: they also match link-local addresses, which can end the wait before the real address is assigned; use `ipv4` or `ipv6` to require a family instead. When `ipv4` or `ipv6` is `true`, at least one CIDR of that family is required.
+func (o VmLegacyAgentWaitForIpPtrOutput) Cidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VmLegacyAgentWaitForIp) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Cidrs
+	}).(pulumi.StringArrayOutput)
+}
+
 // Whether to disable waiting for the agent to report an IP address (defaults to `false`). Set to `true` to skip the IP lookup entirely, so the provider does not wait for the agent during `refresh` and at the end of `apply`. Useful when the guest agent is slow to start, not yet installed, or not running, to avoid blocking those operations. When disabled, `ipv4Addresses`, `ipv6Addresses`, and `networkInterfaceNames` are left empty.
 func (o VmLegacyAgentWaitForIpPtrOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VmLegacyAgentWaitForIp) *bool {
@@ -6503,7 +6673,21 @@ func (o VmLegacyAgentWaitForIpPtrOutput) Disabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
+// Only addresses on interfaces whose name fully matches one of these regular expressions (RE2, e.g. `["eth[0-9]+", "ens.*"]`) count when waiting. Setting this disables the default skip of the `lo` interface; loopback/link-local addresses stay excluded unless `cidrs` is also set.
+//
+// When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false` (and `disabled` is `false`), the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+//
+// `cidrs` and `interfaces` are combined per address (an address must match both), and they cannot be used with `disabled = true`. They are useful to ignore addresses such as Docker's `docker0` bridge, which would otherwise end the wait early. They only decide when waiting stops: `ipv4Addresses`, `ipv6Addresses` and `networkInterfaceNames` still list every address the agent reports. The wait also runs on every refresh, so a filter that never matches makes refresh wait for the full agent `timeout` and then leaves those attributes and `macAddresses` empty. On timeout, the warning reported by refresh lists each rejected address and the reason.
+func (o VmLegacyAgentWaitForIpPtrOutput) Interfaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VmLegacyAgentWaitForIp) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Interfaces
+	}).(pulumi.StringArrayOutput)
+}
+
+// Wait for at least one IPv4 address (non-loopback, non-link-local unless allowed by `cidrs`) (defaults to `false`).
 func (o VmLegacyAgentWaitForIpPtrOutput) Ipv4() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VmLegacyAgentWaitForIp) *bool {
 		if v == nil {
@@ -6513,9 +6697,7 @@ func (o VmLegacyAgentWaitForIpPtrOutput) Ipv4() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
-//
-// When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false` (and `disabled` is `false`), the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+// Wait for at least one IPv6 address (non-loopback, non-link-local unless allowed by `cidrs`) (defaults to `false`).
 func (o VmLegacyAgentWaitForIpPtrOutput) Ipv6() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VmLegacyAgentWaitForIp) *bool {
 		if v == nil {
@@ -7419,6 +7601,15 @@ type VmLegacyCpu struct {
 	Sockets *int `pulumi:"sockets"`
 	// The emulated CPU type, it's recommended to
 	// use `x86-64-v2-AES` (defaults to `qemu64`).
+	// Representative models include `host`, `qemu64`, `x86-64-v2-AES`,
+	// `EPYC-Genoa`, and `EPYC-Genoa-v2`. Model availability is validated by
+	// the target Proxmox VE version, which returns an error for an unknown
+	// model. See the
+	// [PVE administration guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings)
+	// for the models a release offers.
+	// - `custom-<model>` - Custom CPU model. `custom-<model>` names refer to
+	//   PVE custom model definitions in
+	//   `/etc/pve/virtual-guest/cpu-models.conf`.
 	Type *string `pulumi:"type"`
 	// The CPU units. PVE default is `1024` for cgroups v1 and `100` for cgroups v2.
 	Units *int `pulumi:"units"`
@@ -7481,6 +7672,15 @@ type VmLegacyCpuArgs struct {
 	Sockets pulumi.IntPtrInput `pulumi:"sockets"`
 	// The emulated CPU type, it's recommended to
 	// use `x86-64-v2-AES` (defaults to `qemu64`).
+	// Representative models include `host`, `qemu64`, `x86-64-v2-AES`,
+	// `EPYC-Genoa`, and `EPYC-Genoa-v2`. Model availability is validated by
+	// the target Proxmox VE version, which returns an error for an unknown
+	// model. See the
+	// [PVE administration guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings)
+	// for the models a release offers.
+	// - `custom-<model>` - Custom CPU model. `custom-<model>` names refer to
+	//   PVE custom model definitions in
+	//   `/etc/pve/virtual-guest/cpu-models.conf`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// The CPU units. PVE default is `1024` for cgroups v1 and `100` for cgroups v2.
 	Units pulumi.IntPtrInput `pulumi:"units"`
@@ -7632,6 +7832,15 @@ func (o VmLegacyCpuOutput) Sockets() pulumi.IntPtrOutput {
 
 // The emulated CPU type, it's recommended to
 // use `x86-64-v2-AES` (defaults to `qemu64`).
+// Representative models include `host`, `qemu64`, `x86-64-v2-AES`,
+// `EPYC-Genoa`, and `EPYC-Genoa-v2`. Model availability is validated by
+// the target Proxmox VE version, which returns an error for an unknown
+// model. See the
+// [PVE administration guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings)
+// for the models a release offers.
+//   - `custom-<model>` - Custom CPU model. `custom-<model>` names refer to
+//     PVE custom model definitions in
+//     `/etc/pve/virtual-guest/cpu-models.conf`.
 func (o VmLegacyCpuOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmLegacyCpu) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -7774,6 +7983,15 @@ func (o VmLegacyCpuPtrOutput) Sockets() pulumi.IntPtrOutput {
 
 // The emulated CPU type, it's recommended to
 // use `x86-64-v2-AES` (defaults to `qemu64`).
+// Representative models include `host`, `qemu64`, `x86-64-v2-AES`,
+// `EPYC-Genoa`, and `EPYC-Genoa-v2`. Model availability is validated by
+// the target Proxmox VE version, which returns an error for an unknown
+// model. See the
+// [PVE administration guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings)
+// for the models a release offers.
+//   - `custom-<model>` - Custom CPU model. `custom-<model>` names refer to
+//     PVE custom model definitions in
+//     `/etc/pve/virtual-guest/cpu-models.conf`.
 func (o VmLegacyCpuPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VmLegacyCpu) *string {
 		if v == nil {
@@ -7810,8 +8028,9 @@ type VmLegacyDisk struct {
 	// The file format.
 	FileFormat *string `pulumi:"fileFormat"`
 	// The file ID for a disk image when importing a disk into VM. The ID format is
-	// `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/centos8.img`. Can be also taken from
-	// `download.FileLegacy` resource. Prefer `importFrom` for uncompressed images.
+	// `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/centos8.img`, without whitespace, `,` or `=`.
+	// Can be also taken from `download.FileLegacy` resource. Prefer `importFrom` for
+	// uncompressed images.
 	// Use `fileId` when working with compressed cloud images (e.g., `.qcow2.xz`) that were downloaded
 	// with `contentType = "iso"` and `decompressionAlgorithm` set. See the
 	// Create a VM from a Cloud Image guide for examples.
@@ -7841,7 +8060,8 @@ type VmLegacyDisk struct {
 	Queues *int `pulumi:"queues"`
 	// Whether the drive should be considered for replication jobs (defaults to `true`).
 	Replicate *bool `pulumi:"replicate"`
-	// The serial number of the disk, up to 20 bytes long.
+	// The serial number of the disk, up to 20 characters. Letters, digits and
+	// `-%_.!~*'()` only.
 	Serial *string `pulumi:"serial"`
 	// The disk size in gigabytes (defaults to `8`).
 	Size *int `pulumi:"size"`
@@ -7881,8 +8101,9 @@ type VmLegacyDiskArgs struct {
 	// The file format.
 	FileFormat pulumi.StringPtrInput `pulumi:"fileFormat"`
 	// The file ID for a disk image when importing a disk into VM. The ID format is
-	// `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/centos8.img`. Can be also taken from
-	// `download.FileLegacy` resource. Prefer `importFrom` for uncompressed images.
+	// `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/centos8.img`, without whitespace, `,` or `=`.
+	// Can be also taken from `download.FileLegacy` resource. Prefer `importFrom` for
+	// uncompressed images.
 	// Use `fileId` when working with compressed cloud images (e.g., `.qcow2.xz`) that were downloaded
 	// with `contentType = "iso"` and `decompressionAlgorithm` set. See the
 	// Create a VM from a Cloud Image guide for examples.
@@ -7912,7 +8133,8 @@ type VmLegacyDiskArgs struct {
 	Queues pulumi.IntPtrInput `pulumi:"queues"`
 	// Whether the drive should be considered for replication jobs (defaults to `true`).
 	Replicate pulumi.BoolPtrInput `pulumi:"replicate"`
-	// The serial number of the disk, up to 20 bytes long.
+	// The serial number of the disk, up to 20 characters. Letters, digits and
+	// `-%_.!~*'()` only.
 	Serial pulumi.StringPtrInput `pulumi:"serial"`
 	// The disk size in gigabytes (defaults to `8`).
 	Size pulumi.IntPtrInput `pulumi:"size"`
@@ -8009,8 +8231,9 @@ func (o VmLegacyDiskOutput) FileFormat() pulumi.StringPtrOutput {
 }
 
 // The file ID for a disk image when importing a disk into VM. The ID format is
-// `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/centos8.img`. Can be also taken from
-// `download.FileLegacy` resource. Prefer `importFrom` for uncompressed images.
+// `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/centos8.img`, without whitespace, `,` or `=`.
+// Can be also taken from `download.FileLegacy` resource. Prefer `importFrom` for
+// uncompressed images.
 // Use `fileId` when working with compressed cloud images (e.g., `.qcow2.xz`) that were downloaded
 // with `contentType = "iso"` and `decompressionAlgorithm` set. See the
 // Create a VM from a Cloud Image guide for examples.
@@ -8061,7 +8284,8 @@ func (o VmLegacyDiskOutput) Replicate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VmLegacyDisk) *bool { return v.Replicate }).(pulumi.BoolPtrOutput)
 }
 
-// The serial number of the disk, up to 20 bytes long.
+// The serial number of the disk, up to 20 characters. Letters, digits and
+// `-%_.!~*'()` only.
 func (o VmLegacyDiskOutput) Serial() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmLegacyDisk) *string { return v.Serial }).(pulumi.StringPtrOutput)
 }
@@ -8806,12 +9030,18 @@ type VmLegacyInitialization struct {
 	// image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
 	// detected if the setting is missing but a cloud-init image is present,
 	// otherwise defaults to `ide2`.
+	// Must not be the same as the `interface` of any `disk` block, the plan
+	// fails if it is. If the setting is missing, `ide2` is used on create
+	// (unless cloning) and checked against the `disk` interfaces too.
 	Interface *string `pulumi:"interface"`
 	// The IP configuration (one block per network
 	// device, up to 32 blocks).
 	IpConfigs []VmLegacyInitializationIpConfig `pulumi:"ipConfigs"`
 	// The identifier for a file containing
 	// all meta data passed to the VM via cloud-init.
+	// - When cloning, setting any of the four `*_data_file_id` attributes above to `""` clears
+	//   the custom cloud-init files inherited from the template, as long as none of them is set
+	//   to a value.
 	MetaDataFileId *string `pulumi:"metaDataFileId"`
 	// The identifier for a file containing
 	// network configuration data passed to the VM via cloud-init (conflicts
@@ -8857,12 +9087,18 @@ type VmLegacyInitializationArgs struct {
 	// image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
 	// detected if the setting is missing but a cloud-init image is present,
 	// otherwise defaults to `ide2`.
+	// Must not be the same as the `interface` of any `disk` block, the plan
+	// fails if it is. If the setting is missing, `ide2` is used on create
+	// (unless cloning) and checked against the `disk` interfaces too.
 	Interface pulumi.StringPtrInput `pulumi:"interface"`
 	// The IP configuration (one block per network
 	// device, up to 32 blocks).
 	IpConfigs VmLegacyInitializationIpConfigArrayInput `pulumi:"ipConfigs"`
 	// The identifier for a file containing
 	// all meta data passed to the VM via cloud-init.
+	// - When cloning, setting any of the four `*_data_file_id` attributes above to `""` clears
+	//   the custom cloud-init files inherited from the template, as long as none of them is set
+	//   to a value.
 	MetaDataFileId pulumi.StringPtrInput `pulumi:"metaDataFileId"`
 	// The identifier for a file containing
 	// network configuration data passed to the VM via cloud-init (conflicts
@@ -8982,6 +9218,9 @@ func (o VmLegacyInitializationOutput) FileFormat() pulumi.StringPtrOutput {
 // image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
 // detected if the setting is missing but a cloud-init image is present,
 // otherwise defaults to `ide2`.
+// Must not be the same as the `interface` of any `disk` block, the plan
+// fails if it is. If the setting is missing, `ide2` is used on create
+// (unless cloning) and checked against the `disk` interfaces too.
 func (o VmLegacyInitializationOutput) Interface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmLegacyInitialization) *string { return v.Interface }).(pulumi.StringPtrOutput)
 }
@@ -8994,6 +9233,9 @@ func (o VmLegacyInitializationOutput) IpConfigs() VmLegacyInitializationIpConfig
 
 // The identifier for a file containing
 // all meta data passed to the VM via cloud-init.
+//   - When cloning, setting any of the four `*_data_file_id` attributes above to `""` clears
+//     the custom cloud-init files inherited from the template, as long as none of them is set
+//     to a value.
 func (o VmLegacyInitializationOutput) MetaDataFileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmLegacyInitialization) *string { return v.MetaDataFileId }).(pulumi.StringPtrOutput)
 }
@@ -9094,6 +9336,9 @@ func (o VmLegacyInitializationPtrOutput) FileFormat() pulumi.StringPtrOutput {
 // image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
 // detected if the setting is missing but a cloud-init image is present,
 // otherwise defaults to `ide2`.
+// Must not be the same as the `interface` of any `disk` block, the plan
+// fails if it is. If the setting is missing, `ide2` is used on create
+// (unless cloning) and checked against the `disk` interfaces too.
 func (o VmLegacyInitializationPtrOutput) Interface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VmLegacyInitialization) *string {
 		if v == nil {
@@ -9116,6 +9361,9 @@ func (o VmLegacyInitializationPtrOutput) IpConfigs() VmLegacyInitializationIpCon
 
 // The identifier for a file containing
 // all meta data passed to the VM via cloud-init.
+//   - When cloning, setting any of the four `*_data_file_id` attributes above to `""` clears
+//     the custom cloud-init files inherited from the template, as long as none of them is set
+//     to a value.
 func (o VmLegacyInitializationPtrOutput) MetaDataFileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VmLegacyInitialization) *string {
 		if v == nil {
@@ -11137,8 +11385,12 @@ func (o VmLegacySmbiosPtrOutput) Version() pulumi.StringPtrOutput {
 }
 
 type VmLegacyStartup struct {
-	// A non-negative number defining the delay in
-	// seconds before the next VM is shut down.
+	// A non-negative number defining the shutdown
+	// timeout in seconds. When the node stops all guests (e.g. on host
+	// shutdown), Proxmox VE waits this long for the VM to shut down before
+	// stopping it. It is also the default timeout for a shutdown of this
+	// VM that doesn't set one. When unset, the node's bulk stop timeout is
+	// used (180 seconds by default).
 	DownDelay *int `pulumi:"downDelay"`
 	// A non-negative number defining the general startup
 	// order (defaults to `-1`, meaning no specific order).
@@ -11160,8 +11412,12 @@ type VmLegacyStartupInput interface {
 }
 
 type VmLegacyStartupArgs struct {
-	// A non-negative number defining the delay in
-	// seconds before the next VM is shut down.
+	// A non-negative number defining the shutdown
+	// timeout in seconds. When the node stops all guests (e.g. on host
+	// shutdown), Proxmox VE waits this long for the VM to shut down before
+	// stopping it. It is also the default timeout for a shutdown of this
+	// VM that doesn't set one. When unset, the node's bulk stop timeout is
+	// used (180 seconds by default).
 	DownDelay pulumi.IntPtrInput `pulumi:"downDelay"`
 	// A non-negative number defining the general startup
 	// order (defaults to `-1`, meaning no specific order).
@@ -11248,8 +11504,12 @@ func (o VmLegacyStartupOutput) ToVmLegacyStartupPtrOutputWithContext(ctx context
 	}).(VmLegacyStartupPtrOutput)
 }
 
-// A non-negative number defining the delay in
-// seconds before the next VM is shut down.
+// A non-negative number defining the shutdown
+// timeout in seconds. When the node stops all guests (e.g. on host
+// shutdown), Proxmox VE waits this long for the VM to shut down before
+// stopping it. It is also the default timeout for a shutdown of this
+// VM that doesn't set one. When unset, the node's bulk stop timeout is
+// used (180 seconds by default).
 func (o VmLegacyStartupOutput) DownDelay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VmLegacyStartup) *int { return v.DownDelay }).(pulumi.IntPtrOutput)
 }
@@ -11290,8 +11550,12 @@ func (o VmLegacyStartupPtrOutput) Elem() VmLegacyStartupOutput {
 	}).(VmLegacyStartupOutput)
 }
 
-// A non-negative number defining the delay in
-// seconds before the next VM is shut down.
+// A non-negative number defining the shutdown
+// timeout in seconds. When the node stops all guests (e.g. on host
+// shutdown), Proxmox VE waits this long for the VM to shut down before
+// stopping it. It is also the default timeout for a shutdown of this
+// VM that doesn't set one. When unset, the node's bulk stop timeout is
+// used (180 seconds by default).
 func (o VmLegacyStartupPtrOutput) DownDelay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VmLegacyStartup) *int {
 		if v == nil {

@@ -120,14 +120,16 @@ public class GroupLegacy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.containerId);
     }
     /**
-     * Security group name.
+     * Security group name. Must be lowercase, because PVE lowercases
+     * security group names.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Security group name.
+     * @return Security group name. Must be lowercase, because PVE lowercases
+     * security group names.
      * 
      */
     public Output<String> name() {

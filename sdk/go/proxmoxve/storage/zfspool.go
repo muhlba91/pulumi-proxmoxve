@@ -161,6 +161,12 @@ func (ZfspoolState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zfspoolState)(nil)).Elem()
 }
 
+// ZfspoolExists checks whether an existing Zfspool resource with the given ID exists.
+func ZfspoolExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZfspoolState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:storage/zfspool:Zfspool", id, state, "", opts...)
+}
+
 type zfspoolArgs struct {
 	// Block size for newly created volumes (e.g. `4k`, `8k`, `16k`). Larger values may improve throughput for large I/O, while smaller values optimize space efficiency.
 	Blocksize *string `pulumi:"blocksize"`

@@ -152,6 +152,12 @@ func (Vm2LegacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vm2LegacyState)(nil)).Elem()
 }
 
+// Vm2LegacyExists checks whether an existing Vm2Legacy resource with the given ID exists.
+func Vm2LegacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *Vm2LegacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:index/vm2Legacy:Vm2Legacy", id, state, "", opts...)
+}
+
 type vm2LegacyArgs struct {
 	// The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
 	Cdrom map[string]Vm2LegacyCdrom `pulumi:"cdrom"`

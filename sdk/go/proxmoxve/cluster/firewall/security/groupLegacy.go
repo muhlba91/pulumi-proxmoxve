@@ -81,7 +81,8 @@ type GroupLegacy struct {
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
 	// The ID of the container to manage the firewall for.
 	ContainerId pulumi.IntPtrOutput `pulumi:"containerId"`
-	// Security group name.
+	// Security group name. Must be lowercase, because PVE lowercases
+	// security group names.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name of the node.
 	NodeName pulumi.StringPtrOutput `pulumi:"nodeName"`
@@ -125,7 +126,8 @@ type groupLegacyState struct {
 	Comment *string `pulumi:"comment"`
 	// The ID of the container to manage the firewall for.
 	ContainerId *int `pulumi:"containerId"`
-	// Security group name.
+	// Security group name. Must be lowercase, because PVE lowercases
+	// security group names.
 	Name *string `pulumi:"name"`
 	// The name of the node.
 	NodeName *string `pulumi:"nodeName"`
@@ -140,7 +142,8 @@ type GroupLegacyState struct {
 	Comment pulumi.StringPtrInput
 	// The ID of the container to manage the firewall for.
 	ContainerId pulumi.IntPtrInput
-	// Security group name.
+	// Security group name. Must be lowercase, because PVE lowercases
+	// security group names.
 	Name pulumi.StringPtrInput
 	// The name of the node.
 	NodeName pulumi.StringPtrInput
@@ -154,12 +157,19 @@ func (GroupLegacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupLegacyState)(nil)).Elem()
 }
 
+// GroupLegacyExists checks whether an existing GroupLegacy resource with the given ID exists.
+func GroupLegacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GroupLegacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:cluster/firewall/security/groupLegacy:GroupLegacy", id, state, "", opts...)
+}
+
 type groupLegacyArgs struct {
 	// Security group comment.
 	Comment *string `pulumi:"comment"`
 	// The ID of the container to manage the firewall for.
 	ContainerId *int `pulumi:"containerId"`
-	// Security group name.
+	// Security group name. Must be lowercase, because PVE lowercases
+	// security group names.
 	Name *string `pulumi:"name"`
 	// The name of the node.
 	NodeName *string `pulumi:"nodeName"`
@@ -175,7 +185,8 @@ type GroupLegacyArgs struct {
 	Comment pulumi.StringPtrInput
 	// The ID of the container to manage the firewall for.
 	ContainerId pulumi.IntPtrInput
-	// Security group name.
+	// Security group name. Must be lowercase, because PVE lowercases
+	// security group names.
 	Name pulumi.StringPtrInput
 	// The name of the node.
 	NodeName pulumi.StringPtrInput
@@ -282,7 +293,8 @@ func (o GroupLegacyOutput) ContainerId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GroupLegacy) pulumi.IntPtrOutput { return v.ContainerId }).(pulumi.IntPtrOutput)
 }
 
-// Security group name.
+// Security group name. Must be lowercase, because PVE lowercases
+// security group names.
 func (o GroupLegacyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupLegacy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

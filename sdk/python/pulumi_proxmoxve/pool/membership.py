@@ -304,6 +304,20 @@ class Membership(pulumi.CustomResource):
         __props__.__dict__["vm_id"] = vm_id
         return Membership(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_id: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            vm_id: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["poolId"] = pool_id
+        __props__["storageId"] = storage_id
+        __props__["type"] = type
+        __props__["vmId"] = vm_id
+        return pulumi.runtime.exists_resource(None, 'proxmoxve:pool/membership:Membership', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="poolId")
     def pool_id(self) -> pulumi.Output[_builtins.str]:

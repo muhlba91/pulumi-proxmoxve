@@ -153,6 +153,12 @@ func (RepositoryLegacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*repositoryLegacyState)(nil)).Elem()
 }
 
+// RepositoryLegacyExists checks whether an existing RepositoryLegacy resource with the given ID exists.
+func RepositoryLegacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RepositoryLegacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:apt/standard/repositoryLegacy:RepositoryLegacy", id, state, "", opts...)
+}
+
 type repositoryLegacyArgs struct {
 	// The handle of the APT standard repository. Must be `ceph-squid-enterprise` | `ceph-squid-no-subscription` | `ceph-squid-test` | `enterprise` | `no-subscription` | `test`.
 	Handle string `pulumi:"handle"`

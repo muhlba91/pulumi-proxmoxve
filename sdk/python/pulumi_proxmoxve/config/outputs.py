@@ -30,6 +30,7 @@ class Ssh(dict):
                  nodes: Optional[Sequence['outputs.SshNode']] = None,
                  password: Optional[_builtins.str] = None,
                  private_key: Optional[_builtins.str] = None,
+                 root_ticket: Optional[_builtins.bool] = None,
                  socks5_password: Optional[_builtins.str] = None,
                  socks5_server: Optional[_builtins.str] = None,
                  socks5_username: Optional[_builtins.str] = None,
@@ -42,6 +43,7 @@ class Ssh(dict):
         :param Sequence['SshNodeArgs'] nodes: Overrides for SSH connection configuration for a Proxmox VE node.
         :param _builtins.str password: The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block when using username/password authentication. Default has no effect when using API token authentication, as there is no password to inherit. Can also be sourced from `PROXMOX_VE_SSH_PASSWORD`.
         :param _builtins.str private_key: The unencrypted private key (in PEM format) used for the SSH connection. Defaults to the value of the `PROXMOX_VE_SSH_PRIVATE_KEY` environment variable.
+        :param _builtins.bool root_ticket: Whether to run API calls under `/nodes/{node}/` with a `root@pam` ticket minted on that node over SSH, so an API token can perform `root@pam`-only operations. Those calls then run as `root@pam`, bypassing the token's permissions. Requires an SSH connection as `root`. Defaults to the value of the `PROXMOX_VE_SSH_ROOT_TICKET` environment variable, or `false` if not set.
         :param _builtins.str socks5_password: The password for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_PASSWORD` environment variable.
         :param _builtins.str socks5_server: The address:port of the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_SERVER` environment variable.
         :param _builtins.str socks5_username: The username for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_USERNAME` environment variable.
@@ -61,6 +63,8 @@ class Ssh(dict):
             pulumi.set(__self__, "password", password)
         if private_key is not None:
             pulumi.set(__self__, "private_key", private_key)
+        if root_ticket is not None:
+            pulumi.set(__self__, "root_ticket", root_ticket)
         if socks5_password is not None:
             pulumi.set(__self__, "socks5_password", socks5_password)
         if socks5_server is not None:
@@ -125,6 +129,14 @@ class Ssh(dict):
         The unencrypted private key (in PEM format) used for the SSH connection. Defaults to the value of the `PROXMOX_VE_SSH_PRIVATE_KEY` environment variable.
         """
         return pulumi.get(self, "private_key")
+
+    @_builtins.property
+    @pulumi.getter(name="rootTicket")
+    def root_ticket(self) -> Optional[_builtins.bool]:
+        """
+        Whether to run API calls under `/nodes/{node}/` with a `root@pam` ticket minted on that node over SSH, so an API token can perform `root@pam`-only operations. Those calls then run as `root@pam`, bypassing the token's permissions. Requires an SSH connection as `root`. Defaults to the value of the `PROXMOX_VE_SSH_ROOT_TICKET` environment variable, or `false` if not set.
+        """
+        return pulumi.get(self, "root_ticket")
 
     @_builtins.property
     @pulumi.getter(name="socks5Password")

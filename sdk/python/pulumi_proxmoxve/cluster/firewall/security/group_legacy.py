@@ -32,7 +32,8 @@ class GroupLegacyArgs:
 
         :param pulumi.Input[_builtins.str] comment: Security group comment.
         :param pulumi.Input[_builtins.int] container_id: The ID of the container to manage the firewall for.
-        :param pulumi.Input[_builtins.str] name: Security group name.
+        :param pulumi.Input[_builtins.str] name: Security group name. Must be lowercase, because PVE lowercases
+               security group names.
         :param pulumi.Input[_builtins.str] node_name: The name of the node.
         :param pulumi.Input[Sequence[pulumi.Input['GroupLegacyRuleArgs']]] rules: Firewall rule block (multiple blocks supported).
         :param pulumi.Input[_builtins.int] vm_id: The ID of the VM to manage the firewall for.
@@ -78,7 +79,8 @@ class GroupLegacyArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Security group name.
+        Security group name. Must be lowercase, because PVE lowercases
+        security group names.
         """
         return pulumi.get(self, "name")
 
@@ -137,7 +139,8 @@ class _GroupLegacyState:
 
         :param pulumi.Input[_builtins.str] comment: Security group comment.
         :param pulumi.Input[_builtins.int] container_id: The ID of the container to manage the firewall for.
-        :param pulumi.Input[_builtins.str] name: Security group name.
+        :param pulumi.Input[_builtins.str] name: Security group name. Must be lowercase, because PVE lowercases
+               security group names.
         :param pulumi.Input[_builtins.str] node_name: The name of the node.
         :param pulumi.Input[Sequence[pulumi.Input['GroupLegacyRuleArgs']]] rules: Firewall rule block (multiple blocks supported).
         :param pulumi.Input[_builtins.int] vm_id: The ID of the VM to manage the firewall for.
@@ -183,7 +186,8 @@ class _GroupLegacyState:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Security group name.
+        Security group name. Must be lowercase, because PVE lowercases
+        security group names.
         """
         return pulumi.get(self, "name")
 
@@ -294,7 +298,8 @@ class GroupLegacy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] comment: Security group comment.
         :param pulumi.Input[_builtins.int] container_id: The ID of the container to manage the firewall for.
-        :param pulumi.Input[_builtins.str] name: Security group name.
+        :param pulumi.Input[_builtins.str] name: Security group name. Must be lowercase, because PVE lowercases
+               security group names.
         :param pulumi.Input[_builtins.str] node_name: The name of the node.
         :param pulumi.Input[Sequence[pulumi.Input[Union['GroupLegacyRuleArgs', 'GroupLegacyRuleArgsDict', 'outputs.GroupLegacyRule']]]] rules: Firewall rule block (multiple blocks supported).
         :param pulumi.Input[_builtins.int] vm_id: The ID of the VM to manage the firewall for.
@@ -415,7 +420,8 @@ class GroupLegacy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] comment: Security group comment.
         :param pulumi.Input[_builtins.int] container_id: The ID of the container to manage the firewall for.
-        :param pulumi.Input[_builtins.str] name: Security group name.
+        :param pulumi.Input[_builtins.str] name: Security group name. Must be lowercase, because PVE lowercases
+               security group names.
         :param pulumi.Input[_builtins.str] node_name: The name of the node.
         :param pulumi.Input[Sequence[pulumi.Input[Union['GroupLegacyRuleArgs', 'GroupLegacyRuleArgsDict', 'outputs.GroupLegacyRule']]]] rules: Firewall rule block (multiple blocks supported).
         :param pulumi.Input[_builtins.int] vm_id: The ID of the VM to manage the firewall for.
@@ -431,6 +437,24 @@ class GroupLegacy(pulumi.CustomResource):
         __props__.__dict__["rules"] = rules
         __props__.__dict__["vm_id"] = vm_id
         return GroupLegacy(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            container_id: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_name: pulumi.Input[Optional[_builtins.str]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupLegacyRuleArgs', 'GroupLegacyRuleArgsDict', 'outputs.GroupLegacyRule']]]]] = None,
+            vm_id: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["comment"] = comment
+        __props__["containerId"] = container_id
+        __props__["name"] = name
+        __props__["nodeName"] = node_name
+        __props__["rules"] = rules
+        __props__["vmId"] = vm_id
+        return pulumi.runtime.exists_resource(None, 'proxmoxve:cluster/firewall/security/groupLegacy:GroupLegacy', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter
@@ -452,7 +476,8 @@ class GroupLegacy(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Security group name.
+        Security group name. Must be lowercase, because PVE lowercases
+        security group names.
         """
         return pulumi.get(self, "name")
 

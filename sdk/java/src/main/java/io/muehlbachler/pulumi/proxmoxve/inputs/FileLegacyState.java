@@ -52,14 +52,14 @@ public final class FileLegacyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root{@literal @}pam` authenticated user.
+     * The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! With a non-root SSH user, the provider sets the mode with `sudo chmod`, which needs its own sudoers rule (see SSH User).
      * 
      */
     @Import(name="fileMode")
     private @Nullable Output<String> fileMode;
 
     /**
-     * @return The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root{@literal @}pam` authenticated user.
+     * @return The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! With a non-root SSH user, the provider sets the mode with `sudo chmod`, which needs its own sudoers rule (see SSH User).
      * 
      */
     public Optional<Output<String>> fileMode() {
@@ -127,14 +127,14 @@ public final class FileLegacyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The node name.
+     * The preferred node name. If this node has been removed from the cluster, the provider automatically uses an online node with access to the same active, enabled shared datastore. The datastore must support the file&#39;s content type.
      * 
      */
     @Import(name="nodeName")
     private @Nullable Output<String> nodeName;
 
     /**
-     * @return The node name.
+     * @return The preferred node name. If this node has been removed from the cluster, the provider automatically uses an online node with access to the same active, enabled shared datastore. The datastore must support the file&#39;s content type.
      * 
      */
     public Optional<Output<String>> nodeName() {
@@ -319,7 +319,7 @@ public final class FileLegacyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fileMode The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root{@literal @}pam` authenticated user.
+         * @param fileMode The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! With a non-root SSH user, the provider sets the mode with `sudo chmod`, which needs its own sudoers rule (see SSH User).
          * 
          * @return builder
          * 
@@ -330,7 +330,7 @@ public final class FileLegacyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fileMode The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root{@literal @}pam` authenticated user.
+         * @param fileMode The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! With a non-root SSH user, the provider sets the mode with `sudo chmod`, which needs its own sudoers rule (see SSH User).
          * 
          * @return builder
          * 
@@ -424,7 +424,7 @@ public final class FileLegacyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeName The node name.
+         * @param nodeName The preferred node name. If this node has been removed from the cluster, the provider automatically uses an online node with access to the same active, enabled shared datastore. The datastore must support the file&#39;s content type.
          * 
          * @return builder
          * 
@@ -435,7 +435,7 @@ public final class FileLegacyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeName The node name.
+         * @param nodeName The preferred node name. If this node has been removed from the cluster, the provider automatically uses an online node with access to the same active, enabled shared datastore. The datastore must support the file&#39;s content type.
          * 
          * @return builder
          * 

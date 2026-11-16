@@ -19,7 +19,8 @@ namespace Pulumi.ProxmoxVE.Inputs
         public Input<string> Data { get; set; } = null!;
 
         /// <summary>
-        /// The file name.
+        /// The file name. Must be a plain file name without
+        /// path separators or whitespace.
         /// </summary>
         [Input("fileName", required: true)]
         public Input<string> FileName { get; set; } = null!;

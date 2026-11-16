@@ -236,6 +236,12 @@ func (SubnetLegacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*subnetLegacyState)(nil)).Elem()
 }
 
+// SubnetLegacyExists checks whether an existing SubnetLegacy resource with the given ID exists.
+func SubnetLegacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SubnetLegacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:sdn/subnetLegacy:SubnetLegacy", id, state, "", opts...)
+}
+
 type subnetLegacyArgs struct {
 	// A CIDR network address, for example 10.0.0.0/8
 	Cidr string `pulumi:"cidr"`

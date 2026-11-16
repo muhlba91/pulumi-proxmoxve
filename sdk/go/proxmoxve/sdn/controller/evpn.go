@@ -152,6 +152,12 @@ func (EvpnState) ElementType() reflect.Type {
 	return reflect.TypeOf((*evpnState)(nil)).Elem()
 }
 
+// EvpnExists checks whether an existing Evpn resource with the given ID exists.
+func EvpnExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EvpnState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:sdn/controller/evpn:Evpn", id, state, "", opts...)
+}
+
 type evpnArgs struct {
 	// Autonomous System Number for the EVPN controller.
 	Asn int `pulumi:"asn"`

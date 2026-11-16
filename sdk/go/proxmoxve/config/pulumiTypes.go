@@ -28,6 +28,8 @@ type Ssh struct {
 	Password *string `pulumi:"password"`
 	// The unencrypted private key (in PEM format) used for the SSH connection. Defaults to the value of the `PROXMOX_VE_SSH_PRIVATE_KEY` environment variable.
 	PrivateKey *string `pulumi:"privateKey"`
+	// Whether to run API calls under `/nodes/{node}/` with a `root@pam` ticket minted on that node over SSH, so an API token can perform `root@pam`-only operations. Those calls then run as `root@pam`, bypassing the token's permissions. Requires an SSH connection as `root`. Defaults to the value of the `PROXMOX_VE_SSH_ROOT_TICKET` environment variable, or `false` if not set.
+	RootTicket *bool `pulumi:"rootTicket"`
 	// The password for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_PASSWORD` environment variable.
 	Socks5Password *string `pulumi:"socks5Password"`
 	// The address:port of the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_SERVER` environment variable.
@@ -64,6 +66,8 @@ type SshArgs struct {
 	Password pulumi.StringPtrInput `pulumi:"password"`
 	// The unencrypted private key (in PEM format) used for the SSH connection. Defaults to the value of the `PROXMOX_VE_SSH_PRIVATE_KEY` environment variable.
 	PrivateKey pulumi.StringPtrInput `pulumi:"privateKey"`
+	// Whether to run API calls under `/nodes/{node}/` with a `root@pam` ticket minted on that node over SSH, so an API token can perform `root@pam`-only operations. Those calls then run as `root@pam`, bypassing the token's permissions. Requires an SSH connection as `root`. Defaults to the value of the `PROXMOX_VE_SSH_ROOT_TICKET` environment variable, or `false` if not set.
+	RootTicket pulumi.BoolPtrInput `pulumi:"rootTicket"`
 	// The password for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_PASSWORD` environment variable.
 	Socks5Password pulumi.StringPtrInput `pulumi:"socks5Password"`
 	// The address:port of the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_SERVER` environment variable.
@@ -133,6 +137,11 @@ func (o SshOutput) Password() pulumi.StringPtrOutput {
 // The unencrypted private key (in PEM format) used for the SSH connection. Defaults to the value of the `PROXMOX_VE_SSH_PRIVATE_KEY` environment variable.
 func (o SshOutput) PrivateKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Ssh) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
+}
+
+// Whether to run API calls under `/nodes/{node}/` with a `root@pam` ticket minted on that node over SSH, so an API token can perform `root@pam`-only operations. Those calls then run as `root@pam`, bypassing the token's permissions. Requires an SSH connection as `root`. Defaults to the value of the `PROXMOX_VE_SSH_ROOT_TICKET` environment variable, or `false` if not set.
+func (o SshOutput) RootTicket() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Ssh) *bool { return v.RootTicket }).(pulumi.BoolPtrOutput)
 }
 
 // The password for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_PASSWORD` environment variable.

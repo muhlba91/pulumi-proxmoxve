@@ -406,6 +406,24 @@ class Acl(pulumi.CustomResource):
         __props__.__dict__["user_id"] = user_id
         return Acl(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            path: pulumi.Input[Optional[_builtins.str]] = None,
+            propagate: pulumi.Input[Optional[_builtins.bool]] = None,
+            role_id: pulumi.Input[Optional[_builtins.str]] = None,
+            token_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["groupId"] = group_id
+        __props__["path"] = path
+        __props__["propagate"] = propagate
+        __props__["roleId"] = role_id
+        __props__["tokenId"] = token_id
+        __props__["userId"] = user_id
+        return pulumi.runtime.exists_resource(None, 'proxmoxve:index/acl:Acl', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="groupId")
     def group_id(self) -> pulumi.Output[Optional[_builtins.str]]:

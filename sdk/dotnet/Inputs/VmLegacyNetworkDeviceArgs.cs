@@ -28,6 +28,7 @@ namespace Pulumi.ProxmoxVE.Inputs
         /// Whether to enable the network device (defaults to `True`). Remove the `NetworkDevice` block from your configuration instead of setting `enabled = false`.
         /// </summary>
         [Input("enabled")]
+        [Obsolete(@"The `Enabled` attribute is deprecated and will be removed in a future release. Remove the `NetworkDevice` block from your configuration instead of setting `enabled = false`.")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>

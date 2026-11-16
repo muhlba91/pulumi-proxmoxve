@@ -69,6 +69,17 @@ export class GroupLegacy extends pulumi.CustomResource {
         return new GroupLegacy(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing GroupLegacy resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: GroupLegacyState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("proxmoxve:cluster/firewall/security/groupLegacy:GroupLegacy", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'proxmoxve:cluster/firewall/security/groupLegacy:GroupLegacy';
 
@@ -92,7 +103,8 @@ export class GroupLegacy extends pulumi.CustomResource {
      */
     declare public readonly containerId: pulumi.Output<number | undefined>;
     /**
-     * Security group name.
+     * Security group name. Must be lowercase, because PVE lowercases
+     * security group names.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -154,7 +166,8 @@ export interface GroupLegacyState {
      */
     containerId?: pulumi.Input<number | undefined>;
     /**
-     * Security group name.
+     * Security group name. Must be lowercase, because PVE lowercases
+     * security group names.
      */
     name?: pulumi.Input<string | undefined>;
     /**
@@ -184,7 +197,8 @@ export interface GroupLegacyArgs {
      */
     containerId?: pulumi.Input<number | undefined>;
     /**
-     * Security group name.
+     * Security group name. Must be lowercase, because PVE lowercases
+     * security group names.
      */
     name?: pulumi.Input<string | undefined>;
     /**

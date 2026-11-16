@@ -122,6 +122,12 @@ func (DirLegacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dirLegacyState)(nil)).Elem()
 }
 
+// DirLegacyExists checks whether an existing DirLegacy resource with the given ID exists.
+func DirLegacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DirLegacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:hardware/mapping/dirLegacy:DirLegacy", id, state, "", opts...)
+}
+
 type dirLegacyArgs struct {
 	// The comment of this directory mapping.
 	Comment *string `pulumi:"comment"`

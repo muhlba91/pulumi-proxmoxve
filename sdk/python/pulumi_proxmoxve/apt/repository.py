@@ -431,6 +431,32 @@ class Repository(pulumi.CustomResource):
         __props__.__dict__["uris"] = uris
         return Repository(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            components: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            file_path: pulumi.Input[Optional[_builtins.str]] = None,
+            file_type: pulumi.Input[Optional[_builtins.str]] = None,
+            index: pulumi.Input[Optional[_builtins.int]] = None,
+            node: pulumi.Input[Optional[_builtins.str]] = None,
+            package_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            suites: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            uris: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["comment"] = comment
+        __props__["components"] = components
+        __props__["enabled"] = enabled
+        __props__["filePath"] = file_path
+        __props__["fileType"] = file_type
+        __props__["index"] = index
+        __props__["node"] = node
+        __props__["packageTypes"] = package_types
+        __props__["suites"] = suites
+        __props__["uris"] = uris
+        return pulumi.runtime.exists_resource(None, 'proxmoxve:apt/repository:Repository', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def comment(self) -> pulumi.Output[_builtins.str]:

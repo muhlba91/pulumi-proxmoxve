@@ -18,6 +18,7 @@ namespace Pulumi.ProxmoxVE.Inputs
         /// Set `FileId` to `None` to leave the CD-ROM drive empty.
         /// </summary>
         [Input("enabled")]
+        [Obsolete(@"Remove this attribute's configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `FileId` to `None` to leave the CDROM drive empty.")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>

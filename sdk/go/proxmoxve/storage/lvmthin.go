@@ -157,6 +157,12 @@ func (LvmthinState) ElementType() reflect.Type {
 	return reflect.TypeOf((*lvmthinState)(nil)).Elem()
 }
 
+// LvmthinExists checks whether an existing Lvmthin resource with the given ID exists.
+func LvmthinExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LvmthinState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:storage/lvmthin:Lvmthin", id, state, "", opts...)
+}
+
 type lvmthinArgs struct {
 	// The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
 	Contents []string `pulumi:"contents"`

@@ -32,26 +32,26 @@ namespace Pulumi.ProxmoxVE.Outputs
         /// The CPU flags.
         /// - `+aes`/`-aes` - Activate AES instruction set for HW acceleration.
         /// - `+amd-no-ssb`/`-amd-no-ssb` - Notifies guest OS that host is not
-        /// vulnerable for Spectre on AMD CPUs.
+        ///   vulnerable for Spectre on AMD CPUs.
         /// - `+amd-ssbd`/`-amd-ssbd` - Improves Spectre mitigation performance with
-        /// AMD CPUs, best used with "virt-ssbd".
+        ///   AMD CPUs, best used with "virt-ssbd".
         /// - `+hv-evmcs`/`-hv-evmcs` - Improve performance for nested
-        /// virtualization (only supported on Intel CPUs).
+        ///   virtualization (only supported on Intel CPUs).
         /// - `+hv-tlbflush`/`-hv-tlbflush` - Improve performance in overcommitted
-        /// Windows guests (may lead to guest BSOD on old CPUs).
+        ///   Windows guests (may lead to guest BSOD on old CPUs).
         /// - `+ibpb`/`-ibpb` - Allows improved Spectre mitigation on AMD CPUs.
         /// - `+md-clear`/`-md-clear` - Required to let the guest OS know if MDS is
-        /// mitigated correctly.
+        ///   mitigated correctly.
         /// - `+pcid`/`-pcid` - Meltdown fix cost reduction on Westmere, Sandy- and
-        /// Ivy Bridge Intel CPUs.
+        ///   Ivy Bridge Intel CPUs.
         /// - `+pdpe1gb`/`-pdpe1gb` - Allows guest OS to use 1 GB size pages, if
-        /// host HW supports it.
+        ///   host HW supports it.
         /// - `+spec-ctrl`/`-spec-ctrl` - Allows improved Spectre mitigation with
-        /// Intel CPUs.
+        ///   Intel CPUs.
         /// - `+ssbd`/`-ssbd` - Protection for "Speculative Store Bypass" for Intel
-        /// models.
+        ///   models.
         /// - `+virt-ssbd`/`-virt-ssbd` - Basis for "Speculative Store Bypass"
-        /// protection for AMD models.
+        ///   protection for AMD models.
         /// </summary>
         public readonly ImmutableArray<string> Flags;
         /// <summary>
@@ -75,6 +75,15 @@ namespace Pulumi.ProxmoxVE.Outputs
         /// <summary>
         /// The emulated CPU type, it's recommended to
         /// use `x86-64-v2-AES` (defaults to `Qemu64`).
+        /// Representative models include `Host`, `Qemu64`, `x86-64-v2-AES`,
+        /// `EPYC-Genoa`, and `EPYC-Genoa-v2`. Model availability is validated by
+        /// the target Proxmox VE version, which returns an error for an unknown
+        /// model. See the
+        /// [PVE administration guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings)
+        /// for the models a release offers.
+        /// - `custom-&lt;model&gt;` - Custom CPU model. `custom-&lt;model&gt;` names refer to
+        ///   PVE custom model definitions in
+        ///   `/etc/pve/virtual-guest/cpu-models.conf`.
         /// </summary>
         public readonly string? Type;
         /// <summary>

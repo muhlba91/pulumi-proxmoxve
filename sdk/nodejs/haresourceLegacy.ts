@@ -20,6 +20,7 @@ import * as utilities from "./utilities";
  *     state: "started",
  *     group: "example",
  *     comment: "Managed by Pulumi",
+ *     autoRebalance: true,
  * }, {
  *     dependsOn: [exampleProxmoxVirtualEnvironmentHagroup],
  * });
@@ -48,6 +49,17 @@ export class HaresourceLegacy extends pulumi.CustomResource {
         return new HaresourceLegacy(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing HaresourceLegacy resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: HaresourceLegacyState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("proxmoxve:index/haresourceLegacy:HaresourceLegacy", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'proxmoxve:index/haresourceLegacy:HaresourceLegacy';
 
@@ -62,6 +74,10 @@ export class HaresourceLegacy extends pulumi.CustomResource {
         return obj['__pulumiType'] === HaresourceLegacy.__pulumiType;
     }
 
+    /**
+     * Whether this HA resource may be migrated during automatic rebalancing (Proxmox VE 9.2+). Leave unset to use the cluster default.
+     */
+    declare public readonly autoRebalance: pulumi.Output<boolean | undefined>;
     /**
      * The comment associated with this resource.
      */
@@ -108,6 +124,7 @@ export class HaresourceLegacy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HaresourceLegacyState | undefined;
+            resourceInputs["autoRebalance"] = state?.autoRebalance;
             resourceInputs["comment"] = state?.comment;
             resourceInputs["failback"] = state?.failback;
             resourceInputs["group"] = state?.group;
@@ -121,6 +138,7 @@ export class HaresourceLegacy extends pulumi.CustomResource {
             if (args?.resourceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceId'");
             }
+            resourceInputs["autoRebalance"] = args?.autoRebalance;
             resourceInputs["comment"] = args?.comment;
             resourceInputs["failback"] = args?.failback;
             resourceInputs["group"] = args?.group;
@@ -139,6 +157,10 @@ export class HaresourceLegacy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering HaresourceLegacy resources.
  */
 export interface HaresourceLegacyState {
+    /**
+     * Whether this HA resource may be migrated during automatic rebalancing (Proxmox VE 9.2+). Leave unset to use the cluster default.
+     */
+    autoRebalance?: pulumi.Input<boolean | undefined>;
     /**
      * The comment associated with this resource.
      */
@@ -177,6 +199,10 @@ export interface HaresourceLegacyState {
  * The set of arguments for constructing a HaresourceLegacy resource.
  */
 export interface HaresourceLegacyArgs {
+    /**
+     * Whether this HA resource may be migrated during automatic rebalancing (Proxmox VE 9.2+). Leave unset to use the cluster default.
+     */
+    autoRebalance?: pulumi.Input<boolean | undefined>;
     /**
      * The comment associated with this resource.
      */

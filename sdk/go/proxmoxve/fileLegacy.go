@@ -279,7 +279,7 @@ type FileLegacy struct {
 	ContentType pulumi.StringOutput `pulumi:"contentType"`
 	// The datastore id.
 	DatastoreId pulumi.StringOutput `pulumi:"datastoreId"`
-	// The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root@pam` authenticated user.
+	// The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! With a non-root SSH user, the provider sets the mode with `sudo chmod`, which needs its own sudoers rule (see SSH User).
 	FileMode pulumi.StringPtrOutput `pulumi:"fileMode"`
 	// The file modification date (RFC 3339).
 	FileModificationDate pulumi.StringOutput `pulumi:"fileModificationDate"`
@@ -289,7 +289,7 @@ type FileLegacy struct {
 	FileSize pulumi.IntOutput `pulumi:"fileSize"`
 	// The file tag.
 	FileTag pulumi.StringOutput `pulumi:"fileTag"`
-	// The node name.
+	// The preferred node name. If this node has been removed from the cluster, the provider automatically uses an online node with access to the same active, enabled shared datastore. The datastore must support the file's content type.
 	NodeName pulumi.StringOutput `pulumi:"nodeName"`
 	// Whether to overwrite an existing file (defaults to
 	// `true`).
@@ -355,7 +355,7 @@ type fileLegacyState struct {
 	ContentType *string `pulumi:"contentType"`
 	// The datastore id.
 	DatastoreId *string `pulumi:"datastoreId"`
-	// The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root@pam` authenticated user.
+	// The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! With a non-root SSH user, the provider sets the mode with `sudo chmod`, which needs its own sudoers rule (see SSH User).
 	FileMode *string `pulumi:"fileMode"`
 	// The file modification date (RFC 3339).
 	FileModificationDate *string `pulumi:"fileModificationDate"`
@@ -365,7 +365,7 @@ type fileLegacyState struct {
 	FileSize *int `pulumi:"fileSize"`
 	// The file tag.
 	FileTag *string `pulumi:"fileTag"`
-	// The node name.
+	// The preferred node name. If this node has been removed from the cluster, the provider automatically uses an online node with access to the same active, enabled shared datastore. The datastore must support the file's content type.
 	NodeName *string `pulumi:"nodeName"`
 	// Whether to overwrite an existing file (defaults to
 	// `true`).
@@ -396,7 +396,7 @@ type FileLegacyState struct {
 	ContentType pulumi.StringPtrInput
 	// The datastore id.
 	DatastoreId pulumi.StringPtrInput
-	// The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root@pam` authenticated user.
+	// The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! With a non-root SSH user, the provider sets the mode with `sudo chmod`, which needs its own sudoers rule (see SSH User).
 	FileMode pulumi.StringPtrInput
 	// The file modification date (RFC 3339).
 	FileModificationDate pulumi.StringPtrInput
@@ -406,7 +406,7 @@ type FileLegacyState struct {
 	FileSize pulumi.IntPtrInput
 	// The file tag.
 	FileTag pulumi.StringPtrInput
-	// The node name.
+	// The preferred node name. If this node has been removed from the cluster, the provider automatically uses an online node with access to the same active, enabled shared datastore. The datastore must support the file's content type.
 	NodeName pulumi.StringPtrInput
 	// Whether to overwrite an existing file (defaults to
 	// `true`).
@@ -435,15 +435,21 @@ func (FileLegacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*fileLegacyState)(nil)).Elem()
 }
 
+// FileLegacyExists checks whether an existing FileLegacy resource with the given ID exists.
+func FileLegacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FileLegacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:index/fileLegacy:FileLegacy", id, state, "", opts...)
+}
+
 type fileLegacyArgs struct {
 	// The content type. If not specified, the content
 	// type will be inferred from the file extension. Valid values are:
 	ContentType *string `pulumi:"contentType"`
 	// The datastore id.
 	DatastoreId string `pulumi:"datastoreId"`
-	// The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root@pam` authenticated user.
+	// The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! With a non-root SSH user, the provider sets the mode with `sudo chmod`, which needs its own sudoers rule (see SSH User).
 	FileMode *string `pulumi:"fileMode"`
-	// The node name.
+	// The preferred node name. If this node has been removed from the cluster, the provider automatically uses an online node with access to the same active, enabled shared datastore. The datastore must support the file's content type.
 	NodeName string `pulumi:"nodeName"`
 	// Whether to overwrite an existing file (defaults to
 	// `true`).
@@ -475,9 +481,9 @@ type FileLegacyArgs struct {
 	ContentType pulumi.StringPtrInput
 	// The datastore id.
 	DatastoreId pulumi.StringInput
-	// The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root@pam` authenticated user.
+	// The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! With a non-root SSH user, the provider sets the mode with `sudo chmod`, which needs its own sudoers rule (see SSH User).
 	FileMode pulumi.StringPtrInput
-	// The node name.
+	// The preferred node name. If this node has been removed from the cluster, the provider automatically uses an online node with access to the same active, enabled shared datastore. The datastore must support the file's content type.
 	NodeName pulumi.StringInput
 	// Whether to overwrite an existing file (defaults to
 	// `true`).
@@ -600,7 +606,7 @@ func (o FileLegacyOutput) DatastoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FileLegacy) pulumi.StringOutput { return v.DatastoreId }).(pulumi.StringOutput)
 }
 
-// The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root@pam` authenticated user.
+// The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! With a non-root SSH user, the provider sets the mode with `sudo chmod`, which needs its own sudoers rule (see SSH User).
 func (o FileLegacyOutput) FileMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FileLegacy) pulumi.StringPtrOutput { return v.FileMode }).(pulumi.StringPtrOutput)
 }
@@ -625,7 +631,7 @@ func (o FileLegacyOutput) FileTag() pulumi.StringOutput {
 	return o.ApplyT(func(v *FileLegacy) pulumi.StringOutput { return v.FileTag }).(pulumi.StringOutput)
 }
 
-// The node name.
+// The preferred node name. If this node has been removed from the cluster, the provider automatically uses an online node with access to the same active, enabled shared datastore. The datastore must support the file's content type.
 func (o FileLegacyOutput) NodeName() pulumi.StringOutput {
 	return o.ApplyT(func(v *FileLegacy) pulumi.StringOutput { return v.NodeName }).(pulumi.StringOutput)
 }

@@ -122,6 +122,12 @@ func (ConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*configState)(nil)).Elem()
 }
 
+// ConfigExists checks whether an existing Config resource with the given ID exists.
+func ConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:node/config:Config", id, state, "", opts...)
+}
+
 type configArgs struct {
 	// Description of the node. Shown in the web-interface node notes panel. This is saved as a comment inside the configuration file. Trailing newlines are not supported by PVE; use trimspace() with heredoc values.
 	Description *string `pulumi:"description"`

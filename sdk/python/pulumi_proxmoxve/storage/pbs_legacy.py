@@ -740,6 +740,44 @@ class PbsLegacy(pulumi.CustomResource):
         __props__.__dict__["username"] = username
         return PbsLegacy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            backups: pulumi.Input[Optional[Union['PbsLegacyBackupsArgs', 'PbsLegacyBackupsArgsDict', 'outputs.PbsLegacyBackups']]] = None,
+            contents: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            datastore: pulumi.Input[Optional[_builtins.str]] = None,
+            disable: pulumi.Input[Optional[_builtins.bool]] = None,
+            encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
+            encryption_key_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            generate_encryption_key: pulumi.Input[Optional[_builtins.bool]] = None,
+            generated_encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+            server: pulumi.Input[Optional[_builtins.str]] = None,
+            shared: pulumi.Input[Optional[_builtins.bool]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["backups"] = backups
+        __props__["contents"] = contents
+        __props__["datastore"] = datastore
+        __props__["disable"] = disable
+        __props__["encryptionKey"] = encryption_key
+        __props__["encryptionKeyFingerprint"] = encryption_key_fingerprint
+        __props__["fingerprint"] = fingerprint
+        __props__["generateEncryptionKey"] = generate_encryption_key
+        __props__["generatedEncryptionKey"] = generated_encryption_key
+        __props__["namespace"] = namespace
+        __props__["nodes"] = nodes
+        __props__["password"] = password
+        __props__["resourceId"] = resource_id
+        __props__["server"] = server
+        __props__["shared"] = shared
+        __props__["username"] = username
+        return pulumi.runtime.exists_resource(None, 'proxmoxve:storage/pbsLegacy:PbsLegacy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def backups(self) -> pulumi.Output[Optional['outputs.PbsLegacyBackups']]:

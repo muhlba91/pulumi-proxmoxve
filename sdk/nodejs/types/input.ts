@@ -50,7 +50,11 @@ export interface ContainerLegacyCpu {
      */
     architecture?: pulumi.Input<string | undefined>;
     /**
-     * The number of CPU cores (defaults to `1`).
+     * The number of CPU cores (between `1` and `8192`). When unset,
+     * a new container has no `cores` setting and can use all host cores, and a clone
+     * keeps the value of its source. Removing the attribute keeps the current value, set
+     * `0` to remove the setting from the container. Removing the whole `cpu` block also
+     * removes the setting, unless it is `1`.
      */
     cores?: pulumi.Input<number | undefined>;
     /**
@@ -59,7 +63,9 @@ export interface ContainerLegacyCpu {
     limit?: pulumi.Input<number | undefined>;
     /**
      * The CPU units (between `1` and `500000`). When unset,
-     * Proxmox applies its own default.
+     * Proxmox applies its own default to a new container, and a clone keeps the value of
+     * its source. Removing the attribute keeps the current value, removing the whole
+     * `cpu` block removes the setting from the container.
      */
     units?: pulumi.Input<number | undefined>;
 }
@@ -184,7 +190,9 @@ export interface ContainerLegacyInitialization {
      */
     ipConfigs?: pulumi.Input<pulumi.Input<inputs.ContainerLegacyInitializationIpConfig>[] | undefined>;
     /**
-     * The user account configuration.
+     * The user account configuration. It only applies when the
+     * container is created, not when it is cloned: a cloned container keeps the SSH keys and
+     * root password of its source container, and a warning is shown if this block is set.
      */
     userAccount?: pulumi.Input<inputs.ContainerLegacyInitializationUserAccount | undefined>;
 }
@@ -387,8 +395,11 @@ export interface ContainerLegacyOperatingSystem {
 
 export interface ContainerLegacyStartup {
     /**
-     * A non-negative number defining the delay in
-     * seconds before the next container is shut down.
+     * A non-negative number defining the shutdown
+     * timeout in seconds. When the node stops all guests (e.g. on host
+     * shutdown), Proxmox VE waits this long for the container to shut down before
+     * stopping it. When unset, the node's bulk stop timeout is used
+     * (180 seconds by default).
      */
     downDelay?: pulumi.Input<number | undefined>;
     /**
@@ -405,15 +416,29 @@ export interface ContainerLegacyStartup {
 
 export interface ContainerLegacyWaitForIp {
     /**
-     * Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
+     * Only addresses inside one of these CIDRs (e.g. `["10.0.0.0/8", "2001:db8::/64"]`) count when waiting. Setting this disables the default loopback/link-local address exclusion; the `lo` interface is still skipped unless `interfaces` is also set. Avoid catch-all CIDRs such as `0.0.0.0/0` or `::/0`: they also match link-local addresses, which can end the wait before the real address is assigned; use `ipv4` or `ipv6` to require a family instead. When `ipv4` or `ipv6` is `true`, at least one CIDR of that family is required.
+     */
+    cidrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Only addresses on interfaces whose name fully matches one of these regular expressions (RE2, e.g. `["eth[0-9]+"]`) count when waiting. Setting this disables the default skip of the `lo` interface; loopback/link-local addresses stay excluded unless `cidrs` is also set.
+     */
+    interfaces?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Wait for at least one IPv4 address (non-loopback, non-link-local unless allowed by `cidrs`) (defaults to `false`).
      */
     ipv4?: pulumi.Input<boolean | undefined>;
     /**
-     * Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
-     *
-     * When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+     * Wait for at least one IPv6 address (non-loopback, non-link-local unless allowed by `cidrs`) (defaults to `false`).
      */
     ipv6?: pulumi.Input<boolean | undefined>;
+    /**
+     * How long to wait for an address after the provider starts or reboots the container (defaults to `5m`). On timeout the apply continues with a warning listing the addresses that were rejected.
+     *
+     * When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+     *
+     * `cidrs` and `interfaces` are combined per address (an address must match both). They only decide when waiting stops; `ipv4` and `ipv6` are not filtered. When the block is set, create and any update that starts or reboots the container wait for up to `timeout`. Every refresh also waits, for up to 10 seconds, and if no address qualifies, `ipv4` and `ipv6` are left empty.
+     */
+    timeout?: pulumi.Input<string | undefined>;
 }
 
 export interface FileLegacySourceFile {
@@ -429,6 +454,7 @@ export interface FileLegacySourceFile {
      * The file name to use instead of the source file
      * name. Useful when the source file does not have a valid file extension,
      * for example when the source file is a URL referencing a `.qcow2` image.
+     * Must be a plain file name without path separators or whitespace.
      */
     fileName?: pulumi.Input<string | undefined>;
     /**
@@ -453,7 +479,8 @@ export interface FileLegacySourceRaw {
      */
     data: pulumi.Input<string>;
     /**
-     * The file name.
+     * The file name. Must be a plain file name without
+     * path separators or whitespace.
      */
     fileName: pulumi.Input<string>;
     /**
@@ -877,6 +904,10 @@ export interface ProviderSsh {
      */
     privateKey?: pulumi.Input<string | undefined>;
     /**
+     * Whether to run API calls under `/nodes/{node}/` with a `root@pam` ticket minted on that node over SSH, so an API token can perform `root@pam`-only operations. Those calls then run as `root@pam`, bypassing the token's permissions. Requires an SSH connection as `root`. Defaults to the value of the `PROXMOX_VE_SSH_ROOT_TICKET` environment variable, or `false` if not set.
+     */
+    rootTicket?: pulumi.Input<boolean | undefined>;
+    /**
      * The password for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_PASSWORD` environment variable.
      */
     socks5Password?: pulumi.Input<string | undefined>;
@@ -1101,17 +1132,27 @@ export interface VmLegacyAgent {
 
 export interface VmLegacyAgentWaitForIp {
     /**
+     * Only addresses inside one of these CIDRs (e.g. `["10.0.0.0/8", "2001:db8::/64"]`) count when waiting. Setting this disables the default loopback/link-local address exclusion; the `lo` interface is still skipped unless `interfaces` is also set. Avoid catch-all CIDRs such as `0.0.0.0/0` or `::/0`: they also match link-local addresses, which can end the wait before the real address is assigned; use `ipv4` or `ipv6` to require a family instead. When `ipv4` or `ipv6` is `true`, at least one CIDR of that family is required.
+     */
+    cidrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
      * Whether to disable waiting for the agent to report an IP address (defaults to `false`). Set to `true` to skip the IP lookup entirely, so the provider does not wait for the agent during `refresh` and at the end of `apply`. Useful when the guest agent is slow to start, not yet installed, or not running, to avoid blocking those operations. When disabled, `ipv4Addresses`, `ipv6Addresses`, and `networkInterfaceNames` are left empty.
      */
     disabled?: pulumi.Input<boolean | undefined>;
     /**
-     * Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
+     * Only addresses on interfaces whose name fully matches one of these regular expressions (RE2, e.g. `["eth[0-9]+", "ens.*"]`) count when waiting. Setting this disables the default skip of the `lo` interface; loopback/link-local addresses stay excluded unless `cidrs` is also set.
+     *
+     * When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false` (and `disabled` is `false`), the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+     *
+     * `cidrs` and `interfaces` are combined per address (an address must match both), and they cannot be used with `disabled = true`. They are useful to ignore addresses such as Docker's `docker0` bridge, which would otherwise end the wait early. They only decide when waiting stops: `ipv4Addresses`, `ipv6Addresses` and `networkInterfaceNames` still list every address the agent reports. The wait also runs on every refresh, so a filter that never matches makes refresh wait for the full agent `timeout` and then leaves those attributes and `macAddresses` empty. On timeout, the warning reported by refresh lists each rejected address and the reason.
+     */
+    interfaces?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Wait for at least one IPv4 address (non-loopback, non-link-local unless allowed by `cidrs`) (defaults to `false`).
      */
     ipv4?: pulumi.Input<boolean | undefined>;
     /**
-     * Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
-     *
-     * When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false` (and `disabled` is `false`), the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+     * Wait for at least one IPv6 address (non-loopback, non-link-local unless allowed by `cidrs`) (defaults to `false`).
      */
     ipv6?: pulumi.Input<boolean | undefined>;
 }
@@ -1273,6 +1314,15 @@ export interface VmLegacyCpu {
     /**
      * The emulated CPU type, it's recommended to
      * use `x86-64-v2-AES` (defaults to `qemu64`).
+     * Representative models include `host`, `qemu64`, `x86-64-v2-AES`,
+     * `EPYC-Genoa`, and `EPYC-Genoa-v2`. Model availability is validated by
+     * the target Proxmox VE version, which returns an error for an unknown
+     * model. See the
+     * [PVE administration guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings)
+     * for the models a release offers.
+     * - `custom-<model>` - Custom CPU model. `custom-<model>` names refer to
+     *   PVE custom model definitions in
+     *   `/etc/pve/virtual-guest/cpu-models.conf`.
      */
     type?: pulumi.Input<string | undefined>;
     /**
@@ -1311,8 +1361,9 @@ export interface VmLegacyDisk {
     fileFormat?: pulumi.Input<string | undefined>;
     /**
      * The file ID for a disk image when importing a disk into VM. The ID format is
-     * `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/centos8.img`. Can be also taken from
-     * `proxmoxve.download.FileLegacy` resource. Prefer `importFrom` for uncompressed images.
+     * `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/centos8.img`, without whitespace, `,` or `=`.
+     * Can be also taken from `proxmoxve.download.FileLegacy` resource. Prefer `importFrom` for
+     * uncompressed images.
      * Use `fileId` when working with compressed cloud images (e.g., `.qcow2.xz`) that were downloaded
      * with `contentType = "iso"` and `decompressionAlgorithm` set. See the
      * Create a VM from a Cloud Image guide for examples.
@@ -1356,7 +1407,8 @@ export interface VmLegacyDisk {
      */
     replicate?: pulumi.Input<boolean | undefined>;
     /**
-     * The serial number of the disk, up to 20 bytes long.
+     * The serial number of the disk, up to 20 characters. Letters, digits and
+     * `-%_.!~*'()` only.
      */
     serial?: pulumi.Input<string | undefined>;
     /**
@@ -1502,6 +1554,9 @@ export interface VmLegacyInitialization {
      * image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
      * detected if the setting is missing but a cloud-init image is present,
      * otherwise defaults to `ide2`.
+     * Must not be the same as the `interface` of any `disk` block, the plan
+     * fails if it is. If the setting is missing, `ide2` is used on create
+     * (unless cloning) and checked against the `disk` interfaces too.
      */
     interface?: pulumi.Input<string | undefined>;
     /**
@@ -1512,6 +1567,9 @@ export interface VmLegacyInitialization {
     /**
      * The identifier for a file containing
      * all meta data passed to the VM via cloud-init.
+     * - When cloning, setting any of the four `*_data_file_id` attributes above to `""` clears
+     *   the custom cloud-init files inherited from the template, as long as none of them is set
+     *   to a value.
      */
     metaDataFileId?: pulumi.Input<string | undefined>;
     /**
@@ -1778,8 +1836,12 @@ export interface VmLegacySmbios {
 
 export interface VmLegacyStartup {
     /**
-     * A non-negative number defining the delay in
-     * seconds before the next VM is shut down.
+     * A non-negative number defining the shutdown
+     * timeout in seconds. When the node stops all guests (e.g. on host
+     * shutdown), Proxmox VE waits this long for the VM to shut down before
+     * stopping it. It is also the default timeout for a shutdown of this
+     * VM that doesn't set one. When unset, the node's bulk stop timeout is
+     * used (180 seconds by default).
      */
     downDelay?: pulumi.Input<number | undefined>;
     /**
@@ -1978,6 +2040,100 @@ export namespace backup {
          * Maximum number of entries for PBS catalog.
          */
         pbsEntriesMax?: pulumi.Input<number | undefined>;
+    }
+}
+
+export namespace ceph {
+    export interface FsDataPool {
+        /**
+         * The name of the CRUSH rule that places the pool's data.
+         */
+        crushRule?: pulumi.Input<string | undefined>;
+        /**
+         * The minimum number of replicas for the pool to accept writes.
+         */
+        minSize?: pulumi.Input<number | undefined>;
+        /**
+         * The pool's name.
+         */
+        name?: pulumi.Input<string | undefined>;
+        /**
+         * Ceph's numeric ID of the pool. Null with pve-manager releases before 9.1.18, which don't report it.
+         */
+        poolId?: pulumi.Input<number | undefined>;
+        /**
+         * The number of replicas per object.
+         */
+        size?: pulumi.Input<number | undefined>;
+    }
+
+    export interface FsMetadataPool {
+        /**
+         * The name of the CRUSH rule that places the pool's data.
+         */
+        crushRule?: pulumi.Input<string | undefined>;
+        /**
+         * The minimum number of replicas for the pool to accept writes.
+         */
+        minSize?: pulumi.Input<number | undefined>;
+        /**
+         * The pool's name.
+         */
+        name?: pulumi.Input<string | undefined>;
+        /**
+         * Ceph's numeric ID of the pool. Null with pve-manager releases before 9.1.18, which don't report it.
+         */
+        poolId?: pulumi.Input<number | undefined>;
+        /**
+         * The number of replicas per object.
+         */
+        size?: pulumi.Input<number | undefined>;
+    }
+
+    export interface PoolDataPool {
+        /**
+         * The CRUSH rule Ceph generated for the data pool from the erasure code profile.
+         */
+        crushRule?: pulumi.Input<string | undefined>;
+        /**
+         * The data pool's minimum size. Ceph sets `k + 1` at creation, or `k` when `m = 1`.
+         */
+        minSize?: pulumi.Input<number | undefined>;
+        /**
+         * The data pool's name, `<name>-data`.
+         */
+        name?: pulumi.Input<string | undefined>;
+        /**
+         * The data pool's numeric ID assigned by Ceph.
+         */
+        poolId?: pulumi.Input<number | undefined>;
+        /**
+         * The data pool's size, `k + m`.
+         */
+        size?: pulumi.Input<number | undefined>;
+    }
+
+    export interface PoolErasureCoding {
+        /**
+         * The CRUSH device class to place the data pool on, e.g. `hdd` or `ssd`.
+         */
+        deviceClass?: pulumi.Input<string | undefined>;
+        /**
+         * The CRUSH failure domain for the data pool's chunks, e.g. `host` or `osd`. Proxmox defaults to `host`.
+         */
+        failureDomain?: pulumi.Input<string | undefined>;
+        /**
+         * The number of data chunks. Proxmox requires it even with `profile`, whose own value then applies.
+         */
+        k: pulumi.Input<number>;
+        /**
+         * The number of coding chunks. Proxmox requires it even with `profile`, whose own value then applies.
+         */
+        m: pulumi.Input<number>;
+        /**
+         * An existing erasure code profile to use instead of the one Proxmox would create (`pve_ec_<name>`). Destroying the pool keeps this profile; a profile Proxmox created is removed with the pool.
+         */
+        profile?: pulumi.Input<string | undefined>;
     }
 }
 
@@ -3064,6 +3220,41 @@ export namespace sdn {
 }
 
 export namespace storage {
+    export interface CephfsBackups {
+        /**
+         * Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
+         */
+        keepAll?: pulumi.Input<boolean | undefined>;
+        /**
+         * The number of daily backups to keep. Older backups will be removed.
+         */
+        keepDaily?: pulumi.Input<number | undefined>;
+        /**
+         * The number of hourly backups to keep. Older backups will be removed.
+         */
+        keepHourly?: pulumi.Input<number | undefined>;
+        /**
+         * Specifies the number of the most recent backups to keep, regardless of their age.
+         */
+        keepLast?: pulumi.Input<number | undefined>;
+        /**
+         * The number of monthly backups to keep. Older backups will be removed.
+         */
+        keepMonthly?: pulumi.Input<number | undefined>;
+        /**
+         * The number of weekly backups to keep. Older backups will be removed.
+         */
+        keepWeekly?: pulumi.Input<number | undefined>;
+        /**
+         * The number of yearly backups to keep. Older backups will be removed.
+         */
+        keepYearly?: pulumi.Input<number | undefined>;
+        /**
+         * The maximum number of protected backups per guest. Use '-1' for unlimited.
+         */
+        maxProtectedBackups?: pulumi.Input<number | undefined>;
+    }
+
     export interface CifsBackups {
         /**
          * Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.

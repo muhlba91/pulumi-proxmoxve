@@ -329,6 +329,24 @@ class HostsLegacy(pulumi.CustomResource):
         __props__.__dict__["node_name"] = node_name
         return HostsLegacy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            digest: pulumi.Input[Optional[_builtins.str]] = None,
+            entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HostsLegacyEntryArgs', 'HostsLegacyEntryArgsDict', 'outputs.HostsLegacyEntry']]]]] = None,
+            entry: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HostsLegacyEntryArgs', 'HostsLegacyEntryArgsDict', 'outputs.HostsLegacyEntry']]]]] = None,
+            hostnames: pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
+            node_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["addresses"] = addresses
+        __props__["digest"] = digest
+        __props__["entries"] = entries
+        __props__["entry"] = entry
+        __props__["hostnames"] = hostnames
+        __props__["nodeName"] = node_name
+        return pulumi.runtime.exists_resource(None, 'proxmoxve:index/hostsLegacy:HostsLegacy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def addresses(self) -> pulumi.Output[Sequence[_builtins.str]]:

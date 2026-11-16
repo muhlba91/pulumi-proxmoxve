@@ -304,6 +304,22 @@ class Openfabric(pulumi.CustomResource):
         __props__.__dict__["resource_id"] = resource_id
         return Openfabric(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            csnp_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            hello_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            ip6_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["csnpInterval"] = csnp_interval
+        __props__["helloInterval"] = hello_interval
+        __props__["ip6Prefix"] = ip6_prefix
+        __props__["ipPrefix"] = ip_prefix
+        __props__["resourceId"] = resource_id
+        return pulumi.runtime.exists_resource(None, 'proxmoxve:sdn/fabric/openfabric:Openfabric', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="csnpInterval")
     def csnp_interval(self) -> pulumi.Output[Optional[_builtins.int]]:

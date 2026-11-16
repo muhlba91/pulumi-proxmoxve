@@ -24,6 +24,7 @@ namespace Pulumi.ProxmoxVE.Inputs
         /// the `Servers` attribute instead.
         /// </summary>
         [Input("server")]
+        [Obsolete(@"The `Server` attribute is deprecated and will be removed in a future release. Please use the `Servers` attribute instead.")]
         public Input<string>? Server { get; set; }
 
         [Input("servers")]

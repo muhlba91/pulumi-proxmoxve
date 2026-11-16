@@ -667,6 +667,40 @@ class Vm2Legacy(pulumi.CustomResource):
         __props__.__dict__["vga"] = vga
         return Vm2Legacy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cdrom: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['Vm2LegacyCdromArgs', 'Vm2LegacyCdromArgsDict', 'outputs.Vm2LegacyCdrom']]]]] = None,
+            cpu: pulumi.Input[Optional[Union['Vm2LegacyCpuArgs', 'Vm2LegacyCpuArgsDict', 'outputs.Vm2LegacyCpu']]] = None,
+            delete_unreferenced_disks_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_name: pulumi.Input[Optional[_builtins.str]] = None,
+            purge_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+            rng: pulumi.Input[Optional[Union['Vm2LegacyRngArgs', 'Vm2LegacyRngArgsDict', 'outputs.Vm2LegacyRng']]] = None,
+            stop_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            template: pulumi.Input[Optional[_builtins.bool]] = None,
+            timeouts: pulumi.Input[Optional[Union['Vm2LegacyTimeoutsArgs', 'Vm2LegacyTimeoutsArgsDict', 'outputs.Vm2LegacyTimeouts']]] = None,
+            vga: pulumi.Input[Optional[Union['Vm2LegacyVgaArgs', 'Vm2LegacyVgaArgsDict', 'outputs.Vm2LegacyVga']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cdrom"] = cdrom
+        __props__["cpu"] = cpu
+        __props__["deleteUnreferencedDisksOnDestroy"] = delete_unreferenced_disks_on_destroy
+        __props__["description"] = description
+        __props__["name"] = name
+        __props__["nodeName"] = node_name
+        __props__["purgeOnDestroy"] = purge_on_destroy
+        __props__["resourceId"] = resource_id
+        __props__["rng"] = rng
+        __props__["stopOnDestroy"] = stop_on_destroy
+        __props__["tags"] = tags
+        __props__["template"] = template
+        __props__["timeouts"] = timeouts
+        __props__["vga"] = vga
+        return pulumi.runtime.exists_resource(None, 'proxmoxve:index/vm2Legacy:Vm2Legacy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def cdrom(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.Vm2LegacyCdrom']]]:

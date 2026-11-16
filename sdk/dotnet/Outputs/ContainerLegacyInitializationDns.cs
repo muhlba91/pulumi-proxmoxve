@@ -22,6 +22,7 @@ namespace Pulumi.ProxmoxVE.Outputs
         /// The `Server` attribute is deprecated and will be removed in a future release. Please use
         /// the `Servers` attribute instead.
         /// </summary>
+        [Obsolete(@"The `Server` attribute is deprecated and will be removed in a future release. Please use the `Servers` attribute instead.")]
         public readonly string? Server;
         /// <summary>
         /// The list of DNS servers.
@@ -37,7 +38,9 @@ namespace Pulumi.ProxmoxVE.Outputs
             ImmutableArray<string> servers)
         {
             Domain = domain;
+#pragma warning disable CS0618
             Server = server;
+#pragma warning restore CS0618
             Servers = servers;
         }
     }

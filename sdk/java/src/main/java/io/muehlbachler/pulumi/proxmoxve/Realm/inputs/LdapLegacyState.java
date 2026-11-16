@@ -275,22 +275,20 @@ public final class LdapLegacyState extends com.pulumi.resources.ResourceArgs {
     /**
      * Use LDAPS (LDAP over SSL/TLS) instead of plain LDAP.
      * 
-     * @deprecated
-     * Deprecated by Proxmox: use mode instead.
+     * @deprecated Deprecated by Proxmox: use mode instead.
      * 
      */
-    @Deprecated /* Deprecated by Proxmox: use mode instead. */
+    @Deprecated
     @Import(name="secure")
     private @Nullable Output<Boolean> secure;
 
     /**
      * @return Use LDAPS (LDAP over SSL/TLS) instead of plain LDAP.
      * 
-     * @deprecated
-     * Deprecated by Proxmox: use mode instead.
+     * @deprecated Deprecated by Proxmox: use mode instead.
      * 
      */
-    @Deprecated /* Deprecated by Proxmox: use mode instead. */
+    @Deprecated
     public Optional<Output<Boolean>> secure() {
         return Optional.ofNullable(this.secure);
     }
@@ -826,11 +824,10 @@ public final class LdapLegacyState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Deprecated by Proxmox: use mode instead.
+         * @deprecated Deprecated by Proxmox: use mode instead.
          * 
          */
-        @Deprecated /* Deprecated by Proxmox: use mode instead. */
+        @Deprecated
         public Builder secure(@Nullable Output<Boolean> secure) {
             $.secure = secure;
             return this;
@@ -841,11 +838,10 @@ public final class LdapLegacyState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Deprecated by Proxmox: use mode instead.
+         * @deprecated Deprecated by Proxmox: use mode instead.
          * 
          */
-        @Deprecated /* Deprecated by Proxmox: use mode instead. */
+        @Deprecated
         public Builder secure(Boolean secure) {
             return secure(Output.of(secure));
         }

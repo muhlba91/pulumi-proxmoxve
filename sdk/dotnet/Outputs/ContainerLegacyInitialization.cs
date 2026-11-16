@@ -31,7 +31,9 @@ namespace Pulumi.ProxmoxVE.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ContainerLegacyInitializationIpConfig> IpConfigs;
         /// <summary>
-        /// The user account configuration.
+        /// The user account configuration. It only applies when the
+        /// container is created, not when it is cloned: a cloned container keeps the SSH keys and
+        /// root password of its source container, and a warning is shown if this block is set.
         /// </summary>
         public readonly Outputs.ContainerLegacyInitializationUserAccount? UserAccount;
 

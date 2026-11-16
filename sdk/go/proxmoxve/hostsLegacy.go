@@ -149,6 +149,12 @@ func (HostsLegacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*hostsLegacyState)(nil)).Elem()
 }
 
+// HostsLegacyExists checks whether an existing HostsLegacy resource with the given ID exists.
+func HostsLegacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HostsLegacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:index/hostsLegacy:HostsLegacy", id, state, "", opts...)
+}
+
 type hostsLegacyArgs struct {
 	// A host entry (multiple blocks supported).
 	Entry []HostsLegacyEntry `pulumi:"entry"`

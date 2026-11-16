@@ -184,6 +184,12 @@ func (FirewallLegacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*firewallLegacyState)(nil)).Elem()
 }
 
+// FirewallLegacyExists checks whether an existing FirewallLegacy resource with the given ID exists.
+func FirewallLegacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FirewallLegacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:node/firewallLegacy:FirewallLegacy", id, state, "", opts...)
+}
+
 type firewallLegacyArgs struct {
 	// Enable host firewall rules (defaults to `true`).
 	Enabled *bool `pulumi:"enabled"`

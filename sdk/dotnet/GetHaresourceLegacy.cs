@@ -30,7 +30,16 @@ namespace Pulumi.ProxmoxVE
         ///     var all = ProxmoxVE.GetHaresourcesLegacy.Invoke();
         /// 
         ///     // ...which we will go through in order to fetch the whole record for each resource.
-        ///     var example = ;
+        ///     var example = .ToDictionary(item =&gt; {
+        ///         var __key = item.Key;
+        ///         return __key.ToString(System.Globalization.CultureInfo.InvariantCulture);
+        ///     }, item =&gt; {
+        ///         var __value = item.Value;
+        ///         return ProxmoxVE.GetHaresourceLegacy.Invoke(new()
+        ///         {
+        ///             ResourceId = __value,
+        ///         });
+        ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -61,7 +70,16 @@ namespace Pulumi.ProxmoxVE
         ///     var all = ProxmoxVE.GetHaresourcesLegacy.Invoke();
         /// 
         ///     // ...which we will go through in order to fetch the whole record for each resource.
-        ///     var example = ;
+        ///     var example = .ToDictionary(item =&gt; {
+        ///         var __key = item.Key;
+        ///         return __key.ToString(System.Globalization.CultureInfo.InvariantCulture);
+        ///     }, item =&gt; {
+        ///         var __value = item.Value;
+        ///         return ProxmoxVE.GetHaresourceLegacy.Invoke(new()
+        ///         {
+        ///             ResourceId = __value,
+        ///         });
+        ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -92,7 +110,16 @@ namespace Pulumi.ProxmoxVE
         ///     var all = ProxmoxVE.GetHaresourcesLegacy.Invoke();
         /// 
         ///     // ...which we will go through in order to fetch the whole record for each resource.
-        ///     var example = ;
+        ///     var example = .ToDictionary(item =&gt; {
+        ///         var __key = item.Key;
+        ///         return __key.ToString(System.Globalization.CultureInfo.InvariantCulture);
+        ///     }, item =&gt; {
+        ///         var __value = item.Value;
+        ///         return ProxmoxVE.GetHaresourceLegacy.Invoke(new()
+        ///         {
+        ///             ResourceId = __value,
+        ///         });
+        ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -139,6 +166,10 @@ namespace Pulumi.ProxmoxVE
     public sealed class GetHaresourceLegacyResult
     {
         /// <summary>
+        /// Whether this HA resource may be migrated during automatic rebalancing (PVE 9.2+).
+        /// </summary>
+        public readonly bool AutoRebalance;
+        /// <summary>
         /// The comment associated with this resource.
         /// </summary>
         public readonly string Comment;
@@ -177,6 +208,8 @@ namespace Pulumi.ProxmoxVE
 
         [OutputConstructor]
         private GetHaresourceLegacyResult(
+            bool autoRebalance,
+
             string comment,
 
             bool failback,
@@ -195,6 +228,7 @@ namespace Pulumi.ProxmoxVE
 
             string type)
         {
+            AutoRebalance = autoRebalance;
             Comment = comment;
             Failback = failback;
             Group = group;

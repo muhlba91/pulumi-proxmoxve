@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['PoolArgs', 'Pool']
 
@@ -20,18 +22,15 @@ __all__ = ['PoolArgs', 'Pool']
 class PoolArgs:
     def __init__(__self__, *,
                  node_name: pulumi.Input[_builtins.str],
-                 add_storages: pulumi.Input[Optional[_builtins.bool]] = None,
                  application: pulumi.Input[Optional[_builtins.str]] = None,
                  crush_rule: pulumi.Input[Optional[_builtins.str]] = None,
-                 erasure_coding: pulumi.Input[Optional[_builtins.str]] = None,
+                 erasure_coding: pulumi.Input[Optional['PoolErasureCodingArgs']] = None,
                  force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  min_size: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  pg_autoscale_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  pg_num: pulumi.Input[Optional[_builtins.int]] = None,
                  pg_num_min: pulumi.Input[Optional[_builtins.int]] = None,
-                 remove_ecprofile: pulumi.Input[Optional[_builtins.bool]] = None,
-                 remove_storages: pulumi.Input[Optional[_builtins.bool]] = None,
                  size: pulumi.Input[Optional[_builtins.int]] = None,
                  target_size: pulumi.Input[Optional[_builtins.str]] = None,
                  target_size_ratio: pulumi.Input[Optional[_builtins.float]] = None):
@@ -39,25 +38,20 @@ class PoolArgs:
         The set of arguments for constructing a Pool resource.
 
         :param pulumi.Input[_builtins.str] node_name: The cluster node used to dispatch the API call. Any node running Ceph is acceptable; the pool itself is cluster-wide.
-        :param pulumi.Input[_builtins.bool] add_storages: Configure VM and CT storage entries using the new pool. Applied at create time only; changing this value forces replacement.
-        :param pulumi.Input[_builtins.str] application: The application using the pool. One of `rbd`, `cephfs`, `rgw`. Defaults to `rbd` server-side.
-        :param pulumi.Input[_builtins.str] crush_rule: The CRUSH rule name used for object placement.
-        :param pulumi.Input[_builtins.str] erasure_coding: Create an erasure coded pool. Specified as `k=<int>,m=<int>[,profile=name][,device-class=class][,failure-domain=domain]` (e.g. `k=4,m=2`). Cannot be changed after creation.
-        :param pulumi.Input[_builtins.bool] force_destroy: If true, destroy the pool even when in use. Passed as `force=1` on delete.
-        :param pulumi.Input[_builtins.int] min_size: Minimum number of replicas per object.
-        :param pulumi.Input[_builtins.str] name: The pool name. Must be unique within the Ceph cluster.
-        :param pulumi.Input[_builtins.str] pg_autoscale_mode: PG autoscaler mode. One of `on`, `off`, `warn`.
-        :param pulumi.Input[_builtins.int] pg_num: Number of placement groups.
-        :param pulumi.Input[_builtins.int] pg_num_min: Minimum number of placement groups (used by the autoscaler).
-        :param pulumi.Input[_builtins.bool] remove_ecprofile: If true, remove the erasure code profile on destroy. Defaults to true. Only relevant for EC pools.
-        :param pulumi.Input[_builtins.bool] remove_storages: If true, remove all pveceph-managed storages configured for this pool on destroy.
-        :param pulumi.Input[_builtins.int] size: Number of replicas per object.
-        :param pulumi.Input[_builtins.str] target_size: Estimated target size for the PG autoscaler (e.g. `100G`). **Write-only:** PVE returns this as a bytes integer (e.g. `1073741824`) while the input accepts a unit-suffixed string, so the configured spec is not round-tripped from the server.
-        :param pulumi.Input[_builtins.float] target_size_ratio: Estimated target ratio for the PG autoscaler. **Write-only:** kept symmetric with `target_size` (which cannot be round-tripped), so the configured value is not refreshed from the server.
+        :param pulumi.Input[_builtins.str] application: The application using the pool. One of `rbd`, `cephfs`, `rgw`. Defaults to `rbd` server-side. With `erasure_coding`, this is the data pool's application (Proxmox also sets it on the metadata pool at creation).
+        :param pulumi.Input[_builtins.str] crush_rule: The CRUSH rule name used for object placement. With `erasure_coding`, it is used solely for the metadata pool; the data pool uses the rule Ceph generates from the erasure code profile (`data_pool.crush_rule`).
+        :param pulumi.Input['PoolErasureCodingArgs'] erasure_coding: Create an erasure-coded pool instead of a replicated one: Proxmox creates an erasure-coded data pool `<name>-data` and a replicated metadata pool `<name>-metadata`. While this is set, `size`, `min_size` and `crush_rule` describe the metadata pool. Cannot be changed after creation, except that after an import the configured value is only recorded.
+        :param pulumi.Input[_builtins.bool] force_destroy: If true, destroy the pool even when in use. Passed as `force=1` on delete. With `erasure_coding`, this applies to both pools.
+        :param pulumi.Input[_builtins.int] min_size: Minimum number of replicas per object. With `erasure_coding`, this is the metadata pool's; the data pool's is `data_pool.min_size`.
+        :param pulumi.Input[_builtins.str] name: The pool name. Must be unique within the Ceph cluster. With `erasure_coding`, Proxmox creates the pools `<name>-data` and `<name>-metadata` instead, and no pool of this name.
+        :param pulumi.Input[_builtins.str] pg_autoscale_mode: PG autoscaler mode. One of `on`, `off`, `warn`. With `erasure_coding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
+        :param pulumi.Input[_builtins.int] pg_num: Number of placement groups. With `erasure_coding`, this is the data pool's (Proxmox creates the metadata pool with 32).
+        :param pulumi.Input[_builtins.int] pg_num_min: Minimum number of placement groups (used by the autoscaler). With `erasure_coding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
+        :param pulumi.Input[_builtins.int] size: Number of replicas per object. With `erasure_coding`, this is the metadata pool's replica count; the data pool's size is `k + m` (`data_pool.size`).
+        :param pulumi.Input[_builtins.str] target_size: Estimated target size for the PG autoscaler (e.g. `100G`). **Write-only:** PVE returns this as a bytes integer (e.g. `1073741824`) while the input accepts a unit-suffixed string, so the configured spec is not round-tripped from the server. With `erasure_coding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
+        :param pulumi.Input[_builtins.float] target_size_ratio: Estimated target ratio for the PG autoscaler. **Write-only:** kept symmetric with `target_size` (which cannot be round-tripped), so the configured value is not refreshed from the server. With `erasure_coding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
         """
         pulumi.set(__self__, "node_name", node_name)
-        if add_storages is not None:
-            pulumi.set(__self__, "add_storages", add_storages)
         if application is not None:
             pulumi.set(__self__, "application", application)
         if crush_rule is not None:
@@ -76,10 +70,6 @@ class PoolArgs:
             pulumi.set(__self__, "pg_num", pg_num)
         if pg_num_min is not None:
             pulumi.set(__self__, "pg_num_min", pg_num_min)
-        if remove_ecprofile is not None:
-            pulumi.set(__self__, "remove_ecprofile", remove_ecprofile)
-        if remove_storages is not None:
-            pulumi.set(__self__, "remove_storages", remove_storages)
         if size is not None:
             pulumi.set(__self__, "size", size)
         if target_size is not None:
@@ -100,22 +90,10 @@ class PoolArgs:
         pulumi.set(self, "node_name", value)
 
     @_builtins.property
-    @pulumi.getter(name="addStorages")
-    def add_storages(self) -> pulumi.Input[Optional[_builtins.bool]]:
-        """
-        Configure VM and CT storage entries using the new pool. Applied at create time only; changing this value forces replacement.
-        """
-        return pulumi.get(self, "add_storages")
-
-    @add_storages.setter
-    def add_storages(self, value: pulumi.Input[Optional[_builtins.bool]]):
-        pulumi.set(self, "add_storages", value)
-
-    @_builtins.property
     @pulumi.getter
     def application(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The application using the pool. One of `rbd`, `cephfs`, `rgw`. Defaults to `rbd` server-side.
+        The application using the pool. One of `rbd`, `cephfs`, `rgw`. Defaults to `rbd` server-side. With `erasure_coding`, this is the data pool's application (Proxmox also sets it on the metadata pool at creation).
         """
         return pulumi.get(self, "application")
 
@@ -127,7 +105,7 @@ class PoolArgs:
     @pulumi.getter(name="crushRule")
     def crush_rule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The CRUSH rule name used for object placement.
+        The CRUSH rule name used for object placement. With `erasure_coding`, it is used solely for the metadata pool; the data pool uses the rule Ceph generates from the erasure code profile (`data_pool.crush_rule`).
         """
         return pulumi.get(self, "crush_rule")
 
@@ -137,21 +115,21 @@ class PoolArgs:
 
     @_builtins.property
     @pulumi.getter(name="erasureCoding")
-    def erasure_coding(self) -> pulumi.Input[Optional[_builtins.str]]:
+    def erasure_coding(self) -> pulumi.Input[Optional['PoolErasureCodingArgs']]:
         """
-        Create an erasure coded pool. Specified as `k=<int>,m=<int>[,profile=name][,device-class=class][,failure-domain=domain]` (e.g. `k=4,m=2`). Cannot be changed after creation.
+        Create an erasure-coded pool instead of a replicated one: Proxmox creates an erasure-coded data pool `<name>-data` and a replicated metadata pool `<name>-metadata`. While this is set, `size`, `min_size` and `crush_rule` describe the metadata pool. Cannot be changed after creation, except that after an import the configured value is only recorded.
         """
         return pulumi.get(self, "erasure_coding")
 
     @erasure_coding.setter
-    def erasure_coding(self, value: pulumi.Input[Optional[_builtins.str]]):
+    def erasure_coding(self, value: pulumi.Input[Optional['PoolErasureCodingArgs']]):
         pulumi.set(self, "erasure_coding", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        If true, destroy the pool even when in use. Passed as `force=1` on delete.
+        If true, destroy the pool even when in use. Passed as `force=1` on delete. With `erasure_coding`, this applies to both pools.
         """
         return pulumi.get(self, "force_destroy")
 
@@ -163,7 +141,7 @@ class PoolArgs:
     @pulumi.getter(name="minSize")
     def min_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Minimum number of replicas per object.
+        Minimum number of replicas per object. With `erasure_coding`, this is the metadata pool's; the data pool's is `data_pool.min_size`.
         """
         return pulumi.get(self, "min_size")
 
@@ -175,7 +153,7 @@ class PoolArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The pool name. Must be unique within the Ceph cluster.
+        The pool name. Must be unique within the Ceph cluster. With `erasure_coding`, Proxmox creates the pools `<name>-data` and `<name>-metadata` instead, and no pool of this name.
         """
         return pulumi.get(self, "name")
 
@@ -187,7 +165,7 @@ class PoolArgs:
     @pulumi.getter(name="pgAutoscaleMode")
     def pg_autoscale_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        PG autoscaler mode. One of `on`, `off`, `warn`.
+        PG autoscaler mode. One of `on`, `off`, `warn`. With `erasure_coding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
         """
         return pulumi.get(self, "pg_autoscale_mode")
 
@@ -199,7 +177,7 @@ class PoolArgs:
     @pulumi.getter(name="pgNum")
     def pg_num(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Number of placement groups.
+        Number of placement groups. With `erasure_coding`, this is the data pool's (Proxmox creates the metadata pool with 32).
         """
         return pulumi.get(self, "pg_num")
 
@@ -211,7 +189,7 @@ class PoolArgs:
     @pulumi.getter(name="pgNumMin")
     def pg_num_min(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Minimum number of placement groups (used by the autoscaler).
+        Minimum number of placement groups (used by the autoscaler). With `erasure_coding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
         """
         return pulumi.get(self, "pg_num_min")
 
@@ -220,34 +198,10 @@ class PoolArgs:
         pulumi.set(self, "pg_num_min", value)
 
     @_builtins.property
-    @pulumi.getter(name="removeEcprofile")
-    def remove_ecprofile(self) -> pulumi.Input[Optional[_builtins.bool]]:
-        """
-        If true, remove the erasure code profile on destroy. Defaults to true. Only relevant for EC pools.
-        """
-        return pulumi.get(self, "remove_ecprofile")
-
-    @remove_ecprofile.setter
-    def remove_ecprofile(self, value: pulumi.Input[Optional[_builtins.bool]]):
-        pulumi.set(self, "remove_ecprofile", value)
-
-    @_builtins.property
-    @pulumi.getter(name="removeStorages")
-    def remove_storages(self) -> pulumi.Input[Optional[_builtins.bool]]:
-        """
-        If true, remove all pveceph-managed storages configured for this pool on destroy.
-        """
-        return pulumi.get(self, "remove_storages")
-
-    @remove_storages.setter
-    def remove_storages(self, value: pulumi.Input[Optional[_builtins.bool]]):
-        pulumi.set(self, "remove_storages", value)
-
-    @_builtins.property
     @pulumi.getter
     def size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Number of replicas per object.
+        Number of replicas per object. With `erasure_coding`, this is the metadata pool's replica count; the data pool's size is `k + m` (`data_pool.size`).
         """
         return pulumi.get(self, "size")
 
@@ -259,7 +213,7 @@ class PoolArgs:
     @pulumi.getter(name="targetSize")
     def target_size(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Estimated target size for the PG autoscaler (e.g. `100G`). **Write-only:** PVE returns this as a bytes integer (e.g. `1073741824`) while the input accepts a unit-suffixed string, so the configured spec is not round-tripped from the server.
+        Estimated target size for the PG autoscaler (e.g. `100G`). **Write-only:** PVE returns this as a bytes integer (e.g. `1073741824`) while the input accepts a unit-suffixed string, so the configured spec is not round-tripped from the server. With `erasure_coding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
         """
         return pulumi.get(self, "target_size")
 
@@ -271,7 +225,7 @@ class PoolArgs:
     @pulumi.getter(name="targetSizeRatio")
     def target_size_ratio(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
-        Estimated target ratio for the PG autoscaler. **Write-only:** kept symmetric with `target_size` (which cannot be round-tripped), so the configured value is not refreshed from the server.
+        Estimated target ratio for the PG autoscaler. **Write-only:** kept symmetric with `target_size` (which cannot be round-tripped), so the configured value is not refreshed from the server. With `erasure_coding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
         """
         return pulumi.get(self, "target_size_ratio")
 
@@ -283,52 +237,58 @@ class PoolArgs:
 @pulumi.input_type
 class _PoolState:
     def __init__(__self__, *,
-                 add_storages: pulumi.Input[Optional[_builtins.bool]] = None,
                  application: pulumi.Input[Optional[_builtins.str]] = None,
                  crush_rule: pulumi.Input[Optional[_builtins.str]] = None,
-                 erasure_coding: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_pool: pulumi.Input[Optional['PoolDataPoolArgs']] = None,
+                 erasure_coding: pulumi.Input[Optional['PoolErasureCodingArgs']] = None,
                  force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 metadata_pool_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 metadata_pool_name: pulumi.Input[Optional[_builtins.str]] = None,
                  min_size: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  node_name: pulumi.Input[Optional[_builtins.str]] = None,
                  pg_autoscale_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  pg_num: pulumi.Input[Optional[_builtins.int]] = None,
                  pg_num_min: pulumi.Input[Optional[_builtins.int]] = None,
-                 remove_ecprofile: pulumi.Input[Optional[_builtins.bool]] = None,
-                 remove_storages: pulumi.Input[Optional[_builtins.bool]] = None,
+                 pool_id: pulumi.Input[Optional[_builtins.int]] = None,
                  size: pulumi.Input[Optional[_builtins.int]] = None,
                  target_size: pulumi.Input[Optional[_builtins.str]] = None,
                  target_size_ratio: pulumi.Input[Optional[_builtins.float]] = None):
         """
         Input properties used for looking up and filtering Pool resources.
 
-        :param pulumi.Input[_builtins.bool] add_storages: Configure VM and CT storage entries using the new pool. Applied at create time only; changing this value forces replacement.
-        :param pulumi.Input[_builtins.str] application: The application using the pool. One of `rbd`, `cephfs`, `rgw`. Defaults to `rbd` server-side.
-        :param pulumi.Input[_builtins.str] crush_rule: The CRUSH rule name used for object placement.
-        :param pulumi.Input[_builtins.str] erasure_coding: Create an erasure coded pool. Specified as `k=<int>,m=<int>[,profile=name][,device-class=class][,failure-domain=domain]` (e.g. `k=4,m=2`). Cannot be changed after creation.
-        :param pulumi.Input[_builtins.bool] force_destroy: If true, destroy the pool even when in use. Passed as `force=1` on delete.
-        :param pulumi.Input[_builtins.int] min_size: Minimum number of replicas per object.
-        :param pulumi.Input[_builtins.str] name: The pool name. Must be unique within the Ceph cluster.
+        :param pulumi.Input[_builtins.str] application: The application using the pool. One of `rbd`, `cephfs`, `rgw`. Defaults to `rbd` server-side. With `erasure_coding`, this is the data pool's application (Proxmox also sets it on the metadata pool at creation).
+        :param pulumi.Input[_builtins.str] crush_rule: The CRUSH rule name used for object placement. With `erasure_coding`, it is used solely for the metadata pool; the data pool uses the rule Ceph generates from the erasure code profile (`data_pool.crush_rule`).
+        :param pulumi.Input['PoolDataPoolArgs'] data_pool: The erasure-coded data pool `<name>-data` of an erasure-coded pool; null for a replicated pool. Its size, minimum size and CRUSH rule follow from the erasure code profile.
+        :param pulumi.Input['PoolErasureCodingArgs'] erasure_coding: Create an erasure-coded pool instead of a replicated one: Proxmox creates an erasure-coded data pool `<name>-data` and a replicated metadata pool `<name>-metadata`. While this is set, `size`, `min_size` and `crush_rule` describe the metadata pool. Cannot be changed after creation, except that after an import the configured value is only recorded.
+        :param pulumi.Input[_builtins.bool] force_destroy: If true, destroy the pool even when in use. Passed as `force=1` on delete. With `erasure_coding`, this applies to both pools.
+        :param pulumi.Input[_builtins.int] metadata_pool_id: The numeric ID Ceph assigned to an erasure-coded pool's metadata pool; null for a replicated pool.
+        :param pulumi.Input[_builtins.str] metadata_pool_name: The name of an erasure-coded pool's replicated metadata pool, `<name>-metadata`; null for a replicated pool. `size`, `min_size` and `crush_rule` describe this pool.
+        :param pulumi.Input[_builtins.int] min_size: Minimum number of replicas per object. With `erasure_coding`, this is the metadata pool's; the data pool's is `data_pool.min_size`.
+        :param pulumi.Input[_builtins.str] name: The pool name. Must be unique within the Ceph cluster. With `erasure_coding`, Proxmox creates the pools `<name>-data` and `<name>-metadata` instead, and no pool of this name.
         :param pulumi.Input[_builtins.str] node_name: The cluster node used to dispatch the API call. Any node running Ceph is acceptable; the pool itself is cluster-wide.
-        :param pulumi.Input[_builtins.str] pg_autoscale_mode: PG autoscaler mode. One of `on`, `off`, `warn`.
-        :param pulumi.Input[_builtins.int] pg_num: Number of placement groups.
-        :param pulumi.Input[_builtins.int] pg_num_min: Minimum number of placement groups (used by the autoscaler).
-        :param pulumi.Input[_builtins.bool] remove_ecprofile: If true, remove the erasure code profile on destroy. Defaults to true. Only relevant for EC pools.
-        :param pulumi.Input[_builtins.bool] remove_storages: If true, remove all pveceph-managed storages configured for this pool on destroy.
-        :param pulumi.Input[_builtins.int] size: Number of replicas per object.
-        :param pulumi.Input[_builtins.str] target_size: Estimated target size for the PG autoscaler (e.g. `100G`). **Write-only:** PVE returns this as a bytes integer (e.g. `1073741824`) while the input accepts a unit-suffixed string, so the configured spec is not round-tripped from the server.
-        :param pulumi.Input[_builtins.float] target_size_ratio: Estimated target ratio for the PG autoscaler. **Write-only:** kept symmetric with `target_size` (which cannot be round-tripped), so the configured value is not refreshed from the server.
+        :param pulumi.Input[_builtins.str] pg_autoscale_mode: PG autoscaler mode. One of `on`, `off`, `warn`. With `erasure_coding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
+        :param pulumi.Input[_builtins.int] pg_num: Number of placement groups. With `erasure_coding`, this is the data pool's (Proxmox creates the metadata pool with 32).
+        :param pulumi.Input[_builtins.int] pg_num_min: Minimum number of placement groups (used by the autoscaler). With `erasure_coding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
+        :param pulumi.Input[_builtins.int] pool_id: The numeric pool ID assigned by Ceph. Ceph assigns a new ID when the pool is recreated. Null with `erasure_coding`, where no pool named `name` exists; see `data_pool.pool_id` and `metadata_pool_id`.
+        :param pulumi.Input[_builtins.int] size: Number of replicas per object. With `erasure_coding`, this is the metadata pool's replica count; the data pool's size is `k + m` (`data_pool.size`).
+        :param pulumi.Input[_builtins.str] target_size: Estimated target size for the PG autoscaler (e.g. `100G`). **Write-only:** PVE returns this as a bytes integer (e.g. `1073741824`) while the input accepts a unit-suffixed string, so the configured spec is not round-tripped from the server. With `erasure_coding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
+        :param pulumi.Input[_builtins.float] target_size_ratio: Estimated target ratio for the PG autoscaler. **Write-only:** kept symmetric with `target_size` (which cannot be round-tripped), so the configured value is not refreshed from the server. With `erasure_coding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
         """
-        if add_storages is not None:
-            pulumi.set(__self__, "add_storages", add_storages)
         if application is not None:
             pulumi.set(__self__, "application", application)
         if crush_rule is not None:
             pulumi.set(__self__, "crush_rule", crush_rule)
+        if data_pool is not None:
+            pulumi.set(__self__, "data_pool", data_pool)
         if erasure_coding is not None:
             pulumi.set(__self__, "erasure_coding", erasure_coding)
         if force_destroy is not None:
             pulumi.set(__self__, "force_destroy", force_destroy)
+        if metadata_pool_id is not None:
+            pulumi.set(__self__, "metadata_pool_id", metadata_pool_id)
+        if metadata_pool_name is not None:
+            pulumi.set(__self__, "metadata_pool_name", metadata_pool_name)
         if min_size is not None:
             pulumi.set(__self__, "min_size", min_size)
         if name is not None:
@@ -341,10 +301,8 @@ class _PoolState:
             pulumi.set(__self__, "pg_num", pg_num)
         if pg_num_min is not None:
             pulumi.set(__self__, "pg_num_min", pg_num_min)
-        if remove_ecprofile is not None:
-            pulumi.set(__self__, "remove_ecprofile", remove_ecprofile)
-        if remove_storages is not None:
-            pulumi.set(__self__, "remove_storages", remove_storages)
+        if pool_id is not None:
+            pulumi.set(__self__, "pool_id", pool_id)
         if size is not None:
             pulumi.set(__self__, "size", size)
         if target_size is not None:
@@ -353,22 +311,10 @@ class _PoolState:
             pulumi.set(__self__, "target_size_ratio", target_size_ratio)
 
     @_builtins.property
-    @pulumi.getter(name="addStorages")
-    def add_storages(self) -> pulumi.Input[Optional[_builtins.bool]]:
-        """
-        Configure VM and CT storage entries using the new pool. Applied at create time only; changing this value forces replacement.
-        """
-        return pulumi.get(self, "add_storages")
-
-    @add_storages.setter
-    def add_storages(self, value: pulumi.Input[Optional[_builtins.bool]]):
-        pulumi.set(self, "add_storages", value)
-
-    @_builtins.property
     @pulumi.getter
     def application(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The application using the pool. One of `rbd`, `cephfs`, `rgw`. Defaults to `rbd` server-side.
+        The application using the pool. One of `rbd`, `cephfs`, `rgw`. Defaults to `rbd` server-side. With `erasure_coding`, this is the data pool's application (Proxmox also sets it on the metadata pool at creation).
         """
         return pulumi.get(self, "application")
 
@@ -380,7 +326,7 @@ class _PoolState:
     @pulumi.getter(name="crushRule")
     def crush_rule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The CRUSH rule name used for object placement.
+        The CRUSH rule name used for object placement. With `erasure_coding`, it is used solely for the metadata pool; the data pool uses the rule Ceph generates from the erasure code profile (`data_pool.crush_rule`).
         """
         return pulumi.get(self, "crush_rule")
 
@@ -389,22 +335,34 @@ class _PoolState:
         pulumi.set(self, "crush_rule", value)
 
     @_builtins.property
-    @pulumi.getter(name="erasureCoding")
-    def erasure_coding(self) -> pulumi.Input[Optional[_builtins.str]]:
+    @pulumi.getter(name="dataPool")
+    def data_pool(self) -> pulumi.Input[Optional['PoolDataPoolArgs']]:
         """
-        Create an erasure coded pool. Specified as `k=<int>,m=<int>[,profile=name][,device-class=class][,failure-domain=domain]` (e.g. `k=4,m=2`). Cannot be changed after creation.
+        The erasure-coded data pool `<name>-data` of an erasure-coded pool; null for a replicated pool. Its size, minimum size and CRUSH rule follow from the erasure code profile.
+        """
+        return pulumi.get(self, "data_pool")
+
+    @data_pool.setter
+    def data_pool(self, value: pulumi.Input[Optional['PoolDataPoolArgs']]):
+        pulumi.set(self, "data_pool", value)
+
+    @_builtins.property
+    @pulumi.getter(name="erasureCoding")
+    def erasure_coding(self) -> pulumi.Input[Optional['PoolErasureCodingArgs']]:
+        """
+        Create an erasure-coded pool instead of a replicated one: Proxmox creates an erasure-coded data pool `<name>-data` and a replicated metadata pool `<name>-metadata`. While this is set, `size`, `min_size` and `crush_rule` describe the metadata pool. Cannot be changed after creation, except that after an import the configured value is only recorded.
         """
         return pulumi.get(self, "erasure_coding")
 
     @erasure_coding.setter
-    def erasure_coding(self, value: pulumi.Input[Optional[_builtins.str]]):
+    def erasure_coding(self, value: pulumi.Input[Optional['PoolErasureCodingArgs']]):
         pulumi.set(self, "erasure_coding", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        If true, destroy the pool even when in use. Passed as `force=1` on delete.
+        If true, destroy the pool even when in use. Passed as `force=1` on delete. With `erasure_coding`, this applies to both pools.
         """
         return pulumi.get(self, "force_destroy")
 
@@ -413,10 +371,34 @@ class _PoolState:
         pulumi.set(self, "force_destroy", value)
 
     @_builtins.property
+    @pulumi.getter(name="metadataPoolId")
+    def metadata_pool_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The numeric ID Ceph assigned to an erasure-coded pool's metadata pool; null for a replicated pool.
+        """
+        return pulumi.get(self, "metadata_pool_id")
+
+    @metadata_pool_id.setter
+    def metadata_pool_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "metadata_pool_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="metadataPoolName")
+    def metadata_pool_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of an erasure-coded pool's replicated metadata pool, `<name>-metadata`; null for a replicated pool. `size`, `min_size` and `crush_rule` describe this pool.
+        """
+        return pulumi.get(self, "metadata_pool_name")
+
+    @metadata_pool_name.setter
+    def metadata_pool_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "metadata_pool_name", value)
+
+    @_builtins.property
     @pulumi.getter(name="minSize")
     def min_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Minimum number of replicas per object.
+        Minimum number of replicas per object. With `erasure_coding`, this is the metadata pool's; the data pool's is `data_pool.min_size`.
         """
         return pulumi.get(self, "min_size")
 
@@ -428,7 +410,7 @@ class _PoolState:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The pool name. Must be unique within the Ceph cluster.
+        The pool name. Must be unique within the Ceph cluster. With `erasure_coding`, Proxmox creates the pools `<name>-data` and `<name>-metadata` instead, and no pool of this name.
         """
         return pulumi.get(self, "name")
 
@@ -452,7 +434,7 @@ class _PoolState:
     @pulumi.getter(name="pgAutoscaleMode")
     def pg_autoscale_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        PG autoscaler mode. One of `on`, `off`, `warn`.
+        PG autoscaler mode. One of `on`, `off`, `warn`. With `erasure_coding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
         """
         return pulumi.get(self, "pg_autoscale_mode")
 
@@ -464,7 +446,7 @@ class _PoolState:
     @pulumi.getter(name="pgNum")
     def pg_num(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Number of placement groups.
+        Number of placement groups. With `erasure_coding`, this is the data pool's (Proxmox creates the metadata pool with 32).
         """
         return pulumi.get(self, "pg_num")
 
@@ -476,7 +458,7 @@ class _PoolState:
     @pulumi.getter(name="pgNumMin")
     def pg_num_min(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Minimum number of placement groups (used by the autoscaler).
+        Minimum number of placement groups (used by the autoscaler). With `erasure_coding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
         """
         return pulumi.get(self, "pg_num_min")
 
@@ -485,34 +467,22 @@ class _PoolState:
         pulumi.set(self, "pg_num_min", value)
 
     @_builtins.property
-    @pulumi.getter(name="removeEcprofile")
-    def remove_ecprofile(self) -> pulumi.Input[Optional[_builtins.bool]]:
+    @pulumi.getter(name="poolId")
+    def pool_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        If true, remove the erasure code profile on destroy. Defaults to true. Only relevant for EC pools.
+        The numeric pool ID assigned by Ceph. Ceph assigns a new ID when the pool is recreated. Null with `erasure_coding`, where no pool named `name` exists; see `data_pool.pool_id` and `metadata_pool_id`.
         """
-        return pulumi.get(self, "remove_ecprofile")
+        return pulumi.get(self, "pool_id")
 
-    @remove_ecprofile.setter
-    def remove_ecprofile(self, value: pulumi.Input[Optional[_builtins.bool]]):
-        pulumi.set(self, "remove_ecprofile", value)
-
-    @_builtins.property
-    @pulumi.getter(name="removeStorages")
-    def remove_storages(self) -> pulumi.Input[Optional[_builtins.bool]]:
-        """
-        If true, remove all pveceph-managed storages configured for this pool on destroy.
-        """
-        return pulumi.get(self, "remove_storages")
-
-    @remove_storages.setter
-    def remove_storages(self, value: pulumi.Input[Optional[_builtins.bool]]):
-        pulumi.set(self, "remove_storages", value)
+    @pool_id.setter
+    def pool_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "pool_id", value)
 
     @_builtins.property
     @pulumi.getter
     def size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Number of replicas per object.
+        Number of replicas per object. With `erasure_coding`, this is the metadata pool's replica count; the data pool's size is `k + m` (`data_pool.size`).
         """
         return pulumi.get(self, "size")
 
@@ -524,7 +494,7 @@ class _PoolState:
     @pulumi.getter(name="targetSize")
     def target_size(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Estimated target size for the PG autoscaler (e.g. `100G`). **Write-only:** PVE returns this as a bytes integer (e.g. `1073741824`) while the input accepts a unit-suffixed string, so the configured spec is not round-tripped from the server.
+        Estimated target size for the PG autoscaler (e.g. `100G`). **Write-only:** PVE returns this as a bytes integer (e.g. `1073741824`) while the input accepts a unit-suffixed string, so the configured spec is not round-tripped from the server. With `erasure_coding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
         """
         return pulumi.get(self, "target_size")
 
@@ -536,7 +506,7 @@ class _PoolState:
     @pulumi.getter(name="targetSizeRatio")
     def target_size_ratio(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
-        Estimated target ratio for the PG autoscaler. **Write-only:** kept symmetric with `target_size` (which cannot be round-tripped), so the configured value is not refreshed from the server.
+        Estimated target ratio for the PG autoscaler. **Write-only:** kept symmetric with `target_size` (which cannot be round-tripped), so the configured value is not refreshed from the server. With `erasure_coding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
         """
         return pulumi.get(self, "target_size_ratio")
 
@@ -551,10 +521,9 @@ class Pool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 add_storages: pulumi.Input[Optional[_builtins.bool]] = None,
                  application: pulumi.Input[Optional[_builtins.str]] = None,
                  crush_rule: pulumi.Input[Optional[_builtins.str]] = None,
-                 erasure_coding: pulumi.Input[Optional[_builtins.str]] = None,
+                 erasure_coding: pulumi.Input[Optional[Union['PoolErasureCodingArgs', 'PoolErasureCodingArgsDict', 'outputs.PoolErasureCoding']]] = None,
                  force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  min_size: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -562,8 +531,6 @@ class Pool(pulumi.CustomResource):
                  pg_autoscale_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  pg_num: pulumi.Input[Optional[_builtins.int]] = None,
                  pg_num_min: pulumi.Input[Optional[_builtins.int]] = None,
-                 remove_ecprofile: pulumi.Input[Optional[_builtins.bool]] = None,
-                 remove_storages: pulumi.Input[Optional[_builtins.bool]] = None,
                  size: pulumi.Input[Optional[_builtins.int]] = None,
                  target_size: pulumi.Input[Optional[_builtins.str]] = None,
                  target_size_ratio: pulumi.Input[Optional[_builtins.float]] = None,
@@ -572,6 +539,10 @@ class Pool(pulumi.CustomResource):
         > **Experimental.** Schema and behavior may change in future releases. Pin the provider version if stability matters.
 
         Manages a Ceph pool on a Proxmox VE cluster.
+
+        **Erasure-coded pools.** With `erasure_coding`, Proxmox creates no pool named `name`. It creates an erasure-coded data pool `<name>-data` and a replicated metadata pool `<name>-metadata`, as `pveceph pool create --erasure-coding` does. As in `pveceph`, `size`, `min_size` and `crush_rule` then apply to the **metadata pool**, while `pg_num`, `pg_num_min`, `pg_autoscale_mode`, `application`, `target_size` and `target_size_ratio` apply to the **data pool**. The data pool's own size, minimum size and CRUSH rule follow from the erasure code profile and are reported in `data_pool`.
+
+        **Storages.** The provider never asks Proxmox to add a storage for the pool; manage RBD storages on it with `storage.Rbd`. Destroying the pool removes no storage. Destroying an erasure-coded pool removes both of its pools, and its erasure code profile when Proxmox created that profile (that is, when `erasure_coding.profile` is not set).
 
         ## Example Usage
 
@@ -587,6 +558,20 @@ class Pool(pulumi.CustomResource):
             min_size=2,
             pg_num=128,
             pg_autoscale_mode="warn")
+        # An erasure-coded pool: Proxmox creates the data pool "archive-data" and the metadata pool "archive-metadata".
+        erasure_coded = proxmoxve.ceph.Pool("erasure_coded",
+            node_name="pve",
+            name="archive",
+            size=3,
+            min_size=2,
+            crush_rule="replicated_rule",
+            pg_num=32,
+            erasure_coding={
+                "k": 4,
+                "m": 2,
+                "failure_domain": "host",
+                "device_class": "hdd",
+            })
         ```
 
         ## Import
@@ -598,25 +583,29 @@ class Pool(pulumi.CustomResource):
         $ pulumi import proxmoxve:ceph/pool:Pool example pve/tank
         ```
 
+        An erasure-coded pool is imported by the name it was created with (without `-data` or `-metadata`); its
+        configuration must then include a matching `erasure_coding` attribute.
+
+        ```sh
+        $ pulumi import proxmoxve:ceph/pool:Pool erasure_coded pve/archive
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] add_storages: Configure VM and CT storage entries using the new pool. Applied at create time only; changing this value forces replacement.
-        :param pulumi.Input[_builtins.str] application: The application using the pool. One of `rbd`, `cephfs`, `rgw`. Defaults to `rbd` server-side.
-        :param pulumi.Input[_builtins.str] crush_rule: The CRUSH rule name used for object placement.
-        :param pulumi.Input[_builtins.str] erasure_coding: Create an erasure coded pool. Specified as `k=<int>,m=<int>[,profile=name][,device-class=class][,failure-domain=domain]` (e.g. `k=4,m=2`). Cannot be changed after creation.
-        :param pulumi.Input[_builtins.bool] force_destroy: If true, destroy the pool even when in use. Passed as `force=1` on delete.
-        :param pulumi.Input[_builtins.int] min_size: Minimum number of replicas per object.
-        :param pulumi.Input[_builtins.str] name: The pool name. Must be unique within the Ceph cluster.
+        :param pulumi.Input[_builtins.str] application: The application using the pool. One of `rbd`, `cephfs`, `rgw`. Defaults to `rbd` server-side. With `erasure_coding`, this is the data pool's application (Proxmox also sets it on the metadata pool at creation).
+        :param pulumi.Input[_builtins.str] crush_rule: The CRUSH rule name used for object placement. With `erasure_coding`, it is used solely for the metadata pool; the data pool uses the rule Ceph generates from the erasure code profile (`data_pool.crush_rule`).
+        :param pulumi.Input[Union['PoolErasureCodingArgs', 'PoolErasureCodingArgsDict', 'outputs.PoolErasureCoding']] erasure_coding: Create an erasure-coded pool instead of a replicated one: Proxmox creates an erasure-coded data pool `<name>-data` and a replicated metadata pool `<name>-metadata`. While this is set, `size`, `min_size` and `crush_rule` describe the metadata pool. Cannot be changed after creation, except that after an import the configured value is only recorded.
+        :param pulumi.Input[_builtins.bool] force_destroy: If true, destroy the pool even when in use. Passed as `force=1` on delete. With `erasure_coding`, this applies to both pools.
+        :param pulumi.Input[_builtins.int] min_size: Minimum number of replicas per object. With `erasure_coding`, this is the metadata pool's; the data pool's is `data_pool.min_size`.
+        :param pulumi.Input[_builtins.str] name: The pool name. Must be unique within the Ceph cluster. With `erasure_coding`, Proxmox creates the pools `<name>-data` and `<name>-metadata` instead, and no pool of this name.
         :param pulumi.Input[_builtins.str] node_name: The cluster node used to dispatch the API call. Any node running Ceph is acceptable; the pool itself is cluster-wide.
-        :param pulumi.Input[_builtins.str] pg_autoscale_mode: PG autoscaler mode. One of `on`, `off`, `warn`.
-        :param pulumi.Input[_builtins.int] pg_num: Number of placement groups.
-        :param pulumi.Input[_builtins.int] pg_num_min: Minimum number of placement groups (used by the autoscaler).
-        :param pulumi.Input[_builtins.bool] remove_ecprofile: If true, remove the erasure code profile on destroy. Defaults to true. Only relevant for EC pools.
-        :param pulumi.Input[_builtins.bool] remove_storages: If true, remove all pveceph-managed storages configured for this pool on destroy.
-        :param pulumi.Input[_builtins.int] size: Number of replicas per object.
-        :param pulumi.Input[_builtins.str] target_size: Estimated target size for the PG autoscaler (e.g. `100G`). **Write-only:** PVE returns this as a bytes integer (e.g. `1073741824`) while the input accepts a unit-suffixed string, so the configured spec is not round-tripped from the server.
-        :param pulumi.Input[_builtins.float] target_size_ratio: Estimated target ratio for the PG autoscaler. **Write-only:** kept symmetric with `target_size` (which cannot be round-tripped), so the configured value is not refreshed from the server.
+        :param pulumi.Input[_builtins.str] pg_autoscale_mode: PG autoscaler mode. One of `on`, `off`, `warn`. With `erasure_coding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
+        :param pulumi.Input[_builtins.int] pg_num: Number of placement groups. With `erasure_coding`, this is the data pool's (Proxmox creates the metadata pool with 32).
+        :param pulumi.Input[_builtins.int] pg_num_min: Minimum number of placement groups (used by the autoscaler). With `erasure_coding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
+        :param pulumi.Input[_builtins.int] size: Number of replicas per object. With `erasure_coding`, this is the metadata pool's replica count; the data pool's size is `k + m` (`data_pool.size`).
+        :param pulumi.Input[_builtins.str] target_size: Estimated target size for the PG autoscaler (e.g. `100G`). **Write-only:** PVE returns this as a bytes integer (e.g. `1073741824`) while the input accepts a unit-suffixed string, so the configured spec is not round-tripped from the server. With `erasure_coding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
+        :param pulumi.Input[_builtins.float] target_size_ratio: Estimated target ratio for the PG autoscaler. **Write-only:** kept symmetric with `target_size` (which cannot be round-tripped), so the configured value is not refreshed from the server. With `erasure_coding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
         """
         ...
     @overload
@@ -629,6 +618,10 @@ class Pool(pulumi.CustomResource):
 
         Manages a Ceph pool on a Proxmox VE cluster.
 
+        **Erasure-coded pools.** With `erasure_coding`, Proxmox creates no pool named `name`. It creates an erasure-coded data pool `<name>-data` and a replicated metadata pool `<name>-metadata`, as `pveceph pool create --erasure-coding` does. As in `pveceph`, `size`, `min_size` and `crush_rule` then apply to the **metadata pool**, while `pg_num`, `pg_num_min`, `pg_autoscale_mode`, `application`, `target_size` and `target_size_ratio` apply to the **data pool**. The data pool's own size, minimum size and CRUSH rule follow from the erasure code profile and are reported in `data_pool`.
+
+        **Storages.** The provider never asks Proxmox to add a storage for the pool; manage RBD storages on it with `storage.Rbd`. Destroying the pool removes no storage. Destroying an erasure-coded pool removes both of its pools, and its erasure code profile when Proxmox created that profile (that is, when `erasure_coding.profile` is not set).
+
         ## Example Usage
 
         ```python
@@ -643,6 +636,20 @@ class Pool(pulumi.CustomResource):
             min_size=2,
             pg_num=128,
             pg_autoscale_mode="warn")
+        # An erasure-coded pool: Proxmox creates the data pool "archive-data" and the metadata pool "archive-metadata".
+        erasure_coded = proxmoxve.ceph.Pool("erasure_coded",
+            node_name="pve",
+            name="archive",
+            size=3,
+            min_size=2,
+            crush_rule="replicated_rule",
+            pg_num=32,
+            erasure_coding={
+                "k": 4,
+                "m": 2,
+                "failure_domain": "host",
+                "device_class": "hdd",
+            })
         ```
 
         ## Import
@@ -652,6 +659,13 @@ class Pool(pulumi.CustomResource):
 
         ```sh
         $ pulumi import proxmoxve:ceph/pool:Pool example pve/tank
+        ```
+
+        An erasure-coded pool is imported by the name it was created with (without `-data` or `-metadata`); its
+        configuration must then include a matching `erasure_coding` attribute.
+
+        ```sh
+        $ pulumi import proxmoxve:ceph/pool:Pool erasure_coded pve/archive
         ```
 
 
@@ -670,10 +684,9 @@ class Pool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 add_storages: pulumi.Input[Optional[_builtins.bool]] = None,
                  application: pulumi.Input[Optional[_builtins.str]] = None,
                  crush_rule: pulumi.Input[Optional[_builtins.str]] = None,
-                 erasure_coding: pulumi.Input[Optional[_builtins.str]] = None,
+                 erasure_coding: pulumi.Input[Optional[Union['PoolErasureCodingArgs', 'PoolErasureCodingArgsDict', 'outputs.PoolErasureCoding']]] = None,
                  force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  min_size: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -681,8 +694,6 @@ class Pool(pulumi.CustomResource):
                  pg_autoscale_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  pg_num: pulumi.Input[Optional[_builtins.int]] = None,
                  pg_num_min: pulumi.Input[Optional[_builtins.int]] = None,
-                 remove_ecprofile: pulumi.Input[Optional[_builtins.bool]] = None,
-                 remove_storages: pulumi.Input[Optional[_builtins.bool]] = None,
                  size: pulumi.Input[Optional[_builtins.int]] = None,
                  target_size: pulumi.Input[Optional[_builtins.str]] = None,
                  target_size_ratio: pulumi.Input[Optional[_builtins.float]] = None,
@@ -695,7 +706,6 @@ class Pool(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = PoolArgs.__new__(PoolArgs)
 
-            __props__.__dict__["add_storages"] = add_storages
             __props__.__dict__["application"] = application
             __props__.__dict__["crush_rule"] = crush_rule
             __props__.__dict__["erasure_coding"] = erasure_coding
@@ -708,11 +718,13 @@ class Pool(pulumi.CustomResource):
             __props__.__dict__["pg_autoscale_mode"] = pg_autoscale_mode
             __props__.__dict__["pg_num"] = pg_num
             __props__.__dict__["pg_num_min"] = pg_num_min
-            __props__.__dict__["remove_ecprofile"] = remove_ecprofile
-            __props__.__dict__["remove_storages"] = remove_storages
             __props__.__dict__["size"] = size
             __props__.__dict__["target_size"] = target_size
             __props__.__dict__["target_size_ratio"] = target_size_ratio
+            __props__.__dict__["data_pool"] = None
+            __props__.__dict__["metadata_pool_id"] = None
+            __props__.__dict__["metadata_pool_name"] = None
+            __props__.__dict__["pool_id"] = None
         super(Pool, __self__).__init__(
             'proxmoxve:ceph/pool:Pool',
             resource_name,
@@ -723,19 +735,20 @@ class Pool(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            add_storages: pulumi.Input[Optional[_builtins.bool]] = None,
             application: pulumi.Input[Optional[_builtins.str]] = None,
             crush_rule: pulumi.Input[Optional[_builtins.str]] = None,
-            erasure_coding: pulumi.Input[Optional[_builtins.str]] = None,
+            data_pool: pulumi.Input[Optional[Union['PoolDataPoolArgs', 'PoolDataPoolArgsDict', 'outputs.PoolDataPool']]] = None,
+            erasure_coding: pulumi.Input[Optional[Union['PoolErasureCodingArgs', 'PoolErasureCodingArgsDict', 'outputs.PoolErasureCoding']]] = None,
             force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            metadata_pool_id: pulumi.Input[Optional[_builtins.int]] = None,
+            metadata_pool_name: pulumi.Input[Optional[_builtins.str]] = None,
             min_size: pulumi.Input[Optional[_builtins.int]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             node_name: pulumi.Input[Optional[_builtins.str]] = None,
             pg_autoscale_mode: pulumi.Input[Optional[_builtins.str]] = None,
             pg_num: pulumi.Input[Optional[_builtins.int]] = None,
             pg_num_min: pulumi.Input[Optional[_builtins.int]] = None,
-            remove_ecprofile: pulumi.Input[Optional[_builtins.bool]] = None,
-            remove_storages: pulumi.Input[Optional[_builtins.bool]] = None,
+            pool_id: pulumi.Input[Optional[_builtins.int]] = None,
             size: pulumi.Input[Optional[_builtins.int]] = None,
             target_size: pulumi.Input[Optional[_builtins.str]] = None,
             target_size_ratio: pulumi.Input[Optional[_builtins.float]] = None) -> 'Pool':
@@ -746,58 +759,92 @@ class Pool(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] add_storages: Configure VM and CT storage entries using the new pool. Applied at create time only; changing this value forces replacement.
-        :param pulumi.Input[_builtins.str] application: The application using the pool. One of `rbd`, `cephfs`, `rgw`. Defaults to `rbd` server-side.
-        :param pulumi.Input[_builtins.str] crush_rule: The CRUSH rule name used for object placement.
-        :param pulumi.Input[_builtins.str] erasure_coding: Create an erasure coded pool. Specified as `k=<int>,m=<int>[,profile=name][,device-class=class][,failure-domain=domain]` (e.g. `k=4,m=2`). Cannot be changed after creation.
-        :param pulumi.Input[_builtins.bool] force_destroy: If true, destroy the pool even when in use. Passed as `force=1` on delete.
-        :param pulumi.Input[_builtins.int] min_size: Minimum number of replicas per object.
-        :param pulumi.Input[_builtins.str] name: The pool name. Must be unique within the Ceph cluster.
+        :param pulumi.Input[_builtins.str] application: The application using the pool. One of `rbd`, `cephfs`, `rgw`. Defaults to `rbd` server-side. With `erasure_coding`, this is the data pool's application (Proxmox also sets it on the metadata pool at creation).
+        :param pulumi.Input[_builtins.str] crush_rule: The CRUSH rule name used for object placement. With `erasure_coding`, it is used solely for the metadata pool; the data pool uses the rule Ceph generates from the erasure code profile (`data_pool.crush_rule`).
+        :param pulumi.Input[Union['PoolDataPoolArgs', 'PoolDataPoolArgsDict', 'outputs.PoolDataPool']] data_pool: The erasure-coded data pool `<name>-data` of an erasure-coded pool; null for a replicated pool. Its size, minimum size and CRUSH rule follow from the erasure code profile.
+        :param pulumi.Input[Union['PoolErasureCodingArgs', 'PoolErasureCodingArgsDict', 'outputs.PoolErasureCoding']] erasure_coding: Create an erasure-coded pool instead of a replicated one: Proxmox creates an erasure-coded data pool `<name>-data` and a replicated metadata pool `<name>-metadata`. While this is set, `size`, `min_size` and `crush_rule` describe the metadata pool. Cannot be changed after creation, except that after an import the configured value is only recorded.
+        :param pulumi.Input[_builtins.bool] force_destroy: If true, destroy the pool even when in use. Passed as `force=1` on delete. With `erasure_coding`, this applies to both pools.
+        :param pulumi.Input[_builtins.int] metadata_pool_id: The numeric ID Ceph assigned to an erasure-coded pool's metadata pool; null for a replicated pool.
+        :param pulumi.Input[_builtins.str] metadata_pool_name: The name of an erasure-coded pool's replicated metadata pool, `<name>-metadata`; null for a replicated pool. `size`, `min_size` and `crush_rule` describe this pool.
+        :param pulumi.Input[_builtins.int] min_size: Minimum number of replicas per object. With `erasure_coding`, this is the metadata pool's; the data pool's is `data_pool.min_size`.
+        :param pulumi.Input[_builtins.str] name: The pool name. Must be unique within the Ceph cluster. With `erasure_coding`, Proxmox creates the pools `<name>-data` and `<name>-metadata` instead, and no pool of this name.
         :param pulumi.Input[_builtins.str] node_name: The cluster node used to dispatch the API call. Any node running Ceph is acceptable; the pool itself is cluster-wide.
-        :param pulumi.Input[_builtins.str] pg_autoscale_mode: PG autoscaler mode. One of `on`, `off`, `warn`.
-        :param pulumi.Input[_builtins.int] pg_num: Number of placement groups.
-        :param pulumi.Input[_builtins.int] pg_num_min: Minimum number of placement groups (used by the autoscaler).
-        :param pulumi.Input[_builtins.bool] remove_ecprofile: If true, remove the erasure code profile on destroy. Defaults to true. Only relevant for EC pools.
-        :param pulumi.Input[_builtins.bool] remove_storages: If true, remove all pveceph-managed storages configured for this pool on destroy.
-        :param pulumi.Input[_builtins.int] size: Number of replicas per object.
-        :param pulumi.Input[_builtins.str] target_size: Estimated target size for the PG autoscaler (e.g. `100G`). **Write-only:** PVE returns this as a bytes integer (e.g. `1073741824`) while the input accepts a unit-suffixed string, so the configured spec is not round-tripped from the server.
-        :param pulumi.Input[_builtins.float] target_size_ratio: Estimated target ratio for the PG autoscaler. **Write-only:** kept symmetric with `target_size` (which cannot be round-tripped), so the configured value is not refreshed from the server.
+        :param pulumi.Input[_builtins.str] pg_autoscale_mode: PG autoscaler mode. One of `on`, `off`, `warn`. With `erasure_coding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
+        :param pulumi.Input[_builtins.int] pg_num: Number of placement groups. With `erasure_coding`, this is the data pool's (Proxmox creates the metadata pool with 32).
+        :param pulumi.Input[_builtins.int] pg_num_min: Minimum number of placement groups (used by the autoscaler). With `erasure_coding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
+        :param pulumi.Input[_builtins.int] pool_id: The numeric pool ID assigned by Ceph. Ceph assigns a new ID when the pool is recreated. Null with `erasure_coding`, where no pool named `name` exists; see `data_pool.pool_id` and `metadata_pool_id`.
+        :param pulumi.Input[_builtins.int] size: Number of replicas per object. With `erasure_coding`, this is the metadata pool's replica count; the data pool's size is `k + m` (`data_pool.size`).
+        :param pulumi.Input[_builtins.str] target_size: Estimated target size for the PG autoscaler (e.g. `100G`). **Write-only:** PVE returns this as a bytes integer (e.g. `1073741824`) while the input accepts a unit-suffixed string, so the configured spec is not round-tripped from the server. With `erasure_coding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
+        :param pulumi.Input[_builtins.float] target_size_ratio: Estimated target ratio for the PG autoscaler. **Write-only:** kept symmetric with `target_size` (which cannot be round-tripped), so the configured value is not refreshed from the server. With `erasure_coding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _PoolState.__new__(_PoolState)
 
-        __props__.__dict__["add_storages"] = add_storages
         __props__.__dict__["application"] = application
         __props__.__dict__["crush_rule"] = crush_rule
+        __props__.__dict__["data_pool"] = data_pool
         __props__.__dict__["erasure_coding"] = erasure_coding
         __props__.__dict__["force_destroy"] = force_destroy
+        __props__.__dict__["metadata_pool_id"] = metadata_pool_id
+        __props__.__dict__["metadata_pool_name"] = metadata_pool_name
         __props__.__dict__["min_size"] = min_size
         __props__.__dict__["name"] = name
         __props__.__dict__["node_name"] = node_name
         __props__.__dict__["pg_autoscale_mode"] = pg_autoscale_mode
         __props__.__dict__["pg_num"] = pg_num
         __props__.__dict__["pg_num_min"] = pg_num_min
-        __props__.__dict__["remove_ecprofile"] = remove_ecprofile
-        __props__.__dict__["remove_storages"] = remove_storages
+        __props__.__dict__["pool_id"] = pool_id
         __props__.__dict__["size"] = size
         __props__.__dict__["target_size"] = target_size
         __props__.__dict__["target_size_ratio"] = target_size_ratio
         return Pool(resource_name, opts=opts, __props__=__props__)
 
-    @_builtins.property
-    @pulumi.getter(name="addStorages")
-    def add_storages(self) -> pulumi.Output[Optional[_builtins.bool]]:
-        """
-        Configure VM and CT storage entries using the new pool. Applied at create time only; changing this value forces replacement.
-        """
-        return pulumi.get(self, "add_storages")
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            application: pulumi.Input[Optional[_builtins.str]] = None,
+            crush_rule: pulumi.Input[Optional[_builtins.str]] = None,
+            data_pool: pulumi.Input[Optional[Union['PoolDataPoolArgs', 'PoolDataPoolArgsDict', 'outputs.PoolDataPool']]] = None,
+            erasure_coding: pulumi.Input[Optional[Union['PoolErasureCodingArgs', 'PoolErasureCodingArgsDict', 'outputs.PoolErasureCoding']]] = None,
+            force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            metadata_pool_id: pulumi.Input[Optional[_builtins.int]] = None,
+            metadata_pool_name: pulumi.Input[Optional[_builtins.str]] = None,
+            min_size: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_name: pulumi.Input[Optional[_builtins.str]] = None,
+            pg_autoscale_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            pg_num: pulumi.Input[Optional[_builtins.int]] = None,
+            pg_num_min: pulumi.Input[Optional[_builtins.int]] = None,
+            pool_id: pulumi.Input[Optional[_builtins.int]] = None,
+            size: pulumi.Input[Optional[_builtins.int]] = None,
+            target_size: pulumi.Input[Optional[_builtins.str]] = None,
+            target_size_ratio: pulumi.Input[Optional[_builtins.float]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["application"] = application
+        __props__["crushRule"] = crush_rule
+        __props__["dataPool"] = data_pool
+        __props__["erasureCoding"] = erasure_coding
+        __props__["forceDestroy"] = force_destroy
+        __props__["metadataPoolId"] = metadata_pool_id
+        __props__["metadataPoolName"] = metadata_pool_name
+        __props__["minSize"] = min_size
+        __props__["name"] = name
+        __props__["nodeName"] = node_name
+        __props__["pgAutoscaleMode"] = pg_autoscale_mode
+        __props__["pgNum"] = pg_num
+        __props__["pgNumMin"] = pg_num_min
+        __props__["poolId"] = pool_id
+        __props__["size"] = size
+        __props__["targetSize"] = target_size
+        __props__["targetSizeRatio"] = target_size_ratio
+        return pulumi.runtime.exists_resource(None, 'proxmoxve:ceph/pool:Pool', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter
     def application(self) -> pulumi.Output[_builtins.str]:
         """
-        The application using the pool. One of `rbd`, `cephfs`, `rgw`. Defaults to `rbd` server-side.
+        The application using the pool. One of `rbd`, `cephfs`, `rgw`. Defaults to `rbd` server-side. With `erasure_coding`, this is the data pool's application (Proxmox also sets it on the metadata pool at creation).
         """
         return pulumi.get(self, "application")
 
@@ -805,15 +852,23 @@ class Pool(pulumi.CustomResource):
     @pulumi.getter(name="crushRule")
     def crush_rule(self) -> pulumi.Output[_builtins.str]:
         """
-        The CRUSH rule name used for object placement.
+        The CRUSH rule name used for object placement. With `erasure_coding`, it is used solely for the metadata pool; the data pool uses the rule Ceph generates from the erasure code profile (`data_pool.crush_rule`).
         """
         return pulumi.get(self, "crush_rule")
 
     @_builtins.property
-    @pulumi.getter(name="erasureCoding")
-    def erasure_coding(self) -> pulumi.Output[Optional[_builtins.str]]:
+    @pulumi.getter(name="dataPool")
+    def data_pool(self) -> pulumi.Output['outputs.PoolDataPool']:
         """
-        Create an erasure coded pool. Specified as `k=<int>,m=<int>[,profile=name][,device-class=class][,failure-domain=domain]` (e.g. `k=4,m=2`). Cannot be changed after creation.
+        The erasure-coded data pool `<name>-data` of an erasure-coded pool; null for a replicated pool. Its size, minimum size and CRUSH rule follow from the erasure code profile.
+        """
+        return pulumi.get(self, "data_pool")
+
+    @_builtins.property
+    @pulumi.getter(name="erasureCoding")
+    def erasure_coding(self) -> pulumi.Output[Optional['outputs.PoolErasureCoding']]:
+        """
+        Create an erasure-coded pool instead of a replicated one: Proxmox creates an erasure-coded data pool `<name>-data` and a replicated metadata pool `<name>-metadata`. While this is set, `size`, `min_size` and `crush_rule` describe the metadata pool. Cannot be changed after creation, except that after an import the configured value is only recorded.
         """
         return pulumi.get(self, "erasure_coding")
 
@@ -821,15 +876,31 @@ class Pool(pulumi.CustomResource):
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> pulumi.Output[_builtins.bool]:
         """
-        If true, destroy the pool even when in use. Passed as `force=1` on delete.
+        If true, destroy the pool even when in use. Passed as `force=1` on delete. With `erasure_coding`, this applies to both pools.
         """
         return pulumi.get(self, "force_destroy")
+
+    @_builtins.property
+    @pulumi.getter(name="metadataPoolId")
+    def metadata_pool_id(self) -> pulumi.Output[_builtins.int]:
+        """
+        The numeric ID Ceph assigned to an erasure-coded pool's metadata pool; null for a replicated pool.
+        """
+        return pulumi.get(self, "metadata_pool_id")
+
+    @_builtins.property
+    @pulumi.getter(name="metadataPoolName")
+    def metadata_pool_name(self) -> pulumi.Output[_builtins.str]:
+        """
+        The name of an erasure-coded pool's replicated metadata pool, `<name>-metadata`; null for a replicated pool. `size`, `min_size` and `crush_rule` describe this pool.
+        """
+        return pulumi.get(self, "metadata_pool_name")
 
     @_builtins.property
     @pulumi.getter(name="minSize")
     def min_size(self) -> pulumi.Output[_builtins.int]:
         """
-        Minimum number of replicas per object.
+        Minimum number of replicas per object. With `erasure_coding`, this is the metadata pool's; the data pool's is `data_pool.min_size`.
         """
         return pulumi.get(self, "min_size")
 
@@ -837,7 +908,7 @@ class Pool(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        The pool name. Must be unique within the Ceph cluster.
+        The pool name. Must be unique within the Ceph cluster. With `erasure_coding`, Proxmox creates the pools `<name>-data` and `<name>-metadata` instead, and no pool of this name.
         """
         return pulumi.get(self, "name")
 
@@ -853,7 +924,7 @@ class Pool(pulumi.CustomResource):
     @pulumi.getter(name="pgAutoscaleMode")
     def pg_autoscale_mode(self) -> pulumi.Output[_builtins.str]:
         """
-        PG autoscaler mode. One of `on`, `off`, `warn`.
+        PG autoscaler mode. One of `on`, `off`, `warn`. With `erasure_coding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
         """
         return pulumi.get(self, "pg_autoscale_mode")
 
@@ -861,7 +932,7 @@ class Pool(pulumi.CustomResource):
     @pulumi.getter(name="pgNum")
     def pg_num(self) -> pulumi.Output[_builtins.int]:
         """
-        Number of placement groups.
+        Number of placement groups. With `erasure_coding`, this is the data pool's (Proxmox creates the metadata pool with 32).
         """
         return pulumi.get(self, "pg_num")
 
@@ -869,31 +940,23 @@ class Pool(pulumi.CustomResource):
     @pulumi.getter(name="pgNumMin")
     def pg_num_min(self) -> pulumi.Output[_builtins.int]:
         """
-        Minimum number of placement groups (used by the autoscaler).
+        Minimum number of placement groups (used by the autoscaler). With `erasure_coding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
         """
         return pulumi.get(self, "pg_num_min")
 
     @_builtins.property
-    @pulumi.getter(name="removeEcprofile")
-    def remove_ecprofile(self) -> pulumi.Output[_builtins.bool]:
+    @pulumi.getter(name="poolId")
+    def pool_id(self) -> pulumi.Output[_builtins.int]:
         """
-        If true, remove the erasure code profile on destroy. Defaults to true. Only relevant for EC pools.
+        The numeric pool ID assigned by Ceph. Ceph assigns a new ID when the pool is recreated. Null with `erasure_coding`, where no pool named `name` exists; see `data_pool.pool_id` and `metadata_pool_id`.
         """
-        return pulumi.get(self, "remove_ecprofile")
-
-    @_builtins.property
-    @pulumi.getter(name="removeStorages")
-    def remove_storages(self) -> pulumi.Output[_builtins.bool]:
-        """
-        If true, remove all pveceph-managed storages configured for this pool on destroy.
-        """
-        return pulumi.get(self, "remove_storages")
+        return pulumi.get(self, "pool_id")
 
     @_builtins.property
     @pulumi.getter
     def size(self) -> pulumi.Output[_builtins.int]:
         """
-        Number of replicas per object.
+        Number of replicas per object. With `erasure_coding`, this is the metadata pool's replica count; the data pool's size is `k + m` (`data_pool.size`).
         """
         return pulumi.get(self, "size")
 
@@ -901,7 +964,7 @@ class Pool(pulumi.CustomResource):
     @pulumi.getter(name="targetSize")
     def target_size(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Estimated target size for the PG autoscaler (e.g. `100G`). **Write-only:** PVE returns this as a bytes integer (e.g. `1073741824`) while the input accepts a unit-suffixed string, so the configured spec is not round-tripped from the server.
+        Estimated target size for the PG autoscaler (e.g. `100G`). **Write-only:** PVE returns this as a bytes integer (e.g. `1073741824`) while the input accepts a unit-suffixed string, so the configured spec is not round-tripped from the server. With `erasure_coding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
         """
         return pulumi.get(self, "target_size")
 
@@ -909,7 +972,7 @@ class Pool(pulumi.CustomResource):
     @pulumi.getter(name="targetSizeRatio")
     def target_size_ratio(self) -> pulumi.Output[Optional[_builtins.float]]:
         """
-        Estimated target ratio for the PG autoscaler. **Write-only:** kept symmetric with `target_size` (which cannot be round-tripped), so the configured value is not refreshed from the server.
+        Estimated target ratio for the PG autoscaler. **Write-only:** kept symmetric with `target_size` (which cannot be round-tripped), so the configured value is not refreshed from the server. With `erasure_coding`, this is the data pool's (Proxmox also applies it to the metadata pool at creation).
         """
         return pulumi.get(self, "target_size_ratio")
 

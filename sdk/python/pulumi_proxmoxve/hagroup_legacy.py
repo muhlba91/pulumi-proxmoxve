@@ -361,6 +361,22 @@ class HagroupLegacy(pulumi.CustomResource):
         __props__.__dict__["restricted"] = restricted
         return HagroupLegacy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            group: pulumi.Input[Optional[_builtins.str]] = None,
+            no_failback: pulumi.Input[Optional[_builtins.bool]] = None,
+            nodes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]] = None,
+            restricted: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["comment"] = comment
+        __props__["group"] = group
+        __props__["noFailback"] = no_failback
+        __props__["nodes"] = nodes
+        __props__["restricted"] = restricted
+        return pulumi.runtime.exists_resource(None, 'proxmoxve:index/hagroupLegacy:HagroupLegacy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def comment(self) -> pulumi.Output[Optional[_builtins.str]]:

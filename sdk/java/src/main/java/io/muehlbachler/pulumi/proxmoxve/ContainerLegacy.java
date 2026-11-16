@@ -237,6 +237,56 @@ import javax.annotation.Nullable;
  * | Storage ID + volume name   | Mount an existing volume by its full PVE volume ID       | `local-lvm:subvol-108-disk-101`    |
  * | Absolute host path         | Bind-mount a host directory (requires `root{@literal @}pam` auth)   | `/mnt/bindmounts/shared`           |
  * 
+ * ## Container migration
+ * 
+ * Setting `migrate = true` makes a change to `nodeName` migrate the container instead of destroying and
+ * recreating it.
+ * 
+ * &gt; **Important:** containers cannot be migrated live. Unlike virtual machines, a running container is
+ * migrated by shutting it down, moving it, and starting it again on the target node, so every migration of
+ * a running container incurs downtime. Set `timeoutMigrate` high enough to cover the shutdown grace
+ * period, the volume copy and the boot.
+ * 
+ * A stopped container is migrated offline and is not started as a side effect. If `started = true`, it is
+ * started on the target node afterwards as usual.
+ * 
+ * If the same apply also makes any other configuration change — including ones that would not need a
+ * restart on their own, such as `tags` or `description` — or changes `idmap`, or sets `started` to `false`,
+ * the provider shuts the container down, migrates it offline, applies the change on the target node, and then
+ * starts it (or leaves it stopped). This avoids starting the container with stale configuration and
+ * restarting it twice.
+ * 
+ * The `timeoutUpdate` clock restarts once the container has arrived on the target node, so a long volume
+ * copy cannot eat into the time available for the configuration write, start or reboot that follows it.
+ * 
+ * Containers managed by Proxmox HA are set to the HA state `ignored` for the duration of the migration, so
+ * that HA does not intercept the shutdown, migration and start or relocate the container afterwards. Once the
+ * container is in its final run state on the target node, its original HA state is restored; if the apply
+ * changes `started`, a `started`, `stopped` or `disabled` HA state is restored to match it instead.
+ * 
+ * Every migration needs `VM.Migrate` on the container and `Sys.Audit` on `/`, which the provider uses to check
+ * whether the container is HA-managed. Migrating an HA-managed container also needs `Sys.Console` on `/` to
+ * change its HA state.
+ * 
+ * ### Bind mounts
+ * 
+ * A `mountPoint` that references a host path rather than a storage volume blocks migration unless the
+ * mount point has `shared = true`. This asserts that the same path exists on all nodes in the cluster.
+ * 
+ * &gt; **Note:** `shared` and `nodeName` cannot be changed in the same apply. Proxmox validates the mount
+ * point against the container&#39;s current configuration when the migration starts, and the provider writes
+ * configuration changes to the target node after the move, so the migration is refused before the new
+ * `shared = true` takes effect. Apply `shared = true` first, then change `nodeName`.
+ * 
+ * &gt; **Warning:** if the asserted path does not exist on the target node, the configuration and volumes
+ * still move, but starting the container there fails. The container is left stopped on the target node and
+ * its configuration on the source node is gone — there is no automatic fail-back. Create the missing path
+ * on the target node, then start the container to recover.
+ * 
+ * Migration behavior for `devicePassthrough` devices has not been verified. A device passed through to a
+ * container is node-local, so the same device should be expected to need to exist on the target node, but
+ * this has not been tested — do not assume it behaves like a `shared` bind mount.
+ * 
  * ## Import
  * 
  * Instances can be imported using the `nodeName` and the `vmId`, e.g.,
@@ -479,9 +529,35 @@ public class ContainerLegacy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.memory);
     }
     /**
+     * Migrate the container on node change instead of
+     * re-creating it (defaults to `false`).
+     * 
+     */
+    @Export(name="migrate", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> migrate;
+
+    /**
+     * @return Migrate the container on node change instead of
+     * re-creating it (defaults to `false`).
+     * 
+     */
+    public Output<Optional<Boolean>> migrate() {
+        return Codegen.optional(this.migrate);
+    }
+    /**
      * An additional volume mount or host bind mount
      * (multiple blocks supported). Use this for data volumes, shared
      * directories, or attaching pre-existing PVE volumes.
+     * 
+     * &gt; Mount points are positional: the first block is `mp0` in Proxmox VE, the
+     * second `mp1`, and so on. Appending a block, removing the last block, or
+     * reconfiguring an existing one is applied in place, and a running container
+     * is restarted. Removing or inserting a block before existing ones recreates
+     * the container, as does changing the `size` of an existing mount point or
+     * pointing its `volume` at a different datastore or host path. Changing
+     * `volume` from one volume ID to another on the same datastore is not
+     * detected. A removed volume mount stays on the datastore as an unused
+     * volume; bind and device mounts are just dropped.
      * 
      */
     @Export(name="mountPoints", refs={List.class,ContainerLegacyMountPoint.class}, tree="[0,1]")
@@ -491,6 +567,16 @@ public class ContainerLegacy extends com.pulumi.resources.CustomResource {
      * @return An additional volume mount or host bind mount
      * (multiple blocks supported). Use this for data volumes, shared
      * directories, or attaching pre-existing PVE volumes.
+     * 
+     * &gt; Mount points are positional: the first block is `mp0` in Proxmox VE, the
+     * second `mp1`, and so on. Appending a block, removing the last block, or
+     * reconfiguring an existing one is applied in place, and a running container
+     * is restarted. Removing or inserting a block before existing ones recreates
+     * the container, as does changing the `size` of an existing mount point or
+     * pointing its `volume` at a different datastore or host path. Changing
+     * `volume` from one volume ID to another on the same datastore is not
+     * detected. A removed volume mount stays on the datastore as an unused
+     * volume; bind and device mounts are just dropped.
      * 
      */
     public Output<Optional<List<ContainerLegacyMountPoint>>> mountPoints() {
@@ -711,13 +797,28 @@ public class ContainerLegacy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.timeoutDelete);
     }
     /**
-     * Start container timeout
-     * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release. An overall operation timeout (`timeoutCreate` / `timeoutClone`) is used instead.
+     * Timeout for migrating the container to another node, in seconds (defaults to
+     * 1800).
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. An overall operation timeout (`timeoutCreate` / `timeoutClone`) is used instead. */
+    @Export(name="timeoutMigrate", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> timeoutMigrate;
+
+    /**
+     * @return Timeout for migrating the container to another node, in seconds (defaults to
+     * 1800).
+     * 
+     */
+    public Output<Optional<Integer>> timeoutMigrate() {
+        return Codegen.optional(this.timeoutMigrate);
+    }
+    /**
+     * Start container timeout
+     * 
+     * @deprecated This field is deprecated and will be removed in a future release. An overall operation timeout (`timeoutCreate` / `timeoutClone`) is used instead.
+     * 
+     */
+    @Deprecated
     @Export(name="timeoutStart", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> timeoutStart;
 

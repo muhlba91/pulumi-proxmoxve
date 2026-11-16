@@ -82,14 +82,18 @@ public final class ContainerLegacyInitializationArgs extends com.pulumi.resource
     }
 
     /**
-     * The user account configuration.
+     * The user account configuration. It only applies when the
+     * container is created, not when it is cloned: a cloned container keeps the SSH keys and
+     * root password of its source container, and a warning is shown if this block is set.
      * 
      */
     @Import(name="userAccount")
     private @Nullable Output<ContainerLegacyInitializationUserAccountArgs> userAccount;
 
     /**
-     * @return The user account configuration.
+     * @return The user account configuration. It only applies when the
+     * container is created, not when it is cloned: a cloned container keeps the SSH keys and
+     * root password of its source container, and a warning is shown if this block is set.
      * 
      */
     public Optional<Output<ContainerLegacyInitializationUserAccountArgs>> userAccount() {
@@ -222,7 +226,9 @@ public final class ContainerLegacyInitializationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param userAccount The user account configuration.
+         * @param userAccount The user account configuration. It only applies when the
+         * container is created, not when it is cloned: a cloned container keeps the SSH keys and
+         * root password of its source container, and a warning is shown if this block is set.
          * 
          * @return builder
          * 
@@ -233,7 +239,9 @@ public final class ContainerLegacyInitializationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param userAccount The user account configuration.
+         * @param userAccount The user account configuration. It only applies when the
+         * container is created, not when it is cloned: a cloned container keeps the SSH keys and
+         * root password of its source container, and a warning is shown if this block is set.
          * 
          * @return builder
          * 

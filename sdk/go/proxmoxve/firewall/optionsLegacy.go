@@ -227,6 +227,12 @@ func (OptionsLegacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*optionsLegacyState)(nil)).Elem()
 }
 
+// OptionsLegacyExists checks whether an existing OptionsLegacy resource with the given ID exists.
+func OptionsLegacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OptionsLegacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:firewall/optionsLegacy:OptionsLegacy", id, state, "", opts...)
+}
+
 type optionsLegacyArgs struct {
 	// Container ID. **Exactly one of `vmId` or `containerId` must be specified.**
 	ContainerId *int `pulumi:"containerId"`

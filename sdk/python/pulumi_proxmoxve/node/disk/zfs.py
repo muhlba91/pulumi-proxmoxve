@@ -637,6 +637,36 @@ class Zfs(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         return Zfs(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            add_storage: pulumi.Input[Optional[_builtins.bool]] = None,
+            ashift: pulumi.Input[Optional[_builtins.int]] = None,
+            cleanup_config: pulumi.Input[Optional[_builtins.bool]] = None,
+            cleanup_disks: pulumi.Input[Optional[_builtins.bool]] = None,
+            compression: pulumi.Input[Optional[_builtins.str]] = None,
+            devices: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            draid_config: pulumi.Input[Optional[Union['ZfsDraidConfigArgs', 'ZfsDraidConfigArgsDict', 'outputs.ZfsDraidConfig']]] = None,
+            errors: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_name: pulumi.Input[Optional[_builtins.str]] = None,
+            raidlevel: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["addStorage"] = add_storage
+        __props__["ashift"] = ashift
+        __props__["cleanupConfig"] = cleanup_config
+        __props__["cleanupDisks"] = cleanup_disks
+        __props__["compression"] = compression
+        __props__["devices"] = devices
+        __props__["draidConfig"] = draid_config
+        __props__["errors"] = errors
+        __props__["name"] = name
+        __props__["nodeName"] = node_name
+        __props__["raidlevel"] = raidlevel
+        __props__["state"] = state
+        return pulumi.runtime.exists_resource(None, 'proxmoxve:node/disk/zfs:Zfs', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="addStorage")
     def add_storage(self) -> pulumi.Output[Optional[_builtins.bool]]:

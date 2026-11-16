@@ -49,14 +49,16 @@ public final class GroupLegacyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Security group name.
+     * Security group name. Must be lowercase, because PVE lowercases
+     * security group names.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Security group name.
+     * @return Security group name. Must be lowercase, because PVE lowercases
+     * security group names.
      * 
      */
     public Optional<Output<String>> name() {
@@ -180,7 +182,8 @@ public final class GroupLegacyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Security group name.
+         * @param name Security group name. Must be lowercase, because PVE lowercases
+         * security group names.
          * 
          * @return builder
          * 
@@ -191,7 +194,8 @@ public final class GroupLegacyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Security group name.
+         * @param name Security group name. Must be lowercase, because PVE lowercases
+         * security group names.
          * 
          * @return builder
          * 

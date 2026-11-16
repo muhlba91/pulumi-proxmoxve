@@ -75,7 +75,7 @@ public final class RulesLegacyRuleArgs extends com.pulumi.resources.ResourceArgs
     /**
      * Restrict TCP/UDP destination port. You can use
      * service names or simple numbers (0-65535), as defined
-     * in `/etc/services`. Port ranges can be specified with &#39;\d+:\d+&#39;, for
+     * in `/etc/services`. Port ranges can be specified with &#39;&#92;d+:&#92;d+&#39;, for
      * example `80:85`, and you can use comma separated list to match
      * several ports or ranges.
      * 
@@ -86,7 +86,7 @@ public final class RulesLegacyRuleArgs extends com.pulumi.resources.ResourceArgs
     /**
      * @return Restrict TCP/UDP destination port. You can use
      * service names or simple numbers (0-65535), as defined
-     * in `/etc/services`. Port ranges can be specified with &#39;\d+:\d+&#39;, for
+     * in `/etc/services`. Port ranges can be specified with &#39;&#92;d+:&#92;d+&#39;, for
      * example `80:85`, and you can use comma separated list to match
      * several ports or ranges.
      * 
@@ -112,7 +112,7 @@ public final class RulesLegacyRuleArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * Network interface name. You have to use network
-     * configuration key names for VMs and containers (&#39;net\d+&#39;). Host
+     * configuration key names for VMs and containers (&#39;net&#92;d+&#39;). Host
      * related rules can use arbitrary strings.
      * 
      */
@@ -121,7 +121,7 @@ public final class RulesLegacyRuleArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return Network interface name. You have to use network
-     * configuration key names for VMs and containers (&#39;net\d+&#39;). Host
+     * configuration key names for VMs and containers (&#39;net&#92;d+&#39;). Host
      * related rules can use arbitrary strings.
      * 
      */
@@ -238,7 +238,7 @@ public final class RulesLegacyRuleArgs extends com.pulumi.resources.ResourceArgs
     /**
      * Restrict TCP/UDP source port. You can use
      * service names or simple numbers (0-65535), as defined
-     * in `/etc/services`. Port ranges can be specified with &#39;\d+:\d+&#39;, for
+     * in `/etc/services`. Port ranges can be specified with &#39;&#92;d+:&#92;d+&#39;, for
      * example `80:85`, and you can use comma separated list to match
      * several ports or ranges.
      * - a security group insertion block, which includes the following arguments:
@@ -250,7 +250,7 @@ public final class RulesLegacyRuleArgs extends com.pulumi.resources.ResourceArgs
     /**
      * @return Restrict TCP/UDP source port. You can use
      * service names or simple numbers (0-65535), as defined
-     * in `/etc/services`. Port ranges can be specified with &#39;\d+:\d+&#39;, for
+     * in `/etc/services`. Port ranges can be specified with &#39;&#92;d+:&#92;d+&#39;, for
      * example `80:85`, and you can use comma separated list to match
      * several ports or ranges.
      * - a security group insertion block, which includes the following arguments:
@@ -388,7 +388,7 @@ public final class RulesLegacyRuleArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param dport Restrict TCP/UDP destination port. You can use
          * service names or simple numbers (0-65535), as defined
-         * in `/etc/services`. Port ranges can be specified with &#39;\d+:\d+&#39;, for
+         * in `/etc/services`. Port ranges can be specified with &#39;&#92;d+:&#92;d+&#39;, for
          * example `80:85`, and you can use comma separated list to match
          * several ports or ranges.
          * 
@@ -403,7 +403,7 @@ public final class RulesLegacyRuleArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param dport Restrict TCP/UDP destination port. You can use
          * service names or simple numbers (0-65535), as defined
-         * in `/etc/services`. Port ranges can be specified with &#39;\d+:\d+&#39;, for
+         * in `/etc/services`. Port ranges can be specified with &#39;&#92;d+:&#92;d+&#39;, for
          * example `80:85`, and you can use comma separated list to match
          * several ports or ranges.
          * 
@@ -437,7 +437,7 @@ public final class RulesLegacyRuleArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param iface Network interface name. You have to use network
-         * configuration key names for VMs and containers (&#39;net\d+&#39;). Host
+         * configuration key names for VMs and containers (&#39;net&#92;d+&#39;). Host
          * related rules can use arbitrary strings.
          * 
          * @return builder
@@ -450,7 +450,7 @@ public final class RulesLegacyRuleArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param iface Network interface name. You have to use network
-         * configuration key names for VMs and containers (&#39;net\d+&#39;). Host
+         * configuration key names for VMs and containers (&#39;net&#92;d+&#39;). Host
          * related rules can use arbitrary strings.
          * 
          * @return builder
@@ -605,7 +605,7 @@ public final class RulesLegacyRuleArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param sport Restrict TCP/UDP source port. You can use
          * service names or simple numbers (0-65535), as defined
-         * in `/etc/services`. Port ranges can be specified with &#39;\d+:\d+&#39;, for
+         * in `/etc/services`. Port ranges can be specified with &#39;&#92;d+:&#92;d+&#39;, for
          * example `80:85`, and you can use comma separated list to match
          * several ports or ranges.
          * - a security group insertion block, which includes the following arguments:
@@ -621,7 +621,7 @@ public final class RulesLegacyRuleArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param sport Restrict TCP/UDP source port. You can use
          * service names or simple numbers (0-65535), as defined
-         * in `/etc/services`. Port ranges can be specified with &#39;\d+:\d+&#39;, for
+         * in `/etc/services`. Port ranges can be specified with &#39;&#92;d+:&#92;d+&#39;, for
          * example `80:85`, and you can use comma separated list to match
          * several ports or ranges.
          * - a security group insertion block, which includes the following arguments:

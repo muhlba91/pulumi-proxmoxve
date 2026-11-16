@@ -22,11 +22,10 @@ public final class ContainerLegacyInitializationDns {
      * The `server` attribute is deprecated and will be removed in a future release. Please use
      * the `servers` attribute instead.
      * 
-     * @deprecated
-     * The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+     * @deprecated The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
      * 
      */
-    @Deprecated /* The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead. */
+    @Deprecated
     private @Nullable String server;
     /**
      * @return The list of DNS servers.
@@ -47,11 +46,10 @@ public final class ContainerLegacyInitializationDns {
      * The `server` attribute is deprecated and will be removed in a future release. Please use
      * the `servers` attribute instead.
      * 
-     * @deprecated
-     * The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+     * @deprecated The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
      * 
      */
-    @Deprecated /* The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead. */
+    @Deprecated
     public Optional<String> server() {
         return Optional.ofNullable(this.server);
     }

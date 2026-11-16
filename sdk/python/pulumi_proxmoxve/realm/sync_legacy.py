@@ -492,6 +492,26 @@ class SyncLegacy(pulumi.CustomResource):
         __props__.__dict__["scope"] = scope
         return SyncLegacy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_new: pulumi.Input[Optional[_builtins.bool]] = None,
+            full: pulumi.Input[Optional[_builtins.bool]] = None,
+            purge: pulumi.Input[Optional[_builtins.bool]] = None,
+            realm: pulumi.Input[Optional[_builtins.str]] = None,
+            remove_vanished: pulumi.Input[Optional[_builtins.str]] = None,
+            scope: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["dryRun"] = dry_run
+        __props__["enableNew"] = enable_new
+        __props__["full"] = full
+        __props__["purge"] = purge
+        __props__["realm"] = realm
+        __props__["removeVanished"] = remove_vanished
+        __props__["scope"] = scope
+        return pulumi.runtime.exists_resource(None, 'proxmoxve:realm/syncLegacy:SyncLegacy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> pulumi.Output[Optional[_builtins.bool]]:

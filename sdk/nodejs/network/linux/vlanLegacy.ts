@@ -54,6 +54,17 @@ export class VlanLegacy extends pulumi.CustomResource {
         return new VlanLegacy(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing VlanLegacy resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: VlanLegacyState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("proxmoxve:network/linux/vlanLegacy:VlanLegacy", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'proxmoxve:network/linux/vlanLegacy:VlanLegacy';
 
@@ -109,6 +120,10 @@ export class VlanLegacy extends pulumi.CustomResource {
      */
     declare public readonly nodeName: pulumi.Output<string>;
     /**
+     * Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
+     */
+    declare public readonly reload: pulumi.Output<boolean>;
+    /**
      * Timeout for network reload operations in seconds (defaults to `100`).
      */
     declare public readonly timeoutReload: pulumi.Output<number>;
@@ -140,6 +155,7 @@ export class VlanLegacy extends pulumi.CustomResource {
             resourceInputs["mtu"] = state?.mtu;
             resourceInputs["name"] = state?.name;
             resourceInputs["nodeName"] = state?.nodeName;
+            resourceInputs["reload"] = state?.reload;
             resourceInputs["timeoutReload"] = state?.timeoutReload;
             resourceInputs["vlan"] = state?.vlan;
         } else {
@@ -157,6 +173,7 @@ export class VlanLegacy extends pulumi.CustomResource {
             resourceInputs["mtu"] = args?.mtu;
             resourceInputs["name"] = args?.name;
             resourceInputs["nodeName"] = args?.nodeName;
+            resourceInputs["reload"] = args?.reload;
             resourceInputs["timeoutReload"] = args?.timeoutReload;
             resourceInputs["vlan"] = args?.vlan;
         }
@@ -209,6 +226,10 @@ export interface VlanLegacyState {
      * The name of the node.
      */
     nodeName?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
+     */
+    reload?: pulumi.Input<boolean | undefined>;
     /**
      * Timeout for network reload operations in seconds (defaults to `100`).
      */
@@ -263,6 +284,10 @@ export interface VlanLegacyArgs {
      * The name of the node.
      */
     nodeName: pulumi.Input<string>;
+    /**
+     * Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
+     */
+    reload?: pulumi.Input<boolean | undefined>;
     /**
      * Timeout for network reload operations in seconds (defaults to `100`).
      */

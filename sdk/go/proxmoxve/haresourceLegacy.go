@@ -31,10 +31,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := proxmoxve.NewHaresourceLegacy(ctx, "example", &proxmoxve.HaresourceLegacyArgs{
-//				ResourceId: pulumi.String("vm:123"),
-//				State:      pulumi.String("started"),
-//				Group:      pulumi.String("example"),
-//				Comment:    pulumi.String("Managed by Pulumi"),
+//				ResourceId:    pulumi.String("vm:123"),
+//				State:         pulumi.String("started"),
+//				Group:         pulumi.String("example"),
+//				Comment:       pulumi.String("Managed by Pulumi"),
+//				AutoRebalance: pulumi.Bool(true),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				exampleProxmoxVirtualEnvironmentHagroup,
 //			}))
@@ -58,6 +59,8 @@ import (
 type HaresourceLegacy struct {
 	pulumi.CustomResourceState
 
+	// Whether this HA resource may be migrated during automatic rebalancing (Proxmox VE 9.2+). Leave unset to use the cluster default.
+	AutoRebalance pulumi.BoolPtrOutput `pulumi:"autoRebalance"`
 	// The comment associated with this resource.
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
 	// Automatic failback to the preferred node when it becomes available again (Proxmox VE 9+). Leave unset to use the cluster default.
@@ -109,6 +112,8 @@ func GetHaresourceLegacy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering HaresourceLegacy resources.
 type haresourceLegacyState struct {
+	// Whether this HA resource may be migrated during automatic rebalancing (Proxmox VE 9.2+). Leave unset to use the cluster default.
+	AutoRebalance *bool `pulumi:"autoRebalance"`
 	// The comment associated with this resource.
 	Comment *string `pulumi:"comment"`
 	// Automatic failback to the preferred node when it becomes available again (Proxmox VE 9+). Leave unset to use the cluster default.
@@ -128,6 +133,8 @@ type haresourceLegacyState struct {
 }
 
 type HaresourceLegacyState struct {
+	// Whether this HA resource may be migrated during automatic rebalancing (Proxmox VE 9.2+). Leave unset to use the cluster default.
+	AutoRebalance pulumi.BoolPtrInput
 	// The comment associated with this resource.
 	Comment pulumi.StringPtrInput
 	// Automatic failback to the preferred node when it becomes available again (Proxmox VE 9+). Leave unset to use the cluster default.
@@ -150,7 +157,15 @@ func (HaresourceLegacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*haresourceLegacyState)(nil)).Elem()
 }
 
+// HaresourceLegacyExists checks whether an existing HaresourceLegacy resource with the given ID exists.
+func HaresourceLegacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HaresourceLegacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:index/haresourceLegacy:HaresourceLegacy", id, state, "", opts...)
+}
+
 type haresourceLegacyArgs struct {
+	// Whether this HA resource may be migrated during automatic rebalancing (Proxmox VE 9.2+). Leave unset to use the cluster default.
+	AutoRebalance *bool `pulumi:"autoRebalance"`
 	// The comment associated with this resource.
 	Comment *string `pulumi:"comment"`
 	// Automatic failback to the preferred node when it becomes available again (Proxmox VE 9+). Leave unset to use the cluster default.
@@ -171,6 +186,8 @@ type haresourceLegacyArgs struct {
 
 // The set of arguments for constructing a HaresourceLegacy resource.
 type HaresourceLegacyArgs struct {
+	// Whether this HA resource may be migrated during automatic rebalancing (Proxmox VE 9.2+). Leave unset to use the cluster default.
+	AutoRebalance pulumi.BoolPtrInput
 	// The comment associated with this resource.
 	Comment pulumi.StringPtrInput
 	// Automatic failback to the preferred node when it becomes available again (Proxmox VE 9+). Leave unset to use the cluster default.
@@ -274,6 +291,11 @@ func (o HaresourceLegacyOutput) ToHaresourceLegacyOutput() HaresourceLegacyOutpu
 
 func (o HaresourceLegacyOutput) ToHaresourceLegacyOutputWithContext(ctx context.Context) HaresourceLegacyOutput {
 	return o
+}
+
+// Whether this HA resource may be migrated during automatic rebalancing (Proxmox VE 9.2+). Leave unset to use the cluster default.
+func (o HaresourceLegacyOutput) AutoRebalance() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HaresourceLegacy) pulumi.BoolPtrOutput { return v.AutoRebalance }).(pulumi.BoolPtrOutput)
 }
 
 // The comment associated with this resource.

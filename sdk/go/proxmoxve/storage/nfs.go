@@ -202,6 +202,12 @@ func (NfsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*nfsState)(nil)).Elem()
 }
 
+// NfsExists checks whether an existing Nfs resource with the given ID exists.
+func NfsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NfsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:storage/nfs:Nfs", id, state, "", opts...)
+}
+
 type nfsArgs struct {
 	// Configure backup retention settings for the storage type.
 	Backups *NfsBackups `pulumi:"backups"`

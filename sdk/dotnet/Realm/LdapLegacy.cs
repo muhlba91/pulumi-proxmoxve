@@ -272,6 +272,7 @@ namespace Pulumi.ProxmoxVE.Realm
         /// Use LDAPS (LDAP over SSL/TLS) instead of plain LDAP.
         /// </summary>
         [Output("secure")]
+        [Obsolete(@"Deprecated by Proxmox: use mode instead.")]
         public Output<bool> Secure { get; private set; } = null!;
 
         /// <summary>
@@ -489,6 +490,7 @@ namespace Pulumi.ProxmoxVE.Realm
         /// Use LDAPS (LDAP over SSL/TLS) instead of plain LDAP.
         /// </summary>
         [Input("secure")]
+        [Obsolete(@"Deprecated by Proxmox: use mode instead.")]
         public Input<bool>? Secure { get; set; }
 
         /// <summary>
@@ -663,6 +665,7 @@ namespace Pulumi.ProxmoxVE.Realm
         /// Use LDAPS (LDAP over SSL/TLS) instead of plain LDAP.
         /// </summary>
         [Input("secure")]
+        [Obsolete(@"Deprecated by Proxmox: use mode instead.")]
         public Input<bool>? Secure { get; set; }
 
         /// <summary>

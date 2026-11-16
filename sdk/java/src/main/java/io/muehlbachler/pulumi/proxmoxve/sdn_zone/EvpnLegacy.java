@@ -196,18 +196,18 @@ public class EvpnLegacy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ipam);
     }
     /**
-     * MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
+     * MTU value for the zone.
      * 
      */
     @Export(name="mtu", refs={Integer.class}, tree="[0]")
-    private Output<Integer> mtu;
+    private Output</* @Nullable */ Integer> mtu;
 
     /**
-     * @return MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
+     * @return MTU value for the zone.
      * 
      */
-    public Output<Integer> mtu() {
-        return this.mtu;
+    public Output<Optional<Integer>> mtu() {
+        return Codegen.optional(this.mtu);
     }
     /**
      * The Proxmox nodes which the zone and associated VNets should be deployed on

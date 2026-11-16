@@ -6,6 +6,42 @@ import * as utilities from "../../utilities";
 
 /**
  * Manages a Linux Bond network interface in a Proxmox VE node.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const bond0 = new proxmoxve.network.linux.Bond("bond0", {
+ *     nodeName: "pve",
+ *     name: "bond0",
+ *     slaves: [
+ *         "ens18",
+ *         "ens19",
+ *     ],
+ *     bondMode: "802.3ad",
+ *     bondXmitHashPolicy: "layer3+4",
+ *     comment: "bond0 comment",
+ * });
+ * const vmbr10 = new proxmoxve.network.linux.Bridge("vmbr10", {
+ *     nodeName: "pve",
+ *     name: "vmbr10",
+ *     address: "10.10.10.10/24",
+ *     ports: ["bond0"],
+ * }, {
+ *     dependsOn: [bond0],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * !/usr/bin/env sh
+ * Interfaces can be imported using the `node_name:iface` format, e.g.
+ *
+ * ```sh
+ * $ pulumi import proxmoxve:network/linux/bond:Bond bond0 pve:bond0
+ * ```
  */
 export class Bond extends pulumi.CustomResource {
     /**
@@ -19,6 +55,17 @@ export class Bond extends pulumi.CustomResource {
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: BondState, opts?: pulumi.CustomResourceOptions): Bond {
         return new Bond(name, <any>state, { ...opts, id: id });
+    }
+
+    /**
+     * Check whether an existing Bond resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: BondState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("proxmoxve:network/linux/bond:Bond", id, <any>state || {}, { ...opts }, undefined);
     }
 
     /** @internal */
@@ -84,6 +131,10 @@ export class Bond extends pulumi.CustomResource {
      */
     declare public readonly nodeName: pulumi.Output<string>;
     /**
+     * Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
+     */
+    declare public readonly reload: pulumi.Output<boolean>;
+    /**
      * The interface bond slaves (member interfaces).
      */
     declare public readonly slaves: pulumi.Output<string[]>;
@@ -117,6 +168,7 @@ export class Bond extends pulumi.CustomResource {
             resourceInputs["mtu"] = state?.mtu;
             resourceInputs["name"] = state?.name;
             resourceInputs["nodeName"] = state?.nodeName;
+            resourceInputs["reload"] = state?.reload;
             resourceInputs["slaves"] = state?.slaves;
             resourceInputs["timeoutReload"] = state?.timeoutReload;
         } else {
@@ -139,6 +191,7 @@ export class Bond extends pulumi.CustomResource {
             resourceInputs["mtu"] = args?.mtu;
             resourceInputs["name"] = args?.name;
             resourceInputs["nodeName"] = args?.nodeName;
+            resourceInputs["reload"] = args?.reload;
             resourceInputs["slaves"] = args?.slaves;
             resourceInputs["timeoutReload"] = args?.timeoutReload;
         }
@@ -199,6 +252,10 @@ export interface BondState {
      * The name of the node.
      */
     nodeName?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
+     */
+    reload?: pulumi.Input<boolean | undefined>;
     /**
      * The interface bond slaves (member interfaces).
      */
@@ -261,6 +318,10 @@ export interface BondArgs {
      * The name of the node.
      */
     nodeName: pulumi.Input<string>;
+    /**
+     * Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
+     */
+    reload?: pulumi.Input<boolean | undefined>;
     /**
      * The interface bond slaves (member interfaces).
      */

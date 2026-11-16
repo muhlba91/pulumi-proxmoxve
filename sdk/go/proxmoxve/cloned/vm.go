@@ -420,6 +420,12 @@ func (VmState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vmState)(nil)).Elem()
 }
 
+// VmExists checks whether an existing Vm resource with the given ID exists.
+func VmExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VmState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:cloned/vm:Vm", id, state, "", opts...)
+}
+
 type vmArgs struct {
 	// The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
 	Cdrom map[string]VmCdrom `pulumi:"cdrom"`

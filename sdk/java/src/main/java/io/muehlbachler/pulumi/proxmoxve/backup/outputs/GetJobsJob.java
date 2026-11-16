@@ -19,6 +19,11 @@ public final class GetJobsJob {
      */
     private Boolean all;
     /**
+     * @return Description of the backup job, shown in the Proxmox VE web UI.
+     * 
+     */
+    private String comment;
+    /**
      * @return Compression algorithm used for the backup.
      * 
      */
@@ -64,6 +69,11 @@ public final class GetJobsJob {
      */
     private String notesTemplate;
     /**
+     * @return Notification mode of the job (`auto`, `legacy-sendmail` or `notification-system`).
+     * 
+     */
+    private String notificationMode;
+    /**
      * @return Pool whose members are backed up.
      * 
      */
@@ -101,6 +111,13 @@ public final class GetJobsJob {
      */
     public Boolean all() {
         return this.all;
+    }
+    /**
+     * @return Description of the backup job, shown in the Proxmox VE web UI.
+     * 
+     */
+    public String comment() {
+        return this.comment;
     }
     /**
      * @return Compression algorithm used for the backup.
@@ -166,6 +183,13 @@ public final class GetJobsJob {
         return this.notesTemplate;
     }
     /**
+     * @return Notification mode of the job (`auto`, `legacy-sendmail` or `notification-system`).
+     * 
+     */
+    public String notificationMode() {
+        return this.notificationMode;
+    }
+    /**
      * @return Pool whose members are backed up.
      * 
      */
@@ -218,6 +242,7 @@ public final class GetJobsJob {
     @CustomType.Builder
     public static final class Builder {
         private Boolean all;
+        private String comment;
         private String compress;
         private Boolean enabled;
         private List<String> excludes;
@@ -227,6 +252,7 @@ public final class GetJobsJob {
         private String mode;
         private String node;
         private String notesTemplate;
+        private String notificationMode;
         private String pool;
         private Boolean protected_;
         private Map<String,String> pruneBackups;
@@ -237,6 +263,7 @@ public final class GetJobsJob {
         public Builder(GetJobsJob defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.all = defaults.all;
+    	      this.comment = defaults.comment;
     	      this.compress = defaults.compress;
     	      this.enabled = defaults.enabled;
     	      this.excludes = defaults.excludes;
@@ -246,6 +273,7 @@ public final class GetJobsJob {
     	      this.mode = defaults.mode;
     	      this.node = defaults.node;
     	      this.notesTemplate = defaults.notesTemplate;
+    	      this.notificationMode = defaults.notificationMode;
     	      this.pool = defaults.pool;
     	      this.protected_ = defaults.protected_;
     	      this.pruneBackups = defaults.pruneBackups;
@@ -260,6 +288,14 @@ public final class GetJobsJob {
               throw new MissingRequiredPropertyException("GetJobsJob", "all");
             }
             this.all = all;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder comment(String comment) {
+            if (comment == null) {
+              throw new MissingRequiredPropertyException("GetJobsJob", "comment");
+            }
+            this.comment = comment;
             return this;
         }
         @CustomType.Setter
@@ -341,6 +377,14 @@ public final class GetJobsJob {
             return this;
         }
         @CustomType.Setter
+        public Builder notificationMode(String notificationMode) {
+            if (notificationMode == null) {
+              throw new MissingRequiredPropertyException("GetJobsJob", "notificationMode");
+            }
+            this.notificationMode = notificationMode;
+            return this;
+        }
+        @CustomType.Setter
         public Builder pool(String pool) {
             if (pool == null) {
               throw new MissingRequiredPropertyException("GetJobsJob", "pool");
@@ -394,6 +438,7 @@ public final class GetJobsJob {
         public GetJobsJob build() {
             final var _resultValue = new GetJobsJob();
             _resultValue.all = all;
+            _resultValue.comment = comment;
             _resultValue.compress = compress;
             _resultValue.enabled = enabled;
             _resultValue.excludes = excludes;
@@ -403,6 +448,7 @@ public final class GetJobsJob {
             _resultValue.mode = mode;
             _resultValue.node = node;
             _resultValue.notesTemplate = notesTemplate;
+            _resultValue.notificationMode = notificationMode;
             _resultValue.pool = pool;
             _resultValue.protected_ = protected_;
             _resultValue.pruneBackups = pruneBackups;

@@ -47,14 +47,14 @@ public final class AliasLegacyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Container ID. Leave empty for cluster level aliases.
+     * Container ID. Leave empty for cluster level aliases. Changing this value forces replacement.
      * 
      */
     @Import(name="containerId")
     private @Nullable Output<Integer> containerId;
 
     /**
-     * @return Container ID. Leave empty for cluster level aliases.
+     * @return Container ID. Leave empty for cluster level aliases. Changing this value forces replacement.
      * 
      */
     public Optional<Output<Integer>> containerId() {
@@ -77,14 +77,14 @@ public final class AliasLegacyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Node name. Leave empty for cluster level aliases.
+     * Node name. Leave empty for cluster level aliases. Changing it forces replacement unless `vmId` or `containerId` is set, so it can change in place after a migration.
      * 
      */
     @Import(name="nodeName")
     private @Nullable Output<String> nodeName;
 
     /**
-     * @return Node name. Leave empty for cluster level aliases.
+     * @return Node name. Leave empty for cluster level aliases. Changing it forces replacement unless `vmId` or `containerId` is set, so it can change in place after a migration.
      * 
      */
     public Optional<Output<String>> nodeName() {
@@ -92,14 +92,14 @@ public final class AliasLegacyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * VM ID. Leave empty for cluster level aliases.
+     * VM ID. Leave empty for cluster level aliases. Changing this value forces replacement.
      * 
      */
     @Import(name="vmId")
     private @Nullable Output<Integer> vmId;
 
     /**
-     * @return VM ID. Leave empty for cluster level aliases.
+     * @return VM ID. Leave empty for cluster level aliases. Changing this value forces replacement.
      * 
      */
     public Optional<Output<Integer>> vmId() {
@@ -178,7 +178,7 @@ public final class AliasLegacyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param containerId Container ID. Leave empty for cluster level aliases.
+         * @param containerId Container ID. Leave empty for cluster level aliases. Changing this value forces replacement.
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class AliasLegacyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param containerId Container ID. Leave empty for cluster level aliases.
+         * @param containerId Container ID. Leave empty for cluster level aliases. Changing this value forces replacement.
          * 
          * @return builder
          * 
@@ -220,7 +220,7 @@ public final class AliasLegacyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeName Node name. Leave empty for cluster level aliases.
+         * @param nodeName Node name. Leave empty for cluster level aliases. Changing it forces replacement unless `vmId` or `containerId` is set, so it can change in place after a migration.
          * 
          * @return builder
          * 
@@ -231,7 +231,7 @@ public final class AliasLegacyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeName Node name. Leave empty for cluster level aliases.
+         * @param nodeName Node name. Leave empty for cluster level aliases. Changing it forces replacement unless `vmId` or `containerId` is set, so it can change in place after a migration.
          * 
          * @return builder
          * 
@@ -241,7 +241,7 @@ public final class AliasLegacyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vmId VM ID. Leave empty for cluster level aliases.
+         * @param vmId VM ID. Leave empty for cluster level aliases. Changing this value forces replacement.
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class AliasLegacyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vmId VM ID. Leave empty for cluster level aliases.
+         * @param vmId VM ID. Leave empty for cluster level aliases. Changing this value forces replacement.
          * 
          * @return builder
          * 

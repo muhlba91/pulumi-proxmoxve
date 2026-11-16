@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  *
  * const localNetwork = new proxmoxve.firewall.AliasLegacy("local_network", {
  *     nodeName: example.nodeName,
- *     vmId: Number(example.vmId),
+ *     vmId: example.vmId,
  *     name: "local_network",
  *     cidr: "192.168.0.0/23",
  *     comment: "Managed by Pulumi",
@@ -29,6 +29,41 @@ import * as utilities from "../utilities";
  *     cidr: "192.168.0.1",
  *     comment: "Managed by Pulumi",
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * ### Cluster Alias
+ *
+ * Use the import ID: `cluster/<alias_name>`
+ * Example uses alias name `ubuntu`.
+ *
+ * **Example:**
+ *
+ * ```sh
+ * $ pulumi import proxmoxve:firewall/aliasLegacy:AliasLegacy ubuntu_vm cluster/ubuntu
+ * ```
+ *
+ * ### VM Alias
+ *
+ * Use the import ID format: `vm/<node_name>/<vm_id>/<alias_name>`
+ * Example uses node name `pve` and VM ID `100` and alias name `localNetwork`.
+ *
+ * **Example:**
+ *
+ * ```sh
+ * $ pulumi import proxmoxve:firewall/aliasLegacy:AliasLegacy local_network vm/pve/100/local_network
+ * ```
+ *
+ * ### Container Alias
+ *
+ * Use the import ID format: `container/<node_name>/<container_id>/<alias_name>`
+ * Example uses node name `pve` and container ID `100` and alias name `localNetwork`.
+ *
+ * **Example:**
+ *
+ * ```sh
+ * $ pulumi import proxmoxve:firewall/aliasLegacy:AliasLegacy container_alias container/pve/100/local_network
  * ```
  */
 export class AliasLegacy extends pulumi.CustomResource {
@@ -43,6 +78,17 @@ export class AliasLegacy extends pulumi.CustomResource {
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AliasLegacyState, opts?: pulumi.CustomResourceOptions): AliasLegacy {
         return new AliasLegacy(name, <any>state, { ...opts, id: id });
+    }
+
+    /**
+     * Check whether an existing AliasLegacy resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: AliasLegacyState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("proxmoxve:firewall/aliasLegacy:AliasLegacy", id, <any>state || {}, { ...opts }, undefined);
     }
 
     /** @internal */
@@ -68,7 +114,7 @@ export class AliasLegacy extends pulumi.CustomResource {
      */
     declare public readonly comment: pulumi.Output<string | undefined>;
     /**
-     * Container ID. Leave empty for cluster level aliases.
+     * Container ID. Leave empty for cluster level aliases. Changing this value forces replacement.
      */
     declare public readonly containerId: pulumi.Output<number | undefined>;
     /**
@@ -76,11 +122,11 @@ export class AliasLegacy extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * Node name. Leave empty for cluster level aliases.
+     * Node name. Leave empty for cluster level aliases. Changing it forces replacement unless `vmId` or `containerId` is set, so it can change in place after a migration.
      */
     declare public readonly nodeName: pulumi.Output<string | undefined>;
     /**
-     * VM ID. Leave empty for cluster level aliases.
+     * VM ID. Leave empty for cluster level aliases. Changing this value forces replacement.
      */
     declare public readonly vmId: pulumi.Output<number | undefined>;
 
@@ -133,7 +179,7 @@ export interface AliasLegacyState {
      */
     comment?: pulumi.Input<string | undefined>;
     /**
-     * Container ID. Leave empty for cluster level aliases.
+     * Container ID. Leave empty for cluster level aliases. Changing this value forces replacement.
      */
     containerId?: pulumi.Input<number | undefined>;
     /**
@@ -141,11 +187,11 @@ export interface AliasLegacyState {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * Node name. Leave empty for cluster level aliases.
+     * Node name. Leave empty for cluster level aliases. Changing it forces replacement unless `vmId` or `containerId` is set, so it can change in place after a migration.
      */
     nodeName?: pulumi.Input<string | undefined>;
     /**
-     * VM ID. Leave empty for cluster level aliases.
+     * VM ID. Leave empty for cluster level aliases. Changing this value forces replacement.
      */
     vmId?: pulumi.Input<number | undefined>;
 }
@@ -163,7 +209,7 @@ export interface AliasLegacyArgs {
      */
     comment?: pulumi.Input<string | undefined>;
     /**
-     * Container ID. Leave empty for cluster level aliases.
+     * Container ID. Leave empty for cluster level aliases. Changing this value forces replacement.
      */
     containerId?: pulumi.Input<number | undefined>;
     /**
@@ -171,11 +217,11 @@ export interface AliasLegacyArgs {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * Node name. Leave empty for cluster level aliases.
+     * Node name. Leave empty for cluster level aliases. Changing it forces replacement unless `vmId` or `containerId` is set, so it can change in place after a migration.
      */
     nodeName?: pulumi.Input<string | undefined>;
     /**
-     * VM ID. Leave empty for cluster level aliases.
+     * VM ID. Leave empty for cluster level aliases. Changing this value forces replacement.
      */
     vmId?: pulumi.Input<number | undefined>;
 }

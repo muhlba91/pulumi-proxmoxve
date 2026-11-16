@@ -219,7 +219,7 @@ import * as utilities from "./utilities";
  * Otherwise, the schema defaults will take effect and override the source values.
  *
  * Furthermore, when cloning from one node to a different one, the behavior changes
- * depening on the datastores of the source VM. If at least one non-shared
+ * depending on the datastores of the source VM. If at least one non-shared
  * datastore is used, the VM is first cloned to the source node before being
  * migrated to the target node. This circumvents a limitation in the Proxmox clone
  * API.
@@ -303,6 +303,17 @@ export class VmLegacy extends pulumi.CustomResource {
         return new VmLegacy(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing VmLegacy resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: VmLegacyState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("proxmoxve:index/vmLegacy:VmLegacy", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'proxmoxve:index/vmLegacy:VmLegacy';
 
@@ -371,7 +382,7 @@ export class VmLegacy extends pulumi.CustomResource {
      */
     declare public readonly efiDisk: pulumi.Output<outputs.VmLegacyEfiDisk | undefined>;
     /**
-     * The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
+     * The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute). When cloning a VM, the hookscript is inherited from the template unless this attribute is explicitly set. Note that setting or changing a hookscript requires a direct `root@pam` password session; API tokens (including one issued for `root@pam`) are rejected by Proxmox with "only root can set 'hookscript' config".
      */
     declare public readonly hookScriptFileId: pulumi.Output<string | undefined>;
     /**
@@ -583,7 +594,9 @@ export class VmLegacy extends pulumi.CustomResource {
      */
     declare public readonly tpmState: pulumi.Output<outputs.VmLegacyTpmState | undefined>;
     /**
-     * A host USB device mapping (multiple blocks supported).
+     * A host USB device mapping (multiple blocks supported, up to 14).
+     * Proxmox VE only starts a VM with `usb5` and up on machine type >= 7.1 with
+     * an `l26` or Windows > 7 `operatingSystem`.
      */
     declare public readonly usbs: pulumi.Output<outputs.VmLegacyUsb[] | undefined>;
     /**
@@ -807,7 +820,7 @@ export interface VmLegacyState {
      */
     efiDisk?: pulumi.Input<inputs.VmLegacyEfiDisk | undefined>;
     /**
-     * The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
+     * The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute). When cloning a VM, the hookscript is inherited from the template unless this attribute is explicitly set. Note that setting or changing a hookscript requires a direct `root@pam` password session; API tokens (including one issued for `root@pam`) are rejected by Proxmox with "only root can set 'hookscript' config".
      */
     hookScriptFileId?: pulumi.Input<string | undefined>;
     /**
@@ -1019,7 +1032,9 @@ export interface VmLegacyState {
      */
     tpmState?: pulumi.Input<inputs.VmLegacyTpmState | undefined>;
     /**
-     * A host USB device mapping (multiple blocks supported).
+     * A host USB device mapping (multiple blocks supported, up to 14).
+     * Proxmox VE only starts a VM with `usb5` and up on machine type >= 7.1 with
+     * an `l26` or Windows > 7 `operatingSystem`.
      */
     usbs?: pulumi.Input<pulumi.Input<inputs.VmLegacyUsb>[] | undefined>;
     /**
@@ -1098,7 +1113,7 @@ export interface VmLegacyArgs {
      */
     efiDisk?: pulumi.Input<inputs.VmLegacyEfiDisk | undefined>;
     /**
-     * The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
+     * The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute). When cloning a VM, the hookscript is inherited from the template unless this attribute is explicitly set. Note that setting or changing a hookscript requires a direct `root@pam` password session; API tokens (including one issued for `root@pam`) are rejected by Proxmox with "only root can set 'hookscript' config".
      */
     hookScriptFileId?: pulumi.Input<string | undefined>;
     /**
@@ -1295,7 +1310,9 @@ export interface VmLegacyArgs {
      */
     tpmState?: pulumi.Input<inputs.VmLegacyTpmState | undefined>;
     /**
-     * A host USB device mapping (multiple blocks supported).
+     * A host USB device mapping (multiple blocks supported, up to 14).
+     * Proxmox VE only starts a VM with `usb5` and up on machine type >= 7.1 with
+     * an `l26` or Windows > 7 `operatingSystem`.
      */
     usbs?: pulumi.Input<pulumi.Input<inputs.VmLegacyUsb>[] | undefined>;
     /**

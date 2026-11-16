@@ -20,6 +20,67 @@ import javax.annotation.Nullable;
 /**
  * Manages a Linux Bond network interface in a Proxmox VE node.
  * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import io.muehlbachler.pulumi.proxmoxve.network.Bond;
+ * import io.muehlbachler.pulumi.proxmoxve.network.BondArgs;
+ * import io.muehlbachler.pulumi.proxmoxve.network.Bridge;
+ * import io.muehlbachler.pulumi.proxmoxve.network.BridgeArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var bond0 = new Bond("bond0", BondArgs.builder()
+ *             .nodeName("pve")
+ *             .name("bond0")
+ *             .slaves(            
+ *                 "ens18",
+ *                 "ens19")
+ *             .bondMode("802.3ad")
+ *             .bondXmitHashPolicy("layer3+4")
+ *             .comment("bond0 comment")
+ *             .build());
+ * 
+ *         var vmbr10 = new Bridge("vmbr10", BridgeArgs.builder()
+ *             .nodeName("pve")
+ *             .name("vmbr10")
+ *             .address("10.10.10.10/24")
+ *             .ports("bond0")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(bond0)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ## Import
+ * 
+ * !/usr/bin/env sh
+ * Interfaces can be imported using the `node_name:iface` format, e.g.
+ * 
+ * ```sh
+ * $ pulumi import proxmoxve:network/linux/bond:Bond bond0 pve:bond0
+ * ```
+ * 
  */
 @ResourceType(type="proxmoxve:network/linux/bond:Bond")
 public class Bond extends com.pulumi.resources.CustomResource {
@@ -190,6 +251,20 @@ public class Bond extends com.pulumi.resources.CustomResource {
      */
     public Output<String> nodeName() {
         return this.nodeName;
+    }
+    /**
+     * Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
+     * 
+     */
+    @Export(name="reload", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> reload;
+
+    /**
+     * @return Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
+     * 
+     */
+    public Output<Boolean> reload() {
+        return this.reload;
     }
     /**
      * The interface bond slaves (member interfaces).

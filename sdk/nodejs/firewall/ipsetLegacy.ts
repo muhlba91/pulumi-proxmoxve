@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *
  * const ipset = new proxmoxve.firewall.IpsetLegacy("ipset", {
  *     nodeName: example.nodeName,
- *     vmId: Number(example.vmId),
+ *     vmId: example.vmId,
  *     name: "local_network",
  *     comment: "Managed by Pulumi",
  *     cidrs: [
@@ -44,28 +44,34 @@ import * as utilities from "../utilities";
  * ## Import
  *
  * ### Cluster IPSet
+ *
  * Use the import ID: `cluster/<ipset_name>`
  * Example uses ipset name `localNetwork`.
  *
  * **Example:**
+ *
  * ```sh
  * $ pulumi import proxmoxve:firewall/ipsetLegacy:IpsetLegacy cluster_ipset cluster/local_network
  * ```
  *
  * ### VM IPSet
+ *
  * Use the import ID format: `vm/<node_name>/<vm_id>/<ipset_name>`
  * Example uses node name `pve` and VM ID `100` and ipset name `localNetwork`.
  *
  * **Example:**
+ *
  * ```sh
  * $ pulumi import proxmoxve:firewall/ipsetLegacy:IpsetLegacy vm_ipset vm/pve/100/local_network
  * ```
  *
  * ### Container IPSet
+ *
  * Use the import ID format: `container/<node_name>/<container_id>/<ipset_name>`
  * Example uses node name `pve` and container ID `100` and ipset name `localNetwork`.
  *
  * **Example:**
+ *
  * ```sh
  * $ pulumi import proxmoxve:firewall/ipsetLegacy:IpsetLegacy container_ipset container/pve/100/local_network
  * ```
@@ -82,6 +88,17 @@ export class IpsetLegacy extends pulumi.CustomResource {
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: IpsetLegacyState, opts?: pulumi.CustomResourceOptions): IpsetLegacy {
         return new IpsetLegacy(name, <any>state, { ...opts, id: id });
+    }
+
+    /**
+     * Check whether an existing IpsetLegacy resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: IpsetLegacyState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("proxmoxve:firewall/ipsetLegacy:IpsetLegacy", id, <any>state || {}, { ...opts }, undefined);
     }
 
     /** @internal */
@@ -107,7 +124,7 @@ export class IpsetLegacy extends pulumi.CustomResource {
      */
     declare public readonly comment: pulumi.Output<string | undefined>;
     /**
-     * Container ID. Leave empty for cluster level ipsets.
+     * Container ID. Leave empty for cluster level ipsets. Changing this value forces replacement.
      */
     declare public readonly containerId: pulumi.Output<number | undefined>;
     /**
@@ -115,11 +132,11 @@ export class IpsetLegacy extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * Node name. Leave empty for cluster level ipsets.
+     * Node name. Leave empty for cluster level ipsets. Changing it forces replacement unless `vmId` or `containerId` is set, so it can change in place after a migration.
      */
     declare public readonly nodeName: pulumi.Output<string | undefined>;
     /**
-     * VM ID. Leave empty for cluster level ipsets.
+     * VM ID. Leave empty for cluster level ipsets. Changing this value forces replacement.
      */
     declare public readonly vmId: pulumi.Output<number | undefined>;
 
@@ -169,7 +186,7 @@ export interface IpsetLegacyState {
      */
     comment?: pulumi.Input<string | undefined>;
     /**
-     * Container ID. Leave empty for cluster level ipsets.
+     * Container ID. Leave empty for cluster level ipsets. Changing this value forces replacement.
      */
     containerId?: pulumi.Input<number | undefined>;
     /**
@@ -177,11 +194,11 @@ export interface IpsetLegacyState {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * Node name. Leave empty for cluster level ipsets.
+     * Node name. Leave empty for cluster level ipsets. Changing it forces replacement unless `vmId` or `containerId` is set, so it can change in place after a migration.
      */
     nodeName?: pulumi.Input<string | undefined>;
     /**
-     * VM ID. Leave empty for cluster level ipsets.
+     * VM ID. Leave empty for cluster level ipsets. Changing this value forces replacement.
      */
     vmId?: pulumi.Input<number | undefined>;
 }
@@ -199,7 +216,7 @@ export interface IpsetLegacyArgs {
      */
     comment?: pulumi.Input<string | undefined>;
     /**
-     * Container ID. Leave empty for cluster level ipsets.
+     * Container ID. Leave empty for cluster level ipsets. Changing this value forces replacement.
      */
     containerId?: pulumi.Input<number | undefined>;
     /**
@@ -207,11 +224,11 @@ export interface IpsetLegacyArgs {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * Node name. Leave empty for cluster level ipsets.
+     * Node name. Leave empty for cluster level ipsets. Changing it forces replacement unless `vmId` or `containerId` is set, so it can change in place after a migration.
      */
     nodeName?: pulumi.Input<string | undefined>;
     /**
-     * VM ID. Leave empty for cluster level ipsets.
+     * VM ID. Leave empty for cluster level ipsets. Changing this value forces replacement.
      */
     vmId?: pulumi.Input<number | undefined>;
 }

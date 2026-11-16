@@ -999,6 +999,48 @@ class OpenidLegacy(pulumi.CustomResource):
         __props__.__dict__["username_claim"] = username_claim
         return OpenidLegacy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            acr_values: pulumi.Input[Optional[_builtins.str]] = None,
+            audiences: pulumi.Input[Optional[_builtins.str]] = None,
+            autocreate: pulumi.Input[Optional[_builtins.bool]] = None,
+            client_id: pulumi.Input[Optional[_builtins.str]] = None,
+            client_key: pulumi.Input[Optional[_builtins.str]] = None,
+            client_key_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            client_key_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            default: pulumi.Input[Optional[_builtins.bool]] = None,
+            groups_autocreate: pulumi.Input[Optional[_builtins.bool]] = None,
+            groups_claim: pulumi.Input[Optional[_builtins.str]] = None,
+            groups_overwrite: pulumi.Input[Optional[_builtins.bool]] = None,
+            issuer_url: pulumi.Input[Optional[_builtins.str]] = None,
+            prompt: pulumi.Input[Optional[_builtins.str]] = None,
+            query_userinfo: pulumi.Input[Optional[_builtins.bool]] = None,
+            realm: pulumi.Input[Optional[_builtins.str]] = None,
+            scopes: pulumi.Input[Optional[_builtins.str]] = None,
+            username_claim: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["acrValues"] = acr_values
+        __props__["audiences"] = audiences
+        __props__["autocreate"] = autocreate
+        __props__["clientId"] = client_id
+        __props__["clientKey"] = client_key
+        __props__["clientKeyWo"] = client_key_wo
+        __props__["clientKeyWoVersion"] = client_key_wo_version
+        __props__["comment"] = comment
+        __props__["default"] = default
+        __props__["groupsAutocreate"] = groups_autocreate
+        __props__["groupsClaim"] = groups_claim
+        __props__["groupsOverwrite"] = groups_overwrite
+        __props__["issuerUrl"] = issuer_url
+        __props__["prompt"] = prompt
+        __props__["queryUserinfo"] = query_userinfo
+        __props__["realm"] = realm
+        __props__["scopes"] = scopes
+        __props__["usernameClaim"] = username_claim
+        return pulumi.runtime.exists_resource(None, 'proxmoxve:realm/openidLegacy:OpenidLegacy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="acrValues")
     def acr_values(self) -> pulumi.Output[Optional[_builtins.str]]:

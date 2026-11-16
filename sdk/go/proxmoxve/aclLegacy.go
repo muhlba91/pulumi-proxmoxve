@@ -159,6 +159,12 @@ func (AclLegacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*aclLegacyState)(nil)).Elem()
 }
 
+// AclLegacyExists checks whether an existing AclLegacy resource with the given ID exists.
+func AclLegacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AclLegacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:index/aclLegacy:AclLegacy", id, state, "", opts...)
+}
+
 type aclLegacyArgs struct {
 	// The group the ACL should apply to (mutually exclusive with `tokenId` and `userId`)
 	GroupId *string `pulumi:"groupId"`

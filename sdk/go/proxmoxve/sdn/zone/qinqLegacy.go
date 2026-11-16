@@ -69,8 +69,8 @@ type QinqLegacy struct {
 	DnsZone pulumi.StringPtrOutput `pulumi:"dnsZone"`
 	// IP Address Management system.
 	Ipam pulumi.StringPtrOutput `pulumi:"ipam"`
-	// MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
-	Mtu pulumi.IntOutput `pulumi:"mtu"`
+	// MTU value for the zone.
+	Mtu pulumi.IntPtrOutput `pulumi:"mtu"`
 	// The Proxmox nodes which the zone and associated VNets should be deployed on
 	Nodes pulumi.StringArrayOutput `pulumi:"nodes"`
 	// Indicates if the zone has pending configuration changes that need to be applied.
@@ -134,7 +134,7 @@ type qinqLegacyState struct {
 	DnsZone *string `pulumi:"dnsZone"`
 	// IP Address Management system.
 	Ipam *string `pulumi:"ipam"`
-	// MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
+	// MTU value for the zone.
 	Mtu *int `pulumi:"mtu"`
 	// The Proxmox nodes which the zone and associated VNets should be deployed on
 	Nodes []string `pulumi:"nodes"`
@@ -161,7 +161,7 @@ type QinqLegacyState struct {
 	DnsZone pulumi.StringPtrInput
 	// IP Address Management system.
 	Ipam pulumi.StringPtrInput
-	// MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
+	// MTU value for the zone.
 	Mtu pulumi.IntPtrInput
 	// The Proxmox nodes which the zone and associated VNets should be deployed on
 	Nodes pulumi.StringArrayInput
@@ -183,6 +183,12 @@ func (QinqLegacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*qinqLegacyState)(nil)).Elem()
 }
 
+// QinqLegacyExists checks whether an existing QinqLegacy resource with the given ID exists.
+func QinqLegacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *QinqLegacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:sdn/zone/qinqLegacy:QinqLegacy", id, state, "", opts...)
+}
+
 type qinqLegacyArgs struct {
 	// A local, VLAN-aware bridge that is already configured on each local node
 	Bridge string `pulumi:"bridge"`
@@ -192,7 +198,7 @@ type qinqLegacyArgs struct {
 	DnsZone *string `pulumi:"dnsZone"`
 	// IP Address Management system.
 	Ipam *string `pulumi:"ipam"`
-	// MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
+	// MTU value for the zone.
 	Mtu *int `pulumi:"mtu"`
 	// The Proxmox nodes which the zone and associated VNets should be deployed on
 	Nodes []string `pulumi:"nodes"`
@@ -216,7 +222,7 @@ type QinqLegacyArgs struct {
 	DnsZone pulumi.StringPtrInput
 	// IP Address Management system.
 	Ipam pulumi.StringPtrInput
-	// MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
+	// MTU value for the zone.
 	Mtu pulumi.IntPtrInput
 	// The Proxmox nodes which the zone and associated VNets should be deployed on
 	Nodes pulumi.StringArrayInput
@@ -337,9 +343,9 @@ func (o QinqLegacyOutput) Ipam() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *QinqLegacy) pulumi.StringPtrOutput { return v.Ipam }).(pulumi.StringPtrOutput)
 }
 
-// MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
-func (o QinqLegacyOutput) Mtu() pulumi.IntOutput {
-	return o.ApplyT(func(v *QinqLegacy) pulumi.IntOutput { return v.Mtu }).(pulumi.IntOutput)
+// MTU value for the zone.
+func (o QinqLegacyOutput) Mtu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *QinqLegacy) pulumi.IntPtrOutput { return v.Mtu }).(pulumi.IntPtrOutput)
 }
 
 // The Proxmox nodes which the zone and associated VNets should be deployed on

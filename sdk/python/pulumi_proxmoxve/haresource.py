@@ -20,6 +20,7 @@ __all__ = ['HaresourceArgs', 'Haresource']
 class HaresourceArgs:
     def __init__(__self__, *,
                  resource_id: pulumi.Input[_builtins.str],
+                 auto_rebalance: pulumi.Input[Optional[_builtins.bool]] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  failback: pulumi.Input[Optional[_builtins.bool]] = None,
                  group: pulumi.Input[Optional[_builtins.str]] = None,
@@ -31,6 +32,7 @@ class HaresourceArgs:
         The set of arguments for constructing a Haresource resource.
 
         :param pulumi.Input[_builtins.str] resource_id: The Proxmox HA resource identifier
+        :param pulumi.Input[_builtins.bool] auto_rebalance: Whether this HA resource may be migrated during automatic rebalancing (Proxmox VE 9.2+). Leave unset to use the cluster default.
         :param pulumi.Input[_builtins.str] comment: The comment associated with this resource.
         :param pulumi.Input[_builtins.bool] failback: Automatic failback to the preferred node when it becomes available again (Proxmox VE 9+). Leave unset to use the cluster default.
         :param pulumi.Input[_builtins.str] group: The identifier of the High Availability group this resource is a member of.
@@ -40,6 +42,8 @@ class HaresourceArgs:
         :param pulumi.Input[_builtins.str] type: The type of HA resources to create. If unset, it will be deduced from the `resource_id`.
         """
         pulumi.set(__self__, "resource_id", resource_id)
+        if auto_rebalance is not None:
+            pulumi.set(__self__, "auto_rebalance", auto_rebalance)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
         if failback is not None:
@@ -66,6 +70,18 @@ class HaresourceArgs:
     @resource_id.setter
     def resource_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "resource_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="autoRebalance")
+    def auto_rebalance(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether this HA resource may be migrated during automatic rebalancing (Proxmox VE 9.2+). Leave unset to use the cluster default.
+        """
+        return pulumi.get(self, "auto_rebalance")
+
+    @auto_rebalance.setter
+    def auto_rebalance(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "auto_rebalance", value)
 
     @_builtins.property
     @pulumi.getter
@@ -155,6 +171,7 @@ class HaresourceArgs:
 @pulumi.input_type
 class _HaresourceState:
     def __init__(__self__, *,
+                 auto_rebalance: pulumi.Input[Optional[_builtins.bool]] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  failback: pulumi.Input[Optional[_builtins.bool]] = None,
                  group: pulumi.Input[Optional[_builtins.str]] = None,
@@ -166,6 +183,7 @@ class _HaresourceState:
         """
         Input properties used for looking up and filtering Haresource resources.
 
+        :param pulumi.Input[_builtins.bool] auto_rebalance: Whether this HA resource may be migrated during automatic rebalancing (Proxmox VE 9.2+). Leave unset to use the cluster default.
         :param pulumi.Input[_builtins.str] comment: The comment associated with this resource.
         :param pulumi.Input[_builtins.bool] failback: Automatic failback to the preferred node when it becomes available again (Proxmox VE 9+). Leave unset to use the cluster default.
         :param pulumi.Input[_builtins.str] group: The identifier of the High Availability group this resource is a member of.
@@ -175,6 +193,8 @@ class _HaresourceState:
         :param pulumi.Input[_builtins.str] state: The desired state of the resource.
         :param pulumi.Input[_builtins.str] type: The type of HA resources to create. If unset, it will be deduced from the `resource_id`.
         """
+        if auto_rebalance is not None:
+            pulumi.set(__self__, "auto_rebalance", auto_rebalance)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
         if failback is not None:
@@ -191,6 +211,18 @@ class _HaresourceState:
             pulumi.set(__self__, "state", state)
         if type is not None:
             pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="autoRebalance")
+    def auto_rebalance(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether this HA resource may be migrated during automatic rebalancing (Proxmox VE 9.2+). Leave unset to use the cluster default.
+        """
+        return pulumi.get(self, "auto_rebalance")
+
+    @auto_rebalance.setter
+    def auto_rebalance(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "auto_rebalance", value)
 
     @_builtins.property
     @pulumi.getter
@@ -295,6 +327,7 @@ class Haresource(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_rebalance: pulumi.Input[Optional[_builtins.bool]] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  failback: pulumi.Input[Optional[_builtins.bool]] = None,
                  group: pulumi.Input[Optional[_builtins.str]] = None,
@@ -319,6 +352,7 @@ class Haresource(pulumi.CustomResource):
             group="example",
             comment="Managed by Pulumi",
             failback=True,
+            auto_rebalance=True,
             opts = pulumi.ResourceOptions(depends_on=[example_proxmox_hagroup]))
         ```
 
@@ -334,6 +368,7 @@ class Haresource(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] auto_rebalance: Whether this HA resource may be migrated during automatic rebalancing (Proxmox VE 9.2+). Leave unset to use the cluster default.
         :param pulumi.Input[_builtins.str] comment: The comment associated with this resource.
         :param pulumi.Input[_builtins.bool] failback: Automatic failback to the preferred node when it becomes available again (Proxmox VE 9+). Leave unset to use the cluster default.
         :param pulumi.Input[_builtins.str] group: The identifier of the High Availability group this resource is a member of.
@@ -364,6 +399,7 @@ class Haresource(pulumi.CustomResource):
             group="example",
             comment="Managed by Pulumi",
             failback=True,
+            auto_rebalance=True,
             opts = pulumi.ResourceOptions(depends_on=[example_proxmox_hagroup]))
         ```
 
@@ -392,6 +428,7 @@ class Haresource(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_rebalance: pulumi.Input[Optional[_builtins.bool]] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  failback: pulumi.Input[Optional[_builtins.bool]] = None,
                  group: pulumi.Input[Optional[_builtins.str]] = None,
@@ -409,6 +446,7 @@ class Haresource(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = HaresourceArgs.__new__(HaresourceArgs)
 
+            __props__.__dict__["auto_rebalance"] = auto_rebalance
             __props__.__dict__["comment"] = comment
             __props__.__dict__["failback"] = failback
             __props__.__dict__["group"] = group
@@ -429,6 +467,7 @@ class Haresource(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            auto_rebalance: pulumi.Input[Optional[_builtins.bool]] = None,
             comment: pulumi.Input[Optional[_builtins.str]] = None,
             failback: pulumi.Input[Optional[_builtins.bool]] = None,
             group: pulumi.Input[Optional[_builtins.str]] = None,
@@ -444,6 +483,7 @@ class Haresource(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] auto_rebalance: Whether this HA resource may be migrated during automatic rebalancing (Proxmox VE 9.2+). Leave unset to use the cluster default.
         :param pulumi.Input[_builtins.str] comment: The comment associated with this resource.
         :param pulumi.Input[_builtins.bool] failback: Automatic failback to the preferred node when it becomes available again (Proxmox VE 9+). Leave unset to use the cluster default.
         :param pulumi.Input[_builtins.str] group: The identifier of the High Availability group this resource is a member of.
@@ -457,6 +497,7 @@ class Haresource(pulumi.CustomResource):
 
         __props__ = _HaresourceState.__new__(_HaresourceState)
 
+        __props__.__dict__["auto_rebalance"] = auto_rebalance
         __props__.__dict__["comment"] = comment
         __props__.__dict__["failback"] = failback
         __props__.__dict__["group"] = group
@@ -466,6 +507,38 @@ class Haresource(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         __props__.__dict__["type"] = type
         return Haresource(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auto_rebalance: pulumi.Input[Optional[_builtins.bool]] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            failback: pulumi.Input[Optional[_builtins.bool]] = None,
+            group: pulumi.Input[Optional[_builtins.str]] = None,
+            max_relocate: pulumi.Input[Optional[_builtins.int]] = None,
+            max_restart: pulumi.Input[Optional[_builtins.int]] = None,
+            resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoRebalance"] = auto_rebalance
+        __props__["comment"] = comment
+        __props__["failback"] = failback
+        __props__["group"] = group
+        __props__["maxRelocate"] = max_relocate
+        __props__["maxRestart"] = max_restart
+        __props__["resourceId"] = resource_id
+        __props__["state"] = state
+        __props__["type"] = type
+        return pulumi.runtime.exists_resource(None, 'proxmoxve:index/haresource:Haresource', id, __props__, opts or pulumi.ResourceOptions())
+
+    @_builtins.property
+    @pulumi.getter(name="autoRebalance")
+    def auto_rebalance(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether this HA resource may be migrated during automatic rebalancing (Proxmox VE 9.2+). Leave unset to use the cluster default.
+        """
+        return pulumi.get(self, "auto_rebalance")
 
     @_builtins.property
     @pulumi.getter

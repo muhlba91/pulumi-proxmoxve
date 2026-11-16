@@ -124,6 +124,12 @@ func (UsbLegacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*usbLegacyState)(nil)).Elem()
 }
 
+// UsbLegacyExists checks whether an existing UsbLegacy resource with the given ID exists.
+func UsbLegacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UsbLegacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:hardware/mapping/usbLegacy:UsbLegacy", id, state, "", opts...)
+}
+
 type usbLegacyArgs struct {
 	// The comment of this USB hardware mapping.
 	Comment *string `pulumi:"comment"`

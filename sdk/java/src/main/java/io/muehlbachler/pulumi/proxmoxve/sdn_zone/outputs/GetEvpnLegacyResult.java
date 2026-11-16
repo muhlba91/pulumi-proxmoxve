@@ -84,7 +84,7 @@ public final class GetEvpnLegacyResult {
      */
     private String reverseDns;
     /**
-     * @return Route target import for EVPN. Must be in the format &#39;\n\n:\n\n&#39; (e.g., &#39;65000:65000&#39;).
+     * @return Route target import for EVPN. Must be in the format &#39;&#92;n&#92;n:&#92;n&#92;n&#39; (e.g., &#39;65000:65000&#39;).
      * 
      */
     private String rtImport;
@@ -199,7 +199,7 @@ public final class GetEvpnLegacyResult {
         return this.reverseDns;
     }
     /**
-     * @return Route target import for EVPN. Must be in the format &#39;\n\n:\n\n&#39; (e.g., &#39;65000:65000&#39;).
+     * @return Route target import for EVPN. Must be in the format &#39;&#92;n&#92;n:&#92;n&#92;n&#39; (e.g., &#39;65000:65000&#39;).
      * 
      */
     public String rtImport() {

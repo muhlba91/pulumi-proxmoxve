@@ -620,6 +620,34 @@ class UserLegacy(pulumi.CustomResource):
         __props__.__dict__["user_id"] = user_id
         return UserLegacy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            acls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserLegacyAclArgs', 'UserLegacyAclArgsDict', 'outputs.UserLegacyAcl']]]]] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            email: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            expiration_date: pulumi.Input[Optional[_builtins.str]] = None,
+            first_name: pulumi.Input[Optional[_builtins.str]] = None,
+            groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            keys: pulumi.Input[Optional[_builtins.str]] = None,
+            last_name: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            user_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["acls"] = acls
+        __props__["comment"] = comment
+        __props__["email"] = email
+        __props__["enabled"] = enabled
+        __props__["expirationDate"] = expiration_date
+        __props__["firstName"] = first_name
+        __props__["groups"] = groups
+        __props__["keys"] = keys
+        __props__["lastName"] = last_name
+        __props__["password"] = password
+        __props__["userId"] = user_id
+        return pulumi.runtime.exists_resource(None, 'proxmoxve:index/userLegacy:UserLegacy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Manage ACLs via the dedicated `Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing users with `acl` blocks continue to work, but new code should use `Acl`.""")

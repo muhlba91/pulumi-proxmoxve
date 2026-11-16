@@ -12,8 +12,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VmLegacyStartup {
     /**
-     * @return A non-negative number defining the delay in
-     * seconds before the next VM is shut down.
+     * @return A non-negative number defining the shutdown
+     * timeout in seconds. When the node stops all guests (e.g. on host
+     * shutdown), Proxmox VE waits this long for the VM to shut down before
+     * stopping it. It is also the default timeout for a shutdown of this
+     * VM that doesn&#39;t set one. When unset, the node&#39;s bulk stop timeout is
+     * used (180 seconds by default).
      * 
      */
     private @Nullable Integer downDelay;
@@ -32,8 +36,12 @@ public final class VmLegacyStartup {
 
     private VmLegacyStartup() {}
     /**
-     * @return A non-negative number defining the delay in
-     * seconds before the next VM is shut down.
+     * @return A non-negative number defining the shutdown
+     * timeout in seconds. When the node stops all guests (e.g. on host
+     * shutdown), Proxmox VE waits this long for the VM to shut down before
+     * stopping it. It is also the default timeout for a shutdown of this
+     * VM that doesn&#39;t set one. When unset, the node&#39;s bulk stop timeout is
+     * used (180 seconds by default).
      * 
      */
     public Optional<Integer> downDelay() {

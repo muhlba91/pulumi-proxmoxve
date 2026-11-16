@@ -19,7 +19,7 @@ namespace Pulumi.ProxmoxVE.Cloned.Inputs
         public Input<int>? Balloon { get; set; }
 
         /// <summary>
-        /// Enable hugepages for VM memory allocation. Hugepages can improve performance for memory-intensive workloads by reducing TLB misses. 
+        /// Enable hugepages for VM memory allocation. Hugepages can improve performance for memory-intensive workloads by reducing TLB misses.
         /// 
         /// **Options:**
         /// - `2` - Use 2 MiB hugepages

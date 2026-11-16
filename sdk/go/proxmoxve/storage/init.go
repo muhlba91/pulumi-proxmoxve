@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "proxmoxve:storage/cephfs:Cephfs":
+		r = &Cephfs{}
 	case "proxmoxve:storage/cifs:Cifs":
 		r = &Cifs{}
 	case "proxmoxve:storage/cifsLegacy:CifsLegacy":
@@ -45,6 +47,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Pbs{}
 	case "proxmoxve:storage/pbsLegacy:PbsLegacy":
 		r = &PbsLegacy{}
+	case "proxmoxve:storage/rbd:Rbd":
+		r = &Rbd{}
 	case "proxmoxve:storage/zfspool:Zfspool":
 		r = &Zfspool{}
 	case "proxmoxve:storage/zfspoolLegacy:ZfspoolLegacy":
@@ -62,6 +66,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
+		"storage/cephfs",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"proxmoxve",
 		"storage/cifs",
@@ -120,6 +129,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"proxmoxve",
 		"storage/pbsLegacy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
+		"storage/rbd",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

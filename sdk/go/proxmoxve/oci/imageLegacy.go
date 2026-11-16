@@ -164,6 +164,12 @@ func (ImageLegacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*imageLegacyState)(nil)).Elem()
 }
 
+// ImageLegacyExists checks whether an existing ImageLegacy resource with the given ID exists.
+func ImageLegacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ImageLegacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:oci/imageLegacy:ImageLegacy", id, state, "", opts...)
+}
+
 type imageLegacyArgs struct {
 	// The identifier for the target datastore.
 	DatastoreId string `pulumi:"datastoreId"`

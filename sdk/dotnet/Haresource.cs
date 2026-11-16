@@ -29,6 +29,7 @@ namespace Pulumi.ProxmoxVE
     ///         Group = "example",
     ///         Comment = "Managed by Pulumi",
     ///         Failback = true,
+    ///         AutoRebalance = true,
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =
@@ -52,6 +53,12 @@ namespace Pulumi.ProxmoxVE
     [ProxmoxVEResourceType("proxmoxve:index/haresource:Haresource")]
     public partial class Haresource : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Whether this HA resource may be migrated during automatic rebalancing (Proxmox VE 9.2+). Leave unset to use the cluster default.
+        /// </summary>
+        [Output("autoRebalance")]
+        public Output<bool?> AutoRebalance { get; private set; } = null!;
+
         /// <summary>
         /// The comment associated with this resource.
         /// </summary>
@@ -148,6 +155,12 @@ namespace Pulumi.ProxmoxVE
     public sealed class HaresourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Whether this HA resource may be migrated during automatic rebalancing (Proxmox VE 9.2+). Leave unset to use the cluster default.
+        /// </summary>
+        [Input("autoRebalance")]
+        public Input<bool>? AutoRebalance { get; set; }
+
+        /// <summary>
         /// The comment associated with this resource.
         /// </summary>
         [Input("comment")]
@@ -203,6 +216,12 @@ namespace Pulumi.ProxmoxVE
 
     public sealed class HaresourceState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether this HA resource may be migrated during automatic rebalancing (Proxmox VE 9.2+). Leave unset to use the cluster default.
+        /// </summary>
+        [Input("autoRebalance")]
+        public Input<bool>? AutoRebalance { get; set; }
+
         /// <summary>
         /// The comment associated with this resource.
         /// </summary>

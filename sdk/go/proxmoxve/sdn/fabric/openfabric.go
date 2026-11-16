@@ -96,6 +96,12 @@ func (OpenfabricState) ElementType() reflect.Type {
 	return reflect.TypeOf((*openfabricState)(nil)).Elem()
 }
 
+// OpenfabricExists checks whether an existing Openfabric resource with the given ID exists.
+func OpenfabricExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OpenfabricState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:sdn/fabric/openfabric:Openfabric", id, state, "", opts...)
+}
+
 type openfabricArgs struct {
 	// The csnpInterval property for OpenFabric.
 	CsnpInterval *int `pulumi:"csnpInterval"`

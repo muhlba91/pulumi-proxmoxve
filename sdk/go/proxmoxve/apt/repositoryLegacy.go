@@ -167,6 +167,12 @@ func (RepositoryLegacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*repositoryLegacyState)(nil)).Elem()
 }
 
+// RepositoryLegacyExists checks whether an existing RepositoryLegacy resource with the given ID exists.
+func RepositoryLegacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RepositoryLegacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:apt/repositoryLegacy:RepositoryLegacy", id, state, "", opts...)
+}
+
 type repositoryLegacyArgs struct {
 	// Indicates the activation status.
 	Enabled *bool `pulumi:"enabled"`

@@ -239,7 +239,7 @@ namespace Pulumi.ProxmoxVE
         public Output<string> DatastoreId { get; private set; } = null!;
 
         /// <summary>
-        /// The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root@pam` authenticated user.
+        /// The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! With a non-root SSH user, the provider sets the mode with `sudo chmod`, which needs its own sudoers rule (see SSH User).
         /// </summary>
         [Output("fileMode")]
         public Output<string?> FileMode { get; private set; } = null!;
@@ -269,7 +269,7 @@ namespace Pulumi.ProxmoxVE
         public Output<string> FileTag { get; private set; } = null!;
 
         /// <summary>
-        /// The node name.
+        /// The preferred node name. If this node has been removed from the cluster, the provider automatically uses an online node with access to the same active, enabled shared datastore. The datastore must support the file's content type.
         /// </summary>
         [Output("nodeName")]
         public Output<string> NodeName { get; private set; } = null!;
@@ -376,13 +376,13 @@ namespace Pulumi.ProxmoxVE
         public Input<string> DatastoreId { get; set; } = null!;
 
         /// <summary>
-        /// The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root@pam` authenticated user.
+        /// The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! With a non-root SSH user, the provider sets the mode with `sudo chmod`, which needs its own sudoers rule (see SSH User).
         /// </summary>
         [Input("fileMode")]
         public Input<string>? FileMode { get; set; }
 
         /// <summary>
-        /// The node name.
+        /// The preferred node name. If this node has been removed from the cluster, the provider automatically uses an online node with access to the same active, enabled shared datastore. The datastore must support the file's content type.
         /// </summary>
         [Input("nodeName", required: true)]
         public Input<string> NodeName { get; set; } = null!;
@@ -450,7 +450,7 @@ namespace Pulumi.ProxmoxVE
         public Input<string>? DatastoreId { get; set; }
 
         /// <summary>
-        /// The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root@pam` authenticated user.
+        /// The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! With a non-root SSH user, the provider sets the mode with `sudo chmod`, which needs its own sudoers rule (see SSH User).
         /// </summary>
         [Input("fileMode")]
         public Input<string>? FileMode { get; set; }
@@ -480,7 +480,7 @@ namespace Pulumi.ProxmoxVE
         public Input<string>? FileTag { get; set; }
 
         /// <summary>
-        /// The node name.
+        /// The preferred node name. If this node has been removed from the cluster, the provider automatically uses an online node with access to the same active, enabled shared datastore. The datastore must support the file's content type.
         /// </summary>
         [Input("nodeName")]
         public Input<string>? NodeName { get; set; }

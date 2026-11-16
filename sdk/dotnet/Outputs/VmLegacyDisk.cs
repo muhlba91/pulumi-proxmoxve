@@ -42,8 +42,9 @@ namespace Pulumi.ProxmoxVE.Outputs
         public readonly string? FileFormat;
         /// <summary>
         /// The file ID for a disk image when importing a disk into VM. The ID format is
-        /// `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/centos8.img`. Can be also taken from
-        /// `proxmoxve.download.FileLegacy` resource. Prefer `ImportFrom` for uncompressed images.
+        /// `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/centos8.img`, without whitespace, `,` or `=`.
+        /// Can be also taken from `proxmoxve.download.FileLegacy` resource. Prefer `ImportFrom` for
+        /// uncompressed images.
         /// Use `FileId` when working with compressed cloud images (e.g., `.qcow2.xz`) that were downloaded
         /// with `ContentType = "iso"` and `DecompressionAlgorithm` set. See the
         /// Create a VM from a Cloud Image guide for examples.
@@ -87,7 +88,8 @@ namespace Pulumi.ProxmoxVE.Outputs
         /// </summary>
         public readonly bool? Replicate;
         /// <summary>
-        /// The serial number of the disk, up to 20 bytes long.
+        /// The serial number of the disk, up to 20 characters. Letters, digits and
+        /// `-%_.!~*'()` only.
         /// </summary>
         public readonly string? Serial;
         /// <summary>

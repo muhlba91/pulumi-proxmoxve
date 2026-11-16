@@ -1231,6 +1231,50 @@ class Vm(pulumi.CustomResource):
         __props__.__dict__["vga"] = vga
         return Vm(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cdrom: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['VmCdromArgs', 'VmCdromArgsDict', 'outputs.VmCdrom']]]]] = None,
+            clone: pulumi.Input[Optional[Union['VmCloneArgs', 'VmCloneArgsDict', 'outputs.VmClone']]] = None,
+            cpu: pulumi.Input[Optional[Union['VmCpuArgs', 'VmCpuArgsDict', 'outputs.VmCpu']]] = None,
+            delete: pulumi.Input[Optional[Union['VmDeleteArgs', 'VmDeleteArgsDict', 'outputs.VmDelete']]] = None,
+            delete_unreferenced_disks_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disk: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['VmDiskArgs', 'VmDiskArgsDict', 'outputs.VmDisk']]]]] = None,
+            memory: pulumi.Input[Optional[Union['VmMemoryArgs', 'VmMemoryArgsDict', 'outputs.VmMemory']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['VmNetworkArgs', 'VmNetworkArgsDict', 'outputs.VmNetwork']]]]] = None,
+            node_name: pulumi.Input[Optional[_builtins.str]] = None,
+            purge_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+            rng: pulumi.Input[Optional[Union['VmRngArgs', 'VmRngArgsDict', 'outputs.VmRng']]] = None,
+            started: pulumi.Input[Optional[_builtins.bool]] = None,
+            stop_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            timeouts: pulumi.Input[Optional[Union['VmTimeoutsArgs', 'VmTimeoutsArgsDict', 'outputs.VmTimeouts']]] = None,
+            vga: pulumi.Input[Optional[Union['VmVgaArgs', 'VmVgaArgsDict', 'outputs.VmVga']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cdrom"] = cdrom
+        __props__["clone"] = clone
+        __props__["cpu"] = cpu
+        __props__["delete"] = delete
+        __props__["deleteUnreferencedDisksOnDestroy"] = delete_unreferenced_disks_on_destroy
+        __props__["description"] = description
+        __props__["disk"] = disk
+        __props__["memory"] = memory
+        __props__["name"] = name
+        __props__["network"] = network
+        __props__["nodeName"] = node_name
+        __props__["purgeOnDestroy"] = purge_on_destroy
+        __props__["resourceId"] = resource_id
+        __props__["rng"] = rng
+        __props__["started"] = started
+        __props__["stopOnDestroy"] = stop_on_destroy
+        __props__["tags"] = tags
+        __props__["timeouts"] = timeouts
+        __props__["vga"] = vga
+        return pulumi.runtime.exists_resource(None, 'proxmoxve:cloned/vm:Vm', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def cdrom(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.VmCdrom']]]:

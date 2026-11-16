@@ -27,7 +27,7 @@ namespace Pulumi.ProxmoxVE.Firewall
     ///     var inbound = new ProxmoxVE.Firewall.RulesLegacy("inbound", new()
     ///     {
     ///         NodeName = example.NodeName,
-    ///         VmId = int.Parse(example.VmId, System.Globalization.CultureInfo.InvariantCulture),
+    ///         VmId = example.VmId,
     ///         Rules = new[]
     ///         {
     ///             new ProxmoxVE.Firewall.Inputs.RulesLegacyRuleArgs
@@ -72,36 +72,44 @@ namespace Pulumi.ProxmoxVE.Firewall
     /// ## Import
     /// 
     /// ### Cluster Rules
+    /// 
     /// Use the import ID: `Cluster`
     /// 
     /// **Example:**
+    /// 
     /// ```sh
     /// $ pulumi import proxmoxve:firewall/rulesLegacy:RulesLegacy cluster_rules cluster
     /// ```
     /// 
     /// ### Node Rules
+    /// 
     /// Use the import ID format: `node/&lt;node_name&gt;`
     /// Example uses node name `Pve`.
     /// 
     /// **Example:**
+    /// 
     /// ```sh
     /// $ pulumi import proxmoxve:firewall/rulesLegacy:RulesLegacy node_rules node/pve
     /// ```
     /// 
     /// ### VM Rules
+    /// 
     /// Use the import ID format: `vm/&lt;node_name&gt;/&lt;vm_id&gt;`
     /// Example uses node name `Pve` and VM ID `100`.
     /// 
     /// **Example:**
+    /// 
     /// ```sh
     /// $ pulumi import proxmoxve:firewall/rulesLegacy:RulesLegacy vm_rules vm/pve/100
     /// ```
     /// 
     /// ### Container Rules
+    /// 
     /// Use the import ID format: `container/&lt;node_name&gt;/&lt;container_id&gt;`
     /// Example uses node name `Pve` and container ID `100`.
     /// 
     /// **Example:**
+    /// 
     /// ```sh
     /// $ pulumi import proxmoxve:firewall/rulesLegacy:RulesLegacy container_rules container/pve/100
     /// ```
@@ -110,13 +118,13 @@ namespace Pulumi.ProxmoxVE.Firewall
     public partial class RulesLegacy : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Container ID. Leave empty for node/cluster level rules.
+        /// Container ID. Leave empty for node/cluster level rules. Changing this value forces replacement.
         /// </summary>
         [Output("containerId")]
         public Output<int?> ContainerId { get; private set; } = null!;
 
         /// <summary>
-        /// Node name. Leave empty for cluster level rules.
+        /// Node name. Leave empty for cluster level rules. Changing it forces replacement of node/cluster level rules; for VM/container level rules it can change in place (e.g. after a migration).
         /// </summary>
         [Output("nodeName")]
         public Output<string?> NodeName { get; private set; } = null!;
@@ -130,7 +138,7 @@ namespace Pulumi.ProxmoxVE.Firewall
         public Output<ImmutableArray<Outputs.RulesLegacyRule>> Rules { get; private set; } = null!;
 
         /// <summary>
-        /// VM ID. Leave empty for node/cluster level rules.
+        /// VM ID. Leave empty for node/cluster level rules. Changing this value forces replacement.
         /// </summary>
         [Output("vmId")]
         public Output<int?> VmId { get; private set; } = null!;
@@ -183,13 +191,13 @@ namespace Pulumi.ProxmoxVE.Firewall
     public sealed class RulesLegacyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Container ID. Leave empty for node/cluster level rules.
+        /// Container ID. Leave empty for node/cluster level rules. Changing this value forces replacement.
         /// </summary>
         [Input("containerId")]
         public Input<int>? ContainerId { get; set; }
 
         /// <summary>
-        /// Node name. Leave empty for cluster level rules.
+        /// Node name. Leave empty for cluster level rules. Changing it forces replacement of node/cluster level rules; for VM/container level rules it can change in place (e.g. after a migration).
         /// </summary>
         [Input("nodeName")]
         public Input<string>? NodeName { get; set; }
@@ -209,7 +217,7 @@ namespace Pulumi.ProxmoxVE.Firewall
         }
 
         /// <summary>
-        /// VM ID. Leave empty for node/cluster level rules.
+        /// VM ID. Leave empty for node/cluster level rules. Changing this value forces replacement.
         /// </summary>
         [Input("vmId")]
         public Input<int>? VmId { get; set; }
@@ -223,13 +231,13 @@ namespace Pulumi.ProxmoxVE.Firewall
     public sealed class RulesLegacyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Container ID. Leave empty for node/cluster level rules.
+        /// Container ID. Leave empty for node/cluster level rules. Changing this value forces replacement.
         /// </summary>
         [Input("containerId")]
         public Input<int>? ContainerId { get; set; }
 
         /// <summary>
-        /// Node name. Leave empty for cluster level rules.
+        /// Node name. Leave empty for cluster level rules. Changing it forces replacement of node/cluster level rules; for VM/container level rules it can change in place (e.g. after a migration).
         /// </summary>
         [Input("nodeName")]
         public Input<string>? NodeName { get; set; }
@@ -249,7 +257,7 @@ namespace Pulumi.ProxmoxVE.Firewall
         }
 
         /// <summary>
-        /// VM ID. Leave empty for node/cluster level rules.
+        /// VM ID. Leave empty for node/cluster level rules. Changing this value forces replacement.
         /// </summary>
         [Input("vmId")]
         public Input<int>? VmId { get; set; }

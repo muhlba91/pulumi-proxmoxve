@@ -6,6 +6,7 @@ import builtins as _builtins
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .cephfs import *
 from .cifs import *
 from .cifs_legacy import *
 from .directory import *
@@ -18,6 +19,7 @@ from .nfs import *
 from .nfs_legacy import *
 from .pbs import *
 from .pbs_legacy import *
+from .rbd import *
 from .zfspool import *
 from .zfspool_legacy import *
 from ._inputs import *

@@ -829,6 +829,46 @@ class CifsLegacy(pulumi.CustomResource):
         __props__.__dict__["username"] = username
         return CifsLegacy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            backups: pulumi.Input[Optional[Union['CifsLegacyBackupsArgs', 'CifsLegacyBackupsArgsDict', 'outputs.CifsLegacyBackups']]] = None,
+            contents: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            create_base_path: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_subdirs: pulumi.Input[Optional[_builtins.bool]] = None,
+            disable: pulumi.Input[Optional[_builtins.bool]] = None,
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            options: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            preallocation: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+            server: pulumi.Input[Optional[_builtins.str]] = None,
+            share: pulumi.Input[Optional[_builtins.str]] = None,
+            shared: pulumi.Input[Optional[_builtins.bool]] = None,
+            snapshot_as_volume_chain: pulumi.Input[Optional[_builtins.bool]] = None,
+            subdirectory: pulumi.Input[Optional[_builtins.str]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["backups"] = backups
+        __props__["contents"] = contents
+        __props__["createBasePath"] = create_base_path
+        __props__["createSubdirs"] = create_subdirs
+        __props__["disable"] = disable
+        __props__["domain"] = domain
+        __props__["nodes"] = nodes
+        __props__["options"] = options
+        __props__["password"] = password
+        __props__["preallocation"] = preallocation
+        __props__["resourceId"] = resource_id
+        __props__["server"] = server
+        __props__["share"] = share
+        __props__["shared"] = shared
+        __props__["snapshotAsVolumeChain"] = snapshot_as_volume_chain
+        __props__["subdirectory"] = subdirectory
+        __props__["username"] = username
+        return pulumi.runtime.exists_resource(None, 'proxmoxve:storage/cifsLegacy:CifsLegacy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def backups(self) -> pulumi.Output[Optional['outputs.CifsLegacyBackups']]:

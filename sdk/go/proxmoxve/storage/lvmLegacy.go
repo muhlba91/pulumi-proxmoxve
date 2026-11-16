@@ -150,6 +150,12 @@ func (LvmLegacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*lvmLegacyState)(nil)).Elem()
 }
 
+// LvmLegacyExists checks whether an existing LvmLegacy resource with the given ID exists.
+func LvmLegacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LvmLegacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:storage/lvmLegacy:LvmLegacy", id, state, "", opts...)
+}
+
 type lvmLegacyArgs struct {
 	// The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
 	Contents []string `pulumi:"contents"`

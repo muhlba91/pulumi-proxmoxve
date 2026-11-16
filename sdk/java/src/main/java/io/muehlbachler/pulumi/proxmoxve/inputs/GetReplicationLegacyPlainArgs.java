@@ -14,14 +14,14 @@ public final class GetReplicationLegacyPlainArgs extends com.pulumi.resources.In
     public static final GetReplicationLegacyPlainArgs Empty = new GetReplicationLegacyPlainArgs();
 
     /**
-     * Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. &#39;\n\n-\n\n&#39;.
+     * Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. &#39;&#92;n&#92;n-&#92;n&#92;n&#39;.
      * 
      */
     @Import(name="id", required=true)
     private String id;
 
     /**
-     * @return Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. &#39;\n\n-\n\n&#39;.
+     * @return Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. &#39;&#92;n&#92;n-&#92;n&#92;n&#39;.
      * 
      */
     public String id() {
@@ -53,7 +53,7 @@ public final class GetReplicationLegacyPlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param id Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. &#39;\n\n-\n\n&#39;.
+         * @param id Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. &#39;&#92;n&#92;n-&#92;n&#92;n&#39;.
          * 
          * @return builder
          * 

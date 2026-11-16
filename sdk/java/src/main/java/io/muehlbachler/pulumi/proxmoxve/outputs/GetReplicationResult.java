@@ -29,7 +29,7 @@ public final class GetReplicationResult {
      */
     private Integer guest;
     /**
-     * @return Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. &#39;\n\n-\n\n&#39;.
+     * @return Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. &#39;&#92;n&#92;n-&#92;n&#92;n&#39;.
      * 
      */
     private String id;
@@ -87,7 +87,7 @@ public final class GetReplicationResult {
         return this.guest;
     }
     /**
-     * @return Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. &#39;\n\n-\n\n&#39;.
+     * @return Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. &#39;&#92;n&#92;n-&#92;n&#92;n&#39;.
      * 
      */
     public String id() {

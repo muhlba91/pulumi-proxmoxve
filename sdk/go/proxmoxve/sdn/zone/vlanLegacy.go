@@ -67,8 +67,8 @@ type VlanLegacy struct {
 	DnsZone pulumi.StringPtrOutput `pulumi:"dnsZone"`
 	// IP Address Management system.
 	Ipam pulumi.StringPtrOutput `pulumi:"ipam"`
-	// MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
-	Mtu pulumi.IntOutput `pulumi:"mtu"`
+	// MTU value for the zone.
+	Mtu pulumi.IntPtrOutput `pulumi:"mtu"`
 	// The Proxmox nodes which the zone and associated VNets should be deployed on
 	Nodes pulumi.StringArrayOutput `pulumi:"nodes"`
 	// Indicates if the zone has pending configuration changes that need to be applied.
@@ -125,7 +125,7 @@ type vlanLegacyState struct {
 	DnsZone *string `pulumi:"dnsZone"`
 	// IP Address Management system.
 	Ipam *string `pulumi:"ipam"`
-	// MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
+	// MTU value for the zone.
 	Mtu *int `pulumi:"mtu"`
 	// The Proxmox nodes which the zone and associated VNets should be deployed on
 	Nodes []string `pulumi:"nodes"`
@@ -148,7 +148,7 @@ type VlanLegacyState struct {
 	DnsZone pulumi.StringPtrInput
 	// IP Address Management system.
 	Ipam pulumi.StringPtrInput
-	// MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
+	// MTU value for the zone.
 	Mtu pulumi.IntPtrInput
 	// The Proxmox nodes which the zone and associated VNets should be deployed on
 	Nodes pulumi.StringArrayInput
@@ -166,6 +166,12 @@ func (VlanLegacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vlanLegacyState)(nil)).Elem()
 }
 
+// VlanLegacyExists checks whether an existing VlanLegacy resource with the given ID exists.
+func VlanLegacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VlanLegacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:sdn/zone/vlanLegacy:VlanLegacy", id, state, "", opts...)
+}
+
 type vlanLegacyArgs struct {
 	// The local bridge or OVS switch, already configured on *each* node that allows node-to-node connection.
 	Bridge string `pulumi:"bridge"`
@@ -175,7 +181,7 @@ type vlanLegacyArgs struct {
 	DnsZone *string `pulumi:"dnsZone"`
 	// IP Address Management system.
 	Ipam *string `pulumi:"ipam"`
-	// MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
+	// MTU value for the zone.
 	Mtu *int `pulumi:"mtu"`
 	// The Proxmox nodes which the zone and associated VNets should be deployed on
 	Nodes []string `pulumi:"nodes"`
@@ -195,7 +201,7 @@ type VlanLegacyArgs struct {
 	DnsZone pulumi.StringPtrInput
 	// IP Address Management system.
 	Ipam pulumi.StringPtrInput
-	// MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
+	// MTU value for the zone.
 	Mtu pulumi.IntPtrInput
 	// The Proxmox nodes which the zone and associated VNets should be deployed on
 	Nodes pulumi.StringArrayInput
@@ -312,9 +318,9 @@ func (o VlanLegacyOutput) Ipam() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VlanLegacy) pulumi.StringPtrOutput { return v.Ipam }).(pulumi.StringPtrOutput)
 }
 
-// MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
-func (o VlanLegacyOutput) Mtu() pulumi.IntOutput {
-	return o.ApplyT(func(v *VlanLegacy) pulumi.IntOutput { return v.Mtu }).(pulumi.IntOutput)
+// MTU value for the zone.
+func (o VlanLegacyOutput) Mtu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VlanLegacy) pulumi.IntPtrOutput { return v.Mtu }).(pulumi.IntPtrOutput)
 }
 
 // The Proxmox nodes which the zone and associated VNets should be deployed on

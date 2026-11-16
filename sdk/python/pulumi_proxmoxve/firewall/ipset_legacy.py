@@ -32,10 +32,10 @@ class IpsetLegacyArgs:
 
         :param pulumi.Input[Sequence[pulumi.Input['IpsetLegacyCidrArgs']]] cidrs: IP/CIDR block (multiple blocks supported).
         :param pulumi.Input[_builtins.str] comment: IPSet comment.
-        :param pulumi.Input[_builtins.int] container_id: Container ID. Leave empty for cluster level ipsets.
+        :param pulumi.Input[_builtins.int] container_id: Container ID. Leave empty for cluster level ipsets. Changing this value forces replacement.
         :param pulumi.Input[_builtins.str] name: IPSet name.
-        :param pulumi.Input[_builtins.str] node_name: Node name. Leave empty for cluster level ipsets.
-        :param pulumi.Input[_builtins.int] vm_id: VM ID. Leave empty for cluster level ipsets.
+        :param pulumi.Input[_builtins.str] node_name: Node name. Leave empty for cluster level ipsets. Changing it forces replacement unless `vm_id` or `container_id` is set, so it can change in place after a migration.
+        :param pulumi.Input[_builtins.int] vm_id: VM ID. Leave empty for cluster level ipsets. Changing this value forces replacement.
         """
         if cidrs is not None:
             pulumi.set(__self__, "cidrs", cidrs)
@@ -78,7 +78,7 @@ class IpsetLegacyArgs:
     @pulumi.getter(name="containerId")
     def container_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Container ID. Leave empty for cluster level ipsets.
+        Container ID. Leave empty for cluster level ipsets. Changing this value forces replacement.
         """
         return pulumi.get(self, "container_id")
 
@@ -102,7 +102,7 @@ class IpsetLegacyArgs:
     @pulumi.getter(name="nodeName")
     def node_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Node name. Leave empty for cluster level ipsets.
+        Node name. Leave empty for cluster level ipsets. Changing it forces replacement unless `vm_id` or `container_id` is set, so it can change in place after a migration.
         """
         return pulumi.get(self, "node_name")
 
@@ -114,7 +114,7 @@ class IpsetLegacyArgs:
     @pulumi.getter(name="vmId")
     def vm_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        VM ID. Leave empty for cluster level ipsets.
+        VM ID. Leave empty for cluster level ipsets. Changing this value forces replacement.
         """
         return pulumi.get(self, "vm_id")
 
@@ -137,10 +137,10 @@ class _IpsetLegacyState:
 
         :param pulumi.Input[Sequence[pulumi.Input['IpsetLegacyCidrArgs']]] cidrs: IP/CIDR block (multiple blocks supported).
         :param pulumi.Input[_builtins.str] comment: IPSet comment.
-        :param pulumi.Input[_builtins.int] container_id: Container ID. Leave empty for cluster level ipsets.
+        :param pulumi.Input[_builtins.int] container_id: Container ID. Leave empty for cluster level ipsets. Changing this value forces replacement.
         :param pulumi.Input[_builtins.str] name: IPSet name.
-        :param pulumi.Input[_builtins.str] node_name: Node name. Leave empty for cluster level ipsets.
-        :param pulumi.Input[_builtins.int] vm_id: VM ID. Leave empty for cluster level ipsets.
+        :param pulumi.Input[_builtins.str] node_name: Node name. Leave empty for cluster level ipsets. Changing it forces replacement unless `vm_id` or `container_id` is set, so it can change in place after a migration.
+        :param pulumi.Input[_builtins.int] vm_id: VM ID. Leave empty for cluster level ipsets. Changing this value forces replacement.
         """
         if cidrs is not None:
             pulumi.set(__self__, "cidrs", cidrs)
@@ -183,7 +183,7 @@ class _IpsetLegacyState:
     @pulumi.getter(name="containerId")
     def container_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        Container ID. Leave empty for cluster level ipsets.
+        Container ID. Leave empty for cluster level ipsets. Changing this value forces replacement.
         """
         return pulumi.get(self, "container_id")
 
@@ -207,7 +207,7 @@ class _IpsetLegacyState:
     @pulumi.getter(name="nodeName")
     def node_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Node name. Leave empty for cluster level ipsets.
+        Node name. Leave empty for cluster level ipsets. Changing it forces replacement unless `vm_id` or `container_id` is set, so it can change in place after a migration.
         """
         return pulumi.get(self, "node_name")
 
@@ -219,7 +219,7 @@ class _IpsetLegacyState:
     @pulumi.getter(name="vmId")
     def vm_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        VM ID. Leave empty for cluster level ipsets.
+        VM ID. Leave empty for cluster level ipsets. Changing this value forces replacement.
         """
         return pulumi.get(self, "vm_id")
 
@@ -253,7 +253,7 @@ class IpsetLegacy(pulumi.CustomResource):
 
         ipset = proxmoxve.firewall.IpsetLegacy("ipset",
             node_name=example["nodeName"],
-            vm_id=int(example["vmId"]),
+            vm_id=example["vmId"],
             name="local_network",
             comment="Managed by Pulumi",
             cidrs=[
@@ -277,28 +277,34 @@ class IpsetLegacy(pulumi.CustomResource):
         ## Import
 
         ### Cluster IPSet
+
         Use the import ID: `cluster/<ipset_name>`
         Example uses ipset name `local_network`.
 
         **Example:**
+
         ```sh
         $ pulumi import proxmoxve:firewall/ipsetLegacy:IpsetLegacy cluster_ipset cluster/local_network
         ```
 
         ### VM IPSet
+
         Use the import ID format: `vm/<node_name>/<vm_id>/<ipset_name>`
         Example uses node name `pve` and VM ID `100` and ipset name `local_network`.
 
         **Example:**
+
         ```sh
         $ pulumi import proxmoxve:firewall/ipsetLegacy:IpsetLegacy vm_ipset vm/pve/100/local_network
         ```
 
         ### Container IPSet
+
         Use the import ID format: `container/<node_name>/<container_id>/<ipset_name>`
         Example uses node name `pve` and container ID `100` and ipset name `local_network`.
 
         **Example:**
+
         ```sh
         $ pulumi import proxmoxve:firewall/ipsetLegacy:IpsetLegacy container_ipset container/pve/100/local_network
         ```
@@ -308,10 +314,10 @@ class IpsetLegacy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['IpsetLegacyCidrArgs', 'IpsetLegacyCidrArgsDict', 'outputs.IpsetLegacyCidr']]]] cidrs: IP/CIDR block (multiple blocks supported).
         :param pulumi.Input[_builtins.str] comment: IPSet comment.
-        :param pulumi.Input[_builtins.int] container_id: Container ID. Leave empty for cluster level ipsets.
+        :param pulumi.Input[_builtins.int] container_id: Container ID. Leave empty for cluster level ipsets. Changing this value forces replacement.
         :param pulumi.Input[_builtins.str] name: IPSet name.
-        :param pulumi.Input[_builtins.str] node_name: Node name. Leave empty for cluster level ipsets.
-        :param pulumi.Input[_builtins.int] vm_id: VM ID. Leave empty for cluster level ipsets.
+        :param pulumi.Input[_builtins.str] node_name: Node name. Leave empty for cluster level ipsets. Changing it forces replacement unless `vm_id` or `container_id` is set, so it can change in place after a migration.
+        :param pulumi.Input[_builtins.int] vm_id: VM ID. Leave empty for cluster level ipsets. Changing this value forces replacement.
         """
         ...
     @overload
@@ -331,7 +337,7 @@ class IpsetLegacy(pulumi.CustomResource):
 
         ipset = proxmoxve.firewall.IpsetLegacy("ipset",
             node_name=example["nodeName"],
-            vm_id=int(example["vmId"]),
+            vm_id=example["vmId"],
             name="local_network",
             comment="Managed by Pulumi",
             cidrs=[
@@ -355,28 +361,34 @@ class IpsetLegacy(pulumi.CustomResource):
         ## Import
 
         ### Cluster IPSet
+
         Use the import ID: `cluster/<ipset_name>`
         Example uses ipset name `local_network`.
 
         **Example:**
+
         ```sh
         $ pulumi import proxmoxve:firewall/ipsetLegacy:IpsetLegacy cluster_ipset cluster/local_network
         ```
 
         ### VM IPSet
+
         Use the import ID format: `vm/<node_name>/<vm_id>/<ipset_name>`
         Example uses node name `pve` and VM ID `100` and ipset name `local_network`.
 
         **Example:**
+
         ```sh
         $ pulumi import proxmoxve:firewall/ipsetLegacy:IpsetLegacy vm_ipset vm/pve/100/local_network
         ```
 
         ### Container IPSet
+
         Use the import ID format: `container/<node_name>/<container_id>/<ipset_name>`
         Example uses node name `pve` and container ID `100` and ipset name `local_network`.
 
         **Example:**
+
         ```sh
         $ pulumi import proxmoxve:firewall/ipsetLegacy:IpsetLegacy container_ipset container/pve/100/local_network
         ```
@@ -443,10 +455,10 @@ class IpsetLegacy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['IpsetLegacyCidrArgs', 'IpsetLegacyCidrArgsDict', 'outputs.IpsetLegacyCidr']]]] cidrs: IP/CIDR block (multiple blocks supported).
         :param pulumi.Input[_builtins.str] comment: IPSet comment.
-        :param pulumi.Input[_builtins.int] container_id: Container ID. Leave empty for cluster level ipsets.
+        :param pulumi.Input[_builtins.int] container_id: Container ID. Leave empty for cluster level ipsets. Changing this value forces replacement.
         :param pulumi.Input[_builtins.str] name: IPSet name.
-        :param pulumi.Input[_builtins.str] node_name: Node name. Leave empty for cluster level ipsets.
-        :param pulumi.Input[_builtins.int] vm_id: VM ID. Leave empty for cluster level ipsets.
+        :param pulumi.Input[_builtins.str] node_name: Node name. Leave empty for cluster level ipsets. Changing it forces replacement unless `vm_id` or `container_id` is set, so it can change in place after a migration.
+        :param pulumi.Input[_builtins.int] vm_id: VM ID. Leave empty for cluster level ipsets. Changing this value forces replacement.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -459,6 +471,24 @@ class IpsetLegacy(pulumi.CustomResource):
         __props__.__dict__["node_name"] = node_name
         __props__.__dict__["vm_id"] = vm_id
         return IpsetLegacy(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IpsetLegacyCidrArgs', 'IpsetLegacyCidrArgsDict', 'outputs.IpsetLegacyCidr']]]]] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            container_id: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_name: pulumi.Input[Optional[_builtins.str]] = None,
+            vm_id: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cidrs"] = cidrs
+        __props__["comment"] = comment
+        __props__["containerId"] = container_id
+        __props__["name"] = name
+        __props__["nodeName"] = node_name
+        __props__["vmId"] = vm_id
+        return pulumi.runtime.exists_resource(None, 'proxmoxve:firewall/ipsetLegacy:IpsetLegacy', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter
@@ -480,7 +510,7 @@ class IpsetLegacy(pulumi.CustomResource):
     @pulumi.getter(name="containerId")
     def container_id(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        Container ID. Leave empty for cluster level ipsets.
+        Container ID. Leave empty for cluster level ipsets. Changing this value forces replacement.
         """
         return pulumi.get(self, "container_id")
 
@@ -496,7 +526,7 @@ class IpsetLegacy(pulumi.CustomResource):
     @pulumi.getter(name="nodeName")
     def node_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Node name. Leave empty for cluster level ipsets.
+        Node name. Leave empty for cluster level ipsets. Changing it forces replacement unless `vm_id` or `container_id` is set, so it can change in place after a migration.
         """
         return pulumi.get(self, "node_name")
 
@@ -504,7 +534,7 @@ class IpsetLegacy(pulumi.CustomResource):
     @pulumi.getter(name="vmId")
     def vm_id(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        VM ID. Leave empty for cluster level ipsets.
+        VM ID. Leave empty for cluster level ipsets. Changing this value forces replacement.
         """
         return pulumi.get(self, "vm_id")
 

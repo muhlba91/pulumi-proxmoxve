@@ -299,6 +299,12 @@ func (ServerLegacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serverLegacyState)(nil)).Elem()
 }
 
+// ServerLegacyExists checks whether an existing ServerLegacy resource with the given ID exists.
+func ServerLegacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServerLegacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:metrics/serverLegacy:ServerLegacy", id, state, "", opts...)
+}
+
 type serverLegacyArgs struct {
 	// Set this to `true` to disable this metric server. Defaults to `false`.
 	Disable *bool `pulumi:"disable"`

@@ -40,7 +40,7 @@ namespace Pulumi.ProxmoxVE
         /// 
         ///     // Only download if the image doesn't already exist
         ///     var ubuntuNoble = new List&lt;ProxmoxVE.Download.FileLegacy&gt;();
-        ///     for (var rangeIndex = 0; rangeIndex &lt; imageExists ? 0 : 1; rangeIndex++)
+        ///     for (var rangeIndex = 0; rangeIndex &lt; (imageExists ? 0 : 1); rangeIndex++)
         ///     {
         ///         var range = new { Value = rangeIndex };
         ///         ubuntuNoble.Add(new ProxmoxVE.Download.FileLegacy($"ubuntu_noble-{range.Value}", new()
@@ -98,7 +98,7 @@ namespace Pulumi.ProxmoxVE
         /// 
         ///     // Only download if the image doesn't already exist
         ///     var ubuntuNoble = new List&lt;ProxmoxVE.Download.FileLegacy&gt;();
-        ///     for (var rangeIndex = 0; rangeIndex &lt; imageExists ? 0 : 1; rangeIndex++)
+        ///     for (var rangeIndex = 0; rangeIndex &lt; (imageExists ? 0 : 1); rangeIndex++)
         ///     {
         ///         var range = new { Value = rangeIndex };
         ///         ubuntuNoble.Add(new ProxmoxVE.Download.FileLegacy($"ubuntu_noble-{range.Value}", new()
@@ -156,7 +156,7 @@ namespace Pulumi.ProxmoxVE
         /// 
         ///     // Only download if the image doesn't already exist
         ///     var ubuntuNoble = new List&lt;ProxmoxVE.Download.FileLegacy&gt;();
-        ///     for (var rangeIndex = 0; rangeIndex &lt; imageExists ? 0 : 1; rangeIndex++)
+        ///     for (var rangeIndex = 0; rangeIndex &lt; (imageExists ? 0 : 1); rangeIndex++)
         ///     {
         ///         var range = new { Value = rangeIndex };
         ///         ubuntuNoble.Add(new ProxmoxVE.Download.FileLegacy($"ubuntu_noble-{range.Value}", new()

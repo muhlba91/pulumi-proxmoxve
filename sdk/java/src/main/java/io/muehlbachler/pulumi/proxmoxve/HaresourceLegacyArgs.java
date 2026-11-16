@@ -19,6 +19,21 @@ public final class HaresourceLegacyArgs extends com.pulumi.resources.ResourceArg
     public static final HaresourceLegacyArgs Empty = new HaresourceLegacyArgs();
 
     /**
+     * Whether this HA resource may be migrated during automatic rebalancing (Proxmox VE 9.2+). Leave unset to use the cluster default.
+     * 
+     */
+    @Import(name="autoRebalance")
+    private @Nullable Output<Boolean> autoRebalance;
+
+    /**
+     * @return Whether this HA resource may be migrated during automatic rebalancing (Proxmox VE 9.2+). Leave unset to use the cluster default.
+     * 
+     */
+    public Optional<Output<Boolean>> autoRebalance() {
+        return Optional.ofNullable(this.autoRebalance);
+    }
+
+    /**
      * The comment associated with this resource.
      * 
      */
@@ -141,6 +156,7 @@ public final class HaresourceLegacyArgs extends com.pulumi.resources.ResourceArg
     private HaresourceLegacyArgs() {}
 
     private HaresourceLegacyArgs(HaresourceLegacyArgs $) {
+        this.autoRebalance = $.autoRebalance;
         this.comment = $.comment;
         this.failback = $.failback;
         this.group = $.group;
@@ -167,6 +183,27 @@ public final class HaresourceLegacyArgs extends com.pulumi.resources.ResourceArg
 
         public Builder(HaresourceLegacyArgs defaults) {
             $ = new HaresourceLegacyArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param autoRebalance Whether this HA resource may be migrated during automatic rebalancing (Proxmox VE 9.2+). Leave unset to use the cluster default.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRebalance(@Nullable Output<Boolean> autoRebalance) {
+            $.autoRebalance = autoRebalance;
+            return this;
+        }
+
+        /**
+         * @param autoRebalance Whether this HA resource may be migrated during automatic rebalancing (Proxmox VE 9.2+). Leave unset to use the cluster default.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRebalance(Boolean autoRebalance) {
+            return autoRebalance(Output.of(autoRebalance));
         }
 
         /**

@@ -18,6 +18,21 @@ public final class HaresourceState extends com.pulumi.resources.ResourceArgs {
     public static final HaresourceState Empty = new HaresourceState();
 
     /**
+     * Whether this HA resource may be migrated during automatic rebalancing (Proxmox VE 9.2+). Leave unset to use the cluster default.
+     * 
+     */
+    @Import(name="autoRebalance")
+    private @Nullable Output<Boolean> autoRebalance;
+
+    /**
+     * @return Whether this HA resource may be migrated during automatic rebalancing (Proxmox VE 9.2+). Leave unset to use the cluster default.
+     * 
+     */
+    public Optional<Output<Boolean>> autoRebalance() {
+        return Optional.ofNullable(this.autoRebalance);
+    }
+
+    /**
      * The comment associated with this resource.
      * 
      */
@@ -140,6 +155,7 @@ public final class HaresourceState extends com.pulumi.resources.ResourceArgs {
     private HaresourceState() {}
 
     private HaresourceState(HaresourceState $) {
+        this.autoRebalance = $.autoRebalance;
         this.comment = $.comment;
         this.failback = $.failback;
         this.group = $.group;
@@ -166,6 +182,27 @@ public final class HaresourceState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(HaresourceState defaults) {
             $ = new HaresourceState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param autoRebalance Whether this HA resource may be migrated during automatic rebalancing (Proxmox VE 9.2+). Leave unset to use the cluster default.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRebalance(@Nullable Output<Boolean> autoRebalance) {
+            $.autoRebalance = autoRebalance;
+            return this;
+        }
+
+        /**
+         * @param autoRebalance Whether this HA resource may be migrated during automatic rebalancing (Proxmox VE 9.2+). Leave unset to use the cluster default.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoRebalance(Boolean autoRebalance) {
+            return autoRebalance(Output.of(autoRebalance));
         }
 
         /**

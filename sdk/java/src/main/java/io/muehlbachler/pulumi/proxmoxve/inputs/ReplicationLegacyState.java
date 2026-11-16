@@ -94,14 +94,14 @@ public final class ReplicationLegacyState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. &#39;\n\n-\n\n&#39;.
+     * Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. &#39;&#92;n&#92;n-&#92;n&#92;n&#39;.
      * 
      */
     @Import(name="resourceId")
     private @Nullable Output<String> resourceId;
 
     /**
-     * @return Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. &#39;\n\n-\n\n&#39;.
+     * @return Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. &#39;&#92;n&#92;n-&#92;n&#92;n&#39;.
      * 
      */
     public Optional<Output<String>> resourceId() {
@@ -307,7 +307,7 @@ public final class ReplicationLegacyState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param resourceId Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. &#39;\n\n-\n\n&#39;.
+         * @param resourceId Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. &#39;&#92;n&#92;n-&#92;n&#92;n&#39;.
          * 
          * @return builder
          * 
@@ -318,7 +318,7 @@ public final class ReplicationLegacyState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param resourceId Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. &#39;\n\n-\n\n&#39;.
+         * @param resourceId Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. &#39;&#92;n&#92;n-&#92;n&#92;n&#39;.
          * 
          * @return builder
          * 

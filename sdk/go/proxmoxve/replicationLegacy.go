@@ -160,6 +160,12 @@ func (ReplicationLegacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*replicationLegacyState)(nil)).Elem()
 }
 
+// ReplicationLegacyExists checks whether an existing ReplicationLegacy resource with the given ID exists.
+func ReplicationLegacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ReplicationLegacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:index/replicationLegacy:ReplicationLegacy", id, state, "", opts...)
+}
+
 type replicationLegacyArgs struct {
 	// Description.
 	Comment *string `pulumi:"comment"`

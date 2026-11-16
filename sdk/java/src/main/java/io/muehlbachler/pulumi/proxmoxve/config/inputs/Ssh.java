@@ -50,6 +50,11 @@ public final class Ssh {
      */
     private @Nullable String privateKey;
     /**
+     * @return Whether to run API calls under `/nodes/{node}/` with a `root{@literal @}pam` ticket minted on that node over SSH, so an API token can perform `root{@literal @}pam`-only operations. Those calls then run as `root{@literal @}pam`, bypassing the token&#39;s permissions. Requires an SSH connection as `root`. Defaults to the value of the `PROXMOX_VE_SSH_ROOT_TICKET` environment variable, or `false` if not set.
+     * 
+     */
+    private @Nullable Boolean rootTicket;
+    /**
      * @return The password for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_PASSWORD` environment variable.
      * 
      */
@@ -121,6 +126,13 @@ public final class Ssh {
         return Optional.ofNullable(this.privateKey);
     }
     /**
+     * @return Whether to run API calls under `/nodes/{node}/` with a `root{@literal @}pam` ticket minted on that node over SSH, so an API token can perform `root{@literal @}pam`-only operations. Those calls then run as `root{@literal @}pam`, bypassing the token&#39;s permissions. Requires an SSH connection as `root`. Defaults to the value of the `PROXMOX_VE_SSH_ROOT_TICKET` environment variable, or `false` if not set.
+     * 
+     */
+    public Optional<Boolean> rootTicket() {
+        return Optional.ofNullable(this.rootTicket);
+    }
+    /**
      * @return The password for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_PASSWORD` environment variable.
      * 
      */
@@ -165,6 +177,7 @@ public final class Ssh {
         private @Nullable List<SshNode> nodes;
         private @Nullable String password;
         private @Nullable String privateKey;
+        private @Nullable Boolean rootTicket;
         private @Nullable String socks5Password;
         private @Nullable String socks5Server;
         private @Nullable String socks5Username;
@@ -179,6 +192,7 @@ public final class Ssh {
     	      this.nodes = defaults.nodes;
     	      this.password = defaults.password;
     	      this.privateKey = defaults.privateKey;
+    	      this.rootTicket = defaults.rootTicket;
     	      this.socks5Password = defaults.socks5Password;
     	      this.socks5Server = defaults.socks5Server;
     	      this.socks5Username = defaults.socks5Username;
@@ -231,6 +245,12 @@ public final class Ssh {
             return this;
         }
         @CustomType.Setter
+        public Builder rootTicket(@Nullable Boolean rootTicket) {
+
+            this.rootTicket = rootTicket;
+            return this;
+        }
+        @CustomType.Setter
         public Builder socks5Password(@Nullable String socks5Password) {
 
             this.socks5Password = socks5Password;
@@ -263,6 +283,7 @@ public final class Ssh {
             _resultValue.nodes = nodes;
             _resultValue.password = password;
             _resultValue.privateKey = privateKey;
+            _resultValue.rootTicket = rootTicket;
             _resultValue.socks5Password = socks5Password;
             _resultValue.socks5Server = socks5Server;
             _resultValue.socks5Username = socks5Username;

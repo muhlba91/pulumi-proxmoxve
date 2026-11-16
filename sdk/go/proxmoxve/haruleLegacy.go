@@ -200,6 +200,12 @@ func (HaruleLegacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*haruleLegacyState)(nil)).Elem()
 }
 
+// HaruleLegacyExists checks whether an existing HaruleLegacy resource with the given ID exists.
+func HaruleLegacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *HaruleLegacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:index/haruleLegacy:HaruleLegacy", id, state, "", opts...)
+}
+
 type haruleLegacyArgs struct {
 	// The resource affinity type (resource-affinity only). `positive` keeps resources on the same node, `negative` keeps them on separate nodes.
 	Affinity *string `pulumi:"affinity"`

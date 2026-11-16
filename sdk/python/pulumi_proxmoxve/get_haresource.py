@@ -26,7 +26,10 @@ class GetHaresourceResult:
     """
     A collection of values returned by getHaresource.
     """
-    def __init__(__self__, comment=None, failback=None, group=None, id=None, max_relocate=None, max_restart=None, resource_id=None, state=None, type=None):
+    def __init__(__self__, auto_rebalance=None, comment=None, failback=None, group=None, id=None, max_relocate=None, max_restart=None, resource_id=None, state=None, type=None):
+        if auto_rebalance and not isinstance(auto_rebalance, bool):
+            raise TypeError("Expected argument 'auto_rebalance' to be a bool")
+        pulumi.set(__self__, "auto_rebalance", auto_rebalance)
         if comment and not isinstance(comment, str):
             raise TypeError("Expected argument 'comment' to be a str")
         pulumi.set(__self__, "comment", comment)
@@ -54,6 +57,14 @@ class GetHaresourceResult:
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="autoRebalance")
+    def auto_rebalance(self) -> _builtins.bool:
+        """
+        Whether this HA resource may be migrated during automatic rebalancing (PVE 9.2+).
+        """
+        return pulumi.get(self, "auto_rebalance")
 
     @_builtins.property
     @pulumi.getter
@@ -134,6 +145,7 @@ class AwaitableGetHaresourceResult(GetHaresourceResult):
         if False:
             yield self
         return GetHaresourceResult(
+            auto_rebalance=self.auto_rebalance,
             comment=self.comment,
             failback=self.failback,
             group=self.group,
@@ -172,6 +184,7 @@ def get_haresource(resource_id: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('proxmoxve:index/getHaresource:getHaresource', __args__, opts=opts, typ=GetHaresourceResult).value
 
     return AwaitableGetHaresourceResult(
+        auto_rebalance=pulumi.get(__ret__, 'auto_rebalance'),
         comment=pulumi.get(__ret__, 'comment'),
         failback=pulumi.get(__ret__, 'failback'),
         group=pulumi.get(__ret__, 'group'),
@@ -207,6 +220,7 @@ def get_haresource_output(resource_id: pulumi.Input[Optional[_builtins.str]] = N
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('proxmoxve:index/getHaresource:getHaresource', __args__, opts=opts, typ=GetHaresourceResult)
     return __ret__.apply(lambda __response__: GetHaresourceResult(
+        auto_rebalance=pulumi.get(__response__, 'auto_rebalance'),
         comment=pulumi.get(__response__, 'comment'),
         failback=pulumi.get(__response__, 'failback'),
         group=pulumi.get(__response__, 'group'),

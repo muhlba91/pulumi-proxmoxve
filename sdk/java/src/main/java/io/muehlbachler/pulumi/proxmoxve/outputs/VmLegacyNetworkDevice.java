@@ -27,11 +27,10 @@ public final class VmLegacyNetworkDevice {
     /**
      * @return Whether to enable the network device (defaults to `true`). Remove the `networkDevice` block from your configuration instead of setting `enabled = false`.
      * 
-     * @deprecated
-     * The `enabled` attribute is deprecated and will be removed in a future release. Remove the `networkDevice` block from your configuration instead of setting `enabled = false`.
+     * @deprecated The `enabled` attribute is deprecated and will be removed in a future release. Remove the `networkDevice` block from your configuration instead of setting `enabled = false`.
      * 
      */
-    @Deprecated /* The `enabled` attribute is deprecated and will be removed in a future release. Remove the `networkDevice` block from your configuration instead of setting `enabled = false`. */
+    @Deprecated
     private @Nullable Boolean enabled;
     /**
      * @return Whether this interface&#39;s firewall rules should be used (defaults to `false`).
@@ -94,11 +93,10 @@ public final class VmLegacyNetworkDevice {
     /**
      * @return Whether to enable the network device (defaults to `true`). Remove the `networkDevice` block from your configuration instead of setting `enabled = false`.
      * 
-     * @deprecated
-     * The `enabled` attribute is deprecated and will be removed in a future release. Remove the `networkDevice` block from your configuration instead of setting `enabled = false`.
+     * @deprecated The `enabled` attribute is deprecated and will be removed in a future release. Remove the `networkDevice` block from your configuration instead of setting `enabled = false`.
      * 
      */
-    @Deprecated /* The `enabled` attribute is deprecated and will be removed in a future release. Remove the `networkDevice` block from your configuration instead of setting `enabled = false`. */
+    @Deprecated
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }

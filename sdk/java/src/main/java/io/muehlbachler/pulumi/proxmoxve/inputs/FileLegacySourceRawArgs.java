@@ -33,14 +33,16 @@ public final class FileLegacySourceRawArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The file name.
+     * The file name. Must be a plain file name without
+     * path separators or whitespace.
      * 
      */
     @Import(name="fileName", required=true)
     private Output<String> fileName;
 
     /**
-     * @return The file name.
+     * @return The file name. Must be a plain file name without
+     * path separators or whitespace.
      * 
      */
     public Output<String> fileName() {
@@ -110,7 +112,8 @@ public final class FileLegacySourceRawArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param fileName The file name.
+         * @param fileName The file name. Must be a plain file name without
+         * path separators or whitespace.
          * 
          * @return builder
          * 
@@ -121,7 +124,8 @@ public final class FileLegacySourceRawArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param fileName The file name.
+         * @param fileName The file name. Must be a plain file name without
+         * path separators or whitespace.
          * 
          * @return builder
          * 

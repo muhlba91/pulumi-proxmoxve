@@ -51,6 +51,7 @@ import javax.annotation.Nullable;
  *             .state("started")
  *             .group("example")
  *             .comment("Managed by Pulumi")
+ *             .autoRebalance(true)
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(exampleProxmoxVirtualEnvironmentHagroup)
  *                 .build());
@@ -72,6 +73,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="proxmoxve:index/haresourceLegacy:HaresourceLegacy")
 public class HaresourceLegacy extends com.pulumi.resources.CustomResource {
+    /**
+     * Whether this HA resource may be migrated during automatic rebalancing (Proxmox VE 9.2+). Leave unset to use the cluster default.
+     * 
+     */
+    @Export(name="autoRebalance", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> autoRebalance;
+
+    /**
+     * @return Whether this HA resource may be migrated during automatic rebalancing (Proxmox VE 9.2+). Leave unset to use the cluster default.
+     * 
+     */
+    public Output<Optional<Boolean>> autoRebalance() {
+        return Codegen.optional(this.autoRebalance);
+    }
     /**
      * The comment associated with this resource.
      * 

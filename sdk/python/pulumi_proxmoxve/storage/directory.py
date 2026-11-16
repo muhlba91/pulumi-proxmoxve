@@ -558,6 +558,32 @@ class Directory(pulumi.CustomResource):
         __props__.__dict__["shared"] = shared
         return Directory(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            backups: pulumi.Input[Optional[Union['DirectoryBackupsArgs', 'DirectoryBackupsArgsDict', 'outputs.DirectoryBackups']]] = None,
+            contents: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            create_base_path: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_subdirs: pulumi.Input[Optional[_builtins.bool]] = None,
+            disable: pulumi.Input[Optional[_builtins.bool]] = None,
+            nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            path: pulumi.Input[Optional[_builtins.str]] = None,
+            preallocation: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+            shared: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["backups"] = backups
+        __props__["contents"] = contents
+        __props__["createBasePath"] = create_base_path
+        __props__["createSubdirs"] = create_subdirs
+        __props__["disable"] = disable
+        __props__["nodes"] = nodes
+        __props__["path"] = path
+        __props__["preallocation"] = preallocation
+        __props__["resourceId"] = resource_id
+        __props__["shared"] = shared
+        return pulumi.runtime.exists_resource(None, 'proxmoxve:storage/directory:Directory', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def backups(self) -> pulumi.Output[Optional['outputs.DirectoryBackups']]:

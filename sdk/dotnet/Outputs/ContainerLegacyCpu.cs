@@ -18,7 +18,11 @@ namespace Pulumi.ProxmoxVE.Outputs
         /// </summary>
         public readonly string? Architecture;
         /// <summary>
-        /// The number of CPU cores (defaults to `1`).
+        /// The number of CPU cores (between `1` and `8192`). When unset,
+        /// a new container has no `Cores` setting and can use all host cores, and a clone
+        /// keeps the value of its source. Removing the attribute keeps the current value, set
+        /// `0` to remove the setting from the container. Removing the whole `Cpu` block also
+        /// removes the setting, unless it is `1`.
         /// </summary>
         public readonly int? Cores;
         /// <summary>
@@ -27,7 +31,9 @@ namespace Pulumi.ProxmoxVE.Outputs
         public readonly double? Limit;
         /// <summary>
         /// The CPU units (between `1` and `500000`). When unset,
-        /// Proxmox applies its own default.
+        /// Proxmox applies its own default to a new container, and a clone keeps the value of
+        /// its source. Removing the attribute keeps the current value, removing the whole
+        /// `Cpu` block removes the setting from the container.
         /// </summary>
         public readonly int? Units;
 

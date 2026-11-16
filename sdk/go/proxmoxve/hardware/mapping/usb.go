@@ -122,6 +122,12 @@ func (UsbState) ElementType() reflect.Type {
 	return reflect.TypeOf((*usbState)(nil)).Elem()
 }
 
+// UsbExists checks whether an existing Usb resource with the given ID exists.
+func UsbExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UsbState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:hardware/mapping/usb:Usb", id, state, "", opts...)
+}
+
 type usbArgs struct {
 	// The comment of this USB hardware mapping.
 	Comment *string `pulumi:"comment"`

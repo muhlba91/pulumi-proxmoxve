@@ -14,29 +14,45 @@ namespace Pulumi.ProxmoxVE.Outputs
     public sealed class VmLegacyAgentWaitForIp
     {
         /// <summary>
+        /// Only addresses inside one of these CIDRs (e.g. `["10.0.0.0/8", "2001:db8::/64"]`) count when waiting. Setting this disables the default loopback/link-local address exclusion; the `Lo` interface is still skipped unless `Interfaces` is also set. Avoid catch-all CIDRs such as `0.0.0.0/0` or `::/0`: they also match link-local addresses, which can end the wait before the real address is assigned; use `Ipv4` or `Ipv6` to require a family instead. When `Ipv4` or `Ipv6` is `True`, at least one CIDR of that family is required.
+        /// </summary>
+        public readonly ImmutableArray<string> Cidrs;
+        /// <summary>
         /// Whether to disable waiting for the agent to report an IP address (defaults to `False`). Set to `True` to skip the IP lookup entirely, so the provider does not wait for the agent during `Refresh` and at the end of `Apply`. Useful when the guest agent is slow to start, not yet installed, or not running, to avoid blocking those operations. When disabled, `Ipv4Addresses`, `Ipv6Addresses`, and `NetworkInterfaceNames` are left empty.
         /// </summary>
         public readonly bool? Disabled;
         /// <summary>
-        /// Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `False`).
+        /// Only addresses on interfaces whose name fully matches one of these regular expressions (RE2, e.g. `["eth[0-9]+", "ens.*"]`) count when waiting. Setting this disables the default skip of the `Lo` interface; loopback/link-local addresses stay excluded unless `Cidrs` is also set.
+        /// 
+        /// When `WaitForIp` is not specified or both `Ipv4` and `Ipv6` are `False` (and `Disabled` is `False`), the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+        /// 
+        /// `Cidrs` and `Interfaces` are combined per address (an address must match both), and they cannot be used with `disabled = true`. They are useful to ignore addresses such as Docker's `Docker0` bridge, which would otherwise end the wait early. They only decide when waiting stops: `Ipv4Addresses`, `Ipv6Addresses` and `NetworkInterfaceNames` still list every address the agent reports. The wait also runs on every refresh, so a filter that never matches makes refresh wait for the full agent `Timeout` and then leaves those attributes and `MacAddresses` empty. On timeout, the warning reported by refresh lists each rejected address and the reason.
+        /// </summary>
+        public readonly ImmutableArray<string> Interfaces;
+        /// <summary>
+        /// Wait for at least one IPv4 address (non-loopback, non-link-local unless allowed by `Cidrs`) (defaults to `False`).
         /// </summary>
         public readonly bool? Ipv4;
         /// <summary>
-        /// Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `False`).
-        /// 
-        /// When `WaitForIp` is not specified or both `Ipv4` and `Ipv6` are `False` (and `Disabled` is `False`), the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+        /// Wait for at least one IPv6 address (non-loopback, non-link-local unless allowed by `Cidrs`) (defaults to `False`).
         /// </summary>
         public readonly bool? Ipv6;
 
         [OutputConstructor]
         private VmLegacyAgentWaitForIp(
+            ImmutableArray<string> cidrs,
+
             bool? disabled,
+
+            ImmutableArray<string> interfaces,
 
             bool? ipv4,
 
             bool? ipv6)
         {
+            Cidrs = cidrs;
             Disabled = disabled;
+            Interfaces = interfaces;
             Ipv4 = ipv4;
             Ipv6 = ipv6;
         }

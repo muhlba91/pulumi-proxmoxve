@@ -85,6 +85,15 @@ public final class VmLegacyCpu {
     /**
      * @return The emulated CPU type, it&#39;s recommended to
      * use `x86-64-v2-AES` (defaults to `qemu64`).
+     * Representative models include `host`, `qemu64`, `x86-64-v2-AES`,
+     * `EPYC-Genoa`, and `EPYC-Genoa-v2`. Model availability is validated by
+     * the target Proxmox VE version, which returns an error for an unknown
+     * model. See the
+     * [PVE administration guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings)
+     * for the models a release offers.
+     * - `custom-&lt;model&gt;` - Custom CPU model. `custom-&lt;model&gt;` names refer to
+     *   PVE custom model definitions in
+     *   `/etc/pve/virtual-guest/cpu-models.conf`.
      * 
      */
     private @Nullable String type;
@@ -181,6 +190,15 @@ public final class VmLegacyCpu {
     /**
      * @return The emulated CPU type, it&#39;s recommended to
      * use `x86-64-v2-AES` (defaults to `qemu64`).
+     * Representative models include `host`, `qemu64`, `x86-64-v2-AES`,
+     * `EPYC-Genoa`, and `EPYC-Genoa-v2`. Model availability is validated by
+     * the target Proxmox VE version, which returns an error for an unknown
+     * model. See the
+     * [PVE administration guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings)
+     * for the models a release offers.
+     * - `custom-&lt;model&gt;` - Custom CPU model. `custom-&lt;model&gt;` names refer to
+     *   PVE custom model definitions in
+     *   `/etc/pve/virtual-guest/cpu-models.conf`.
      * 
      */
     public Optional<String> type() {

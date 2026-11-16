@@ -68,6 +68,12 @@ func (ApplierState) ElementType() reflect.Type {
 	return reflect.TypeOf((*applierState)(nil)).Elem()
 }
 
+// ApplierExists checks whether an existing Applier resource with the given ID exists.
+func ApplierExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApplierState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:sdn/applier:Applier", id, state, "", opts...)
+}
+
 type applierArgs struct {
 	// Whether to apply SDN configuration on resource creation. Defaults to true.
 	OnCreate *bool `pulumi:"onCreate"`

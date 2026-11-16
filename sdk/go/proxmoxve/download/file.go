@@ -265,6 +265,12 @@ func (FileState) ElementType() reflect.Type {
 	return reflect.TypeOf((*fileState)(nil)).Elem()
 }
 
+// FileExists checks whether an existing File resource with the given ID exists.
+func FileExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FileState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:download/file:File", id, state, "", opts...)
+}
+
 type fileArgs struct {
 	// The expected checksum of the file.
 	Checksum *string `pulumi:"checksum"`

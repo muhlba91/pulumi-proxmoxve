@@ -36,11 +36,10 @@ public final class ContainerLegacyInitializationDnsArgs extends com.pulumi.resou
      * The `server` attribute is deprecated and will be removed in a future release. Please use
      * the `servers` attribute instead.
      * 
-     * @deprecated
-     * The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+     * @deprecated The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
      * 
      */
-    @Deprecated /* The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead. */
+    @Deprecated
     @Import(name="server")
     private @Nullable Output<String> server;
 
@@ -49,11 +48,10 @@ public final class ContainerLegacyInitializationDnsArgs extends com.pulumi.resou
      * The `server` attribute is deprecated and will be removed in a future release. Please use
      * the `servers` attribute instead.
      * 
-     * @deprecated
-     * The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+     * @deprecated The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
      * 
      */
-    @Deprecated /* The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead. */
+    @Deprecated
     public Optional<Output<String>> server() {
         return Optional.ofNullable(this.server);
     }
@@ -127,11 +125,10 @@ public final class ContainerLegacyInitializationDnsArgs extends com.pulumi.resou
          * 
          * @return builder
          * 
-         * @deprecated
-         * The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+         * @deprecated The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
          * 
          */
-        @Deprecated /* The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead. */
+        @Deprecated
         public Builder server(@Nullable Output<String> server) {
             $.server = server;
             return this;
@@ -144,11 +141,10 @@ public final class ContainerLegacyInitializationDnsArgs extends com.pulumi.resou
          * 
          * @return builder
          * 
-         * @deprecated
-         * The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+         * @deprecated The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
          * 
          */
-        @Deprecated /* The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead. */
+        @Deprecated
         public Builder server(String server) {
             return server(Output.of(server));
         }

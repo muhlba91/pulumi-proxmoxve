@@ -44,6 +44,10 @@ export interface GetHaresourceArgs {
  */
 export interface GetHaresourceResult {
     /**
+     * Whether this HA resource may be migrated during automatic rebalancing (PVE 9.2+).
+     */
+    readonly autoRebalance: boolean;
+    /**
      * The comment associated with this resource.
      */
     readonly comment: string;

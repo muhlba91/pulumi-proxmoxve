@@ -37,7 +37,9 @@ public final class ContainerLegacyInitialization {
      */
     private @Nullable List<ContainerLegacyInitializationIpConfig> ipConfigs;
     /**
-     * @return The user account configuration.
+     * @return The user account configuration. It only applies when the
+     * container is created, not when it is cloned: a cloned container keeps the SSH keys and
+     * root password of its source container, and a warning is shown if this block is set.
      * 
      */
     private @Nullable ContainerLegacyInitializationUserAccount userAccount;
@@ -73,7 +75,9 @@ public final class ContainerLegacyInitialization {
         return this.ipConfigs == null ? List.of() : this.ipConfigs;
     }
     /**
-     * @return The user account configuration.
+     * @return The user account configuration. It only applies when the
+     * container is created, not when it is cloned: a cloned container keeps the SSH keys and
+     * root password of its source container, and a warning is shown if this block is set.
      * 
      */
     public Optional<ContainerLegacyInitializationUserAccount> userAccount() {

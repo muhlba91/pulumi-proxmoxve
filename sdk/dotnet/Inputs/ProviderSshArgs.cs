@@ -80,6 +80,12 @@ namespace Pulumi.ProxmoxVE.Inputs
             }
         }
 
+        /// <summary>
+        /// Whether to run API calls under `/nodes/{node}/` with a `root@pam` ticket minted on that node over SSH, so an API token can perform `root@pam`-only operations. Those calls then run as `root@pam`, bypassing the token's permissions. Requires an SSH connection as `Root`. Defaults to the value of the `PROXMOX_VE_SSH_ROOT_TICKET` environment variable, or `False` if not set.
+        /// </summary>
+        [Input("rootTicket")]
+        public Input<bool>? RootTicket { get; set; }
+
         [Input("socks5Password")]
         private Input<string>? _socks5Password;
 

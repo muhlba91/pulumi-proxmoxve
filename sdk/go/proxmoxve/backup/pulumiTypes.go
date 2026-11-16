@@ -328,6 +328,8 @@ func (o JobPerformancePtrOutput) PbsEntriesMax() pulumi.IntPtrOutput {
 type GetJobsJob struct {
 	// Indicates whether all VMs and CTs are backed up.
 	All bool `pulumi:"all"`
+	// Description of the backup job, shown in the Proxmox VE web UI.
+	Comment string `pulumi:"comment"`
 	// Compression algorithm used for the backup.
 	Compress string `pulumi:"compress"`
 	// Indicates whether the backup job is enabled.
@@ -346,6 +348,8 @@ type GetJobsJob struct {
 	Node string `pulumi:"node"`
 	// Template for backup notes.
 	NotesTemplate string `pulumi:"notesTemplate"`
+	// Notification mode of the job (`auto`, `legacy-sendmail` or `notification-system`).
+	NotificationMode string `pulumi:"notificationMode"`
 	// Pool whose members are backed up.
 	Pool string `pulumi:"pool"`
 	// Indicates whether backups created by this job are protected from pruning.
@@ -374,6 +378,8 @@ type GetJobsJobInput interface {
 type GetJobsJobArgs struct {
 	// Indicates whether all VMs and CTs are backed up.
 	All pulumi.BoolInput `pulumi:"all"`
+	// Description of the backup job, shown in the Proxmox VE web UI.
+	Comment pulumi.StringInput `pulumi:"comment"`
 	// Compression algorithm used for the backup.
 	Compress pulumi.StringInput `pulumi:"compress"`
 	// Indicates whether the backup job is enabled.
@@ -392,6 +398,8 @@ type GetJobsJobArgs struct {
 	Node pulumi.StringInput `pulumi:"node"`
 	// Template for backup notes.
 	NotesTemplate pulumi.StringInput `pulumi:"notesTemplate"`
+	// Notification mode of the job (`auto`, `legacy-sendmail` or `notification-system`).
+	NotificationMode pulumi.StringInput `pulumi:"notificationMode"`
 	// Pool whose members are backed up.
 	Pool pulumi.StringInput `pulumi:"pool"`
 	// Indicates whether backups created by this job are protected from pruning.
@@ -462,6 +470,11 @@ func (o GetJobsJobOutput) All() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetJobsJob) bool { return v.All }).(pulumi.BoolOutput)
 }
 
+// Description of the backup job, shown in the Proxmox VE web UI.
+func (o GetJobsJobOutput) Comment() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobsJob) string { return v.Comment }).(pulumi.StringOutput)
+}
+
 // Compression algorithm used for the backup.
 func (o GetJobsJobOutput) Compress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobsJob) string { return v.Compress }).(pulumi.StringOutput)
@@ -505,6 +518,11 @@ func (o GetJobsJobOutput) Node() pulumi.StringOutput {
 // Template for backup notes.
 func (o GetJobsJobOutput) NotesTemplate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobsJob) string { return v.NotesTemplate }).(pulumi.StringOutput)
+}
+
+// Notification mode of the job (`auto`, `legacy-sendmail` or `notification-system`).
+func (o GetJobsJobOutput) NotificationMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetJobsJob) string { return v.NotificationMode }).(pulumi.StringOutput)
 }
 
 // Pool whose members are backed up.

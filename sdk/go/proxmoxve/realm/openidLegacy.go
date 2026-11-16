@@ -326,6 +326,12 @@ func (OpenidLegacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*openidLegacyState)(nil)).Elem()
 }
 
+// OpenidLegacyExists checks whether an existing OpenidLegacy resource with the given ID exists.
+func OpenidLegacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OpenidLegacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:realm/openidLegacy:OpenidLegacy", id, state, "", opts...)
+}
+
 type openidLegacyArgs struct {
 	// Authentication Context Class Reference values for the OpenID provider.
 	AcrValues *string `pulumi:"acrValues"`

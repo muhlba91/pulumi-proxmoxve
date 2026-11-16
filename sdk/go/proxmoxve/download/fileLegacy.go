@@ -267,6 +267,12 @@ func (FileLegacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*fileLegacyState)(nil)).Elem()
 }
 
+// FileLegacyExists checks whether an existing FileLegacy resource with the given ID exists.
+func FileLegacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FileLegacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:download/fileLegacy:FileLegacy", id, state, "", opts...)
+}
+
 type fileLegacyArgs struct {
 	// The expected checksum of the file.
 	Checksum *string `pulumi:"checksum"`

@@ -476,6 +476,28 @@ class Plugin(pulumi.CustomResource):
         __props__.__dict__["validation_delay"] = validation_delay
         return Plugin(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            api: pulumi.Input[Optional[_builtins.str]] = None,
+            data: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            data_wo: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            data_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
+            digest: pulumi.Input[Optional[_builtins.str]] = None,
+            disable: pulumi.Input[Optional[_builtins.bool]] = None,
+            plugin: pulumi.Input[Optional[_builtins.str]] = None,
+            validation_delay: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["api"] = api
+        __props__["data"] = data
+        __props__["dataWo"] = data_wo
+        __props__["dataWoVersion"] = data_wo_version
+        __props__["digest"] = digest
+        __props__["disable"] = disable
+        __props__["plugin"] = plugin
+        __props__["validationDelay"] = validation_delay
+        return pulumi.runtime.exists_resource(None, 'proxmoxve:acme/dns/plugin:Plugin', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def api(self) -> pulumi.Output[_builtins.str]:

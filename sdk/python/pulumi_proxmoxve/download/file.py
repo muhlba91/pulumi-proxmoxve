@@ -746,6 +746,38 @@ class File(pulumi.CustomResource):
         __props__.__dict__["verify"] = verify
         return File(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            checksum: pulumi.Input[Optional[_builtins.str]] = None,
+            checksum_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+            content_type: pulumi.Input[Optional[_builtins.str]] = None,
+            datastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+            decompression_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+            file_name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_name: pulumi.Input[Optional[_builtins.str]] = None,
+            overwrite: pulumi.Input[Optional[_builtins.bool]] = None,
+            overwrite_unmanaged: pulumi.Input[Optional[_builtins.bool]] = None,
+            size: pulumi.Input[Optional[_builtins.int]] = None,
+            upload_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            verify: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["checksum"] = checksum
+        __props__["checksumAlgorithm"] = checksum_algorithm
+        __props__["contentType"] = content_type
+        __props__["datastoreId"] = datastore_id
+        __props__["decompressionAlgorithm"] = decompression_algorithm
+        __props__["fileName"] = file_name
+        __props__["nodeName"] = node_name
+        __props__["overwrite"] = overwrite
+        __props__["overwriteUnmanaged"] = overwrite_unmanaged
+        __props__["size"] = size
+        __props__["uploadTimeout"] = upload_timeout
+        __props__["url"] = url
+        __props__["verify"] = verify
+        return pulumi.runtime.exists_resource(None, 'proxmoxve:download/file:File', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def checksum(self) -> pulumi.Output[Optional[_builtins.str]]:

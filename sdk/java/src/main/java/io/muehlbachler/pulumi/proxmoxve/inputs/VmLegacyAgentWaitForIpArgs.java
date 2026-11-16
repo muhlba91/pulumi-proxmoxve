@@ -6,6 +6,8 @@ package io.muehlbachler.pulumi.proxmoxve.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,6 +16,21 @@ import javax.annotation.Nullable;
 public final class VmLegacyAgentWaitForIpArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final VmLegacyAgentWaitForIpArgs Empty = new VmLegacyAgentWaitForIpArgs();
+
+    /**
+     * Only addresses inside one of these CIDRs (e.g. `[&#34;10.0.0.0/8&#34;, &#34;2001:db8::/64&#34;]`) count when waiting. Setting this disables the default loopback/link-local address exclusion; the `lo` interface is still skipped unless `interfaces` is also set. Avoid catch-all CIDRs such as `0.0.0.0/0` or `::/0`: they also match link-local addresses, which can end the wait before the real address is assigned; use `ipv4` or `ipv6` to require a family instead. When `ipv4` or `ipv6` is `true`, at least one CIDR of that family is required.
+     * 
+     */
+    @Import(name="cidrs")
+    private @Nullable Output<List<String>> cidrs;
+
+    /**
+     * @return Only addresses inside one of these CIDRs (e.g. `[&#34;10.0.0.0/8&#34;, &#34;2001:db8::/64&#34;]`) count when waiting. Setting this disables the default loopback/link-local address exclusion; the `lo` interface is still skipped unless `interfaces` is also set. Avoid catch-all CIDRs such as `0.0.0.0/0` or `::/0`: they also match link-local addresses, which can end the wait before the real address is assigned; use `ipv4` or `ipv6` to require a family instead. When `ipv4` or `ipv6` is `true`, at least one CIDR of that family is required.
+     * 
+     */
+    public Optional<Output<List<String>>> cidrs() {
+        return Optional.ofNullable(this.cidrs);
+    }
 
     /**
      * Whether to disable waiting for the agent to report an IP address (defaults to `false`). Set to `true` to skip the IP lookup entirely, so the provider does not wait for the agent during `refresh` and at the end of `apply`. Useful when the guest agent is slow to start, not yet installed, or not running, to avoid blocking those operations. When disabled, `ipv4Addresses`, `ipv6Addresses`, and `networkInterfaceNames` are left empty.
@@ -31,14 +48,37 @@ public final class VmLegacyAgentWaitForIpArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
+     * Only addresses on interfaces whose name fully matches one of these regular expressions (RE2, e.g. `[&#34;eth[0-9]+&#34;, &#34;ens.*&#34;]`) count when waiting. Setting this disables the default skip of the `lo` interface; loopback/link-local addresses stay excluded unless `cidrs` is also set.
+     * 
+     * When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false` (and `disabled` is `false`), the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+     * 
+     * `cidrs` and `interfaces` are combined per address (an address must match both), and they cannot be used with `disabled = true`. They are useful to ignore addresses such as Docker&#39;s `docker0` bridge, which would otherwise end the wait early. They only decide when waiting stops: `ipv4Addresses`, `ipv6Addresses` and `networkInterfaceNames` still list every address the agent reports. The wait also runs on every refresh, so a filter that never matches makes refresh wait for the full agent `timeout` and then leaves those attributes and `macAddresses` empty. On timeout, the warning reported by refresh lists each rejected address and the reason.
+     * 
+     */
+    @Import(name="interfaces")
+    private @Nullable Output<List<String>> interfaces;
+
+    /**
+     * @return Only addresses on interfaces whose name fully matches one of these regular expressions (RE2, e.g. `[&#34;eth[0-9]+&#34;, &#34;ens.*&#34;]`) count when waiting. Setting this disables the default skip of the `lo` interface; loopback/link-local addresses stay excluded unless `cidrs` is also set.
+     * 
+     * When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false` (and `disabled` is `false`), the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+     * 
+     * `cidrs` and `interfaces` are combined per address (an address must match both), and they cannot be used with `disabled = true`. They are useful to ignore addresses such as Docker&#39;s `docker0` bridge, which would otherwise end the wait early. They only decide when waiting stops: `ipv4Addresses`, `ipv6Addresses` and `networkInterfaceNames` still list every address the agent reports. The wait also runs on every refresh, so a filter that never matches makes refresh wait for the full agent `timeout` and then leaves those attributes and `macAddresses` empty. On timeout, the warning reported by refresh lists each rejected address and the reason.
+     * 
+     */
+    public Optional<Output<List<String>>> interfaces() {
+        return Optional.ofNullable(this.interfaces);
+    }
+
+    /**
+     * Wait for at least one IPv4 address (non-loopback, non-link-local unless allowed by `cidrs`) (defaults to `false`).
      * 
      */
     @Import(name="ipv4")
     private @Nullable Output<Boolean> ipv4;
 
     /**
-     * @return Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
+     * @return Wait for at least one IPv4 address (non-loopback, non-link-local unless allowed by `cidrs`) (defaults to `false`).
      * 
      */
     public Optional<Output<Boolean>> ipv4() {
@@ -46,18 +86,14 @@ public final class VmLegacyAgentWaitForIpArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
-     * 
-     * When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false` (and `disabled` is `false`), the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+     * Wait for at least one IPv6 address (non-loopback, non-link-local unless allowed by `cidrs`) (defaults to `false`).
      * 
      */
     @Import(name="ipv6")
     private @Nullable Output<Boolean> ipv6;
 
     /**
-     * @return Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
-     * 
-     * When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false` (and `disabled` is `false`), the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+     * @return Wait for at least one IPv6 address (non-loopback, non-link-local unless allowed by `cidrs`) (defaults to `false`).
      * 
      */
     public Optional<Output<Boolean>> ipv6() {
@@ -67,7 +103,9 @@ public final class VmLegacyAgentWaitForIpArgs extends com.pulumi.resources.Resou
     private VmLegacyAgentWaitForIpArgs() {}
 
     private VmLegacyAgentWaitForIpArgs(VmLegacyAgentWaitForIpArgs $) {
+        this.cidrs = $.cidrs;
         this.disabled = $.disabled;
+        this.interfaces = $.interfaces;
         this.ipv4 = $.ipv4;
         this.ipv6 = $.ipv6;
     }
@@ -88,6 +126,37 @@ public final class VmLegacyAgentWaitForIpArgs extends com.pulumi.resources.Resou
 
         public Builder(VmLegacyAgentWaitForIpArgs defaults) {
             $ = new VmLegacyAgentWaitForIpArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param cidrs Only addresses inside one of these CIDRs (e.g. `[&#34;10.0.0.0/8&#34;, &#34;2001:db8::/64&#34;]`) count when waiting. Setting this disables the default loopback/link-local address exclusion; the `lo` interface is still skipped unless `interfaces` is also set. Avoid catch-all CIDRs such as `0.0.0.0/0` or `::/0`: they also match link-local addresses, which can end the wait before the real address is assigned; use `ipv4` or `ipv6` to require a family instead. When `ipv4` or `ipv6` is `true`, at least one CIDR of that family is required.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cidrs(@Nullable Output<List<String>> cidrs) {
+            $.cidrs = cidrs;
+            return this;
+        }
+
+        /**
+         * @param cidrs Only addresses inside one of these CIDRs (e.g. `[&#34;10.0.0.0/8&#34;, &#34;2001:db8::/64&#34;]`) count when waiting. Setting this disables the default loopback/link-local address exclusion; the `lo` interface is still skipped unless `interfaces` is also set. Avoid catch-all CIDRs such as `0.0.0.0/0` or `::/0`: they also match link-local addresses, which can end the wait before the real address is assigned; use `ipv4` or `ipv6` to require a family instead. When `ipv4` or `ipv6` is `true`, at least one CIDR of that family is required.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cidrs(List<String> cidrs) {
+            return cidrs(Output.of(cidrs));
+        }
+
+        /**
+         * @param cidrs Only addresses inside one of these CIDRs (e.g. `[&#34;10.0.0.0/8&#34;, &#34;2001:db8::/64&#34;]`) count when waiting. Setting this disables the default loopback/link-local address exclusion; the `lo` interface is still skipped unless `interfaces` is also set. Avoid catch-all CIDRs such as `0.0.0.0/0` or `::/0`: they also match link-local addresses, which can end the wait before the real address is assigned; use `ipv4` or `ipv6` to require a family instead. When `ipv4` or `ipv6` is `true`, at least one CIDR of that family is required.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cidrs(String... cidrs) {
+            return cidrs(List.of(cidrs));
         }
 
         /**
@@ -112,7 +181,50 @@ public final class VmLegacyAgentWaitForIpArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param ipv4 Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
+         * @param interfaces Only addresses on interfaces whose name fully matches one of these regular expressions (RE2, e.g. `[&#34;eth[0-9]+&#34;, &#34;ens.*&#34;]`) count when waiting. Setting this disables the default skip of the `lo` interface; loopback/link-local addresses stay excluded unless `cidrs` is also set.
+         * 
+         * When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false` (and `disabled` is `false`), the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+         * 
+         * `cidrs` and `interfaces` are combined per address (an address must match both), and they cannot be used with `disabled = true`. They are useful to ignore addresses such as Docker&#39;s `docker0` bridge, which would otherwise end the wait early. They only decide when waiting stops: `ipv4Addresses`, `ipv6Addresses` and `networkInterfaceNames` still list every address the agent reports. The wait also runs on every refresh, so a filter that never matches makes refresh wait for the full agent `timeout` and then leaves those attributes and `macAddresses` empty. On timeout, the warning reported by refresh lists each rejected address and the reason.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder interfaces(@Nullable Output<List<String>> interfaces) {
+            $.interfaces = interfaces;
+            return this;
+        }
+
+        /**
+         * @param interfaces Only addresses on interfaces whose name fully matches one of these regular expressions (RE2, e.g. `[&#34;eth[0-9]+&#34;, &#34;ens.*&#34;]`) count when waiting. Setting this disables the default skip of the `lo` interface; loopback/link-local addresses stay excluded unless `cidrs` is also set.
+         * 
+         * When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false` (and `disabled` is `false`), the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+         * 
+         * `cidrs` and `interfaces` are combined per address (an address must match both), and they cannot be used with `disabled = true`. They are useful to ignore addresses such as Docker&#39;s `docker0` bridge, which would otherwise end the wait early. They only decide when waiting stops: `ipv4Addresses`, `ipv6Addresses` and `networkInterfaceNames` still list every address the agent reports. The wait also runs on every refresh, so a filter that never matches makes refresh wait for the full agent `timeout` and then leaves those attributes and `macAddresses` empty. On timeout, the warning reported by refresh lists each rejected address and the reason.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder interfaces(List<String> interfaces) {
+            return interfaces(Output.of(interfaces));
+        }
+
+        /**
+         * @param interfaces Only addresses on interfaces whose name fully matches one of these regular expressions (RE2, e.g. `[&#34;eth[0-9]+&#34;, &#34;ens.*&#34;]`) count when waiting. Setting this disables the default skip of the `lo` interface; loopback/link-local addresses stay excluded unless `cidrs` is also set.
+         * 
+         * When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false` (and `disabled` is `false`), the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+         * 
+         * `cidrs` and `interfaces` are combined per address (an address must match both), and they cannot be used with `disabled = true`. They are useful to ignore addresses such as Docker&#39;s `docker0` bridge, which would otherwise end the wait early. They only decide when waiting stops: `ipv4Addresses`, `ipv6Addresses` and `networkInterfaceNames` still list every address the agent reports. The wait also runs on every refresh, so a filter that never matches makes refresh wait for the full agent `timeout` and then leaves those attributes and `macAddresses` empty. On timeout, the warning reported by refresh lists each rejected address and the reason.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder interfaces(String... interfaces) {
+            return interfaces(List.of(interfaces));
+        }
+
+        /**
+         * @param ipv4 Wait for at least one IPv4 address (non-loopback, non-link-local unless allowed by `cidrs`) (defaults to `false`).
          * 
          * @return builder
          * 
@@ -123,7 +235,7 @@ public final class VmLegacyAgentWaitForIpArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param ipv4 Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
+         * @param ipv4 Wait for at least one IPv4 address (non-loopback, non-link-local unless allowed by `cidrs`) (defaults to `false`).
          * 
          * @return builder
          * 
@@ -133,9 +245,7 @@ public final class VmLegacyAgentWaitForIpArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param ipv6 Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
-         * 
-         * When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false` (and `disabled` is `false`), the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+         * @param ipv6 Wait for at least one IPv6 address (non-loopback, non-link-local unless allowed by `cidrs`) (defaults to `false`).
          * 
          * @return builder
          * 
@@ -146,9 +256,7 @@ public final class VmLegacyAgentWaitForIpArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param ipv6 Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
-         * 
-         * When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false` (and `disabled` is `false`), the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+         * @param ipv6 Wait for at least one IPv6 address (non-loopback, non-link-local unless allowed by `cidrs`) (defaults to `false`).
          * 
          * @return builder
          * 

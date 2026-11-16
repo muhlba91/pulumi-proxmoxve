@@ -200,6 +200,21 @@ public final class BondArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
+     * 
+     */
+    @Import(name="reload")
+    private @Nullable Output<Boolean> reload;
+
+    /**
+     * @return Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
+     * 
+     */
+    public Optional<Output<Boolean>> reload() {
+        return Optional.ofNullable(this.reload);
+    }
+
+    /**
      * The interface bond slaves (member interfaces).
      * 
      */
@@ -244,6 +259,7 @@ public final class BondArgs extends com.pulumi.resources.ResourceArgs {
         this.mtu = $.mtu;
         this.name = $.name;
         this.nodeName = $.nodeName;
+        this.reload = $.reload;
         this.slaves = $.slaves;
         this.timeoutReload = $.timeoutReload;
     }
@@ -516,6 +532,27 @@ public final class BondArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder nodeName(String nodeName) {
             return nodeName(Output.of(nodeName));
+        }
+
+        /**
+         * @param reload Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reload(@Nullable Output<Boolean> reload) {
+            $.reload = reload;
+            return this;
+        }
+
+        /**
+         * @param reload Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `true`). When `false`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reload(Boolean reload) {
+            return reload(Output.of(reload));
         }
 
         /**

@@ -128,6 +128,12 @@ namespace Pulumi.ProxmoxVE.Network.Linux
         public Output<ImmutableArray<string>> Ports { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `True`). When `False`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
+        /// </summary>
+        [Output("reload")]
+        public Output<bool> Reload { get; private set; } = null!;
+
+        /// <summary>
         /// Timeout for network reload operations in seconds (defaults to `100`).
         /// </summary>
         [Output("timeoutReload")]
@@ -259,6 +265,12 @@ namespace Pulumi.ProxmoxVE.Network.Linux
         }
 
         /// <summary>
+        /// Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `True`). When `False`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
+        /// </summary>
+        [Input("reload")]
+        public Input<bool>? Reload { get; set; }
+
+        /// <summary>
         /// Timeout for network reload operations in seconds (defaults to `100`).
         /// </summary>
         [Input("timeoutReload")]
@@ -349,6 +361,12 @@ namespace Pulumi.ProxmoxVE.Network.Linux
             get => _ports ?? (_ports = new InputList<string>());
             set => _ports = value;
         }
+
+        /// <summary>
+        /// Whether to reload the node network configuration after this interface is created, updated or deleted (defaults to `True`). When `False`, the change is only staged on the node and takes effect on the next reload. Any reload on the node, including one triggered by another resource, applies all staged changes.
+        /// </summary>
+        [Input("reload")]
+        public Input<bool>? Reload { get; set; }
 
         /// <summary>
         /// Timeout for network reload operations in seconds (defaults to `100`).

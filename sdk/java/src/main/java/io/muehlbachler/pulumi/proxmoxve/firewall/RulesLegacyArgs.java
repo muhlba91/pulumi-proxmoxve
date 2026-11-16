@@ -19,14 +19,14 @@ public final class RulesLegacyArgs extends com.pulumi.resources.ResourceArgs {
     public static final RulesLegacyArgs Empty = new RulesLegacyArgs();
 
     /**
-     * Container ID. Leave empty for node/cluster level rules.
+     * Container ID. Leave empty for node/cluster level rules. Changing this value forces replacement.
      * 
      */
     @Import(name="containerId")
     private @Nullable Output<Integer> containerId;
 
     /**
-     * @return Container ID. Leave empty for node/cluster level rules.
+     * @return Container ID. Leave empty for node/cluster level rules. Changing this value forces replacement.
      * 
      */
     public Optional<Output<Integer>> containerId() {
@@ -34,14 +34,14 @@ public final class RulesLegacyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Node name. Leave empty for cluster level rules.
+     * Node name. Leave empty for cluster level rules. Changing it forces replacement of node/cluster level rules; for VM/container level rules it can change in place (e.g. after a migration).
      * 
      */
     @Import(name="nodeName")
     private @Nullable Output<String> nodeName;
 
     /**
-     * @return Node name. Leave empty for cluster level rules.
+     * @return Node name. Leave empty for cluster level rules. Changing it forces replacement of node/cluster level rules; for VM/container level rules it can change in place (e.g. after a migration).
      * 
      */
     public Optional<Output<String>> nodeName() {
@@ -68,14 +68,14 @@ public final class RulesLegacyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * VM ID. Leave empty for node/cluster level rules.
+     * VM ID. Leave empty for node/cluster level rules. Changing this value forces replacement.
      * 
      */
     @Import(name="vmId")
     private @Nullable Output<Integer> vmId;
 
     /**
-     * @return VM ID. Leave empty for node/cluster level rules.
+     * @return VM ID. Leave empty for node/cluster level rules. Changing this value forces replacement.
      * 
      */
     public Optional<Output<Integer>> vmId() {
@@ -110,7 +110,7 @@ public final class RulesLegacyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param containerId Container ID. Leave empty for node/cluster level rules.
+         * @param containerId Container ID. Leave empty for node/cluster level rules. Changing this value forces replacement.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class RulesLegacyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param containerId Container ID. Leave empty for node/cluster level rules.
+         * @param containerId Container ID. Leave empty for node/cluster level rules. Changing this value forces replacement.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class RulesLegacyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeName Node name. Leave empty for cluster level rules.
+         * @param nodeName Node name. Leave empty for cluster level rules. Changing it forces replacement of node/cluster level rules; for VM/container level rules it can change in place (e.g. after a migration).
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class RulesLegacyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeName Node name. Leave empty for cluster level rules.
+         * @param nodeName Node name. Leave empty for cluster level rules. Changing it forces replacement of node/cluster level rules; for VM/container level rules it can change in place (e.g. after a migration).
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class RulesLegacyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vmId VM ID. Leave empty for node/cluster level rules.
+         * @param vmId VM ID. Leave empty for node/cluster level rules. Changing this value forces replacement.
          * 
          * @return builder
          * 
@@ -200,7 +200,7 @@ public final class RulesLegacyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vmId VM ID. Leave empty for node/cluster level rules.
+         * @param vmId VM ID. Leave empty for node/cluster level rules. Changing this value forces replacement.
          * 
          * @return builder
          * 

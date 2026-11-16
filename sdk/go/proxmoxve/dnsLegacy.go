@@ -130,6 +130,12 @@ func (DnsLegacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dnsLegacyState)(nil)).Elem()
 }
 
+// DnsLegacyExists checks whether an existing DnsLegacy resource with the given ID exists.
+func DnsLegacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DnsLegacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:index/dnsLegacy:DnsLegacy", id, state, "", opts...)
+}
+
 type dnsLegacyArgs struct {
 	// The DNS search domain.
 	Domain string `pulumi:"domain"`

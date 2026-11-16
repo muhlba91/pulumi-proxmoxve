@@ -21,11 +21,10 @@ public final class VmLegacyCdromArgs extends com.pulumi.resources.ResourceArgs {
      * to `false`). *Deprecated*. The attribute will be removed in the next version of the provider.
      * Set `fileId` to `none` to leave the CD-ROM drive empty.
      * 
-     * @deprecated
-     * Remove this attribute&#39;s configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `fileId` to `none` to leave the CDROM drive empty.
+     * @deprecated Remove this attribute&#39;s configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `fileId` to `none` to leave the CDROM drive empty.
      * 
      */
-    @Deprecated /* Remove this attribute's configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `fileId` to `none` to leave the CDROM drive empty. */
+    @Deprecated
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
@@ -34,11 +33,10 @@ public final class VmLegacyCdromArgs extends com.pulumi.resources.ResourceArgs {
      * to `false`). *Deprecated*. The attribute will be removed in the next version of the provider.
      * Set `fileId` to `none` to leave the CD-ROM drive empty.
      * 
-     * @deprecated
-     * Remove this attribute&#39;s configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `fileId` to `none` to leave the CDROM drive empty.
+     * @deprecated Remove this attribute&#39;s configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `fileId` to `none` to leave the CDROM drive empty.
      * 
      */
-    @Deprecated /* Remove this attribute's configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `fileId` to `none` to leave the CDROM drive empty. */
+    @Deprecated
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -112,11 +110,10 @@ public final class VmLegacyCdromArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Remove this attribute&#39;s configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `fileId` to `none` to leave the CDROM drive empty.
+         * @deprecated Remove this attribute&#39;s configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `fileId` to `none` to leave the CDROM drive empty.
          * 
          */
-        @Deprecated /* Remove this attribute's configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `fileId` to `none` to leave the CDROM drive empty. */
+        @Deprecated
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
@@ -129,11 +126,10 @@ public final class VmLegacyCdromArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Remove this attribute&#39;s configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `fileId` to `none` to leave the CDROM drive empty.
+         * @deprecated Remove this attribute&#39;s configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `fileId` to `none` to leave the CDROM drive empty.
          * 
          */
-        @Deprecated /* Remove this attribute's configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `fileId` to `none` to leave the CDROM drive empty. */
+        @Deprecated
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }

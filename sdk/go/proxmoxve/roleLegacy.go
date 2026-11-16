@@ -112,6 +112,12 @@ func (RoleLegacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*roleLegacyState)(nil)).Elem()
 }
 
+// RoleLegacyExists checks whether an existing RoleLegacy resource with the given ID exists.
+func RoleLegacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RoleLegacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:index/roleLegacy:RoleLegacy", id, state, "", opts...)
+}
+
 type roleLegacyArgs struct {
 	// The role privileges.
 	Privileges []string `pulumi:"privileges"`

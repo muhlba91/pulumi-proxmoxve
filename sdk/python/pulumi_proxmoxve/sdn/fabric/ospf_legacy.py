@@ -230,6 +230,18 @@ class OspfLegacy(pulumi.CustomResource):
         __props__.__dict__["resource_id"] = resource_id
         return OspfLegacy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            area: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["area"] = area
+        __props__["ipPrefix"] = ip_prefix
+        __props__["resourceId"] = resource_id
+        return pulumi.runtime.exists_resource(None, 'proxmoxve:sdn/fabric/ospfLegacy:OspfLegacy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def area(self) -> pulumi.Output[_builtins.str]:

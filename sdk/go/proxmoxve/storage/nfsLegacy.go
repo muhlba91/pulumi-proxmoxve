@@ -198,6 +198,12 @@ func (NfsLegacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*nfsLegacyState)(nil)).Elem()
 }
 
+// NfsLegacyExists checks whether an existing NfsLegacy resource with the given ID exists.
+func NfsLegacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NfsLegacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:storage/nfsLegacy:NfsLegacy", id, state, "", opts...)
+}
+
 type nfsLegacyArgs struct {
 	// Configure backup retention settings for the storage type.
 	Backups *NfsLegacyBackups `pulumi:"backups"`

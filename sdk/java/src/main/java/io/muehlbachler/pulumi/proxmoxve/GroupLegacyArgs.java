@@ -22,11 +22,10 @@ public final class GroupLegacyArgs extends com.pulumi.resources.ResourceArgs {
      * The access control list (multiple blocks supported). Use
      * `proxmoxve.Acl` instead.
      * 
-     * @deprecated
-     * Manage ACLs via the dedicated `proxmoxve.Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing groups with `acl` blocks continue to work, but new code should use `proxmoxve.Acl`.
+     * @deprecated Manage ACLs via the dedicated `proxmoxve.Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing groups with `acl` blocks continue to work, but new code should use `proxmoxve.Acl`.
      * 
      */
-    @Deprecated /* Manage ACLs via the dedicated `proxmoxve.Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing groups with `acl` blocks continue to work, but new code should use `proxmoxve.Acl`. */
+    @Deprecated
     @Import(name="acls")
     private @Nullable Output<List<GroupLegacyAclArgs>> acls;
 
@@ -34,11 +33,10 @@ public final class GroupLegacyArgs extends com.pulumi.resources.ResourceArgs {
      * @return The access control list (multiple blocks supported). Use
      * `proxmoxve.Acl` instead.
      * 
-     * @deprecated
-     * Manage ACLs via the dedicated `proxmoxve.Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing groups with `acl` blocks continue to work, but new code should use `proxmoxve.Acl`.
+     * @deprecated Manage ACLs via the dedicated `proxmoxve.Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing groups with `acl` blocks continue to work, but new code should use `proxmoxve.Acl`.
      * 
      */
-    @Deprecated /* Manage ACLs via the dedicated `proxmoxve.Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing groups with `acl` blocks continue to work, but new code should use `proxmoxve.Acl`. */
+    @Deprecated
     public Optional<Output<List<GroupLegacyAclArgs>>> acls() {
         return Optional.ofNullable(this.acls);
     }
@@ -105,11 +103,10 @@ public final class GroupLegacyArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Manage ACLs via the dedicated `proxmoxve.Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing groups with `acl` blocks continue to work, but new code should use `proxmoxve.Acl`.
+         * @deprecated Manage ACLs via the dedicated `proxmoxve.Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing groups with `acl` blocks continue to work, but new code should use `proxmoxve.Acl`.
          * 
          */
-        @Deprecated /* Manage ACLs via the dedicated `proxmoxve.Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing groups with `acl` blocks continue to work, but new code should use `proxmoxve.Acl`. */
+        @Deprecated
         public Builder acls(@Nullable Output<List<GroupLegacyAclArgs>> acls) {
             $.acls = acls;
             return this;
@@ -121,11 +118,10 @@ public final class GroupLegacyArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Manage ACLs via the dedicated `proxmoxve.Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing groups with `acl` blocks continue to work, but new code should use `proxmoxve.Acl`.
+         * @deprecated Manage ACLs via the dedicated `proxmoxve.Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing groups with `acl` blocks continue to work, but new code should use `proxmoxve.Acl`.
          * 
          */
-        @Deprecated /* Manage ACLs via the dedicated `proxmoxve.Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing groups with `acl` blocks continue to work, but new code should use `proxmoxve.Acl`. */
+        @Deprecated
         public Builder acls(List<GroupLegacyAclArgs> acls) {
             return acls(Output.of(acls));
         }
@@ -136,11 +132,10 @@ public final class GroupLegacyArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Manage ACLs via the dedicated `proxmoxve.Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing groups with `acl` blocks continue to work, but new code should use `proxmoxve.Acl`.
+         * @deprecated Manage ACLs via the dedicated `proxmoxve.Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing groups with `acl` blocks continue to work, but new code should use `proxmoxve.Acl`.
          * 
          */
-        @Deprecated /* Manage ACLs via the dedicated `proxmoxve.Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing groups with `acl` blocks continue to work, but new code should use `proxmoxve.Acl`. */
+        @Deprecated
         public Builder acls(GroupLegacyAclArgs... acls) {
             return acls(List.of(acls));
         }

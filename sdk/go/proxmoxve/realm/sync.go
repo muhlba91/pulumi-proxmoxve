@@ -180,6 +180,12 @@ func (SyncState) ElementType() reflect.Type {
 	return reflect.TypeOf((*syncState)(nil)).Elem()
 }
 
+// SyncExists checks whether an existing Sync resource with the given ID exists.
+func SyncExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SyncState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:realm/sync:Sync", id, state, "", opts...)
+}
+
 type syncArgs struct {
 	// Only simulate the sync without applying changes.
 	DryRun *bool `pulumi:"dryRun"`

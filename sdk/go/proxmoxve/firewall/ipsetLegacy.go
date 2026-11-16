@@ -63,28 +63,34 @@ import (
 // ## Import
 //
 // ### Cluster IPSet
+//
 // Use the import ID: `cluster/<ipset_name>`
 // Example uses ipset name `localNetwork`.
 //
 // **Example:**
+//
 // ```sh
 // $ pulumi import proxmoxve:firewall/ipsetLegacy:IpsetLegacy cluster_ipset cluster/local_network
 // ```
 //
 // ### VM IPSet
+//
 // Use the import ID format: `vm/<node_name>/<vm_id>/<ipset_name>`
 // Example uses node name `pve` and VM ID `100` and ipset name `localNetwork`.
 //
 // **Example:**
+//
 // ```sh
 // $ pulumi import proxmoxve:firewall/ipsetLegacy:IpsetLegacy vm_ipset vm/pve/100/local_network
 // ```
 //
 // ### Container IPSet
+//
 // Use the import ID format: `container/<node_name>/<container_id>/<ipset_name>`
 // Example uses node name `pve` and container ID `100` and ipset name `localNetwork`.
 //
 // **Example:**
+//
 // ```sh
 // $ pulumi import proxmoxve:firewall/ipsetLegacy:IpsetLegacy container_ipset container/pve/100/local_network
 // ```
@@ -95,13 +101,13 @@ type IpsetLegacy struct {
 	Cidrs IpsetLegacyCidrArrayOutput `pulumi:"cidrs"`
 	// IPSet comment.
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
-	// Container ID. Leave empty for cluster level ipsets.
+	// Container ID. Leave empty for cluster level ipsets. Changing this value forces replacement.
 	ContainerId pulumi.IntPtrOutput `pulumi:"containerId"`
 	// IPSet name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Node name. Leave empty for cluster level ipsets.
+	// Node name. Leave empty for cluster level ipsets. Changing it forces replacement unless `vmId` or `containerId` is set, so it can change in place after a migration.
 	NodeName pulumi.StringPtrOutput `pulumi:"nodeName"`
-	// VM ID. Leave empty for cluster level ipsets.
+	// VM ID. Leave empty for cluster level ipsets. Changing this value forces replacement.
 	VmId pulumi.IntPtrOutput `pulumi:"vmId"`
 }
 
@@ -139,13 +145,13 @@ type ipsetLegacyState struct {
 	Cidrs []IpsetLegacyCidr `pulumi:"cidrs"`
 	// IPSet comment.
 	Comment *string `pulumi:"comment"`
-	// Container ID. Leave empty for cluster level ipsets.
+	// Container ID. Leave empty for cluster level ipsets. Changing this value forces replacement.
 	ContainerId *int `pulumi:"containerId"`
 	// IPSet name.
 	Name *string `pulumi:"name"`
-	// Node name. Leave empty for cluster level ipsets.
+	// Node name. Leave empty for cluster level ipsets. Changing it forces replacement unless `vmId` or `containerId` is set, so it can change in place after a migration.
 	NodeName *string `pulumi:"nodeName"`
-	// VM ID. Leave empty for cluster level ipsets.
+	// VM ID. Leave empty for cluster level ipsets. Changing this value forces replacement.
 	VmId *int `pulumi:"vmId"`
 }
 
@@ -154,13 +160,13 @@ type IpsetLegacyState struct {
 	Cidrs IpsetLegacyCidrArrayInput
 	// IPSet comment.
 	Comment pulumi.StringPtrInput
-	// Container ID. Leave empty for cluster level ipsets.
+	// Container ID. Leave empty for cluster level ipsets. Changing this value forces replacement.
 	ContainerId pulumi.IntPtrInput
 	// IPSet name.
 	Name pulumi.StringPtrInput
-	// Node name. Leave empty for cluster level ipsets.
+	// Node name. Leave empty for cluster level ipsets. Changing it forces replacement unless `vmId` or `containerId` is set, so it can change in place after a migration.
 	NodeName pulumi.StringPtrInput
-	// VM ID. Leave empty for cluster level ipsets.
+	// VM ID. Leave empty for cluster level ipsets. Changing this value forces replacement.
 	VmId pulumi.IntPtrInput
 }
 
@@ -168,18 +174,24 @@ func (IpsetLegacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ipsetLegacyState)(nil)).Elem()
 }
 
+// IpsetLegacyExists checks whether an existing IpsetLegacy resource with the given ID exists.
+func IpsetLegacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IpsetLegacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:firewall/ipsetLegacy:IpsetLegacy", id, state, "", opts...)
+}
+
 type ipsetLegacyArgs struct {
 	// IP/CIDR block (multiple blocks supported).
 	Cidrs []IpsetLegacyCidr `pulumi:"cidrs"`
 	// IPSet comment.
 	Comment *string `pulumi:"comment"`
-	// Container ID. Leave empty for cluster level ipsets.
+	// Container ID. Leave empty for cluster level ipsets. Changing this value forces replacement.
 	ContainerId *int `pulumi:"containerId"`
 	// IPSet name.
 	Name *string `pulumi:"name"`
-	// Node name. Leave empty for cluster level ipsets.
+	// Node name. Leave empty for cluster level ipsets. Changing it forces replacement unless `vmId` or `containerId` is set, so it can change in place after a migration.
 	NodeName *string `pulumi:"nodeName"`
-	// VM ID. Leave empty for cluster level ipsets.
+	// VM ID. Leave empty for cluster level ipsets. Changing this value forces replacement.
 	VmId *int `pulumi:"vmId"`
 }
 
@@ -189,13 +201,13 @@ type IpsetLegacyArgs struct {
 	Cidrs IpsetLegacyCidrArrayInput
 	// IPSet comment.
 	Comment pulumi.StringPtrInput
-	// Container ID. Leave empty for cluster level ipsets.
+	// Container ID. Leave empty for cluster level ipsets. Changing this value forces replacement.
 	ContainerId pulumi.IntPtrInput
 	// IPSet name.
 	Name pulumi.StringPtrInput
-	// Node name. Leave empty for cluster level ipsets.
+	// Node name. Leave empty for cluster level ipsets. Changing it forces replacement unless `vmId` or `containerId` is set, so it can change in place after a migration.
 	NodeName pulumi.StringPtrInput
-	// VM ID. Leave empty for cluster level ipsets.
+	// VM ID. Leave empty for cluster level ipsets. Changing this value forces replacement.
 	VmId pulumi.IntPtrInput
 }
 
@@ -296,7 +308,7 @@ func (o IpsetLegacyOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IpsetLegacy) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
-// Container ID. Leave empty for cluster level ipsets.
+// Container ID. Leave empty for cluster level ipsets. Changing this value forces replacement.
 func (o IpsetLegacyOutput) ContainerId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *IpsetLegacy) pulumi.IntPtrOutput { return v.ContainerId }).(pulumi.IntPtrOutput)
 }
@@ -306,12 +318,12 @@ func (o IpsetLegacyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *IpsetLegacy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Node name. Leave empty for cluster level ipsets.
+// Node name. Leave empty for cluster level ipsets. Changing it forces replacement unless `vmId` or `containerId` is set, so it can change in place after a migration.
 func (o IpsetLegacyOutput) NodeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IpsetLegacy) pulumi.StringPtrOutput { return v.NodeName }).(pulumi.StringPtrOutput)
 }
 
-// VM ID. Leave empty for cluster level ipsets.
+// VM ID. Leave empty for cluster level ipsets. Changing this value forces replacement.
 func (o IpsetLegacyOutput) VmId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *IpsetLegacy) pulumi.IntPtrOutput { return v.VmId }).(pulumi.IntPtrOutput)
 }

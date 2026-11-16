@@ -312,13 +312,13 @@ import javax.annotation.Nullable;
  * When cloning an existing virtual machine, whether it&#39;s a template or not, the
  * resource will inherit the disks and other configuration from the source VM.
  * 
- * *If* you modify any attributes of an existing disk in the clone, you also need to\
- * explicitly provide values for any other attributes that differ from the schema defaults\
- * in the source (e.g., `size`, `discard`, `cache`, `aio`).\
+ * *If* you modify any attributes of an existing disk in the clone, you also need to&#92;
+ * explicitly provide values for any other attributes that differ from the schema defaults&#92;
+ * in the source (e.g., `size`, `discard`, `cache`, `aio`).&#92;
  * Otherwise, the schema defaults will take effect and override the source values.
  * 
  * Furthermore, when cloning from one node to a different one, the behavior changes
- * depening on the datastores of the source VM. If at least one non-shared
+ * depending on the datastores of the source VM. If at least one non-shared
  * datastore is used, the VM is first cloned to the source node before being
  * migrated to the target node. This circumvents a limitation in the Proxmox clone
  * API.
@@ -600,14 +600,14 @@ public class VmLegacy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.efiDisk);
     }
     /**
-     * The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
+     * The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute). When cloning a VM, the hookscript is inherited from the template unless this attribute is explicitly set. Note that setting or changing a hookscript requires a direct `root{@literal @}pam` password session; API tokens (including one issued for `root{@literal @}pam`) are rejected by Proxmox with &#34;only root can set &#39;hookscript&#39; config&#34;.
      * 
      */
     @Export(name="hookScriptFileId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> hookScriptFileId;
 
     /**
-     * @return The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
+     * @return The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute). When cloning a VM, the hookscript is inherited from the template unless this attribute is explicitly set. Note that setting or changing a hookscript requires a direct `root{@literal @}pam` password session; API tokens (including one issued for `root{@literal @}pam`) are rejected by Proxmox with &#34;only root can set &#39;hookscript&#39; config&#34;.
      * 
      */
     public Output<Optional<String>> hookScriptFileId() {
@@ -1182,11 +1182,10 @@ public class VmLegacy extends com.pulumi.resources.CustomResource {
     /**
      * Disk move timeout
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeoutClone / timeout_migrate) is used instead.
+     * @deprecated This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeoutClone / timeout_migrate) is used instead.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeoutClone / timeout_migrate) is used instead. */
+    @Deprecated
     @Export(name="timeoutMoveDisk", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> timeoutMoveDisk;
 
@@ -1282,14 +1281,18 @@ public class VmLegacy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tpmState);
     }
     /**
-     * A host USB device mapping (multiple blocks supported).
+     * A host USB device mapping (multiple blocks supported, up to 14).
+     * Proxmox VE only starts a VM with `usb5` and up on machine type &gt;= 7.1 with
+     * an `l26` or Windows &gt; 7 `operatingSystem`.
      * 
      */
     @Export(name="usbs", refs={List.class,VmLegacyUsb.class}, tree="[0,1]")
     private Output</* @Nullable */ List<VmLegacyUsb>> usbs;
 
     /**
-     * @return A host USB device mapping (multiple blocks supported).
+     * @return A host USB device mapping (multiple blocks supported, up to 14).
+     * Proxmox VE only starts a VM with `usb5` and up on machine type &gt;= 7.1 with
+     * an `l26` or Windows &gt; 7 `operatingSystem`.
      * 
      */
     public Output<Optional<List<VmLegacyUsb>>> usbs() {

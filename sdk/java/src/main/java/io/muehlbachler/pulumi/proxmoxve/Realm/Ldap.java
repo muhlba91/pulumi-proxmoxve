@@ -473,11 +473,10 @@ public class Ldap extends com.pulumi.resources.CustomResource {
     /**
      * Use LDAPS (LDAP over SSL/TLS) instead of plain LDAP.
      * 
-     * @deprecated
-     * Deprecated by Proxmox: use mode instead.
+     * @deprecated Deprecated by Proxmox: use mode instead.
      * 
      */
-    @Deprecated /* Deprecated by Proxmox: use mode instead. */
+    @Deprecated
     @Export(name="secure", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> secure;
 

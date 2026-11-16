@@ -5,10 +5,20 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export { BgpArgs, BgpState } from "./bgp";
+export type Bgp = import("./bgp").Bgp;
+export const Bgp: typeof import("./bgp").Bgp = null as any;
+utilities.lazyLoad(exports, ["Bgp"], () => require("./bgp"));
+
 export { EvpnArgs, EvpnState } from "./evpn";
 export type Evpn = import("./evpn").Evpn;
 export const Evpn: typeof import("./evpn").Evpn = null as any;
 utilities.lazyLoad(exports, ["Evpn"], () => require("./evpn"));
+
+export { GetBgpArgs, GetBgpResult, GetBgpOutputArgs } from "./getBgp";
+export const getBgp: typeof import("./getBgp").getBgp = null as any;
+export const getBgpOutput: typeof import("./getBgp").getBgpOutput = null as any;
+utilities.lazyLoad(exports, ["getBgp","getBgpOutput"], () => require("./getBgp"));
 
 export { GetEvpnArgs, GetEvpnResult, GetEvpnOutputArgs } from "./getEvpn";
 export const getEvpn: typeof import("./getEvpn").getEvpn = null as any;
@@ -20,6 +30,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "proxmoxve:sdn/controller/bgp:Bgp":
+                return new Bgp(name, <any>undefined, { urn })
             case "proxmoxve:sdn/controller/evpn:Evpn":
                 return new Evpn(name, <any>undefined, { urn })
             default:
@@ -27,4 +39,5 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("proxmoxve", "sdn/controller/bgp", _module)
 pulumi.runtime.registerResourceModule("proxmoxve", "sdn/controller/evpn", _module)

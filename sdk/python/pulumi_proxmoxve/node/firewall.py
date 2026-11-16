@@ -635,6 +635,36 @@ class Firewall(pulumi.CustomResource):
         __props__.__dict__["tcp_flags_log_level"] = tcp_flags_log_level
         return Firewall(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            log_level_forward: pulumi.Input[Optional[_builtins.str]] = None,
+            log_level_in: pulumi.Input[Optional[_builtins.str]] = None,
+            log_level_out: pulumi.Input[Optional[_builtins.str]] = None,
+            ndp: pulumi.Input[Optional[_builtins.bool]] = None,
+            nf_conntrack_max: pulumi.Input[Optional[_builtins.int]] = None,
+            nf_conntrack_tcp_timeout_established: pulumi.Input[Optional[_builtins.int]] = None,
+            nftables: pulumi.Input[Optional[_builtins.bool]] = None,
+            node_name: pulumi.Input[Optional[_builtins.str]] = None,
+            nosmurfs: pulumi.Input[Optional[_builtins.bool]] = None,
+            smurf_log_level: pulumi.Input[Optional[_builtins.str]] = None,
+            tcp_flags_log_level: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["enabled"] = enabled
+        __props__["logLevelForward"] = log_level_forward
+        __props__["logLevelIn"] = log_level_in
+        __props__["logLevelOut"] = log_level_out
+        __props__["ndp"] = ndp
+        __props__["nfConntrackMax"] = nf_conntrack_max
+        __props__["nfConntrackTcpTimeoutEstablished"] = nf_conntrack_tcp_timeout_established
+        __props__["nftables"] = nftables
+        __props__["nodeName"] = node_name
+        __props__["nosmurfs"] = nosmurfs
+        __props__["smurfLogLevel"] = smurf_log_level
+        __props__["tcpFlagsLogLevel"] = tcp_flags_log_level
+        return pulumi.runtime.exists_resource(None, 'proxmoxve:node/firewall:Firewall', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[_builtins.bool]:

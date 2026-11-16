@@ -237,6 +237,12 @@ func (CertificateLegacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*certificateLegacyState)(nil)).Elem()
 }
 
+// CertificateLegacyExists checks whether an existing CertificateLegacy resource with the given ID exists.
+func CertificateLegacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CertificateLegacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:acme/certificateLegacy:CertificateLegacy", id, state, "", opts...)
+}
+
 type certificateLegacyArgs struct {
 	// The ACME account name to use for ordering the certificate.
 	Account string `pulumi:"account"`

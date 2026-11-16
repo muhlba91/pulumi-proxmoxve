@@ -120,6 +120,12 @@ func (DirState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dirState)(nil)).Elem()
 }
 
+// DirExists checks whether an existing Dir resource with the given ID exists.
+func DirExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DirState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:hardware/mapping/dir:Dir", id, state, "", opts...)
+}
+
 type dirArgs struct {
 	// The comment of this directory mapping.
 	Comment *string `pulumi:"comment"`

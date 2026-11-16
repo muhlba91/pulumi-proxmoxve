@@ -153,6 +153,56 @@ import * as utilities from "./utilities";
  * | Storage ID + volume name   | Mount an existing volume by its full PVE volume ID       | `local-lvm:subvol-108-disk-101`    |
  * | Absolute host path         | Bind-mount a host directory (requires `root@pam` auth)   | `/mnt/bindmounts/shared`           |
  *
+ * ## Container migration
+ *
+ * Setting `migrate = true` makes a change to `nodeName` migrate the container instead of destroying and
+ * recreating it.
+ *
+ * > **Important:** containers cannot be migrated live. Unlike virtual machines, a running container is
+ * migrated by shutting it down, moving it, and starting it again on the target node, so every migration of
+ * a running container incurs downtime. Set `timeoutMigrate` high enough to cover the shutdown grace
+ * period, the volume copy and the boot.
+ *
+ * A stopped container is migrated offline and is not started as a side effect. If `started = true`, it is
+ * started on the target node afterwards as usual.
+ *
+ * If the same apply also makes any other configuration change — including ones that would not need a
+ * restart on their own, such as `tags` or `description` — or changes `idmap`, or sets `started` to `false`,
+ * the provider shuts the container down, migrates it offline, applies the change on the target node, and then
+ * starts it (or leaves it stopped). This avoids starting the container with stale configuration and
+ * restarting it twice.
+ *
+ * The `timeoutUpdate` clock restarts once the container has arrived on the target node, so a long volume
+ * copy cannot eat into the time available for the configuration write, start or reboot that follows it.
+ *
+ * Containers managed by Proxmox HA are set to the HA state `ignored` for the duration of the migration, so
+ * that HA does not intercept the shutdown, migration and start or relocate the container afterwards. Once the
+ * container is in its final run state on the target node, its original HA state is restored; if the apply
+ * changes `started`, a `started`, `stopped` or `disabled` HA state is restored to match it instead.
+ *
+ * Every migration needs `VM.Migrate` on the container and `Sys.Audit` on `/`, which the provider uses to check
+ * whether the container is HA-managed. Migrating an HA-managed container also needs `Sys.Console` on `/` to
+ * change its HA state.
+ *
+ * ### Bind mounts
+ *
+ * A `mountPoint` that references a host path rather than a storage volume blocks migration unless the
+ * mount point has `shared = true`. This asserts that the same path exists on all nodes in the cluster.
+ *
+ * > **Note:** `shared` and `nodeName` cannot be changed in the same apply. Proxmox validates the mount
+ * point against the container's current configuration when the migration starts, and the provider writes
+ * configuration changes to the target node after the move, so the migration is refused before the new
+ * `shared = true` takes effect. Apply `shared = true` first, then change `nodeName`.
+ *
+ * > **Warning:** if the asserted path does not exist on the target node, the configuration and volumes
+ * still move, but starting the container there fails. The container is left stopped on the target node and
+ * its configuration on the source node is gone — there is no automatic fail-back. Create the missing path
+ * on the target node, then start the container to recover.
+ *
+ * Migration behavior for `devicePassthrough` devices has not been verified. A device passed through to a
+ * container is node-local, so the same device should be expected to need to exist on the target node, but
+ * this has not been tested — do not assume it behaves like a `shared` bind mount.
+ *
  * ## Import
  *
  * Instances can be imported using the `nodeName` and the `vmId`, e.g.,
@@ -173,6 +223,17 @@ export class ContainerLegacy extends pulumi.CustomResource {
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ContainerLegacyState, opts?: pulumi.CustomResourceOptions): ContainerLegacy {
         return new ContainerLegacy(name, <any>state, { ...opts, id: id });
+    }
+
+    /**
+     * Check whether an existing ContainerLegacy resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: ContainerLegacyState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("proxmoxve:index/containerLegacy:ContainerLegacy", id, <any>state || {}, { ...opts }, undefined);
     }
 
     /** @internal */
@@ -260,9 +321,24 @@ export class ContainerLegacy extends pulumi.CustomResource {
      */
     declare public readonly memory: pulumi.Output<outputs.ContainerLegacyMemory | undefined>;
     /**
+     * Migrate the container on node change instead of
+     * re-creating it (defaults to `false`).
+     */
+    declare public readonly migrate: pulumi.Output<boolean | undefined>;
+    /**
      * An additional volume mount or host bind mount
      * (multiple blocks supported). Use this for data volumes, shared
      * directories, or attaching pre-existing PVE volumes.
+     *
+     * > Mount points are positional: the first block is `mp0` in Proxmox VE, the
+     * second `mp1`, and so on. Appending a block, removing the last block, or
+     * reconfiguring an existing one is applied in place, and a running container
+     * is restarted. Removing or inserting a block before existing ones recreates
+     * the container, as does changing the `size` of an existing mount point or
+     * pointing its `volume` at a different datastore or host path. Changing
+     * `volume` from one volume ID to another on the same datastore is not
+     * detected. A removed volume mount stays on the datastore as an unused
+     * volume; bind and device mounts are just dropped.
      */
     declare public readonly mountPoints: pulumi.Output<outputs.ContainerLegacyMountPoint[] | undefined>;
     /**
@@ -331,6 +407,11 @@ export class ContainerLegacy extends pulumi.CustomResource {
      */
     declare public readonly timeoutDelete: pulumi.Output<number | undefined>;
     /**
+     * Timeout for migrating the container to another node, in seconds (defaults to
+     * 1800).
+     */
+    declare public readonly timeoutMigrate: pulumi.Output<number | undefined>;
+    /**
      * Start container timeout
      *
      * @deprecated This field is deprecated and will be removed in a future release. An overall operation timeout (`timeoutCreate` / `timeoutClone`) is used instead.
@@ -381,6 +462,7 @@ export class ContainerLegacy extends pulumi.CustomResource {
             resourceInputs["ipv4"] = state?.ipv4;
             resourceInputs["ipv6"] = state?.ipv6;
             resourceInputs["memory"] = state?.memory;
+            resourceInputs["migrate"] = state?.migrate;
             resourceInputs["mountPoints"] = state?.mountPoints;
             resourceInputs["networkInterfaces"] = state?.networkInterfaces;
             resourceInputs["nodeName"] = state?.nodeName;
@@ -396,6 +478,7 @@ export class ContainerLegacy extends pulumi.CustomResource {
             resourceInputs["timeoutClone"] = state?.timeoutClone;
             resourceInputs["timeoutCreate"] = state?.timeoutCreate;
             resourceInputs["timeoutDelete"] = state?.timeoutDelete;
+            resourceInputs["timeoutMigrate"] = state?.timeoutMigrate;
             resourceInputs["timeoutStart"] = state?.timeoutStart;
             resourceInputs["timeoutUpdate"] = state?.timeoutUpdate;
             resourceInputs["unprivileged"] = state?.unprivileged;
@@ -419,6 +502,7 @@ export class ContainerLegacy extends pulumi.CustomResource {
             resourceInputs["idmaps"] = args?.idmaps;
             resourceInputs["initialization"] = args?.initialization;
             resourceInputs["memory"] = args?.memory;
+            resourceInputs["migrate"] = args?.migrate;
             resourceInputs["mountPoints"] = args?.mountPoints;
             resourceInputs["networkInterfaces"] = args?.networkInterfaces;
             resourceInputs["nodeName"] = args?.nodeName;
@@ -434,6 +518,7 @@ export class ContainerLegacy extends pulumi.CustomResource {
             resourceInputs["timeoutClone"] = args?.timeoutClone;
             resourceInputs["timeoutCreate"] = args?.timeoutCreate;
             resourceInputs["timeoutDelete"] = args?.timeoutDelete;
+            resourceInputs["timeoutMigrate"] = args?.timeoutMigrate;
             resourceInputs["timeoutStart"] = args?.timeoutStart;
             resourceInputs["timeoutUpdate"] = args?.timeoutUpdate;
             resourceInputs["unprivileged"] = args?.unprivileged;
@@ -522,9 +607,24 @@ export interface ContainerLegacyState {
      */
     memory?: pulumi.Input<inputs.ContainerLegacyMemory | undefined>;
     /**
+     * Migrate the container on node change instead of
+     * re-creating it (defaults to `false`).
+     */
+    migrate?: pulumi.Input<boolean | undefined>;
+    /**
      * An additional volume mount or host bind mount
      * (multiple blocks supported). Use this for data volumes, shared
      * directories, or attaching pre-existing PVE volumes.
+     *
+     * > Mount points are positional: the first block is `mp0` in Proxmox VE, the
+     * second `mp1`, and so on. Appending a block, removing the last block, or
+     * reconfiguring an existing one is applied in place, and a running container
+     * is restarted. Removing or inserting a block before existing ones recreates
+     * the container, as does changing the `size` of an existing mount point or
+     * pointing its `volume` at a different datastore or host path. Changing
+     * `volume` from one volume ID to another on the same datastore is not
+     * detected. A removed volume mount stays on the datastore as an unused
+     * volume; bind and device mounts are just dropped.
      */
     mountPoints?: pulumi.Input<pulumi.Input<inputs.ContainerLegacyMountPoint>[] | undefined>;
     /**
@@ -592,6 +692,11 @@ export interface ContainerLegacyState {
      * Timeout for deleting a container in seconds (defaults to 60).
      */
     timeoutDelete?: pulumi.Input<number | undefined>;
+    /**
+     * Timeout for migrating the container to another node, in seconds (defaults to
+     * 1800).
+     */
+    timeoutMigrate?: pulumi.Input<number | undefined>;
     /**
      * Start container timeout
      *
@@ -683,9 +788,24 @@ export interface ContainerLegacyArgs {
      */
     memory?: pulumi.Input<inputs.ContainerLegacyMemory | undefined>;
     /**
+     * Migrate the container on node change instead of
+     * re-creating it (defaults to `false`).
+     */
+    migrate?: pulumi.Input<boolean | undefined>;
+    /**
      * An additional volume mount or host bind mount
      * (multiple blocks supported). Use this for data volumes, shared
      * directories, or attaching pre-existing PVE volumes.
+     *
+     * > Mount points are positional: the first block is `mp0` in Proxmox VE, the
+     * second `mp1`, and so on. Appending a block, removing the last block, or
+     * reconfiguring an existing one is applied in place, and a running container
+     * is restarted. Removing or inserting a block before existing ones recreates
+     * the container, as does changing the `size` of an existing mount point or
+     * pointing its `volume` at a different datastore or host path. Changing
+     * `volume` from one volume ID to another on the same datastore is not
+     * detected. A removed volume mount stays on the datastore as an unused
+     * volume; bind and device mounts are just dropped.
      */
     mountPoints?: pulumi.Input<pulumi.Input<inputs.ContainerLegacyMountPoint>[] | undefined>;
     /**
@@ -753,6 +873,11 @@ export interface ContainerLegacyArgs {
      * Timeout for deleting a container in seconds (defaults to 60).
      */
     timeoutDelete?: pulumi.Input<number | undefined>;
+    /**
+     * Timeout for migrating the container to another node, in seconds (defaults to
+     * 1800).
+     */
+    timeoutMigrate?: pulumi.Input<number | undefined>;
     /**
      * Start container timeout
      *

@@ -18,6 +18,10 @@ namespace Pulumi.ProxmoxVE.Backup.Outputs
         /// </summary>
         public readonly bool All;
         /// <summary>
+        /// Description of the backup job, shown in the Proxmox VE web UI.
+        /// </summary>
+        public readonly string Comment;
+        /// <summary>
         /// Compression algorithm used for the backup.
         /// </summary>
         public readonly string Compress;
@@ -54,6 +58,10 @@ namespace Pulumi.ProxmoxVE.Backup.Outputs
         /// </summary>
         public readonly string NotesTemplate;
         /// <summary>
+        /// Notification mode of the job (`Auto`, `legacy-sendmail` or `notification-system`).
+        /// </summary>
+        public readonly string NotificationMode;
+        /// <summary>
         /// Pool whose members are backed up.
         /// </summary>
         public readonly string Pool;
@@ -82,6 +90,8 @@ namespace Pulumi.ProxmoxVE.Backup.Outputs
         private GetJobsJobResult(
             bool all,
 
+            string comment,
+
             string compress,
 
             bool enabled,
@@ -100,6 +110,8 @@ namespace Pulumi.ProxmoxVE.Backup.Outputs
 
             string notesTemplate,
 
+            string notificationMode,
+
             string pool,
 
             bool @protected,
@@ -113,6 +125,7 @@ namespace Pulumi.ProxmoxVE.Backup.Outputs
             ImmutableArray<string> vmids)
         {
             All = all;
+            Comment = comment;
             Compress = compress;
             Enabled = enabled;
             Excludes = excludes;
@@ -122,6 +135,7 @@ namespace Pulumi.ProxmoxVE.Backup.Outputs
             Mode = mode;
             Node = node;
             NotesTemplate = notesTemplate;
+            NotificationMode = notificationMode;
             Pool = pool;
             Protected = @protected;
             PruneBackups = pruneBackups;

@@ -151,6 +151,12 @@ func (RepositoryState) ElementType() reflect.Type {
 	return reflect.TypeOf((*repositoryState)(nil)).Elem()
 }
 
+// RepositoryExists checks whether an existing Repository resource with the given ID exists.
+func RepositoryExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RepositoryState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:apt/standard/repository:Repository", id, state, "", opts...)
+}
+
 type repositoryArgs struct {
 	// The handle of the APT standard repository. Must be `ceph-squid-enterprise` | `ceph-squid-no-subscription` | `ceph-squid-test` | `enterprise` | `no-subscription` | `test`.
 	Handle string `pulumi:"handle"`

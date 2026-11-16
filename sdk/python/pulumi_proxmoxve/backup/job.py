@@ -26,6 +26,7 @@ class JobArgs:
                  storage: pulumi.Input[_builtins.str],
                  all: pulumi.Input[Optional[_builtins.bool]] = None,
                  bwlimit: pulumi.Input[Optional[_builtins.int]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
                  compress: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  exclude_paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -39,6 +40,7 @@ class JobArgs:
                  mode: pulumi.Input[Optional[_builtins.str]] = None,
                  node: pulumi.Input[Optional[_builtins.str]] = None,
                  notes_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  pbs_change_detection_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  performance: pulumi.Input[Optional['JobPerformanceArgs']] = None,
                  pigz: pulumi.Input[Optional[_builtins.int]] = None,
@@ -62,6 +64,7 @@ class JobArgs:
         :param pulumi.Input[_builtins.str] storage: The storage identifier for the backup.
         :param pulumi.Input[_builtins.bool] all: Whether to back up all known guests on the node.
         :param pulumi.Input[_builtins.int] bwlimit: I/O bandwidth limit in KiB/s.
+        :param pulumi.Input[_builtins.str] comment: Description of the backup job, shown in the Proxmox VE web UI.
         :param pulumi.Input[_builtins.str] compress: The compression algorithm (0, 1, gzip, lzo, or zstd).
         :param pulumi.Input[_builtins.bool] enabled: Whether the backup job is enabled.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] exclude_paths: A list of paths to exclude from the backup.
@@ -75,6 +78,7 @@ class JobArgs:
         :param pulumi.Input[_builtins.str] mode: The backup mode (snapshot, suspend, or stop).
         :param pulumi.Input[_builtins.str] node: The cluster node name to limit the backup job to.
         :param pulumi.Input[_builtins.str] notes_template: Template for notes attached to the backup.
+        :param pulumi.Input[_builtins.str] notification_mode: Notification mode (`auto`, `legacy-sendmail` or `notification-system`). With `auto` (the Proxmox VE default), an email is sent if `mailto` is set, otherwise the notification system is used. `legacy-sendmail` always uses `mailto` and `mailnotification`; `notification-system` always uses the PVE notification system and ignores them.
         :param pulumi.Input[_builtins.str] pbs_change_detection_mode: PBS change detection mode (legacy, data, or metadata).
         :param pulumi.Input['JobPerformanceArgs'] performance: Performance-related settings for the backup job.
         :param pulumi.Input[_builtins.int] pigz: Number of pigz threads (0 disables, 1 uses single-threaded gzip).
@@ -98,6 +102,8 @@ class JobArgs:
             pulumi.set(__self__, "all", all)
         if bwlimit is not None:
             pulumi.set(__self__, "bwlimit", bwlimit)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
         if compress is not None:
             pulumi.set(__self__, "compress", compress)
         if enabled is not None:
@@ -124,6 +130,8 @@ class JobArgs:
             pulumi.set(__self__, "node", node)
         if notes_template is not None:
             pulumi.set(__self__, "notes_template", notes_template)
+        if notification_mode is not None:
+            pulumi.set(__self__, "notification_mode", notification_mode)
         if pbs_change_detection_mode is not None:
             pulumi.set(__self__, "pbs_change_detection_mode", pbs_change_detection_mode)
         if performance is not None:
@@ -214,6 +222,18 @@ class JobArgs:
     @bwlimit.setter
     def bwlimit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bwlimit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Description of the backup job, shown in the Proxmox VE web UI.
+        """
+        return pulumi.get(self, "comment")
+
+    @comment.setter
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter
@@ -370,6 +390,18 @@ class JobArgs:
     @notes_template.setter
     def notes_template(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "notes_template", value)
+
+    @_builtins.property
+    @pulumi.getter(name="notificationMode")
+    def notification_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Notification mode (`auto`, `legacy-sendmail` or `notification-system`). With `auto` (the Proxmox VE default), an email is sent if `mailto` is set, otherwise the notification system is used. `legacy-sendmail` always uses `mailto` and `mailnotification`; `notification-system` always uses the PVE notification system and ignores them.
+        """
+        return pulumi.get(self, "notification_mode")
+
+    @notification_mode.setter
+    def notification_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "notification_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="pbsChangeDetectionMode")
@@ -557,6 +589,7 @@ class _JobState:
     def __init__(__self__, *,
                  all: pulumi.Input[Optional[_builtins.bool]] = None,
                  bwlimit: pulumi.Input[Optional[_builtins.int]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
                  compress: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  exclude_paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -570,6 +603,7 @@ class _JobState:
                  mode: pulumi.Input[Optional[_builtins.str]] = None,
                  node: pulumi.Input[Optional[_builtins.str]] = None,
                  notes_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  pbs_change_detection_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  performance: pulumi.Input[Optional['JobPerformanceArgs']] = None,
                  pigz: pulumi.Input[Optional[_builtins.int]] = None,
@@ -593,6 +627,7 @@ class _JobState:
 
         :param pulumi.Input[_builtins.bool] all: Whether to back up all known guests on the node.
         :param pulumi.Input[_builtins.int] bwlimit: I/O bandwidth limit in KiB/s.
+        :param pulumi.Input[_builtins.str] comment: Description of the backup job, shown in the Proxmox VE web UI.
         :param pulumi.Input[_builtins.str] compress: The compression algorithm (0, 1, gzip, lzo, or zstd).
         :param pulumi.Input[_builtins.bool] enabled: Whether the backup job is enabled.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] exclude_paths: A list of paths to exclude from the backup.
@@ -606,6 +641,7 @@ class _JobState:
         :param pulumi.Input[_builtins.str] mode: The backup mode (snapshot, suspend, or stop).
         :param pulumi.Input[_builtins.str] node: The cluster node name to limit the backup job to.
         :param pulumi.Input[_builtins.str] notes_template: Template for notes attached to the backup.
+        :param pulumi.Input[_builtins.str] notification_mode: Notification mode (`auto`, `legacy-sendmail` or `notification-system`). With `auto` (the Proxmox VE default), an email is sent if `mailto` is set, otherwise the notification system is used. `legacy-sendmail` always uses `mailto` and `mailnotification`; `notification-system` always uses the PVE notification system and ignores them.
         :param pulumi.Input[_builtins.str] pbs_change_detection_mode: PBS change detection mode (legacy, data, or metadata).
         :param pulumi.Input['JobPerformanceArgs'] performance: Performance-related settings for the backup job.
         :param pulumi.Input[_builtins.int] pigz: Number of pigz threads (0 disables, 1 uses single-threaded gzip).
@@ -629,6 +665,8 @@ class _JobState:
             pulumi.set(__self__, "all", all)
         if bwlimit is not None:
             pulumi.set(__self__, "bwlimit", bwlimit)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
         if compress is not None:
             pulumi.set(__self__, "compress", compress)
         if enabled is not None:
@@ -655,6 +693,8 @@ class _JobState:
             pulumi.set(__self__, "node", node)
         if notes_template is not None:
             pulumi.set(__self__, "notes_template", notes_template)
+        if notification_mode is not None:
+            pulumi.set(__self__, "notification_mode", notification_mode)
         if pbs_change_detection_mode is not None:
             pulumi.set(__self__, "pbs_change_detection_mode", pbs_change_detection_mode)
         if performance is not None:
@@ -715,6 +755,18 @@ class _JobState:
     @bwlimit.setter
     def bwlimit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bwlimit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Description of the backup job, shown in the Proxmox VE web UI.
+        """
+        return pulumi.get(self, "comment")
+
+    @comment.setter
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter
@@ -871,6 +923,18 @@ class _JobState:
     @notes_template.setter
     def notes_template(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "notes_template", value)
+
+    @_builtins.property
+    @pulumi.getter(name="notificationMode")
+    def notification_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Notification mode (`auto`, `legacy-sendmail` or `notification-system`). With `auto` (the Proxmox VE default), an email is sent if `mailto` is set, otherwise the notification system is used. `legacy-sendmail` always uses `mailto` and `mailnotification`; `notification-system` always uses the PVE notification system and ignores them.
+        """
+        return pulumi.get(self, "notification_mode")
+
+    @notification_mode.setter
+    def notification_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "notification_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="pbsChangeDetectionMode")
@@ -1097,6 +1161,7 @@ class Job(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  all: pulumi.Input[Optional[_builtins.bool]] = None,
                  bwlimit: pulumi.Input[Optional[_builtins.int]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
                  compress: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  exclude_paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1110,6 +1175,7 @@ class Job(pulumi.CustomResource):
                  mode: pulumi.Input[Optional[_builtins.str]] = None,
                  node: pulumi.Input[Optional[_builtins.str]] = None,
                  notes_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  pbs_change_detection_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  performance: pulumi.Input[Optional[Union['JobPerformanceArgs', 'JobPerformanceArgsDict', 'outputs.JobPerformance']]] = None,
                  pigz: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1158,6 +1224,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] all: Whether to back up all known guests on the node.
         :param pulumi.Input[_builtins.int] bwlimit: I/O bandwidth limit in KiB/s.
+        :param pulumi.Input[_builtins.str] comment: Description of the backup job, shown in the Proxmox VE web UI.
         :param pulumi.Input[_builtins.str] compress: The compression algorithm (0, 1, gzip, lzo, or zstd).
         :param pulumi.Input[_builtins.bool] enabled: Whether the backup job is enabled.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] exclude_paths: A list of paths to exclude from the backup.
@@ -1171,6 +1238,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] mode: The backup mode (snapshot, suspend, or stop).
         :param pulumi.Input[_builtins.str] node: The cluster node name to limit the backup job to.
         :param pulumi.Input[_builtins.str] notes_template: Template for notes attached to the backup.
+        :param pulumi.Input[_builtins.str] notification_mode: Notification mode (`auto`, `legacy-sendmail` or `notification-system`). With `auto` (the Proxmox VE default), an email is sent if `mailto` is set, otherwise the notification system is used. `legacy-sendmail` always uses `mailto` and `mailnotification`; `notification-system` always uses the PVE notification system and ignores them.
         :param pulumi.Input[_builtins.str] pbs_change_detection_mode: PBS change detection mode (legacy, data, or metadata).
         :param pulumi.Input[Union['JobPerformanceArgs', 'JobPerformanceArgsDict', 'outputs.JobPerformance']] performance: Performance-related settings for the backup job.
         :param pulumi.Input[_builtins.int] pigz: Number of pigz threads (0 disables, 1 uses single-threaded gzip).
@@ -1238,6 +1306,7 @@ class Job(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  all: pulumi.Input[Optional[_builtins.bool]] = None,
                  bwlimit: pulumi.Input[Optional[_builtins.int]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
                  compress: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  exclude_paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1251,6 +1320,7 @@ class Job(pulumi.CustomResource):
                  mode: pulumi.Input[Optional[_builtins.str]] = None,
                  node: pulumi.Input[Optional[_builtins.str]] = None,
                  notes_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 notification_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  pbs_change_detection_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  performance: pulumi.Input[Optional[Union['JobPerformanceArgs', 'JobPerformanceArgsDict', 'outputs.JobPerformance']]] = None,
                  pigz: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1280,6 +1350,7 @@ class Job(pulumi.CustomResource):
 
             __props__.__dict__["all"] = all
             __props__.__dict__["bwlimit"] = bwlimit
+            __props__.__dict__["comment"] = comment
             __props__.__dict__["compress"] = compress
             __props__.__dict__["enabled"] = enabled
             __props__.__dict__["exclude_paths"] = exclude_paths
@@ -1293,6 +1364,7 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["mode"] = mode
             __props__.__dict__["node"] = node
             __props__.__dict__["notes_template"] = notes_template
+            __props__.__dict__["notification_mode"] = notification_mode
             __props__.__dict__["pbs_change_detection_mode"] = pbs_change_detection_mode
             __props__.__dict__["performance"] = performance
             __props__.__dict__["pigz"] = pigz
@@ -1329,6 +1401,7 @@ class Job(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             all: pulumi.Input[Optional[_builtins.bool]] = None,
             bwlimit: pulumi.Input[Optional[_builtins.int]] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
             compress: pulumi.Input[Optional[_builtins.str]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             exclude_paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1342,6 +1415,7 @@ class Job(pulumi.CustomResource):
             mode: pulumi.Input[Optional[_builtins.str]] = None,
             node: pulumi.Input[Optional[_builtins.str]] = None,
             notes_template: pulumi.Input[Optional[_builtins.str]] = None,
+            notification_mode: pulumi.Input[Optional[_builtins.str]] = None,
             pbs_change_detection_mode: pulumi.Input[Optional[_builtins.str]] = None,
             performance: pulumi.Input[Optional[Union['JobPerformanceArgs', 'JobPerformanceArgsDict', 'outputs.JobPerformance']]] = None,
             pigz: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1369,6 +1443,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] all: Whether to back up all known guests on the node.
         :param pulumi.Input[_builtins.int] bwlimit: I/O bandwidth limit in KiB/s.
+        :param pulumi.Input[_builtins.str] comment: Description of the backup job, shown in the Proxmox VE web UI.
         :param pulumi.Input[_builtins.str] compress: The compression algorithm (0, 1, gzip, lzo, or zstd).
         :param pulumi.Input[_builtins.bool] enabled: Whether the backup job is enabled.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] exclude_paths: A list of paths to exclude from the backup.
@@ -1382,6 +1457,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] mode: The backup mode (snapshot, suspend, or stop).
         :param pulumi.Input[_builtins.str] node: The cluster node name to limit the backup job to.
         :param pulumi.Input[_builtins.str] notes_template: Template for notes attached to the backup.
+        :param pulumi.Input[_builtins.str] notification_mode: Notification mode (`auto`, `legacy-sendmail` or `notification-system`). With `auto` (the Proxmox VE default), an email is sent if `mailto` is set, otherwise the notification system is used. `legacy-sendmail` always uses `mailto` and `mailnotification`; `notification-system` always uses the PVE notification system and ignores them.
         :param pulumi.Input[_builtins.str] pbs_change_detection_mode: PBS change detection mode (legacy, data, or metadata).
         :param pulumi.Input[Union['JobPerformanceArgs', 'JobPerformanceArgsDict', 'outputs.JobPerformance']] performance: Performance-related settings for the backup job.
         :param pulumi.Input[_builtins.int] pigz: Number of pigz threads (0 disables, 1 uses single-threaded gzip).
@@ -1407,6 +1483,7 @@ class Job(pulumi.CustomResource):
 
         __props__.__dict__["all"] = all
         __props__.__dict__["bwlimit"] = bwlimit
+        __props__.__dict__["comment"] = comment
         __props__.__dict__["compress"] = compress
         __props__.__dict__["enabled"] = enabled
         __props__.__dict__["exclude_paths"] = exclude_paths
@@ -1420,6 +1497,7 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["mode"] = mode
         __props__.__dict__["node"] = node
         __props__.__dict__["notes_template"] = notes_template
+        __props__.__dict__["notification_mode"] = notification_mode
         __props__.__dict__["pbs_change_detection_mode"] = pbs_change_detection_mode
         __props__.__dict__["performance"] = performance
         __props__.__dict__["pigz"] = pigz
@@ -1440,6 +1518,82 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["zstd"] = zstd
         return Job(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            all: pulumi.Input[Optional[_builtins.bool]] = None,
+            bwlimit: pulumi.Input[Optional[_builtins.int]] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            compress: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            exclude_paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            excludes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            fleecing: pulumi.Input[Optional[Union['JobFleecingArgs', 'JobFleecingArgsDict', 'outputs.JobFleecing']]] = None,
+            ionice: pulumi.Input[Optional[_builtins.int]] = None,
+            lockwait: pulumi.Input[Optional[_builtins.int]] = None,
+            mailnotification: pulumi.Input[Optional[_builtins.str]] = None,
+            mailtos: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            maxfiles: pulumi.Input[Optional[_builtins.int]] = None,
+            mode: pulumi.Input[Optional[_builtins.str]] = None,
+            node: pulumi.Input[Optional[_builtins.str]] = None,
+            notes_template: pulumi.Input[Optional[_builtins.str]] = None,
+            notification_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            pbs_change_detection_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            performance: pulumi.Input[Optional[Union['JobPerformanceArgs', 'JobPerformanceArgsDict', 'outputs.JobPerformance']]] = None,
+            pigz: pulumi.Input[Optional[_builtins.int]] = None,
+            pool: pulumi.Input[Optional[_builtins.str]] = None,
+            protected: pulumi.Input[Optional[_builtins.bool]] = None,
+            prune_backups: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            remove: pulumi.Input[Optional[_builtins.bool]] = None,
+            repeat_missed: pulumi.Input[Optional[_builtins.bool]] = None,
+            resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+            schedule: pulumi.Input[Optional[_builtins.str]] = None,
+            script: pulumi.Input[Optional[_builtins.str]] = None,
+            starttime: pulumi.Input[Optional[_builtins.str]] = None,
+            stdexcludes: pulumi.Input[Optional[_builtins.bool]] = None,
+            stopwait: pulumi.Input[Optional[_builtins.int]] = None,
+            storage: pulumi.Input[Optional[_builtins.str]] = None,
+            tmpdir: pulumi.Input[Optional[_builtins.str]] = None,
+            vmids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            zstd: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["all"] = all
+        __props__["bwlimit"] = bwlimit
+        __props__["comment"] = comment
+        __props__["compress"] = compress
+        __props__["enabled"] = enabled
+        __props__["excludePaths"] = exclude_paths
+        __props__["excludes"] = excludes
+        __props__["fleecing"] = fleecing
+        __props__["ionice"] = ionice
+        __props__["lockwait"] = lockwait
+        __props__["mailnotification"] = mailnotification
+        __props__["mailtos"] = mailtos
+        __props__["maxfiles"] = maxfiles
+        __props__["mode"] = mode
+        __props__["node"] = node
+        __props__["notesTemplate"] = notes_template
+        __props__["notificationMode"] = notification_mode
+        __props__["pbsChangeDetectionMode"] = pbs_change_detection_mode
+        __props__["performance"] = performance
+        __props__["pigz"] = pigz
+        __props__["pool"] = pool
+        __props__["protected"] = protected
+        __props__["pruneBackups"] = prune_backups
+        __props__["remove"] = remove
+        __props__["repeatMissed"] = repeat_missed
+        __props__["resourceId"] = resource_id
+        __props__["schedule"] = schedule
+        __props__["script"] = script
+        __props__["starttime"] = starttime
+        __props__["stdexcludes"] = stdexcludes
+        __props__["stopwait"] = stopwait
+        __props__["storage"] = storage
+        __props__["tmpdir"] = tmpdir
+        __props__["vmids"] = vmids
+        __props__["zstd"] = zstd
+        return pulumi.runtime.exists_resource(None, 'proxmoxve:backup/job:Job', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def all(self) -> pulumi.Output[_builtins.bool]:
@@ -1455,6 +1609,14 @@ class Job(pulumi.CustomResource):
         I/O bandwidth limit in KiB/s.
         """
         return pulumi.get(self, "bwlimit")
+
+    @_builtins.property
+    @pulumi.getter
+    def comment(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Description of the backup job, shown in the Proxmox VE web UI.
+        """
+        return pulumi.get(self, "comment")
 
     @_builtins.property
     @pulumi.getter
@@ -1559,6 +1721,14 @@ class Job(pulumi.CustomResource):
         Template for notes attached to the backup.
         """
         return pulumi.get(self, "notes_template")
+
+    @_builtins.property
+    @pulumi.getter(name="notificationMode")
+    def notification_mode(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Notification mode (`auto`, `legacy-sendmail` or `notification-system`). With `auto` (the Proxmox VE default), an email is sent if `mailto` is set, otherwise the notification system is used. `legacy-sendmail` always uses `mailto` and `mailnotification`; `notification-system` always uses the PVE notification system and ignores them.
+        """
+        return pulumi.get(self, "notification_mode")
 
     @_builtins.property
     @pulumi.getter(name="pbsChangeDetectionMode")

@@ -1359,6 +1359,8 @@
                     }
                 }
             },
+            "proxmox_ceph_fs": {},
+            "proxmox_ceph_mds": {},
             "proxmox_ceph_pool": {},
             "proxmox_cloned_vm": {
                 "fields": {
@@ -1369,6 +1371,17 @@
                 }
             },
             "proxmox_cluster_options": {},
+            "proxmox_custom_cpu_model": {
+                "fields": {
+                    "id": {
+                        "name": "customCpuModelId"
+                    }
+                },
+                "computeID": {
+                    "kind": "delegate",
+                    "field": "customCpuModelId"
+                }
+            },
             "proxmox_download_file": {},
             "proxmox_hagroup": {},
             "proxmox_hardware_mapping_dir": {},
@@ -1377,6 +1390,7 @@
             "proxmox_haresource": {},
             "proxmox_harule": {},
             "proxmox_metrics_server": {},
+            "proxmox_network_applier": {},
             "proxmox_network_linux_bond": {},
             "proxmox_network_linux_bridge": {},
             "proxmox_network_linux_vlan": {},
@@ -1397,6 +1411,17 @@
                 }
             },
             "proxmox_sdn_applier": {},
+            "proxmox_sdn_controller_bgp": {
+                "fields": {
+                    "id": {
+                        "name": "sdnControllerBgpId"
+                    }
+                },
+                "computeID": {
+                    "kind": "delegate",
+                    "field": "sdnControllerBgpId"
+                }
+            },
             "proxmox_sdn_controller_evpn": {
                 "fields": {
                     "id": {
@@ -1475,6 +1500,17 @@
                     }
                 }
             },
+            "proxmox_storage_cephfs": {
+                "fields": {
+                    "id": {
+                        "name": "storageCephfsId"
+                    }
+                },
+                "computeID": {
+                    "kind": "delegate",
+                    "field": "storageCephfsId"
+                }
+            },
             "proxmox_storage_cifs": {
                 "fields": {
                     "id": {
@@ -1521,6 +1557,17 @@
                         "name": "resourceId",
                         "type": "string"
                     }
+                }
+            },
+            "proxmox_storage_rbd": {
+                "fields": {
+                    "id": {
+                        "name": "storageRbdId"
+                    }
+                },
+                "computeID": {
+                    "kind": "delegate",
+                    "field": "storageRbdId"
                 }
             },
             "proxmox_storage_zfspool": {
@@ -1735,6 +1782,8 @@
             "proxmoxve:apt/standard/repository:Repository": 1,
             "proxmoxve:apt/standard/repositoryLegacy:RepositoryLegacy": 1,
             "proxmoxve:backup/job:Job": 1,
+            "proxmoxve:ceph/fs:Fs": 1,
+            "proxmoxve:ceph/mds:Mds": 1,
             "proxmoxve:ceph/pool:Pool": 1,
             "proxmoxve:cloned/vm:Vm": 1,
             "proxmoxve:cloned/vmLegacy:VmLegacy": 1,
@@ -1742,6 +1791,7 @@
             "proxmoxve:cluster/firewallLegacy:FirewallLegacy": 0,
             "proxmoxve:cluster/options:Options": 1,
             "proxmoxve:cluster/optionsLegacy:OptionsLegacy": 1,
+            "proxmoxve:custom/cpu/model:Model": 1,
             "proxmoxve:download/file:File": 1,
             "proxmoxve:download/fileLegacy:FileLegacy": 1,
             "proxmoxve:firewall/aliasLegacy:AliasLegacy": 0,
@@ -1779,6 +1829,7 @@
             "proxmoxve:index/vmLegacy:VmLegacy": 0,
             "proxmoxve:metrics/server:Server": 1,
             "proxmoxve:metrics/serverLegacy:ServerLegacy": 1,
+            "proxmoxve:network/applier:Applier": 1,
             "proxmoxve:network/linux/bond:Bond": 1,
             "proxmoxve:network/linux/bridge:Bridge": 1,
             "proxmoxve:network/linux/bridgeLegacy:BridgeLegacy": 1,
@@ -1800,6 +1851,7 @@
             "proxmoxve:realm/syncLegacy:SyncLegacy": 1,
             "proxmoxve:sdn/applier:Applier": 1,
             "proxmoxve:sdn/applierLegacy:ApplierLegacy": 1,
+            "proxmoxve:sdn/controller/bgp:Bgp": 1,
             "proxmoxve:sdn/controller/evpn:Evpn": 1,
             "proxmoxve:sdn/fabric/node/openfabric:Openfabric": 1,
             "proxmoxve:sdn/fabric/node/openfabricLegacy:OpenfabricLegacy": 1,
@@ -1823,6 +1875,7 @@
             "proxmoxve:sdn/zone/vlanLegacy:VlanLegacy": 1,
             "proxmoxve:sdn/zone/vxlan:Vxlan": 1,
             "proxmoxve:sdn/zone/vxlanLegacy:VxlanLegacy": 1,
+            "proxmoxve:storage/cephfs:Cephfs": 1,
             "proxmoxve:storage/cifs:Cifs": 1,
             "proxmoxve:storage/cifsLegacy:CifsLegacy": 1,
             "proxmoxve:storage/directory:Directory": 1,
@@ -1835,6 +1888,7 @@
             "proxmoxve:storage/nfsLegacy:NfsLegacy": 1,
             "proxmoxve:storage/pbs:Pbs": 1,
             "proxmoxve:storage/pbsLegacy:PbsLegacy": 1,
+            "proxmoxve:storage/rbd:Rbd": 1,
             "proxmoxve:storage/zfspool:Zfspool": 1,
             "proxmoxve:storage/zfspoolLegacy:ZfspoolLegacy": 1,
             "proxmoxve:user/token:Token": 1,
@@ -1905,6 +1959,7 @@
             "proxmoxve:metrics/getServer:getServer": 1,
             "proxmoxve:metrics/getServerLegacy:getServerLegacy": 1,
             "proxmoxve:node/getConfig:getConfig": 1,
+            "proxmoxve:sdn/controller/getBgp:getBgp": 1,
             "proxmoxve:sdn/controller/getEvpn:getEvpn": 1,
             "proxmoxve:sdn/fabric/getOpenfabric:getOpenfabric": 1,
             "proxmoxve:sdn/fabric/getOpenfabricLegacy:getOpenfabricLegacy": 1,

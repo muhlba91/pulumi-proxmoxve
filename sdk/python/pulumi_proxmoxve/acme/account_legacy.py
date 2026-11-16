@@ -435,6 +435,28 @@ class AccountLegacy(pulumi.CustomResource):
         __props__.__dict__["tos"] = tos
         return AccountLegacy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            contact: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            directory: pulumi.Input[Optional[_builtins.str]] = None,
+            eab_hmac_key: pulumi.Input[Optional[_builtins.str]] = None,
+            eab_kid: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            tos: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["contact"] = contact
+        __props__["createdAt"] = created_at
+        __props__["directory"] = directory
+        __props__["eabHmacKey"] = eab_hmac_key
+        __props__["eabKid"] = eab_kid
+        __props__["location"] = location
+        __props__["name"] = name
+        __props__["tos"] = tos
+        return pulumi.runtime.exists_resource(None, 'proxmoxve:acme/accountLegacy:AccountLegacy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def contact(self) -> pulumi.Output[_builtins.str]:

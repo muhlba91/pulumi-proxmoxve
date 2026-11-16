@@ -98,7 +98,7 @@ class VmLegacyArgs:
         :param pulumi.Input[Sequence[pulumi.Input['VmLegacyDiskArgs']]] disks: A disk (multiple blocks supported).
         :param pulumi.Input['VmLegacyEfiDiskArgs'] efi_disk: The efi disk device (required if `bios` is set
                to `ovmf`). See Example: UEFI boot.
-        :param pulumi.Input[_builtins.str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
+        :param pulumi.Input[_builtins.str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute). When cloning a VM, the hookscript is inherited from the template unless this attribute is explicitly set. Note that setting or changing a hookscript requires a direct `root@pam` password session; API tokens (including one issued for `root@pam`) are rejected by Proxmox with "only root can set 'hookscript' config".
         :param pulumi.Input[Sequence[pulumi.Input['VmLegacyHostpciArgs']]] hostpcis: A host PCI device mapping (multiple blocks supported).
         :param pulumi.Input[_builtins.str] hotplug: Selectively enable hotplug features. Use `0` to
                disable, `1` to enable all. Valid features: `disk`, `network`, `usb`,
@@ -171,7 +171,9 @@ class VmLegacyArgs:
                adding, removing, or moving a TPM state device; the provider automatically
                handles the shutdown/start cycle. Changing `version` requires recreating the
                VM because Proxmox only supports setting the TPM version at creation time.
-        :param pulumi.Input[Sequence[pulumi.Input['VmLegacyUsbArgs']]] usbs: A host USB device mapping (multiple blocks supported).
+        :param pulumi.Input[Sequence[pulumi.Input['VmLegacyUsbArgs']]] usbs: A host USB device mapping (multiple blocks supported, up to 14).
+               Proxmox VE only starts a VM with `usb5` and up on machine type >= 7.1 with
+               an `l26` or Windows > 7 `operating_system`.
         :param pulumi.Input['VmLegacyVgaArgs'] vga: The VGA configuration.
         :param pulumi.Input[Sequence[pulumi.Input['VmLegacyVirtiofArgs']]] virtiofs: Virtiofs share
         :param pulumi.Input[_builtins.int] vm_id: The VM identifier.
@@ -470,7 +472,7 @@ class VmLegacyArgs:
     @pulumi.getter(name="hookScriptFileId")
     def hook_script_file_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
+        The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute). When cloning a VM, the hookscript is inherited from the template unless this attribute is explicitly set. Note that setting or changing a hookscript requires a direct `root@pam` password session; API tokens (including one issued for `root@pam`) are rejected by Proxmox with "only root can set 'hookscript' config".
         """
         return pulumi.get(self, "hook_script_file_id")
 
@@ -973,7 +975,9 @@ class VmLegacyArgs:
     @pulumi.getter
     def usbs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VmLegacyUsbArgs']]]]:
         """
-        A host USB device mapping (multiple blocks supported).
+        A host USB device mapping (multiple blocks supported, up to 14).
+        Proxmox VE only starts a VM with `usb5` and up on machine type >= 7.1 with
+        an `l26` or Windows > 7 `operating_system`.
         """
         return pulumi.get(self, "usbs")
 
@@ -1111,7 +1115,7 @@ class _VmLegacyState:
         :param pulumi.Input[Sequence[pulumi.Input['VmLegacyDiskArgs']]] disks: A disk (multiple blocks supported).
         :param pulumi.Input['VmLegacyEfiDiskArgs'] efi_disk: The efi disk device (required if `bios` is set
                to `ovmf`). See Example: UEFI boot.
-        :param pulumi.Input[_builtins.str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
+        :param pulumi.Input[_builtins.str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute). When cloning a VM, the hookscript is inherited from the template unless this attribute is explicitly set. Note that setting or changing a hookscript requires a direct `root@pam` password session; API tokens (including one issued for `root@pam`) are rejected by Proxmox with "only root can set 'hookscript' config".
         :param pulumi.Input[Sequence[pulumi.Input['VmLegacyHostpciArgs']]] hostpcis: A host PCI device mapping (multiple blocks supported).
         :param pulumi.Input[_builtins.str] hotplug: Selectively enable hotplug features. Use `0` to
                disable, `1` to enable all. Valid features: `disk`, `network`, `usb`,
@@ -1192,7 +1196,9 @@ class _VmLegacyState:
                adding, removing, or moving a TPM state device; the provider automatically
                handles the shutdown/start cycle. Changing `version` requires recreating the
                VM because Proxmox only supports setting the TPM version at creation time.
-        :param pulumi.Input[Sequence[pulumi.Input['VmLegacyUsbArgs']]] usbs: A host USB device mapping (multiple blocks supported).
+        :param pulumi.Input[Sequence[pulumi.Input['VmLegacyUsbArgs']]] usbs: A host USB device mapping (multiple blocks supported, up to 14).
+               Proxmox VE only starts a VM with `usb5` and up on machine type >= 7.1 with
+               an `l26` or Windows > 7 `operating_system`.
         :param pulumi.Input['VmLegacyVgaArgs'] vga: The VGA configuration.
         :param pulumi.Input[Sequence[pulumi.Input['VmLegacyVirtiofArgs']]] virtiofs: Virtiofs share
         :param pulumi.Input[_builtins.int] vm_id: The VM identifier.
@@ -1485,7 +1491,7 @@ class _VmLegacyState:
     @pulumi.getter(name="hookScriptFileId")
     def hook_script_file_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
+        The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute). When cloning a VM, the hookscript is inherited from the template unless this attribute is explicitly set. Note that setting or changing a hookscript requires a direct `root@pam` password session; API tokens (including one issued for `root@pam`) are rejected by Proxmox with "only root can set 'hookscript' config".
         """
         return pulumi.get(self, "hook_script_file_id")
 
@@ -2040,7 +2046,9 @@ class _VmLegacyState:
     @pulumi.getter
     def usbs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VmLegacyUsbArgs']]]]:
         """
-        A host USB device mapping (multiple blocks supported).
+        A host USB device mapping (multiple blocks supported, up to 14).
+        Proxmox VE only starts a VM with `usb5` and up on machine type >= 7.1 with
+        an `l26` or Windows > 7 `operating_system`.
         """
         return pulumi.get(self, "usbs")
 
@@ -2363,7 +2371,7 @@ class VmLegacy(pulumi.CustomResource):
         Otherwise, the schema defaults will take effect and override the source values.
 
         Furthermore, when cloning from one node to a different one, the behavior changes
-        depening on the datastores of the source VM. If at least one non-shared
+        depending on the datastores of the source VM. If at least one non-shared
         datastore is used, the VM is first cloned to the source node before being
         migrated to the target node. This circumvents a limitation in the Proxmox clone
         API.
@@ -2449,7 +2457,7 @@ class VmLegacy(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['VmLegacyDiskArgs', 'VmLegacyDiskArgsDict', 'outputs.VmLegacyDisk']]]] disks: A disk (multiple blocks supported).
         :param pulumi.Input[Union['VmLegacyEfiDiskArgs', 'VmLegacyEfiDiskArgsDict', 'outputs.VmLegacyEfiDisk']] efi_disk: The efi disk device (required if `bios` is set
                to `ovmf`). See Example: UEFI boot.
-        :param pulumi.Input[_builtins.str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
+        :param pulumi.Input[_builtins.str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute). When cloning a VM, the hookscript is inherited from the template unless this attribute is explicitly set. Note that setting or changing a hookscript requires a direct `root@pam` password session; API tokens (including one issued for `root@pam`) are rejected by Proxmox with "only root can set 'hookscript' config".
         :param pulumi.Input[Sequence[pulumi.Input[Union['VmLegacyHostpciArgs', 'VmLegacyHostpciArgsDict', 'outputs.VmLegacyHostpci']]]] hostpcis: A host PCI device mapping (multiple blocks supported).
         :param pulumi.Input[_builtins.str] hotplug: Selectively enable hotplug features. Use `0` to
                disable, `1` to enable all. Valid features: `disk`, `network`, `usb`,
@@ -2524,7 +2532,9 @@ class VmLegacy(pulumi.CustomResource):
                adding, removing, or moving a TPM state device; the provider automatically
                handles the shutdown/start cycle. Changing `version` requires recreating the
                VM because Proxmox only supports setting the TPM version at creation time.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VmLegacyUsbArgs', 'VmLegacyUsbArgsDict', 'outputs.VmLegacyUsb']]]] usbs: A host USB device mapping (multiple blocks supported).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VmLegacyUsbArgs', 'VmLegacyUsbArgsDict', 'outputs.VmLegacyUsb']]]] usbs: A host USB device mapping (multiple blocks supported, up to 14).
+               Proxmox VE only starts a VM with `usb5` and up on machine type >= 7.1 with
+               an `l26` or Windows > 7 `operating_system`.
         :param pulumi.Input[Union['VmLegacyVgaArgs', 'VmLegacyVgaArgsDict', 'outputs.VmLegacyVga']] vga: The VGA configuration.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VmLegacyVirtiofArgs', 'VmLegacyVirtiofArgsDict', 'outputs.VmLegacyVirtiof']]]] virtiofs: Virtiofs share
         :param pulumi.Input[_builtins.int] vm_id: The VM identifier.
@@ -2737,7 +2747,7 @@ class VmLegacy(pulumi.CustomResource):
         Otherwise, the schema defaults will take effect and override the source values.
 
         Furthermore, when cloning from one node to a different one, the behavior changes
-        depening on the datastores of the source VM. If at least one non-shared
+        depending on the datastores of the source VM. If at least one non-shared
         datastore is used, the VM is first cloned to the source node before being
         migrated to the target node. This circumvents a limitation in the Proxmox clone
         API.
@@ -3044,7 +3054,7 @@ class VmLegacy(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['VmLegacyDiskArgs', 'VmLegacyDiskArgsDict', 'outputs.VmLegacyDisk']]]] disks: A disk (multiple blocks supported).
         :param pulumi.Input[Union['VmLegacyEfiDiskArgs', 'VmLegacyEfiDiskArgsDict', 'outputs.VmLegacyEfiDisk']] efi_disk: The efi disk device (required if `bios` is set
                to `ovmf`). See Example: UEFI boot.
-        :param pulumi.Input[_builtins.str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
+        :param pulumi.Input[_builtins.str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute). When cloning a VM, the hookscript is inherited from the template unless this attribute is explicitly set. Note that setting or changing a hookscript requires a direct `root@pam` password session; API tokens (including one issued for `root@pam`) are rejected by Proxmox with "only root can set 'hookscript' config".
         :param pulumi.Input[Sequence[pulumi.Input[Union['VmLegacyHostpciArgs', 'VmLegacyHostpciArgsDict', 'outputs.VmLegacyHostpci']]]] hostpcis: A host PCI device mapping (multiple blocks supported).
         :param pulumi.Input[_builtins.str] hotplug: Selectively enable hotplug features. Use `0` to
                disable, `1` to enable all. Valid features: `disk`, `network`, `usb`,
@@ -3125,7 +3135,9 @@ class VmLegacy(pulumi.CustomResource):
                adding, removing, or moving a TPM state device; the provider automatically
                handles the shutdown/start cycle. Changing `version` requires recreating the
                VM because Proxmox only supports setting the TPM version at creation time.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VmLegacyUsbArgs', 'VmLegacyUsbArgsDict', 'outputs.VmLegacyUsb']]]] usbs: A host USB device mapping (multiple blocks supported).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VmLegacyUsbArgs', 'VmLegacyUsbArgsDict', 'outputs.VmLegacyUsb']]]] usbs: A host USB device mapping (multiple blocks supported, up to 14).
+               Proxmox VE only starts a VM with `usb5` and up on machine type >= 7.1 with
+               an `l26` or Windows > 7 `operating_system`.
         :param pulumi.Input[Union['VmLegacyVgaArgs', 'VmLegacyVgaArgsDict', 'outputs.VmLegacyVga']] vga: The VGA configuration.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VmLegacyVirtiofArgs', 'VmLegacyVirtiofArgsDict', 'outputs.VmLegacyVirtiof']]]] virtiofs: Virtiofs share
         :param pulumi.Input[_builtins.int] vm_id: The VM identifier.
@@ -3197,6 +3209,134 @@ class VmLegacy(pulumi.CustomResource):
         __props__.__dict__["vm_id"] = vm_id
         __props__.__dict__["watchdog"] = watchdog
         return VmLegacy(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            acpi: pulumi.Input[Optional[_builtins.bool]] = None,
+            agent: pulumi.Input[Optional[Union['VmLegacyAgentArgs', 'VmLegacyAgentArgsDict', 'outputs.VmLegacyAgent']]] = None,
+            amd_sev: pulumi.Input[Optional[Union['VmLegacyAmdSevArgs', 'VmLegacyAmdSevArgsDict', 'outputs.VmLegacyAmdSev']]] = None,
+            audio_device: pulumi.Input[Optional[Union['VmLegacyAudioDeviceArgs', 'VmLegacyAudioDeviceArgsDict', 'outputs.VmLegacyAudioDevice']]] = None,
+            bios: pulumi.Input[Optional[_builtins.str]] = None,
+            boot_orders: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            cdrom: pulumi.Input[Optional[Union['VmLegacyCdromArgs', 'VmLegacyCdromArgsDict', 'outputs.VmLegacyCdrom']]] = None,
+            clone: pulumi.Input[Optional[Union['VmLegacyCloneArgs', 'VmLegacyCloneArgsDict', 'outputs.VmLegacyClone']]] = None,
+            cpu: pulumi.Input[Optional[Union['VmLegacyCpuArgs', 'VmLegacyCpuArgsDict', 'outputs.VmLegacyCpu']]] = None,
+            delete_unreferenced_disks_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacyDiskArgs', 'VmLegacyDiskArgsDict', 'outputs.VmLegacyDisk']]]]] = None,
+            efi_disk: pulumi.Input[Optional[Union['VmLegacyEfiDiskArgs', 'VmLegacyEfiDiskArgsDict', 'outputs.VmLegacyEfiDisk']]] = None,
+            hook_script_file_id: pulumi.Input[Optional[_builtins.str]] = None,
+            hostpcis: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacyHostpciArgs', 'VmLegacyHostpciArgsDict', 'outputs.VmLegacyHostpci']]]]] = None,
+            hotplug: pulumi.Input[Optional[_builtins.str]] = None,
+            initialization: pulumi.Input[Optional[Union['VmLegacyInitializationArgs', 'VmLegacyInitializationArgsDict', 'outputs.VmLegacyInitialization']]] = None,
+            ipv4_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
+            ipv6_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
+            keyboard_layout: pulumi.Input[Optional[_builtins.str]] = None,
+            kvm_arguments: pulumi.Input[Optional[_builtins.str]] = None,
+            mac_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            machine: pulumi.Input[Optional[_builtins.str]] = None,
+            memory: pulumi.Input[Optional[Union['VmLegacyMemoryArgs', 'VmLegacyMemoryArgsDict', 'outputs.VmLegacyMemory']]] = None,
+            migrate: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_devices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacyNetworkDeviceArgs', 'VmLegacyNetworkDeviceArgsDict', 'outputs.VmLegacyNetworkDevice']]]]] = None,
+            network_interface_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            node_name: pulumi.Input[Optional[_builtins.str]] = None,
+            numas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacyNumaArgs', 'VmLegacyNumaArgsDict', 'outputs.VmLegacyNuma']]]]] = None,
+            on_boot: pulumi.Input[Optional[_builtins.bool]] = None,
+            operating_system: pulumi.Input[Optional[Union['VmLegacyOperatingSystemArgs', 'VmLegacyOperatingSystemArgsDict', 'outputs.VmLegacyOperatingSystem']]] = None,
+            pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            purge_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            reboot: pulumi.Input[Optional[_builtins.bool]] = None,
+            reboot_after_update: pulumi.Input[Optional[_builtins.bool]] = None,
+            rngs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacyRngArgs', 'VmLegacyRngArgsDict', 'outputs.VmLegacyRng']]]]] = None,
+            scsi_hardware: pulumi.Input[Optional[_builtins.str]] = None,
+            serial_devices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacySerialDeviceArgs', 'VmLegacySerialDeviceArgsDict', 'outputs.VmLegacySerialDevice']]]]] = None,
+            smbios: pulumi.Input[Optional[Union['VmLegacySmbiosArgs', 'VmLegacySmbiosArgsDict', 'outputs.VmLegacySmbios']]] = None,
+            started: pulumi.Input[Optional[_builtins.bool]] = None,
+            startup: pulumi.Input[Optional[Union['VmLegacyStartupArgs', 'VmLegacyStartupArgsDict', 'outputs.VmLegacyStartup']]] = None,
+            stop_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            tablet_device: pulumi.Input[Optional[_builtins.bool]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            template: pulumi.Input[Optional[_builtins.bool]] = None,
+            timeout_clone: pulumi.Input[Optional[_builtins.int]] = None,
+            timeout_create: pulumi.Input[Optional[_builtins.int]] = None,
+            timeout_migrate: pulumi.Input[Optional[_builtins.int]] = None,
+            timeout_move_disk: pulumi.Input[Optional[_builtins.int]] = None,
+            timeout_reboot: pulumi.Input[Optional[_builtins.int]] = None,
+            timeout_shutdown_vm: pulumi.Input[Optional[_builtins.int]] = None,
+            timeout_start_vm: pulumi.Input[Optional[_builtins.int]] = None,
+            timeout_stop_vm: pulumi.Input[Optional[_builtins.int]] = None,
+            tpm_state: pulumi.Input[Optional[Union['VmLegacyTpmStateArgs', 'VmLegacyTpmStateArgsDict', 'outputs.VmLegacyTpmState']]] = None,
+            usbs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacyUsbArgs', 'VmLegacyUsbArgsDict', 'outputs.VmLegacyUsb']]]]] = None,
+            vga: pulumi.Input[Optional[Union['VmLegacyVgaArgs', 'VmLegacyVgaArgsDict', 'outputs.VmLegacyVga']]] = None,
+            virtiofs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VmLegacyVirtiofArgs', 'VmLegacyVirtiofArgsDict', 'outputs.VmLegacyVirtiof']]]]] = None,
+            vm_id: pulumi.Input[Optional[_builtins.int]] = None,
+            watchdog: pulumi.Input[Optional[Union['VmLegacyWatchdogArgs', 'VmLegacyWatchdogArgsDict', 'outputs.VmLegacyWatchdog']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["acpi"] = acpi
+        __props__["agent"] = agent
+        __props__["amdSev"] = amd_sev
+        __props__["audioDevice"] = audio_device
+        __props__["bios"] = bios
+        __props__["bootOrders"] = boot_orders
+        __props__["cdrom"] = cdrom
+        __props__["clone"] = clone
+        __props__["cpu"] = cpu
+        __props__["deleteUnreferencedDisksOnDestroy"] = delete_unreferenced_disks_on_destroy
+        __props__["description"] = description
+        __props__["disks"] = disks
+        __props__["efiDisk"] = efi_disk
+        __props__["hookScriptFileId"] = hook_script_file_id
+        __props__["hostpcis"] = hostpcis
+        __props__["hotplug"] = hotplug
+        __props__["initialization"] = initialization
+        __props__["ipv4Addresses"] = ipv4_addresses
+        __props__["ipv6Addresses"] = ipv6_addresses
+        __props__["keyboardLayout"] = keyboard_layout
+        __props__["kvmArguments"] = kvm_arguments
+        __props__["macAddresses"] = mac_addresses
+        __props__["machine"] = machine
+        __props__["memory"] = memory
+        __props__["migrate"] = migrate
+        __props__["name"] = name
+        __props__["networkDevices"] = network_devices
+        __props__["networkInterfaceNames"] = network_interface_names
+        __props__["nodeName"] = node_name
+        __props__["numas"] = numas
+        __props__["onBoot"] = on_boot
+        __props__["operatingSystem"] = operating_system
+        __props__["poolId"] = pool_id
+        __props__["protection"] = protection
+        __props__["purgeOnDestroy"] = purge_on_destroy
+        __props__["reboot"] = reboot
+        __props__["rebootAfterUpdate"] = reboot_after_update
+        __props__["rngs"] = rngs
+        __props__["scsiHardware"] = scsi_hardware
+        __props__["serialDevices"] = serial_devices
+        __props__["smbios"] = smbios
+        __props__["started"] = started
+        __props__["startup"] = startup
+        __props__["stopOnDestroy"] = stop_on_destroy
+        __props__["tabletDevice"] = tablet_device
+        __props__["tags"] = tags
+        __props__["template"] = template
+        __props__["timeoutClone"] = timeout_clone
+        __props__["timeoutCreate"] = timeout_create
+        __props__["timeoutMigrate"] = timeout_migrate
+        __props__["timeoutMoveDisk"] = timeout_move_disk
+        __props__["timeoutReboot"] = timeout_reboot
+        __props__["timeoutShutdownVm"] = timeout_shutdown_vm
+        __props__["timeoutStartVm"] = timeout_start_vm
+        __props__["timeoutStopVm"] = timeout_stop_vm
+        __props__["tpmState"] = tpm_state
+        __props__["usbs"] = usbs
+        __props__["vga"] = vga
+        __props__["virtiofs"] = virtiofs
+        __props__["vmId"] = vm_id
+        __props__["watchdog"] = watchdog
+        return pulumi.runtime.exists_resource(None, 'proxmoxve:index/vmLegacy:VmLegacy', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter
@@ -3307,7 +3447,7 @@ class VmLegacy(pulumi.CustomResource):
     @pulumi.getter(name="hookScriptFileId")
     def hook_script_file_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
+        The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute). When cloning a VM, the hookscript is inherited from the template unless this attribute is explicitly set. Note that setting or changing a hookscript requires a direct `root@pam` password session; API tokens (including one issued for `root@pam`) are rejected by Proxmox with "only root can set 'hookscript' config".
         """
         return pulumi.get(self, "hook_script_file_id")
 
@@ -3690,7 +3830,9 @@ class VmLegacy(pulumi.CustomResource):
     @pulumi.getter
     def usbs(self) -> pulumi.Output[Optional[Sequence['outputs.VmLegacyUsb']]]:
         """
-        A host USB device mapping (multiple blocks supported).
+        A host USB device mapping (multiple blocks supported, up to 14).
+        Proxmox VE only starts a VM with `usb5` and up on machine type >= 7.1 with
+        an `l26` or Windows > 7 `operating_system`.
         """
         return pulumi.get(self, "usbs")
 

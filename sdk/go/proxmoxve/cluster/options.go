@@ -260,6 +260,12 @@ func (OptionsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*optionsState)(nil)).Elem()
 }
 
+// OptionsExists checks whether an existing Options resource with the given ID exists.
+func OptionsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OptionsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:cluster/options:Options", id, state, "", opts...)
+}
+
 type optionsArgs struct {
 	// Clone I/O bandwidth limit in KiB/s.
 	BandwidthLimitClone *int `pulumi:"bandwidthLimitClone"`

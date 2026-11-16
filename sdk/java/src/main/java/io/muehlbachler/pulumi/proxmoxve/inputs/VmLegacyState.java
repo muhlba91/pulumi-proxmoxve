@@ -239,14 +239,14 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
+     * The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute). When cloning a VM, the hookscript is inherited from the template unless this attribute is explicitly set. Note that setting or changing a hookscript requires a direct `root{@literal @}pam` password session; API tokens (including one issued for `root{@literal @}pam`) are rejected by Proxmox with &#34;only root can set &#39;hookscript&#39; config&#34;.
      * 
      */
     @Import(name="hookScriptFileId")
     private @Nullable Output<String> hookScriptFileId;
 
     /**
-     * @return The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
+     * @return The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute). When cloning a VM, the hookscript is inherited from the template unless this attribute is explicitly set. Note that setting or changing a hookscript requires a direct `root{@literal @}pam` password session; API tokens (including one issued for `root{@literal @}pam`) are rejected by Proxmox with &#34;only root can set &#39;hookscript&#39; config&#34;.
      * 
      */
     public Optional<Output<String>> hookScriptFileId() {
@@ -858,22 +858,20 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
     /**
      * Disk move timeout
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeoutClone / timeout_migrate) is used instead.
+     * @deprecated This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeoutClone / timeout_migrate) is used instead.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeoutClone / timeout_migrate) is used instead. */
+    @Deprecated
     @Import(name="timeoutMoveDisk")
     private @Nullable Output<Integer> timeoutMoveDisk;
 
     /**
      * @return Disk move timeout
      * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeoutClone / timeout_migrate) is used instead.
+     * @deprecated This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeoutClone / timeout_migrate) is used instead.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeoutClone / timeout_migrate) is used instead. */
+    @Deprecated
     public Optional<Output<Integer>> timeoutMoveDisk() {
         return Optional.ofNullable(this.timeoutMoveDisk);
     }
@@ -968,14 +966,18 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A host USB device mapping (multiple blocks supported).
+     * A host USB device mapping (multiple blocks supported, up to 14).
+     * Proxmox VE only starts a VM with `usb5` and up on machine type &gt;= 7.1 with
+     * an `l26` or Windows &gt; 7 `operatingSystem`.
      * 
      */
     @Import(name="usbs")
     private @Nullable Output<List<VmLegacyUsbArgs>> usbs;
 
     /**
-     * @return A host USB device mapping (multiple blocks supported).
+     * @return A host USB device mapping (multiple blocks supported, up to 14).
+     * Proxmox VE only starts a VM with `usb5` and up on machine type &gt;= 7.1 with
+     * an `l26` or Windows &gt; 7 `operatingSystem`.
      * 
      */
     public Optional<Output<List<VmLegacyUsbArgs>>> usbs() {
@@ -1422,7 +1424,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hookScriptFileId The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
+         * @param hookScriptFileId The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute). When cloning a VM, the hookscript is inherited from the template unless this attribute is explicitly set. Note that setting or changing a hookscript requires a direct `root{@literal @}pam` password session; API tokens (including one issued for `root{@literal @}pam`) are rejected by Proxmox with &#34;only root can set &#39;hookscript&#39; config&#34;.
          * 
          * @return builder
          * 
@@ -1433,7 +1435,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hookScriptFileId The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
+         * @param hookScriptFileId The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute). When cloning a VM, the hookscript is inherited from the template unless this attribute is explicitly set. Note that setting or changing a hookscript requires a direct `root{@literal @}pam` password session; API tokens (including one issued for `root{@literal @}pam`) are rejected by Proxmox with &#34;only root can set &#39;hookscript&#39; config&#34;.
          * 
          * @return builder
          * 
@@ -2373,11 +2375,10 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeoutClone / timeout_migrate) is used instead.
+         * @deprecated This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeoutClone / timeout_migrate) is used instead.
          * 
          */
-        @Deprecated /* This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeoutClone / timeout_migrate) is used instead. */
+        @Deprecated
         public Builder timeoutMoveDisk(@Nullable Output<Integer> timeoutMoveDisk) {
             $.timeoutMoveDisk = timeoutMoveDisk;
             return this;
@@ -2388,11 +2389,10 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeoutClone / timeout_migrate) is used instead.
+         * @deprecated This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeoutClone / timeout_migrate) is used instead.
          * 
          */
-        @Deprecated /* This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeoutClone / timeout_migrate) is used instead. */
+        @Deprecated
         public Builder timeoutMoveDisk(Integer timeoutMoveDisk) {
             return timeoutMoveDisk(Output.of(timeoutMoveDisk));
         }
@@ -2517,7 +2517,9 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param usbs A host USB device mapping (multiple blocks supported).
+         * @param usbs A host USB device mapping (multiple blocks supported, up to 14).
+         * Proxmox VE only starts a VM with `usb5` and up on machine type &gt;= 7.1 with
+         * an `l26` or Windows &gt; 7 `operatingSystem`.
          * 
          * @return builder
          * 
@@ -2528,7 +2530,9 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param usbs A host USB device mapping (multiple blocks supported).
+         * @param usbs A host USB device mapping (multiple blocks supported, up to 14).
+         * Proxmox VE only starts a VM with `usb5` and up on machine type &gt;= 7.1 with
+         * an `l26` or Windows &gt; 7 `operatingSystem`.
          * 
          * @return builder
          * 
@@ -2538,7 +2542,9 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param usbs A host USB device mapping (multiple blocks supported).
+         * @param usbs A host USB device mapping (multiple blocks supported, up to 14).
+         * Proxmox VE only starts a VM with `usb5` and up on machine type &gt;= 7.1 with
+         * an `l26` or Windows &gt; 7 `operatingSystem`.
          * 
          * @return builder
          * 

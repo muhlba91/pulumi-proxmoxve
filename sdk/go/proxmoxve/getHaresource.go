@@ -32,6 +32,8 @@ type LookupHaresourceArgs struct {
 
 // A collection of values returned by getHaresource.
 type LookupHaresourceResult struct {
+	// Whether this HA resource may be migrated during automatic rebalancing (PVE 9.2+).
+	AutoRebalance bool `pulumi:"autoRebalance"`
 	// The comment associated with this resource.
 	Comment string `pulumi:"comment"`
 	// Automatic failback to the preferred node when it becomes available again (PVE 9+).
@@ -80,6 +82,11 @@ func (o LookupHaresourceResultOutput) ToLookupHaresourceResultOutput() LookupHar
 
 func (o LookupHaresourceResultOutput) ToLookupHaresourceResultOutputWithContext(ctx context.Context) LookupHaresourceResultOutput {
 	return o
+}
+
+// Whether this HA resource may be migrated during automatic rebalancing (PVE 9.2+).
+func (o LookupHaresourceResultOutput) AutoRebalance() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupHaresourceResult) bool { return v.AutoRebalance }).(pulumi.BoolOutput)
 }
 
 // The comment associated with this resource.

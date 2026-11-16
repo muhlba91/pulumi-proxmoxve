@@ -73,51 +73,59 @@ import (
 // ## Import
 //
 // ### Cluster Rules
+//
 // Use the import ID: `cluster`
 //
 // **Example:**
+//
 // ```sh
 // $ pulumi import proxmoxve:firewall/rulesLegacy:RulesLegacy cluster_rules cluster
 // ```
 //
 // ### Node Rules
+//
 // Use the import ID format: `node/<node_name>`
 // Example uses node name `pve`.
 //
 // **Example:**
+//
 // ```sh
 // $ pulumi import proxmoxve:firewall/rulesLegacy:RulesLegacy node_rules node/pve
 // ```
 //
 // ### VM Rules
+//
 // Use the import ID format: `vm/<node_name>/<vm_id>`
 // Example uses node name `pve` and VM ID `100`.
 //
 // **Example:**
+//
 // ```sh
 // $ pulumi import proxmoxve:firewall/rulesLegacy:RulesLegacy vm_rules vm/pve/100
 // ```
 //
 // ### Container Rules
+//
 // Use the import ID format: `container/<node_name>/<container_id>`
 // Example uses node name `pve` and container ID `100`.
 //
 // **Example:**
+//
 // ```sh
 // $ pulumi import proxmoxve:firewall/rulesLegacy:RulesLegacy container_rules container/pve/100
 // ```
 type RulesLegacy struct {
 	pulumi.CustomResourceState
 
-	// Container ID. Leave empty for node/cluster level rules.
+	// Container ID. Leave empty for node/cluster level rules. Changing this value forces replacement.
 	ContainerId pulumi.IntPtrOutput `pulumi:"containerId"`
-	// Node name. Leave empty for cluster level rules.
+	// Node name. Leave empty for cluster level rules. Changing it forces replacement of node/cluster level rules; for VM/container level rules it can change in place (e.g. after a migration).
 	NodeName pulumi.StringPtrOutput `pulumi:"nodeName"`
 	// Firewall rule block (multiple blocks supported).
 	// The provider supports two types of the `rule` blocks:
 	// - A rule definition block, which includes the following arguments:
 	Rules RulesLegacyRuleArrayOutput `pulumi:"rules"`
-	// VM ID. Leave empty for node/cluster level rules.
+	// VM ID. Leave empty for node/cluster level rules. Changing this value forces replacement.
 	VmId pulumi.IntPtrOutput `pulumi:"vmId"`
 }
 
@@ -151,28 +159,28 @@ func GetRulesLegacy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RulesLegacy resources.
 type rulesLegacyState struct {
-	// Container ID. Leave empty for node/cluster level rules.
+	// Container ID. Leave empty for node/cluster level rules. Changing this value forces replacement.
 	ContainerId *int `pulumi:"containerId"`
-	// Node name. Leave empty for cluster level rules.
+	// Node name. Leave empty for cluster level rules. Changing it forces replacement of node/cluster level rules; for VM/container level rules it can change in place (e.g. after a migration).
 	NodeName *string `pulumi:"nodeName"`
 	// Firewall rule block (multiple blocks supported).
 	// The provider supports two types of the `rule` blocks:
 	// - A rule definition block, which includes the following arguments:
 	Rules []RulesLegacyRule `pulumi:"rules"`
-	// VM ID. Leave empty for node/cluster level rules.
+	// VM ID. Leave empty for node/cluster level rules. Changing this value forces replacement.
 	VmId *int `pulumi:"vmId"`
 }
 
 type RulesLegacyState struct {
-	// Container ID. Leave empty for node/cluster level rules.
+	// Container ID. Leave empty for node/cluster level rules. Changing this value forces replacement.
 	ContainerId pulumi.IntPtrInput
-	// Node name. Leave empty for cluster level rules.
+	// Node name. Leave empty for cluster level rules. Changing it forces replacement of node/cluster level rules; for VM/container level rules it can change in place (e.g. after a migration).
 	NodeName pulumi.StringPtrInput
 	// Firewall rule block (multiple blocks supported).
 	// The provider supports two types of the `rule` blocks:
 	// - A rule definition block, which includes the following arguments:
 	Rules RulesLegacyRuleArrayInput
-	// VM ID. Leave empty for node/cluster level rules.
+	// VM ID. Leave empty for node/cluster level rules. Changing this value forces replacement.
 	VmId pulumi.IntPtrInput
 }
 
@@ -180,30 +188,36 @@ func (RulesLegacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*rulesLegacyState)(nil)).Elem()
 }
 
+// RulesLegacyExists checks whether an existing RulesLegacy resource with the given ID exists.
+func RulesLegacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RulesLegacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:firewall/rulesLegacy:RulesLegacy", id, state, "", opts...)
+}
+
 type rulesLegacyArgs struct {
-	// Container ID. Leave empty for node/cluster level rules.
+	// Container ID. Leave empty for node/cluster level rules. Changing this value forces replacement.
 	ContainerId *int `pulumi:"containerId"`
-	// Node name. Leave empty for cluster level rules.
+	// Node name. Leave empty for cluster level rules. Changing it forces replacement of node/cluster level rules; for VM/container level rules it can change in place (e.g. after a migration).
 	NodeName *string `pulumi:"nodeName"`
 	// Firewall rule block (multiple blocks supported).
 	// The provider supports two types of the `rule` blocks:
 	// - A rule definition block, which includes the following arguments:
 	Rules []RulesLegacyRule `pulumi:"rules"`
-	// VM ID. Leave empty for node/cluster level rules.
+	// VM ID. Leave empty for node/cluster level rules. Changing this value forces replacement.
 	VmId *int `pulumi:"vmId"`
 }
 
 // The set of arguments for constructing a RulesLegacy resource.
 type RulesLegacyArgs struct {
-	// Container ID. Leave empty for node/cluster level rules.
+	// Container ID. Leave empty for node/cluster level rules. Changing this value forces replacement.
 	ContainerId pulumi.IntPtrInput
-	// Node name. Leave empty for cluster level rules.
+	// Node name. Leave empty for cluster level rules. Changing it forces replacement of node/cluster level rules; for VM/container level rules it can change in place (e.g. after a migration).
 	NodeName pulumi.StringPtrInput
 	// Firewall rule block (multiple blocks supported).
 	// The provider supports two types of the `rule` blocks:
 	// - A rule definition block, which includes the following arguments:
 	Rules RulesLegacyRuleArrayInput
-	// VM ID. Leave empty for node/cluster level rules.
+	// VM ID. Leave empty for node/cluster level rules. Changing this value forces replacement.
 	VmId pulumi.IntPtrInput
 }
 
@@ -294,12 +308,12 @@ func (o RulesLegacyOutput) ToRulesLegacyOutputWithContext(ctx context.Context) R
 	return o
 }
 
-// Container ID. Leave empty for node/cluster level rules.
+// Container ID. Leave empty for node/cluster level rules. Changing this value forces replacement.
 func (o RulesLegacyOutput) ContainerId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RulesLegacy) pulumi.IntPtrOutput { return v.ContainerId }).(pulumi.IntPtrOutput)
 }
 
-// Node name. Leave empty for cluster level rules.
+// Node name. Leave empty for cluster level rules. Changing it forces replacement of node/cluster level rules; for VM/container level rules it can change in place (e.g. after a migration).
 func (o RulesLegacyOutput) NodeName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RulesLegacy) pulumi.StringPtrOutput { return v.NodeName }).(pulumi.StringPtrOutput)
 }
@@ -311,7 +325,7 @@ func (o RulesLegacyOutput) Rules() RulesLegacyRuleArrayOutput {
 	return o.ApplyT(func(v *RulesLegacy) RulesLegacyRuleArrayOutput { return v.Rules }).(RulesLegacyRuleArrayOutput)
 }
 
-// VM ID. Leave empty for node/cluster level rules.
+// VM ID. Leave empty for node/cluster level rules. Changing this value forces replacement.
 func (o RulesLegacyOutput) VmId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RulesLegacy) pulumi.IntPtrOutput { return v.VmId }).(pulumi.IntPtrOutput)
 }

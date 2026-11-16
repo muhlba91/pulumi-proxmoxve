@@ -18,7 +18,8 @@ namespace Pulumi.ProxmoxVE.Outputs
         /// </summary>
         public readonly string Data;
         /// <summary>
-        /// The file name.
+        /// The file name. Must be a plain file name without
+        /// path separators or whitespace.
         /// </summary>
         public readonly string FileName;
         /// <summary>

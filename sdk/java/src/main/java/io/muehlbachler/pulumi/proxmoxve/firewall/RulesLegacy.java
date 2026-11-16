@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var inbound = new RulesLegacy("inbound", RulesLegacyArgs.builder()
  *             .nodeName(example.get("nodeName"))
- *             .vmId(((Number) example.get("vmId")).intValue())
+ *             .vmId(example.get("vmId"))
  *             .rules(            
  *                 RulesLegacyRuleArgs.builder()
  *                     .type("in")
@@ -89,36 +89,44 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ### Cluster Rules
+ * 
  * Use the import ID: `cluster`
  * 
  * **Example:**
+ * 
  * ```sh
  * $ pulumi import proxmoxve:firewall/rulesLegacy:RulesLegacy cluster_rules cluster
  * ```
  * 
  * ### Node Rules
+ * 
  * Use the import ID format: `node/&lt;node_name&gt;`
  * Example uses node name `pve`.
  * 
  * **Example:**
+ * 
  * ```sh
  * $ pulumi import proxmoxve:firewall/rulesLegacy:RulesLegacy node_rules node/pve
  * ```
  * 
  * ### VM Rules
+ * 
  * Use the import ID format: `vm/&lt;node_name&gt;/&lt;vm_id&gt;`
  * Example uses node name `pve` and VM ID `100`.
  * 
  * **Example:**
+ * 
  * ```sh
  * $ pulumi import proxmoxve:firewall/rulesLegacy:RulesLegacy vm_rules vm/pve/100
  * ```
  * 
  * ### Container Rules
+ * 
  * Use the import ID format: `container/&lt;node_name&gt;/&lt;container_id&gt;`
  * Example uses node name `pve` and container ID `100`.
  * 
  * **Example:**
+ * 
  * ```sh
  * $ pulumi import proxmoxve:firewall/rulesLegacy:RulesLegacy container_rules container/pve/100
  * ```
@@ -127,28 +135,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="proxmoxve:firewall/rulesLegacy:RulesLegacy")
 public class RulesLegacy extends com.pulumi.resources.CustomResource {
     /**
-     * Container ID. Leave empty for node/cluster level rules.
+     * Container ID. Leave empty for node/cluster level rules. Changing this value forces replacement.
      * 
      */
     @Export(name="containerId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> containerId;
 
     /**
-     * @return Container ID. Leave empty for node/cluster level rules.
+     * @return Container ID. Leave empty for node/cluster level rules. Changing this value forces replacement.
      * 
      */
     public Output<Optional<Integer>> containerId() {
         return Codegen.optional(this.containerId);
     }
     /**
-     * Node name. Leave empty for cluster level rules.
+     * Node name. Leave empty for cluster level rules. Changing it forces replacement of node/cluster level rules; for VM/container level rules it can change in place (e.g. after a migration).
      * 
      */
     @Export(name="nodeName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> nodeName;
 
     /**
-     * @return Node name. Leave empty for cluster level rules.
+     * @return Node name. Leave empty for cluster level rules. Changing it forces replacement of node/cluster level rules; for VM/container level rules it can change in place (e.g. after a migration).
      * 
      */
     public Output<Optional<String>> nodeName() {
@@ -173,14 +181,14 @@ public class RulesLegacy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.rules);
     }
     /**
-     * VM ID. Leave empty for node/cluster level rules.
+     * VM ID. Leave empty for node/cluster level rules. Changing this value forces replacement.
      * 
      */
     @Export(name="vmId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> vmId;
 
     /**
-     * @return VM ID. Leave empty for node/cluster level rules.
+     * @return VM ID. Leave empty for node/cluster level rules. Changing this value forces replacement.
      * 
      */
     public Output<Optional<Integer>> vmId() {

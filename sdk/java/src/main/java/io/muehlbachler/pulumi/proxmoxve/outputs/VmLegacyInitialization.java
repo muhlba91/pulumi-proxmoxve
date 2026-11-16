@@ -37,6 +37,9 @@ public final class VmLegacyInitialization {
      * image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
      * detected if the setting is missing but a cloud-init image is present,
      * otherwise defaults to `ide2`.
+     * Must not be the same as the `interface` of any `disk` block, the plan
+     * fails if it is. If the setting is missing, `ide2` is used on create
+     * (unless cloning) and checked against the `disk` interfaces too.
      * 
      */
     private @Nullable String interface_;
@@ -49,6 +52,9 @@ public final class VmLegacyInitialization {
     /**
      * @return The identifier for a file containing
      * all meta data passed to the VM via cloud-init.
+     * - When cloning, setting any of the four `*_data_file_id` attributes above to `&#34;&#34;` clears
+     *   the custom cloud-init files inherited from the template, as long as none of them is set
+     *   to a value.
      * 
      */
     private @Nullable String metaDataFileId;
@@ -118,6 +124,9 @@ public final class VmLegacyInitialization {
      * image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
      * detected if the setting is missing but a cloud-init image is present,
      * otherwise defaults to `ide2`.
+     * Must not be the same as the `interface` of any `disk` block, the plan
+     * fails if it is. If the setting is missing, `ide2` is used on create
+     * (unless cloning) and checked against the `disk` interfaces too.
      * 
      */
     public Optional<String> interface_() {
@@ -134,6 +143,9 @@ public final class VmLegacyInitialization {
     /**
      * @return The identifier for a file containing
      * all meta data passed to the VM via cloud-init.
+     * - When cloning, setting any of the four `*_data_file_id` attributes above to `&#34;&#34;` clears
+     *   the custom cloud-init files inherited from the template, as long as none of them is set
+     *   to a value.
      * 
      */
     public Optional<String> metaDataFileId() {

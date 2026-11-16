@@ -21,6 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "proxmoxve:ceph/fs:Fs":
+		r = &Fs{}
+	case "proxmoxve:ceph/mds:Mds":
+		r = &Mds{}
 	case "proxmoxve:ceph/pool:Pool":
 		r = &Pool{}
 	default:
@@ -36,6 +40,16 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
+		"ceph/fs",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
+		"ceph/mds",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"proxmoxve",
 		"ceph/pool",

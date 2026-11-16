@@ -106,6 +106,7 @@ namespace Pulumi.ProxmoxVE
         /// <summary>
         /// The one-time password for the Proxmox VE API.
         /// </summary>
+        [Obsolete(@"The `Otp` attribute is deprecated and will be removed in a future release. Please use the `ApiToken` attribute instead.")]
         public static string? Otp
         {
             get => _otp.Get();
@@ -215,6 +216,10 @@ namespace Pulumi.ProxmoxVE
             /// The unencrypted private key (in PEM format) used for the SSH connection. Defaults to the value of the `PROXMOX_VE_SSH_PRIVATE_KEY` environment variable.
             /// </summary>
                 public string? PrivateKey { get; set; } = null!;
+            /// <summary>
+            /// Whether to run API calls under `/nodes/{node}/` with a `root@pam` ticket minted on that node over SSH, so an API token can perform `root@pam`-only operations. Those calls then run as `root@pam`, bypassing the token's permissions. Requires an SSH connection as `Root`. Defaults to the value of the `PROXMOX_VE_SSH_ROOT_TICKET` environment variable, or `False` if not set.
+            /// </summary>
+                public bool? RootTicket { get; set; }
             /// <summary>
             /// The password for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_PASSWORD` environment variable.
             /// </summary>

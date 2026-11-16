@@ -35,7 +35,7 @@ class VxlanLegacyArgs:
         :param pulumi.Input[_builtins.str] dns: DNS API server address.
         :param pulumi.Input[_builtins.str] dns_zone: DNS domain name. Used to register hostnames, such as `<hostname>.<domain>`. The DNS zone must already exist on the DNS server.
         :param pulumi.Input[_builtins.str] ipam: IP Address Management system.
-        :param pulumi.Input[_builtins.int] mtu: MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
+        :param pulumi.Input[_builtins.int] mtu: MTU value for the zone.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: The Proxmox nodes which the zone and associated VNets should be deployed on
         :param pulumi.Input[_builtins.str] reverse_dns: Reverse DNS API server address.
         """
@@ -118,7 +118,7 @@ class VxlanLegacyArgs:
     @pulumi.getter
     def mtu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
+        MTU value for the zone.
         """
         return pulumi.get(self, "mtu")
 
@@ -170,7 +170,7 @@ class _VxlanLegacyState:
         :param pulumi.Input[_builtins.str] dns: DNS API server address.
         :param pulumi.Input[_builtins.str] dns_zone: DNS domain name. Used to register hostnames, such as `<hostname>.<domain>`. The DNS zone must already exist on the DNS server.
         :param pulumi.Input[_builtins.str] ipam: IP Address Management system.
-        :param pulumi.Input[_builtins.int] mtu: MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
+        :param pulumi.Input[_builtins.int] mtu: MTU value for the zone.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: The Proxmox nodes which the zone and associated VNets should be deployed on
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] peers: A list of IP addresses of each node in the VXLAN zone. This can be external nodes reachable at this IP address. All nodes in the cluster need to be mentioned here
         :param pulumi.Input[_builtins.bool] pending: Indicates if the zone has pending configuration changes that need to be applied.
@@ -239,7 +239,7 @@ class _VxlanLegacyState:
     @pulumi.getter
     def mtu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
+        MTU value for the zone.
         """
         return pulumi.get(self, "mtu")
 
@@ -375,7 +375,7 @@ class VxlanLegacy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] dns: DNS API server address.
         :param pulumi.Input[_builtins.str] dns_zone: DNS domain name. Used to register hostnames, such as `<hostname>.<domain>`. The DNS zone must already exist on the DNS server.
         :param pulumi.Input[_builtins.str] ipam: IP Address Management system.
-        :param pulumi.Input[_builtins.int] mtu: MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
+        :param pulumi.Input[_builtins.int] mtu: MTU value for the zone.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: The Proxmox nodes which the zone and associated VNets should be deployed on
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] peers: A list of IP addresses of each node in the VXLAN zone. This can be external nodes reachable at this IP address. All nodes in the cluster need to be mentioned here
         :param pulumi.Input[_builtins.str] resource_id: The unique identifier of the SDN zone.
@@ -498,7 +498,7 @@ class VxlanLegacy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] dns: DNS API server address.
         :param pulumi.Input[_builtins.str] dns_zone: DNS domain name. Used to register hostnames, such as `<hostname>.<domain>`. The DNS zone must already exist on the DNS server.
         :param pulumi.Input[_builtins.str] ipam: IP Address Management system.
-        :param pulumi.Input[_builtins.int] mtu: MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
+        :param pulumi.Input[_builtins.int] mtu: MTU value for the zone.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: The Proxmox nodes which the zone and associated VNets should be deployed on
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] peers: A list of IP addresses of each node in the VXLAN zone. This can be external nodes reachable at this IP address. All nodes in the cluster need to be mentioned here
         :param pulumi.Input[_builtins.bool] pending: Indicates if the zone has pending configuration changes that need to be applied.
@@ -521,6 +521,32 @@ class VxlanLegacy(pulumi.CustomResource):
         __props__.__dict__["reverse_dns"] = reverse_dns
         __props__.__dict__["state"] = state
         return VxlanLegacy(resource_name, opts=opts, __props__=__props__)
+
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            dns: pulumi.Input[Optional[_builtins.str]] = None,
+            dns_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            ipam: pulumi.Input[Optional[_builtins.str]] = None,
+            mtu: pulumi.Input[Optional[_builtins.int]] = None,
+            nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            peers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            pending: pulumi.Input[Optional[_builtins.bool]] = None,
+            resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+            reverse_dns: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["dns"] = dns
+        __props__["dnsZone"] = dns_zone
+        __props__["ipam"] = ipam
+        __props__["mtu"] = mtu
+        __props__["nodes"] = nodes
+        __props__["peers"] = peers
+        __props__["pending"] = pending
+        __props__["resourceId"] = resource_id
+        __props__["reverseDns"] = reverse_dns
+        __props__["state"] = state
+        return pulumi.runtime.exists_resource(None, 'proxmoxve:sdn/zone/vxlanLegacy:VxlanLegacy', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
     @pulumi.getter
@@ -548,9 +574,9 @@ class VxlanLegacy(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def mtu(self) -> pulumi.Output[_builtins.int]:
+    def mtu(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
+        MTU value for the zone.
         """
         return pulumi.get(self, "mtu")
 

@@ -9,12 +9,250 @@ import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.deployment.InvokeOutputOptions;
 import io.muehlbachler.pulumi.proxmoxve.Utilities;
+import io.muehlbachler.pulumi.proxmoxve.sdn_controller.inputs.GetBgpArgs;
+import io.muehlbachler.pulumi.proxmoxve.sdn_controller.inputs.GetBgpPlainArgs;
 import io.muehlbachler.pulumi.proxmoxve.sdn_controller.inputs.GetEvpnArgs;
 import io.muehlbachler.pulumi.proxmoxve.sdn_controller.inputs.GetEvpnPlainArgs;
+import io.muehlbachler.pulumi.proxmoxve.sdn_controller.outputs.GetBgpResult;
 import io.muehlbachler.pulumi.proxmoxve.sdn_controller.outputs.GetEvpnResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class Sdn_controllerFunctions {
+    /**
+     * Reads the BGP controller configuration, which configures the Free Range Routing (frr) BGP router of a node. The data source reports the configuration desired by the SDN API, not the operational state of the BGP sessions.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.sdn_controller.Sdn_controllerFunctions;
+     * import com.pulumi.proxmoxve.sdn.inputs.GetBgpArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Sdn_controllerFunctions.getBgp(GetBgpArgs.builder()
+     *             .id("bgp1")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxSdnControllerBgp", Map.ofEntries(
+     *             Map.entry("id", example.id()),
+     *             Map.entry("nodeName", example.nodeName()),
+     *             Map.entry("asn", example.asn()),
+     *             Map.entry("peers", example.peers()),
+     *             Map.entry("ebgp", example.ebgp())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetBgpResult> getBgp(GetBgpArgs args) {
+        return getBgp(args, InvokeOptions.Empty);
+    }
+    /**
+     * Reads the BGP controller configuration, which configures the Free Range Routing (frr) BGP router of a node. The data source reports the configuration desired by the SDN API, not the operational state of the BGP sessions.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.sdn_controller.Sdn_controllerFunctions;
+     * import com.pulumi.proxmoxve.sdn.inputs.GetBgpArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Sdn_controllerFunctions.getBgp(GetBgpArgs.builder()
+     *             .id("bgp1")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxSdnControllerBgp", Map.ofEntries(
+     *             Map.entry("id", example.id()),
+     *             Map.entry("nodeName", example.nodeName()),
+     *             Map.entry("asn", example.asn()),
+     *             Map.entry("peers", example.peers()),
+     *             Map.entry("ebgp", example.ebgp())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetBgpResult> getBgpPlain(GetBgpPlainArgs args) {
+        return getBgpPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Reads the BGP controller configuration, which configures the Free Range Routing (frr) BGP router of a node. The data source reports the configuration desired by the SDN API, not the operational state of the BGP sessions.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.sdn_controller.Sdn_controllerFunctions;
+     * import com.pulumi.proxmoxve.sdn.inputs.GetBgpArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Sdn_controllerFunctions.getBgp(GetBgpArgs.builder()
+     *             .id("bgp1")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxSdnControllerBgp", Map.ofEntries(
+     *             Map.entry("id", example.id()),
+     *             Map.entry("nodeName", example.nodeName()),
+     *             Map.entry("asn", example.asn()),
+     *             Map.entry("peers", example.peers()),
+     *             Map.entry("ebgp", example.ebgp())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetBgpResult> getBgp(GetBgpArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:sdn/controller/getBgp:getBgp", TypeShape.of(GetBgpResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Reads the BGP controller configuration, which configures the Free Range Routing (frr) BGP router of a node. The data source reports the configuration desired by the SDN API, not the operational state of the BGP sessions.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.sdn_controller.Sdn_controllerFunctions;
+     * import com.pulumi.proxmoxve.sdn.inputs.GetBgpArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Sdn_controllerFunctions.getBgp(GetBgpArgs.builder()
+     *             .id("bgp1")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxSdnControllerBgp", Map.ofEntries(
+     *             Map.entry("id", example.id()),
+     *             Map.entry("nodeName", example.nodeName()),
+     *             Map.entry("asn", example.asn()),
+     *             Map.entry("peers", example.peers()),
+     *             Map.entry("ebgp", example.ebgp())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetBgpResult> getBgp(GetBgpArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:sdn/controller/getBgp:getBgp", TypeShape.of(GetBgpResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Reads the BGP controller configuration, which configures the Free Range Routing (frr) BGP router of a node. The data source reports the configuration desired by the SDN API, not the operational state of the BGP sessions.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.sdn_controller.Sdn_controllerFunctions;
+     * import com.pulumi.proxmoxve.sdn.inputs.GetBgpArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Sdn_controllerFunctions.getBgp(GetBgpArgs.builder()
+     *             .id("bgp1")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxSdnControllerBgp", Map.ofEntries(
+     *             Map.entry("id", example.id()),
+     *             Map.entry("nodeName", example.nodeName()),
+     *             Map.entry("asn", example.asn()),
+     *             Map.entry("peers", example.peers()),
+     *             Map.entry("ebgp", example.ebgp())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetBgpResult> getBgpPlain(GetBgpPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("proxmoxve:sdn/controller/getBgp:getBgp", TypeShape.of(GetBgpResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * The EVPN zone requires an external controller to manage the control plane. The EVPN controller plugin configures the Free Range Routing (frr) router.
      * 

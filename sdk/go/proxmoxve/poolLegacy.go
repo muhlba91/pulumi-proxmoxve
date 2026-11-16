@@ -113,6 +113,12 @@ func (PoolLegacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*poolLegacyState)(nil)).Elem()
 }
 
+// PoolLegacyExists checks whether an existing PoolLegacy resource with the given ID exists.
+func PoolLegacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PoolLegacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:index/poolLegacy:PoolLegacy", id, state, "", opts...)
+}
+
 type poolLegacyArgs struct {
 	// The pool comment.
 	Comment *string `pulumi:"comment"`

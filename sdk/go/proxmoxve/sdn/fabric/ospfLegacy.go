@@ -86,6 +86,12 @@ func (OspfLegacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ospfLegacyState)(nil)).Elem()
 }
 
+// OspfLegacyExists checks whether an existing OspfLegacy resource with the given ID exists.
+func OspfLegacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OspfLegacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:sdn/fabric/ospfLegacy:OspfLegacy", id, state, "", opts...)
+}
+
 type ospfLegacyArgs struct {
 	// OSPF area. Either a IPv4 address or a 32-bit number. Gets validated in rust.
 	Area string `pulumi:"area"`

@@ -454,6 +454,28 @@ class ImageLegacy(pulumi.CustomResource):
         __props__.__dict__["upload_timeout"] = upload_timeout
         return ImageLegacy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            datastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+            file_name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_name: pulumi.Input[Optional[_builtins.str]] = None,
+            overwrite: pulumi.Input[Optional[_builtins.bool]] = None,
+            overwrite_unmanaged: pulumi.Input[Optional[_builtins.bool]] = None,
+            reference: pulumi.Input[Optional[_builtins.str]] = None,
+            size: pulumi.Input[Optional[_builtins.int]] = None,
+            upload_timeout: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["datastoreId"] = datastore_id
+        __props__["fileName"] = file_name
+        __props__["nodeName"] = node_name
+        __props__["overwrite"] = overwrite
+        __props__["overwriteUnmanaged"] = overwrite_unmanaged
+        __props__["reference"] = reference
+        __props__["size"] = size
+        __props__["uploadTimeout"] = upload_timeout
+        return pulumi.runtime.exists_resource(None, 'proxmoxve:oci/imageLegacy:ImageLegacy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="datastoreId")
     def datastore_id(self) -> pulumi.Output[_builtins.str]:

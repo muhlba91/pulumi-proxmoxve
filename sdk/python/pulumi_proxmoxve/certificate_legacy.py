@@ -542,6 +542,40 @@ class CertificateLegacy(pulumi.CustomResource):
         __props__.__dict__["subject_alternative_names"] = subject_alternative_names
         return CertificateLegacy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            certificate: pulumi.Input[Optional[_builtins.str]] = None,
+            certificate_chain: pulumi.Input[Optional[_builtins.str]] = None,
+            expiration_date: pulumi.Input[Optional[_builtins.str]] = None,
+            file_name: pulumi.Input[Optional[_builtins.str]] = None,
+            issuer: pulumi.Input[Optional[_builtins.str]] = None,
+            node_name: pulumi.Input[Optional[_builtins.str]] = None,
+            overwrite: pulumi.Input[Optional[_builtins.bool]] = None,
+            private_key: pulumi.Input[Optional[_builtins.str]] = None,
+            public_key_size: pulumi.Input[Optional[_builtins.int]] = None,
+            public_key_type: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            start_date: pulumi.Input[Optional[_builtins.str]] = None,
+            subject: pulumi.Input[Optional[_builtins.str]] = None,
+            subject_alternative_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["certificate"] = certificate
+        __props__["certificateChain"] = certificate_chain
+        __props__["expirationDate"] = expiration_date
+        __props__["fileName"] = file_name
+        __props__["issuer"] = issuer
+        __props__["nodeName"] = node_name
+        __props__["overwrite"] = overwrite
+        __props__["privateKey"] = private_key
+        __props__["publicKeySize"] = public_key_size
+        __props__["publicKeyType"] = public_key_type
+        __props__["sslFingerprint"] = ssl_fingerprint
+        __props__["startDate"] = start_date
+        __props__["subject"] = subject
+        __props__["subjectAlternativeNames"] = subject_alternative_names
+        return pulumi.runtime.exists_resource(None, 'proxmoxve:index/certificateLegacy:CertificateLegacy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def certificate(self) -> pulumi.Output[_builtins.str]:

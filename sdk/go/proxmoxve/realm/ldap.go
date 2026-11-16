@@ -416,6 +416,12 @@ func (LdapState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ldapState)(nil)).Elem()
 }
 
+// LdapExists checks whether an existing Ldap resource with the given ID exists.
+func LdapExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LdapState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:realm/ldap:Ldap", id, state, "", opts...)
+}
+
 type ldapArgs struct {
 	// LDAP base DN for user searches (e.g., 'ou=users,dc=example,dc=com').
 	BaseDn string `pulumi:"baseDn"`

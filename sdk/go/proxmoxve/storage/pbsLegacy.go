@@ -229,6 +229,12 @@ func (PbsLegacyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*pbsLegacyState)(nil)).Elem()
 }
 
+// PbsLegacyExists checks whether an existing PbsLegacy resource with the given ID exists.
+func PbsLegacyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PbsLegacyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:storage/pbsLegacy:PbsLegacy", id, state, "", opts...)
+}
+
 type pbsLegacyArgs struct {
 	// Configure backup retention settings for the storage type.
 	Backups *PbsLegacyBackups `pulumi:"backups"`

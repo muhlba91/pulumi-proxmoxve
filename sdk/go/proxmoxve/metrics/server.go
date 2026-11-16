@@ -297,6 +297,12 @@ func (ServerState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serverState)(nil)).Elem()
 }
 
+// ServerExists checks whether an existing Server resource with the given ID exists.
+func ServerExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServerState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("proxmoxve:metrics/server:Server", id, state, "", opts...)
+}
+
 type serverArgs struct {
 	// Set this to `true` to disable this metric server. Defaults to `false`.
 	Disable *bool `pulumi:"disable"`

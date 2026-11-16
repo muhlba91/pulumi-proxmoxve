@@ -64,14 +64,14 @@ public final class ReplicationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. &#39;\n\n-\n\n&#39;.
+     * Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. &#39;&#92;n&#92;n-&#92;n&#92;n&#39;.
      * 
      */
     @Import(name="resourceId", required=true)
     private Output<String> resourceId;
 
     /**
-     * @return Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. &#39;\n\n-\n\n&#39;.
+     * @return Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. &#39;&#92;n&#92;n-&#92;n&#92;n&#39;.
      * 
      */
     public Output<String> resourceId() {
@@ -217,7 +217,7 @@ public final class ReplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceId Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. &#39;\n\n-\n\n&#39;.
+         * @param resourceId Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. &#39;&#92;n&#92;n-&#92;n&#92;n&#39;.
          * 
          * @return builder
          * 
@@ -228,7 +228,7 @@ public final class ReplicationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceId Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. &#39;\n\n-\n\n&#39;.
+         * @param resourceId Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. &#39;&#92;n&#92;n-&#92;n&#92;n&#39;.
          * 
          * @return builder
          * 
