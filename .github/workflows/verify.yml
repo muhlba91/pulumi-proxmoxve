@@ -48,7 +48,7 @@ jobs:
           install_args: go golangci-lint pulumi github:pulumi/pulumictl
 
       # Go comes from mise; setup-go only restores the module cache.
-      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+      - uses: actions/setup-go@d8cbb8045d7f43706b9177cceb36c1f91a6644d5 # v7.1.0
         with:
           cache-dependency-path: "**/*.sum"
 
@@ -86,7 +86,7 @@ jobs:
           install_args: go pulumi github:pulumi/pulumictl ${{ fromJSON('{"go":"","nodejs":"node","python":"python","dotnet":"dotnet","java":"java"}')[matrix.language] }}
 
       # Go comes from mise; setup-go only restores the module cache.
-      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+      - uses: actions/setup-go@d8cbb8045d7f43706b9177cceb36c1f91a6644d5 # v7.1.0
         with:
           cache-dependency-path: "**/*.sum"
 
