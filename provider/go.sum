@@ -2865,12 +2865,10 @@ github.com/bmatcuk/doublestar/v4 v4.10.4 h1:oTKkRmRuOsKMqFe1AQazd9gGBFNEpOmgKp/x
 github.com/bmatcuk/doublestar/v4 v4.10.4/go.mod h1:xBQ8jztBU6kakFMg+8WGxn0c6z1fTSPVIjEY1Wr7jzc=
 github.com/boombuler/barcode v1.0.0/go.mod h1:paBWMcWSl3LHKBqUq+rly7CNSldXjb2rDl3JlRe0mD8=
 github.com/boombuler/barcode v1.0.1/go.mod h1:paBWMcWSl3LHKBqUq+rly7CNSldXjb2rDl3JlRe0mD8=
-github.com/bpg/terraform-provider-proxmox v0.122.0 h1:PRsaypEE4GQaCfE+uUt43E/oldh9KzBnpiHPqEzaOsU=
-github.com/bpg/terraform-provider-proxmox v0.122.0/go.mod h1:LXrYuv/qM+Yngyt+BCfcNTrUu9jXz058zXhJrIN/wb8=
 github.com/bpg/terraform-provider-proxmox v0.123.0 h1:N6+42dVPfVV5lW+3zotLHznPr8MZxuEH9ZbU/T65Yq8=
 github.com/bpg/terraform-provider-proxmox v0.123.0/go.mod h1:HYPdLvxOTmn7YBfG5khjMWxVLtHC9yOwxRvZEpIxqd0=
-github.com/brianvoe/gofakeit/v7 v7.18.2 h1:e5aYhIDQT8z6p/sB5cHVoTiswhb3RImxk01BOdrAL0A=
-github.com/brianvoe/gofakeit/v7 v7.18.2/go.mod h1:QXuPeBw164PJCzCUZVmgpgHJ3Llj49jSLVkKPMtxtxA=
+github.com/brianvoe/gofakeit/v7 v7.18.3 h1:SIBHYAFXJSynTU5aghITPyYdlrFaxA2rVGh5WtHSTUo=
+github.com/brianvoe/gofakeit/v7 v7.18.3/go.mod h1:QXuPeBw164PJCzCUZVmgpgHJ3Llj49jSLVkKPMtxtxA=
 github.com/bufbuild/protocompile v0.14.1 h1:iA73zAf/fyljNjQKwYzUHD6AD4R8KMasmwa/FBatYVw=
 github.com/bufbuild/protocompile v0.14.1/go.mod h1:ppVdAIhbr2H8asPk6k4pY7t9zB1OU5DoEw9xY/FUi1c=
 github.com/bwesterb/go-ristretto v1.2.3/go.mod h1:fUIoIZaG73pV5biE2Blr2xEzDoMj7NFEuV9ekS419A0=

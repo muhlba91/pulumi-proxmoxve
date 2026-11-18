@@ -311,11 +311,16 @@ type ContainerLegacy struct {
 	// second `mp1`, and so on. Appending a block, removing the last block, or
 	// reconfiguring an existing one is applied in place, and a running container
 	// is restarted. Removing or inserting a block before existing ones recreates
-	// the container, as does changing the `size` of an existing mount point or
-	// pointing its `volume` at a different datastore or host path. Changing
-	// `volume` from one volume ID to another on the same datastore is not
-	// detected. A removed volume mount stays on the datastore as an unused
-	// volume; bind and device mounts are just dropped.
+	// the container, as does changing the `size` of a mount point whose `volume`
+	// is a datastore ID, or pointing its `volume` at a different datastore ID or
+	// host path. Changing `volume` to the ID of another existing volume is
+	// applied in place: the new volume is attached and the previous one stays on
+	// the datastore as an unused volume. Proxmox VE does not check that the new
+	// volume exists, and it keeps the real size of an existing volume: a `size`
+	// that differs from it is not applied and shows as a change on every plan,
+	// and each apply of that change restarts a running container. A removed
+	// volume mount stays on the datastore as an unused volume; bind and device
+	// mounts are just dropped.
 	MountPoints ContainerLegacyMountPointArrayOutput `pulumi:"mountPoints"`
 	// A network interface (multiple blocks
 	// supported).
@@ -455,11 +460,16 @@ type containerLegacyState struct {
 	// second `mp1`, and so on. Appending a block, removing the last block, or
 	// reconfiguring an existing one is applied in place, and a running container
 	// is restarted. Removing or inserting a block before existing ones recreates
-	// the container, as does changing the `size` of an existing mount point or
-	// pointing its `volume` at a different datastore or host path. Changing
-	// `volume` from one volume ID to another on the same datastore is not
-	// detected. A removed volume mount stays on the datastore as an unused
-	// volume; bind and device mounts are just dropped.
+	// the container, as does changing the `size` of a mount point whose `volume`
+	// is a datastore ID, or pointing its `volume` at a different datastore ID or
+	// host path. Changing `volume` to the ID of another existing volume is
+	// applied in place: the new volume is attached and the previous one stays on
+	// the datastore as an unused volume. Proxmox VE does not check that the new
+	// volume exists, and it keeps the real size of an existing volume: a `size`
+	// that differs from it is not applied and shows as a change on every plan,
+	// and each apply of that change restarts a running container. A removed
+	// volume mount stays on the datastore as an unused volume; bind and device
+	// mounts are just dropped.
 	MountPoints []ContainerLegacyMountPoint `pulumi:"mountPoints"`
 	// A network interface (multiple blocks
 	// supported).
@@ -567,11 +577,16 @@ type ContainerLegacyState struct {
 	// second `mp1`, and so on. Appending a block, removing the last block, or
 	// reconfiguring an existing one is applied in place, and a running container
 	// is restarted. Removing or inserting a block before existing ones recreates
-	// the container, as does changing the `size` of an existing mount point or
-	// pointing its `volume` at a different datastore or host path. Changing
-	// `volume` from one volume ID to another on the same datastore is not
-	// detected. A removed volume mount stays on the datastore as an unused
-	// volume; bind and device mounts are just dropped.
+	// the container, as does changing the `size` of a mount point whose `volume`
+	// is a datastore ID, or pointing its `volume` at a different datastore ID or
+	// host path. Changing `volume` to the ID of another existing volume is
+	// applied in place: the new volume is attached and the previous one stays on
+	// the datastore as an unused volume. Proxmox VE does not check that the new
+	// volume exists, and it keeps the real size of an existing volume: a `size`
+	// that differs from it is not applied and shows as a change on every plan,
+	// and each apply of that change restarts a running container. A removed
+	// volume mount stays on the datastore as an unused volume; bind and device
+	// mounts are just dropped.
 	MountPoints ContainerLegacyMountPointArrayInput
 	// A network interface (multiple blocks
 	// supported).
@@ -685,11 +700,16 @@ type containerLegacyArgs struct {
 	// second `mp1`, and so on. Appending a block, removing the last block, or
 	// reconfiguring an existing one is applied in place, and a running container
 	// is restarted. Removing or inserting a block before existing ones recreates
-	// the container, as does changing the `size` of an existing mount point or
-	// pointing its `volume` at a different datastore or host path. Changing
-	// `volume` from one volume ID to another on the same datastore is not
-	// detected. A removed volume mount stays on the datastore as an unused
-	// volume; bind and device mounts are just dropped.
+	// the container, as does changing the `size` of a mount point whose `volume`
+	// is a datastore ID, or pointing its `volume` at a different datastore ID or
+	// host path. Changing `volume` to the ID of another existing volume is
+	// applied in place: the new volume is attached and the previous one stays on
+	// the datastore as an unused volume. Proxmox VE does not check that the new
+	// volume exists, and it keeps the real size of an existing volume: a `size`
+	// that differs from it is not applied and shows as a change on every plan,
+	// and each apply of that change restarts a running container. A removed
+	// volume mount stays on the datastore as an unused volume; bind and device
+	// mounts are just dropped.
 	MountPoints []ContainerLegacyMountPoint `pulumi:"mountPoints"`
 	// A network interface (multiple blocks
 	// supported).
@@ -794,11 +814,16 @@ type ContainerLegacyArgs struct {
 	// second `mp1`, and so on. Appending a block, removing the last block, or
 	// reconfiguring an existing one is applied in place, and a running container
 	// is restarted. Removing or inserting a block before existing ones recreates
-	// the container, as does changing the `size` of an existing mount point or
-	// pointing its `volume` at a different datastore or host path. Changing
-	// `volume` from one volume ID to another on the same datastore is not
-	// detected. A removed volume mount stays on the datastore as an unused
-	// volume; bind and device mounts are just dropped.
+	// the container, as does changing the `size` of a mount point whose `volume`
+	// is a datastore ID, or pointing its `volume` at a different datastore ID or
+	// host path. Changing `volume` to the ID of another existing volume is
+	// applied in place: the new volume is attached and the previous one stays on
+	// the datastore as an unused volume. Proxmox VE does not check that the new
+	// volume exists, and it keeps the real size of an existing volume: a `size`
+	// that differs from it is not applied and shows as a change on every plan,
+	// and each apply of that change restarts a running container. A removed
+	// volume mount stays on the datastore as an unused volume; bind and device
+	// mounts are just dropped.
 	MountPoints ContainerLegacyMountPointArrayInput
 	// A network interface (multiple blocks
 	// supported).
@@ -1040,11 +1065,16 @@ func (o ContainerLegacyOutput) Migrate() pulumi.BoolPtrOutput {
 // second `mp1`, and so on. Appending a block, removing the last block, or
 // reconfiguring an existing one is applied in place, and a running container
 // is restarted. Removing or inserting a block before existing ones recreates
-// the container, as does changing the `size` of an existing mount point or
-// pointing its `volume` at a different datastore or host path. Changing
-// `volume` from one volume ID to another on the same datastore is not
-// detected. A removed volume mount stays on the datastore as an unused
-// volume; bind and device mounts are just dropped.
+// the container, as does changing the `size` of a mount point whose `volume`
+// is a datastore ID, or pointing its `volume` at a different datastore ID or
+// host path. Changing `volume` to the ID of another existing volume is
+// applied in place: the new volume is attached and the previous one stays on
+// the datastore as an unused volume. Proxmox VE does not check that the new
+// volume exists, and it keeps the real size of an existing volume: a `size`
+// that differs from it is not applied and shows as a change on every plan,
+// and each apply of that change restarts a running container. A removed
+// volume mount stays on the datastore as an unused volume; bind and device
+// mounts are just dropped.
 func (o ContainerLegacyOutput) MountPoints() ContainerLegacyMountPointArrayOutput {
 	return o.ApplyT(func(v *ContainerLegacy) ContainerLegacyMountPointArrayOutput { return v.MountPoints }).(ContainerLegacyMountPointArrayOutput)
 }
