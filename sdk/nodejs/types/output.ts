@@ -2531,7 +2531,7 @@ export namespace cloned {
          */
         format?: string;
         /**
-         * Import source volume/file id.
+         * Import source volume/file id for a new disk. Requires `datastoreId`. The disk gets the size of the source, and is grown to `sizeGb` when that is set. A `sizeGb` smaller than the source fails the apply after the import, as Proxmox VE cannot shrink a disk. Ignored for a disk that already exists.
          */
         importFrom?: string;
         /**
@@ -2690,7 +2690,7 @@ export namespace cloned {
          */
         format?: string;
         /**
-         * Import source volume/file id.
+         * Import source volume/file id for a new disk. Requires `datastoreId`. The disk gets the size of the source, and is grown to `sizeGb` when that is set. A `sizeGb` smaller than the source fails the apply after the import, as Proxmox VE cannot shrink a disk. Ignored for a disk that already exists.
          */
         importFrom?: string;
         /**

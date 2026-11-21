@@ -49,7 +49,7 @@ public final class VmLegacyDisk {
      */
     private @Nullable String format;
     /**
-     * @return Import source volume/file id.
+     * @return Import source volume/file id for a new disk. Requires `datastoreId`. The disk gets the size of the source, and is grown to `sizeGb` when that is set. A `sizeGb` smaller than the source fails the apply after the import, as Proxmox VE cannot shrink a disk. Ignored for a disk that already exists.
      * 
      */
     private @Nullable String importFrom;
@@ -135,7 +135,7 @@ public final class VmLegacyDisk {
         return Optional.ofNullable(this.format);
     }
     /**
-     * @return Import source volume/file id.
+     * @return Import source volume/file id for a new disk. Requires `datastoreId`. The disk gets the size of the source, and is grown to `sizeGb` when that is set. A `sizeGb` smaller than the source fails the apply after the import, as Proxmox VE cannot shrink a disk. Ignored for a disk that already exists.
      * 
      */
     public Optional<String> importFrom() {

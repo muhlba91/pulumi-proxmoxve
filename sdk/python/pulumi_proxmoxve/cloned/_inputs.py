@@ -563,7 +563,7 @@ class VmDiskArgsDict(TypedDict):
     """
     import_from: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Import source volume/file id.
+    Import source volume/file id for a new disk. Requires `datastore_id`. The disk gets the size of the source, and is grown to `size_gb` when that is set. A `size_gb` smaller than the source fails the apply after the import, as Proxmox VE cannot shrink a disk. Ignored for a disk that already exists.
     """
     iothread: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
@@ -615,7 +615,7 @@ class VmDiskArgs:
         :param pulumi.Input[_builtins.str] discard: Discard/trim behavior.
         :param pulumi.Input[_builtins.str] file: Existing volume reference (e.g., local-lvm:vm-100-disk-0).
         :param pulumi.Input[_builtins.str] format: Disk format (raw, qcow2, vmdk).
-        :param pulumi.Input[_builtins.str] import_from: Import source volume/file id.
+        :param pulumi.Input[_builtins.str] import_from: Import source volume/file id for a new disk. Requires `datastore_id`. The disk gets the size of the source, and is grown to `size_gb` when that is set. A `size_gb` smaller than the source fails the apply after the import, as Proxmox VE cannot shrink a disk. Ignored for a disk that already exists.
         :param pulumi.Input[_builtins.bool] iothread: Use IO thread.
         :param pulumi.Input[_builtins.str] media: Disk media (e.g., disk, cdrom).
         :param pulumi.Input[_builtins.bool] replicate: Consider disk for replication.
@@ -740,7 +740,7 @@ class VmDiskArgs:
     @pulumi.getter(name="importFrom")
     def import_from(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Import source volume/file id.
+        Import source volume/file id for a new disk. Requires `datastore_id`. The disk gets the size of the source, and is grown to `size_gb` when that is set. A `size_gb` smaller than the source fails the apply after the import, as Proxmox VE cannot shrink a disk. Ignored for a disk that already exists.
         """
         return pulumi.get(self, "import_from")
 
@@ -1327,7 +1327,7 @@ class VmLegacyDiskArgsDict(TypedDict):
     """
     import_from: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Import source volume/file id.
+    Import source volume/file id for a new disk. Requires `datastore_id`. The disk gets the size of the source, and is grown to `size_gb` when that is set. A `size_gb` smaller than the source fails the apply after the import, as Proxmox VE cannot shrink a disk. Ignored for a disk that already exists.
     """
     iothread: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
@@ -1379,7 +1379,7 @@ class VmLegacyDiskArgs:
         :param pulumi.Input[_builtins.str] discard: Discard/trim behavior.
         :param pulumi.Input[_builtins.str] file: Existing volume reference (e.g., local-lvm:vm-100-disk-0).
         :param pulumi.Input[_builtins.str] format: Disk format (raw, qcow2, vmdk).
-        :param pulumi.Input[_builtins.str] import_from: Import source volume/file id.
+        :param pulumi.Input[_builtins.str] import_from: Import source volume/file id for a new disk. Requires `datastore_id`. The disk gets the size of the source, and is grown to `size_gb` when that is set. A `size_gb` smaller than the source fails the apply after the import, as Proxmox VE cannot shrink a disk. Ignored for a disk that already exists.
         :param pulumi.Input[_builtins.bool] iothread: Use IO thread.
         :param pulumi.Input[_builtins.str] media: Disk media (e.g., disk, cdrom).
         :param pulumi.Input[_builtins.bool] replicate: Consider disk for replication.
@@ -1504,7 +1504,7 @@ class VmLegacyDiskArgs:
     @pulumi.getter(name="importFrom")
     def import_from(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Import source volume/file id.
+        Import source volume/file id for a new disk. Requires `datastore_id`. The disk gets the size of the source, and is grown to `size_gb` when that is set. A `size_gb` smaller than the source fails the apply after the import, as Proxmox VE cannot shrink a disk. Ignored for a disk that already exists.
         """
         return pulumi.get(self, "import_from")
 

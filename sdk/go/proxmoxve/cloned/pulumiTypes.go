@@ -878,7 +878,7 @@ type VmDisk struct {
 	File *string `pulumi:"file"`
 	// Disk format (raw, qcow2, vmdk).
 	Format *string `pulumi:"format"`
-	// Import source volume/file id.
+	// Import source volume/file id for a new disk. Requires `datastoreId`. The disk gets the size of the source, and is grown to `sizeGb` when that is set. A `sizeGb` smaller than the source fails the apply after the import, as Proxmox VE cannot shrink a disk. Ignored for a disk that already exists.
 	ImportFrom *string `pulumi:"importFrom"`
 	// Use IO thread.
 	Iothread *bool `pulumi:"iothread"`
@@ -920,7 +920,7 @@ type VmDiskArgs struct {
 	File pulumi.StringPtrInput `pulumi:"file"`
 	// Disk format (raw, qcow2, vmdk).
 	Format pulumi.StringPtrInput `pulumi:"format"`
-	// Import source volume/file id.
+	// Import source volume/file id for a new disk. Requires `datastoreId`. The disk gets the size of the source, and is grown to `sizeGb` when that is set. A `sizeGb` smaller than the source fails the apply after the import, as Proxmox VE cannot shrink a disk. Ignored for a disk that already exists.
 	ImportFrom pulumi.StringPtrInput `pulumi:"importFrom"`
 	// Use IO thread.
 	Iothread pulumi.BoolPtrInput `pulumi:"iothread"`
@@ -1022,7 +1022,7 @@ func (o VmDiskOutput) Format() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmDisk) *string { return v.Format }).(pulumi.StringPtrOutput)
 }
 
-// Import source volume/file id.
+// Import source volume/file id for a new disk. Requires `datastoreId`. The disk gets the size of the source, and is grown to `sizeGb` when that is set. A `sizeGb` smaller than the source fails the apply after the import, as Proxmox VE cannot shrink a disk. Ignored for a disk that already exists.
 func (o VmDiskOutput) ImportFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmDisk) *string { return v.ImportFrom }).(pulumi.StringPtrOutput)
 }
@@ -1942,7 +1942,7 @@ type VmLegacyDisk struct {
 	File *string `pulumi:"file"`
 	// Disk format (raw, qcow2, vmdk).
 	Format *string `pulumi:"format"`
-	// Import source volume/file id.
+	// Import source volume/file id for a new disk. Requires `datastoreId`. The disk gets the size of the source, and is grown to `sizeGb` when that is set. A `sizeGb` smaller than the source fails the apply after the import, as Proxmox VE cannot shrink a disk. Ignored for a disk that already exists.
 	ImportFrom *string `pulumi:"importFrom"`
 	// Use IO thread.
 	Iothread *bool `pulumi:"iothread"`
@@ -1984,7 +1984,7 @@ type VmLegacyDiskArgs struct {
 	File pulumi.StringPtrInput `pulumi:"file"`
 	// Disk format (raw, qcow2, vmdk).
 	Format pulumi.StringPtrInput `pulumi:"format"`
-	// Import source volume/file id.
+	// Import source volume/file id for a new disk. Requires `datastoreId`. The disk gets the size of the source, and is grown to `sizeGb` when that is set. A `sizeGb` smaller than the source fails the apply after the import, as Proxmox VE cannot shrink a disk. Ignored for a disk that already exists.
 	ImportFrom pulumi.StringPtrInput `pulumi:"importFrom"`
 	// Use IO thread.
 	Iothread pulumi.BoolPtrInput `pulumi:"iothread"`
@@ -2086,7 +2086,7 @@ func (o VmLegacyDiskOutput) Format() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmLegacyDisk) *string { return v.Format }).(pulumi.StringPtrOutput)
 }
 
-// Import source volume/file id.
+// Import source volume/file id for a new disk. Requires `datastoreId`. The disk gets the size of the source, and is grown to `sizeGb` when that is set. A `sizeGb` smaller than the source fails the apply after the import, as Proxmox VE cannot shrink a disk. Ignored for a disk that already exists.
 func (o VmLegacyDiskOutput) ImportFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmLegacyDisk) *string { return v.ImportFrom }).(pulumi.StringPtrOutput)
 }

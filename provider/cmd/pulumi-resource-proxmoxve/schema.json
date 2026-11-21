@@ -773,7 +773,7 @@
                 },
                 "importFrom": {
                     "type": "string",
-                    "description": "Import source volume/file id.\n"
+                    "description": "Import source volume/file id for a new disk. Requires \u003cspan pulumi-lang-nodejs=\"`datastoreId`\" pulumi-lang-dotnet=\"`DatastoreId`\" pulumi-lang-go=\"`datastoreId`\" pulumi-lang-python=\"`datastore_id`\" pulumi-lang-yaml=\"`datastoreId`\" pulumi-lang-java=\"`datastoreId`\" pulumi-lang-hcl=\"`datastore_id`\"\u003e`datastoreId`\u003c/span\u003e. The disk gets the size of the source, and is grown to \u003cspan pulumi-lang-nodejs=\"`sizeGb`\" pulumi-lang-dotnet=\"`SizeGb`\" pulumi-lang-go=\"`sizeGb`\" pulumi-lang-python=\"`size_gb`\" pulumi-lang-yaml=\"`sizeGb`\" pulumi-lang-java=\"`sizeGb`\" pulumi-lang-hcl=\"`size_gb`\"\u003e`sizeGb`\u003c/span\u003e when that is set. A \u003cspan pulumi-lang-nodejs=\"`sizeGb`\" pulumi-lang-dotnet=\"`SizeGb`\" pulumi-lang-go=\"`sizeGb`\" pulumi-lang-python=\"`size_gb`\" pulumi-lang-yaml=\"`sizeGb`\" pulumi-lang-java=\"`sizeGb`\" pulumi-lang-hcl=\"`size_gb`\"\u003e`sizeGb`\u003c/span\u003e smaller than the source fails the apply after the import, as Proxmox VE cannot shrink a disk. Ignored for a disk that already exists.\n"
                 },
                 "iothread": {
                     "type": "boolean",
@@ -963,7 +963,7 @@
                 },
                 "importFrom": {
                     "type": "string",
-                    "description": "Import source volume/file id.\n"
+                    "description": "Import source volume/file id for a new disk. Requires \u003cspan pulumi-lang-nodejs=\"`datastoreId`\" pulumi-lang-dotnet=\"`DatastoreId`\" pulumi-lang-go=\"`datastoreId`\" pulumi-lang-python=\"`datastore_id`\" pulumi-lang-yaml=\"`datastoreId`\" pulumi-lang-java=\"`datastoreId`\" pulumi-lang-hcl=\"`datastore_id`\"\u003e`datastoreId`\u003c/span\u003e. The disk gets the size of the source, and is grown to \u003cspan pulumi-lang-nodejs=\"`sizeGb`\" pulumi-lang-dotnet=\"`SizeGb`\" pulumi-lang-go=\"`sizeGb`\" pulumi-lang-python=\"`size_gb`\" pulumi-lang-yaml=\"`sizeGb`\" pulumi-lang-java=\"`sizeGb`\" pulumi-lang-hcl=\"`size_gb`\"\u003e`sizeGb`\u003c/span\u003e when that is set. A \u003cspan pulumi-lang-nodejs=\"`sizeGb`\" pulumi-lang-dotnet=\"`SizeGb`\" pulumi-lang-go=\"`sizeGb`\" pulumi-lang-python=\"`size_gb`\" pulumi-lang-yaml=\"`sizeGb`\" pulumi-lang-java=\"`sizeGb`\" pulumi-lang-hcl=\"`size_gb`\"\u003e`sizeGb`\u003c/span\u003e smaller than the source fails the apply after the import, as Proxmox VE cannot shrink a disk. Ignored for a disk that already exists.\n"
                 },
                 "iothread": {
                     "type": "boolean",

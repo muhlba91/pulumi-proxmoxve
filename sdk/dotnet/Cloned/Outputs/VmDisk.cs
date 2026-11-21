@@ -42,7 +42,7 @@ namespace Pulumi.ProxmoxVE.Cloned.Outputs
         /// </summary>
         public readonly string? Format;
         /// <summary>
-        /// Import source volume/file id.
+        /// Import source volume/file id for a new disk. Requires `DatastoreId`. The disk gets the size of the source, and is grown to `SizeGb` when that is set. A `SizeGb` smaller than the source fails the apply after the import, as Proxmox VE cannot shrink a disk. Ignored for a disk that already exists.
         /// </summary>
         public readonly string? ImportFrom;
         /// <summary>

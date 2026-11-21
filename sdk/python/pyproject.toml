@@ -3,17 +3,16 @@
   description = "A Pulumi package for creating and managing Proxmox Virtual Environment cloud resources."
   dependencies = ["packaging>=24.0", "pulumi>=3.0.0,<4.0.0", "semver>=2.8.1", "typing-extensions>=4.11,<5; python_version < \"3.11\""]
   keywords = ["proxmox", "proxmoxve", "category/infrastructure"]
+  license = "Apache-2.0"
   readme = "README.md"
   requires-python = ">=3.9"
-  version = "8.7.0a1794986722+f61938f2.dirty"
-  [project.license]
-    text = "Apache-2.0"
+  version = "8.7.0a1795229927+581b1fed.dirty"
   [project.urls]
     Homepage = "https://github.com/muhlba91/pulumi-proxmoxve"
     Repository = "https://github.com/muhlba91/pulumi-proxmoxve"
 
 [build-system]
-  requires = ["setuptools>=61.0"]
+  requires = ["setuptools>=77.0"]
   build-backend = "setuptools.build_meta"
 
 [tool]

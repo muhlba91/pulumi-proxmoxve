@@ -123,14 +123,14 @@ public final class VmLegacyDiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Import source volume/file id.
+     * Import source volume/file id for a new disk. Requires `datastoreId`. The disk gets the size of the source, and is grown to `sizeGb` when that is set. A `sizeGb` smaller than the source fails the apply after the import, as Proxmox VE cannot shrink a disk. Ignored for a disk that already exists.
      * 
      */
     @Import(name="importFrom")
     private @Nullable Output<String> importFrom;
 
     /**
-     * @return Import source volume/file id.
+     * @return Import source volume/file id for a new disk. Requires `datastoreId`. The disk gets the size of the source, and is grown to `sizeGb` when that is set. A `sizeGb` smaller than the source fails the apply after the import, as Proxmox VE cannot shrink a disk. Ignored for a disk that already exists.
      * 
      */
     public Optional<Output<String>> importFrom() {
@@ -412,7 +412,7 @@ public final class VmLegacyDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param importFrom Import source volume/file id.
+         * @param importFrom Import source volume/file id for a new disk. Requires `datastoreId`. The disk gets the size of the source, and is grown to `sizeGb` when that is set. A `sizeGb` smaller than the source fails the apply after the import, as Proxmox VE cannot shrink a disk. Ignored for a disk that already exists.
          * 
          * @return builder
          * 
@@ -423,7 +423,7 @@ public final class VmLegacyDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param importFrom Import source volume/file id.
+         * @param importFrom Import source volume/file id for a new disk. Requires `datastoreId`. The disk gets the size of the source, and is grown to `sizeGb` when that is set. A `sizeGb` smaller than the source fails the apply after the import, as Proxmox VE cannot shrink a disk. Ignored for a disk that already exists.
          * 
          * @return builder
          * 
