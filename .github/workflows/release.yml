@@ -17,6 +17,7 @@ permissions:
 env:
   PROVIDER: proxmoxve
   GO111MODULE: "on"
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   NUGET_FEED_URL: https://api.nuget.org/v3/index.json
 
 jobs:
