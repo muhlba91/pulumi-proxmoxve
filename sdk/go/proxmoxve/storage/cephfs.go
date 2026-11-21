@@ -35,6 +35,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := storage.NewCephfs(ctx, "example", &storage.CephfsArgs{
+//				Backups: &storage.CephfsBackupsArgs{
+//					KeepLast: pulumi.Int(3),
+//				},
 //				StorageCephfsId: pulumi.String("cephfs-templates"),
 //				FsName:          pulumi.String("cephfs"),
 //				Contents: pulumi.StringArray{
@@ -44,9 +47,6 @@ import (
 //					pulumi.String("snippets"),
 //				},
 //				Options: pulumi.String("noatime"),
-//				Backups: &storage.CephfsBackupsArgs{
-//					KeepLast: pulumi.Int(3),
-//				},
 //			})
 //			if err != nil {
 //				return err

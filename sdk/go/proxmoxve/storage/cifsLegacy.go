@@ -31,6 +31,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := storage.NewCifsLegacy(ctx, "example", &storage.CifsLegacyArgs{
+//				Backups: &storage.CifsLegacyBackupsArgs{
+//					MaxProtectedBackups: pulumi.Int(5),
+//					KeepDaily:           pulumi.Int(7),
+//				},
 //				ResourceId: pulumi.String("example-cifs"),
 //				Nodes: pulumi.StringArray{
 //					pulumi.String("pve"),
@@ -46,10 +50,6 @@ import (
 //				Subdirectory:          pulumi.String("terraform"),
 //				Preallocation:         pulumi.String("metadata"),
 //				SnapshotAsVolumeChain: pulumi.Bool(true),
-//				Backups: &storage.CifsLegacyBackupsArgs{
-//					MaxProtectedBackups: pulumi.Int(5),
-//					KeepDaily:           pulumi.Int(7),
-//				},
 //			})
 //			if err != nil {
 //				return err
