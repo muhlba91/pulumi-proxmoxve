@@ -174,6 +174,8 @@ github.com/pulumi/pulumi-cloud-sdk/go v1.20261112.0 h1:ntbtYXGdta8ZwVqEcw7K2rcbJ
 github.com/pulumi/pulumi-cloud-sdk/go v1.20261112.0/go.mod h1:aMwd3130zrFnJzpXi0X+Jd9DidPGT2I5zwGOhqqQ/GA=
 github.com/pulumi/pulumi/sdk/v3 v3.276.0 h1:xkrmwkmAaHC2wilul4RTcPVrGfA6yQetstZpeQrvRWI=
 github.com/pulumi/pulumi/sdk/v3 v3.276.0/go.mod h1:WnPO90tGSd4h5BDTfK4BeDZ/b2Rsq7bhZ2yEcfvScEc=
+github.com/pulumi/pulumi/sdk/v3 v3.277.0 h1:RtkvbNSWGfWMCKpzTPuTzcdFF9hifstkSw7gPVwUPZ0=
+github.com/pulumi/pulumi/sdk/v3 v3.277.0/go.mod h1:19B7NrlAk0Cw7kN0uzoQPa5Sn90xSxEqOVu2WWLuQFo=
 github.com/rivo/uniseg v0.4.7 h1:WUdvkW8uEhrYfLC4ZzdpI2ztxP1I582+49Oc5Mq64VQ=
 github.com/rivo/uniseg v0.4.7/go.mod h1:FN3SvrM+Zdj16jyLfmOkMNblXMcoc8DfTHruCPUcx88=
 github.com/rogpeppe/go-internal v1.16.0 h1:O9DK+vNMDVGLr2BeZqmpLeMjiMNkuXfcqntWbZV6S5g=
