@@ -35,6 +35,23 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
+  actionlint:
+    runs-on: ubuntu-latest
+    name: actionlint
+
+    steps:
+      - uses: step-security/harden-runner@aebdcf6156ab6691adf63218240e476564a1ed4c # v2.23.0
+        with:
+          egress-policy: audit
+
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - uses: jdx/mise-action@924e7c586e33d7d4bae9c14e26c5d22e2beb6e78 # v5.3.0
+        with:
+          install_args: actionlint
+
+      - run: actionlint
+
   provider:
     runs-on: ubuntu-latest
     name: Lint Provider
