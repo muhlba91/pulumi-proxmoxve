@@ -1,0 +1,5 @@
+---
+default: true
+MD013: false # prose and tables are not wrapped
+MD033:
+  allowed_elements: [a, br, details, img, summary] # a and img: the Buy Me A Coffee badge in README.md

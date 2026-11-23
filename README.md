@@ -1,16 +1,16 @@
 # Pulumi Proxmox VE Provider
 
-[![](https://img.shields.io/github/license/muhlba91/pulumi-proxmoxve?style=for-the-badge)](LICENSE)
-[![](https://img.shields.io/github/actions/workflow/status/muhlba91/pulumi-proxmoxve/verify.yml?style=for-the-badge)](https://github.com/muhlba91/pulumi-proxmoxve/actions/workflows/verify.yml)
-[![](https://api.scorecard.dev/projects/github.com/muhlba91/pulumi-proxmoxve/badge?style=for-the-badge)](https://scorecard.dev/viewer/?uri=github.com/muhlba91/pulumi-proxmoxve)
-[![](https://img.shields.io/github/release-date/muhlba91/pulumi-proxmoxve?style=for-the-badge)](https://github.com/muhlba91/pulumi-proxmoxve/releases)
-[![](https://img.shields.io/pypi/v/pulumi-proxmoxve?style=for-the-badge)](https://pypi.org/project/pulumi-proxmoxve/)
-[![](https://img.shields.io/pypi/dm/pulumi-proxmoxve?style=for-the-badge)](https://pypi.org/project/pulumi-proxmoxve/)
-[![](https://img.shields.io/nuget/v/Pulumi.ProxmoxVE?style=for-the-badge)](https://www.nuget.org/packages/Pulumi.ProxmoxVE/)
-[![](https://img.shields.io/nuget/dt/Pulumi.ProxmoxVE?style=for-the-badge)](https://www.nuget.org/packages/Pulumi.ProxmoxVE/)
-[![](https://img.shields.io/npm/v/@muhlba91/pulumi-proxmoxve?style=for-the-badge)](https://www.npmjs.com/package/@muhlba91/pulumi-proxmoxve)
-[![](https://img.shields.io/npm/dm/@muhlba91/pulumi-proxmoxve?style=for-the-badge)](https://www.npmjs.com/package/@muhlba91/pulumi-proxmoxve)
-[![](https://img.shields.io/github/all-contributors/muhlba91/pulumi-proxmoxve?color=ee8449&style=for-the-badge)](#contributors)
+[![License](https://img.shields.io/github/license/muhlba91/pulumi-proxmoxve?style=for-the-badge)](LICENSE)
+[![Verify workflow status](https://img.shields.io/github/actions/workflow/status/muhlba91/pulumi-proxmoxve/verify.yml?style=for-the-badge)](https://github.com/muhlba91/pulumi-proxmoxve/actions/workflows/verify.yml)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/muhlba91/pulumi-proxmoxve/badge?style=for-the-badge)](https://scorecard.dev/viewer/?uri=github.com/muhlba91/pulumi-proxmoxve)
+[![Release date](https://img.shields.io/github/release-date/muhlba91/pulumi-proxmoxve?style=for-the-badge)](https://github.com/muhlba91/pulumi-proxmoxve/releases)
+[![PyPI version](https://img.shields.io/pypi/v/pulumi-proxmoxve?style=for-the-badge)](https://pypi.org/project/pulumi-proxmoxve/)
+[![PyPI downloads](https://img.shields.io/pypi/dm/pulumi-proxmoxve?style=for-the-badge)](https://pypi.org/project/pulumi-proxmoxve/)
+[![NuGet version](https://img.shields.io/nuget/v/Pulumi.ProxmoxVE?style=for-the-badge)](https://www.nuget.org/packages/Pulumi.ProxmoxVE/)
+[![NuGet downloads](https://img.shields.io/nuget/dt/Pulumi.ProxmoxVE?style=for-the-badge)](https://www.nuget.org/packages/Pulumi.ProxmoxVE/)
+[![npm version](https://img.shields.io/npm/v/@muhlba91/pulumi-proxmoxve?style=for-the-badge)](https://www.npmjs.com/package/@muhlba91/pulumi-proxmoxve)
+[![npm downloads](https://img.shields.io/npm/dm/@muhlba91/pulumi-proxmoxve?style=for-the-badge)](https://www.npmjs.com/package/@muhlba91/pulumi-proxmoxve)
+[![All contributors](https://img.shields.io/github/all-contributors/muhlba91/pulumi-proxmoxve?color=ee8449&style=for-the-badge)](#contributors)
 <a href="https://www.buymeacoffee.com/muhlba91" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="28" width="150"></a>
 
 A [Pulumi](https://www.pulumi.com) package to manage [Proxmox Virtual Environment](http://proxmox.com) (Proxmox VE) resources. This provider is built on the [Terraform Proxmox Provider](https://github.com/bpg/terraform-provider-proxmox).

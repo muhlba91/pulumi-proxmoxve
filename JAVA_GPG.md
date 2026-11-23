@@ -21,7 +21,7 @@ gpg --quick-add-key "$FPR" cv25519 encr 10y
 
 # publish the PUBLIC key so Central can verify signatures
 gpg --keyserver keyserver.ubuntu.com --send-keys "$FPR"
-  
+
 # export the key material to a file for safe keeping (and later re-import)
 gpg --armor --export-secret-keys "$FPR" > signing_key.asc   # -> SIGNING_KEY
 echo "$FPR"                                                  # -> SIGNING_KEY_ID (fingerprint)

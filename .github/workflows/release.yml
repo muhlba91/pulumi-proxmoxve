@@ -128,12 +128,12 @@ jobs:
         if: matrix.language == 'java'
 
       - run: |
-          VERSION_NAME=`git describe --abbrev=0 --tags`
+          VERSION_NAME="$(git describe --abbrev=0 --tags)"
           echo "found tag: $VERSION_NAME"
-          echo "VERSION_NAME=${VERSION_NAME#v}" >> $GITHUB_ENV
+          echo "VERSION_NAME=${VERSION_NAME#v}" >> "$GITHUB_ENV"
 
       - run: make install_plugins
-      - run: echo "${{ github.workspace }}/bin" >> $GITHUB_PATH
+      - run: echo "${{ github.workspace }}/bin" >> "$GITHUB_PATH"
 
       - run: make build_${{ matrix.language }}
 
@@ -176,7 +176,7 @@ jobs:
         if: matrix.language == 'nodejs'
 
       - run: |
-          echo "PACKAGE_VERSION=${{ env.VERSION_NAME }}" >> $GITHUB_ENV
+          echo "PACKAGE_VERSION=${{ env.VERSION_NAME }}" >> "$GITHUB_ENV"
         if: matrix.language == 'java'
       - working-directory: sdk/java
         env:

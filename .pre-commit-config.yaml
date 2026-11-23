@@ -10,9 +10,11 @@ repos:
     rev: v6.0.0
     hooks:
       - id: end-of-file-fixer
+        exclude: ^(sdk/|provider/cmd/pulumi-resource-proxmoxve/.*\.json$)
       - id: trailing-whitespace
+        exclude: ^(sdk/|provider/cmd/pulumi-resource-proxmoxve/.*\.json$)
       - id: check-json
-        exclude: .eslintrc.json|node_modules/*
+        exclude: ^(sdk/|node_modules/|\.devcontainer/devcontainer\.json$|provider/cmd/pulumi-resource-proxmoxve/.*\.json$)
       - id: check-merge-conflict
       - id: check-symlinks
       - id: check-toml
@@ -23,7 +25,7 @@ repos:
             "--allow-missing-credentials"
         ]
       - id: detect-private-key
-        exclude: node_modules/*
+        exclude: ^node_modules/
 #      - id: no-commit-to-branch
 #        args: [
 #            "--branch",
@@ -35,7 +37,20 @@ repos:
     rev: v8.30.0
     hooks:
       - id: gitleaks
-  - repo: https://github.com/golangci/golangci-lint
-    rev: v2.12.2
+  - repo: https://github.com/rhysd/actionlint
+    rev: v1.7.12
     hooks:
+      - id: actionlint
+  - repo: local
+    hooks:
+      - id: markdownlint-cli2
+        name: markdownlint-cli2
+        entry: mise exec -- markdownlint-cli2
+        language: system
+        files: ^(README\.md|JAVA_GPG\.md|CODE-OF-CONDUCT\.md|docs/.*\.md)$
       - id: golangci-lint
+        name: golangci-lint
+        entry: bash -c 'cd provider && mise exec -- golangci-lint run -c ../.golangci.yml'
+        language: system
+        files: ^(provider/.*\.go|provider/go\.(mod|sum)|\.golangci\.yml)$
+        pass_filenames: false
