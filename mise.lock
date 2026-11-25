@@ -177,26 +177,26 @@ backend = "npm:markdownlint-cli2"
 specifiers = ["0.24.2"]
 
 [[tools.pulumi]]
-version = "3.277.0"
+version = "3.278.0"
 backend = "aqua:pulumi/pulumi"
-specifiers = ["3.277.0"]
+specifiers = ["3.278.0"]
 
 [tools.pulumi."platforms.linux-arm64"]
-checksum = "sha256:b9c2708bd13ffdcba79f555a0532893a9b5a44efca8e225d171b8f7b605b16ce"
-url = "https://github.com/pulumi/pulumi/releases/download/v3.277.0/pulumi-v3.277.0-linux-arm64.tar.gz"
-url_api = "https://api.github.com/repos/pulumi/pulumi/releases/assets/762986987"
+checksum = "sha256:35de8596e629caf1556ac7560cdbd5b09a07a096dda0e0dd035d09bb5a3287cb"
+url = "https://github.com/pulumi/pulumi/releases/download/v3.278.0/pulumi-v3.278.0-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/pulumi/pulumi/releases/assets/789041030"
 provenance = "cosign"
 
 [tools.pulumi."platforms.linux-x64"]
-checksum = "sha256:1e38f0fb69a14a326cf3acfaf975770e8de5d0771042f26292f0013d237b8393"
-url = "https://github.com/pulumi/pulumi/releases/download/v3.277.0/pulumi-v3.277.0-linux-x64.tar.gz"
-url_api = "https://api.github.com/repos/pulumi/pulumi/releases/assets/762987255"
+checksum = "sha256:bc1b25c6ae82793ba1f0b890b2a6c0d380652694e42e8a2556736071eda9f583"
+url = "https://github.com/pulumi/pulumi/releases/download/v3.278.0/pulumi-v3.278.0-linux-x64.tar.gz"
+url_api = "https://api.github.com/repos/pulumi/pulumi/releases/assets/789041219"
 provenance = "cosign"
 
 [tools.pulumi."platforms.macos-arm64"]
-checksum = "sha256:7344d062adc17a10c58cf621330270a50b138ed761ac1d90faf8988992aab71b"
-url = "https://github.com/pulumi/pulumi/releases/download/v3.277.0/pulumi-v3.277.0-darwin-arm64.tar.gz"
-url_api = "https://api.github.com/repos/pulumi/pulumi/releases/assets/762986456"
+checksum = "sha256:cf1c6c0089364a6516ca8a49dc0c3f6b4337f0e634309a2864396e3c6036c591"
+url = "https://github.com/pulumi/pulumi/releases/download/v3.278.0/pulumi-v3.278.0-darwin-arm64.tar.gz"
+url_api = "https://api.github.com/repos/pulumi/pulumi/releases/assets/789040504"
 provenance = "cosign"
 
 [[tools.python]]
