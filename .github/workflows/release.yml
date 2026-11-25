@@ -64,7 +64,7 @@ jobs:
           cache: false
           install_args: go pulumi github:pulumi/pulumictl goreleaser
 
-      - uses: pulumi/actions@96c7761824268174e0d2a4e8c7d75671eebd24a7 # v7
+      - uses: pulumi/actions@0ce33695f880624d4f27bd6db25e680c7df4d551 # v7
 
       - uses: sigstore/cosign-installer@881c63bd87e38389154debd8331404ce7ca8a3ab # v4.1.4
       - uses: anchore/sbom-action/download-syft@dfcb83b97731532d72be422cbc51ee64adb6fd56 # v0.24.4
@@ -115,7 +115,7 @@ jobs:
           cache: false
           install_args: go pulumi github:pulumi/pulumictl fnox vault ${{ fromJSON('{"go":"","nodejs":"node","python":"python","dotnet":"dotnet","java":"java"}')[matrix.language] }}
 
-      - uses: pulumi/actions@96c7761824268174e0d2a4e8c7d75671eebd24a7 # v7
+      - uses: pulumi/actions@0ce33695f880624d4f27bd6db25e680c7df4d551 # v7
 
       # Node comes from mise; setup-node only writes the npm registry config.
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
