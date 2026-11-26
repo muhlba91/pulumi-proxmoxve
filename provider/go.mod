@@ -5,7 +5,7 @@ go 1.27.0
 replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20260318212141-5525259d096b
 
 require (
-	github.com/bpg/terraform-provider-proxmox v0.123.1
+	github.com/bpg/terraform-provider-proxmox v0.124.0
 	github.com/ettle/strcase v0.2.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.143.0
 	github.com/pulumi/pulumi/sdk/v3 v3.276.0
@@ -74,6 +74,7 @@ require (
 	github.com/cncf/xds/go v0.0.0-20260202195803-dba9d589def2 // indirect
 	github.com/danieljoos/wincred v1.2.3 // indirect
 	github.com/deckarep/golang-set/v2 v2.9.0 // indirect
+	github.com/diskfs/go-diskfs v1.9.4 // indirect
 	github.com/djherbis/times v1.6.0 // indirect
 	github.com/ebitengine/purego v0.11.3 // indirect
 	github.com/edsrzf/mmap-go v1.2.0 // indirect
@@ -123,7 +124,7 @@ require (
 	github.com/hashicorp/terraform-plugin-framework-validators v0.19.0 // indirect
 	github.com/hashicorp/terraform-plugin-go v0.31.0 // indirect
 	github.com/hashicorp/terraform-plugin-log v0.11.0 // indirect
-	github.com/hashicorp/terraform-plugin-sdk/v2 v2.40.1 // indirect
+	github.com/hashicorp/terraform-plugin-sdk/v2 v2.41.1 // indirect
 	github.com/hashicorp/terraform-registry-address v0.5.1 // indirect
 	github.com/hashicorp/terraform-svchost v0.2.1 // indirect
 	github.com/hashicorp/yamux v0.1.2 // indirect
@@ -168,7 +169,7 @@ require (
 	github.com/pgavlin/goldmark v1.1.33-0.20200616210433-b5eb04559386 // indirect
 	github.com/pjbgf/sha1cd v0.7.0 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
-	github.com/pkg/sftp v1.13.12 // indirect
+	github.com/pkg/sftp v1.13.13 // indirect
 	github.com/pkg/term v1.1.0 // indirect
 	github.com/planetscale/vtprotobuf v0.6.1-0.20240319094008-0393e58bdf10 // indirect
 	github.com/posener/complete v1.2.3 // indirect
@@ -235,7 +236,7 @@ require (
 	golang.org/x/crypto/openpgp v0.1.0-deprecated // indirect
 	golang.org/x/exp v0.0.0-20261113113407-e3970619a1a4 // indirect
 	golang.org/x/mod v0.43.0 // indirect
-	golang.org/x/net v0.62.0 // indirect
+	golang.org/x/net v0.63.0 // indirect
 	golang.org/x/oauth2 v0.38.0 // indirect
 	golang.org/x/sync v0.25.0 // indirect
 	golang.org/x/sys v0.50.0 // indirect
