@@ -1,6 +1,22 @@
 # Changelog
 
 
+## [8.7.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v8.7.0...v8.7.1) (2026-11-26)
+
+
+### Miscellaneous Chores
+
+* **ci:** add actionlint job ([5141da3](https://github.com/muhlba91/pulumi-proxmoxve/commit/5141da32ed4041f6986c26775cc06961e26eb51c))
+* **deps:** update anchore/sbom-action action to v0.24.4 ([e388bb7](https://github.com/muhlba91/pulumi-proxmoxve/commit/e388bb7576360eceebeb53d9a9bbfd64bdb7844a))
+* **deps:** update dependency pulumi to v3.278.0 ([6739392](https://github.com/muhlba91/pulumi-proxmoxve/commit/67393928a973f3523c8cdd23151b4d9259c85f7d))
+* **deps:** update github/codeql-action action to v4.39.5 ([1a4a0f6](https://github.com/muhlba91/pulumi-proxmoxve/commit/1a4a0f609d33ec97432bcda56c5319409cadd8ae))
+* **deps:** update gitleaks to v8.30.1 ([c34d514](https://github.com/muhlba91/pulumi-proxmoxve/commit/c34d5143f2f8b13e5c3d06cda0718c97c58b76f4))
+* **deps:** update jdx/mise-action action to v5.3.0 ([5bc0827](https://github.com/muhlba91/pulumi-proxmoxve/commit/5bc08276813973b40717968a2abfceb1ea811758))
+* **deps:** update module github.com/bpg/terraform-provider-proxmox to v0.124.0 ([acc3f5a](https://github.com/muhlba91/pulumi-proxmoxve/commit/acc3f5ab1720cdfd5dc0edb8fe6379888490f99b))
+* **deps:** update pulumi/actions digest to 0ce3369 ([ec11b4b](https://github.com/muhlba91/pulumi-proxmoxve/commit/ec11b4b975454cc20ee9a7bda2855d3dec77357b))
+* **deps:** update sigstore/cosign-installer action to v4.1.4 ([130243e](https://github.com/muhlba91/pulumi-proxmoxve/commit/130243e728190868268650304e989cfc5e86efa3))
+* update pre-commit config ([cb2f179](https://github.com/muhlba91/pulumi-proxmoxve/commit/cb2f179309ebfe0030c136372652de602afa8ccb))
+
 ## [8.7.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v8.6.0...v8.7.0) (2026-11-21)
 
 
